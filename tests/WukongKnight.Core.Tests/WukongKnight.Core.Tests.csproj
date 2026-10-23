@@ -8,6 +8,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="../../src/WukongKnight/Core/ComboTimeline.cs" Link="ComboTimeline.cs" />
+    <Compile Include="../../src/WukongKnight/Core/AttackTiming.cs" Link="AttackTiming.cs" />
     <Compile Include="../../src/WukongKnight/Core/DeferredContactCleanup.cs" Link="DeferredContactCleanup.cs" />
   </ItemGroup>
 </Project>

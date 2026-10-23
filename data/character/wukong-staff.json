@@ -17,6 +17,7 @@
       {"clip": "attack2", "buffer_open_tick": 5, "hit_windows": [{"start_tick": 5, "end_tick": 8}], "range_multiplier": 1.0},
       {"clip": "attack3", "buffer_open_tick": 3, "hit_windows": [{"start_tick": 3, "end_tick": 5}, {"start_tick": 11, "end_tick": 14}], "range_multiplier": 1.0},
       {"clip": "attack4", "buffer_open_tick": 5, "hit_windows": [{"start_tick": 5, "end_tick": 8}], "range_multiplier": 1.0}
-    ]
+    ],
+    "air_attack": {"clip": "jumpAttack", "hit_windows": [{"start_tick": 4, "end_tick": 7}], "range_multiplier": 1.0}
   }
 }

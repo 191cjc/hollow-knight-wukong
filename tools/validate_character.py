@@ -60,6 +60,54 @@ def resource_path(directory, name):
     return path
 
 
+def validate_windows(windows, name, duration, count):
+    require(isinstance(windows, list) and len(windows) == count,
+            f"{name} must have {'two' if count == 2 else 'one'} hit windows")
+    previous_end = 0
+    for window in windows:
+        object_value(window, f"{name} window")
+        require(set(window) == {"start_tick", "end_tick"}, f"unsupported {name} window fields")
+        start = integer(window.get("start_tick"), "start_tick")
+        end = integer(window.get("end_tick"), "end_tick", 1)
+        require(previous_end <= start < end <= duration, f"{name} overlapping or invalid hit window")
+        previous_end = end
+
+
+def validate_reach(value):
+    reach = number(value, "range_multiplier", positive=True)
+    require(0.25 <= reach <= 3, "range_multiplier outside supported native slash range")
+
+
+def validate_combat(combat, clips):
+    """One combat contract for the source profile and materialized manifest."""
+    object_value(combat, "combat")
+    require(number(combat.get("chain_grace_seconds"), "chain_grace_seconds", positive=True) <= 2,
+            "chain_grace_seconds exceeds two seconds")
+    stages = combat.get("stages")
+    require(isinstance(stages, list) and len(stages) == 4, "exactly four combat stages required")
+    for index, stage in enumerate(stages):
+        object_value(stage, f"stage {index + 1}")
+        require(set(stage) == {"clip", "buffer_open_tick", "range_multiplier", "hit_windows"},
+                "unsupported stage fields; custom damage modifiers are not permitted")
+        name = f"attack{index + 1}"
+        require(stage.get("clip") == name, "combat stages must follow attack1 through attack4")
+        duration = clips[name]["duration_ticks"]
+        require(integer(stage.get("buffer_open_tick"), "buffer_open_tick") < duration,
+                f"{name} buffer starts after stage")
+        validate_reach(stage.get("range_multiplier"))
+        validate_windows(stage.get("hit_windows"), name, duration, 2 if index == 2 else 1)
+
+    air = object_value(combat.get("air_attack"), "air_attack")
+    require(set(air) == {"clip", "hit_windows", "range_multiplier"},
+            "unsupported air_attack fields; buffering and custom damage modifiers are not permitted")
+    require(air.get("clip") == "jumpAttack", "air_attack must use jumpAttack")
+    clip = object_value(clips.get("jumpAttack"), "jumpAttack")
+    duration = integer(clip.get("duration_ticks"), "jumpAttack.duration_ticks", 1)
+    require(clip.get("loop") is False, "jumpAttack must be nonlooping")
+    validate_reach(air.get("range_multiplier"))
+    validate_windows(air.get("hit_windows"), "jumpAttack", duration, 1)
+
+
 @dataclass(frozen=True)
 class ValidatedCharacter:
     directory: Path
@@ -72,7 +120,7 @@ def validate_character(directory=CHARACTER, source_directory=None):
     directory = Path(directory)
     manifest_path = resource_path(directory, "character.json")
     manifest = object_value(json.loads(manifest_path.read_text(encoding="utf-8")), "root")
-    require(type(manifest.get("schema_version")) is int and manifest["schema_version"] == 1,
+    require(type(manifest.get("schema_version")) is int and manifest["schema_version"] == 2,
             "unsupported schema_version")
     require(manifest.get("character_id") == "2001" and manifest.get("appearance") == "default_staff",
             "expected default staff Wukong (2001)")
@@ -147,38 +195,13 @@ def validate_character(directory=CHARACTER, source_directory=None):
             require(x + width <= dimensions[atlas_index][0] and y + height <= dimensions[atlas_index][1],
                     f"{name} frame outside atlas")
             ticks = integer(frame.get("duration_ticks"), "frame.duration_ticks", 1)
-            require(ticks == 1, "schema v1 requires one record per source tick")
+            require(ticks == 1, "character schema requires one record per source tick")
             total += ticks
         require(total == duration, f"{name} frame tick total differs from duration")
         frame_count += len(frames)
     require(used_atlases == set(range(len(atlases))), "unreferenced atlas listed")
 
-    combat = object_value(manifest.get("combat"), "combat")
-    require(number(combat.get("chain_grace_seconds"), "chain_grace_seconds", positive=True) <= 2,
-            "chain_grace_seconds exceeds two seconds")
-    stages = combat.get("stages")
-    require(isinstance(stages, list) and len(stages) == 4, "exactly four combat stages required")
-    for index, stage in enumerate(stages):
-        object_value(stage, f"stage {index + 1}")
-        require(set(stage) == {"clip", "buffer_open_tick", "range_multiplier", "hit_windows"},
-                "unsupported stage fields; custom damage modifiers are not permitted")
-        name = f"attack{index + 1}"
-        require(stage.get("clip") == name, "combat stages must follow attack1 through attack4")
-        duration = clips[name]["duration_ticks"]
-        require(integer(stage.get("buffer_open_tick"), "buffer_open_tick") < duration,
-                f"{name} buffer starts after stage")
-        reach = number(stage.get("range_multiplier"), "range_multiplier", positive=True)
-        require(0.25 <= reach <= 3, "range_multiplier outside supported native slash range")
-        windows = stage.get("hit_windows")
-        require(isinstance(windows, list) and len(windows) == (2 if index == 2 else 1),
-                f"{name} must have {'two' if index == 2 else 'one'} hit windows")
-        previous_end = 0
-        for window in windows:
-            object_value(window, f"{name} window")
-            start = integer(window.get("start_tick"), "start_tick")
-            end = integer(window.get("end_tick"), "end_tick", 1)
-            require(previous_end <= start < end <= duration, f"{name} overlapping or invalid hit window")
-            previous_end = end
+    validate_combat(manifest.get("combat"), clips)
     return ValidatedCharacter(directory, manifest, tuple(files), frame_count)
 
 

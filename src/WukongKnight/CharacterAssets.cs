@@ -25,7 +25,7 @@ namespace WukongKnight
         }
     }
 
-    /// <summary>The only decoder for version 1 of the generated character contract.</summary>
+    /// <summary>The only decoder for version 2 of the generated character contract.</summary>
     internal sealed class CharacterAssets : IDisposable
     {
         private static readonly string[] RequiredClips = { "idle", "walk", "runNormal", "jumpNormal", "jumpTwo", "jumpDown", "jumpAttack", "hurtStand", "dead", "attack1", "attack2", "attack3", "attack4" };
@@ -33,6 +33,7 @@ namespace WukongKnight
         private readonly List<Sprite> sprites = new List<Sprite>();
         public Dictionary<string, CharacterClip> Clips { get; } = new Dictionary<string, CharacterClip>();
         public ComboStage[] Stages { get; private set; } = System.Array.Empty<ComboStage>();
+        public AttackDefinition AirAttack { get; private set; } = null!;
         public double FrameRate { get; private set; }
         public double GraceSeconds { get; private set; }
         public float NominalBodyHeight { get; private set; }
@@ -47,7 +48,7 @@ namespace WukongKnight
         private void Read(string directory)
         {
             JObject root = JObject.Parse(File.ReadAllText(Path.Combine(directory, "character.json")));
-            Require(Int(root, "schema_version") == 1, "Unsupported character schema.");
+            Require(Int(root, "schema_version") == 2, "Unsupported character schema; version 2 resources required.");
             Require((string?)root["character_id"] == "2001" && (string?)root["appearance"] == "default_staff", "Unexpected appearance.");
             FrameRate = Number(root, "frame_rate"); Require(FrameRate > 0 && FrameRate <= 240, "Invalid frame rate.");
             int canvasWidth = Int(root, "canvas_width"), canvasHeight = Int(root, "canvas_height");
@@ -106,18 +107,37 @@ namespace WukongKnight
                 Require(name == "attack" + (i + 1), "Invalid stage order.");
                 int duration = Clips[name].Ticks, buffer = Int(stage, "buffer_open_tick");
                 Require(buffer >= 0 && buffer < duration, "Invalid buffer window.");
-                double reach = Number(stage, "range_multiplier"); Require(reach > 0 && reach <= 4, "Invalid reach.");
-                JArray windows = Array(stage, "hit_windows"); Require(windows.Count == (i == 2 ? 2 : 1), "Invalid hit count.");
-                var hits = new List<HitWindow>(); int previousEnd = 0;
-                foreach (JToken window in windows)
-                {
-                    int begin = Int(window, "start_tick"), end = Int(window, "end_tick");
-                    Require(begin >= previousEnd && end > begin && end <= duration, "Invalid hit window.");
-                    hits.Add(new HitWindow(begin, end)); previousEnd = end;
-                }
-                decoded.Add(new ComboStage(name, duration, buffer, reach, hits.ToArray()));
+                double reach = Reach(stage);
+                decoded.Add(new ComboStage(name, duration, buffer, reach, ReadWindows(stage, i == 2 ? 2 : 1, duration)));
             }
             Stages = decoded.ToArray();
+            JObject air = combat["air_attack"] as JObject ?? throw new InvalidDataException("Missing air_attack object.");
+            Require(air.Properties().Select(p => p.Name).OrderBy(n => n).SequenceEqual(new[] { "clip", "hit_windows", "range_multiplier" }), "Unsupported air_attack fields.");
+            Require(air["clip"]?.Type == JTokenType.String && (string?)air["clip"] == "jumpAttack", "Invalid air attack clip.");
+            CharacterClip airClip = Clips["jumpAttack"];
+            Require(!airClip.Loop, "Air attack clip must not loop.");
+            AirAttack = new AttackDefinition("jumpAttack", airClip.Ticks, Reach(air), ReadWindows(air, 1, airClip.Ticks));
+        }
+
+        private static double Reach(JToken attack)
+        {
+            double value = Number(attack, "range_multiplier");
+            Require(value >= 0.25 && value <= 3, "Invalid reach."); return value;
+        }
+
+        private static HitWindow[] ReadWindows(JToken attack, int count, int duration)
+        {
+            JArray windows = Array(attack, "hit_windows"); Require(windows.Count == count, "Invalid hit count.");
+            var hits = new List<HitWindow>(); int previousEnd = 0;
+            foreach (JToken window in windows)
+            {
+                JObject fields = window as JObject ?? throw new InvalidDataException("Expected hit window object.");
+                Require(fields.Properties().Select(p => p.Name).OrderBy(n => n).SequenceEqual(new[] { "end_tick", "start_tick" }), "Unsupported hit window fields.");
+                int begin = Int(window, "start_tick"), end = Int(window, "end_tick");
+                Require(begin >= previousEnd && end > begin && end <= duration, "Invalid hit window.");
+                hits.Add(new HitWindow(begin, end)); previousEnd = end;
+            }
+            return hits.ToArray();
         }
 
         private static JArray Array(JToken token, string field) => token[field] as JArray ?? throw new InvalidDataException("Missing array: " + field);

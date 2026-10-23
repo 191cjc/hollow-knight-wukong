@@ -59,18 +59,22 @@ namespace WukongKnight
         private void HeroUpdate(On.HeroController.orig_Update orig, HeroController self)
         {
             TryAttach(self);
+            bool discardOwnedQueue = false;
             if (hero == self && !failed)
             {
                 try
                 {
-                    if (ShouldCancel() || (combo != null && combo.Active && (native.JumpPressed(self) || native.DashPressed(self)))) Cancel();
+                    ObserveState();
+                    if (combo != null && combo.Active && (native.JumpPressed(self) || native.DashPressed(self))) Cancel();
                     if (combo != null && combo.Active)
                     {
                         if (native.AttackPressed(self))
                         {
-                            if (native.UpHeld(self)) Cancel();
-                            else Process(combo.Press(Time.time, QuickSlashScale()));
+                            if (native.UpHeld(self) || (combo.Mode == AttackMode.AirHorizontal && native.DownHeld(self))) Cancel();
+                            else if (combo.Mode == AttackMode.GroundCombo) Process(combo.Press(Time.time, QuickSlashScale()));
                         }
+                        // Do not erase a directional request handed back to the native gate.
+                        discardOwnedQueue = combo.Active;
                         native.ClearQueue(self);
                     }
                 }
@@ -79,7 +83,14 @@ namespace WukongKnight
             orig(self);
             if (hero == self && !failed)
             {
-                try { if (ShouldCancel()) Cancel(); }
+                try
+                {
+                    ObserveState();
+                    // Native Update may queue a rejected fresh press AFTER our pre-clear. Drop
+                    // requests made while owned even if a physics callback just ended the air
+                    // action; otherwise they could silently start another attack next frame.
+                    if (discardOwnedQueue || (combo != null && combo.Active)) native.ClearQueue(self);
+                }
                 catch (Exception error) { Fail(error); }
             }
         }
@@ -92,7 +103,8 @@ namespace WukongKnight
             try
             {
                 hero = self;
-                combo = new ComboTimeline(assets.Stages, assets.FrameRate, assets.GraceSeconds);
+                combo = new ComboTimeline(assets.Stages, assets.AirAttack, assets.FrameRate, assets.GraceSeconds);
+                lastPhysics = double.NegativeInfinity;
                 presenter = new WukongPresenter(self, assets);
                 lifetime = self.gameObject.AddComponent<WukongLifetime>();
                 lifetime.UpdateView = LateUpdate;
@@ -105,12 +117,15 @@ namespace WukongKnight
         private double lastPhysics = double.NegativeInfinity;
         private void FixedUpdate()
         {
-            if (disposed || failed || hero == null || combo == null || !combo.Active || Time.fixedTime == lastPhysics) return;
-            lastPhysics = Time.fixedTime;
+            if (disposed || failed || hero == null || combo == null) return;
             try
             {
-                if (ShouldCancel()) Cancel();
-                else Process(combo.Advance(Time.fixedTime, QuickSlashScale()));
+                // Contact can change later in the same physics tick (BackOnGround does not
+                // reset attacks). Observe cancellation before deduplicating clock advancement.
+                ObserveState();
+                if (!combo.Active || Time.fixedTime == lastPhysics) return;
+                lastPhysics = Time.fixedTime;
+                Process(combo.Advance(Time.fixedTime, QuickSlashScale()));
             }
             catch (Exception error) { Fail(error); }
         }
@@ -122,17 +137,25 @@ namespace WukongKnight
             catch (Exception error) { Fail(error); }
         }
 
-        private bool ShouldCancel()
+        private bool Interrupted()
         {
             if (hero == null) return true;
             HeroControllerStates s = hero.cState;
-            return !hero.gameObject.activeInHierarchy || !s.onGround || s.wallSliding || s.jumping || s.dashing || s.backDashing || s.superDashing || s.dead || s.hazardDeath || s.hazardRespawning || s.transitioning || s.recoiling || s.recoilFrozen || s.casting || s.focusing || !native.ControlAvailable(hero) || (combo != null && combo.Active && s.facingRight != facingAtStage);
+            return !hero.gameObject.activeInHierarchy || s.dashing || s.backDashing || s.superDashing || s.dead || s.hazardDeath || s.hazardRespawning || s.transitioning || s.recoiling || s.recoilFrozen || s.casting || s.focusing || !native.ControlAvailable(hero) || (combo != null && combo.Active && s.facingRight != facingAtStage);
+        }
+
+        private void ObserveState()
+        {
+            if (Interrupted()) { Cancel(); return; }
+            if (hero == null || combo == null) return;
+            HeroControllerStates s = hero.cState;
+            Process(combo.ObserveContact(s.onGround, s.jumping, s.wallSliding));
         }
 
         private bool Eligible(HeroController self, AttackDirection direction)
         {
             HeroControllerStates s = self.cState;
-            return self == hero && !failed && !disposed && direction == AttackDirection.normal && s.onGround && !s.wallSliding && !ShouldCancel();
+            return self == hero && !failed && !disposed && direction == AttackDirection.normal && !s.wallSliding && (!s.onGround || !s.jumping) && !Interrupted();
         }
 
         private bool CanAttack(On.HeroController.orig_CanAttack orig, HeroController self)
@@ -151,7 +174,11 @@ namespace WukongKnight
             if (combo == null) { orig(self, direction); return; }
             try
             {
-                if (!combo.Active) combo.Press(Time.time, QuickSlashScale());
+                if (!combo.Active)
+                {
+                    if (self.cState.onGround) combo.Press(Time.time, QuickSlashScale());
+                    else combo.PressAir(Time.time, QuickSlashScale());
+                }
                 // A buffered stage has already begun in the core; exactly one native transaction initializes it.
                 if (nativeToken != 0) return;
                 nativeToken = combo.Token; facingAtStage = self.cState.facingRight;
@@ -159,10 +186,10 @@ namespace WukongKnight
                 try { orig(self, direction); }
                 finally { capturing = false; }
                 if (slash == null || !self.cState.attacking) throw new InvalidOperationException("Native Attack did not select a horizontal NailSlash.");
-                foreach (HitWindow window in assets.Stages[combo.StageIndex].Windows)
+                foreach (HitWindow window in combo.CurrentAttack.Windows)
                     if ((window.EndTick - window.StartTick) * combo.SecondsPerTick < Time.fixedDeltaTime)
                         throw new InvalidOperationException("Physics timestep is too large for the authored attack windows.");
-                native.OwnTiming(self, nativeToken, combo.Duration, Time.time);
+                native.OwnTiming(self, nativeToken, combo.Mode, combo.Duration, Time.time);
             }
             catch (Exception error) { Fail(error); }
         }
@@ -227,7 +254,7 @@ namespace WukongKnight
                         permit = true;
                         try { slash.StartSlash(); }
                         finally { permit = false; }
-                        ComboStage stage = assets.Stages[change.Stage];
+                        AttackDefinition stage = change.Definition;
                         Vector3 nativeScale = slash.transform.localScale; // includes current range charms
                         slash.transform.localScale = new Vector3(nativeScale.x * (float)stage.RangeMultiplier, nativeScale.y, nativeScale.z);
                         pulseWindow = change.Window;

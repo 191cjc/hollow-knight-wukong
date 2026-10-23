@@ -14,7 +14,7 @@ import PIL
 from PIL import Image, ImageDraw
 
 from legacy_dragonbones import Sampler
-from validate_character import REQUIRED_CLIPS, sha256 as file_hash, validate_character
+from validate_character import REQUIRED_CLIPS, sha256 as file_hash, validate_character, validate_combat
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -27,31 +27,6 @@ def read_json(path):
 
 def write_json(path, data):
     path.write_text(json.dumps(data, indent=2, sort_keys=True, ensure_ascii=False) + "\n", encoding="utf-8")
-
-
-def validate_combat(combat, clips):
-    if not 0 < combat["chain_grace_seconds"] <= 2 or len(combat["stages"]) != 4:
-        raise ValueError("Invalid combo grace/stage count")
-    for index, stage in enumerate(combat["stages"]):
-        if set(stage) != {"clip", "buffer_open_tick", "hit_windows", "range_multiplier"}:
-            raise ValueError("Unsupported stage fields (damage modifiers are not permitted)")
-        if stage["clip"] != f"attack{index + 1}":
-            raise ValueError("Combo stages are out of order")
-        duration = clips[stage["clip"]]["duration_ticks"]
-        opening = stage["buffer_open_tick"]
-        if not isinstance(opening, int) or not 0 <= opening < duration:
-            raise ValueError("Buffer opening outside stage")
-        if not 0.25 <= stage["range_multiplier"] <= 3:
-            raise ValueError("Invalid native slash range multiplier")
-        windows = stage["hit_windows"]
-        if len(windows) != (2 if index == 2 else 1):
-            raise ValueError("Expected 1/1/2/1 hit windows")
-        previous_end = 0
-        for window in windows:
-            start, end = window["start_tick"], window["end_tick"]
-            if not isinstance(start, int) or not isinstance(end, int) or not previous_end <= start < end <= duration:
-                raise ValueError("Overlapping/out-of-range hit windows")
-            previous_end = end
 
 
 def validate_generated(output):
@@ -227,7 +202,7 @@ def bake_character(project_root=PROJECT_ROOT, output=None, force=False, previews
     ignored_events = sorted({frame["event"] for name in profile["clips"]
         for timeline in [sampler.animation(profile["armature"], name)] + sampler.animation(profile["armature"], name).get("timeline", [])
         for frame in timeline.get("frame", []) if frame.get("event")})
-    manifest = {"schema_version": 1, "character_id": profile["character_id"], "appearance": profile["appearance"],
+    manifest = {"schema_version": 2, "character_id": profile["character_id"], "appearance": profile["appearance"],
                 "frame_rate": 30, "canvas_width": size[0], "canvas_height": size[1], "root_x": root[0], "root_y": root[1],
                 "nominal_body_height": body_height, "source_hashes": hashes,
                 "generator": {"version": GENERATOR_VERSION, "pillow_version": PIL.__version__,

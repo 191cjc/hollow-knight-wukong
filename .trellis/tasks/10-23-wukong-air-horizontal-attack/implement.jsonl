@@ -1,0 +1,7 @@
+{"file": ".trellis/spec/backend/index.md", "reason": "Package guidelines and quality checks"}
+{"file": ".trellis/spec/backend/native-combat.md", "reason": "Native ownership, timing, cleanup and regression contract; approved design extends scope to air"}
+{"file": ".trellis/spec/backend/character-assets.md", "reason": "Shared manifest and asset pipeline; approved design upgrades character schema to 2"}
+{"file": ".trellis/spec/guides/code-reuse-thinking-guide.md", "reason": "Reuse current clock and cleanup rather than duplicate systems"}
+{"file": ".trellis/spec/guides/cross-layer-thinking-guide.md", "reason": "Keep profile, generator, validation, runtime and package contracts consistent"}
+{"file": ".trellis/tasks/10-23-wukong-air-horizontal-attack/research/air-runtime.md", "reason": "Exact native IL, lifecycle, cooldown and presentation evidence"}
+{"file": ".trellis/tasks/10-23-wukong-air-horizontal-attack/research/air-assets-contract.md", "reason": "Actual pose review, authored window and strict schema-2 contract"}

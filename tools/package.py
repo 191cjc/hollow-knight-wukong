@@ -9,14 +9,16 @@ from pathlib import Path
 
 from validate_character import CHARACTER, ROOT, sha256, validate_character
 
-VERSION = "0.2.0-dev"
+VERSION = "0.3.0-dev"
 README = f"""Wukong Knight {VERSION}
 Baseline: Hollow Knight 1.5.78.11833 / Modding API v77.
-Includes default staff Wukong visuals and a grounded four-stage horizontal attack chain.
-Air/up/down attacks retain native mechanics, including down-slash bouncing.
+Includes default staff Wukong visuals, a grounded four-stage horizontal attack chain,
+and one airborne horizontal staff strike with an authored native hit window.
+Up/down and wall attacks retain native mechanics, including down-slash bouncing.
 This is a development build. Actual game loading, rendering, combat and compatibility
 have NOT been tested in a game client. Compile/reference validation is not client acceptance.
 
+Character schema 2 requires the matching {VERSION} DLL and resources; replace the full directory.
 Install the matching Modding API first, then copy this entire WukongKnight directory into
 the client's hollow_knight_Data/Managed/Mods/ directory. Keep character/ beside the DLL.
 Do not copy SDK, API or Unity reference assemblies from the development project.
@@ -24,8 +26,10 @@ Check ModLog.txt for WukongKnight attachment/resource errors after entering a sa
 
 Try one press and then four successive grounded horizontal attack presses; check the
 third stage's two damage windows, nail/charm damage, soul gain and breakable objects.
-Check facing, movement, jumping, directional/air slashes, down-slash bounce, jump/dash/hit
-cancellation, scene changes, death/respawn, save re-entry and disabling the Mod.
+Try airborne horizontal presses while rising and falling; repeated active presses must not
+queue a combo, and another strike must respect native cooldown. Check landing, double jump,
+directional slashes, down-slash bounce, jump/dash/hit cancellation, facing, movement,
+scene changes, death/respawn, save re-entry and disabling the Mod.
 Remove/disable WukongKnight to restore the native character. See docs/CLIENT_ACCEPTANCE.md
 in the source project for the full pending client checklist.
 
@@ -114,7 +118,7 @@ def main():
         "dll": dll.relative_to(ROOT).as_posix(), "dll_bytes": dll.stat().st_size,
         "dll_sha256": sha256(dll),
         "implemented": {"character_replacement": True, "grounded_four_stage_combo": True,
-                        "active_skills": False},
+                        "single_air_horizontal_attack": True, "active_skills": False},
         "built": args.checks_passed,
         "automatically_verified": {"source_inventory": args.checks_passed,
                                    "character_manifest_and_atlases": True,

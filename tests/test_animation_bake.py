@@ -186,6 +186,19 @@ class ArchivedAssetTests(unittest.TestCase):
         self.assertAlmostEqual(draw.matrix.tx, expected[0])
         self.assertAlmostEqual(draw.matrix.ty, expected[1])
 
+    def test_real_air_attack_holds_three_poses_at_authored_startup_boundary(self):
+        animation = self.sampler.animation("res", "jumpAttack")
+        self.assertEqual(animation["duration"], 10)
+        poses = [self.sampler.sample("jumpAttack", tick) for tick in range(10)]
+        self.assertEqual(poses[0], poses[1])
+        self.assertEqual(poses[2], poses[3])
+        self.assertTrue(all(pose == poses[4] for pose in poses[4:]))
+        self.assertNotEqual(poses[0], poses[2])
+        self.assertNotEqual(poses[2], poses[4])
+        self.assertEqual(self.profile["combat"]["air_attack"], {
+            "clip": "jumpAttack", "hit_windows": [{"start_tick": 4, "end_tick": 7}],
+            "range_multiplier": 1.0})
+
     def test_clean_bakes_are_byte_identical_and_cells_are_not_clipped(self):
         with tempfile.TemporaryDirectory() as directory:
             first, second = Path(directory) / "a", Path(directory) / "b"
@@ -194,7 +207,24 @@ class ArchivedAssetTests(unittest.TestCase):
             self.assertEqual({p.name: p.read_bytes() for p in first.iterdir()},
                              {p.name: p.read_bytes() for p in second.iterdir()})
             self.assertEqual(len(manifest["clips"]), 13)
+            self.assertEqual(manifest["schema_version"], 2)
+            self.assertEqual(manifest["generator"]["version"], 1)
+            self.assertEqual(manifest["combat"], self.profile["combat"])
+            self.assertEqual(manifest["clips"]["jumpAttack"]["duration_ticks"], 10)
+            self.assertFalse(manifest["clips"]["jumpAttack"]["loop"])
+            self.assertEqual(len(manifest["clips"]["jumpAttack"]["frames"]), 10)
+            self.assertEqual(sum(c["duration_ticks"] for c in manifest["clips"].values()), 329)
+            self.assertEqual((manifest["canvas_width"], manifest["canvas_height"],
+                              manifest["root_x"], manifest["root_y"]), (231, 226, 119, 174))
+            self.assertEqual(manifest["generator"]["unique_cells"], 52)
             self.assertLess(manifest["generator"]["unique_cells"], sum(len(c["frames"]) for c in manifest["clips"].values()))
+            old = copy.deepcopy(manifest)
+            old["schema_version"] = 1
+            old["combat"].pop("air_attack")
+            write_json(first / "character.json", old)
+            # An old schema cache must be rebuilt even when its fingerprint matches.
+            self.assertEqual(bake_character(output=first, previews=False), manifest)
+            self.assertEqual((first / "character.json").read_bytes(), (second / "character.json").read_bytes())
             pages = [Image.open(first / a["path"]) for a in manifest["atlases"]]
             try:
                 for name, clip in manifest["clips"].items():

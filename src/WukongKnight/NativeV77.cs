@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
+using WukongKnight.Core;
 
 namespace WukongKnight
 {
@@ -30,22 +31,23 @@ namespace WukongKnight
         private FieldInfo? jumpAction;
         private FieldInfo? dashAction;
         private FieldInfo? upAction;
+        private FieldInfo? downAction;
         private PropertyInfo? isPressed;
         private float savedDuration;
-        private float nativeCooldown;
-        private double acceptedAt;
-        private long owner;
+        private readonly AttackTiming timing = new AttackTiming();
 
         public bool ControlAvailable(HeroController hero) => !(bool)relinquished.GetValue(hero) && hero.CanInput();
         public bool AttackPressed(HeroController hero) => Pressed(hero, "attack", ref attackAction);
         public bool JumpPressed(HeroController hero) => Pressed(hero, "jump", ref jumpAction);
         public bool DashPressed(HeroController hero) => Pressed(hero, "dash", ref dashAction);
-        public bool UpHeld(HeroController hero)
+        public bool UpHeld(HeroController hero) => Held(hero, "up", ref upAction);
+        public bool DownHeld(HeroController hero) => Held(hero, "down", ref downAction);
+        private bool Held(HeroController hero, string name, ref FieldInfo? actionField)
         {
             object? handler = input.GetValue(hero); if (handler == null) return false;
             object? actionSet = actions.GetValue(handler); if (actionSet == null) return false;
-            if (upAction == null) upAction = actionSet.GetType().GetField("up", Instance) ?? throw new MissingFieldException("HeroActions.up");
-            object? action = upAction.GetValue(actionSet); if (action == null) return false;
+            if (actionField == null) actionField = actionSet.GetType().GetField(name, Instance) ?? throw new MissingFieldException("HeroActions." + name);
+            object? action = actionField.GetValue(actionSet); if (action == null) return false;
             if (isPressed == null) isPressed = action.GetType().GetProperty("IsPressed", Instance) ?? throw new MissingMemberException("PlayerAction.IsPressed");
             return (bool)isPressed.GetValue(action, null);
         }
@@ -59,26 +61,22 @@ namespace WukongKnight
         public void Reset(HeroController hero) => reset.Invoke(hero, null);
         public void ClearQueue(HeroController hero) { queue.SetValue(hero, false); queueSteps.SetValue(hero, 0); }
 
-        public void OwnTiming(HeroController hero, long token, double seconds, double now)
+        public void OwnTiming(HeroController hero, long token, AttackMode mode, double seconds, double now)
         {
-            if (owner != 0) throw new InvalidOperationException("Previous native stage still owned.");
-            owner = token; acceptedAt = now; savedDuration = (float)duration.GetValue(hero);
-            nativeCooldown = (float)cooldown.GetValue(hero);
+            savedDuration = (float)duration.GetValue(hero);
+            double ownedCooldown = timing.Own(token, mode, seconds, (float)cooldown.GetValue(hero), now);
             attackTime.SetValue(hero, 0f);
             // Native Update must not reset attacking ahead of the source-tick timeline.
             duration.SetValue(hero, float.MaxValue);
-            cooldown.SetValue(hero, (float)seconds);
+            cooldown.SetValue(hero, (float)ownedCooldown);
             ClearQueue(hero);
         }
 
         public void ReleaseTiming(HeroController hero, long token, double now, bool canceled)
         {
-            if (owner != token) return;
-            owner = 0;
+            if (!timing.TryRelease(token, now, canceled, out double remainingCooldown)) return;
             duration.SetValue(hero, savedDuration);
-            // Normal completion releases the authored cooldown. Cancellation keeps only the
-            // unexpired portion of the original native cooldown, never an old preattack value.
-            cooldown.SetValue(hero, canceled ? Math.Max(0f, nativeCooldown - (float)(now - acceptedAt)) : 0f);
+            cooldown.SetValue(hero, (float)remainingCooldown);
             ClearQueue(hero);
         }
 

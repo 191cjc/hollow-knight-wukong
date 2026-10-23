@@ -20,6 +20,7 @@ namespace WukongKnight
         // Actual idle alpha bounds end at source y=+6px below the export root.
         private const float DefaultStaffFeetOffsetPixels = 6f;
         private string clipName = "";
+        private long clipToken;
         private double clipStarted;
         private bool disposed;
 
@@ -67,15 +68,18 @@ namespace WukongKnight
             if (state.dead || state.hazardDeath) desired = "dead";
             else if (state.recoiling || state.recoilFrozen || state.hazardRespawning) desired = "hurtStand";
             else if (state.transitioning || state.casting || state.focusing || state.superDashing || state.dashing || state.backDashing) desired = "idle";
-            else if (combo != null && combo.Active) desired = assets.Stages[combo.StageIndex].Clip;
+            else if (combo != null && combo.Active) desired = combo.CurrentAttack.Clip;
             else if (state.attacking) desired = state.onGround ? "attack1" : "jumpAttack";
             else if (state.wallSliding) desired = "jumpNormal";
             else if (!state.onGround) desired = state.doubleJumping ? "jumpTwo" : state.falling ? "jumpDown" : "jumpNormal";
             else if (Math.Abs(hero.move_input) > 0.05f) desired = state.inWalkZone ? "walk" : "runNormal";
             else desired = "idle";
-            if (clipName != desired) { clipName = desired; clipStarted = now; }
-            double ticks = combo != null && combo.Active && desired == assets.Stages[combo.StageIndex].Clip
-                ? combo.Elapsed(now) / combo.SecondsPerTick : (now - clipStarted) * assets.FrameRate;
+            bool controlled = combo != null && combo.Active && desired == combo.CurrentAttack.Clip;
+            long desiredToken = controlled ? combo!.Token : 0;
+            if (clipName != desired || clipToken != desiredToken)
+            { clipName = desired; clipToken = desiredToken; clipStarted = now; }
+            double ticks = controlled
+                ? combo!.Elapsed(now) / combo.SecondsPerTick : (now - clipStarted) * assets.FrameRate;
             renderer.sprite = assets.Clips[desired].Sample(ticks);
             renderer.color = nativeSprite.color;
             renderer.enabled = nativeBody.enabled && !previousForceOff && hero.gameObject.activeInHierarchy;

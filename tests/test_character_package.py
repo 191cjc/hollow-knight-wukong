@@ -11,7 +11,7 @@ from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 from package import stage_package, validate_package, write_archive
-from validate_character import REQUIRED_CLIPS, SOURCE_FILES, sha256, validate_character
+from validate_character import REQUIRED_CLIPS, SOURCE_FILES, sha256, validate_character, validate_combat
 
 
 class CharacterPackageTests(unittest.TestCase):
@@ -27,7 +27,7 @@ class CharacterPackageTests(unittest.TestCase):
             (self.source / name).write_bytes(name.encode())
         Image.new("RGBA", (8, 8), (255, 120, 0, 255)).save(self.character / "atlas-000.png")
         self.manifest = {
-            "schema_version": 1, "character_id": "2001", "appearance": "default_staff",
+            "schema_version": 2, "character_id": "2001", "appearance": "default_staff",
             "frame_rate": 30, "canvas_width": 4, "canvas_height": 4,
             "root_x": 2.0, "root_y": 3.0, "nominal_body_height": 3.0,
             "source_hashes": {name: sha256(self.source / name) for name in SOURCE_FILES},
@@ -44,7 +44,9 @@ class CharacterPackageTests(unittest.TestCase):
                  "hit_windows": ([{"start_tick": 1, "end_tick": 2},
                                   {"start_tick": 4, "end_tick": 5}] if index == 3
                                  else [{"start_tick": 1, "end_tick": 3}])}
-                for index in range(1, 5)]},
+                for index in range(1, 5)],
+                "air_attack": {"clip": "jumpAttack", "range_multiplier": 1.0,
+                               "hit_windows": [{"start_tick": 4, "end_tick": 7}]}},
         }
         self.write()
         self.dll = self.root / "WukongKnight.dll"
@@ -64,7 +66,7 @@ class CharacterPackageTests(unittest.TestCase):
 
     def test_rejects_invalid_schema_geometry_ticks_and_combat(self):
         mutations = {
-            "schema": lambda m: m.update(schema_version=2),
+            "schema": lambda m: m.update(schema_version=1),
             "boolean_integer": lambda m: m.update(frame_rate=True),
             "root": lambda m: m.update(root_x=5),
             "nan": lambda m: m.update(nominal_body_height=float("nan")),
@@ -86,6 +88,64 @@ class CharacterPackageTests(unittest.TestCase):
                 self.write(manifest)
                 with self.assertRaises(ValueError):
                     validate_character(self.character)
+
+    def test_rejects_missing_or_unsupported_air_contract(self):
+        mutations = {
+            "missing": lambda m: m["combat"].pop("air_attack"),
+            "null": lambda m: m["combat"].update(air_attack=None),
+            "array": lambda m: m["combat"].update(air_attack=[]),
+            "wrong_clip": lambda m: m["combat"]["air_attack"].update(clip="attack1"),
+            "looping_clip": lambda m: m["clips"]["jumpAttack"].update(loop=True),
+            "missing_reach": lambda m: m["combat"]["air_attack"].pop("range_multiplier"),
+            "missing_windows": lambda m: m["combat"]["air_attack"].pop("hit_windows"),
+            "damage_modifier": lambda m: m["combat"]["air_attack"].update(damage_multiplier=2),
+            "buffer": lambda m: m["combat"]["air_attack"].update(buffer_open_tick=4),
+            "grace": lambda m: m["combat"]["air_attack"].update(chain_grace_seconds=0.35),
+        }
+        for name, mutate in mutations.items():
+            with self.subTest(name=name):
+                manifest = copy.deepcopy(self.manifest)
+                mutate(manifest)
+                self.write(manifest)
+                with self.assertRaises(ValueError):
+                    validate_character(self.character)
+                # The bake profile uses exactly the same production boundary.
+                with self.assertRaises(ValueError):
+                    validate_combat(manifest["combat"], manifest["clips"])
+
+    def test_rejects_invalid_air_window_and_range_values(self):
+        # Include type boundaries explicitly: bool is an int subclass in Python.
+        windows = [None, [], [None], [{"start_tick": 4}],
+                   [{"start_tick": 4, "end_tick": 7, "damage": 2}],
+                   [{"start_tick": 4, "end_tick": 7}] * 2] + [
+            [{"start_tick": start, "end_tick": end}]
+            for start, end in ((-1, 7), (4, 4), (7, 4), (4, 9), (4.0, 7),
+                               (4, 7.0), (True, 7), (4, True), (None, 7))]
+        ranges = (None, True, False, "1", float("nan"), float("inf"),
+                  float("-inf"), 0, -1, 0.249, 3.001)
+        for field, values in (("hit_windows", windows), ("range_multiplier", ranges)):
+            for value in values:
+                with self.subTest(field=field, value=value):
+                    manifest = copy.deepcopy(self.manifest)
+                    manifest["combat"]["air_attack"][field] = value
+                    self.write(manifest)
+                    with self.assertRaises(ValueError):
+                        validate_character(self.character)
+                    with self.assertRaises(ValueError):
+                        validate_combat(manifest["combat"], manifest["clips"])
+
+    def test_air_window_uses_authoritative_clip_duration_and_inclusive_range_limits(self):
+        for reach in (0.25, 3):
+            self.manifest["combat"]["air_attack"].update(
+                range_multiplier=reach, hit_windows=[{"start_tick": 0, "end_tick": 8}])
+            self.write()
+            validate_character(self.character)
+        # All frame metadata is valid, but the attack no longer fits its clip.
+        self.manifest["clips"]["jumpAttack"]["duration_ticks"] = 7
+        self.manifest["clips"]["jumpAttack"]["frames"].pop()
+        self.write()
+        with self.assertRaisesRegex(ValueError, "jumpAttack.*invalid hit window"):
+            validate_character(self.character)
 
     def test_rejects_atlas_hash_and_dimension_changes(self):
         self.manifest["atlases"][0]["width"] = 9
@@ -115,6 +175,10 @@ class CharacterPackageTests(unittest.TestCase):
         names = stage_package(self.dll, self.character, self.stage)
         self.assertEqual(names, ["README.txt", "WukongKnight.dll",
                                  "character/atlas-000.png", "character/character.json"])
+        self.assertEqual((self.stage / "character/character.json").read_bytes(),
+                         (self.character / "character.json").read_bytes())
+        self.assertEqual(validate_character(self.stage / "character").manifest["combat"]["air_attack"],
+                         self.manifest["combat"]["air_attack"])
         (self.stage / "Assembly-CSharp.dll").write_bytes(b"accidental game reference")
         with self.assertRaisesRegex(ValueError, "unexpected"):
             validate_package(self.stage)
@@ -127,6 +191,16 @@ class CharacterPackageTests(unittest.TestCase):
             stage_package(self.dll, self.character, self.stage)
         self.assertEqual((self.stage / "character/character.json").read_bytes(), previous)
         validate_package(self.stage)
+
+    def test_invalid_air_contract_does_not_replace_previous_valid_package(self):
+        stage_package(self.dll, self.character, self.stage)
+        previous = {path: (self.stage / path).read_bytes() for path in validate_package(self.stage)}
+        self.manifest["combat"].pop("air_attack")
+        self.write()
+        with self.assertRaisesRegex(ValueError, "air_attack"):
+            stage_package(self.dll, self.character, self.stage)
+        self.assertEqual(previous, {path: (self.stage / path).read_bytes()
+                                    for path in validate_package(self.stage)})
 
     def test_archive_is_closed_and_reproducible(self):
         stage_package(self.dll, self.character, self.stage)

@@ -1,10 +1,10 @@
 # Wukong Knight
 
-《空洞骑士》孙悟空角色 Mod，参考 4399 网页版《造梦西游4》。当前开发版本为 **0.2.0-dev**：包含默认棍系外观、基础动作显示和地面水平四段普攻的实现，以及可重复的动画烘焙、检查与打包流程。
+《空洞骑士》孙悟空角色 Mod，参考 4399 网页版《造梦西游4》。当前开发版本为 **0.3.0-dev**：包含默认棍系外观、基础动作显示、地面水平四段普攻和单段空中水平棍击，以及可重复的动画烘焙、检查与打包流程。
 
 **尚未在游戏客户端验收。** 自动检查、动画预览和编译结果不能证明游戏内加载、命中、护符、魂获取及场景恢复正常。实际检查结果见 `artifacts/build-report.json`，实机项目见 [客户端验收](docs/CLIENT_ACCEPTANCE.md)。
 
-本次范围：一次按键出一段，连续输入最多形成四段连击；第三段有两个命中窗口。空中攻击、上劈、下劈及下劈弹跳保留原有机制。主动技能、拳系、独立跑攻和独立空中连击未实现。
+本次范围：地面一次按键出一段，连续输入最多形成四段连击，第三段有两个命中窗口。空中水平攻击使用单段 `jumpAttack`，重复按键不缓存连击，下一次攻击遵守原生冷却；落地关闭空中判定。上劈、下劈、贴墙攻击及下劈弹跳保留原有机制。主动技能、拳系、独立跑攻和空中多段连击未实现。
 
 源码仓库：https://github.com/191cjc/hollow-knight-wukong
 
@@ -24,19 +24,19 @@ bash scripts/build.sh
 | 输出 | 用途 |
 |---|---|
 | `artifacts/mod/WukongKnight/` | 安装整个目录，必须保留 `character/` |
-| `artifacts/WukongKnight-0.2.0-dev.zip` | DLL、说明、角色清单与引用的加工图集 |
+| `artifacts/WukongKnight-0.3.0-dev.zip` | DLL、说明、角色清单与引用的加工图集 |
 | `assets/processed/wukong/previews/` | 动画 GIF、关键姿势联系表，不进入开发包 |
 | `artifacts/validation.json` | 归档输入、解包、PNG、音频与配置检查 |
 | `artifacts/character-validation.json` | 加工图集、帧范围、时序与连击窗口检查 |
 | `artifacts/build-report.json` | 包内文件散列及实现/编译/自动检查/实机状态 |
 
-旧的 `0.1.0-dev` ZIP 若仍在本地，只是入口脚手架；本次使用 `0.2.0-dev`。
+本次使用 `0.3.0-dev`。角色清单为 schema 2，必须与本版 DLL 成套替换；旧 DLL/新清单或新 DLL/旧清单的组合会拒绝初始化并保留原骑士。旧版本完整目录可另行保留用于回退。
 
 ## 安装与验收
 
 在匹配基线的客户端安装对应平台的 Modding API，将整个 `artifacts/mod/WukongKnight/` 复制至实际的 `hollow_knight_Data/Managed/Mods/`。Proton 与 Linux 原生客户端应各自确认路径、API 平台和游戏版本。保留 `WukongKnight.dll` 旁的 `character/character.json` 及图集。
 
-进入存档后检查 `ModLog.txt`。资源或所需运行时接口不可用时，Mod 记录错误并保留/恢复原骑士。测试外观、四连击、方向/空中攻击、护符、魂、取消、死亡、换场和禁用恢复的完整步骤见 [客户端验收](docs/CLIENT_ACCEPTANCE.md)。移除或禁用本 Mod 即可回退。
+进入存档后检查 `ModLog.txt`。资源或所需运行时接口不可用时，Mod 记录错误并保留/恢复原骑士。测试外观、四连击、单段空中棍击、方向攻击、护符、魂、落地/跳跃取消、死亡、换场和禁用恢复的完整步骤见 [客户端验收](docs/CLIENT_ACCEPTANCE.md)。移除或禁用本 Mod 即可回退。
 
 ## 动画与素材
 
