@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>WukongKnight</AssemblyName>
+    <RootNamespace>WukongKnight</RootNamespace>
+    <Version>0.2.0</Version>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Deterministic>true</Deterministic>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <HollowKnightApiDir Condition="'$(HollowKnightApiDir)' == ''">$(MSBuildThisFileDirectory)../../.tools/hollow-knight-api-v77</HollowKnightApiDir>
+    <UnityReferenceDir Condition="'$(UnityReferenceDir)' == ''">$(MSBuildThisFileDirectory)../../.tools/unity-reference/lib/net45</UnityReferenceDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+    <Reference Include="Assembly-CSharp"><HintPath>$(HollowKnightApiDir)/Assembly-CSharp.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="MMHOOK_Assembly-CSharp"><HintPath>$(HollowKnightApiDir)/MMHOOK_Assembly-CSharp.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="MonoMod.RuntimeDetour"><HintPath>$(HollowKnightApiDir)/MonoMod.RuntimeDetour.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="MonoMod.Utils"><HintPath>$(HollowKnightApiDir)/MonoMod.Utils.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Newtonsoft.Json"><HintPath>$(HollowKnightApiDir)/Newtonsoft.Json.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine"><HintPath>$(UnityReferenceDir)/UnityEngine.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.CoreModule"><HintPath>$(UnityReferenceDir)/UnityEngine.CoreModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.Physics2DModule"><HintPath>$(UnityReferenceDir)/UnityEngine.Physics2DModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.ImageConversionModule"><HintPath>$(UnityReferenceDir)/UnityEngine.ImageConversionModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.AudioModule"><HintPath>$(UnityReferenceDir)/UnityEngine.AudioModule.dll</HintPath><Private>false</Private></Reference>
+    <EmbeddedResource Include="../../data/generated/development-manifest.json" LogicalName="WukongKnight.DevelopmentManifest.json" />
+  </ItemGroup>
+</Project>

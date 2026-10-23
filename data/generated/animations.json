@@ -1,0 +1,1605 @@
+[
+  {
+    "bundle": "assets/zmxy4/raw/assets/man/2001/manV535.swf",
+    "skeleton": "assets/zmxy4/animations/2001/manV535/skeleton.json",
+    "files": [
+      "assets/zmxy4/animations/2001/manV535/skeleton.json",
+      "assets/zmxy4/animations/2001/manV535/texture.json",
+      "assets/zmxy4/animations/2001/manV535/texture.png"
+    ],
+    "dragonbones_version": "2.3",
+    "frame_rate": 30,
+    "armatures": [
+      {
+        "name": "res",
+        "animations": [
+          {
+            "name": "idle",
+            "duration_frames": 22
+          },
+          {
+            "name": "walk",
+            "duration_frames": 24
+          },
+          {
+            "name": "runNormal",
+            "duration_frames": 12
+          },
+          {
+            "name": "runAttack",
+            "duration_frames": 15
+          },
+          {
+            "name": "attack1",
+            "duration_frames": 12
+          },
+          {
+            "name": "attack2",
+            "duration_frames": 15
+          },
+          {
+            "name": "attack3",
+            "duration_frames": 18
+          },
+          {
+            "name": "attack4",
+            "duration_frames": 20
+          },
+          {
+            "name": "hurtStand",
+            "duration_frames": 49
+          },
+          {
+            "name": "dead",
+            "duration_frames": 65
+          },
+          {
+            "name": "jumpNormal",
+            "duration_frames": 35
+          },
+          {
+            "name": "jumpTwo",
+            "duration_frames": 12
+          },
+          {
+            "name": "jumpAttack",
+            "duration_frames": 10
+          },
+          {
+            "name": "jumpDown",
+            "duration_frames": 35
+          },
+          {
+            "name": "effect1",
+            "duration_frames": 15
+          },
+          {
+            "name": "effect2",
+            "duration_frames": 73
+          },
+          {
+            "name": "effect3",
+            "duration_frames": 16
+          },
+          {
+            "name": "effect4",
+            "duration_frames": 17
+          },
+          {
+            "name": "effect5",
+            "duration_frames": 60
+          },
+          {
+            "name": "ride",
+            "duration_frames": 60
+          },
+          {
+            "name": "runNormal1",
+            "duration_frames": 14
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf6",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "特效元件/11111",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 25
+          }
+        ]
+      },
+      {
+        "name": "特效元件/lang",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 16
+          }
+        ]
+      },
+      {
+        "name": "ride",
+        "animations": [
+          {
+            "name": "ride",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "sprite/cbidle",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 20
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf19",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf7",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf9",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_wq1",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf3",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf8_hair",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf4a",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf11",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf4",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf2",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf8",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf3_piaodai",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf23",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf12",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf10",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf5",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf8_erhuan",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "bundle": "assets/zmxy4/raw/assets/man/2001/skill1V472.swf",
+    "skeleton": "assets/zmxy4/animations/2001/skill1V472/skeleton.json",
+    "files": [
+      "assets/zmxy4/animations/2001/skill1V472/skeleton.json",
+      "assets/zmxy4/animations/2001/skill1V472/texture.json",
+      "assets/zmxy4/animations/2001/skill1V472/texture.png"
+    ],
+    "dragonbones_version": "3.0",
+    "frame_rate": 30,
+    "armatures": [
+      {
+        "name": "attack1",
+        "animations": [
+          {
+            "name": "attack1",
+            "duration_frames": 12
+          }
+        ]
+      },
+      {
+        "name": "attack2",
+        "animations": [
+          {
+            "name": "attack2",
+            "duration_frames": 15
+          }
+        ]
+      },
+      {
+        "name": "attack3",
+        "animations": [
+          {
+            "name": "attack3",
+            "duration_frames": 18
+          }
+        ]
+      },
+      {
+        "name": "attack4",
+        "animations": [
+          {
+            "name": "attack4",
+            "duration_frames": 20
+          }
+        ]
+      },
+      {
+        "name": "effect1",
+        "animations": [
+          {
+            "name": "effect1",
+            "duration_frames": 15
+          }
+        ]
+      },
+      {
+        "name": "effect2",
+        "animations": [
+          {
+            "name": "effect2",
+            "duration_frames": 73
+          }
+        ]
+      },
+      {
+        "name": "effect3",
+        "animations": [
+          {
+            "name": "effect3",
+            "duration_frames": 16
+          }
+        ]
+      },
+      {
+        "name": "effect4",
+        "animations": [
+          {
+            "name": "effect4",
+            "duration_frames": 21
+          }
+        ]
+      },
+      {
+        "name": "重复项目文件夹/元件 2",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 7
+          }
+        ]
+      },
+      {
+        "name": "悟空-新/元件 1",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 7
+          }
+        ]
+      },
+      {
+        "name": "jumpAttack",
+        "animations": [
+          {
+            "name": "jumpAttack",
+            "duration_frames": 10
+          }
+        ]
+      },
+      {
+        "name": "runAttack",
+        "animations": [
+          {
+            "name": "runAttack",
+            "duration_frames": 15
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "bundle": "assets/zmxy4/raw/assets/man/2001/skill5.swf",
+    "skeleton": "assets/zmxy4/animations/2001/skill5/man_skeleton.json",
+    "files": [
+      "assets/zmxy4/animations/2001/skill5/man_skeleton.json",
+      "assets/zmxy4/animations/2001/skill5/man_texture.json",
+      "assets/zmxy4/animations/2001/skill5/man_texture.png"
+    ],
+    "dragonbones_version": "3.0",
+    "frame_rate": 30,
+    "armatures": [
+      {
+        "name": "effect5_1",
+        "animations": [
+          {
+            "name": "effect5_1",
+            "duration_frames": 31
+          }
+        ]
+      },
+      {
+        "name": "悟空-新/元件 2",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 10
+          }
+        ]
+      },
+      {
+        "name": "effect51",
+        "animations": [
+          {
+            "name": "effect51",
+            "duration_frames": 20
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "bundle": "assets/zmxy4/raw/assets/man/2006/manV535.swf",
+    "skeleton": "assets/zmxy4/animations/2006/manV535/skeleton.json",
+    "files": [
+      "assets/zmxy4/animations/2006/manV535/skeleton.json",
+      "assets/zmxy4/animations/2006/manV535/texture.json",
+      "assets/zmxy4/animations/2006/manV535/texture.png"
+    ],
+    "dragonbones_version": "2.3",
+    "frame_rate": 30,
+    "armatures": [
+      {
+        "name": "res",
+        "animations": [
+          {
+            "name": "idle",
+            "duration_frames": 18
+          },
+          {
+            "name": "walk",
+            "duration_frames": 24
+          },
+          {
+            "name": "runNormal",
+            "duration_frames": 12
+          },
+          {
+            "name": "runAttack",
+            "duration_frames": 15
+          },
+          {
+            "name": "attack1",
+            "duration_frames": 9
+          },
+          {
+            "name": "attack2",
+            "duration_frames": 7
+          },
+          {
+            "name": "attack3",
+            "duration_frames": 8
+          },
+          {
+            "name": "attack4",
+            "duration_frames": 14
+          },
+          {
+            "name": "attack5",
+            "duration_frames": 15
+          },
+          {
+            "name": "hurtStand",
+            "duration_frames": 50
+          },
+          {
+            "name": "dead",
+            "duration_frames": 65
+          },
+          {
+            "name": "jumpNormal",
+            "duration_frames": 35
+          },
+          {
+            "name": "jumpTwo",
+            "duration_frames": 12
+          },
+          {
+            "name": "jumpAttack",
+            "duration_frames": 15
+          },
+          {
+            "name": "jumpDown",
+            "duration_frames": 35
+          },
+          {
+            "name": "effect1",
+            "duration_frames": 32
+          },
+          {
+            "name": "effect2",
+            "duration_frames": 84
+          },
+          {
+            "name": "effect21",
+            "duration_frames": 114
+          },
+          {
+            "name": "effect22",
+            "duration_frames": 84
+          },
+          {
+            "name": "effect3",
+            "duration_frames": 74
+          },
+          {
+            "name": "effect4",
+            "duration_frames": 71
+          },
+          {
+            "name": "effect5",
+            "duration_frames": 105
+          },
+          {
+            "name": "ride",
+            "duration_frames": 60
+          },
+          {
+            "name": "runNormal1",
+            "duration_frames": 14
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf9",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf6",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "特效元件/11111",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 25
+          }
+        ]
+      },
+      {
+        "name": "特效元件/lang",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 16
+          }
+        ]
+      },
+      {
+        "name": "ride",
+        "animations": [
+          {
+            "name": "ride",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "sprite/cbidle",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 20
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf7",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_wq3",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf8_hair",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf3",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf4a",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf11",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf4",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf2",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf3_piaodai",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf8",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf12",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_wq2",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf5",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf8_erhuan",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "bundle": "assets/zmxy4/raw/assets/man/2006/skill1V530.swf",
+    "skeleton": "assets/zmxy4/animations/2006/skill1V530/skeleton.json",
+    "files": [
+      "assets/zmxy4/animations/2006/skill1V530/skeleton.json",
+      "assets/zmxy4/animations/2006/skill1V530/texture.json",
+      "assets/zmxy4/animations/2006/skill1V530/texture.png"
+    ],
+    "dragonbones_version": "2.3",
+    "frame_rate": 30,
+    "armatures": [
+      {
+        "name": "attack1",
+        "animations": [
+          {
+            "name": "attack1",
+            "duration_frames": 9
+          }
+        ]
+      },
+      {
+        "name": "attack2",
+        "animations": [
+          {
+            "name": "attack2",
+            "duration_frames": 7
+          }
+        ]
+      },
+      {
+        "name": "attack3",
+        "animations": [
+          {
+            "name": "attack3",
+            "duration_frames": 8
+          }
+        ]
+      },
+      {
+        "name": "attack4",
+        "animations": [
+          {
+            "name": "attack4",
+            "duration_frames": 14
+          }
+        ]
+      },
+      {
+        "name": "attack5",
+        "animations": [
+          {
+            "name": "attack5",
+            "duration_frames": 15
+          }
+        ]
+      },
+      {
+        "name": "effect1",
+        "animations": [
+          {
+            "name": "effect1",
+            "duration_frames": 32
+          }
+        ]
+      },
+      {
+        "name": "effect1_0",
+        "animations": [
+          {
+            "name": "effect1_0",
+            "duration_frames": 32
+          }
+        ]
+      },
+      {
+        "name": "特效原件/元件 18",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 7
+          }
+        ]
+      },
+      {
+        "name": "特效原件/元件 17",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 8
+          }
+        ]
+      },
+      {
+        "name": "effect2",
+        "animations": [
+          {
+            "name": "effect2",
+            "duration_frames": 84
+          }
+        ]
+      },
+      {
+        "name": "effect2_1",
+        "animations": [
+          {
+            "name": "effect2_1",
+            "duration_frames": 9
+          }
+        ]
+      },
+      {
+        "name": "特效原件/元件 3",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 9
+          }
+        ]
+      },
+      {
+        "name": "effect2_2",
+        "animations": [
+          {
+            "name": "effect2_2",
+            "duration_frames": 2
+          }
+        ]
+      },
+      {
+        "name": "effect3",
+        "animations": [
+          {
+            "name": "effect3",
+            "duration_frames": 74
+          }
+        ]
+      },
+      {
+        "name": "特效原件/元件 23",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 12
+          }
+        ]
+      },
+      {
+        "name": "特效原件/元件 24",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 9
+          }
+        ]
+      },
+      {
+        "name": "effect4",
+        "animations": [
+          {
+            "name": "effect4",
+            "duration_frames": 71
+          }
+        ]
+      },
+      {
+        "name": "特效原件/元件 31",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 7
+          }
+        ]
+      },
+      {
+        "name": "特效原件/元件 25",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 8
+          }
+        ]
+      },
+      {
+        "name": "特效原件/元件 27",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 7
+          }
+        ]
+      },
+      {
+        "name": "特效原件/元件 26",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 9
+          }
+        ]
+      },
+      {
+        "name": "特效原件/元件 30",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 11
+          }
+        ]
+      },
+      {
+        "name": "特效原件/元件 32",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 10
+          }
+        ]
+      },
+      {
+        "name": "effect5_1",
+        "animations": [
+          {
+            "name": "effect5_1",
+            "duration_frames": 105
+          }
+        ]
+      },
+      {
+        "name": "特效原件/元件 40",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 32
+          }
+        ]
+      },
+      {
+        "name": "effect21",
+        "animations": [
+          {
+            "name": "effect21",
+            "duration_frames": 114
+          }
+        ]
+      },
+      {
+        "name": "effect22",
+        "animations": [
+          {
+            "name": "effect22",
+            "duration_frames": 84
+          }
+        ]
+      },
+      {
+        "name": "特效原件/元件 19",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 6
+          }
+        ]
+      },
+      {
+        "name": "特效原件/元件 20",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 6
+          }
+        ]
+      },
+      {
+        "name": "特效原件/元件 21",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 6
+          }
+        ]
+      },
+      {
+        "name": "特效原件/元件 22",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 55
+          }
+        ]
+      },
+      {
+        "name": "jumpAttack",
+        "animations": [
+          {
+            "name": "jumpAttack",
+            "duration_frames": 15
+          }
+        ]
+      },
+      {
+        "name": "runAttack",
+        "animations": [
+          {
+            "name": "runAttack",
+            "duration_frames": 15
+          }
+        ]
+      },
+      {
+        "name": "effect2_3",
+        "animations": [
+          {
+            "name": "effect2_3",
+            "duration_frames": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "bundle": "assets/zmxy4/raw/assets/man/2006/skill5.swf",
+    "skeleton": "assets/zmxy4/animations/2006/skill5/skill5_skeleton.json",
+    "files": [
+      "assets/zmxy4/animations/2006/skill5/skill5_skeleton.json",
+      "assets/zmxy4/animations/2006/skill5/skill5_texture.json",
+      "assets/zmxy4/animations/2006/skill5/skill5_texture.png"
+    ],
+    "dragonbones_version": "3.0",
+    "frame_rate": 30,
+    "armatures": [
+      {
+        "name": "effect5_0",
+        "animations": [
+          {
+            "name": "effect5_0",
+            "duration_frames": 105
+          }
+        ]
+      },
+      {
+        "name": "特效原件/元件 39",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 20
+          }
+        ]
+      },
+      {
+        "name": "特效原件/元件 38",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 33
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "bundle": "assets/zmxy4/raw/assets/man/2011/manV535.swf",
+    "skeleton": "assets/zmxy4/animations/2011/manV535/skeleton.json",
+    "files": [
+      "assets/zmxy4/animations/2011/manV535/skeleton.json",
+      "assets/zmxy4/animations/2011/manV535/texture.json",
+      "assets/zmxy4/animations/2011/manV535/texture.png"
+    ],
+    "dragonbones_version": "2.3",
+    "frame_rate": 30,
+    "armatures": [
+      {
+        "name": "res",
+        "animations": [
+          {
+            "name": "idle",
+            "duration_frames": 36
+          },
+          {
+            "name": "hurtStand",
+            "duration_frames": 18
+          },
+          {
+            "name": "walk_r",
+            "duration_frames": 18
+          },
+          {
+            "name": "walk_l",
+            "duration_frames": 18
+          },
+          {
+            "name": "dead",
+            "duration_frames": 52
+          },
+          {
+            "name": "attack1",
+            "duration_frames": 20
+          },
+          {
+            "name": "effect1",
+            "duration_frames": 160
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf7",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_wq3",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf8_hair",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf4a",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf6",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf11",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf3",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf4",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf2",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf3_piaodai",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf8",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf12",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf5",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_wq2",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      },
+      {
+        "name": "装备/fashion_yf8_erhuan",
+        "animations": [
+          {
+            "name": "1",
+            "duration_frames": 1
+          },
+          {
+            "name": "0",
+            "duration_frames": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "bundle": "assets/zmxy4/raw/assets/man/2011/skillV530.swf",
+    "skeleton": "assets/zmxy4/animations/2011/skillV530/skeleton.json",
+    "files": [
+      "assets/zmxy4/animations/2011/skillV530/skeleton.json",
+      "assets/zmxy4/animations/2011/skillV530/texture.json",
+      "assets/zmxy4/animations/2011/skillV530/texture.png"
+    ],
+    "dragonbones_version": "2.3",
+    "frame_rate": 30,
+    "armatures": [
+      {
+        "name": "attack1_0",
+        "animations": [
+          {
+            "name": "attack1_0",
+            "duration_frames": 18
+          }
+        ]
+      },
+      {
+        "name": "attack1_1",
+        "animations": [
+          {
+            "name": "attack1_1",
+            "duration_frames": 9
+          }
+        ]
+      },
+      {
+        "name": "attack1_2",
+        "animations": [
+          {
+            "name": "attack1_2",
+            "duration_frames": 9
+          }
+        ]
+      },
+      {
+        "name": "attack1_3",
+        "animations": [
+          {
+            "name": "attack1_3",
+            "duration_frames": 9
+          }
+        ]
+      },
+      {
+        "name": "attack1_4",
+        "animations": [
+          {
+            "name": "attack1_4",
+            "duration_frames": 9
+          }
+        ]
+      },
+      {
+        "name": "attack1_5",
+        "animations": [
+          {
+            "name": "attack1_5",
+            "duration_frames": 9
+          }
+        ]
+      },
+      {
+        "name": "effect1_1",
+        "animations": [
+          {
+            "name": "effect1_1",
+            "duration_frames": 9
+          }
+        ]
+      },
+      {
+        "name": "effect1_2",
+        "animations": [
+          {
+            "name": "effect1_2",
+            "duration_frames": 149
+          }
+        ]
+      },
+      {
+        "name": "特效元件/元件 2",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 12
+          }
+        ]
+      },
+      {
+        "name": "特效元件/元件 5",
+        "animations": [
+          {
+            "name": "unnamed",
+            "duration_frames": 12
+          }
+        ]
+      },
+      {
+        "name": "effect1_3",
+        "animations": [
+          {
+            "name": "effect1_3",
+            "duration_frames": 11
+          }
+        ]
+      }
+    ]
+  }
+]

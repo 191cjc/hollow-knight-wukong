@@ -1,0 +1,7328 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RECORDS><RECORD>
+    <id>81000101</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.055</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV1</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000102</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.06</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV2</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000103</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.065</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV3</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000104</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.07</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV4</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000105</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.075</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV5</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000106</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.08</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV6</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000107</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.085</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV7</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000108</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.09</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV8</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000109</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.095</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV9</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000110</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.1</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV10</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000111</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.105</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV11</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000112</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.11</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV12</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000113</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.115</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV13</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000114</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.12</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV14</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000115</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.125</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV15</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000116</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.13</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV16</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000117</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.135</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV17</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000118</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.14</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV18</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000119</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.145</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV19</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000120</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.15</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV20</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000121</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.15</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV21</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000122</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.15</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV22</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000123</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.15</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV23</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000124</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.15</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV24</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000125</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.15</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV25</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000126</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.15</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV26</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000127</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.15</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV27</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000128</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.15</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV28</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000129</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.15</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV29</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000130</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.15</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血：LV30</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>6000101</id>
+    <type>61</type>
+    <changeType>2</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>500</time>
+    <attributeT />
+    <attributeV1 />
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-升龙斩霸体</name>
+    <describe>霸体</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>6000201</id>
+    <type>61</type>
+    <changeType>2</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>334</time>
+    <attributeT />
+    <attributeV1 />
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-烈焰闪霸体</name>
+    <describe>霸体</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>6000301</id>
+    <type>61</type>
+    <changeType>2</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>1967</time>
+    <attributeT />
+    <attributeV1 />
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-火魔斩霸体</name>
+    <describe>霸体</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>21000101</id>
+    <type>21</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>speed</attributeT>
+    <attributeV1>0.3</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>无双技-移动加快</name>
+    <describe>移动加快</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit>1</inherit>
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>23000101</id>
+    <type>23</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>dmgRate</attributeT>
+    <attributeV1>1.3</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>无双技-提高伤害</name>
+    <describe>提高伤害</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit>1</inherit>
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>6004201</id>
+    <type>6</type>
+    <changeType>2</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>1000</time>
+    <attributeT />
+    <attributeV1 />
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>无双技-霸体</name>
+    <describe>霸体</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit>1</inherit>
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8000901</id>
+    <type>8</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>critical</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>0.2</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空无双技</name>
+    <describe>提高暴击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit>1</inherit>
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001401</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>12</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV1</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001402</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>34</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV2</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001403</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>69</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV3</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001404</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>91</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV4</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001405</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>113</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV5</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001406</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>155</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV6</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001407</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>181</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV7</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001408</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>233</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV8</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001409</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>291</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV9</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001410</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>323</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV10</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001411</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>391</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV11</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001412</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>466</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV12</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001413</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>548</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV13</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001414</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>636</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV14</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001415</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>731</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV15</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001416</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>779</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV16</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001417</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>884</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV17</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001418</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>995</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV18</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001419</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1112</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV19</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001420</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1237</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV20</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001421</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1367</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV21</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001422</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1432</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV22</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001423</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1572</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV23</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001424</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1720</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV24</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001425</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1873</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV25</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001426</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>2034</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV26</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001427</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>2201</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV27</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001428</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>2281</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV28</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001429</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>2458</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV29</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8001430</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>2641</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼加攻：LV30</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002301</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>17</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV1</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002302</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>48</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV2</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002303</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>97</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV3</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002304</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>127</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV4</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002305</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>158</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV5</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002306</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>217</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV6</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002307</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>253</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV7</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002308</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>326</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV8</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002309</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>407</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV9</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002310</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>452</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV10</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002311</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>547</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV11</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002312</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>652</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV12</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002313</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>767</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV13</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002314</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>890</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV14</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002315</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1023</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV15</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002316</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1091</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV16</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002317</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1238</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV17</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002318</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1393</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV18</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002319</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1557</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV19</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002320</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1732</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV20</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002321</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1914</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV21</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002322</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>2005</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV22</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002323</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>2201</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV23</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002324</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>2408</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV24</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002325</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>2622</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV25</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002326</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>2848</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV26</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002327</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>3081</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV27</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002328</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>3193</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV28</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002329</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>3441</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV29</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002330</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>3697</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒1：LV30</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002401</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>12750</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>12</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV1</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002402</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>13000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>34</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV2</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002403</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>13250</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>69</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV3</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002404</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>13500</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>91</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV4</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002405</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>13750</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>113</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV5</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002406</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>14000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>155</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV6</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002407</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>14250</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>181</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV7</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002408</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>14500</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>233</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV8</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002409</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>14750</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>291</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV9</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002410</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>323</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV10</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002411</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15250</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>391</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV11</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002412</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15500</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>466</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV12</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002413</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15750</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>548</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV13</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002414</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>16000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>636</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV14</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002415</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>16250</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>731</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV15</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002416</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>16500</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>779</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV16</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002417</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>16750</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>884</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV17</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002418</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>17000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>995</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV18</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002419</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>17250</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1112</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV19</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002420</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>17500</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1237</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV20</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002421</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>17625</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1367</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV21</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002422</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>17750</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1432</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV22</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002423</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>17875</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1572</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV23</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002424</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>18000</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1720</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV24</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002425</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>18125</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1873</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV25</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002426</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>18250</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>2034</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV26</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002427</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>18375</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>2201</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV27</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002428</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>18500</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>2281</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV28</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002429</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>18625</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>2458</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV29</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>8002430</id>
+    <type>8</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>18750</time>
+    <attributeT>atk</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>2641</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset />
+    <range />
+    <group>80014</group>
+    <triggerNum>-1</triggerNum>
+    <name>悟空-嗜血火眼觉醒2：LV30</name>
+    <describe>提高攻击</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000501</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>12750</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.055</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV1</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000502</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>13000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.06</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV2</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000503</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>13250</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.065</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV3</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000504</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>13500</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.07</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV4</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000505</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>13750</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.075</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV5</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000506</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>14000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.08</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV6</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000507</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>14250</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.085</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV7</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000508</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>14500</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.09</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV8</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000509</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>14750</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.095</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV9</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000510</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.1</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV10</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000511</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15250</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.105</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV11</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000512</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15500</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.11</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV12</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000513</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15750</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.115</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV13</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000514</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>16000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.12</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV14</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000515</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>16250</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.125</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV15</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000516</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>16500</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.13</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV16</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000517</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>16750</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.135</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV17</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000518</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>17000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.14</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV18</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000519</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>17250</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.145</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV19</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000520</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>17500</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.15</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV20</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000521</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>17625</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.15</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV21</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000522</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>17750</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.15</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV22</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000523</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>17875</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.15</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV23</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000524</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>18000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.15</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV24</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000525</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>18125</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.15</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV25</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000526</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>18250</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.15</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV26</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000527</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>18375</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.15</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV27</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000528</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>18500</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.15</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV28</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000529</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>18625</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.15</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV29</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>81000530</id>
+    <type>81</type>
+    <changeType>1</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>18750</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0.15</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>17</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>嗜血火眼吸血觉醒2：LV30</name>
+    <describe>吸血</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003001</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>42</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]1</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003002</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>118</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]2</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003003</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>237</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]3</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003004</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>314</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]4</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003005</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>394</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]5</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003006</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>549</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]6</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003007</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>648</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]7</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003008</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>851</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]8</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003009</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1085</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]9</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003010</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1350</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]10</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003011</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1509</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]11</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003012</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>1832</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]12</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003013</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>2190</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]13</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003014</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>2588</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]14</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003015</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>3025</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]15</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003016</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>3504</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]16</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003017</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>3784</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]17</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003018</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>4332</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]18</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003019</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>4925</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]19</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003020</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>5565</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]20</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003021</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>6253</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]21</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003022</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>6991</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]22</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003023</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>7421</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]23</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003024</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>8241</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]24</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003025</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>9115</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]25</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003026</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>10044</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]26</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003027</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>11029</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]27</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003028</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>12074</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]28</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003029</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>12682</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]29</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>5003030</id>
+    <type>5</type>
+    <changeType>3</changeType>
+    <isDebuff>1</isDebuff>
+    <interval>1500</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>0</attributeV1>
+    <attributeV2>13822</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId>402</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>火魔斩-砸地-[灼烧]30</name>
+    <describe>灼伤</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>6037901</id>
+    <type>61</type>
+    <changeType>2</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>2267</time>
+    <attributeT />
+    <attributeV1 />
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>拳系悟空-擒魔爪</name>
+    <describe>霸体</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>6038001</id>
+    <type>61</type>
+    <changeType>2</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>2334</time>
+    <attributeT />
+    <attributeV1 />
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>拳系悟空-残影连打</name>
+    <describe>霸体</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>6038101</id>
+    <type>61</type>
+    <changeType>2</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>3167</time>
+    <attributeT />
+    <attributeV1 />
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>拳系悟空-法天魔猿</name>
+    <describe>霸体</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>172000101</id>
+    <type>172</type>
+    <changeType>2</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>2334</time>
+    <attributeT>speed</attributeT>
+    <attributeV1>160</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax />
+    <offset>140,-32</offset>
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>拳系悟空-擒魔爪</name>
+    <describe>向某一动点吸引</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000101</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>16</attributeV1>
+    <attributeV2>176</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000102</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>43</attributeV1>
+    <attributeV2>455</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000103</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>86</attributeV1>
+    <attributeV2>906</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000104</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>114</attributeV1>
+    <attributeV2>1200</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000105</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>143</attributeV1>
+    <attributeV2>1506</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000106</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>198</attributeV1>
+    <attributeV2>2085</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000107</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>234</attributeV1>
+    <attributeV2>2463</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000108</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>305</attributeV1>
+    <attributeV2>3212</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000109</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>387</attributeV1>
+    <attributeV2>4077</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000110</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>481</attributeV1>
+    <attributeV2>5063</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000111</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>538</attributeV1>
+    <attributeV2>5661</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000112</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>650</attributeV1>
+    <attributeV2>6849</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000113</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>776</attributeV1>
+    <attributeV2>8172</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000114</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>915</attributeV1>
+    <attributeV2>9635</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000115</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>1068</attributeV1>
+    <attributeV2>11244</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000116</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>1235</attributeV1>
+    <attributeV2>13004</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000117</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>1333</attributeV1>
+    <attributeV2>14043</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000118</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>1524</attributeV1>
+    <attributeV2>16055</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000119</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>1731</attributeV1>
+    <attributeV2>18231</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000120</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>1953</attributeV1>
+    <attributeV2>20578</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000121</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>2175</attributeV1>
+    <attributeV2>23088</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000122</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>2430</attributeV1>
+    <attributeV2>25791</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000123</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>2579</attributeV1>
+    <attributeV2>27375</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000124</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>2861</attributeV1>
+    <attributeV2>30376</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000125</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>3161</attributeV1>
+    <attributeV2>33574</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000126</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>3489</attributeV1>
+    <attributeV2>36948</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000127</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>3831</attributeV1>
+    <attributeV2>40573</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000128</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>4193</attributeV1>
+    <attributeV2>44409</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000129</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>4404</attributeV1>
+    <attributeV2>46649</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>36000130</id>
+    <type>36</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>15000</time>
+    <attributeT>hp</attributeT>
+    <attributeV1>4799</attributeV1>
+    <attributeV2>50839</attributeV2>
+    <attributeV3 />
+    <target>11</target>
+    <resourcesId>2161</resourcesId>
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>1</triggerNum>
+    <name>拳系悟空-火猿护盾</name>
+    <describe>火盾</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  <RECORD>
+    <id>23000801</id>
+    <type>23</type>
+    <changeType>3</changeType>
+    <isDebuff>0</isDebuff>
+    <interval>0</interval>
+    <time>10000</time>
+    <attributeT>dmgRate</attributeT>
+    <attributeV1>1.2</attributeV1>
+    <attributeV2>0</attributeV2>
+    <attributeV3 />
+    <target />
+    <resourcesId />
+    <stackMax>0</stackMax>
+    <offset />
+    <range />
+    <group>0</group>
+    <triggerNum>-1</triggerNum>
+    <name>拳系悟空-残影强化</name>
+    <describe>提高伤害</describe>
+    <sceneBuffId>-1</sceneBuffId>
+    <toward>0</toward>
+    <effectDirection>0</effectDirection>
+    <inherit />
+    <cd />
+    <startNoCd />
+    <pool>0</pool>
+    <orderDisplay>1</orderDisplay>
+    <scaleByHb />
+    <destroyBySend />
+    <stackRule />
+    <childrens />
+  </RECORD>
+  </RECORDS>

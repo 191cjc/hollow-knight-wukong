@@ -1,0 +1,22 @@
+{
+  "sdk": {
+    "version": "10.0.402",
+    "platform": "linux-x64",
+    "url": "https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.402/dotnet-sdk-10.0.402-linux-x64.tar.gz",
+    "sha512": "1904a98dda2db34ba78ba3c4fb1b224455329af91c341d83547843c1839e112b04ae699ee92fa2449a8f62249196a938723078c0c60b9f65c88539d5687729c2",
+    "metadata": "https://builds.dotnet.microsoft.com/dotnet/release-metadata/10.0/releases.json"
+  },
+  "api": {
+    "game_version": "1.5.78.11833",
+    "version": 77,
+    "url": "https://github.com/hk-modding/api/releases/download/1.5.78.11833-77/moddingapi.v77.linux.zip",
+    "sha256": "5d2327d76b2c48e2694e43e90689d867eaa9ac1d9e6fd2998c93087de7b61ddb",
+    "release": "https://github.com/hk-modding/api/releases/tag/1.5.78.11833-77"
+  },
+  "unity_reference": {
+    "version": "2021.3.33",
+    "url": "https://api.nuget.org/v3-flatcontainer/unityengine.modules/2021.3.33/unityengine.modules.2021.3.33.nupkg",
+    "sha256": "d32d34526d89958c63220d3a5ce26c5c44c11bfd411a2e1fbc3200088ef160c4",
+    "purpose": "compile-only; never package these assemblies"
+  }
+}

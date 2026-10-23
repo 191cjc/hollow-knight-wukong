@@ -1,0 +1,240 @@
+[
+  {
+    "symbol": "jumpAttack",
+    "path": "assets/zmxy4/audio/se2001/jumpAttack.mp3",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "44100",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "0.548563"
+      }
+    }
+  },
+  {
+    "symbol": "effect1",
+    "path": "assets/zmxy4/audio/se2001/effect1.mp3",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "22050",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "1.118000"
+      }
+    }
+  },
+  {
+    "symbol": "runAttack",
+    "path": "assets/zmxy4/audio/se2001/runAttack.mp3",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "22050",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "0.520000"
+      }
+    }
+  },
+  {
+    "symbol": "effect2",
+    "path": "assets/zmxy4/audio/se2001/effect2.mp3",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "22050",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "1.534000"
+      }
+    }
+  },
+  {
+    "symbol": "effect3",
+    "path": "assets/zmxy4/audio/se2001/effect3.mp3",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "22050",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "1.196000"
+      }
+    }
+  },
+  {
+    "symbol": "effect4",
+    "path": "assets/zmxy4/audio/se2001/effect4.mp3",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "44100",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "0.745625"
+      }
+    }
+  },
+  {
+    "symbol": "effect51",
+    "path": "assets/zmxy4/audio/se2001/effect51.mp3",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "44100",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "1.033500"
+      }
+    }
+  },
+  {
+    "symbol": "effect5_1",
+    "path": "assets/zmxy4/audio/se2001/effect5_1.mp3",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "22050",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "2.678000"
+      }
+    }
+  },
+  {
+    "symbol": "attack5",
+    "path": "assets/zmxy4/audio/se2001/attack5.mp3",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "22050",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "0.676000"
+      }
+    }
+  },
+  {
+    "symbol": "attack4",
+    "path": "assets/zmxy4/audio/se2001/attack4.mp3",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "44100",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "0.624000"
+      }
+    }
+  },
+  {
+    "symbol": "attack3",
+    "path": "assets/zmxy4/audio/se2001/attack3.mp3",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "44100",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "0.624000"
+      }
+    }
+  },
+  {
+    "symbol": "attack2",
+    "path": "assets/zmxy4/audio/se2001/attack2.mp3",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "22050",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "0.520000"
+      }
+    }
+  },
+  {
+    "symbol": "attack1",
+    "path": "assets/zmxy4/audio/se2001/attack1.mp3",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "44100",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "0.548563"
+      }
+    }
+  },
+  {
+    "symbol": "hurtStand",
+    "path": "assets/zmxy4/audio/se2001/hurtStand.mp3",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "44100",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "0.494000"
+      }
+    }
+  }
+]

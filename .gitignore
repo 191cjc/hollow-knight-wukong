@@ -1,0 +1,13 @@
+.tools/
+artifacts/
+**/bin/
+**/obj/
+**/__pycache__/
+*.pyc
+.idea/
+.vscode/
+.DS_Store
+*.user
+*.suo
+assets/processed/*
+!assets/processed/README.md

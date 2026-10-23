@@ -1,0 +1,86 @@
+[
+  {
+    "source": "se2001.swf",
+    "symbol": "jumpAttack",
+    "path": "audio/se2001/jumpAttack.mp3",
+    "format": 2
+  },
+  {
+    "source": "se2001.swf",
+    "symbol": "effect1",
+    "path": "audio/se2001/effect1.mp3",
+    "format": 2
+  },
+  {
+    "source": "se2001.swf",
+    "symbol": "runAttack",
+    "path": "audio/se2001/runAttack.mp3",
+    "format": 2
+  },
+  {
+    "source": "se2001.swf",
+    "symbol": "effect2",
+    "path": "audio/se2001/effect2.mp3",
+    "format": 2
+  },
+  {
+    "source": "se2001.swf",
+    "symbol": "effect3",
+    "path": "audio/se2001/effect3.mp3",
+    "format": 2
+  },
+  {
+    "source": "se2001.swf",
+    "symbol": "effect4",
+    "path": "audio/se2001/effect4.mp3",
+    "format": 2
+  },
+  {
+    "source": "se2001.swf",
+    "symbol": "effect51",
+    "path": "audio/se2001/effect51.mp3",
+    "format": 2
+  },
+  {
+    "source": "se2001.swf",
+    "symbol": "effect5_1",
+    "path": "audio/se2001/effect5_1.mp3",
+    "format": 2
+  },
+  {
+    "source": "se2001.swf",
+    "symbol": "attack5",
+    "path": "audio/se2001/attack5.mp3",
+    "format": 2
+  },
+  {
+    "source": "se2001.swf",
+    "symbol": "attack4",
+    "path": "audio/se2001/attack4.mp3",
+    "format": 2
+  },
+  {
+    "source": "se2001.swf",
+    "symbol": "attack3",
+    "path": "audio/se2001/attack3.mp3",
+    "format": 2
+  },
+  {
+    "source": "se2001.swf",
+    "symbol": "attack2",
+    "path": "audio/se2001/attack2.mp3",
+    "format": 2
+  },
+  {
+    "source": "se2001.swf",
+    "symbol": "attack1",
+    "path": "audio/se2001/attack1.mp3",
+    "format": 2
+  },
+  {
+    "source": "se2001.swf",
+    "symbol": "hurtStand",
+    "path": "audio/se2001/hurtStand.mp3",
+    "format": 2
+  }
+]

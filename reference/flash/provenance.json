@@ -1,0 +1,30 @@
+[
+  {
+    "path": "v5870.swf",
+    "url": "https://sda.4399.com/4399swf/upload_swf/ftp15/csya/20150127/1/v5870.swf",
+    "size": 2733454,
+    "sha256": "54d267971105016bea7708560f1f350f05ee15c1fbb246d54041ee1f51efae49",
+    "kind": "official_public_resource"
+  },
+  {
+    "path": "cg1_20261019_1.swf",
+    "url": "https://sda.4399.com/4399swf/upload_swf/ftp15/csya/20150127/1/assets/data/cg1_20261019_1.swf",
+    "size": 1801592,
+    "sha256": "57139ad6c4cac1476f57b165cdd9d6fdc4b4aab61ce0e1905cfa8b253da9e45c",
+    "kind": "official_public_resource"
+  },
+  {
+    "path": "gameresources.xml",
+    "url": "https://sda.4399.com/4399swf/upload_swf/ftp15/csya/20150127/1/assets/data/gameresourcesZm4_20261019_1.xml",
+    "size": 18818,
+    "sha256": "333e563bda75cfbe107ca1e4cd411596d25d1af179ab446fce2e70b1c68429f6",
+    "kind": "official_public_resource"
+  },
+  {
+    "path": "v5870_strings.txt",
+    "url": null,
+    "size": 931497,
+    "sha256": "7c5088aec5b0d755382f2c1479429204132cd9ea919e0107708df278f1d41a8d",
+    "kind": "generated_string_index"
+  }
+]

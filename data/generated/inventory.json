@@ -1,0 +1,407 @@
+[
+  {
+    "path": "assets/zmxy4/animations/2001/manV535/skeleton.json",
+    "size": 261898,
+    "sha256": "559d25a2e54f3b5710fa1d755f9a4978d77b4b81f7e171f29c4a23d82903a4e6"
+  },
+  {
+    "path": "assets/zmxy4/animations/2001/manV535/texture.json",
+    "size": 3003,
+    "sha256": "f1cc3f24baf6ac889941383cd4ea8d8db2575c3c72945949f845e8d45cf52a57"
+  },
+  {
+    "path": "assets/zmxy4/animations/2001/manV535/texture.png",
+    "size": 244657,
+    "sha256": "bf817e5670c95ede72039bbbef7bde0b46074415012910fa7f429b33f85747de"
+  },
+  {
+    "path": "assets/zmxy4/animations/2001/skill1V472/skeleton.json",
+    "size": 17747,
+    "sha256": "ee4ada874ec7f9b90f46ab492c190495d04dfeea06cf4b52e773c15965293bd1"
+  },
+  {
+    "path": "assets/zmxy4/animations/2001/skill1V472/texture.json",
+    "size": 4720,
+    "sha256": "190b6665b669f16ddceac011c6320e5fdddfd9b3481431785075e0a9709b5bb4"
+  },
+  {
+    "path": "assets/zmxy4/animations/2001/skill1V472/texture.png",
+    "size": 403011,
+    "sha256": "c7e2cb8b26132fbb1096cd989e6c07f7a65d7e3611352702451ecb03d495841a"
+  },
+  {
+    "path": "assets/zmxy4/animations/2001/skill5/man_skeleton.json",
+    "size": 8499,
+    "sha256": "a8ac20830003600e5d74ee71b5f09a640807abcc9faaaa9838cfe686806fd645"
+  },
+  {
+    "path": "assets/zmxy4/animations/2001/skill5/man_texture.json",
+    "size": 1635,
+    "sha256": "085f534f990d517e002bab03a25792e1dbd713542e4aa88937e5123efb5cab87"
+  },
+  {
+    "path": "assets/zmxy4/animations/2001/skill5/man_texture.png",
+    "size": 233453,
+    "sha256": "d4c742e931b5b418cc8798fbd8cecee3a0cc79537a13a2169c1876ba551d8244"
+  },
+  {
+    "path": "assets/zmxy4/animations/2006/manV535/skeleton.json",
+    "size": 235412,
+    "sha256": "b92f205f070b91c90bbc6d0c9b6f93bcdfa0fc9f688920b74fb3ccab521e6069"
+  },
+  {
+    "path": "assets/zmxy4/animations/2006/manV535/texture.json",
+    "size": 2751,
+    "sha256": "eff648cedb6747495ec0d1286764c820f4e60e4d1f27f37865abcd8886238f8b"
+  },
+  {
+    "path": "assets/zmxy4/animations/2006/manV535/texture.png",
+    "size": 219189,
+    "sha256": "6a400882a928f2065af2d6a32d0993e8bf644f0d5564dcaf7e217f792f700983"
+  },
+  {
+    "path": "assets/zmxy4/animations/2006/skill1V530/skeleton.json",
+    "size": 34226,
+    "sha256": "f8a99f187496447b91a3ee4dc569a65623e5b42a21eeace868ce074ef3ed1ab0"
+  },
+  {
+    "path": "assets/zmxy4/animations/2006/skill1V530/texture.json",
+    "size": 8473,
+    "sha256": "2b6ed89ee03acf15d0d2712fa6112302926f03b561702f0376ced2d8e3eb0d7b"
+  },
+  {
+    "path": "assets/zmxy4/animations/2006/skill1V530/texture.png",
+    "size": 1073330,
+    "sha256": "557ebb7d14fae2afec026788b11358d4902bf1c6553d59e5351d321d76da3532"
+  },
+  {
+    "path": "assets/zmxy4/animations/2006/skill5/skill5_skeleton.json",
+    "size": 20519,
+    "sha256": "522fe6eb208e495c6530a430c3839ed113b3d99a37b0ddc0d665ca5ff692bfa7"
+  },
+  {
+    "path": "assets/zmxy4/animations/2006/skill5/skill5_texture.json",
+    "size": 3510,
+    "sha256": "9d2964667dd090c378d754ac57343b40271a5eb097a297875c8f2657c00eac18"
+  },
+  {
+    "path": "assets/zmxy4/animations/2006/skill5/skill5_texture.png",
+    "size": 723360,
+    "sha256": "15de4dcb9bcea9d8c29d916dc96869216115d1c950d5519302e2c5a784b4ff71"
+  },
+  {
+    "path": "assets/zmxy4/animations/2011/manV535/skeleton.json",
+    "size": 60567,
+    "sha256": "f03829647b3ba48eaf7e755006d8fcf9d94030febba01d627c3d2dd04f997db2"
+  },
+  {
+    "path": "assets/zmxy4/animations/2011/manV535/texture.json",
+    "size": 2180,
+    "sha256": "616253f7a2d87a7af9579b1da01ca6a4004c51af712971e0ba0fe95a959252af"
+  },
+  {
+    "path": "assets/zmxy4/animations/2011/manV535/texture.png",
+    "size": 61051,
+    "sha256": "e75fb28cc8b9db1a05a5da33cfd016c3efbdece95207964d80588130ae153356"
+  },
+  {
+    "path": "assets/zmxy4/animations/2011/skillV530/skeleton.json",
+    "size": 10069,
+    "sha256": "3a31bffec4ecf3349d53ddf89da1bf0eb654262e4bcac2b6cd66723cd27b69b3"
+  },
+  {
+    "path": "assets/zmxy4/animations/2011/skillV530/texture.json",
+    "size": 2075,
+    "sha256": "4dd97e15e530bef25325f959bec3fb0df0b64709af56b66d034288c68d23fb71"
+  },
+  {
+    "path": "assets/zmxy4/animations/2011/skillV530/texture.png",
+    "size": 195880,
+    "sha256": "c6d51cc6e5ae52b4da2b3307d906782615e2feefe4ae17a2a8f766c718f311f1"
+  },
+  {
+    "path": "assets/zmxy4/audio/se2001/attack1.mp3",
+    "size": 8777,
+    "sha256": "489da3008575fb6ab60f51a6e26a3b8ad121ad1f7860a974e60fbe447fe7337e"
+  },
+  {
+    "path": "assets/zmxy4/audio/se2001/attack2.mp3",
+    "size": 2600,
+    "sha256": "778de2abf09a0d80c17a93ce8858a378b36a76669b2289bf7e41f4437884692b"
+  },
+  {
+    "path": "assets/zmxy4/audio/se2001/attack3.mp3",
+    "size": 4992,
+    "sha256": "84796b5b323d013a3d636635ea5a19f3812183a28ef686c340b5b5cb073858d8"
+  },
+  {
+    "path": "assets/zmxy4/audio/se2001/attack4.mp3",
+    "size": 4992,
+    "sha256": "84796b5b323d013a3d636635ea5a19f3812183a28ef686c340b5b5cb073858d8"
+  },
+  {
+    "path": "assets/zmxy4/audio/se2001/attack5.mp3",
+    "size": 3380,
+    "sha256": "abb41476da14283142a70c360f7c39d991be1228c46d31cd8f4ebb1ad16fd007"
+  },
+  {
+    "path": "assets/zmxy4/audio/se2001/effect1.mp3",
+    "size": 5590,
+    "sha256": "8f9a42b577ba01f3c484f20e7d70f7bfdae10fdd3a730749801f3bae5712934e"
+  },
+  {
+    "path": "assets/zmxy4/audio/se2001/effect2.mp3",
+    "size": 7670,
+    "sha256": "73e2a4f60dc5afa6a6b285c17ab30b73823289ddc6eeb2d5c19bda10e385d849"
+  },
+  {
+    "path": "assets/zmxy4/audio/se2001/effect3.mp3",
+    "size": 5980,
+    "sha256": "fdace8676150c974781d07a1281d6ddd0033812b413cc3cff1d73a3c395df25e"
+  },
+  {
+    "path": "assets/zmxy4/audio/se2001/effect4.mp3",
+    "size": 5965,
+    "sha256": "2d09d578c36f74ed1ba968e88bdd0d38d73814ac27c3aa3f00ff57dfd86004da"
+  },
+  {
+    "path": "assets/zmxy4/audio/se2001/effect51.mp3",
+    "size": 8268,
+    "sha256": "fbcf30208dc2977c516b7fdc12ec906cce8d3be645a358150dec1754cc3854fe"
+  },
+  {
+    "path": "assets/zmxy4/audio/se2001/effect5_1.mp3",
+    "size": 13390,
+    "sha256": "ff89c338db4a4b0f0638eb9fe364d461cd401fd5659f183a61ce5949fd3a5115"
+  },
+  {
+    "path": "assets/zmxy4/audio/se2001/hurtStand.mp3",
+    "size": 3952,
+    "sha256": "ca5e398bab2f417967d59a61acbb7d4fd3ab4dc71d6dfbbff8b73cf3b54e4672"
+  },
+  {
+    "path": "assets/zmxy4/audio/se2001/jumpAttack.mp3",
+    "size": 8777,
+    "sha256": "489da3008575fb6ab60f51a6e26a3b8ad121ad1f7860a974e60fbe447fe7337e"
+  },
+  {
+    "path": "assets/zmxy4/audio/se2001/runAttack.mp3",
+    "size": 2600,
+    "sha256": "778de2abf09a0d80c17a93ce8858a378b36a76669b2289bf7e41f4437884692b"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/buff/360001/1.swf",
+    "size": 69092,
+    "sha256": "2f6259f8e6cd9bfe9e0138f547b6db81c708aa650110150a89953ac3d7f6b4d3"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/buff/50008/1.swf",
+    "size": 73865,
+    "sha256": "1a6d68832b65f2360fef7ab1ca9e085254fd2c897385ea9ab798f6a6bec42159"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/buff/810001/1.swf",
+    "size": 104315,
+    "sha256": "8f23cbea0820163e903415951e1e610c36ef6847e207b38ad8861236e607dbab"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/icon/skill/1101010.png",
+    "size": 11080,
+    "sha256": "362d6ad9073f314ea400b5c7f56456ddf7b545b0da05a13021fa755841367c17"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/icon/skill/1101020.png",
+    "size": 8970,
+    "sha256": "cefb1cb68b96da7d0da75416454e788e99eff1a70b5dec879f350a0ef2d17853"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/icon/skill/1101030.png",
+    "size": 11103,
+    "sha256": "a0e058cf75405117f1a5ea05da6b295df5c5eca11ee1af576475ba0ddc08902f"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/icon/skill/1101040.png",
+    "size": 10179,
+    "sha256": "c7b26e72cc63b8e5b42ae97101136a3bcfd6a4a036917717d50fc0b003be4635"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/icon/skill/1101050.png",
+    "size": 11252,
+    "sha256": "e2d2dfb4ae316cf95db77e3017de14da1230550439ec49923d870430d5ca1dd4"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/icon/skill/1102010V1.png",
+    "size": 9942,
+    "sha256": "4dcc12b9b9435558c557af7bc9d01f4edfab020ee1e3654b045aea05d9eee1df"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/icon/skill/1102020V1.png",
+    "size": 8599,
+    "sha256": "459b34c583eff2d3f3402a13de80db4a490f16e42e822a2b60eec5d9753da49d"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/icon/skill/1102030V1.png",
+    "size": 11229,
+    "sha256": "e9bcb7e1c4f1bf34303f62bcebeff77966a615c551ba46739f3b87051e249e4c"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/icon/skill/1102040V1.png",
+    "size": 10376,
+    "sha256": "8de2181134871fdcdf3607f7453efa710364330e39bd58bac23390c42c556251"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/icon/skill/1102050V1.png",
+    "size": 10278,
+    "sha256": "3e0b67291d726f1ccf75b80710e34d84c96a0606e614d6f0fdbcfb4948c4aba5"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/icon/skill/1311010.png",
+    "size": 9455,
+    "sha256": "2395d781ac653a6fd82dfc180016553b3278ad6087f10545e0897e6bea728b03"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/man/2001/1V535.swf",
+    "size": 4761,
+    "sha256": "eec169475781253d8f7ca7d20905bdd23fce10c6cd335abf2938a225a2bcaed7"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/man/2001/manV535.swf",
+    "size": 270497,
+    "sha256": "0e209a869553b65aa84616e3691e46543ee6362c434754cd026d22e1fa2a10fd"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/man/2001/skill1V472.swf",
+    "size": 403682,
+    "sha256": "4c4e825bc5b564d7e11f5673431e2a71c8a33b0cdba162c450aa8cc636881c1c"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/man/2001/skill5.swf",
+    "size": 231264,
+    "sha256": "76c1443045ade4f68b831062257174fbdc675adabd706aec107aaf24f64086df"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/man/2006/1V530.swf",
+    "size": 20373,
+    "sha256": "2f452991c5712ec57ff4ede435a6a90131cf981f406c88508b47b0f922820fc6"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/man/2006/manV535.swf",
+    "size": 241329,
+    "sha256": "434f284d88df9b1df30245524491ca1e4b0727dd7663f4419b6069dd8f56794b"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/man/2006/skill1V530.swf",
+    "size": 1054697,
+    "sha256": "53f05638637988b5a8fef2e0a126034cee882f88943c07d08b0e38724bfb1579"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/man/2006/skill5.swf",
+    "size": 719462,
+    "sha256": "c515b718350f294e09e54893291aed532ae82b9a5663b3e108b42a5b89efcda7"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/man/2011/1V530.swf",
+    "size": 108083,
+    "sha256": "9ec858b11d321beabccca39b256d08b2636a586fd1670fde32bd7ac1c3b5408e"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/man/2011/manV535.swf",
+    "size": 67756,
+    "sha256": "14523d5f3c308ae0e84a3d8df5d9f8b7ca8340247b5c59097ebcbb1a4d129868"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/man/2011/skillV530.swf",
+    "size": 196105,
+    "sha256": "3284cfe85eaf4d99f5910a4e7af14ed6a3d32bca4751666736ed38ddc98eba90"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/music/hs.swf",
+    "size": 130491,
+    "sha256": "20b15dc7d840d0f2011881f727927bfaa4eb72e224a6d8e0040ac5cfbc114049"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/music/se2001.swf",
+    "size": 71690,
+    "sha256": "d4a671ca1c45f7d86c934e7ceb5624a9943cd249ef47d623d87d723efcd37651"
+  },
+  {
+    "path": "assets/zmxy4/raw/assets/music/se2006.swf",
+    "size": 511,
+    "sha256": "0d7e337b9e4af443c06ff40d674800664cede231bfc04787c7383730d17cbd50"
+  },
+  {
+    "path": "data/source/awakenings.xml",
+    "size": 3676,
+    "sha256": "69cda7145c22ac9c39ebfa5dcbe8808a47b758c065ffc73dec176440093ad604"
+  },
+  {
+    "path": "data/source/buffs.xml",
+    "size": 177750,
+    "sha256": "957c2b537713ac91c4b1096694151acbd127fc266f4c0908dbbb89594af40a87"
+  },
+  {
+    "path": "data/source/manifests/animations.json",
+    "size": 29101,
+    "sha256": "7dd5d7c66ad4f286ddbc53adf543332963fd4ca77f53dcf27b328d2b65e05349"
+  },
+  {
+    "path": "data/source/manifests/audio.json",
+    "size": 1674,
+    "sha256": "de79cf720fdaa36cafe3a162a511297eecf7b11cea41a944bb62ea918d966b87"
+  },
+  {
+    "path": "data/source/manifests/downloads.json",
+    "size": 8894,
+    "sha256": "7f13b1fce63143856ed4245b1f7b985211b28acb5a6ed6addeb422e57a0b0924"
+  },
+  {
+    "path": "data/source/manifests/validation.json",
+    "size": 1903,
+    "sha256": "b7cb79dd2b9c98352087a83d509dde4ef1bcd0995663389e7962001aabb37ab5"
+  },
+  {
+    "path": "data/source/resources.xml",
+    "size": 5710,
+    "sha256": "c3b32658c4c949496646de97fee7971cafe4e8acea6254cfbbe2b603bf6771ca"
+  },
+  {
+    "path": "data/source/roles.xml",
+    "size": 4570,
+    "sha256": "a922534bd5c28ced543d4c717b5016536c66e7bc5a0cf66ab170e3bd68e7e819"
+  },
+  {
+    "path": "data/source/skills.csv",
+    "size": 4565,
+    "sha256": "6bd24cc664ee14bfd77ce7861eb350e53fde5e9c0a08cb97bd25fbca964ea66d"
+  },
+  {
+    "path": "data/source/skills.xml",
+    "size": 211667,
+    "sha256": "ae4900a485e806f772ff37e5cf180f23c44801dc5db1eb532425a1a272ef43bb"
+  },
+  {
+    "path": "reference/flash/cg1_20261019_1.swf",
+    "size": 1801592,
+    "sha256": "57139ad6c4cac1476f57b165cdd9d6fdc4b4aab61ce0e1905cfa8b253da9e45c"
+  },
+  {
+    "path": "reference/flash/gameresources.xml",
+    "size": 18818,
+    "sha256": "333e563bda75cfbe107ca1e4cd411596d25d1af179ab446fce2e70b1c68429f6"
+  },
+  {
+    "path": "reference/flash/provenance.json",
+    "size": 1057,
+    "sha256": "b4f46cb9535a79d9d70b770b99cd02b411669d19589dd52a2f460fef40707dd2"
+  },
+  {
+    "path": "reference/flash/v5870.swf",
+    "size": 2733454,
+    "sha256": "54d267971105016bea7708560f1f350f05ee15c1fbb246d54041ee1f51efae49"
+  },
+  {
+    "path": "reference/flash/v5870_strings.txt",
+    "size": 931497,
+    "sha256": "7c5088aec5b0d755382f2c1479429204132cd9ea919e0107708df278f1d41a8d"
+  }
+]

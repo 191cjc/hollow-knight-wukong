@@ -1,0 +1,7 @@
+{"file": ".trellis/spec/guides/index.md", "reason": "Shared source-reuse and cross-layer contract guidance; follow relevant guide links."}
+{"file": ".trellis/tasks/10-23-wukong-character-basic-attacks/research/project-conventions.md", "reason": "Code-backed C#, Python, build, packaging and verification conventions; existing layer specs are templates."}
+{"file": ".trellis/tasks/10-23-wukong-character-basic-attacks/research/animation-conversion.md", "reason": "Pinned legacy parser semantics, global poses, pivot/visibility/alpha rules and meaningful bake verification cases."}
+{"file": ".trellis/tasks/10-23-wukong-character-basic-attacks/research/runtime-integration.md", "reason": "Exact v77 hook signatures, pinned compile references, native attack ownership, duplicate-damage and lifecycle prototype gates."}
+{"file": ".trellis/tasks/10-23-wukong-character-basic-attacks/research/runtime-asset-contract.md", "reason": "Shared schema/path contract for parallel converter, runtime and packaging implementation."}
+{"file": ".trellis/spec/backend/character-assets.md", "reason": "Executable manifest, baking, sprite coordinate and packaging contract grounded in final implementation."}
+{"file": ".trellis/spec/backend/native-combat.md", "reason": "Executable native transaction, fixed-step clock, hit ownership and cleanup contract; client validation remains separate."}

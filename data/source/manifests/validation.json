@@ -1,0 +1,88 @@
+{
+  "source_files": 28,
+  "json_files": 19,
+  "png_files": 19,
+  "mp3_files": 14,
+  "animation_bundles": 8,
+  "skills": 97,
+  "png_dimensions": {
+    "exported/animations/2001/skill5/man_texture.png": [
+      1024,
+      2048
+    ],
+    "exported/animations/2001/skill1V472/texture.png": [
+      2048,
+      1024
+    ],
+    "exported/animations/2001/manV535/texture.png": [
+      512,
+      512
+    ],
+    "exported/animations/2011/skillV530/texture.png": [
+      1024,
+      1024
+    ],
+    "exported/animations/2011/manV535/texture.png": [
+      256,
+      512
+    ],
+    "exported/animations/2006/skill5/skill5_texture.png": [
+      2048,
+      2063
+    ],
+    "exported/animations/2006/skill1V530/texture.png": [
+      4096,
+      2048
+    ],
+    "exported/animations/2006/manV535/texture.png": [
+      512,
+      512
+    ],
+    "sources/assets/icon/skill/1102040V1.png": [
+      65,
+      65
+    ],
+    "sources/assets/icon/skill/1101010.png": [
+      65,
+      65
+    ],
+    "sources/assets/icon/skill/1101040.png": [
+      65,
+      65
+    ],
+    "sources/assets/icon/skill/1102020V1.png": [
+      65,
+      65
+    ],
+    "sources/assets/icon/skill/1101030.png": [
+      65,
+      65
+    ],
+    "sources/assets/icon/skill/1102030V1.png": [
+      65,
+      65
+    ],
+    "sources/assets/icon/skill/1102010V1.png": [
+      65,
+      65
+    ],
+    "sources/assets/icon/skill/1102050V1.png": [
+      65,
+      65
+    ],
+    "sources/assets/icon/skill/1101050.png": [
+      65,
+      65
+    ],
+    "sources/assets/icon/skill/1101020.png": [
+      65,
+      65
+    ],
+    "sources/assets/icon/skill/1311010.png": [
+      65,
+      65
+    ]
+  },
+  "base_skill_action_labels": "effect1 through effect5 present in both 2001 and 2006",
+  "remaining_verification": "Not yet rendered or tested in Hollow Knight; awakened variants and runtime-generated composite effects have not been individually checked."
+}

@@ -1,0 +1,22 @@
+{
+  "source_files": 28,
+  "animation_bundles": 8,
+  "png_files": 19,
+  "mp3_files": 14,
+  "skill_records": 97,
+  "buff_records": 222,
+  "role_ids": [
+    "2001",
+    "2006",
+    "2011"
+  ],
+  "catalogue_scope": "archived_source_files",
+  "runtime_tested": false,
+  "animation_baked": true,
+  "character_assets_verified": true,
+  "baked_character": {
+    "clips": 13,
+    "frames": 329,
+    "atlases": 1
+  }
+}
