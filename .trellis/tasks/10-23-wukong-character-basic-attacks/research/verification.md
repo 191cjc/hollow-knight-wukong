@@ -26,3 +26,7 @@ The approved implementation is ready as a local development package: default sta
 - Installation and test steps: docs/CLIENT_ACCEPTANCE.md. The matching Windows API is needed for Windows game testing. Existing tooling can run in WSL2 Ubuntu 24.04; native Windows bootstrap/build support is not implemented in this task.
 - At the build checkpoint Git had no initial commit and the existing baseline was untracked. The user subsequently explicitly requested upload to https://github.com/191cjc/hollow-knight-wukong.git, authorizing a complete initial project commit and push to its empty main branch. The updated commit-plan.md includes the existing baseline; tools, caches and generated artifacts retain their existing ignore rules.
 - Keep task in_progress while client acceptance remains open; do not archive it as fully verified.
+
+## Authorized source upload
+
+The complete project baseline was committed as `6be5bd603fd8cd8e28611500277236393572f07c` and pushed to https://github.com/191cjc/hollow-knight-wukong on main. The remote SHA was independently checked against the local commit. Existing SSH authentication was used after HTTPS lacked credentials. Session bookkeeping is recorded separately after the work commit; no client acceptance status changed.

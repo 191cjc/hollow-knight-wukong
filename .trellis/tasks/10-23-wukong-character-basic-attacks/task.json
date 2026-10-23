@@ -15,12 +15,12 @@
   "branch": "main",
   "base_branch": "main",
   "worktree_path": null,
-  "commit": null,
+  "commit": "6be5bd603fd8cd8e28611500277236393572f07c",
   "pr_url": null,
   "subtasks": [],
   "children": [],
   "parent": null,
   "relatedFiles": [],
-  "notes": "Full-scope review and build passed (23 Python + 10 production C# checks, Release 0/0); final package ready. User explicitly authorized complete initial project commit/push to 191cjc/hollow-knight-wukong main. Client AC1–AC6 pending; task stays in_progress.",
+  "notes": "Complete initial project uploaded to github.com/191cjc/hollow-knight-wukong main via existing SSH identity. Full-scope review/build passed (23 Python + 10 production C# checks, Release 0/0); final package ready. Client AC1–AC6 pending; task stays in_progress.",
   "meta": {}
 }

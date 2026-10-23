@@ -91,3 +91,9 @@ bash scripts/build.sh
 - 当前开发包为 `artifacts/WukongKnight-0.2.0-dev.zip`；最终大小与散列见 `research/verification.md`、`artifacts/build-report.json`。
 - 已更新可执行规范和当前状态；`runtime_tested=false`，PRD AC1–AC6 仍待客户端验收，任务保持 in_progress。
 - 用户随后明确要求上传至 `https://github.com/191cjc/hollow-knight-wukong.git`，已授权初始完整项目提交及推送；按更新后的 `commit-plan.md` 执行，目标分支 main。不归档未完成实机验收的任务。
+
+## Repository Upload
+
+- 用户明确授权的完整项目已提交为 `6be5bd603fd8cd8e28611500277236393572f07c` 并上传至 `https://github.com/191cjc/hollow-knight-wukong` 的 main 分支；已核对远端 SHA。
+- 使用既有 SSH 身份完成推送，原始素材与工程配置纳入初始基线；依赖缓存和生成产物保持忽略。
+- 继续保留客户端待验收状态，任务未归档。
