@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "tool": "JPEXS FFDec 26.4.0",
+  "scope": "Read-only decompilation of archived source game; excluded from runtime Mod package",
+  "source_files": [
+    {
+      "path": "reference/flash/v5870.swf",
+      "sha256": "54d267971105016bea7708560f1f350f05ee15c1fbb246d54041ee1f51efae49"
+    },
+    {
+      "path": "assets/zmxy4/raw/assets/man/2001/1V535.swf",
+      "sha256": "eec169475781253d8f7ca7d20905bdd23fce10c6cd335abf2938a225a2bcaed7"
+    },
+    {
+      "path": "data/source/skills.xml",
+      "sha256": "ae4900a485e806f772ff37e5cf180f23c44801dc5db1eb532425a1a272ef43bb"
+    },
+    {
+      "path": "data/source/buffs.xml",
+      "sha256": "957c2b537713ac91c4b1096694151acbd127fc266f4c0908dbbb89594af40a87"
+    },
+    {
+      "path": "assets/zmxy4/animations/2001/skill5/man_skeleton.json",
+      "sha256": "a8ac20830003600e5d74ee71b5f09a640807abcc9faaaa9838cfe686806fd645"
+    },
+    {
+      "path": "assets/zmxy4/animations/2001/manV535/skeleton.json",
+      "sha256": "559d25a2e54f3b5710fa1d755f9a4978d77b4b81f7e171f29c4a23d82903a4e6"
+    }
+  ],
+  "decompiled_files": [
+    {
+      "path": "as3/viewers/entitys/man/WKEntity.as",
+      "sha256": "7ab4448b9b0b9190b828a6127864188364ba7f0e9bbdb0d12f59832b8891a9be"
+    },
+    {
+      "path": "as3/viewers/entitys/man/PlayerEntity.as",
+      "sha256": "3f980537cf4a0783f5e452884360f972e7040ea82928a201ed8bbe368ddea6fd"
+    },
+    {
+      "path": "as3/viewers/entitys/man/SkillEntity.as",
+      "sha256": "426cc6d21d7a15dc927397f19a539f9862d0d7f973ae44fee495895f468641c1"
+    },
+    {
+      "path": "as3/models/managers/BattleModelManager.as",
+      "sha256": "753d9b772dedd879a20e83f97dc3bcf64d122eb4aacc189a78101f0aa428b8ba"
+    },
+    {
+      "path": "as3/models/managers/ManResourceManager.as",
+      "sha256": "6d84c2cbad2ea1c2cef275d457d4c6ced11328f6b0387599b33d2ac26cea065b"
+    },
+    {
+      "path": "as3/models/vo/SkillConfigVO.as",
+      "sha256": "060a5311c83ccde9843cd1e6216e45b23e46276c04c9ba2de27d937856402c60"
+    },
+    {
+      "path": "as3/models/vo/UserVO.as",
+      "sha256": "c481b280b6e43f7ac0a4028acc19d264925f2781b2dd13b23469322d105ea7e9"
+    },
+    {
+      "path": "as3/models/proxys/SkillProxy.as",
+      "sha256": "1ac545aaabf1cb3a0ebb2ce9ac424f1e87df0690b865cdbbd545c129bcd8707a"
+    },
+    {
+      "path": "as3/com/game/utils/VoBasic.as",
+      "sha256": "e0468be727f9d21f00bc512ac71769019654891a061a54cf3a5f1125cda0a8b2"
+    },
+    {
+      "path": "as3/SkillConfigVO.pcode",
+      "sha256": "591741591b294232c17ed4f6fcca4e1b335588a6efe616a60a5957eed0f02ed4"
+    },
+    {
+      "path": "ab_effect5_1.svg",
+      "sha256": "27429598928b8563d09e4d753d4ecba47979a3b28a9eaccf1d594878063a4f8a"
+    },
+    {
+      "path": "ab_effect51.svg",
+      "sha256": "0f63f5b10cf186b8ba0cf967f971df102450f7b22263a5cc3ce2c5af2002f492"
+    }
+  ],
+  "hitboxes": {
+    "air": {
+      "symbol": "ab_effect5_1",
+      "sprite_id": 36,
+      "static_mask_frames": 1,
+      "local_bounds_px_y_down": [
+        -218.94691089999998,
+        -162.91965280000002,
+        224.00242729999997,
+        46.979837
+      ],
+      "width_px": 442.94933819999994,
+      "height_px": 209.89948980000003,
+      "spawn_offset_from_hero_px_y_down": [
+        177,
+        -95
+      ],
+      "hero_relative_bounds_at_spawn_facing_right_px": [
+        -41.94691089999998,
+        -257.9196528,
+        401.00242729999997,
+        -48.020163
+      ]
+    },
+    "finisher": {
+      "symbol": "ab_effect51",
+      "sprite_id": 35,
+      "static_mask_frames": 1,
+      "local_bounds_px_y_down": [
+        -131.9507059,
+        -194.9887968,
+        130.0490423,
+        36.961721999999995
+      ],
+      "width_px": 261.9997482,
+      "height_px": 231.9505188,
+      "spawn_offset_from_hero_px_y_down": [
+        0,
+        0
+      ],
+      "hero_relative_bounds_at_spawn_facing_right_px": [
+        -131.9507059,
+        -194.9887968,
+        130.0490423,
+        36.961721999999995
+      ]
+    }
+  },
+  "notes": [
+    "Mask geometry is original unscaled Flash pixels; no offline 1.5x art multiplier applies.",
+    "Air source entity is spawned at +177 facing-direction X, -95 Y and does not follow the hero by default.",
+    "Runtime damage model excludes dodge, crit selection, equipment, buffs, shields and later onCalDamage modifiers.",
+    "skillAdd is an AS3 int slot; XML decimal growth is truncated to zero in this archived loading path."
+  ],
+  "tool_archives": [
+    {
+      "name": "ffdec_26.4.0.zip",
+      "sha256": "56ce960aeafc7caf034e2052ba49f878a883f7c7ca690da6eeffca9587b5e4b9",
+      "size": 21917740
+    },
+    {
+      "name": "temurin21-jre.zip",
+      "sha256": "238d74ec4ec9422d416fa98805ba375eecd8bc8f971bd0c61a21051a4fe42db8",
+      "size": 48928520
+    }
+  ],
+  "hitbox_extraction": "FFDec swf2xml shape 32 bounds in twips /20, transformed by sprite 35/36 placement matrix; approximate float output; SVG included for visual inspection.",
+  "java_version": "Temurin 21.0.8+9 JRE (portable)"
+}

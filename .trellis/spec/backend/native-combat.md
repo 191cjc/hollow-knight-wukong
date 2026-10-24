@@ -22,10 +22,83 @@ Use this when changing character presentation, ground combo timing, native hook 
 - Hit identity is the actual responder, not the collider. A stage token plus window ID rejects duplicate targets and stale callbacks; stage3 has two independent target sets. A native HealthManager evasion rejection must not consume an opportunity prematurely or be bypassed by rewriting global enemy invulnerability.
 - AttackHook/DoAttackHook are Action notifications, not cancelable filters. AfterAttackHook is before StartSlash in this version. ResetAttacks clears attack flags/time but not attack_cooldown; keep a deliberate owned timing release policy.
 - Preserve native enabled/visibility writes while suppressing the original body drawing. Source Wukong faces right; cancel inherited root mirroring and apply one explicit facing mapping. Up/down native slash effects remain available with Wukong body fallback poses.
+- Appearance enlargement is baked into separate PNG variants; do not add a runtime appearance multiplier. Preserve baseline pixel-to-world calibration and use the variant's feet offset to anchor to the native collider. Never enlarge the hero root or change body colliders to resize the artwork.
+- Each combo hit window restarts the selected native NailSlash animation and keeps its original renderer visible. Do not suppress its mesh in StartSlash or FixedUpdate; CancelAttack closes its visual with the owned hit window. Original slash resources and charm variants remain authoritative.
 - Cancel/detach closes owned hit windows, clears queued input and restores only the same hero's owned timing/geometry/rendering. Cover jump/dash/turn/damage/death/scene/control loss, disable, hero replacement and failed initialization. Old callbacks cannot reset a newer native action.
 - Compilation with newer pinned Unity compile references is not an exact runtime compatibility proof. Only the actual baseline client can establish native FSM, charm, collision and rendering acceptance.
+- Flame Dash calls native HeroDash once and owns only its presentation and added damage. Use the unchanged hero collider bounds for sweeps; deduplicate actual responders per dash token and preserve native evasion. Suspend the separate Sharp Shadow source while owned to avoid double damage. Keep movement, unlocks, cooldown, collision and invulnerability native.
+- A dash sweep captures its token before sampling. Recheck it before every target and after the native TAKE DAMAGE event: synchronous FSMs may cancel/unload/replace the dash. Old sweeps must not hit for a newer dash or overwrite its previous center. Restore owned renderer suppression on every exit. See `docs/FLAME_DASH.md`.
+- Fire Demon Slash must replace native Quake damage sources rather than stack with them. Original AS3 uses independent air/finisher effect regions, per-target caps (11/1) and a 100 game-ms air contact cooldown, not nine guaranteed animation pulses. Finisher creation follows completion of the air effect in the original code. Treat movement/input/Soul integration separately from damage ownership. See `docs/FIRE_DEMON_RESEARCH.md` and the preserved `reference/flash/fire-demon/` evidence. Do not silently use XML decimal growth: this archived SWF declares skillAdd as int and truncates the fractional source values. Original source damage units need an explicit Hollow Knight stat mapping.
+
+### Query-based skill contacts
+
+`SkillTargetPolicy.QueryMask(nativeAttackMask)` removes layers 9/20/26/31 from
+the actual `Physics2D.GetLayerCollisionMask(17)`. Both dash sweep/overlap and spell
+overlap use it. `NativeV77.SkillTarget(collider, hero, mask)` rejects disabled,
+inactive, hero-descendant and Geo colliders before resolving up to three levels.
+`SkillTargetPolicy.Allows(layer, mask, healthTarget)` additionally requires layer
+11 for HealthManager targets; allowed layer-17 boss weapons must not route damage
+to an ancestor boss. Do not reject all triggers: real hurtboxes may be triggers.
+Resolve before deduplication/contact ledgers/FSM side effects. Query overlaps do
+not inherit the source object's layer collision filtering automatically. Hornet's
+44-unit Refight Range on layer13 caused room-wide damage through parent walking.
+Core tests use extracted native layer/mask cases and verify sensors cannot
+consume a later valid body hit. In-client distance tests remain required.
+
+Fire Demon 0.4.3 restores original relative effect roots and mask centers;
+the centered/raised adaptations are superseded. See the source-clock rules below.
 
 ## 4. Validation & Error Matrix
+
+### Fire Demon adapter rules
+
+`FireDemonDamage(quakeLevel, shamanStone)` is the only runtime damage table:
+2/14 or 3/22 (air/finisher); Shaman Stone uses ceil(x1.5), giving 3/21 or 5/33.
+Never read nail damage for this spell. `SpellHitLedger` owns per-target 100ms
+contacts/cap 11, one finisher and cast tokens; no lag catch-up pulses.
+
+Native Quake damage can originate in PlayMaker TakeDamage as well as
+DamageEnemies. Suppress scoped native effect colliders and reject their source
+identities at HitTaker/HealthManager boundaries. Hold only Quake Antic's tk2d
+completion with a real ignored FsmEvent (null can retain an old callback). Source
+FireDemonTimeline owns preparation [0,5), air [5,36), finisher [36,56), at 30 FPS.
+Finisher never waits for landing. FinishCast enters Quake Finish directly; native
+Spell End restores input, animation and gravity. Never release ANIM END into the
+native Level Check 2/Quake Down path. On dead/transitioning/inactive heroes, do not
+force recovery/control regain. Restore all owned patches on disposal/failure.
+
+Use the existing untouched effect5 clip for moving character flashes and real
+blink gaps, not the normalized/held legacy fireDemonAir/Dive/Land clips. The normal
+native body remains independently hidden. Original air spawn is (+177 facing,
++95 Unity up) source pixels; air/finisher local centers/dimensions live in
+FireDemonGeometry. Source rectangles and offsets use baseline world units per
+pixel, not offline ArtworkScale. Preserve both facing directions and world anchors.
+Native antic EnemyKillShake is disabled/restored; Down/Land and their BigShake
+events are never entered. No global camera patch is permitted.
+
+The attached hero remains protected throughout preparation, air and finisher via
+TakeDamage/TakeHealth guards that observe native state first. No save/global
+invincibility flag changes. Native CanTakeDamage=false is insufficient because
+its alternate branch can still apply spike/acid HP loss. Custom protection stops
+on completion/cancel/detach, with native recovery behavior left native. Finisher
+phase changes retain Active; stale callbacks cannot damage or change newer casts.
+
+Extended Quake Antic must maintain movement ownership through the whole cast,
+not only its native entry actions. `FireDemonSlash.Observe()` checks active state,
+interruptions and timeline completion before calling native RelinquishControl,
+IgnoreInput, ResetInput, AffectedByGravity(false) and zeroing the native Rigidbody2D
+velocity. RelinquishControl early-returns if already relinquished; IgnoreInput
+resets axes only when acceptingInput changes. Explicit ResetInput is required.
+Observe before Hero.Update and before/after Hero.FixedUpdate; the attached
+lifetime's FixedUpdate order is insufficient. Keep both original updates alive
+exactly once and unsubscribe the physics hook on unload. Preserve authored moving
+body frames; never solve input drift by removing their animation or teleporting
+the hero. Completion/cancel must stop all movement writes before native recovery.
+No persistent constraints, saved momentum or global InputHandler changes.
+
+Required client regression: hold/reverse/release directions in all three phases,
+ground/air casts, hold across recovery, pause/resume, low FPS, repeated casts and
+detach/death/scene. Core timing tests cannot prove Unity input/physics behavior.
 
 | Condition | Required behavior |
 | --- | --- |

@@ -17,7 +17,12 @@ if [[ ! -x "$IMAGE_PYTHON" ]]; then
     exit 1
 fi
 "$IMAGE_PYTHON" tools/prepare_assets.py
-"$IMAGE_PYTHON" tools/bake_character.py
+if [[ -f "$PROJECT_ROOT/assets/processed/wukong/character.json" ]]; then
+    "$IMAGE_PYTHON" tools/bake_character.py --validate-only
+else
+    "$IMAGE_PYTHON" tools/bake_character.py
+fi
+"$IMAGE_PYTHON" tools/prepare_all_assets.py
 "$IMAGE_PYTHON" tools/validate_character.py --update-development-manifest
 "$IMAGE_PYTHON" -m unittest discover -s tests -p 'test_*.py'
 "$DOTNET_ROOT/dotnet" run --project tests/WukongKnight.Core.Tests --configuration Release

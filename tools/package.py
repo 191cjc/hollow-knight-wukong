@@ -9,11 +9,34 @@ from pathlib import Path
 
 from validate_character import CHARACTER, ROOT, sha256, validate_character
 
-VERSION = "0.2.0-dev"
+VERSION = "0.4.4-dev"
+ACTIVE_CHARACTER = ROOT / json.loads((ROOT / "data/character/active-variant.json").read_text(encoding="utf-8"))["output_directory"]
 README = f"""Wukong Knight {VERSION}
 Baseline: Hollow Knight 1.5.78.11833 / Modding API v77.
 Includes default staff Wukong visuals and a grounded four-stage horizontal attack chain.
+Wukong artwork is resized offline to 1.5x baseline; no runtime appearance multiplier.
+Original project assets are preserved. Native hero collision is unchanged.
+Every grounded combo hit uses the original native slash effect, including charm variants.
+The native dash key now plays Wukong's original Flame Dash pose/flame artwork.
+Movement, cooldown, unlocks and wall collision retain native dash behavior.
+Each responder along the actual dash path can take one nail-level dash hit.
+Shadow-dash invulnerability stays native; the old Sharp Shadow damage source is
+temporarily suspended to prevent duplicate damage. No extra MP cost is added.
 Air/up/down attacks retain native mechanics, including down-slash bouncing.
+Down + spell casts Fire Demon Slash with original relative air/finisher regions.
+Damage is fixed by spell tier, independent of nail upgrades: 2 x up to 11 + 14,
+or upgraded 3 x up to 11 + 22. Shaman Stone gives 3 x 11 + 21 / 5 x 11 + 33.
+Air contacts have a 100ms per-target cooldown; the finisher hits each target once.
+Native enemy hit evasion remains authoritative, so actual hits may be fewer.
+Native Quake damage/visuals are suppressed; Soul, unlocks and control recovery remain native.
+Original effect5 character flashes keep their movement and genuinely invisible frames.
+Air effect spawns at original +177 facing/+95 upward source pixels; original mask
+centers/dimensions use baseline pixel/world conversion independently of artwork size.
+At body tick 36 the air effect expires and the 20-tick finisher begins, even in midair.
+There is no forced dive or ground-contact requirement. Both skills reject enemy sensors
+and weapon children as enemy hurtboxes. No inherited Quake start/landing shake is added.
+Hero damage guards remain active throughout preparation, air and finisher; they release
+on completion/cancel/detach without changing save invincibility.
 This is a development build. Actual game loading, rendering, combat and compatibility
 have NOT been tested in a game client. Compile/reference validation is not client acceptance.
 
@@ -105,7 +128,7 @@ def main():
     output = ROOT / "artifacts"
     stage = output / "mod/WukongKnight"
     dll = ROOT / "src/WukongKnight/bin/Release/net472/WukongKnight.dll"
-    stage_package(dll, CHARACTER, stage)
+    stage_package(dll, ACTIVE_CHARACTER, stage)
     archive = output / f"WukongKnight-{VERSION}.zip"
     files = write_archive(stage, archive)
     report = {
@@ -114,7 +137,7 @@ def main():
         "dll": dll.relative_to(ROOT).as_posix(), "dll_bytes": dll.stat().st_size,
         "dll_sha256": sha256(dll),
         "implemented": {"character_replacement": True, "grounded_four_stage_combo": True,
-                        "active_skills": False},
+                        "active_skills": True, "flame_dash": True, "fire_demon_slash": True, "other_active_skills": False},
         "built": args.checks_passed,
         "automatically_verified": {"source_inventory": args.checks_passed,
                                    "character_manifest_and_atlases": True,

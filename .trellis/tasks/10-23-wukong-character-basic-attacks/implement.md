@@ -97,3 +97,55 @@ bash scripts/build.sh
 - 用户明确授权的完整项目已提交为 `6be5bd603fd8cd8e28611500277236393572f07c` 并上传至 `https://github.com/191cjc/hollow-knight-wukong` 的 main 分支；已核对远端 SHA。
 - 使用既有 SSH 身份完成推送，原始素材与工程配置纳入初始基线；依赖缓存和生成产物保持忽略。
 - 继续保留客户端待验收状态，任务未归档。
+
+## Fire Demon Slash checkpoint (2026-10-24)
+
+- User authorized fixed spell balance and routine direct installation.
+- Implemented independent original-source air/finisher contact regions and caps,
+  fixed spell-tier/Shaman damage; suppressed native Quake damage/graphics.
+- Preserved previous original/variant folders and generated a separate 27-clip
+  offline 1.5x variant. Body and world effect remain separate.
+- 36 Python passed / 1 Windows symlink skip, 18 linked production C# checks,
+  Release warnings-as-errors and package/installed 24-file closure passed.
+- 0.4.0-dev installed with verified previous-Mod backup; API/save untouched.
+- Source masks and contact rules are retained; finisher timing is intentionally
+  adapted to native landing. All gameplay acceptance items remain pending.
+- See `research/fire-demon-implementation-20261024.md` and build report for hashes.
+
+
+## 0.4.2 user-reported skill corrections
+
+Reject sensor/weapon colliders that previously routed room-wide damage to boss
+HealthManager ancestors. Share native layer/hurtbox filtering across both skills.
+Raise pre-finisher air art and damage by 0.25 native hero collider heights and
+suppress only the inherited Quake landing BigShake actions, restoring on cleanup.
+Preserve native movement, original art, dimensions, immunity and fixed damage.
+Build, run regression checks, back up and install with the game stopped; gameplay
+acceptance remains pending. See research/skill-collision-and-shake-20261024.md.
+
+0.4.2 checkpoint: all automated/build/package checks passed; installed with verified backup and hashes. Gameplay remains pending.
+
+
+## 0.4.3 source presentation restoration
+
+The user supersedes centering/raising and the native landing adaptation. Restore
+original directional spawn and mask conversion, use the untouched main effect5
+character flashes/blink gaps, and trigger the finisher on air-effect expiry in
+midair. Hold native antic through the source clock, then restore through native
+Quake Finish/Spell End without forced diving. Preserve full-cast immunity, fixed
+damage and the 0.4.2 hurtbox filter. Reuse existing original assets; do not overwrite
+any originals/variants. Run source-image/core/build/preview/closure checks and
+back up/install directly. See research/fire-demon-source-restoration-20261024.md.
+
+0.4.3 checkpoint: complete automated/build/preview/package checks passed; installed with backup and matching hashes. Source artwork unchanged; gameplay remains pending.
+
+
+## 0.4.4 Fire Demon movement correction
+
+The user reports drift from movement input during the extended custom cast.
+Maintain native input denial, neutral axes/velocity and no gravity throughout
+preparation, air and finisher; observe before input and around native physics.
+Keep original updates running and source effect5 animation/midair finisher,
+damage/immunity unchanged. Release before native recovery and stop writes on
+cancel/detach. Build/check, back up/install and verify; client movement, pause
+and recovery acceptance remains pending. See research/fire-demon-movement-lock-20261024.md.

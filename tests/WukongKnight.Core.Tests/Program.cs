@@ -7,7 +7,10 @@ internal static class Program
 {
     private static int Main()
     {
-        Action[] cases = { SinglePressDoesNotAutoChain, FourPressesFollowFourStages, BufferIsBoundedAndEarlyPressIsRejected, GraceHasAnInclusiveDeadline, CancellationInvalidatesOwnership, DualWindowsDeduplicateActualTargets, QuickSlashScalesEveryStageWindow, PhysicsClockSurvivesSlowRendering, CompletionDoesNotRetainStageFourInput, ContactCleanupWaitsForNativeEnumeration };
+        Action[] cases = { SinglePressDoesNotAutoChain, FourPressesFollowFourStages, BufferIsBoundedAndEarlyPressIsRejected, GraceHasAnInclusiveDeadline, CancellationInvalidatesOwnership, DualWindowsDeduplicateActualTargets, QuickSlashScalesEveryStageWindow, PhysicsClockSurvivesSlowRendering, CompletionDoesNotRetainStageFourInput, ContactCleanupWaitsForNativeEnumeration, DashHitsEachResponderOnce, DashCancellationRejectsOldCallbacks, NewDashClearsTargetsWithoutAcceptingStaleHits };
+        cases = cases.Concat(new Action[] { FireDemonContactCooldownAndTargetIndependence, FireDemonContactCapAndFinisher, FireDemonLagDoesNotCatchUpDamage, FireDemonCancellationAndRecast, FireDemonFixedSpellBalance, FireDemonFinisherRevealsWithoutEndingProtection, FireDemonOldFinisherCannotRevealNewCast }).ToArray();
+        cases = cases.Concat(new Action[] { EnemySensorsCannotConsumeSkillHits, BossWeaponCannotRouteDamageToParent, SkillContactsRetainNativeInteractions }).ToArray();
+        cases = cases.Concat(new Action[] { FireDemonFinishesWithoutLanding, FireDemonLagDoesNotExtendEffects, FireDemonOriginalRegionsMirrorAroundSourceRoot, FireDemonSourceFinisherRetainsCastProtection }).ToArray();
         foreach (Action test in cases)
         {
             try { test(); Console.WriteLine("PASS " + test.Method.Name); }
@@ -25,6 +28,182 @@ internal static class Program
 
     private static void Check(bool condition, string message)
     { if (!condition) throw new InvalidOperationException(message); }
+
+    // Attack-layer collision matrix read from the actual 1.5.78.11833 player assets.
+    private static int NativeSkillMask => SkillTargetPolicy.QueryMask(unchecked((int)2184845768u));
+
+    private static FireDemonTimeline AtTick(double tick) => new FireDemonTimeline(tick / 30);
+
+    private static void FireDemonFinishesWithoutLanding()
+    {
+        Check(!AtTick(4.999).Air && !AtTick(4.999).Finisher, "Effect spawned before source frame 5.");
+        Check(AtTick(5).Air && AtTick(5).AirTick == 0, "Air did not start at source frame 5.");
+        Check(AtTick(35.999).Air && !AtTick(35.999).Finisher, "Air ended early.");
+        Check(!AtTick(36).Air && AtTick(36).Finisher && AtTick(36).FinisherTick == 0, "Finisher waited for landing instead of air expiry.");
+        Check(AtTick(55.999).Finisher && !AtTick(55.999).Complete, "Finisher ended early.");
+        Check(AtTick(56).Complete && !AtTick(56).Finisher, "Source cast did not end after 20 finisher ticks.");
+    }
+
+    private static void FireDemonLagDoesNotExtendEffects()
+    {
+        Check(AtTick(44).Finisher && Math.Abs(AtTick(44).FinisherTick - 8) < .000001, "Delayed observation restarted the finisher clock.");
+        Check(AtTick(90).Complete && !AtTick(90).Air && !AtTick(90).Finisher, "Expired effects replayed after lag.");
+        Check(new FireDemonTimeline(double.NaN).Complete && new FireDemonTimeline(double.PositiveInfinity).Complete, "Invalid clock retained cast protection.");
+    }
+
+    private static void FireDemonOriginalRegionsMirrorAroundSourceRoot()
+    {
+        FireDemonRegion right = FireDemonGeometry.Air(true), left = FireDemonGeometry.Air(false);
+        double rightMin = FireDemonGeometry.AirSpawnX + right.X - right.Width / 2;
+        double rightMax = FireDemonGeometry.AirSpawnX + right.X + right.Width / 2;
+        Check(Math.Abs(rightMin - -41.94691) < .00001 && Math.Abs(rightMax - 401.00243) < .00001, "Air region was recentered/enlarged instead of using source spawn and mask.");
+        Check(Math.Abs(FireDemonGeometry.AirSpawnY + right.Y - right.Height / 2 - 48.020165) < .00001, "Source Y-down conversion or vertical registration changed.");
+        Check(left.X == -right.X && left.Y == right.Y && left.Width == right.Width && left.Height == right.Height, "Facing changed reach or vertical placement.");
+        Check(Math.Abs(-FireDemonGeometry.AirSpawnX + left.X + left.Width / 2 + rightMin) < .00001, "Left-facing source spawn failed to mirror.");
+        FireDemonRegion finisher = FireDemonGeometry.Finisher(true);
+        Check(Math.Abs(finisher.X - finisher.Width / 2 - -131.950705) < .00001 && Math.Abs(finisher.Y + finisher.Height / 2 - 194.9888) < .00001, "Finisher lost original mask placement.");
+        Check(FireDemonGeometry.Finisher(false).X == -finisher.X, "Finisher did not mirror its local source offset.");
+    }
+
+    private static void FireDemonSourceFinisherRetainsCastProtection()
+    {
+        var hits = new SpellHitLedger(); long token = hits.Begin();
+        Check(hits.Active && !hits.FinisherStarted, "Preparation was unprotected.");
+        Check(AtTick(36).Finisher && hits.BeginFinisher(token), "Source expiry did not enter finisher.");
+        Check(hits.Active && hits.TryFinisher(token, 1), "Airborne finisher ended the protected cast.");
+        Check(!hits.TryAirHit(token, 1, 1.3), "Old air callbacks damaged during the finisher.");
+        if (AtTick(56).Complete) hits.Stop(token);
+        Check(!hits.Active && !hits.TryFinisher(token, 2), "Completed source cast retained damage/protection.");
+    }
+
+    private static void EnemySensorsCannotConsumeSkillHits()
+    {
+        var dash = new DashHitLedger(); long dashToken = dash.Begin();
+        var spell = new SpellHitLedger(); long spellToken = spell.Begin();
+        // Hornet Refight/A Sphere Range; Angry Buzzer Alert Range; terrain and attack children.
+        foreach (int layer in new[] { 13, 14, 15, 22 })
+        {
+            bool accepted = SkillTargetPolicy.Allows(layer, NativeSkillMask, true);
+            Check(!accepted, "A detector/weapon resolved to its enemy ancestor.");
+            if (accepted) { dash.TryHit(dashToken, 1); spell.TryAirHit(spellToken, 1, 0); }
+        }
+        Check(SkillTargetPolicy.Allows(11, NativeSkillMask, true), "Real Hornet/Buzzer body was rejected.");
+        Check(dash.TryHit(dashToken, 1) && spell.TryAirHit(spellToken, 1, 0), "Rejected sensors consumed real body contact.");
+    }
+
+    private static void BossWeaponCannotRouteDamageToParent()
+    {
+        // Hornet's Needle Tink uses Attack (17), which the native matrix permits.
+        Check(SkillTargetPolicy.Allows(17, NativeSkillMask, false), "Native non-health Attack interaction was lost.");
+        Check(!SkillTargetPolicy.Allows(17, NativeSkillMask, true), "Needle Tink could damage its parent Hornet.");
+        Check(!SkillTargetPolicy.Allows(12, NativeSkillMask, true), "A projectile could damage its enemy ancestor.");
+    }
+
+    private static void SkillContactsRetainNativeInteractions()
+    {
+        Check(SkillTargetPolicy.Allows(19, NativeSkillMask, false), "Interactive Object responder was lost.");
+        Check(SkillTargetPolicy.Allows(11, NativeSkillMask, true), "An enemy hurtbox was lost.");
+        foreach (int layer in new[] { 9, 20, 26, 31 })
+            Check(!SkillTargetPolicy.Allows(layer, SkillTargetPolicy.QueryMask(-1), false), "Native ignored layer accepted.");
+        Check(!SkillTargetPolicy.Allows(11, SkillTargetPolicy.QueryMask(0), true), "Native collision-matrix disable ignored.");
+        Check(!SkillTargetPolicy.Allows(-1, NativeSkillMask, false) && !SkillTargetPolicy.Allows(32, NativeSkillMask, false), "Invalid layer wrapped around.");
+    }
+
+    private static void FireDemonContactCooldownAndTargetIndependence()
+    {
+        var hits = new SpellHitLedger(); long token = hits.Begin();
+        Check(hits.TryAirHit(token, 1, 1), "Initial contact was lost.");
+        Check(!hits.TryAirHit(token, 1, 1) && !hits.TryAirHit(token, 1, 1.099), "Duplicate collider or early contact caused damage.");
+        Check(hits.TryAirHit(token, 2, 1.099), "One target consumed another target's cooldown.");
+        Check(hits.TryAirHit(token, 1, 1.1), "Exact 100ms contact deadline was rejected.");
+        Check(!hits.TryAirHit(token, 1, double.NaN) && !hits.TryAirHit(token, 3, double.PositiveInfinity), "Invalid clock accepted.");
+    }
+
+    private static void FireDemonContactCapAndFinisher()
+    {
+        var hits = new SpellHitLedger(); long token = hits.Begin();
+        for (int i = 0; i < 11; i++) Check(hits.TryAirHit(token, 1, i * .1), "Valid source-style contact was rejected.");
+        Check(!hits.TryAirHit(token, 1, 1.1), "Air damage exceeded the per-target cap of 11.");
+        hits.BeginFinisher(token);
+        Check(hits.TryFinisher(token, 1) && !hits.TryFinisher(token, 1), "Finisher did not hit exactly once independently of air contacts.");
+        Check(hits.TryFinisher(token, 2), "Finisher was capped globally instead of per target.");
+    }
+
+    private static void FireDemonLagDoesNotCatchUpDamage()
+    {
+        var hits = new SpellHitLedger(); long token = hits.Begin();
+        Check(hits.TryAirHit(token, 1, 0) && hits.TryAirHit(token, 1, .8), "Current contact after lag was lost.");
+        for (int i = 0; i < 20; i++) Check(!hits.TryAirHit(token, 1, .8), "Lag generated a catch-up damage burst.");
+        Check(hits.TryAirHit(token, 1, .9), "Contact cooldown failed after lag.");
+    }
+
+    private static void FireDemonCancellationAndRecast()
+    {
+        var hits = new SpellHitLedger(); long old = hits.Begin();
+        hits.TryAirHit(old, 1, 0); hits.BeginFinisher(old); hits.TryFinisher(old, 1); hits.Stop(old);
+        Check(!hits.TryAirHit(old, 2, 1) && !hits.TryFinisher(old, 2), "Canceled spell retained damage.");
+        long current = hits.Begin(); hits.Stop(old);
+        Check(hits.Owns(current) && !hits.TryAirHit(old, 3, 1) && !hits.TryFinisher(old, 3), "Old callbacks affected a newer cast.");
+        Check(hits.TryAirHit(current, 1, 1), "Previous air target records survived a recast.");
+        hits.BeginFinisher(current);
+        Check(hits.TryFinisher(current, 1), "Previous finisher target records survived a recast.");
+    }
+
+    private static void FireDemonFinisherRevealsWithoutEndingProtection()
+    {
+        var hits = new SpellHitLedger(); long token = hits.Begin();
+        Check(hits.Active && hits.HidesBody, "Cast did not start hidden/protected.");
+        Check(!hits.TryFinisher(token, 7), "Finisher damaged before its phase.");
+        Check(hits.TryAirHit(token, 7, 0), "Hidden air phase lost damage.");
+        Check(hits.BeginFinisher(token), "Finisher transition failed.");
+        Check(hits.Active && !hits.HidesBody, "Reappearing ended cast protection or kept the body hidden.");
+        Check(!hits.TryAirHit(token, 8, 1), "Old air callbacks leaked into the revealed finisher.");
+        Check(hits.TryFinisher(token, 7), "Air target could not take the finisher.");
+        hits.Stop(token);
+        Check(!hits.Active && !hits.HidesBody, "Completed cast retained protection/hidden body.");
+    }
+
+    private static void FireDemonOldFinisherCannotRevealNewCast()
+    {
+        var hits = new SpellHitLedger(); long old = hits.Begin(); hits.Stop(old);
+        Check(!hits.Active && !hits.HidesBody, "Interrupted cast retained hidden/protected state.");
+        long current = hits.Begin();
+        Check(!hits.BeginFinisher(old), "Stale callback entered the new finisher.");
+        hits.Stop(old);
+        Check(hits.Active && hits.HidesBody && hits.Owns(current), "Old callbacks revealed or unprotected a new cast.");
+    }
+
+    private static void FireDemonFixedSpellBalance()
+    {
+        int[,] expected = { { 1, 0, 2, 14, 36 }, { 2, 0, 3, 22, 55 }, { 1, 1, 3, 21, 54 }, { 2, 1, 5, 33, 88 } };
+        for (int i = 0; i < expected.GetLength(0); i++)
+        {
+            var damage = new FireDemonDamage(expected[i, 0], expected[i, 1] == 1);
+            Check(damage.Air == expected[i, 2] && damage.Finisher == expected[i, 3] && damage.FullContactTotal == expected[i, 4], "Spell upgrade/Shaman damage or rounding changed.");
+        }
+    }
+
+    private static void DashHitsEachResponderOnce()
+    {
+        var dash = new DashHitLedger(); long token = dash.Begin();
+        Check(dash.TryHit(token, 7), "First dash hit was lost.");
+        Check(!dash.TryHit(token, 7), "Multiple colliders/physics samples produced duplicate dash damage.");
+        Check(dash.TryHit(token, 8), "Hitting one enemy blocked another enemy along the dash.");
+    }
+
+    private static void DashCancellationRejectsOldCallbacks()
+    {
+        var dash = new DashHitLedger(); long token = dash.Begin(); dash.Stop(token);
+        Check(!dash.Active && !dash.TryHit(token, 7), "Canceled dash retained damage.");
+    }
+
+    private static void NewDashClearsTargetsWithoutAcceptingStaleHits()
+    {
+        var dash = new DashHitLedger(); long old = dash.Begin(); dash.TryHit(old, 7);
+        long current = dash.Begin(); dash.Stop(old);
+        Check(dash.Active && !dash.TryHit(old, 8), "Old callback damaged or stopped the new dash.");
+        Check(dash.TryHit(current, 7), "A new dash cannot hit a previously hit enemy.");
+    }
     private static bool Has(IEnumerable<ComboEvent> events, ComboEventKind kind, int stage = -1) => events.Any(e => e.Kind == kind && (stage < 0 || e.Stage == stage));
 
     private static void SinglePressDoesNotAutoChain()

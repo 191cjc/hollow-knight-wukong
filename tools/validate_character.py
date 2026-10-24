@@ -16,6 +16,8 @@ CHARACTER = ROOT / "assets/processed/wukong"
 SOURCE = ROOT / "assets/zmxy4/animations/2001/manV535"
 REQUIRED_CLIPS = ("idle", "walk", "runNormal", "jumpNormal", "jumpTwo", "jumpDown",
                   "jumpAttack", "hurtStand", "dead", "attack1", "attack2", "attack3", "attack4")
+OPTIONAL_CLIPS = ("runAttack", "effect1", "effect2", "effect3", "effect4", "effect5", "ride", "runNormal1", "flameDash",
+                  "fireDemonAir", "fireDemonAirEffect", "fireDemonDive", "fireDemonLand", "fireDemonImpact")
 SOURCE_FILES = ("skeleton.json", "texture.json", "texture.png")
 
 
@@ -85,6 +87,9 @@ def validate_character(directory=CHARACTER, source_directory=None):
             and number(manifest.get("root_y"), "root_y") <= height, "root outside canvas")
     require(number(manifest.get("nominal_body_height"), "nominal_body_height", positive=True)
             <= height, "nominal body exceeds canvas")
+    if "feet_offset_pixels" in manifest:
+        require(number(manifest["feet_offset_pixels"], "feet_offset_pixels") <= height,
+                "feet offset exceeds canvas")
     sources = object_value(manifest.get("source_hashes"), "source_hashes")
     require(set(sources) == set(SOURCE_FILES), "incomplete source_hashes")
     for name in SOURCE_FILES:
@@ -125,7 +130,8 @@ def validate_character(directory=CHARACTER, source_directory=None):
         dimensions.append((atlas_width, atlas_height))
 
     clips = object_value(manifest.get("clips"), "clips")
-    require(set(REQUIRED_CLIPS) == set(clips), "required clips missing or unexpected clip listed")
+    require(set(REQUIRED_CLIPS) <= set(clips) <= set(REQUIRED_CLIPS + OPTIONAL_CLIPS),
+            "required clips missing or unexpected clip listed")
     used_atlases, frame_count = set(), 0
     for name, clip in clips.items():
         object_value(clip, f"clip {name}")

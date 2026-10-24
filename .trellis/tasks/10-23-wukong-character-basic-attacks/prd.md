@@ -45,3 +45,37 @@
 ## Review Status
 
 最终方案已获用户批准，任务处于 in_progress。AC7/AC8 已有完整构建日志、包闭包检查及安装/待实机文档作为证据；AC1–AC6 涉及实际客户端行为，仍保留未勾选。客户端版本核验属于实机验收前置检查，不阻塞按既定开发基线实现。
+
+
+## 0.4.2 user-reported skill corrections
+
+Reject sensor/weapon colliders that previously routed room-wide damage to boss
+HealthManager ancestors. Share native layer/hurtbox filtering across both skills.
+Raise pre-finisher air art and damage by 0.25 native hero collider heights and
+suppress only the inherited Quake landing BigShake actions, restoring on cleanup.
+Preserve native movement, original art, dimensions, immunity and fixed damage.
+Build, run regression checks, back up and install with the game stopped; gameplay
+acceptance remains pending. See research/skill-collision-and-shake-20261024.md.
+
+
+## 0.4.3 source presentation restoration
+
+The user supersedes centering/raising and the native landing adaptation. Restore
+original directional spawn and mask conversion, use the untouched main effect5
+character flashes/blink gaps, and trigger the finisher on air-effect expiry in
+midair. Hold native antic through the source clock, then restore through native
+Quake Finish/Spell End without forced diving. Preserve full-cast immunity, fixed
+damage and the 0.4.2 hurtbox filter. Reuse existing original assets; do not overwrite
+any originals/variants. Run source-image/core/build/preview/closure checks and
+back up/install directly. See research/fire-demon-source-restoration-20261024.md.
+
+
+## 0.4.4 Fire Demon movement correction
+
+The user reports drift from movement input during the extended custom cast.
+Maintain native input denial, neutral axes/velocity and no gravity throughout
+preparation, air and finisher; observe before input and around native physics.
+Keep original updates running and source effect5 animation/midair finisher,
+damage/immunity unchanged. Release before native recovery and stop writes on
+cancel/detach. Build/check, back up/install and verify; client movement, pause
+and recovery acceptance remains pending. See research/fire-demon-movement-lock-20261024.md.

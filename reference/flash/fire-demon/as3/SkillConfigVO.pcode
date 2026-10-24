@@ -1,0 +1,1623 @@
+package models.vo
+{
+   import com.game.net.vo.AssetVO;
+   import com.game.utils.VoBasic;
+   import flash.geom.Point;
+   import models.configs.CommonConfig;
+   
+   public class SkillConfigVO extends VoBasic
+   {
+      
+      public static const protectSkill:String = "protectSkill";
+      
+      method
+         name null
+         returns null
+         
+         body
+            maxstack 0
+            localcount 1
+            initscopedepth 0
+            maxscopedepth 0
+            
+            code
+               returnvoid
+            end ; code
+         end ; body
+      end ; method
+      
+      public var resources:Vector.<AssetVO>;
+      
+      public var id:int;
+      
+      public var name:String;
+      
+      public var type:uint;
+      
+      public var targetType:int;
+      
+      public var sort:int;
+      
+      public var hitRangeType:int;
+      
+      public var rangeBehind:int;
+      
+      public var rangeFront:int;
+      
+      public var subSkillID:Array;
+      
+      public var hurt:Number;
+      
+      public var mpHurt:Number;
+      
+      public var skillDefault:Number;
+      
+      public var skillAdd:int;
+      
+      public var horseSkillAdd:Number;
+      
+      public var skillCountAdd:Array;
+      
+      public var attMax:int;
+      
+      public var attInterval:int;
+      
+      public var circleSize:int;
+      
+      public var circleTime:int;
+      
+      public var effectAppearTime:int;
+      
+      public var moveSpeed:Number;
+      
+      public var moveTime:int;
+      
+      public var moveFrame:int;
+      
+      public var assetLink:Array;
+      
+      public var shootFrame:int;
+      
+      public var shootSpeedX:Number;
+      
+      public var shootSpeedY:Number;
+      
+      public var shootTime:Number;
+      
+      public var slowFrames:Array;
+      
+      public var summonMonster:int;
+      
+      public var summonCoord:Point;
+      
+      public var summonMonsterInherit:int;
+      
+      public var buffId:Array;
+      
+      public var BuffID_Old:Array;
+      
+      public var myBuff:Array;
+      
+      public var MyBuff_Old:Array;
+      
+      public var summonBuff:Array;
+      
+      public var summonBuff_old:Array;
+      
+      public var buffLevInterval:Array;
+      
+      public var myBuffLevInterval:Array;
+      
+      public var summonBuffLevInterval:Array;
+      
+      public var attackedMoveDir:int;
+      
+      public var mustShakeFrame:Array;
+      
+      public var monsterTalkId:Array;
+      
+      public var talkProbability:Number;
+      
+      public var consumeXP:int;
+      
+      public var consumeMP:Array;
+      
+      public var resourceId:int;
+      
+      public var cd:Number;
+      
+      public var stiff:int;
+      
+      public var priority:int;
+      
+      public var x:int;
+      
+      public var y:int;
+      
+      public var hitSound:Array;
+      
+      public var addXP:int;
+      
+      public var sub:SkillConfigVO;
+      
+      public var subs:Vector.<SkillConfigVO>;
+      
+      public var parent:SkillConfigVO;
+      
+      private var _level:int = 1;
+      
+      public var nowCD:int;
+      
+      public var hurtHp:int = 0;
+      
+      public var shakeFrame:int;
+      
+      public var description:String = "";
+      
+      public var description1:String = "";
+      
+      public var targetMove:Point;
+      
+      public var xml:*;
+      
+      public var skillScope:Array;
+      
+      public var gravity:int;
+      
+      public var arrow:int;
+      
+      public var skillToward:int;
+      
+      public var back:Boolean;
+      
+      public var shootDisDelay:int;
+      
+      public var shootThrough:int;
+      
+      public var hurtDelay:Number;
+      
+      public var hitStartFrame:int;
+      
+      public var dieSkill:int;
+      
+      public var heartType:int;
+      
+      public var protectPoint:int;
+      
+      public var addXPTotal:int;
+      
+      public var alone:int;
+      
+      public var buffLevel:int;
+      
+      public var awakeSKId:int;
+      
+      public var awakeSkLev:uint;
+      
+      public var awakeningId:String = "-1";
+      
+      public var isAwake:Boolean;
+      
+      public var closed:Boolean;
+      
+      public var skySkill:SkillConfigVO;
+      
+      public var isSkySkill:Boolean;
+      
+      public var level2:int;
+      
+      public var JiYiaOnFloor:Boolean;
+      
+      public var isZhaoHuan:Boolean;
+      
+      public var isAttOneMan:int = 0;
+      
+      public var isBati:Boolean;
+      
+      public var addBuff81:int;
+      
+      public var buff_add_level:int = 0;
+      
+      public var arrowDisAngle:int;
+      
+      public var fadeToAlpha:Boolean;
+      
+      public var alphaTo1:Number = 0;
+      
+      public var isCanMove:Boolean = true;
+      
+      public var noDamge:Boolean;
+      
+      public var param:String;
+      
+      public var summonNumMax:int;
+      
+      public var fixedAssetDir:int;
+      
+      private var _isSetBuff1:Boolean;
+      
+      public var suckBloodNum:int;
+      
+      public var backLashNum:int;
+      
+      public var suckBloodShare:Array;
+      
+      public var suckBloodFactor:Number;
+      
+      public var backLashFactor:Number;
+      
+      public var isAttack:Boolean;
+      
+      public var realDamagePercent:Number = 0;
+      
+      public var realDamageRatio:Number = 0;
+      
+      public var new_addHurtEffect:Boolean;
+      
+      public var releaseAddPowerNum:Number;
+      
+      public var releaseAddPowerSub:Number;
+      
+      public var releaseAddPowerMin:Number;
+      
+      public var createOtherBuffByAttackUservo:Boolean;
+      
+      public var campId:int;
+      
+      public var addIceValue:int;
+      
+      public var otherData:Object;
+      
+      public var parentSkillId:int;
+      
+      public var canAttackKuilei:Boolean = true;
+      
+      public var locked:Boolean;
+      
+      public var zyId:int;
+      
+      public var layerIndex:int;
+      
+      public function SkillConfigVO()
+      {
+         method
+            name "SkillConfigVO"
+            returns null
+            
+            body
+               maxstack 2
+               localcount 1
+               initscopedepth 0
+               maxscopedepth 1
+               
+               code
+                  getlocal0
+                  pushscope
+                  getlocal0
+                  constructsuper 0
+                  getlex QName(PackageNamespace("__AS3__.vec"),"Vector")
+                  getlex QName(PackageNamespace("com.game.net.vo"),"AssetVO")
+                  applytype 1
+                  construct 0
+                  findproperty QName(PackageNamespace(""),"resources")
+                  swap
+                  setproperty QName(PackageNamespace(""),"resources")
+                  returnvoid
+               end ; code
+            end ; body
+         end ; method
+      }
+      
+      public static function getTest() : SkillConfigVO
+      {
+         trait method QName(PackageNamespace(""),"getTest")
+            dispid 0
+            method
+               name "getTest"
+               returns QName(PackageNamespace("models.vo"),"SkillConfigVO")
+               
+               body
+                  maxstack 4
+                  localcount 2
+                  initscopedepth 0
+                  maxscopedepth 1
+                  
+                  code
+                     getlocal0
+                     pushscope
+                     getlocal0
+                     construct 0
+                     coerce QName(PackageNamespace("models.vo"),"SkillConfigVO")
+                     setlocal1
+                     getlocal1
+                     pushshort 200
+                     setproperty QName(PackageNamespace(""),"shootSpeedX")
+                     getlocal1
+                     pushbyte 2
+                     setproperty QName(PackageNamespace(""),"arrow")
+                     getlocal1
+                     findpropstrict QName(PackageNamespace("flash.geom"),"Point")
+                     pushbyte 0
+                     pushbyte 0
+                     constructprop QName(PackageNamespace("flash.geom"),"Point"), 2
+                     setproperty QName(PackageNamespace(""),"targetMove")
+                     getlocal1
+                     returnvalue
+                  end ; code
+               end ; body
+            end ; method
+         }
+         
+         public function set isSetBuff1(param1:Boolean) : void
+         {
+            trait setter QName(PackageNamespace(""),"isSetBuff1")
+               dispid 0
+               method
+                  name "isSetBuff1"
+                  flag HAS_PARAM_NAMES
+                  param QName(PackageNamespace(""),"Boolean")
+                  paramname "value"
+                  returns QName(PackageNamespace(""),"void")
+                  
+                  body
+                     maxstack 2
+                     localcount 2
+                     initscopedepth 0
+                     maxscopedepth 1
+                     
+                     code
+                        getlocal0
+                        pushscope
+                        getlocal1
+                        findproperty QName(PrivateNamespace("models.vo:SkillConfigVO"),"_isSetBuff1")
+                        swap
+                        setproperty QName(PrivateNamespace("models.vo:SkillConfigVO"),"_isSetBuff1")
+                        returnvoid
+                     end ; code
+                  end ; body
+               end ; method
+            }
+            
+            public function get isSetBuff1() : Boolean
+            {
+               trait getter QName(PackageNamespace(""),"isSetBuff1")
+                  dispid 0
+                  method
+                     name "isSetBuff1"
+                     returns QName(PackageNamespace(""),"Boolean")
+                     
+                     body
+                        maxstack 1
+                        localcount 1
+                        initscopedepth 0
+                        maxscopedepth 1
+                        
+                        code
+                           getlocal0
+                           pushscope
+                           getlex QName(PrivateNamespace("models.vo:SkillConfigVO"),"_isSetBuff1")
+                           returnvalue
+                        end ; code
+                     end ; body
+                  end ; method
+               }
+               
+               public function get getRealLevel() : int
+               {
+                  trait getter QName(PackageNamespace(""),"getRealLevel")
+                     dispid 0
+                     method
+                        name "getRealLevel"
+                        returns QName(PackageNamespace(""),"int")
+                        
+                        body
+                           maxstack 2
+                           localcount 2
+                           initscopedepth 0
+                           maxscopedepth 1
+                           
+                           code
+                              getlocal0
+                              pushscope
+                              getlex QName(PackageNamespace(""),"level")
+                              getlocal0
+                              getproperty QName(PackageNamespace(""),"buff_add_level")
+                              add
+                              convert_i
+                              setlocal1
+                              getlocal1
+                              getlex QName(PackageNamespace("models.configs"),"CommonConfig")
+                              getproperty QName(PackageNamespace(""),"skillLevelMax")
+                              ifngt ofs001f
+                              getlex QName(PackageNamespace("models.configs"),"CommonConfig")
+                              getproperty QName(PackageNamespace(""),"skillLevelMax")
+                              convert_i
+                              setlocal1
+                     ofs001f:
+                              getlocal1
+                              returnvalue
+                           end ; code
+                        end ; body
+                     end ; method
+                  }
+                  
+                  public function get level() : int
+                  {
+                     trait getter QName(PackageNamespace(""),"level")
+                        dispid 0
+                        method
+                           name "level"
+                           returns QName(PackageNamespace(""),"int")
+                           
+                           body
+                              maxstack 1
+                              localcount 1
+                              initscopedepth 0
+                              maxscopedepth 1
+                              
+                              code
+                                 getlocal0
+                                 pushscope
+                                 getlex QName(PrivateNamespace("models.vo:SkillConfigVO"),"_level")
+                                 returnvalue
+                              end ; code
+                           end ; body
+                        end ; method
+                     }
+                     
+                     public function set level(param1:int) : void
+                     {
+                        trait setter QName(PackageNamespace(""),"level")
+                           dispid 0
+                           method
+                              name "level"
+                              flag HAS_PARAM_NAMES
+                              param QName(PackageNamespace(""),"int")
+                              paramname "value"
+                              returns QName(PackageNamespace(""),"void")
+                              
+                              body
+                                 maxstack 2
+                                 localcount 2
+                                 initscopedepth 0
+                                 maxscopedepth 1
+                                 
+                                 code
+                                    getlocal0
+                                    pushscope
+                                    getlocal1
+                                    findproperty QName(PrivateNamespace("models.vo:SkillConfigVO"),"_level")
+                                    swap
+                                    setproperty QName(PrivateNamespace("models.vo:SkillConfigVO"),"_level")
+                                    returnvoid
+                                 end ; code
+                              end ; body
+                           end ; method
+                        }
+                        
+                        override public function buildFormXML(param1:XML) : void
+                        {
+                           trait method QName(PackageNamespace(""),"buildFormXML")
+                              flag OVERRIDE
+                              dispid 0
+                              method
+                                 name "buildFormXML"
+                                 flag HAS_PARAM_NAMES
+                                 param QName(PackageNamespace(""),"XML")
+                                 paramname "xml"
+                                 returns QName(PackageNamespace(""),"void")
+                                 
+                                 body
+                                    maxstack 6
+                                    localcount 7
+                                    initscopedepth 0
+                                    maxscopedepth 1
+                                    
+                                    code
+                                       getlocal0
+                                       pushscope
+                                       pushnull
+                                       setlocal 4
+                                       pushbyte 0
+                                       setlocal 6
+                                       pushnull
+                                       setlocal2
+                                       pushnull
+                                       setlocal3
+                                       getlocal0
+                                       getlocal1
+                                       callsupervoid QName(PackageNamespace(""),"buildFormXML"), 1
+                                       getlocal0
+                                       getlocal1
+                                       setproperty QName(PackageNamespace(""),"xml")
+                                       getlex QName(PackageNamespace(""),"myBuff")
+                                       iftrue ofs0028
+                                       newarray 0
+                                       findproperty QName(PackageNamespace(""),"myBuff")
+                                       swap
+                                       setproperty QName(PackageNamespace(""),"myBuff")
+                              ofs0028:
+                                       newarray 0
+                                       findproperty QName(PackageNamespace(""),"MyBuff_Old")
+                                       swap
+                                       setproperty QName(PackageNamespace(""),"MyBuff_Old")
+                                       getlocal0
+                                       getlocal0
+                                       getproperty QName(PackageNamespace(""),"myBuff")
+                                       callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"concat"), 0
+                                       setproperty QName(PackageNamespace(""),"MyBuff_Old")
+                                       getlex QName(PackageNamespace(""),"buffId")
+                                       iftrue ofs004d
+                                       newarray 0
+                                       findproperty QName(PackageNamespace(""),"buffId")
+                                       swap
+                                       setproperty QName(PackageNamespace(""),"buffId")
+                              ofs004d:
+                                       getlex QName(PackageNamespace(""),"buffId")
+                                       iffalse ofs0066
+                                       getlocal0
+                                       newarray 0
+                                       setproperty QName(PackageNamespace(""),"BuffID_Old")
+                                       getlocal0
+                                       getlocal0
+                                       getproperty QName(PackageNamespace(""),"buffId")
+                                       callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"concat"), 0
+                                       setproperty QName(PackageNamespace(""),"BuffID_Old")
+                              ofs0066:
+                                       getlex QName(PackageNamespace(""),"summonBuff")
+                                       iftrue ofs0076
+                                       newarray 0
+                                       findproperty QName(PackageNamespace(""),"summonBuff")
+                                       swap
+                                       setproperty QName(PackageNamespace(""),"summonBuff")
+                              ofs0076:
+                                       getlocal0
+                                       getlocal0
+                                       getproperty QName(PackageNamespace(""),"summonBuff")
+                                       callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"concat"), 0
+                                       setproperty QName(PackageNamespace(""),"summonBuff_old")
+                                       getlocal1
+                                       getproperty Multiname("hitSound",[PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                       callproperty Multiname("toString",[PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")]), 0
+                                       coerce_s
+                                       setlocal 4
+                                       getlocal0
+                                       newarray 0
+                                       setproperty QName(PackageNamespace(""),"hitSound")
+                                       getlocal 4
+                                       getproperty QName(PackageNamespace(""),"length")
+                                       pushbyte 0
+                                       ifngt ofs00ab
+                                       getlocal0
+                                       getlocal 4
+                                       pushstring "|"
+                                       callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"split"), 1
+                                       setproperty QName(PackageNamespace(""),"hitSound")
+                              ofs00ab:
+                                       getlocal0
+                                       getproperty QName(PackageNamespace(""),"subSkillID")
+                                       iftrue ofs00b9
+                                       getlocal0
+                                       newarray 0
+                                       setproperty QName(PackageNamespace(""),"subSkillID")
+                              ofs00b9:
+                                       getlocal1
+                                       getproperty Multiname("MonsterTalkID",[PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                       callproperty Multiname("toString",[PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")]), 0
+                                       pushstring ";"
+                                       callproperty Multiname("split",[PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")]), 1
+                                       findproperty QName(PackageNamespace(""),"monsterTalkId")
+                                       swap
+                                       setproperty QName(PackageNamespace(""),"monsterTalkId")
+                                       newarray 0
+                                       coerce QName(PackageNamespace(""),"Array")
+                                       setlocal 5
+                                       getlex QName(PackageNamespace(""),"mustShakeFrame")
+                                       iffalse ofs012c
+                                       pushbyte 0
+                                       setlocal 6
+                                       jump ofs0118
+                              ofs00e5:
+                                       label
+                                       getlex QName(PackageNamespace(""),"mustShakeFrame")
+                                       getlocal 6
+                                       getproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                       coerce_s
+                                       setlocal2
+                                       getlocal2
+                                       pushstring "-"
+                                       callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"split"), 1
+                                       coerce QName(PackageNamespace(""),"Array")
+                                       setlocal3
+                                       getlocal 5
+                                       pushstring "name"
+                                       getlocal3
+                                       pushbyte 0
+                                       getproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                       pushstring "value"
+                                       getlocal3
+                                       pushbyte 1
+                                       getproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                       newobject 2
+                                       callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
+                                       inclocal_i 6
+                              ofs0118:
+                                       getlocal 6
+                                       getlex QName(PackageNamespace(""),"mustShakeFrame")
+                                       getproperty QName(PackageNamespace(""),"length")
+                                       iflt ofs00e5
+                                       getlex QName(PackageNamespace(""),"mustShakeFrame")
+                                       pushbyte 0
+                                       setproperty QName(PackageNamespace(""),"length")
+                              ofs012c:
+                                       getlocal 5
+                                       findproperty QName(PackageNamespace(""),"mustShakeFrame")
+                                       swap
+                                       setproperty QName(PackageNamespace(""),"mustShakeFrame")
+                                       getlex QName(PackageNamespace(""),"isNaN")
+                                       getglobalscope
+                                       getlocal0
+                                       getproperty QName(PackageNamespace(""),"cd")
+                                       call 1
+                                       iffalse ofs0174
+                                       pushshort 1000
+                                       findproperty QName(PackageNamespace(""),"cd")
+                                       swap
+                                       setproperty QName(PackageNamespace(""),"cd")
+                                       getlocal1
+                                       getproperty Multiname("CD",[PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                       callproperty Multiname("toString",[PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")]), 0
+                                       coerce_s
+                                       dup
+                                       setlocal 4
+                                       getproperty QName(PackageNamespace(""),"length")
+                                       pushbyte 0
+                                       ifngt ofs0174
+                                       getlocal0
+                                       getlocal 4
+                                       pushstring ";"
+                                       callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"split"), 1
+                                       pushbyte 0
+                                       getproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                       setproperty QName(PackageNamespace(""),"cd")
+                              ofs0174:
+                                       getlocal0
+                                       getproperty QName(PackageNamespace(""),"skillScope")
+                                       dup
+                                       iffalse ofs0188
+                                       pop
+                                       getlocal0
+                                       getproperty QName(PackageNamespace(""),"skillScope")
+                                       getproperty QName(PackageNamespace(""),"length")
+                                       pushbyte 2
+                                       equals
+                              ofs0188:
+                                       iffalse ofs0198
+                                       getlocal0
+                                       getproperty QName(PackageNamespace(""),"skillScope")
+                                       pushbyte 0
+                                       pushbyte 0
+                                       callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 2
+                              ofs0198:
+                                       pushbyte 1
+                                       findproperty QName(PackageNamespace(""),"level")
+                                       swap
+                                       setproperty QName(PackageNamespace(""),"level")
+                                       pushbyte 11
+                                       findproperty QName(PackageNamespace(""),"level2")
+                                       swap
+                                       setproperty QName(PackageNamespace(""),"level2")
+                                       findpropstrict QName(PackageNamespace(""),"updateBuff")
+                                       callpropvoid QName(PackageNamespace(""),"updateBuff"), 0
+                                       getlocal0
+                                       pushbyte 0
+                                       setproperty QName(PackageNamespace(""),"nowCD")
+                                       returnvoid
+                                    end ; code
+                                 end ; body
+                              end ; method
+                           }
+                           
+                           public function updateBuff(param1:int = 0, param2:int = -1) : void
+                           {
+                              trait method QName(PackageNamespace(""),"updateBuff")
+                                 dispid 0
+                                 method
+                                    name "updateBuff"
+                                    flag HAS_OPTIONAL
+                                    flag HAS_PARAM_NAMES
+                                    param QName(PackageNamespace(""),"int")
+                                    param QName(PackageNamespace(""),"int")
+                                    paramname "add"
+                                    paramname "rlevel"
+                                    optional Integer(0)
+                                    optional Integer(-1)
+                                    returns QName(PackageNamespace(""),"void")
+                                    
+                                    body
+                                       maxstack 6
+                                       localcount 8
+                                       initscopedepth 0
+                                       maxscopedepth 1
+                                       
+                                       code
+                                          getlocal0
+                                          pushscope
+                                          pushbyte 0
+                                          setlocal 7
+                                          pushbyte 0
+                                          setlocal 4
+                                          pushbyte 0
+                                          setlocal 5
+                                          pushbyte 0
+                                          setlocal 6
+                                          getlex QName(PackageNamespace(""),"level")
+                                          getlocal1
+                                          add
+                                          pushbyte 1
+                                          subtract
+                                          convert_i
+                                          setlocal3
+                                          getlocal3
+                                          getlocal0
+                                          getproperty QName(PackageNamespace(""),"getRealLevel")
+                                          pushbyte 1
+                                          subtract
+                                          ifnge ofs0031
+                                          getlocal0
+                                          getproperty QName(PackageNamespace(""),"getRealLevel")
+                                          pushbyte 1
+                                          subtract
+                                          convert_i
+                                          setlocal3
+                                 ofs0031:
+                                          getlocal2
+                                          pushbyte -1
+                                          ifeq ofs003a
+                                          getlocal2
+                                          setlocal3
+                                 ofs003a:
+                                          pushbyte 0
+                                          setlocal 7
+                                          jump ofs0079
+                                 ofs0042:
+                                          label
+                                          getlex QName(PackageNamespace(""),"myBuffLevInterval")
+                                          iftrue ofs0055
+                                          findpropstrict QName(PackageNamespace(""),"Error")
+                                          pushstring "myBuffLevInterval=null"
+                                          constructprop QName(PackageNamespace(""),"Error"), 1
+                                          throw
+                                 ofs0055:
+                                          getlex QName(PackageNamespace(""),"myBuff")
+                                          getlocal 7
+                                          getlex QName(PackageNamespace(""),"MyBuff_Old")
+                                          getlocal 7
+                                          getproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                          pushbyte 100
+                                          multiply
+                                          getlocal3
+                                          getlex QName(PackageNamespace(""),"myBuffLevInterval")
+                                          getlocal 7
+                                          getproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                          divide
+                                          convert_i
+                                          add
+                                          pushbyte 1
+                                          add
+                                          setproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                          inclocal_i 7
+                                 ofs0079:
+                                          getlocal 7
+                                          getlex QName(PackageNamespace(""),"myBuff")
+                                          getproperty QName(PackageNamespace(""),"length")
+                                          iflt ofs0042
+                                          pushbyte 0
+                                          setlocal 4
+                                          jump ofs00e4
+                                 ofs008d:
+                                          label
+                                          getlex QName(PackageNamespace(""),"buffLevInterval")
+                                          iftrue ofs00a0
+                                          findpropstrict QName(PackageNamespace(""),"Error")
+                                          pushstring "buffLevInterval=null"
+                                          constructprop QName(PackageNamespace(""),"Error"), 1
+                                          throw
+                                 ofs00a0:
+                                          getlex QName(PackageNamespace(""),"buffLevInterval")
+                                          getlocal 4
+                                          getproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                          pushbyte 0
+                                          greaterthan
+                                          dup
+                                          iffalse ofs00bc
+                                          pop
+                                          getlex QName(PackageNamespace(""),"buffId")
+                                          getlocal 4
+                                          getproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                          pushbyte 0
+                                          greaterthan
+                                 ofs00bc:
+                                          iffalse ofs00e2
+                                          getlex QName(PackageNamespace(""),"buffId")
+                                          getlocal 4
+                                          getlex QName(PackageNamespace(""),"BuffID_Old")
+                                          getlocal 4
+                                          getproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                          pushbyte 100
+                                          multiply
+                                          getlocal3
+                                          getlex QName(PackageNamespace(""),"buffLevInterval")
+                                          getlocal 4
+                                          getproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                          divide
+                                          convert_i
+                                          add
+                                          pushbyte 1
+                                          add
+                                          setproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                 ofs00e2:
+                                          inclocal_i 4
+                                 ofs00e4:
+                                          getlocal 4
+                                          getlex QName(PackageNamespace(""),"buffId")
+                                          getproperty QName(PackageNamespace(""),"length")
+                                          iflt ofs008d
+                                          pushbyte 0
+                                          setlocal 5
+                                          jump ofs012f
+                                 ofs00f8:
+                                          label
+                                          getlex QName(PackageNamespace(""),"summonBuff")
+                                          iftrue ofs010b
+                                          findpropstrict QName(PackageNamespace(""),"Error")
+                                          pushstring "summonBuff=null"
+                                          constructprop QName(PackageNamespace(""),"Error"), 1
+                                          throw
+                                 ofs010b:
+                                          getlex QName(PackageNamespace(""),"summonBuff")
+                                          getlocal 5
+                                          getlex QName(PackageNamespace(""),"summonBuff_old")
+                                          getlocal 5
+                                          getproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                          pushbyte 100
+                                          multiply
+                                          getlocal3
+                                          getlex QName(PackageNamespace(""),"summonBuffLevInterval")
+                                          getlocal 5
+                                          getproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                          divide
+                                          convert_i
+                                          add
+                                          pushbyte 1
+                                          add
+                                          setproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                          inclocal_i 5
+                                 ofs012f:
+                                          getlocal 5
+                                          getlex QName(PackageNamespace(""),"summonBuff")
+                                          getproperty QName(PackageNamespace(""),"length")
+                                          iflt ofs00f8
+                                          getlocal0
+                                          getproperty QName(PackageNamespace(""),"subs")
+                                          dup
+                                          iffalse ofs014f
+                                          pop
+                                          getlocal0
+                                          getproperty QName(PackageNamespace(""),"subs")
+                                          getproperty QName(PackageNamespace(""),"length")
+                                          pushbyte 0
+                                          greaterthan
+                                 ofs014f:
+                                          iffalse ofs019d
+                                          pushbyte 0
+                                          setlocal 6
+                                          jump ofs0190
+                                 ofs015b:
+                                          label
+                                          getlocal0
+                                          getproperty QName(PackageNamespace(""),"subs")
+                                          getlocal 6
+                                          getproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                          getlocal0
+                                          getproperty QName(PackageNamespace(""),"level")
+                                          setproperty Multiname("level",[PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                          getlocal0
+                                          getproperty QName(PackageNamespace(""),"subs")
+                                          getlocal 6
+                                          getproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                          getlocal0
+                                          getproperty QName(PackageNamespace(""),"level")
+                                          pushbyte 10
+                                          add
+                                          setproperty Multiname("level2",[PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                          getlocal0
+                                          getproperty QName(PackageNamespace(""),"subs")
+                                          getlocal 6
+                                          getproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                          getlocal1
+                                          getlocal2
+                                          callpropvoid Multiname("updateBuff",[PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")]), 2
+                                          inclocal_i 6
+                                 ofs0190:
+                                          getlocal 6
+                                          getlocal0
+                                          getproperty QName(PackageNamespace(""),"subs")
+                                          getproperty QName(PackageNamespace(""),"length")
+                                          iflt ofs015b
+                                 ofs019d:
+                                          returnvoid
+                                       end ; code
+                                    end ; body
+                                 end ; method
+                              }
+                              
+                              public function updateBuffSummonBuff(param1:int = 0, param2:int = -1) : void
+                              {
+                                 trait method QName(PackageNamespace(""),"updateBuffSummonBuff")
+                                    dispid 0
+                                    method
+                                       name "updateBuffSummonBuff"
+                                       flag HAS_OPTIONAL
+                                       flag HAS_PARAM_NAMES
+                                       param QName(PackageNamespace(""),"int")
+                                       param QName(PackageNamespace(""),"int")
+                                       paramname "add"
+                                       paramname "rlevel"
+                                       optional Integer(0)
+                                       optional Integer(-1)
+                                       returns QName(PackageNamespace(""),"void")
+                                       
+                                       body
+                                          maxstack 6
+                                          localcount 6
+                                          initscopedepth 0
+                                          maxscopedepth 1
+                                          
+                                          code
+                                             getlocal0
+                                             pushscope
+                                             pushbyte 0
+                                             setlocal 5
+                                             getlex QName(PackageNamespace(""),"level")
+                                             getlocal1
+                                             add
+                                             pushbyte 1
+                                             subtract
+                                             convert_i
+                                             setlocal3
+                                             getlocal3
+                                             getlocal0
+                                             getproperty QName(PackageNamespace(""),"getRealLevel")
+                                             pushbyte 1
+                                             subtract
+                                             ifnge ofs0025
+                                             getlocal0
+                                             getproperty QName(PackageNamespace(""),"getRealLevel")
+                                             pushbyte 1
+                                             subtract
+                                             convert_i
+                                             setlocal3
+                                    ofs0025:
+                                             getlocal2
+                                             pushbyte -1
+                                             ifeq ofs002e
+                                             getlocal2
+                                             setlocal3
+                                    ofs002e:
+                                             getlex QName(PackageNamespace(""),"summonBuff")
+                                             dup
+                                             iftrue ofs0039
+                                             pop
+                                             newarray 0
+                                    ofs0039:
+                                             coerce QName(PackageNamespace(""),"Array")
+                                             setlocal 4
+                                             pushbyte 0
+                                             setlocal 5
+                                             jump ofs006b
+                                    ofs0046:
+                                             label
+                                             getlex QName(PackageNamespace(""),"summonBuff")
+                                             getlocal 5
+                                             getlex QName(PackageNamespace(""),"summonBuff_old")
+                                             getlocal 5
+                                             getproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                             pushbyte 100
+                                             multiply
+                                             getlocal3
+                                             getlex QName(PackageNamespace(""),"summonBuffLevInterval")
+                                             getlocal 5
+                                             getproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                             divide
+                                             convert_i
+                                             add
+                                             pushbyte 1
+                                             add
+                                             setproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                             inclocal_i 5
+                                    ofs006b:
+                                             getlocal 5
+                                             getlocal 4
+                                             getproperty QName(PackageNamespace(""),"length")
+                                             iflt ofs0046
+                                             returnvoid
+                                          end ; code
+                                       end ; body
+                                    end ; method
+                                 }
+                                 
+                                 public function clone() : SkillConfigVO
+                                 {
+                                    trait method QName(PackageNamespace(""),"clone")
+                                       dispid 0
+                                       method
+                                          name "clone"
+                                          returns QName(PackageNamespace("models.vo"),"SkillConfigVO")
+                                          
+                                          body
+                                             maxstack 3
+                                             localcount 4
+                                             initscopedepth 0
+                                             maxscopedepth 1
+                                             
+                                             code
+                                                getlocal0
+                                                pushscope
+                                                pushbyte 0
+                                                setlocal3
+                                                pushnull
+                                                setlocal1
+                                                findpropstrict QName(PackageNamespace("models.vo"),"SkillConfigVO")
+                                                constructprop QName(PackageNamespace("models.vo"),"SkillConfigVO"), 0
+                                                coerce QName(PackageNamespace("models.vo"),"SkillConfigVO")
+                                                setlocal2
+                                                getlocal2
+                                                getlocal0
+                                                callproperty QName(PackageNamespace(""),"cloneToObject"), 0
+                                                callpropvoid QName(PackageNamespace(""),"buildFromObject"), 1
+                                                getlocal2
+                                                getlocal0
+                                                getproperty QName(PackageNamespace(""),"mustShakeFrame")
+                                                setproperty QName(PackageNamespace(""),"mustShakeFrame")
+                                                getlocal2
+                                                getlocal0
+                                                getproperty QName(PackageNamespace(""),"subSkillID")
+                                                setproperty QName(PackageNamespace(""),"subSkillID")
+                                                getlocal2
+                                                getlocal0
+                                                getproperty QName(PackageNamespace(""),"assetLink")
+                                                setproperty QName(PackageNamespace(""),"assetLink")
+                                                getlocal2
+                                                getlocal0
+                                                getproperty QName(PackageNamespace(""),"skillCountAdd")
+                                                callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"concat"), 0
+                                                setproperty QName(PackageNamespace(""),"skillCountAdd")
+                                                getlocal2
+                                                getlocal0
+                                                getproperty QName(PackageNamespace(""),"skillScope")
+                                                setproperty QName(PackageNamespace(""),"skillScope")
+                                                getlocal2
+                                                getlocal0
+                                                getproperty QName(PackageNamespace(""),"buffId")
+                                                callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"concat"), 0
+                                                setproperty QName(PackageNamespace(""),"buffId")
+                                                getlocal2
+                                                getlocal0
+                                                getproperty QName(PackageNamespace(""),"myBuff")
+                                                callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"concat"), 0
+                                                setproperty QName(PackageNamespace(""),"myBuff")
+                                                getlocal2
+                                                getlocal0
+                                                getproperty QName(PackageNamespace(""),"myBuffLevInterval")
+                                                pushnull
+                                                ifeq ofs0076
+                                                getlocal0
+                                                getproperty QName(PackageNamespace(""),"myBuffLevInterval")
+                                                callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"concat"), 0
+                                                jump ofs0077
+                                       ofs0076:
+                                                pushnull
+                                       ofs0077:
+                                                setproperty QName(PackageNamespace(""),"myBuffLevInterval")
+                                                getlocal2
+                                                getlocal0
+                                                getproperty QName(PackageNamespace(""),"buffLevInterval")
+                                                pushnull
+                                                ifeq ofs0090
+                                                getlocal0
+                                                getproperty QName(PackageNamespace(""),"buffLevInterval")
+                                                callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"concat"), 0
+                                                jump ofs0091
+                                       ofs0090:
+                                                pushnull
+                                       ofs0091:
+                                                setproperty QName(PackageNamespace(""),"buffLevInterval")
+                                                getlocal2
+                                                getlex QName(PackageNamespace(""),"MyBuff_Old")
+                                                pushnull
+                                                ifeq ofs00a9
+                                                getlocal0
+                                                getproperty QName(PackageNamespace(""),"MyBuff_Old")
+                                                callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"concat"), 0
+                                                jump ofs00aa
+                                       ofs00a9:
+                                                pushnull
+                                       ofs00aa:
+                                                setproperty QName(PackageNamespace(""),"MyBuff_Old")
+                                                getlocal2
+                                                getlex QName(PackageNamespace(""),"BuffID_Old")
+                                                pushnull
+                                                ifeq ofs00c2
+                                                getlocal0
+                                                getproperty QName(PackageNamespace(""),"BuffID_Old")
+                                                callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"concat"), 0
+                                                jump ofs00c3
+                                       ofs00c2:
+                                                pushnull
+                                       ofs00c3:
+                                                setproperty QName(PackageNamespace(""),"BuffID_Old")
+                                                getlocal2
+                                                getlocal0
+                                                getproperty QName(PackageNamespace(""),"summonBuff")
+                                                pushnull
+                                                ifeq ofs00dc
+                                                getlocal0
+                                                getproperty QName(PackageNamespace(""),"summonBuff")
+                                                callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"concat"), 0
+                                                jump ofs00dd
+                                       ofs00dc:
+                                                pushnull
+                                       ofs00dd:
+                                                setproperty QName(PackageNamespace(""),"summonBuff")
+                                                getlocal2
+                                                getlocal0
+                                                getproperty QName(PackageNamespace(""),"summonBuff_old")
+                                                pushnull
+                                                ifeq ofs00f6
+                                                getlocal0
+                                                getproperty QName(PackageNamespace(""),"summonBuff_old")
+                                                callproperty QName(Namespace("http://adobe.com/AS3/2006/builtin"),"concat"), 0
+                                                jump ofs00f7
+                                       ofs00f6:
+                                                pushnull
+                                       ofs00f7:
+                                                setproperty QName(PackageNamespace(""),"summonBuff_old")
+                                                getlocal2
+                                                getlocal2
+                                                getproperty QName(PackageNamespace(""),"hitSound")
+                                                setproperty QName(PackageNamespace(""),"hitSound")
+                                                getlocal2
+                                                getlocal0
+                                                getproperty QName(PackageNamespace(""),"monsterTalkId")
+                                                setproperty QName(PackageNamespace(""),"monsterTalkId")
+                                                getlocal2
+                                                getlocal0
+                                                getproperty QName(PackageNamespace(""),"level")
+                                                setproperty QName(PackageNamespace(""),"level")
+                                                getlocal2
+                                                getlex QName(PackageNamespace("__AS3__.vec"),"Vector")
+                                                getlex QName(PackageNamespace("models.vo"),"SkillConfigVO")
+                                                applytype 1
+                                                construct 0
+                                                setproperty QName(PackageNamespace(""),"subs")
+                                                pushbyte 0
+                                                setlocal3
+                                                jump ofs014c
+                                       ofs0127:
+                                                label
+                                                getlocal0
+                                                getproperty QName(PackageNamespace(""),"subs")
+                                                getlocal3
+                                                getproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                                coerce QName(PackageNamespace("models.vo"),"SkillConfigVO")
+                                                setlocal1
+                                                getlocal1
+                                                callproperty QName(PackageNamespace(""),"clone"), 0
+                                                coerce QName(PackageNamespace("models.vo"),"SkillConfigVO")
+                                                setlocal1
+                                                getlocal2
+                                                getproperty QName(PackageNamespace(""),"subs")
+                                                getlocal1
+                                                callpropvoid QName(Namespace("http://adobe.com/AS3/2006/builtin"),"push"), 1
+                                                getlocal1
+                                                getlocal2
+                                                setproperty QName(PackageNamespace(""),"parent")
+                                                inclocal_i 3
+                                       ofs014c:
+                                                getlocal3
+                                                getlocal0
+                                                getproperty QName(PackageNamespace(""),"subs")
+                                                getproperty QName(PackageNamespace(""),"length")
+                                                iflt ofs0127
+                                                getlocal2
+                                                returnvalue
+                                             end ; code
+                                          end ; body
+                                       end ; method
+                                    }
+                                    
+                                    public function updateSub() : void
+                                    {
+                                       trait method QName(PackageNamespace(""),"updateSub")
+                                          dispid 0
+                                          method
+                                             name "updateSub"
+                                             returns QName(PackageNamespace(""),"void")
+                                             
+                                             body
+                                                maxstack 2
+                                                localcount 1
+                                                initscopedepth 0
+                                                maxscopedepth 1
+                                                
+                                                code
+                                                   getlocal0
+                                                   pushscope
+                                                   findpropstrict QName(PrivateNamespace("models.vo:SkillConfigVO"),"updatesuba")
+                                                   getlocal0
+                                                   callpropvoid QName(PrivateNamespace("models.vo:SkillConfigVO"),"updatesuba"), 1
+                                                   returnvoid
+                                                end ; code
+                                             end ; body
+                                          end ; method
+                                       }
+                                       
+                                       private function updatesuba(param1:SkillConfigVO) : void
+                                       {
+                                          trait method QName(PrivateNamespace("models.vo:SkillConfigVO"),"updatesuba")
+                                             dispid 0
+                                             method
+                                                name "updatesuba"
+                                                flag HAS_PARAM_NAMES
+                                                param QName(PackageNamespace("models.vo"),"SkillConfigVO")
+                                                paramname "source"
+                                                returns QName(PackageNamespace(""),"void")
+                                                
+                                                body
+                                                   maxstack 3
+                                                   localcount 6
+                                                   initscopedepth 0
+                                                   maxscopedepth 2
+                                                   
+                                                   code
+                                                      getlocal0
+                                                      pushscope
+                                                      pushbyte 0
+                                                      setlocal3
+                                                      pushnull
+                                                      setlocal2
+                                                      pushbyte 0
+                                                      setlocal3
+                                                      jump ofs007a
+                                             ofs000e:
+                                                      label
+                                                      getlocal1
+                                                      getproperty QName(PackageNamespace(""),"subs")
+                                                      getlocal3
+                                                      getproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                                      coerce QName(PackageNamespace("models.vo"),"SkillConfigVO")
+                                                      setlocal2
+                                                      getlocal2
+                                                      getlocal1
+                                                      getproperty QName(PackageNamespace(""),"level")
+                                                      setproperty QName(PackageNamespace(""),"level")
+                                                      getlocal2
+                                                      getlocal1
+                                                      getproperty QName(PackageNamespace(""),"level")
+                                                      pushbyte 10
+                                                      add
+                                                      setproperty QName(PackageNamespace(""),"level2")
+                                                      getlocal2
+                                                      getproperty QName(PackageNamespace(""),"id")
+                                                      pushint 1101153
+                                                      equals
+                                                      dup
+                                                      iftrue ofs0044
+                                                      pop
+                                                      getlocal2
+                                                      getproperty QName(PackageNamespace(""),"id")
+                                                      pushint 1101154
+                                                      equals
+                                             ofs0044:
+                                                      iffalse ofs004d
+                                                      getlocal1
+                                                      getlocal2
+                                                      setproperty QName(PackageNamespace(""),"skySkill")
+                                             ofs004d:
+                                                      getlocal2
+                                                      callpropvoid QName(PackageNamespace(""),"updateBuff"), 0
+                                             ofs0052:
+                                                      jump ofs0063
+                                             ofs0056:
+                                                      getlocal0
+                                                      pushscope
+                                                      newcatch 0
+                                                      dup
+                                                      setlocal 5
+                                                      dup
+                                                      pushscope
+                                                      swap
+                                                      setslot 1
+                                                      popscope
+                                             ofs0063:
+                                                      getlocal2
+                                                      getproperty QName(PackageNamespace(""),"subs")
+                                                      getproperty QName(PackageNamespace(""),"length")
+                                                      pushbyte 0
+                                                      ifngt ofs0078
+                                                      findpropstrict QName(PrivateNamespace("models.vo:SkillConfigVO"),"updatesuba")
+                                                      getlocal2
+                                                      callpropvoid QName(PrivateNamespace("models.vo:SkillConfigVO"),"updatesuba"), 1
+                                             ofs0078:
+                                                      inclocal_i 3
+                                             ofs007a:
+                                                      getlocal3
+                                                      getlocal1
+                                                      getproperty QName(PackageNamespace(""),"subs")
+                                                      getproperty QName(PackageNamespace(""),"length")
+                                                      iflt ofs000e
+                                                      returnvoid
+                                                   end ; code
+                                                   try from ofs004d to ofs0052 target ofs0056 type QName(PackageNamespace(""),"Error") name QName(PackageInternalNs("models.vo"),"error") end
+                                                end ; body
+                                             end ; method
+                                          }
+                                          
+                                          public function updateBuff_add_level(param1:int) : void
+                                          {
+                                             trait method QName(PackageNamespace(""),"updateBuff_add_level")
+                                                dispid 0
+                                                method
+                                                   name "updateBuff_add_level"
+                                                   flag HAS_PARAM_NAMES
+                                                   param QName(PackageNamespace(""),"int")
+                                                   paramname "buff_add_skill_level"
+                                                   returns QName(PackageNamespace(""),"void")
+                                                   
+                                                   body
+                                                      maxstack 2
+                                                      localcount 2
+                                                      initscopedepth 0
+                                                      maxscopedepth 1
+                                                      
+                                                      code
+                                                         getlocal0
+                                                         pushscope
+                                                         getlocal0
+                                                         getlocal1
+                                                         setproperty QName(PackageNamespace(""),"buff_add_level")
+                                                         findpropstrict QName(PrivateNamespace("models.vo:SkillConfigVO"),"updatesuba_add_level")
+                                                         getlocal0
+                                                         callpropvoid QName(PrivateNamespace("models.vo:SkillConfigVO"),"updatesuba_add_level"), 1
+                                                         returnvoid
+                                                      end ; code
+                                                   end ; body
+                                                end ; method
+                                             }
+                                             
+                                             private function updatesuba_add_level(param1:SkillConfigVO) : void
+                                             {
+                                                trait method QName(PrivateNamespace("models.vo:SkillConfigVO"),"updatesuba_add_level")
+                                                   dispid 0
+                                                   method
+                                                      name "updatesuba_add_level"
+                                                      flag HAS_PARAM_NAMES
+                                                      param QName(PackageNamespace("models.vo"),"SkillConfigVO")
+                                                      paramname "source"
+                                                      returns QName(PackageNamespace(""),"void")
+                                                      
+                                                      body
+                                                         maxstack 4
+                                                         localcount 6
+                                                         initscopedepth 0
+                                                         maxscopedepth 2
+                                                         
+                                                         code
+                                                            getlocal0
+                                                            pushscope
+                                                            pushbyte 0
+                                                            setlocal3
+                                                            pushnull
+                                                            setlocal2
+                                                   ofs0007:
+                                                            getlocal1
+                                                            pushbyte 0
+                                                            getlex QName(PackageNamespace(""),"getRealLevel")
+                                                            pushbyte 1
+                                                            subtract
+                                                            callpropvoid QName(PackageNamespace(""),"updateBuff"), 2
+                                                   ofs0014:
+                                                            jump ofs0025
+                                                   ofs0018:
+                                                            getlocal0
+                                                            pushscope
+                                                            newcatch 0
+                                                            dup
+                                                            setlocal 5
+                                                            dup
+                                                            pushscope
+                                                            swap
+                                                            setslot 1
+                                                            popscope
+                                                   ofs0025:
+                                                            pushbyte 0
+                                                            setlocal3
+                                                            jump ofs0058
+                                                   ofs002c:
+                                                            label
+                                                            getlocal1
+                                                            getproperty QName(PackageNamespace(""),"subs")
+                                                            getlocal3
+                                                            getproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                                            coerce QName(PackageNamespace("models.vo"),"SkillConfigVO")
+                                                            setlocal2
+                                                            getlocal2
+                                                            getlocal1
+                                                            getproperty QName(PackageNamespace(""),"buff_add_level")
+                                                            setproperty QName(PackageNamespace(""),"buff_add_level")
+                                                            getlocal2
+                                                            getproperty QName(PackageNamespace(""),"subs")
+                                                            getproperty QName(PackageNamespace(""),"length")
+                                                            pushbyte 0
+                                                            ifngt ofs0056
+                                                            findpropstrict QName(PrivateNamespace("models.vo:SkillConfigVO"),"updatesuba_add_level")
+                                                            getlocal2
+                                                            callpropvoid QName(PrivateNamespace("models.vo:SkillConfigVO"),"updatesuba_add_level"), 1
+                                                   ofs0056:
+                                                            inclocal_i 3
+                                                   ofs0058:
+                                                            getlocal3
+                                                            getlocal1
+                                                            getproperty QName(PackageNamespace(""),"subs")
+                                                            getproperty QName(PackageNamespace(""),"length")
+                                                            iflt ofs002c
+                                                            returnvoid
+                                                         end ; code
+                                                         try from ofs0007 to ofs0014 target ofs0018 type QName(PackageNamespace(""),"Error") name QName(PackageInternalNs("models.vo"),"error") end
+                                                      end ; body
+                                                   end ; method
+                                                }
+                                                
+                                                public function getSkillCountAdd(param1:int) : Number
+                                                {
+                                                   trait method QName(PackageNamespace(""),"getSkillCountAdd")
+                                                      dispid 0
+                                                      method
+                                                         name "getSkillCountAdd"
+                                                         flag HAS_PARAM_NAMES
+                                                         param QName(PackageNamespace(""),"int")
+                                                         paramname "skillLev"
+                                                         returns QName(PackageNamespace(""),"Number")
+                                                         
+                                                         body
+                                                            maxstack 3
+                                                            localcount 3
+                                                            initscopedepth 0
+                                                            maxscopedepth 1
+                                                            
+                                                            code
+                                                               getlocal0
+                                                               pushscope
+                                                               getlocal0
+                                                               getproperty QName(PackageNamespace(""),"skillCountAdd")
+                                                               getlocal1
+                                                               pushbyte 1
+                                                               subtract
+                                                               getproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                                               convert_d
+                                                               setlocal2
+                                                               getlocal0
+                                                               getproperty QName(PackageNamespace(""),"skillCountAdd")
+                                                               dup
+                                                               iffalse ofs0022
+                                                               pop
+                                                               getlocal0
+                                                               getproperty QName(PackageNamespace(""),"skillCountAdd")
+                                                               getproperty QName(PackageNamespace(""),"length")
+                                                               getlocal1
+                                                               lessthan
+                                                      ofs0022:
+                                                               iffalse ofs0039
+                                                               getlocal0
+                                                               getproperty QName(PackageNamespace(""),"skillCountAdd")
+                                                               getlocal0
+                                                               getproperty QName(PackageNamespace(""),"skillCountAdd")
+                                                               getproperty QName(PackageNamespace(""),"length")
+                                                               pushbyte 1
+                                                               subtract
+                                                               getproperty MultinameL([PrivateNamespace("models.vo:SkillConfigVO"),ProtectedNamespace("models.vo:SkillConfigVO"),StaticProtectedNs("models.vo:SkillConfigVO"),StaticProtectedNs("com.game.utils:VoBasic"),StaticProtectedNs("Object"),PackageNamespace("models.vo"),PackageInternalNs("models.vo"),PrivateNamespace("FilePrivateNS:SkillConfigVO"),PackageNamespace(""),Namespace("http://adobe.com/AS3/2006/builtin")])
+                                                               convert_d
+                                                               setlocal2
+                                                      ofs0039:
+                                                               getlex QName(PackageNamespace(""),"isNaN")
+                                                               getglobalscope
+                                                               getlocal2
+                                                               call 1
+                                                               iffalse ofs0047
+                                                               pushdouble 0
+                                                               setlocal2
+                                                      ofs0047:
+                                                               getlocal2
+                                                               returnvalue
+                                                            end ; code
+                                                         end ; body
+                                                      end ; method
+                                                   }
+                                                   
+                                                   public function setLevel1() : void
+                                                   {
+                                                      trait method QName(PackageNamespace(""),"setLevel1")
+                                                         dispid 0
+                                                         method
+                                                            name "setLevel1"
+                                                            returns QName(PackageNamespace(""),"void")
+                                                            
+                                                            body
+                                                               maxstack 3
+                                                               localcount 3
+                                                               initscopedepth 0
+                                                               maxscopedepth 2
+                                                               
+                                                               code
+                                                                  getlocal0
+                                                                  pushscope
+                                                         ofs0002:
+                                                                  getlocal0
+                                                                  pushbyte 0
+                                                                  pushbyte 0
+                                                                  callpropvoid QName(PackageNamespace(""),"updateBuff"), 2
+                                                         ofs000b:
+                                                                  jump ofs001b
+                                                         ofs000f:
+                                                                  getlocal0
+                                                                  pushscope
+                                                                  newcatch 0
+                                                                  dup
+                                                                  setlocal2
+                                                                  dup
+                                                                  pushscope
+                                                                  swap
+                                                                  setslot 1
+                                                                  popscope
+                                                         ofs001b:
+                                                                  getlocal0
+                                                                  pushtrue
+                                                                  setproperty QName(PrivateNamespace("models.vo:SkillConfigVO"),"_isSetBuff1")
+                                                                  returnvoid
+                                                               end ; code
+                                                               try from ofs0002 to ofs000b target ofs000f type QName(PackageNamespace(""),"Error") name QName(PackageInternalNs("models.vo"),"error") end
+                                                            end ; body
+                                                         end ; method
+                                                      }
+                                                   }
+                                                }
+                                                
+                                                method
+                                                   name null
+                                                   returns null
+                                                   
+                                                   body
+                                                      maxstack 3
+                                                      localcount 1
+                                                      initscopedepth 0
+                                                      maxscopedepth 3
+                                                      
+                                                      code
+                                                         getlocal0
+                                                         pushscope
+                                                         getscopeobject 0
+                                                         getlex QName(PackageNamespace(""),"Object")
+                                                         pushscope
+                                                         getlex QName(PackageNamespace("com.game.utils"),"VoBasic")
+                                                         dup
+                                                         pushscope
+                                                         newclass 140
+                                                         popscope
+                                                         popscope
+                                                         initproperty QName(PackageNamespace("models.vo"),"SkillConfigVO")
+                                                         returnvoid
+                                                      end ; code
+                                                   end ; body
+                                                end ; method
+                                                

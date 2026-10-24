@@ -9,7 +9,7 @@ namespace WukongKnight
         private CharacterAssets? assets;
         private WukongRuntime? runtime;
         public WukongKnightMod() : base("Wukong Knight") { }
-        public override string GetVersion() => "0.2.0-dev";
+        public override string GetVersion() => "0.4.4-dev";
 
         public override void Initialize()
         {
@@ -19,7 +19,7 @@ namespace WukongKnight
                 string directory = Path.GetDirectoryName(typeof(WukongKnightMod).Assembly.Location) ?? throw new InvalidOperationException("Mod directory unavailable.");
                 assets = CharacterAssets.Load(Path.Combine(directory, "character"));
                 runtime = new WukongRuntime(assets, message => LogError(message));
-                Log("Wukong default staff appearance and grounded four-stage combo enabled. Client acceptance pending.");
+                Log("Wukong artwork resized offline to 1.5x; Flame Dash replaces normal dash visuals and damages each target once; native dash movement/cooldown and hero colliders retained. Client acceptance pending.");
             }
             catch (Exception error)
             {

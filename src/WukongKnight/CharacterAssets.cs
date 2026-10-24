@@ -28,7 +28,7 @@ namespace WukongKnight
     /// <summary>The only decoder for version 1 of the generated character contract.</summary>
     internal sealed class CharacterAssets : IDisposable
     {
-        private static readonly string[] RequiredClips = { "idle", "walk", "runNormal", "jumpNormal", "jumpTwo", "jumpDown", "jumpAttack", "hurtStand", "dead", "attack1", "attack2", "attack3", "attack4" };
+        private static readonly string[] RequiredClips = { "idle", "walk", "runNormal", "jumpNormal", "jumpTwo", "jumpDown", "jumpAttack", "hurtStand", "dead", "attack1", "attack2", "attack3", "attack4", "flameDash", "effect5", "fireDemonAir", "fireDemonAirEffect", "fireDemonDive", "fireDemonLand", "fireDemonImpact" };
         private readonly List<Texture2D> textures = new List<Texture2D>();
         private readonly List<Sprite> sprites = new List<Sprite>();
         public Dictionary<string, CharacterClip> Clips { get; } = new Dictionary<string, CharacterClip>();
@@ -36,6 +36,8 @@ namespace WukongKnight
         public double FrameRate { get; private set; }
         public double GraceSeconds { get; private set; }
         public float NominalBodyHeight { get; private set; }
+        public float FeetOffsetPixels { get; private set; }
+        public float ArtworkScale { get; private set; }
 
         public static CharacterAssets Load(string directory)
         {
@@ -56,6 +58,11 @@ namespace WukongKnight
             Require(rootX >= 0 && rootX <= canvasWidth && rootY >= 0 && rootY <= canvasHeight, "Invalid root.");
             NominalBodyHeight = (float)Number(root, "nominal_body_height");
             Require(NominalBodyHeight > 0, "Invalid nominal body height.");
+            FeetOffsetPixels = root["feet_offset_pixels"] == null ? 6f : (float)Number(root, "feet_offset_pixels");
+            Require(FeetOffsetPixels >= 0 && FeetOffsetPixels <= canvasHeight, "Invalid feet offset.");
+            // Used for effect registration only; PNG resizing already owns appearance size.
+            ArtworkScale = root["asset_transform"] == null ? 1f : (float)Number(root["asset_transform"]!, "scale");
+            Require(ArtworkScale > 0 && !float.IsInfinity(ArtworkScale), "Invalid artwork scale.");
             JArray atlases = Array(root, "atlases"); Require(atlases.Count > 0, "No atlases.");
             foreach (JToken page in atlases)
             {

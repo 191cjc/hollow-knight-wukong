@@ -13,8 +13,8 @@ from pathlib import Path
 import PIL
 from PIL import Image, ImageDraw
 
-from legacy_dragonbones import Sampler
-from validate_character import REQUIRED_CLIPS, sha256 as file_hash, validate_character
+from legacy_dragonbones import Affine, Draw, Sampler, normalize_filler, selected_frame, transform
+from validate_character import OPTIONAL_CLIPS, REQUIRED_CLIPS, sha256 as file_hash, validate_character
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -131,18 +131,56 @@ def write_previews(output, rendered, root):
     sheet.save(output / "edges-facing.png")
 
 
-def bake_character(project_root=PROJECT_ROOT, output=None, force=False, previews=True):
+def flame_dash_samples(sampler, source):
+    """Read the actual single-bone local DragonBones 3.0 flame overlay only."""
+    skeleton = read_json(source / "skeleton.json")
+    if skeleton.get("version") != "3.0" or str(skeleton.get("isGlobal")) != "0":
+        raise ValueError("Unexpected flame overlay format")
+    armature = next(a for a in skeleton["armature"] if a["name"] == "effect2")
+    if len(armature["bone"]) != 1 or "parent" in armature["bone"][0] or len(armature["skin"][0]["slot"]) != 1:
+        raise ValueError("Flame overlay must remain a single local bone/slot")
+    animation = next(a for a in armature["animation"] if a["name"] == "effect2")
+    timeline = animation["timeline"][0]
+    slot = armature["skin"][0]["slot"][0]
+    atlas = read_json(source / "texture.json")
+    with Image.open(source / "texture.png") as image:
+        image, _ = normalize_filler(image)
+        for item in atlas["SubTexture"]:
+            if item.get("rotated") or item.get("frameWidth") or item.get("frameHeight"):
+                raise ValueError("Trimmed/rotated flame overlay textures are unsupported")
+            x, y, width, height = (item[k] for k in ("x", "y", "width", "height"))
+            sampler.images["flame/" + item["name"]] = image.crop((x, y, x + width, y + height))
+    samples = []
+    for tick in range(12):
+        raw, _ = selected_frame(timeline, animation["duration"], 4 + tick)
+        display = slot["display"][raw.get("displayIndex", 0)]
+        origin = display.get("transform", {})
+        matrix = transform(armature["bone"][0].get("transform", {})).then_local(
+            transform(raw.get("transform", {}))).then_local(Affine(tx=origin.get("x", 0), ty=origin.get("y", 0)))
+        effect = Draw("flame/" + display["name"], matrix, 1.0, ("flame_dash_fx",))
+        samples.append([effect] + sampler.sample("effect2", 4 + tick))
+    return samples
+
+
+def bake_character(project_root=PROJECT_ROOT, output=None, force=False, previews=True, profile_path=None):
     project_root = Path(project_root)
-    profile_path = project_root / "data/character/wukong-staff.json"
+    profile_path = Path(profile_path) if profile_path else project_root / "data/character/wukong-staff.json"
     profile = read_json(profile_path)
     if (profile["profile_version"] != 1 or profile["filler_normalization"] != "exact_rgba_0_0_0_1"
-            or tuple(profile["clips"]) != REQUIRED_CLIPS):
+            or not set(REQUIRED_CLIPS) <= set(profile["clips"]) <= set(REQUIRED_CLIPS + OPTIONAL_CLIPS)):
         raise ValueError("Unsupported bake profile")
     source = project_root / profile["source_directory"]
     output = Path(output) if output is not None else project_root / "assets/processed/wukong"
     hashes = {name: file_hash(source / name) for name in ("skeleton.json", "texture.json", "texture.png")}
     code_hashes = {name: file_hash(Path(__file__).parent / name) for name in ("bake_character.py", "legacy_dragonbones.py", "validate_character.py")}
     inputs = {"sources": hashes, "profile": file_hash(profile_path), "code": code_hashes, "pillow": PIL.__version__}
+    if profile.get("flame_dash_effect_source"):
+        inputs["flame_sources"] = {name: file_hash(project_root / profile["flame_dash_effect_source"] / name)
+                                  for name in ("skeleton.json", "texture.json", "texture.png")}
+    if profile.get("fire_demon_effect_source"):
+        inputs["fire_demon_sources"] = {name: file_hash(project_root / profile["fire_demon_effect_source"] / name)
+                                      for name in ("man_skeleton.json", "man_texture.json", "man_texture.png")}
+        inputs["fire_demon_code"] = file_hash(Path(__file__).parent / "fire_demon_assets.py")
     fingerprint = sha256(json.dumps(inputs, sort_keys=True).encode()).hexdigest()
     if not force and (output / "character.json").exists():
         try:
@@ -155,7 +193,18 @@ def bake_character(project_root=PROJECT_ROOT, output=None, force=False, previews
         sampler = Sampler(read_json(source / "skeleton.json"), read_json(source / "texture.json"), image, profile)
     samples = {name: [sampler.sample(name, tick) for tick in range(sampler.animation(profile["armature"], name)["duration"])]
                for name in profile["clips"]}
-    bounds = [sampler.bounds(draws) for frames in samples.values() for draws in frames]
+    animations = {name: sampler.animation(profile["armature"], name) for name in profile["clips"]}
+    if profile.get("flame_dash_effect_source"):
+        samples["flameDash"] = flame_dash_samples(sampler, project_root / profile["flame_dash_effect_source"])
+        animations["flameDash"] = {"duration": 12, "loop": 0}
+    if profile.get("fire_demon_effect_source"):
+        from fire_demon_assets import fire_demon_samples
+        extra = fire_demon_samples(sampler, project_root / profile["fire_demon_effect_source"])
+        samples.update(extra)
+        animations.update({name: {"duration": len(frames), "loop": 1} for name, frames in extra.items()})
+    bounds = [sampler.bounds(draws) for frames in samples.values() for draws in frames if draws]
+    if not bounds:
+        raise ValueError("No visible character frames")
     padding = profile["canvas_padding"]
     left, top = math.floor(min(b[0] for b in bounds)) - padding, math.floor(min(b[1] for b in bounds)) - padding
     right, bottom = math.ceil(max(b[2] for b in bounds)) + padding, math.ceil(max(b[3] for b in bounds)) + padding
@@ -216,7 +265,7 @@ def bake_character(project_root=PROJECT_ROOT, output=None, force=False, previews
             old.unlink()
     clips = {}
     for name, indices in frame_indices.items():
-        animation = sampler.animation(profile["armature"], name)
+        animation = animations[name]
         frames = []
         for index in indices:
             cell = index % capacity

@@ -17,9 +17,9 @@
 
 ## 主角色动作
 
-- `assets/zmxy4/animations/2001/manV535`：`idle` (22 帧)、`walk` (24 帧)、`runNormal` (12 帧)、`runAttack` (15 帧)、`attack1` (12 帧)、`attack2` (15 帧)、`attack3` (18 帧)、`attack4` (20 帧)、`hurtStand` (49 帧)、`dead` (65 帧)、`jumpNormal` (35 帧)、`jumpTwo` (12 帧)、`jumpAttack` (10 帧)、`jumpDown` (35 帧)、`effect1` (15 帧)、`effect2` (73 帧)、`effect3` (16 帧)、`effect4` (17 帧)、`effect5` (60 帧)、`ride` (60 帧)、`runNormal1` (14 帧)
-- `assets/zmxy4/animations/2006/manV535`：`idle` (18 帧)、`walk` (24 帧)、`runNormal` (12 帧)、`runAttack` (15 帧)、`attack1` (9 帧)、`attack2` (7 帧)、`attack3` (8 帧)、`attack4` (14 帧)、`attack5` (15 帧)、`hurtStand` (50 帧)、`dead` (65 帧)、`jumpNormal` (35 帧)、`jumpTwo` (12 帧)、`jumpAttack` (15 帧)、`jumpDown` (35 帧)、`effect1` (32 帧)、`effect2` (84 帧)、`effect21` (114 帧)、`effect22` (84 帧)、`effect3` (74 帧)、`effect4` (71 帧)、`effect5` (105 帧)、`ride` (60 帧)、`runNormal1` (14 帧)
-- `assets/zmxy4/animations/2011/manV535`：`idle` (36 帧)、`hurtStand` (18 帧)、`walk_r` (18 帧)、`walk_l` (18 帧)、`dead` (52 帧)、`attack1` (20 帧)、`effect1` (160 帧)
+- `assets\zmxy4\animations\2001\manV535`：`idle` (22 帧)、`walk` (24 帧)、`runNormal` (12 帧)、`runAttack` (15 帧)、`attack1` (12 帧)、`attack2` (15 帧)、`attack3` (18 帧)、`attack4` (20 帧)、`hurtStand` (49 帧)、`dead` (65 帧)、`jumpNormal` (35 帧)、`jumpTwo` (12 帧)、`jumpAttack` (10 帧)、`jumpDown` (35 帧)、`effect1` (15 帧)、`effect2` (73 帧)、`effect3` (16 帧)、`effect4` (17 帧)、`effect5` (60 帧)、`ride` (60 帧)、`runNormal1` (14 帧)
+- `assets\zmxy4\animations\2006\manV535`：`idle` (18 帧)、`walk` (24 帧)、`runNormal` (12 帧)、`runAttack` (15 帧)、`attack1` (9 帧)、`attack2` (7 帧)、`attack3` (8 帧)、`attack4` (14 帧)、`attack5` (15 帧)、`hurtStand` (50 帧)、`dead` (65 帧)、`jumpNormal` (35 帧)、`jumpTwo` (12 帧)、`jumpAttack` (15 帧)、`jumpDown` (35 帧)、`effect1` (32 帧)、`effect2` (84 帧)、`effect21` (114 帧)、`effect22` (84 帧)、`effect3` (74 帧)、`effect4` (71 帧)、`effect5` (105 帧)、`ride` (60 帧)、`runNormal1` (14 帧)
+- `assets\zmxy4\animations\2011\manV535`：`idle` (36 帧)、`hurtStand` (18 帧)、`walk_r` (18 帧)、`walk_l` (18 帧)、`dead` (52 帧)、`attack1` (20 帧)、`effect1` (160 帧)
 
 ## 角色配置指向的技能
 

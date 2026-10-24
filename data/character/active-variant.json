@@ -1,0 +1,6 @@
+{
+  "source_directory": "assets/processed/wukong-fire-demon-v04-original",
+  "output_directory": "assets/processed/variants/wukong-fire-demon-v04-1p5",
+  "scale": 1.5,
+  "bake_profile": "data/character/wukong-staff-fire-demon.json"
+}

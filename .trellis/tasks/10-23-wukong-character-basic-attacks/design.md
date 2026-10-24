@@ -91,3 +91,37 @@ NailSlash.FixedUpdate 存在固定步激活和关闭延迟，必须据此安排�
 服务器没有已确认的游戏安装；交付可以达到代码实现、自动检查、预览和开发包就绪，客户端验收保留明确待办。尚未反编译的原作 AS3 不阻塞本次移植设计，但不能宣称原版逐帧复刻。
 
 回退方式为禁用/移除本 Mod，由统一清理恢复原角色；依赖和生成资源可重新准备，不修改游戏安装或原始归档。
+
+
+## 0.4.2 user-reported skill corrections
+
+Reject sensor/weapon colliders that previously routed room-wide damage to boss
+HealthManager ancestors. Share native layer/hurtbox filtering across both skills.
+Raise pre-finisher air art and damage by 0.25 native hero collider heights and
+suppress only the inherited Quake landing BigShake actions, restoring on cleanup.
+Preserve native movement, original art, dimensions, immunity and fixed damage.
+Build, run regression checks, back up and install with the game stopped; gameplay
+acceptance remains pending. See research/skill-collision-and-shake-20261024.md.
+
+
+## 0.4.3 source presentation restoration
+
+The user supersedes centering/raising and the native landing adaptation. Restore
+original directional spawn and mask conversion, use the untouched main effect5
+character flashes/blink gaps, and trigger the finisher on air-effect expiry in
+midair. Hold native antic through the source clock, then restore through native
+Quake Finish/Spell End without forced diving. Preserve full-cast immunity, fixed
+damage and the 0.4.2 hurtbox filter. Reuse existing original assets; do not overwrite
+any originals/variants. Run source-image/core/build/preview/closure checks and
+back up/install directly. See research/fire-demon-source-restoration-20261024.md.
+
+
+## 0.4.4 Fire Demon movement correction
+
+The user reports drift from movement input during the extended custom cast.
+Maintain native input denial, neutral axes/velocity and no gravity throughout
+preparation, air and finisher; observe before input and around native physics.
+Keep original updates running and source effect5 animation/midair finisher,
+damage/immunity unchanged. Release before native recovery and stop writes on
+cancel/detach. Build/check, back up/install and verify; client movement, pause
+and recovery acceptance remains pending. See research/fire-demon-movement-lock-20261024.md.

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
+using WukongKnight.Core;
 
 namespace WukongKnight
 {
@@ -23,8 +24,18 @@ namespace WukongKnight
         private readonly FieldInfo actions = typeof(InputHandler).GetField("inputActions", Instance) ?? throw new MissingFieldException("InputHandler.inputActions");
         private readonly MethodInfo doAttack = Method(typeof(HeroController), "DoAttack");
         private readonly MethodInfo reset = Method(typeof(HeroController), "ResetAttacks");
+        private readonly MethodInfo resetInput = Method(typeof(HeroController), "ResetInput");
         private readonly FieldInfo evasion = Field(typeof(HealthManager), "evasionByHitRemaining", typeof(float));
         private readonly FieldInfo contacts = Field(typeof(DamageEnemies), "enteredColliders", typeof(List<Collider2D>));
+        private readonly FieldInfo dashTimer = Field(typeof(HeroController), "dash_timer", typeof(float));
+        private readonly FieldInfo dashDuration = Field(typeof(HeroController), "DASH_TIME", typeof(float));
+        private readonly FieldInfo sharpShadow = Field(typeof(HeroController), "sharpShadowPrefab", typeof(GameObject));
+        private readonly MethodInfo takeDamageEvent = typeof(FSMUtility).GetMethod("SendEventToGameObject", BindingFlags.Public | BindingFlags.Static,
+            null, new[] { typeof(GameObject), typeof(string), typeof(bool) }, null) ?? throw new MissingMethodException("FSMUtility.SendEventToGameObject(GameObject,string,bool)");
+        private readonly FieldInfo dashEffect = Field(typeof(HeroController), "dashEffect", typeof(GameObject));
+        private readonly FieldInfo dashBurst = FieldByTypeName(typeof(HeroController), "dashBurst", "PlayMakerFSM");
+        private readonly FieldInfo dashParticles = Field(typeof(HeroController), "dashParticlesPrefab", typeof(GameObject));
+        private readonly FieldInfo shadowParticles = Field(typeof(HeroController), "shadowdashParticlesPrefab", typeof(GameObject));
         private FieldInfo? attackAction;
         private PropertyInfo? wasPressed;
         private FieldInfo? jumpAction;
@@ -54,10 +65,87 @@ namespace WukongKnight
         public PolygonCollider2D ClashPolygon(NailSlash slash) => (PolygonCollider2D)clash.GetValue(slash);
         public MeshRenderer SlashRenderer(NailSlash slash) => (MeshRenderer)mesh.GetValue(slash);
         public bool Evading(HealthManager target) => (float)evasion.GetValue(target) > 0;
+        public int SkillQueryMask => SkillTargetPolicy.QueryMask(Physics2D.GetLayerCollisionMask(SkillTargetPolicy.AttackLayer));
+
+        public Component? SkillTarget(Collider2D collider, HeroController hero, int queryMask)
+        {
+            if (collider == null || !collider.enabled || !collider.gameObject.activeInHierarchy ||
+                collider.transform == hero.transform || collider.transform.IsChildOf(hero.transform) ||
+                collider.CompareTag("Geo") || !SkillTargetPolicy.Allows(collider.gameObject.layer, queryMask, false)) return null;
+            Transform target = collider.transform;
+            for (int depth = 0; target != null && depth < 3; depth++, target = target.parent)
+            {
+                if (!(target.GetComponent<IHitResponder>() is Component component)) continue;
+                return SkillTargetPolicy.Allows(collider.gameObject.layer, queryMask, component is HealthManager) ? component : null;
+            }
+            return null;
+        }
         public void ClearContacts(DamageEnemies source) => ((List<Collider2D>)contacts.GetValue(source)).Clear();
         public void DoAttack(HeroController hero) => doAttack.Invoke(hero, null);
         public void Reset(HeroController hero) => reset.Invoke(hero, null);
+        public void ResetInput(HeroController hero) => resetInput.Invoke(hero, null);
         public void ClearQueue(HeroController hero) { queue.SetValue(hero, false); queueSteps.SetValue(hero, 0); }
+
+        public double DashProgress(HeroController hero)
+        {
+            float durationValue = (float)dashDuration.GetValue(hero);
+            return durationValue <= 0 ? 0 : Math.Min(1, Math.Max(0, (float)dashTimer.GetValue(hero) / durationValue));
+        }
+
+        public bool SuspendSharpShadow(HeroController hero)
+        {
+            GameObject? effect = sharpShadow.GetValue(hero) as GameObject;
+            bool active = effect != null && effect.activeSelf;
+            if (active) effect!.SetActive(false); // The flame owns this dash's damage, avoiding a second source.
+            return active;
+        }
+
+        public void RestoreSharpShadow(HeroController hero, bool wasActive)
+        {
+            GameObject? effect = sharpShadow.GetValue(hero) as GameObject;
+            if (wasActive && effect != null && hero.cState.dashing && hero.cState.shadowDashing) effect.SetActive(true);
+        }
+
+        public IEnumerable<Renderer> DashRenderers(HeroController hero)
+        {
+            Component? burst = dashBurst.GetValue(hero) as Component;
+            if (burst != null)
+                foreach (Renderer renderer in burst.GetComponentsInChildren<Renderer>(true)) yield return renderer;
+            foreach (FieldInfo field in new[] { dashEffect, dashParticles, shadowParticles })
+            {
+                GameObject? effect = field.GetValue(hero) as GameObject;
+                if (effect != null)
+                    foreach (Renderer renderer in effect.GetComponentsInChildren<Renderer>(true)) yield return renderer;
+            }
+        }
+
+        public void FlameDashHit(GameObject source, GameObject target, float direction, Func<bool> stillOwned)
+        {
+            if (!stillOwned() || source == null || target == null) return;
+            int damage = Math.Max(1, PlayerData.instance.GetInt("nailDamage"));
+            if (PlayerData.instance.GetBool("equippedCharm_16") && PlayerData.instance.GetBool("equippedCharm_31"))
+                damage = (int)Math.Round(damage * 1.5f);
+            // Bind the exact string overload without adding a distributable PlayMaker reference.
+            takeDamageEvent.Invoke(null, new object[] { target, "TAKE DAMAGE", false });
+            // The FSM can synchronously interrupt the dash, replace the hero, or unload the Mod.
+            if (!stillOwned() || source == null || target == null) return;
+            HitTaker.Hit(target, new HitInstance {
+                Source = source, AttackType = AttackTypes.SharpShadow, DamageDealt = damage,
+                Direction = direction, IgnoreInvulnerable = false, MagnitudeMultiplier = 1f, Multiplier = 1f
+            }, 1);
+        }
+
+        public void FireDemonHit(GameObject source, GameObject target, int damage, float direction, bool finisher, Func<bool> stillOwned)
+        {
+            if (!stillOwned() || source == null || target == null) return;
+            takeDamageEvent.Invoke(null, new object[] { target, "TAKE DAMAGE", false });
+            if (!stillOwned() || source == null || target == null) return;
+            HitTaker.Hit(target, new HitInstance {
+                Source = source, AttackType = AttackTypes.Spell, DamageDealt = damage,
+                Direction = direction, CircleDirection = finisher, IgnoreInvulnerable = false,
+                MagnitudeMultiplier = finisher ? 1f : 0.15f, Multiplier = 1f
+            }, 1);
+        }
 
         public void OwnTiming(HeroController hero, long token, double seconds, double now)
         {
@@ -95,6 +183,12 @@ namespace WukongKnight
         {
             FieldInfo field = type.GetField(name, Instance) ?? throw new MissingFieldException(type.FullName, name);
             if (field.FieldType != expected) throw new MissingFieldException("Unexpected v77 field type: " + type.Name + "." + name);
+            return field;
+        }
+        private static FieldInfo FieldByTypeName(Type type, string name, string expected)
+        {
+            FieldInfo field = type.GetField(name, Instance) ?? throw new MissingFieldException(type.FullName, name);
+            if (field.FieldType.FullName != expected) throw new MissingFieldException("Unexpected v77 field type: " + type.Name + "." + name);
             return field;
         }
         private static MethodInfo Method(Type type, string name) => type.GetMethod(name, Instance, null, Type.EmptyTypes, null) ?? throw new MissingMethodException(type.FullName, name);
