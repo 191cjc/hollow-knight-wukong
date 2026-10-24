@@ -13,5 +13,9 @@
     <Compile Include="../../src/WukongKnight/Core/SpellHitLedger.cs" Link="SpellHitLedger.cs" />
     <Compile Include="../../src/WukongKnight/Core/SkillTargetPolicy.cs" Link="SkillTargetPolicy.cs" />
     <Compile Include="../../src/WukongKnight/Core/FireDemonTimeline.cs" Link="FireDemonTimeline.cs" />
+    <Compile Include="../../src/WukongKnight/Core/BloodthirstyBuff.cs" Link="BloodthirstyBuff.cs" />
+    <Compile Include="../../src/WukongKnight/Core/FireEyeCastClock.cs" Link="FireEyeCastClock.cs" />
+    <Compile Include="../../src/WukongKnight/Core/SourceDeathClock.cs" Link="SourceDeathClock.cs" />
+    <Compile Include="../../src/WukongKnight/Core/FlameStormRules.cs" Link="FlameStormRules.cs" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,165 @@
+
+System.Void NailSlash::StartSlash()
+IL_0000: ldarg.0
+IL_0001: ldfld UnityEngine.AudioSource NailSlash::audio
+IL_0006: callvirt System.Void UnityEngine.AudioSource::Play()
+IL_000b: ldarg.0
+IL_000c: ldarg.0
+IL_000d: ldfld PlayMakerFSM NailSlash::slashFsm
+IL_0012: callvirt HutongGames.PlayMaker.FsmVariables PlayMakerFSM::get_FsmVariables()
+IL_0017: ldstr "direction"
+IL_001c: callvirt HutongGames.PlayMaker.FsmFloat HutongGames.PlayMaker.FsmVariables::FindFsmFloat(System.String)
+IL_0021: callvirt System.Single HutongGames.PlayMaker.FsmFloat::get_Value()
+IL_0026: stfld System.Single NailSlash::slashAngle
+IL_002b: ldarg.0
+IL_002c: ldfld System.Boolean NailSlash::mantis
+IL_0031: brfalse.s IL_0098
+IL_0033: ldarg.0
+IL_0034: ldfld System.Boolean NailSlash::longnail
+IL_0039: brfalse.s IL_0098
+IL_003b: ldarg.0
+IL_003c: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0041: ldarg.0
+IL_0042: ldflda UnityEngine.Vector3 NailSlash::scale
+IL_0047: ldfld System.Single UnityEngine.Vector3::x
+IL_004c: ldc.r4 1.4
+IL_0051: mul
+IL_0052: ldarg.0
+IL_0053: ldflda UnityEngine.Vector3 NailSlash::scale
+IL_0058: ldfld System.Single UnityEngine.Vector3::y
+IL_005d: ldc.r4 1.4
+IL_0062: mul
+IL_0063: ldarg.0
+IL_0064: ldflda UnityEngine.Vector3 NailSlash::scale
+IL_0069: ldfld System.Single UnityEngine.Vector3::z
+IL_006e: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL_0073: callvirt System.Void UnityEngine.Transform::set_localScale(UnityEngine.Vector3)
+IL_0078: ldarg.0
+IL_0079: ldfld tk2dSpriteAnimator NailSlash::anim
+IL_007e: ldarg.0
+IL_007f: ldfld System.String NailSlash::animName
+IL_0084: ldstr " M"
+IL_0089: call System.String System.String::Concat(System.String,System.String)
+IL_008e: callvirt System.Void tk2dSpriteAnimator::Play(System.String)
+IL_0093: br IL_0177
+IL_0098: ldarg.0
+IL_0099: ldfld System.Boolean NailSlash::mantis
+IL_009e: brfalse.s IL_00fd
+IL_00a0: ldarg.0
+IL_00a1: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_00a6: ldarg.0
+IL_00a7: ldflda UnityEngine.Vector3 NailSlash::scale
+IL_00ac: ldfld System.Single UnityEngine.Vector3::x
+IL_00b1: ldc.r4 1.25
+IL_00b6: mul
+IL_00b7: ldarg.0
+IL_00b8: ldflda UnityEngine.Vector3 NailSlash::scale
+IL_00bd: ldfld System.Single UnityEngine.Vector3::y
+IL_00c2: ldc.r4 1.25
+IL_00c7: mul
+IL_00c8: ldarg.0
+IL_00c9: ldflda UnityEngine.Vector3 NailSlash::scale
+IL_00ce: ldfld System.Single UnityEngine.Vector3::z
+IL_00d3: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL_00d8: callvirt System.Void UnityEngine.Transform::set_localScale(UnityEngine.Vector3)
+IL_00dd: ldarg.0
+IL_00de: ldfld tk2dSpriteAnimator NailSlash::anim
+IL_00e3: ldarg.0
+IL_00e4: ldfld System.String NailSlash::animName
+IL_00e9: ldstr " M"
+IL_00ee: call System.String System.String::Concat(System.String,System.String)
+IL_00f3: callvirt System.Void tk2dSpriteAnimator::Play(System.String)
+IL_00f8: br IL_0177
+IL_00fd: ldarg.0
+IL_00fe: ldfld System.Boolean NailSlash::longnail
+IL_0103: brfalse.s IL_0155
+IL_0105: ldarg.0
+IL_0106: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_010b: ldarg.0
+IL_010c: ldflda UnityEngine.Vector3 NailSlash::scale
+IL_0111: ldfld System.Single UnityEngine.Vector3::x
+IL_0116: ldc.r4 1.15
+IL_011b: mul
+IL_011c: ldarg.0
+IL_011d: ldflda UnityEngine.Vector3 NailSlash::scale
+IL_0122: ldfld System.Single UnityEngine.Vector3::y
+IL_0127: ldc.r4 1.15
+IL_012c: mul
+IL_012d: ldarg.0
+IL_012e: ldflda UnityEngine.Vector3 NailSlash::scale
+IL_0133: ldfld System.Single UnityEngine.Vector3::z
+IL_0138: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL_013d: callvirt System.Void UnityEngine.Transform::set_localScale(UnityEngine.Vector3)
+IL_0142: ldarg.0
+IL_0143: ldfld tk2dSpriteAnimator NailSlash::anim
+IL_0148: ldarg.0
+IL_0149: ldfld System.String NailSlash::animName
+IL_014e: callvirt System.Void tk2dSpriteAnimator::Play(System.String)
+IL_0153: br.s IL_0177
+IL_0155: ldarg.0
+IL_0156: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_015b: ldarg.0
+IL_015c: ldfld UnityEngine.Vector3 NailSlash::scale
+IL_0161: callvirt System.Void UnityEngine.Transform::set_localScale(UnityEngine.Vector3)
+IL_0166: ldarg.0
+IL_0167: ldfld tk2dSpriteAnimator NailSlash::anim
+IL_016c: ldarg.0
+IL_016d: ldfld System.String NailSlash::animName
+IL_0172: callvirt System.Void tk2dSpriteAnimator::Play(System.String)
+IL_0177: ldarg.0
+IL_0178: ldfld System.Boolean NailSlash::fury
+IL_017d: brfalse.s IL_019a
+IL_017f: ldarg.0
+IL_0180: ldfld tk2dSpriteAnimator NailSlash::anim
+IL_0185: ldarg.0
+IL_0186: ldfld System.String NailSlash::animName
+IL_018b: ldstr " F"
+IL_0190: call System.String System.String::Concat(System.String,System.String)
+IL_0195: callvirt System.Void tk2dSpriteAnimator::Play(System.String)
+IL_019a: ldarg.0
+IL_019b: ldfld tk2dSpriteAnimator NailSlash::anim
+IL_01a0: ldc.i4.0
+IL_01a1: callvirt System.Void tk2dSpriteAnimator::PlayFromFrame(System.Int32)
+IL_01a6: ldarg.0
+IL_01a7: ldc.i4.0
+IL_01a8: stfld System.Int32 NailSlash::stepCounter
+IL_01ad: ldarg.0
+IL_01ae: ldc.i4.0
+IL_01af: stfld System.Int32 NailSlash::polyCounter
+IL_01b4: ldarg.0
+IL_01b5: ldfld UnityEngine.PolygonCollider2D NailSlash::poly
+IL_01ba: ldc.i4.0
+IL_01bb: callvirt System.Void UnityEngine.Behaviour::set_enabled(System.Boolean)
+IL_01c0: ldarg.0
+IL_01c1: ldfld UnityEngine.PolygonCollider2D NailSlash::clashTinkPoly
+IL_01c6: ldc.i4.0
+IL_01c7: callvirt System.Void UnityEngine.Behaviour::set_enabled(System.Boolean)
+IL_01cc: ldarg.0
+IL_01cd: ldc.i4.0
+IL_01ce: stfld System.Boolean NailSlash::animCompleted
+IL_01d3: ldarg.0
+IL_01d4: ldfld tk2dSpriteAnimator NailSlash::anim
+IL_01d9: ldarg.0
+IL_01da: ldftn System.Void NailSlash::Disable(tk2dSpriteAnimator,tk2dSpriteAnimationClip)
+IL_01e0: newobj System.Void System.Action`2<tk2dSpriteAnimator,tk2dSpriteAnimationClip>::.ctor(System.Object,System.IntPtr)
+IL_01e5: stfld System.Action`2<tk2dSpriteAnimator,tk2dSpriteAnimationClip> tk2dSpriteAnimator::AnimationCompleted
+IL_01ea: ldarg.0
+IL_01eb: ldc.i4.1
+IL_01ec: stfld System.Boolean NailSlash::slashing
+IL_01f1: ldarg.0
+IL_01f2: ldfld UnityEngine.MeshRenderer NailSlash::mesh
+IL_01f7: ldc.i4.1
+IL_01f8: callvirt System.Void UnityEngine.Renderer::set_enabled(System.Boolean)
+IL_01fd: ret
+
+System.Void NailSlash::SetLongnail(System.Boolean)
+IL_0000: ldarg.0
+IL_0001: ldarg.1
+IL_0002: stfld System.Boolean NailSlash::longnail
+IL_0007: ret
+
+System.Void NailSlash::SetMantis(System.Boolean)
+IL_0000: ldarg.0
+IL_0001: ldarg.1
+IL_0002: stfld System.Boolean NailSlash::mantis
+IL_0007: ret

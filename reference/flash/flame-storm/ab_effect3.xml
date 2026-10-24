@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='utf-8'?>
+<selectedSWFTags source="assets/zmxy4/raw/assets/man/2001/1V535.swf">
+  <item type="DefineShape3Tag" forceWriteAsLong="true" shapeId="32">
+    <shapeBounds type="RECT" Xmax="3740" Xmin="-1420" Ymax="100" Ymin="-1440" nbits="13" />
+    <shapes type="SHAPEWITHSTYLE" numFillBits="1" numLineBits="0">
+      <fillStyles type="FILLSTYLEARRAY">
+        <fillStyles>
+          <item type="FILLSTYLE" fillStyleType="0">
+            <color type="RGBA" alpha="127" blue="0" green="0" red="0" />
+          </item>
+        </fillStyles>
+      </fillStyles>
+      <lineStyles type="LINESTYLEARRAY">
+        <lineStyles />
+      </lineStyles>
+      <shapeRecords>
+        <item type="StyleChangeRecord" fillStyle1="1" moveBits="13" moveDeltaX="3740" moveDeltaY="-1440" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false" />
+        <item type="StraightEdgeRecord" deltaY="1540" generalLineFlag="false" numBits="10" vertLineFlag="true" />
+        <item type="StraightEdgeRecord" deltaX="-5160" generalLineFlag="false" numBits="12" vertLineFlag="false" />
+        <item type="StraightEdgeRecord" deltaY="-1540" generalLineFlag="false" numBits="10" vertLineFlag="true" />
+        <item type="StraightEdgeRecord" deltaX="5160" generalLineFlag="false" numBits="12" vertLineFlag="false" />
+        <item type="EndShapeRecord" endOfShape="0" />
+      </shapeRecords>
+    </shapes>
+  </item>
+  <item type="DefineSpriteTag" forceWriteAsLong="true" frameCount="1" hasEndTag="true" spriteId="39">
+    <subTags>
+      <item type="PlaceObject2Tag" characterId="32" depth="1" forceWriteAsLong="false" placeFlagHasCharacter="true" placeFlagHasClipActions="false" placeFlagHasClipDepth="false" placeFlagHasColorTransform="false" placeFlagHasMatrix="true" placeFlagHasName="false" placeFlagHasRatio="false" placeFlagMove="false">
+        <matrix type="MATRIX" hasRotate="false" hasScale="true" nRotateBits="0" nScaleBits="19" nTranslateBits="12" scaleX="1.5618286" scaleY="2.2077942" translateX="-1941" translateY="779" />
+      </item>
+      <item type="ShowFrameTag" forceWriteAsLong="false" />
+    </subTags>
+  </item>
+  <item type="SymbolClassTag" forceWriteAsLong="true">
+    <tags>
+      <item>48</item>
+      <item>45</item>
+      <item>44</item>
+      <item>43</item>
+      <item>42</item>
+      <item>40</item>
+      <item>39</item>
+      <item>38</item>
+      <item>37</item>
+      <item>36</item>
+      <item>35</item>
+      <item>34</item>
+      <item>33</item>
+      <item>31</item>
+      <item>30</item>
+      <item>29</item>
+      <item>28</item>
+      <item>27</item>
+      <item>26</item>
+      <item>25</item>
+      <item>24</item>
+      <item>23</item>
+      <item>22</item>
+      <item>21</item>
+      <item>20</item>
+      <item>19</item>
+      <item>18</item>
+      <item>17</item>
+      <item>16</item>
+      <item>15</item>
+      <item>14</item>
+      <item>13</item>
+      <item>12</item>
+      <item>9</item>
+      <item>6</item>
+      <item>3</item>
+      <item>2</item>
+    </tags>
+    <names>
+      <item>ab_attack1</item>
+      <item>ab_attack2</item>
+      <item>ab_attack3</item>
+      <item>ab_attack4</item>
+      <item>ab_effect1</item>
+      <item>ab_effect2</item>
+      <item>ab_effect3</item>
+      <item>ab_effect4</item>
+      <item>ab_effect5</item>
+      <item>ab_effect5_1</item>
+      <item>ab_effect51</item>
+      <item>ab_jumpAttack</item>
+      <item>ab_runAttack</item>
+      <item>cb_attack1</item>
+      <item>cb_attack2</item>
+      <item>cb_attack3</item>
+      <item>cb_attack4</item>
+      <item>cb_dead</item>
+      <item>cb_effect1</item>
+      <item>cb_effect2</item>
+      <item>cb_effect3</item>
+      <item>cb_effect4</item>
+      <item>cb_effect5</item>
+      <item>cb_hurtStand</item>
+      <item>cb_idle</item>
+      <item>cb_jumpAttack</item>
+      <item>cb_jumpDown</item>
+      <item>cb_jumpNormal</item>
+      <item>cb_jumpTwo</item>
+      <item>cb_runAttack</item>
+      <item>cb_runNormal</item>
+      <item>cb_runNormal1</item>
+      <item>cb_walk</item>
+      <item>hb_effect2</item>
+      <item>hb_effect5</item>
+      <item>hb_effect51</item>
+      <item>hb_idle</item>
+    </names>
+  </item>
+</selectedSWFTags>

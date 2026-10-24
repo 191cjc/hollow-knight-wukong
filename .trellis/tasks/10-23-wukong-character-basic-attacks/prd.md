@@ -79,3 +79,95 @@ Keep original updates running and source effect5 animation/midair finisher,
 damage/immunity unchanged. Release before native recovery and stop writes on
 cancel/detach. Build/check, back up/install and verify; client movement, pause
 and recovery acceptance remains pending. See research/fire-demon-movement-lock-20261024.md.
+
+
+## Authorized 0.5.0 scope (2026-10-24)
+
+The user requests a baseline commit first, Fire Demon on up + spell,
+Bloodthirsty Fire Eye replacing held-focus instant healing, and Flame Storm on
+down + spell. They authorize recommended decisions without questions and will
+review/test later. This supersedes earlier skill exclusions/mapping. Preserve
+source artwork and prior variants, 1.5x offline appearance, native hero collision,
+prior Fire Demon source presentation/immunity/movement fix and enemy hurtbox rules.
+
+- [x] Baseline workspace committed before implementation: a07b2ac.
+- [ ] Up spell is Fire Demon, down spell is original Flame Storm action/flames.
+- [ ] Focus action completes without instant HP gain; real attack damage heals
+  one HP during the next five scaled seconds, globally at most once per second.
+- [ ] Repeatable source/art/core/build checks and stopped-game backup/install.
+- [ ] Actual client timing, input, Soul, immunity, damage, charm and cleanup review.
+
+Design/plan/evidence: research/spell-layout-v05-20261024.md and docs/SPELL_LAYOUT.md.
+
+## Authorized 0.5.1 corrections
+
+Restore Fire Demon Slash source-authored forward travel and the final strike at
+the resulting position, retaining input lock, full-cast immunity, source art,
+fixed damage, facing and terrain collision. Add the missing original independent
+Jiyuan Fire Eye (汲元火眼) buff visual while retaining the requested five-second
+actual-damage healing policy. Preserve every existing source and size variant,
+build/check, and back up/install directly with the game stopped. Gameplay review
+remains pending.
+
+
+## 0.5.2 missing Jiyuan casting effect
+
+Restore the original flame winding around Wukong during Fire Eye casting,
+including its nested end flashes, separately from the existing five-second
+buff aura. Preserve archived inputs, all earlier art, native focus eligibility,
+charge/Soul/charm/cancel behavior and the existing damage-heal policy. Bake new
+original and offline 1.5x variant folders and install the checked update directly.
+Client visual acceptance remains pending; parent task remains in_progress.
+
+
+## 0.5.3 Fire Eye early-frame pacing correction
+
+The user reports the beginning appears slowed after restoring the casting
+overlay. Restore the original30Hz pacing and synchronized body/overlay startup.
+Retain original assets/1.5x scale, native focus spending/completion/cancel/charm
+rules, persistent aura and the five-second actual-damage healing policy.
+Build/check, back up and install directly; client pacing acceptance pending.
+
+
+## 0.6.0 original Wukong nail visuals
+
+Replace native Knight slash arcs with the corresponding original Wukong staff
+arcs for all four combo stages and aerial horizontal attacks. Up nail uses the
+original effect1 rising-strike body and arc. Down nail uses the same arc rotated
+180degrees around the character center; keep the hero upright. Preserve native
+nail damage/upgrades, charms, Soul, contacts/clashes, attack timing, down-pogo
+and terrain interaction. All spell/focus/dash mechanics remain as implemented.
+Preserve all original/archive/older variants; generate new unscaled/1.5x folders
+using batch pipeline, build/check and back up/install directly. Gameplay pending.
+This explicitly supersedes the earlier preference for native Knight slash art.
+
+
+## 0.6.1 native charm range for Wukong arcs
+
+Follow original game charm enlargement behavior. Original NailSlash.StartSlash
+scales its baseline X/Y by1.15(Longnail),1.25(Mark of Pride),1.4(both). Pride also
+selects its M animation; range still comes from parameters. Reuse native scale
+for original Wukong arcs while preserving the current offline1.5x body. Ground,
+air, up/down/wall attacks must track range; no collider/damage/spell changes.
+Preserve archived and all earlier baked/variant assets, build/check and directly
+back up/install while stopped. Actual client acceptance remains pending.
+
+
+## 0.6.2 downward dash and end-aligned Fire Eye
+
+Dashmaster downward dashes must display downward Flame Dash flames for either
+facing. Jiyuan Fire Eye casting action/effect must align its end to the native
+focus completion instead of starting at native focus entry. Preserve source
+animation speed, original art and previous variants, native dash mechanics,
+focus cost/completion/cancellation and the five-second independent buff aura.
+Build, check, back up and directly install for later client acceptance.
+
+
+## 0.6.3 Flame Dash immunity and original Wukong death
+
+Flame Dash must prevent incoming HP damage for its entire active native dash,
+including downward dashes, then release immediately. Download the matching
+original ZMXY4 Wukong death resource and display its complete death action/effect
+instead of the Knight death body. Preserve source and current offline1.5x art,
+native death/save/shade/Geo/dream/respawn processing and all prior mechanics.
+Build/check/back up/install directly for later client acceptance.

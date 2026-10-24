@@ -5,6 +5,7 @@ read-only. The profile owns transplant timings; source animation events are not
 executed or interpreted as combat windows.
 """
 import argparse
+from dataclasses import replace
 from hashlib import sha256
 import json
 import math
@@ -13,7 +14,7 @@ from pathlib import Path
 import PIL
 from PIL import Image, ImageDraw
 
-from legacy_dragonbones import Affine, Draw, Sampler, normalize_filler, selected_frame, transform
+from legacy_dragonbones import Affine, Sampler
 from validate_character import OPTIONAL_CLIPS, REQUIRED_CLIPS, sha256 as file_hash, validate_character
 
 
@@ -132,34 +133,31 @@ def write_previews(output, rendered, root):
 
 
 def flame_dash_samples(sampler, source):
-    """Read the actual single-bone local DragonBones 3.0 flame overlay only."""
-    skeleton = read_json(source / "skeleton.json")
-    if skeleton.get("version") != "3.0" or str(skeleton.get("isGlobal")) != "0":
-        raise ValueError("Unexpected flame overlay format")
-    armature = next(a for a in skeleton["armature"] if a["name"] == "effect2")
-    if len(armature["bone"]) != 1 or "parent" in armature["bone"][0] or len(armature["skin"][0]["slot"]) != 1:
-        raise ValueError("Flame overlay must remain a single local bone/slot")
-    animation = next(a for a in armature["animation"] if a["name"] == "effect2")
-    timeline = animation["timeline"][0]
-    slot = armature["skin"][0]["slot"][0]
-    atlas = read_json(source / "texture.json")
-    with Image.open(source / "texture.png") as image:
-        image, _ = normalize_filler(image)
-        for item in atlas["SubTexture"]:
-            if item.get("rotated") or item.get("frameWidth") or item.get("frameHeight"):
-                raise ValueError("Trimmed/rotated flame overlay textures are unsupported")
-            x, y, width, height = (item[k] for k in ("x", "y", "width", "height"))
-            sampler.images["flame/" + item["name"]] = image.crop((x, y, x + width, y + height))
-    samples = []
-    for tick in range(12):
-        raw, _ = selected_frame(timeline, animation["duration"], 4 + tick)
-        display = slot["display"][raw.get("displayIndex", 0)]
-        origin = display.get("transform", {})
-        matrix = transform(armature["bone"][0].get("transform", {})).then_local(
-            transform(raw.get("transform", {}))).then_local(Affine(tx=origin.get("x", 0), ty=origin.get("y", 0)))
-        effect = Draw("flame/" + display["name"], matrix, 1.0, ("flame_dash_fx",))
-        samples.append([effect] + sampler.sample("effect2", 4 + tick))
-    return samples
+    return flame_overlay_samples(sampler, source, "effect2", 4, 12, "flame_dash_fx")
+
+
+def flame_dash_down_samples(sampler, source, center):
+    """Rotate only flames clockwise in source Y-down coordinates; body stays upright."""
+    if len(center) != 2 or any(not math.isfinite(v) for v in center):
+        raise ValueError("Invalid downward dash center")
+    cx, cy = center
+    turn = Affine(a=0, b=1, c=-1, d=0, tx=cx+cy, ty=cy-cx)
+    frames = flame_dash_samples(sampler, source)
+    return [[replace(d, matrix=turn.then_local(d.matrix)) if d.slot_path == ("flame_dash_fx",) else d
+             for d in frame] for frame in frames]
+
+
+def flame_storm_samples(sampler, source):
+    return flame_overlay_samples(sampler, source, "effect3", 0, 16, "flame_storm_fx")
+
+
+def flame_overlay_samples(sampler, source, name, start, ticks, slot_name):
+    """Preserve original flame ordering while sharing the held image reader."""
+    from single_bone_effects import SingleBoneEffects
+    overlay = SingleBoneEffects(sampler, source).frames(name, slot_name)
+    if not 0 <= start < start + ticks <= len(overlay):
+        raise ValueError("Flame sample range outside source animation")
+    return [overlay[start + tick] + sampler.sample(name, start + tick) for tick in range(ticks)]
 
 
 def bake_character(project_root=PROJECT_ROOT, output=None, force=False, previews=True, profile_path=None):
@@ -177,10 +175,27 @@ def bake_character(project_root=PROJECT_ROOT, output=None, force=False, previews
     if profile.get("flame_dash_effect_source"):
         inputs["flame_sources"] = {name: file_hash(project_root / profile["flame_dash_effect_source"] / name)
                                   for name in ("skeleton.json", "texture.json", "texture.png")}
+    if profile.get("flame_storm_effect_source"):
+        inputs["flame_storm_sources"] = {name: file_hash(project_root / profile["flame_storm_effect_source"] / name)
+                                        for name in ("skeleton.json", "texture.json", "texture.png")}
     if profile.get("fire_demon_effect_source"):
         inputs["fire_demon_sources"] = {name: file_hash(project_root / profile["fire_demon_effect_source"] / name)
                                       for name in ("man_skeleton.json", "man_texture.json", "man_texture.png")}
         inputs["fire_demon_code"] = file_hash(Path(__file__).parent / "fire_demon_assets.py")
+    if profile.get("fire_eye_effect_source"):
+        inputs["fire_eye_sources"] = {key: file_hash(project_root / value)
+                                     for key, value in profile["fire_eye_effect_source"].items()}
+        inputs["fire_eye_code"] = file_hash(Path(__file__).parent / "fire_eye_assets.py")
+    if profile.get("fire_eye_cast_source"):
+        inputs["fire_eye_cast_sources"] = {name: file_hash(project_root / profile["fire_eye_cast_source"] / name)
+                                           for name in ("skeleton.json", "texture.json", "texture.png")}
+        inputs["fire_eye_cast_code"] = file_hash(Path(__file__).parent / "fire_eye_cast_assets.py")
+    if any(profile.get(key) for key in ("flame_dash_effect_source", "flame_storm_effect_source", "nail_effect_source")):
+        inputs["single_bone_code"] = file_hash(Path(__file__).parent / "single_bone_effects.py")
+    if profile.get("nail_effect_source"):
+        inputs["nail_sources"] = {name: file_hash(project_root / profile["nail_effect_source"] / name)
+                                  for name in ("skeleton.json", "texture.json", "texture.png")}
+        inputs["nail_code"] = file_hash(Path(__file__).parent / "nail_assets.py")
     fingerprint = sha256(json.dumps(inputs, sort_keys=True).encode()).hexdigest()
     if not force and (output / "character.json").exists():
         try:
@@ -197,9 +212,32 @@ def bake_character(project_root=PROJECT_ROOT, output=None, force=False, previews
     if profile.get("flame_dash_effect_source"):
         samples["flameDash"] = flame_dash_samples(sampler, project_root / profile["flame_dash_effect_source"])
         animations["flameDash"] = {"duration": 12, "loop": 0}
+        if profile.get("flame_dash_down_center_pixels"):
+            samples["flameDashDown"] = flame_dash_down_samples(sampler, project_root / profile["flame_dash_effect_source"],
+                                                            profile["flame_dash_down_center_pixels"])
+            animations["flameDashDown"] = {"duration": 12, "loop": 0}
+    if profile.get("flame_storm_effect_source"):
+        samples["flameStorm"] = flame_storm_samples(sampler, project_root / profile["flame_storm_effect_source"])
+        animations["flameStorm"] = {"duration": 16, "loop": 0}
     if profile.get("fire_demon_effect_source"):
         from fire_demon_assets import fire_demon_samples
         extra = fire_demon_samples(sampler, project_root / profile["fire_demon_effect_source"])
+        samples.update(extra)
+        animations.update({name: {"duration": len(frames), "loop": 1} for name, frames in extra.items()})
+    if profile.get("fire_eye_effect_source"):
+        from fire_eye_assets import fire_eye_samples
+        eye = profile["fire_eye_effect_source"]
+        samples["fireEyeAura"] = fire_eye_samples(sampler, project_root / eye["swf"], project_root / eye["timeline"])
+        animations["fireEyeAura"] = {"duration": 10, "loop": 0}
+    if profile.get("fire_eye_cast_source"):
+        from fire_eye_cast_assets import fire_eye_cast_samples
+        samples["fireEyeCast"] = fire_eye_cast_samples(sampler, project_root / profile["fire_eye_cast_source"])
+        animations["fireEyeCast"] = {"duration": 21, "loop": 1}
+    if profile.get("nail_effect_source"):
+        from nail_assets import nail_samples, nail_arc_samples
+        extra = nail_samples(sampler, project_root / profile["nail_effect_source"], profile["nail_rotation_center_pixels"])
+        if profile.get("nail_separate_arcs"):
+            extra.update(nail_arc_samples(sampler, project_root / profile["nail_effect_source"], profile["nail_rotation_center_pixels"]))
         samples.update(extra)
         animations.update({name: {"duration": len(frames), "loop": 1} for name, frames in extra.items()})
     bounds = [sampler.bounds(draws) for frames in samples.values() for draws in frames if draws]

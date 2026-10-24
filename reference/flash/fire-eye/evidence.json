@@ -1,0 +1,26 @@
+{
+  "skill_id": 1101040,
+  "skill_name": "汲元火眼",
+  "buff_id": 81000101,
+  "resources_id": 17,
+  "symbol": "ef",
+  "sprite_id": 11,
+  "frames": 10,
+  "source_stage_rate": 30,
+  "child_swf_header_rate": 24,
+  "registration": "source shape bitmap matrices; no added offset",
+  "inputs": {
+    "assets/zmxy4/raw/assets/buff/810001/1.swf": "8f23cbea0820163e903415951e1e610c36ef6847e207b38ad8861236e607dbab",
+    "data/source/skills.xml": "ae4900a485e806f772ff37e5cf180f23c44801dc5db1eb532425a1a272ef43bb",
+    "data/source/buffs.xml": "957c2b537713ac91c4b1096694151acbd127fc266f4c0908dbbb89594af40a87",
+    "data/source/resources.xml": "c3b32658c4c949496646de97fee7971cafe4e8acea6254cfbbe2b603bf6771ca",
+    "reference/flash/v5870.swf": "54d267971105016bea7708560f1f350f05ee15c1fbb246d54041ee1f51efae49"
+  },
+  "extracted_image_pixel_sha256": {
+    "1": "d176530140bdba8e9742c93c0cb7ccecf797c8066b21b544193f8789807d93d7",
+    "3": "19aafa8a21e14294dc149a80b6be9ce5f55135e446c7462d0d366096d23f4e0e",
+    "5": "036c6cbfc36f10d20c7482c562219ea78ffeeac5e1f9c9873e3102166c3a8e31",
+    "7": "372e9a997b69e7b9e155e0d462e2b1244cd4c2067ba60d03fb1e32999ef780fb",
+    "9": "466bedd10c66ffb7adce1dfd362bdf56b6021e44a514692b6d03ec5087e05560"
+  }
+}

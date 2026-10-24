@@ -1,7 +1,7 @@
 # 客户端验收清单（待执行）
 
 Baseline: Windows / Hollow Knight 1.5.78.11833 / API v77. Earlier 0.2.0-dev
-initialization was observed in logs. Current 0.4.4-dev artwork, Flame Dash,
+initialization was observed in logs. Current 0.5.1-dev artwork, Flame Dash,
 Fire Demon Slash, collision and combat still need gameplay acceptance. All
 gameplay items remain unchecked and `runtime_tested=false` until actual results
 are recorded. Build/install verification alone does not complete this checklist.
@@ -41,9 +41,9 @@ are recorded. Build/install verification alone does not complete this checklist.
 - [ ] Ordinary dash can still be interrupted by damage; no unrequested armor/invulnerability was added. No damage continues after recoil, hazards, death or scene transitions.
 - [ ] Pause, low frame rate, rapid consecutive dashes and disable/re-enable do not leave stale damage, invisible native effects or duplicate Wukong views.
 
-## Fire Demon Slash (0.4.4-dev, pending)
+## Fire Demon Slash (0.5.1-dev, pending)
 
-- [ ] Down + spell plays the original moving Wukong flashes and real blink gaps, without a duplicate native hero. Up/neutral spells and down-slash pogo still work.
+- [ ] Up + spell plays the original moving Wukong flashes and real blink gaps, without a duplicate native hero. Down/forward spells and down-slash pogo still work.
 - [ ] Unlocks and Soul spending remain native; cast on ground/in air. The replacement has no forced dive-floor interaction. Native Quake damage/graphics must not stack with the replacement.
 - [ ] Check fixed air/finisher damage 2/14 or 3/22; with Shaman Stone 3/21 or 5/33. Changing nail upgrades must not change Fire Demon damage.
 - [ ] Same target respects 100ms contact cooldown and 11-hit cap; finisher hits once. Multiple colliders do not multiply damage. Actual HP loss still respects native evasion/invulnerability.
@@ -52,20 +52,20 @@ are recorded. Build/install verification alone does not complete this checklist.
 - [ ] Normal hits, projectiles, spikes and acid cause no HP loss/recoil during preparation, air flashes or finisher. Custom protection releases when the cast ends/cancels or the Mod detaches; native recovery remains native; save invincibility is not changed.
 - [ ] Damage/hazards/death/scenes, pause/low FPS, repeated casts and disable/re-enable leave no stale damage, hidden effects or permanently held spell state.
 
-## Fire Demon movement regression (0.4.4-dev, pending)
+## Fire Demon movement regression (0.5.1-dev, pending)
 
-- [ ] Start on the ground and in midair while already holding left/right; then tap/reverse/hold movement throughout preparation, air flashes and finisher. The physical hero root and skill origins remain stable; authored character flashes still move.
+- [ ] Start on the ground and in midair while already holding left/right; then tap/reverse/hold movement throughout preparation, air flashes and finisher. Only the original signed forward travel occurs during ticks5..36; the air effect stays anchored, and the finisher/body recover at the moved location. Movement inputs must not steer or add drift.
 - [ ] Hold a direction across the end: movement resumes after the skill ends. Release it during the skill: no stored sideways motion appears afterward. Jump/dash/nail controls recover normally.
 - [ ] Pause/resume during each phase, including held movement on resume. The source clock pauses and input cannot move the hero until recovery.
 - [ ] Repeat casts, use low rendering FPS with normal physics, and disable/re-enable or change scenes. No residual input/gravity lock, drift, old velocity or stale damage remains; normal Flame Dash/exploration controls remain available.
 
-## Skill collision and shake regressions (0.4.4-dev, pending)
+## Skill collision and shake regressions (0.5.1-dev, pending)
 
 - [ ] Cast Flame Dash / both Fire Demon phases far from Hornet and Buzzer bodies: sensor overlap must not damage them or consume hit opportunities.
 - [ ] Contact real hurtboxes, including legitimate trigger hurtboxes; verify expected damage, evasion and per-target caps. Hornet needle/attack colliders must not damage their boss ancestor.
 - [ ] Interactive breakables retain native hit response; hero/corpse/shield/Geo contacts remain excluded.
 - [ ] Original relative offsets/masks are restored; character flashes retain source travel and blink gaps. Both facings and airborne finish align correctly.
-- [ ] Both down-spell tiers finish without entering Quake Down/Land or adding native EnemyKillShake/BigShake; other camera events work and scoped patches restore after disable.
+- [ ] Fire Demon up-spell and Flame Storm down-spell finish without entering unowned damage states or adding native camera shake; other camera events work and scoped patches restore after disable.
 
 ## 生命周期与回退
 
@@ -79,3 +79,114 @@ are recorded. Build/install verification alone does not complete this checklist.
 记录客户端版本/API/平台、测试日期、操作步骤、日志、实际结果与失败复现。尤其记录第三段是否真实造成两次 HP 损失以及对应魂/反馈。发现问题时保留当前 ZIP 的 SHA-256，便于与 `artifacts/build-report.json` 对照。
 
 当前所有游戏内项目均为待验收。完成测试后，应在状态文档中区分“测试通过的客户端组合”和“未验证组合”，不能仅把编译/模拟测试结果转换为游戏兼容结论。
+
+
+## Spell layout 0.5.1-dev (pending)
+
+- [ ] Up + spell invokes Fire Demon only; both up-spell tiers, both facings,
+  original flashes/midair finish, full-cast immunity and movement hold/recovery.
+- [ ] Down + spell invokes Flame Storm only; original spin/flames, local range
+  near Hornet/Buzzer, no distant sensor hits, contact cap/100ms/native evasion.
+- [ ] Test normal/upgraded spell tiers with/without Shaman; nail upgrades cannot
+  alter either spell. Verify one MP Cost (33/24 with Spell Twister) per cast;
+  native Scream/Quake must not stack damage or consume extra Soul.
+- [ ] Hold focus through Fire Eye action: native charge/Soul timing, no immediate
+  heal. Complete at full HP as well as injured; cancellation never grants a buff.
+- [ ] Real nail, beam, spell and Flame Dash damage heals one HP while active;
+  whiffs, protected enemies and scenery do not. Multi-target/multi-hit attacks
+  share one heal per second. Check five-second expiry and pause/unpause.
+- [ ] Refresh duration without bypassing cooldown. Test Quick Focus, Deep Focus,
+  Shape of Unn, insufficient Soul, focus release/rehold and dream focus.
+- [ ] Incoming damage/scene/death/disable/reload cleans up action/buff/input and
+  effect suppression; other native healing continues working.
+
+Automated checks and frame preview do not establish these client results.
+
+## 0.5.1 source travel and Jiyuan Fire Eye visual (pending)
+
+- [ ] Both facing directions: Fire Demon moves forward by the original source
+  progression, stops before terrain and finishes at the moved root. Check midair,
+  walls, slopes, moving platforms, held/reversed input and low FPS. The air effect
+  remains anchored; no native Scream damage, shake or forced drop appears.
+- [ ] Successful focus completion starts the original red flame loop. Verify
+  movement, facing, attacks, Quick/Deep Focus, refresh, five-second expiry, pause,
+  death, scene change and disable. Cancelling an uncompleted charge grants no aura.
+- [ ] No instant heal; actual damage still heals exactly one HP at most once/sec
+  globally for five seconds. Check multiple enemies and repeated Storm contacts.
+
+
+## 0.5.2 Jiyuan casting overlay (pending)
+
+- [ ] Start focus facing both directions: original flames wind from the feet
+  upward during the charge, then original eye flashes appear. The independent
+  five-second aura begins only on successful completion.
+- [ ] Release early, take damage, change scene or disable: no casting flame or
+  eye flash remains; an interrupted charge grants no new aura/healing buff.
+- [ ] Quick/Deep Focus retain native charge duration and Soul cost. Test focus
+  release/rehold, Shape of Unn and refresh while the prior buff is still active.
+- [ ] Preserve five seconds of healing on actual enemy HP loss, one HP at most
+  once per second globally, with no completion heal. Check pause/resume as well.
+
+
+## 0.6.2 end-aligned casting pace (supersedes0.5.3; pending)
+
+- [ ] Without focus charms, startup/early charge show the opening body without
+  flames; the original30 FPS casting action/effect end at native completion.
+- [ ] Deep Focus delays the source window to the final0.7seconds without slowing
+  or repeating the winding flames; Quick Focus/Unn use the source tail when short.
+- [ ] Native completion/Soul cost remain unchanged. No artwork completion delay.
+- [ ] Pause during startup/flames/recovery, release/rehold quickly, take damage,
+  change scenes or disable: clocks reset/clear and no previous source tick leaks.
+- [ ] Native completion still starts the independent five-second aura/heal buff;
+  no immediate heal, one HP per real attack damage at most once/sec globally.
+
+
+## 0.6.0 original nail arcs (pending)
+
+- Check four intentional ground combo stages and stage3's two native hit windows.
+  Each stage must show its corresponding original Wukong arc without a white
+  native arc underneath; cancel by jump/dash/hit/turn to check immediate cleanup.
+- Check airborne horizontal attacks, wall attacks, normal/Quick Slash pacing,
+  both facings and repeated attacks. Up nail must use the source rising-strike
+  action and arc. Down nail must keep an upright body with only the upward arc
+  rotated180 about the fixed character center; no pivot jumping or full-body flip.
+- Verify nail upgrades, applicable damage/reach charms, Soul, breakables, clashes,
+  wall/terrain interactions, down pogo and invulnerability behave as before.
+  Artwork follows offline1.5x size; damage reach deliberately remains native.
+- Check spell/focus/dash visuals and all prior mechanics, scene changes, death,
+  save re-entry and Mod disable/re-enable. Native nail meshes must restore on
+  detach and after failed initialization. No API or save changes are required.
+
+
+## 0.6.1 charm arc sizes (pending)
+
+- Test neither charm, Longnail, Mark of Pride and both: Wukong arc should follow
+  native1/1.15/1.25/1.4range while body/staff size stays fixed. Both is1.4, not
+  the multiplicative product1.4375. Bench equip/unequip must apply on next attack.
+- Check all4combo stages (including stage3 second window), air/up/down/wall,
+  both facings and Quick Slash. Arc must share its body clock and fixed center.
+- Verify normal native damage/reach/charms/Soul/pogo; no new damage transaction.
+  Cancel by jump/dash/hit/turn, swap scene/die and disable/re-enable; no stale arc
+  may remain during spells/focus/idle or after detach. Character size must never
+  change with nail charms. Existing spell/focus/dash checks still apply.
+
+
+## 0.6.2 Dashmaster downward presentation (pending)
+
+- [ ] Equip Dashmaster, jump and down-dash with both left/right facings. Flames
+  trail upward and point along the downward dash; body stays upright.
+- [ ] Alternate horizontal/downward dashes; no direction leaks or rotated aura.
+- [ ] Check walls/floors, shadow dash/Sharp Shadow, path damage, pause and cancel.
+
+
+## 0.6.3 dash immunity and source death (pending)
+
+- [ ] Horizontal/downward Flame Dash rejects enemy contact/projectiles and hazards
+  during the active dash; damage works immediately after end/cancel. Check both
+  facings, shadow dash/Sharp Shadow, pause, scene and Mod disable.
+- [ ] Real death shows original Wukong fall/prone pose and rising ghost at30Hz,
+  with no invisible body, Knight shell/head/nail overlay or repeated ghost.
+- [ ] Ordinary and dream/boss deaths retain native camera/fade/Soul/Geo/shade/save/
+  return behavior. Survivable spike/acid falls use native hazard recovery.
+- [ ] Respawn/scene/disable restores native visibility and leaves no frozen corpse,
+  invulnerability, old source time or altered saved state.

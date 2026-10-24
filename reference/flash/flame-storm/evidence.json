@@ -1,0 +1,23 @@
+{
+  "selection": "Original unedited DefineShape3(32), DefineSprite(39), SymbolClass tags selected from JPEXS 26.4.0 XML export; 20 twips per pixel.",
+  "inputs": {
+    "assets/zmxy4/raw/assets/man/2001/1V535.swf": "eec169475781253d8f7ca7d20905bdd23fce10c6cd335abf2938a225a2bcaed7",
+    "assets/zmxy4/animations/2001/skill1V472/skeleton.json": "ee4ada874ec7f9b90f46ab492c190495d04dfeea06cf4b52e773c15965293bd1",
+    "assets/zmxy4/animations/2001/skill1V472/texture.json": "190b6665b669f16ddceac011c6320e5fdddfd9b3481431785075e0a9709b5bb4",
+    "assets/zmxy4/animations/2001/skill1V472/texture.png": "c7e2cb8b26132fbb1096cd989e6c07f7a65d7e3611352702451ecb03d495841a",
+    "data/source/skills.xml": "ae4900a485e806f772ff37e5cf180f23c44801dc5db1eb532425a1a272ef43bb"
+  },
+  "skill_id": "1101030",
+  "source_effect": "skill1V472/effect3",
+  "body": "manV535/effect3",
+  "source_ticks": 16,
+  "contact_interval_seconds": 0.1,
+  "per_target_cap": 5,
+  "unity_region_right": {
+    "x": -6.4639412,
+    "y": 35.0111057,
+    "width": 402.9517788,
+    "height": 170.0001534
+  },
+  "calibration": "Baseline source pixels to native collider height; artwork enlargement never multiplies damage area."
+}

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using GlobalEnums;
 using UnityEngine;
@@ -19,6 +20,8 @@ namespace WukongKnight
         private ComboTimeline? combo;
         private FlameDash? flameDash;
         private FireDemonSlash? fireDemon;
+        private FlameStorm? flameStorm;
+        private BloodthirstyFireEye? bloodEye;
         private NailSlash? slash;
         private long nativeToken;
         private bool capturing;
@@ -40,12 +43,14 @@ namespace WukongKnight
             {
                 On.HeroController.Start += HeroStart;
                 On.HeroController.HeroDash += HeroDash;
+                On.HeroController.Die += HeroDie;
                 On.HeroController.Update += HeroUpdate;
                 On.HeroController.FixedUpdate += HeroFixedUpdate;
                 On.HeroController.Attack += Attack;
                 On.HeroController.CanAttack += CanAttack;
                 On.HeroController.TakeDamage += HeroTakeDamage;
                 On.HeroController.TakeHealth += HeroTakeHealth;
+                On.HeroController.AddHealth += HeroAddHealth;
                 On.HeroController.ResetAttacks += ResetAttacks;
                 On.NailSlash.StartSlash += StartSlash;
                 On.NailSlash.FixedUpdate += SlashFixedUpdate;
@@ -62,15 +67,16 @@ namespace WukongKnight
         private void HeroStart(On.HeroController.orig_Start orig, HeroController self)
         { orig(self); TryAttach(self); }
 
-        private bool FireDemonProtects(HeroController self)
+        private bool SkillProtects(HeroController self)
         {
-            if (disposed || failed || self != hero || fireDemon == null) return false;
+            if (disposed || failed || self != hero) return false;
             try
             {
                 // Damage can arrive before our Update/FixedUpdate. Observe the real
                 // native spell state here too, including exact start/end boundaries.
-                fireDemon.Observe();
-                return fireDemon != null && fireDemon.Active;
+                flameDash?.Observe();
+                fireDemon?.Observe();
+                return (flameDash != null && flameDash.Active) || (fireDemon != null && fireDemon.Active);
             }
             catch (Exception error) { Fail(error); return false; }
         }
@@ -79,12 +85,37 @@ namespace WukongKnight
         {
             // CanTakeDamage=false alone still lets native invulnerable heroes take
             // spike/acid damage. Guard the whole entry, without changing save flags.
-            if (!FireDemonProtects(self)) orig(self, source, side, amount, hazardType);
+            if (!SkillProtects(self)) orig(self, source, side, amount, hazardType);
         }
 
         private void HeroTakeHealth(On.HeroController.orig_TakeHealth orig, HeroController self, int amount)
         {
-            if (!FireDemonProtects(self)) orig(self, amount);
+            if (!SkillProtects(self)) orig(self, amount);
+        }
+
+        private void HeroAddHealth(On.HeroController.orig_AddHealth orig, HeroController self, int amount)
+        {
+            if (self == hero && !failed && !disposed && bloodEye != null)
+            {
+                try { if (bloodEye.ReplaceFocusHeal()) return; }
+                catch (Exception error) { Fail(error); }
+            }
+            orig(self, amount);
+        }
+
+        private IEnumerator HeroDie(On.HeroController.orig_Die orig, HeroController self)
+        {
+            if (self == hero && !failed && !disposed)
+            {
+                try
+                {
+                    Cancel(); flameDash?.Stop();
+                    presenter?.BeginDeath(Time.time);
+                }
+                catch (Exception error) { Fail(error); }
+            }
+            // Preserve the complete native death iterator, including dream/Steel Soul.
+            return orig(self);
         }
 
         private void HeroDash(On.HeroController.orig_HeroDash orig, HeroController self)
@@ -105,7 +136,7 @@ namespace WukongKnight
             {
                 try
                 {
-                    fireDemon?.Observe(); // Neutralize input before native LookForInput.
+                    ObserveSpells(self); // Neutralize input before native LookForInput.
                     if (ShouldCancel() || (combo != null && combo.Active && (native.JumpPressed(self) || native.DashPressed(self)))) Cancel();
                     if (combo != null && combo.Active)
                     {
@@ -122,24 +153,24 @@ namespace WukongKnight
             orig(self);
             if (hero == self && !failed)
             {
-                try { if (ShouldCancel()) Cancel(); flameDash?.Observe(); fireDemon?.Observe(); }
+                try { if (ShouldCancel()) Cancel(); flameDash?.Observe(); ObserveSpells(self); }
                 catch (Exception error) { Fail(error); }
             }
         }
 
         private void HeroFixedUpdate(On.HeroController.orig_FixedUpdate orig, HeroController self)
         {
-            ObserveFireDemon(self);
+            ObserveSpells(self);
             orig(self);
             // Native physics may write velocity (e.g. conveyors). Resolve the
             // active cast after it, regardless of WukongLifetime update order.
-            ObserveFireDemon(self);
+            ObserveSpells(self);
         }
 
-        private void ObserveFireDemon(HeroController self)
+        private void ObserveSpells(HeroController self)
         {
             if (disposed || failed || self != hero) return;
-            try { fireDemon?.Observe(); }
+            try { fireDemon?.Observe(); flameStorm?.Observe(); bloodEye?.Observe(); }
             catch (Exception error) { Fail(error); }
         }
 
@@ -152,9 +183,11 @@ namespace WukongKnight
             {
                 hero = self;
                 combo = new ComboTimeline(assets.Stages, assets.FrameRate, assets.GraceSeconds);
-                presenter = new WukongPresenter(self, assets);
+                presenter = new WukongPresenter(self, assets, native);
                 flameDash = new FlameDash(self, native);
                 fireDemon = new FireDemonSlash(self, native, assets);
+                flameStorm = new FlameStorm(self, native, assets);
+                bloodEye = new BloodthirstyFireEye(self);
                 lifetime = self.gameObject.AddComponent<WukongLifetime>();
                 lifetime.UpdateView = LateUpdate;
                 lifetime.AdvancePhysics = FixedUpdate;
@@ -168,7 +201,7 @@ namespace WukongKnight
         {
             if (!disposed && !failed && flameDash != null)
             {
-                try { flameDash.FixedUpdate(); fireDemon?.FixedUpdate(); }
+                try { flameDash.FixedUpdate(); fireDemon?.FixedUpdate(); flameStorm?.FixedUpdate(); bloodEye?.Observe(); }
                 catch (Exception error) { Fail(error); }
             }
             if (disposed || failed || hero == null || combo == null || !combo.Active || Time.fixedTime == lastPhysics) return;
@@ -184,7 +217,7 @@ namespace WukongKnight
         private void LateUpdate()
         {
             if (disposed || failed || hero == null || presenter == null) return;
-            try { fireDemon?.UpdateView(); presenter.Update(combo, Time.time, flameDash, fireDemon); }
+            try { fireDemon?.UpdateView(); flameStorm?.Observe(); bloodEye?.Observe(); presenter.Update(combo, Time.time, flameDash, fireDemon, flameStorm, bloodEye); }
             catch (Exception error) { Fail(error); }
         }
 
@@ -247,7 +280,7 @@ namespace WukongKnight
             }
             if (self == slash && nativeToken != 0 && !permit) return;
             // Each authored hit window restarts the selected native slash, including its
-            // original arc animation, material and charm effects. Do not hide its mesh.
+            // native animation and charm logic. Presenter replaces only mesh draw submissions.
             orig(self);
         }
 
@@ -345,7 +378,7 @@ namespace WukongKnight
 
         private void Damage(On.DamageEnemies.orig_DoDamage orig, DamageEnemies self, GameObject target)
         {
-            if (fireDemon != null && fireDemon.BlocksNativeSource(self.gameObject)) return;
+            if (BlocksReplacedSpell(self.gameObject)) return;
             // The remainder of an old native enumeration cannot emit TAKE DAMAGE or Hit after
             // cancellation. A new StartSlash has no deferred isolation and runs normally.
             if (contactCleanup.IsPending(self)) return;
@@ -373,7 +406,7 @@ namespace WukongKnight
 
         private void Hit(On.HitTaker.orig_Hit orig, GameObject target, HitInstance hit, int recursionDepth)
         {
-            if (fireDemon != null && fireDemon.BlocksNativeSource(hit.Source)) return;
+            if (BlocksReplacedSpell(hit.Source)) return;
             if (!OwnedSource(hit.Source)) { orig(target, hit, recursionDepth); return; }
             FixedUpdate(); // DamageEnemies may run before the owned component in this physics step.
             if (!OwnedSource(hit.Source)) return;
@@ -392,7 +425,25 @@ namespace WukongKnight
 
         private void HealthHit(On.HealthManager.orig_Hit orig, HealthManager self, HitInstance hit)
         {
-            if (fireDemon != null && fireDemon.BlocksNativeSource(hit.Source)) return;
+            if (BlocksReplacedSpell(hit.Source)) return;
+            BloodthirstyFireEye? eye = bloodEye;
+            long token = eye == null ? -1 : eye.BuffToken;
+            int before = self.hp;
+            DispatchHealthHit(orig, self, hit);
+            bool playerDamage = hit.AttackType == AttackTypes.Nail || hit.AttackType == AttackTypes.NailBeam ||
+                hit.AttackType == AttackTypes.Spell || hit.AttackType == AttackTypes.SharpShadow;
+            if (playerDamage && token >= 0 && ReferenceEquals(eye, bloodEye) && eye != null && !failed && !disposed)
+            {
+                try { eye.AfterEnemyHit(token, before, self.hp); }
+                catch (Exception error) { Fail(error); }
+            }
+        }
+
+        private bool BlocksReplacedSpell(GameObject source) =>
+            fireDemon != null && fireDemon.BlocksNativeSource(source) || flameStorm != null && flameStorm.BlocksNativeSource(source);
+
+        private void DispatchHealthHit(On.HealthManager.orig_Hit orig, HealthManager self, HitInstance hit)
+        {
             if (!OwnedSource(hit.Source)) { orig(self, hit); return; }
             FixedUpdate();
             if (!OwnedSource(hit.Source)) return;
@@ -465,6 +516,10 @@ namespace WukongKnight
             if (oldDash != null) Cleanup(oldDash.Dispose);
             FireDemonSlash? oldSpell = fireDemon; fireDemon = null;
             if (oldSpell != null) Cleanup(oldSpell.Dispose);
+            FlameStorm? oldStorm = flameStorm; flameStorm = null;
+            if (oldStorm != null) Cleanup(oldStorm.Dispose);
+            BloodthirstyFireEye? oldEye = bloodEye; bloodEye = null;
+            if (oldEye != null) Cleanup(oldEye.Dispose);
             if (lifetime != null)
             {
                 lifetime.DetachOwner = null; lifetime.UpdateView = null; lifetime.AdvancePhysics = null;
@@ -480,12 +535,14 @@ namespace WukongKnight
             Detach();
             On.HeroController.Start -= HeroStart;
             On.HeroController.HeroDash -= HeroDash;
+            On.HeroController.Die -= HeroDie;
             On.HeroController.Update -= HeroUpdate;
             On.HeroController.FixedUpdate -= HeroFixedUpdate;
             On.HeroController.Attack -= Attack;
             On.HeroController.CanAttack -= CanAttack;
             On.HeroController.TakeDamage -= HeroTakeDamage;
             On.HeroController.TakeHealth -= HeroTakeHealth;
+            On.HeroController.AddHealth -= HeroAddHealth;
             On.HeroController.ResetAttacks -= ResetAttacks;
             On.NailSlash.StartSlash -= StartSlash;
             On.NailSlash.FixedUpdate -= SlashFixedUpdate;

@@ -11,6 +11,10 @@ internal static class Program
         cases = cases.Concat(new Action[] { FireDemonContactCooldownAndTargetIndependence, FireDemonContactCapAndFinisher, FireDemonLagDoesNotCatchUpDamage, FireDemonCancellationAndRecast, FireDemonFixedSpellBalance, FireDemonFinisherRevealsWithoutEndingProtection, FireDemonOldFinisherCannotRevealNewCast }).ToArray();
         cases = cases.Concat(new Action[] { EnemySensorsCannotConsumeSkillHits, BossWeaponCannotRouteDamageToParent, SkillContactsRetainNativeInteractions }).ToArray();
         cases = cases.Concat(new Action[] { FireDemonFinishesWithoutLanding, FireDemonLagDoesNotExtendEffects, FireDemonOriginalRegionsMirrorAroundSourceRoot, FireDemonSourceFinisherRetainsCastProtection }).ToArray();
+        cases = cases.Concat(new Action[] { BloodEyeOnlyHealsRealDamage, BloodEyeCooldownIsGlobal, BloodEyeExpiryDoesNotHeal, BloodEyeRefreshPreservesCooldown, BloodEyeClearRejectsOldCallbacks, BloodEyeFullHealthDoesNotConsumeProc, BloodEyeRejectsInvalidTime, StormUsesSourceClock, StormContactsAreBounded, StormUsesFixedSpellDamage, StormUsesOriginalLocalMask }).ToArray();
+        cases = cases.Concat(new Action[] { FireDemonSourceTravelIsBounded, FireDemonTravelDoesNotDependOnSampling, BloodEyeVisualClockFollowsLifetime }).ToArray();
+        cases = cases.Concat(new Action[] { FireEyeWaitsForEndWindow, FireEyeDeadlineUsesNativeRates, FireEyeRepeatedObserversDoNotStretchSourceFrames, FireEyeVisualPauseUsesScaledTime, FireEyeCancelledAndRecastClockIsFresh }).ToArray();
+        cases = cases.Concat(new Action[] { DeathSourceClockDoesNotRestartOrLoop, DeathPauseUsesScaledTime, DeathCleanupAllowsFreshRespawn }).ToArray();
         foreach (Action test in cases)
         {
             try { test(); Console.WriteLine("PASS " + test.Method.Name); }
@@ -20,11 +24,235 @@ internal static class Program
         return 0;
     }
 
+    private static void DeathSourceClockDoesNotRestartOrLoop()
+    {
+        var death = new SourceDeathClock(65, 30);
+        Check(death.Begin(10) && death.Active && death.Tick(10) == 0, "Actual death did not start source tick0.");
+        Check(!death.Begin(10.2), "Duplicate native death notification restarted the body/ghost.");
+        Check(Math.Abs(death.Tick(10.3) - 9) < 1e-8, "Death did not follow original30Hz source time.");
+        Check(death.Tick(13) >= 64 && death.Tick(13) < 65, "Finished death looped instead of holding prone pose.");
+        Check(death.Active, "Source end incorrectly resumed gameplay before native recovery.");
+    }
+
+    private static void DeathPauseUsesScaledTime()
+    {
+        var death = new SourceDeathClock(65, 30); death.Begin(20);
+        double tick = death.Tick(20.5);
+        for (int i = 0; i < 20; i++) Check(death.Tick(20.5) == tick, "Paused game advanced death art.");
+        Check(Math.Abs(death.Tick(20.6) - tick - 3) < 1e-8, "Resuming skipped source frames.");
+    }
+
+    private static void DeathCleanupAllowsFreshRespawn()
+    {
+        var death = new SourceDeathClock(65, 30); death.Begin(30); death.Clear();
+        Check(!death.Active && death.Tick(31) == 0, "Scene/disable left death art active.");
+        Check(!death.Begin(double.NaN) && !death.Begin(double.PositiveInfinity), "Invalid death time poisoned presentation.");
+        Check(death.Begin(32) && death.Tick(32) == 0, "Respawn's next death reused old ticks.");
+        Check(death.Tick(double.NaN) == 0, "Invalid sample escaped the safe source pose.");
+    }
+
+    private static void FireEyeWaitsForEndWindow()
+    {
+        var clock = new FireEyeCastClock(); clock.Observe(true, -1, 10);
+        Check(clock.Tick(10.1) < 0, "Startup showed the casting overlay before native drain started.");
+        clock.Observe(true, .891, 10.25);
+        Check(clock.Tick(10.4) < 0, "Casting flames started before the final0.7s window.");
+        Check(Math.Abs(clock.Tick(10.441)) < 1e-8, "Source opening is not scheduled from native completion.");
+        Check(Math.Abs(clock.Tick(10.541) - 3) < 1e-8, "Delayed opening changed original30Hz speed.");
+        Check(Math.Abs(clock.Tick(11.141) - 21) < 1e-8, "Source end did not align with native focus.");
+    }
+
+    private static void FireEyeDeadlineUsesNativeRates()
+    {
+        // Native normal/Quick/Deep/combined rates and a shorter Unn charge.
+        foreach (double remaining in new[] { .891, .594, 1.47, .98, .297 })
+        {
+            var clock = new FireEyeCastClock(); clock.Observe(true, remaining, 20);
+            double begins = 20 + remaining - .7;
+            double sample = Math.Max(20, begins) + .05;
+            Check(Math.Abs(clock.Tick(sample + .1) - clock.Tick(sample) - 3) < 1e-8, "Charm stretched source speed.");
+            Check(Math.Abs(clock.Tick(20 + remaining) - 21) < 1e-8, "Charm timing did not end-align.");
+            if (remaining < .7) Check(clock.Tick(20) > 0, "Short charge did not select the source tail.");
+            else Check(clock.Tick(20) < 0, "Long charge played early flames.");
+        }
+    }
+
+    private static void FireEyeRepeatedObserversDoNotStretchSourceFrames()
+    {
+        var clock = new FireEyeCastClock(); clock.Observe(true, 1, 20);
+        foreach (double time in new[] { 20.0, 20.1, 20.1, 20.3, 20.6 }) clock.Observe(true, 1, time);
+        Check(Math.Abs(clock.Tick(21) - 21) < 1e-8, "Observers restarted the native deadline.");
+        Check(clock.Tick(22) > 21, "Completed overlay looped while native state was exiting.");
+    }
+
+    private static void FireEyeVisualPauseUsesScaledTime()
+    {
+        var clock = new FireEyeCastClock(); clock.Observe(true, .7, 30);
+        double pausedTick = clock.Tick(30.2);
+        for (int i = 0; i < 20; i++) { clock.Observe(true, .5, 30.2); Check(clock.Tick(30.2) == pausedTick, "Pause advanced source animation."); }
+        Check(Math.Abs(clock.Tick(30.3) - pausedTick - 3) < 1e-8, "Resume added paused time.");
+    }
+
+    private static void FireEyeCancelledAndRecastClockIsFresh()
+    {
+        var clock = new FireEyeCastClock(); clock.Observe(true, .7, 40);
+        clock.Observe(false, 0, 40.1);
+        Check(clock.Tick(40.2) < 0, "Cancelled cast retained its old overlay.");
+        clock.Observe(true, -1, 40.3);
+        Check(clock.Tick(40.4) < 0, "Rapid rehold reused the old deadline during startup.");
+        clock.Observe(true, .9, 40.5);
+        Check(Math.Abs(clock.Tick(41.4) - 21) < 1e-8, "Recast failed to use fresh native timing.");
+        clock.Clear(); Check(clock.Tick(41) < 0, "Death/detach retained casting time.");
+        clock.Observe(true, .7, double.NaN); Check(clock.Tick(42) < 0, "Invalid clock poisoned a later cast.");
+        clock.Observe(true, double.NaN, 42); Check(clock.Tick(42) < 0, "Invalid native deadline scheduled art.");
+        clock.Observe(true, .7, 43); Check(Math.Abs(clock.Tick(43)) < 1e-8, "New cast failed after cleanup.");
+        clock.Observe(false, 0, 43.1); Check(clock.Tick(43.1) < 0, "Early native completion left a casting tail.");
+    }
+
+    private static void FireDemonSourceTravelIsBounded()
+    {
+        Check(new FireDemonTimeline(0).TravelPixels == 0, "Preparation moved.");
+        Check(new FireDemonTimeline(5.0 / 30).TravelPixels == 0, "Travel began before original shoot frame.");
+        Check(Math.Abs(new FireDemonTimeline(20.0 / 30).TravelPixels - 75) < 1e-8, "Original speed50 and physics step0.1 were lost.");
+        Check(Math.Abs(new FireDemonTimeline(36.0 / 30).TravelPixels - 155) < 1e-8, "Finisher returned to cast start instead of moved root.");
+        Check(new FireDemonTimeline(55.0 / 30).TravelPixels == 155, "Finisher kept moving after original stop.");
+    }
+
+    private static void FireDemonTravelDoesNotDependOnSampling()
+    {
+        var travel = new FireDemonTravel(); double total = 0;
+        foreach (double time in new[] { 0, .1, .2, .2, .7, 1.2, 1.2, 1.5 })
+            total += travel.Advance(new FireDemonTimeline(time));
+        Check(Math.Abs(total - 155) < 1e-8, "Repeated observers or a lag step changed displacement.");
+        var sparse = new FireDemonTravel();
+        Check(sparse.Advance(new FireDemonTimeline(1.5)) == total, "Sparse and dense sampling differ.");
+        Check(travel.Advance(new FireDemonTimeline(.7)) == 0, "Repeated older time restored consumed distance.");
+        travel.Reset();
+        Check(Math.Abs(travel.Advance(new FireDemonTimeline(1.2)) - 155) < 1e-8, "A new cast did not reset travel.");
+        var blocked = new FireDemonTravel();
+        blocked.Advance(new FireDemonTimeline(.7)); // Terrain rejects the whole requested distance.
+        Check(blocked.Advance(new FireDemonTimeline(.7)) == 0, "Blocked distance was banked for an immediate teleport.");
+        Check(Math.Abs(blocked.Advance(new FireDemonTimeline(1.2)) - 75) < 1e-8, "Blocked displacement leaked into a later move.");
+    }
+
+    private static void BloodEyeVisualClockFollowsLifetime()
+    {
+        var buff = new BloodthirstyBuff();
+        Check(buff.VisualTick(10) == 0, "Inactive aura clock was running.");
+        buff.Activate(10);
+        Check(buff.VisualTick(10) == 0 && buff.VisualTick(11) == 30, "Aura is not on scaled source clock.");
+        Check(buff.Active(14.99) && buff.VisualTick(14.99) > 149, "Aura ended before the buff.");
+        Check(!buff.Active(15) && buff.VisualTick(15) == 0, "Expired aura retained playback.");
+        buff.Activate(15);
+        Check(buff.VisualTick(15) == 0, "Refreshed aura did not restart.");
+        buff.Clear();
+        Check(!buff.Active(15.1) && buff.VisualTick(15.1) == 0, "Detached/dead hero retained aura.");
+    }
+
     private static ComboTimeline NewCombo() => new ComboTimeline(new[] {
         new ComboStage("attack1", 12, 2, 1, new[] { new HitWindow(4, 7) }),
         new ComboStage("attack2", 15, 2, 1, new[] { new HitWindow(5, 8) }),
         new ComboStage("attack3", 18, 3, 1, new[] { new HitWindow(3, 5), new HitWindow(11, 14) }),
         new ComboStage("attack4", 20, 5, 1, new[] { new HitWindow(5, 8) }) }, 30, .35);
+
+    private static void BloodEyeOnlyHealsRealDamage()
+    {
+        var buff = new BloodthirstyBuff();
+        Check(!buff.TryHeal(buff.Token, 10, 20, 10, 3, 5), "Uncharged eye healed.");
+        buff.Activate(10); long token = buff.Token;
+        Check(!buff.TryHeal(token, 10, 20, 20, 3, 5), "Blocked/evaded attack healed.");
+        Check(!buff.TryHeal(token, 10, 0, -1, 3, 5), "Already-dead enemy healed.");
+        Check(!buff.TryHeal(token, 10, 20, 19, 0, 5), "Dead hero healed.");
+        Check(buff.TryHeal(token, 10, 20, 0, 3, 5), "Real killing blow failed to heal one HP.");
+        Check(!buff.TryHeal(token, 10, 20, 0, 3, 5), "Reentrant/duplicate callback healed twice.");
+    }
+
+    private static void BloodEyeCooldownIsGlobal()
+    {
+        var buff = new BloodthirstyBuff(); buff.Activate(4); long token = buff.Token;
+        Check(buff.TryHeal(token, 4, 100, 90, 1, 9), "First attack failed.");
+        Check(!buff.TryHeal(token, 4.9999, 200, 150, 2, 9), "A different target/attack bypassed the one-second cooldown.");
+        Check(buff.TryHeal(token, 5, 200, 150, 2, 9), "Exact one-second boundary rejected.");
+        Check(!buff.TryHeal(token, 5, 300, 200, 3, 9), "Simultaneous multi-target hit healed twice.");
+    }
+
+    private static void BloodEyeExpiryDoesNotHeal()
+    {
+        var buff = new BloodthirstyBuff(); buff.Activate(20); long token = buff.Token;
+        Check(buff.Active(20) && buff.Active(24.9999) && !buff.Active(25), "Five-second half-open duration changed.");
+        Check(buff.TryHeal(token, 24.9999, 100, 90, 1, 9), "Hit just before expiry failed.");
+        Check(!buff.TryHeal(token, 25, 100, 90, 2, 9) && !buff.TryHeal(token, 26, 100, 90, 2, 9), "Expiry retained healing.");
+    }
+
+    private static void BloodEyeRefreshPreservesCooldown()
+    {
+        var buff = new BloodthirstyBuff(); buff.Activate(0); long old = buff.Token;
+        Check(buff.TryHeal(old, .2, 50, 40, 1, 9), "Initial hit failed.");
+        buff.Activate(.5); long fresh = buff.Token;
+        Check(!buff.TryHeal(old, 1.2, 50, 40, 2, 9), "Old cast callback survived refresh.");
+        Check(!buff.TryHeal(fresh, .5, 50, 40, 2, 9), "Refresh bypassed cooldown.");
+        Check(buff.TryHeal(fresh, 1.2, 50, 40, 2, 9), "Refresh lost the original cooldown deadline.");
+        Check(buff.Active(5.4999) && !buff.Active(5.5), "Refresh stacked duration instead of replacing expiry.");
+    }
+
+    private static void BloodEyeClearRejectsOldCallbacks()
+    {
+        var buff = new BloodthirstyBuff(); buff.Activate(0); long old = buff.Token; buff.Clear();
+        Check(!buff.Active(0) && !buff.TryHeal(old, 0, 100, 90, 1, 5), "Death/scene/detach left the buff active.");
+        buff.Activate(1);
+        Check(!buff.TryHeal(old, 1, 100, 90, 1, 5) && buff.TryHeal(buff.Token, 1, 100, 90, 1, 5), "Old callbacks damaged a new lifetime.");
+    }
+
+    private static void BloodEyeFullHealthDoesNotConsumeProc()
+    {
+        var buff = new BloodthirstyBuff(); buff.Activate(0); long token = buff.Token;
+        Check(!buff.TryHeal(token, 0, 50, 40, 5, 5), "Full HP attack consumed healing.");
+        Check(buff.TryHeal(token, .01, 50, 40, 4, 5), "Full HP wasted the next valid proc.");
+    }
+
+    private static void BloodEyeRejectsInvalidTime()
+    {
+        var buff = new BloodthirstyBuff(); buff.Activate(double.NaN); buff.Activate(double.PositiveInfinity);
+        Check(!buff.Active(0), "Invalid activation created a buff."); buff.Activate(2);
+        foreach (double now in new[] { 1.9, double.NaN, double.PositiveInfinity, double.NegativeInfinity })
+            Check(!buff.TryHeal(buff.Token, now, 50, 40, 1, 5), "Invalid/before-activation hit healed.");
+        Check(buff.TryHeal(buff.Token, 2, 50, 40, 1, 5), "Invalid hits consumed the real proc.");
+    }
+
+    private static void StormUsesSourceClock()
+    {
+        Check(!new FlameStormClock(15.999 / 30).Complete && new FlameStormClock(16.0 / 30).Complete, "Storm did not end after the original 16 ticks.");
+        Check(new FlameStormClock(3).Complete, "Lag replayed the storm.");
+        Check(new FlameStormClock(-1).Tick == 0 && new FlameStormClock(double.NaN).Complete && new FlameStormClock(double.PositiveInfinity).Complete, "Invalid clock held movement indefinitely.");
+    }
+
+    private static void StormContactsAreBounded()
+    {
+        var hits = new SpellHitLedger(FlameStormRules.HitCap); long token = hits.Begin();
+        for (int i = 0; i < 5; i++)
+        {
+            Check(hits.TryAirHit(token, 1, i * .1), "Storm lost a valid contact.");
+            Check(!hits.TryAirHit(token, 1, i * .1 + .05), "Storm ignored the source 100ms cooldown.");
+        }
+        Check(!hits.TryAirHit(token, 1, .5), "Storm exceeded five contacts.");
+        Check(hits.TryAirHit(token, 2, .5) && !hits.TryAirHit(token, 2, .5), "Targets shared caps or a lag frame generated catch-up hits.");
+        hits.Stop(token); long fresh = hits.Begin(); hits.Stop(token);
+        Check(!hits.TryAirHit(token, 2, .6) && hits.TryAirHit(fresh, 1, .6), "Stale storm callback changed a new cast.");
+    }
+
+    private static void StormUsesFixedSpellDamage()
+    {
+        Check(FlameStormRules.Damage(1, false) * 5 == 35 && FlameStormRules.Damage(2, false) * 5 == 55, "Storm tier balance changed.");
+        Check(FlameStormRules.Damage(1, true) * 5 == 55 && FlameStormRules.Damage(2, true) * 5 == 85, "Storm Shaman rounding changed.");
+    }
+
+    private static void StormUsesOriginalLocalMask()
+    {
+        FireDemonRegion right = FlameStormRules.Region(true), left = FlameStormRules.Region(false);
+        Check(Math.Abs(right.X - -6.4639412) < .00001 && Math.Abs(right.Y - 35.0111057) < .00001, "Source root/Flash Y-down conversion changed.");
+        Check(Math.Abs(right.Width - 402.9517788) < .00001 && Math.Abs(right.Height - 170.0001534) < .00001, "Original source mask dimensions changed.");
+        Check(left.X == -right.X && left.Y == right.Y && left.Width == right.Width && left.Height == right.Height, "Storm facing changed vertical position or reach.");
+    }
 
     private static void Check(bool condition, string message)
     { if (!condition) throw new InvalidOperationException(message); }

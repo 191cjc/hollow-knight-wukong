@@ -1,6 +1,6 @@
 # Flame Dash / 烈焰闪
 
-Version 0.3.0-dev replaces the normal dash presentation and adds along-path damage.
+Version0.6.3-dev replaces the normal dash presentation and adds along-path damage.
 The original dash key, ability unlock, movement, cooldown, gravity, wall collision
 and native invulnerability rules still come from `HeroController.HeroDash`.
 There is no added MP cost, armor, invulnerability or manual soul gain.
@@ -53,3 +53,19 @@ HealthManager targets require layer-11 hurtboxes; Hornet/Buzzer detector ranges
 and boss weapon children cannot route remote damage to their enemy ancestor.
 Native non-health responders remain eligible. Filter before ledger/FSM writes.
 See docs/FIRE_DEMON_SLASH.md for the separate source-presentation restoration.
+
+
+## Active dash immunity (0.6.3)
+
+Runtime SkillProtects observes actual FlameDash ownership at both incoming
+HeroController.TakeDamage and TakeHealth entry points. Either active Flame Dash
+or protected Fire Demon rejects the incoming HP-damage call. Observe first so
+an ended/cancelled/stale dash cannot retain protection. Both horizontal and
+Dashmaster downward dashes are covered; no saved isInvincible flag/timer writes,
+movement/cooldown/collision changes or extra damage transaction. Existing
+sharp-shadow source suppression and native recovery remain intact. Death/scene/
+disable release ownership; direct native death processing is still authoritative.
+
+Client checks: enemy contact/projectiles and spikes/acid during active dash,
+damage immediately before/after it, left/right/downward dash, shadow-dash charms,
+pause/cancel/scene/disable and persistent invincibility state after completion.

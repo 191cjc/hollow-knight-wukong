@@ -4,7 +4,7 @@ using WukongKnight.Core;
 
 namespace WukongKnight
 {
-    /// <summary>Source-timed Fire Demon; native down-spell owns input, Soul and recovery.</summary>
+    /// <summary>Source-timed Fire Demon on native up-spell eligibility and recovery.</summary>
     internal sealed class FireDemonSlash : IDisposable
     {
         private readonly HeroController hero;
@@ -26,11 +26,14 @@ namespace WukongKnight
         private double started;
         private float lastPhysics = float.NegativeInfinity;
         private bool airSpawned;
+        private readonly FireDemonTravel travel = new FireDemonTravel();
+        private Vector3 castOrigin;
+        private readonly RaycastHit2D[] terrainHits = new RaycastHit2D[32];
         private bool facing;
         private bool observing;
         private bool disposed;
         private FireDemonTimeline Clock => new FireDemonTimeline(Time.time - started);
-        public bool Active => !disposed && hits.Active && state == "Quake Antic";
+        public bool Active => !disposed && hits.Active && spell.HoldsState(state);
         public string Clip => "effect5";
         public double Tick => Clock.Tick;
         public bool FacingRight => facing;
@@ -59,7 +62,7 @@ namespace WukongKnight
                     // Baseline pixel/world calibration. Enlargement is baked into the PNGs.
                     r.transform.localScale = new Vector3(100 * unitsPerPixel, 100 * unitsPerPixel, 1);
                 }
-                spell = new NativeSpellV77(hero);
+                spell = new NativeSpellV77(hero, NativeSpellSlot.Up);
             }
             catch { if (pendingMaterial != null) UnityEngine.Object.Destroy(pendingMaterial); DestroyObjects(); throw; }
         }
@@ -81,12 +84,14 @@ namespace WukongKnight
                 if (next != state)
                 {
                     state = next;
-                    if (state == "Quake Antic")
+                    if (spell.HoldsState(state))
                     {
-                        started = Time.time; airSpawned = false;
+                        if (!spell.SpendSoul()) { Cancel(); spell.FinishCast(); state = spell.State; return; }
+                        started = Time.time; airSpawned = false; travel.Reset();
+                        castOrigin = Origin();
                         lastPhysics = float.NegativeInfinity;
                         facing = hero.cState.facingRight;
-                        damage = new FireDemonDamage(PlayerData.instance.GetInt("quakeLevel"), PlayerData.instance.GetBool("equippedCharm_19"));
+                        damage = new FireDemonDamage(PlayerData.instance.GetInt("screamLevel"), PlayerData.instance.GetBool("equippedCharm_19"));
                         hits.Begin();
                     }
                     else Cancel();
@@ -97,7 +102,7 @@ namespace WukongKnight
                 {
                     Cancel(); spell.FinishCast(); state = spell.State; return;
                 }
-                // Quake Antic relinquishes only on entry. Keep its input/motion
+                // Native antic relinquishes only on entry. Keep its input/motion
                 // invariant for the longer source timeline, before native updates.
                 // RelinquishControl alone is a no-op if already relinquished.
                 hero.RelinquishControl();
@@ -105,11 +110,12 @@ namespace WukongKnight
                 native.ResetInput(hero);
                 hero.AffectedByGravity(false);
                 motion.velocity = Vector2.zero;
+                AdvanceTravel(clock);
                 if (clock.Air && !airSpawned)
                 {
                     airSpawned = true;
                     // Original (+177 facing, -95 Flash Y-down), without centered registration.
-                    airEffect.transform.position = Origin() + new Vector3(
+                    airEffect.transform.position = castOrigin + new Vector3(
                         (float)FireDemonGeometry.AirSpawnX * (facing ? 1 : -1),
                         (float)FireDemonGeometry.AirSpawnY, 0) * unitsPerPixel;
                     airRenderer.flipX = !facing;
@@ -123,6 +129,27 @@ namespace WukongKnight
                 }
             }
             finally { observing = false; }
+        }
+
+        private void AdvanceTravel(FireDemonTimeline clock)
+        {
+            // Consume each authored interval once, independently of repeated input/hit observers.
+            // Blocked distance is discarded rather than banking a later teleport through terrain.
+            float distance = (float)travel.Advance(clock) * unitsPerPixel;
+            if (distance <= 0) return;
+            Vector2 direction = facing ? Vector2.right : Vector2.left;
+            var filter = new ContactFilter2D();
+            filter.SetLayerMask(Physics2D.GetLayerCollisionMask(body.gameObject.layer));
+            filter.useTriggers = false;
+            int count = body.Cast(direction, filter, terrainHits, distance + 0.01f);
+            if (count == terrainHits.Length) return; // A truncated sweep cannot establish a safe move.
+            for (int i = 0; i < count; i++)
+            {
+                RaycastHit2D hit = terrainHits[i];
+                if (hit.collider != null && Vector2.Dot(hit.normal, direction) < -0.01f)
+                    distance = Math.Min(distance, Math.Max(0, hit.distance - 0.01f));
+            }
+            motion.position += direction * distance;
         }
 
         private Vector3 Origin()

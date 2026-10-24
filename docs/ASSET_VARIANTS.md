@@ -52,7 +52,8 @@ pixel-to-world calibration. Updating that reference to the enlarged body height
 would automatically fit the artwork back down and cancel the enlargement.
 Runtime retains the original coordinate/facing adaptation but applies no
 additional appearance scale multiplier. The 1.5 enlargement is in the PNG pixels.
-Native hero colliders, native slash artwork and attack reach are unchanged.
+Native hero colliders and attack reach are unchanged. Native slash artwork is
+replaced by original Wukong arcs in the v06 nail presentation revision; see NAIL_VISUALS.md.
 
 An identical repeat run reuses validated output. A different job cannot overwrite
 an existing variant: choose another folder. An already resized variant is rejected
@@ -73,3 +74,14 @@ runtime clips. Its preserved original bake is `wukong-fire-demon-v04-original`;
 the 1.5x copy is `variants/wukong-fire-demon-v04-1p5`. Earlier complete and draft
 Fire Demon bakes remain separate. The five new clips keep body, world air effect
 and finisher separate. `prepare-all-assets.bat` follows the active configuration.
+
+
+## 0.6.2 directional Flame Dash variant
+
+Active profile: data/character/wukong-staff-presentation-v062.json. New original
+folder assets/processed/wukong-presentation-v062-original and offline1.5x folder
+assets/processed/variants/wukong-presentation-v062-1p5 preserve all earlier art.
+The batch prepare-all-assets.bat also produces flameDashDown:12ticks of effect2
+with only flames rotated clockwise90 around fixed source(0,-44.5). Existing body
+poses and all979previous ticks remain identical;45clips/991ticks/32atlas pages.
+Fire Eye end alignment changes runtime sampling only; its source pixels stay exact.

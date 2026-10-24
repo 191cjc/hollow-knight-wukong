@@ -21,14 +21,14 @@ Use this when changing character presentation, ground combo timing, native hook 
 - Closing an owned slash must also clear its descendant DamageEnemies contact lists: native CancelAttack only disables polygons/mesh and leaves enteredColliders until a later physics exit. If a close occurs during native iteration, defer the list mutation to the outermost FixedUpdate finally and suppress that source's remaining DoDamage callbacks, including TAKE DAMAGE events. Do not retain suppression into a later native air attack. Unload inside a native iterator retains only these cleanup guards until its synchronous unwind completes. `Core/DeferredContactCleanup.cs` owns this tested policy; private contact-list access belongs in NativeV77.
 - Hit identity is the actual responder, not the collider. A stage token plus window ID rejects duplicate targets and stale callbacks; stage3 has two independent target sets. A native HealthManager evasion rejection must not consume an opportunity prematurely or be bypassed by rewriting global enemy invulnerability.
 - AttackHook/DoAttackHook are Action notifications, not cancelable filters. AfterAttackHook is before StartSlash in this version. ResetAttacks clears attack flags/time but not attack_cooldown; keep a deliberate owned timing release policy.
-- Preserve native enabled/visibility writes while suppressing the original body drawing. Source Wukong faces right; cancel inherited root mirroring and apply one explicit facing mapping. Up/down native slash effects remain available with Wukong body fallback poses.
+- Preserve native enabled/visibility writes while suppressing the original body drawing. Source Wukong faces right; cancel inherited root mirroring and apply one explicit facing mapping. v06 uses original Wukong composite nail clips, including directional poses; see the nail presentation contract below.
 - Appearance enlargement is baked into separate PNG variants; do not add a runtime appearance multiplier. Preserve baseline pixel-to-world calibration and use the variant's feet offset to anchor to the native collider. Never enlarge the hero root or change body colliders to resize the artwork.
-- Each combo hit window restarts the selected native NailSlash animation and keeps its original renderer visible. Do not suppress its mesh in StartSlash or FixedUpdate; CancelAttack closes its visual with the owned hit window. Original slash resources and charm variants remain authoritative.
+- Each combo hit window still restarts the selected native NailSlash transaction. v06 supersedes the earlier native-art preference: Presenter suppresses only the five actual hero mesh draw submissions; enabled writes, charm logic, polygons, contacts and CancelAttack remain native.
 - Cancel/detach closes owned hit windows, clears queued input and restores only the same hero's owned timing/geometry/rendering. Cover jump/dash/turn/damage/death/scene/control loss, disable, hero replacement and failed initialization. Old callbacks cannot reset a newer native action.
 - Compilation with newer pinned Unity compile references is not an exact runtime compatibility proof. Only the actual baseline client can establish native FSM, charm, collision and rendering acceptance.
 - Flame Dash calls native HeroDash once and owns only its presentation and added damage. Use the unchanged hero collider bounds for sweeps; deduplicate actual responders per dash token and preserve native evasion. Suspend the separate Sharp Shadow source while owned to avoid double damage. Keep movement, unlocks, cooldown, collision and invulnerability native.
 - A dash sweep captures its token before sampling. Recheck it before every target and after the native TAKE DAMAGE event: synchronous FSMs may cancel/unload/replace the dash. Old sweeps must not hit for a newer dash or overwrite its previous center. Restore owned renderer suppression on every exit. See `docs/FLAME_DASH.md`.
-- Fire Demon Slash must replace native Quake damage sources rather than stack with them. Original AS3 uses independent air/finisher effect regions, per-target caps (11/1) and a 100 game-ms air contact cooldown, not nine guaranteed animation pulses. Finisher creation follows completion of the air effect in the original code. Treat movement/input/Soul integration separately from damage ownership. See `docs/FIRE_DEMON_RESEARCH.md` and the preserved `reference/flash/fire-demon/` evidence. Do not silently use XML decimal growth: this archived SWF declares skillAdd as int and truncates the fractional source values. Original source damage units need an explicit Hollow Knight stat mapping.
+- Fire Demon Slash must replace native up-spell Scream damage sources rather than stack with them. Original AS3 uses independent air/finisher effect regions, per-target caps (11/1) and a 100 game-ms air contact cooldown, not nine guaranteed animation pulses. Finisher creation follows completion of the air effect in the original code. Treat movement/input/Soul integration separately from damage ownership. See `docs/FIRE_DEMON_RESEARCH.md` and the preserved `reference/flash/fire-demon/` evidence. Do not silently use XML decimal growth: this archived SWF declares skillAdd as int and truncates the fractional source values. Original source damage units need an explicit Hollow Knight stat mapping.
 
 ### Query-based skill contacts
 
@@ -52,19 +52,17 @@ the centered/raised adaptations are superseded. See the source-clock rules below
 
 ### Fire Demon adapter rules
 
-`FireDemonDamage(quakeLevel, shamanStone)` is the only runtime damage table:
+`FireDemonDamage(screamLevel, shamanStone)` is the only runtime damage table:
 2/14 or 3/22 (air/finisher); Shaman Stone uses ceil(x1.5), giving 3/21 or 5/33.
 Never read nail damage for this spell. `SpellHitLedger` owns per-target 100ms
 contacts/cap 11, one finisher and cast tokens; no lag catch-up pulses.
 
-Native Quake damage can originate in PlayMaker TakeDamage as well as
+Native spell damage can originate in PlayMaker TakeDamage as well as
 DamageEnemies. Suppress scoped native effect colliders and reject their source
-identities at HitTaker/HealthManager boundaries. Hold only Quake Antic's tk2d
+identities at HitTaker/HealthManager boundaries. Hold Scream Antic1/2 (Fire Demon) or Quake Antic (Storm) tk2d
 completion with a real ignored FsmEvent (null can retain an old callback). Source
 FireDemonTimeline owns preparation [0,5), air [5,36), finisher [36,56), at 30 FPS.
-Finisher never waits for landing. FinishCast enters Quake Finish directly; native
-Spell End restores input, animation and gravity. Never release ANIM END into the
-native Level Check 2/Quake Down path. On dead/transitioning/inactive heroes, do not
+Finisher never waits for landing. Fire Demon finishes through Spell End; Storm through Quake Finish/Spell End, which restore input, animation and gravity. Never release the held completion into native Scream Burst or Level Check 2/Quake Down. On dead/transitioning/inactive heroes, do not
 force recovery/control regain. Restore all owned patches on disposal/failure.
 
 Use the existing untouched effect5 clip for moving character flashes and real
@@ -92,8 +90,9 @@ resets axes only when acceptingInput changes. Explicit ResetInput is required.
 Observe before Hero.Update and before/after Hero.FixedUpdate; the attached
 lifetime's FixedUpdate order is insufficient. Keep both original updates alive
 exactly once and unsubscribe the physics hook on unload. Preserve authored moving
-body frames; never solve input drift by removing their animation or teleporting
-the hero. Completion/cancel must stop all movement writes before native recovery.
+body frames; never solve input drift by removing their animation. Version0.5.1
+restores the source skill's own controlled forward travel (below); input denial
+must not suppress that travel. Completion/cancel must stop all movement writes before native recovery.
 No persistent constraints, saved momentum or global InputHandler changes.
 
 Required client regression: hold/reverse/release directions in all three phases,
@@ -130,3 +129,223 @@ detach/death/scene. Core timing tests cannot prove Unity input/physics behavior.
 Wrong: clear `hero.cState.attacking` inside AfterAttackHook to skip the native Slash, then send a custom HitInstance and manually grant soul.
 
 Correct: let the original transaction initialize once; defer only the owned selected Slash until the authored window, use the native hit/feedback chain with scoped deduplication, and release that stage's timing and renderer ownership on every exit. See WukongRuntime/NativeV77 for the concrete adapter, and keep its token guards when adding skills.
+
+
+## Spell-slot and focus completion contract (0.5)
+
+- `NativeSpellV77(hero, NativeSpellSlot.Up/Down/Focus)` validates the exact native
+  state/action signatures before patching. Up holds Scream Antic1/2 FINISHED;
+  down holds Quake Antic ANIM END using a real ignored FsmEvent, not null.
+  The actual Tk2dPlayAnimationWithEvents native completion delegate only sends
+  that event; OnEnter does not Finish the action independently. Restore all owned
+  events/effect renderers/colliders on failure/dispose. Focus never disables
+  effect colliders; suppress focus visuals only during ordinary focus, not dreams.
+- Replaced up/down antic skips the later native TakeMP state. `SpendSoul()` must
+  charge current FSM MP Cost once per accepted cast, including Spell Twister.
+  Read screamLevel for Fire Demon and quakeLevel for Storm; no nail scaling.
+- Storm uses `FlameStormClock` (16 ticks), `FlameStormRules` (original ab_effect3
+  local mask, tier7/11, Shaman11/17) and `SpellHitLedger(cap5)`. Preserve 100ms
+  per-target contacts, native evasion and shared sensor filtering. No lag catch-up
+  or extra immunity. Maintain input/velocity/no-gravity during the action and
+  release through native recovery; never teleport or freeze Rigidbody constraints.
+- Fire Eye uses native focus eligibility, drain/cancel and charm timing.
+  Animation starts on ordinary focus entry at original30Hz scaled time; native
+  Soul progress does not drive it. After overlay completion hold only final
+  original body pose. See0.5.3 below; native completion alone activates the buff.
+- Intercept only AddHealth during Focus Heal/Focus Heal 2. Suppress immediate
+  heal and activate `BloodthirstyBuff`; defer Focus Get Finish until the native
+  action returns. Other healing must call the original entry unchanged.
+- Buff is `[completion, completion+5)` in scaled Time.time. Capture the current
+  buff token/instance and enemy HP before native HealthManager.Hit, then compare
+  actual HP after the original dispatch. Nail/NailBeam/Spell/SharpShadow qualify;
+  scenery, dead targets and zero HP loss never heal. Call AddHealth(1) with a
+  reentrancy guard; use one >=1s deadline across all attacks/targets and refreshes.
+  Full HP does not spend a proc. Refresh replaces expiry, preserves cooldown and
+  invalidates old callbacks. Clear on death/hazard/scene/detach, with no expiry heal.
+- Tests link actual production policies for cooldown/expiry/refresh/full HP/stale
+  ownership and Storm mask/tier/clock/cap. Native focus routing, Soul cost,
+  graphics and cleanup remain pending client acceptance after compile checks.
+
+## 0.5.1 source movement and Jiyuan Fire Eye visual contract
+
+1. Trigger: Fire Demon previously finished at the stationary cast root; Fire Eye
+   had its action but omitted the independently loaded original buff visual.
+2. Signatures: FireDemonTimeline.TravelPixels is unsigned source displacement;
+   FireDemonTravel.Reset/Advance(clock) consume it once. BloodthirstyBuff.VisualTick
+   returns30Hz elapsed ticks only while Active(now); presenter owns fireEyeAura.
+3. Contract: source shootSpeedX50 * Physics.deltaTime0.1 =5 pixels/tick in [5,36),
+   cap155px, signed once by captured facing. Use baseline unitsPerPixel, never
+   ArtworkScale. Sweep the unchanged body using Collider2D.Cast with its actual
+   native collision mask and useTriggers=false. Clamp against forward-facing
+   hit normals; a full32-result buffer rejects the step. Consume blocked distance
+   so no later motion can bank it. Air effect is castOrigin+(177facing,+95);
+   finisher/body use the resulting hero root. No downward snap or targeting.
+4. Lifecycle/error matrix: repeated/older observations ->zero additional travel;
+   new cast ->Reset; terrain block ->clamp/discard; complete/cancel/detach ->no
+   more movement writes. Source interval owns motion while input remains denied.
+   Buff expiry/death/scene/detach ->aura disabled; refresh ->restart visual clock,
+   preserve healing cooldown. Presenter cleanup destroys child aura with view;
+   both use the same owned material. Missing aura clip fails asset loading safely.
+5. Base/good/bad: unobstructed right/left casts finish155 source pixels forward;
+   terrain limits travel while preserving native hero size. An input-driven drift,
+   teleport through walls or aura retained after expiry violates this contract.
+6. Tests: production source travel boundaries, repeated/sparse samples, reset,
+   discarded blocked intervals and buff visual lifetime. Python checks independent
+   SWF image hashes, original symbol/registration and real baked frames. Native
+   sweep/input/graphics remain client acceptance, including walls/slopes/platforms.
+7. Wrong: freeze all authored forward motion to prevent keyboard drift. Correct:
+   deny input continuously and separately apply only source-timed swept travel.
+
+Public skill name is Jiyuan Fire Eye (汲元火眼). Legacy internal Bloodthirsty class
+names and archived buff labels do not change the user-requested5s/1HP/1s policy.
+
+
+## 0.5.2 Fire Eye presentation selection
+
+Normal focus selects fireEyeCast, the complete original21-tick casting overlay
+composited above the unchanged shorter body. Sample below duration using the
+existing BloodthirstyFireEye.Progress; do not loop at completed progress1.
+Startup holds tick0 and native charge/charm timing remains authoritative.
+Cancellation/death/recoil/scene use existing selection priority and remove the
+cast effect immediately. This layer owns no new timer, health, Soul, collider or
+input writes. The buff's independent fireEyeAura renderer and healing lifetime
+remain unchanged; an already active buff can coexist with a new cast. Offline
+scaling only, and cleanup remains the presenter's existing material/view disposal.
+
+
+## 0.5.3 original source clock (supersedes0.5.2 animation timing)
+
+1. Trigger: native startup held Progress=0, then discrete Soul drain drove the
+   full21-tick clip. Opening source frames appeared slow despite correct art.
+2. Signatures: FireEyeCastClock.Observe(casting, scaledNow), Tick(scaledNow),
+   Clear(); BloodthirstyFireEye.CastTick exposes the same owned clock.
+3. Contract: start on ordinary focus entry, including startup, once per cast;
+   repeated Update/FixedUpdate/LateUpdate observations cannot restart it. Advance
+   at original30 Hz using Time.time. Pause freezes that clock. At21 ticks the
+   presenter shows only the final original body pose until native completion.
+4. Ownership: no animation-driven buff activation, Soul spending, input writes
+   or completion delay. Remove obsolete private MP-progress reflection and the
+   unused NativeV77 constructor dependency. Native charm/completion/cancel rules
+   remain authoritative; an early native completion can truncate graphics.
+5. Lifecycle/error matrix: ordinary focus false, death/hazard/scene/detach ->clear;
+   new focus ->tick0; repeated observer ->keep origin; invalid clock ->no advance;
+   pause ->stable tick; native completion ->existing buff/finish path unchanged.
+6. Tests: link actual production clock into core suite, verify early startup30Hz,
+   repeated/sparse samples, long charge, scaled-time pause and rapid cancel/rehold.
+   Verify package character bytes identical to0.5.2; native visual acceptance
+   remains pending, including Quick/Deep Focus, Unn and pause/recovery.
+7. Wrong: equal normalized progress for17/21-tick tracks or holding startup at0.
+   Correct: shared source tick from focus entry with each track's original end.
+
+
+## 0.6.0 nail presentation (supersedes native slash artwork preference)
+
+`WukongPresenter(hero, assets, native)` captures/restores the actual normal,
+alternate, up, down and wall NailSlash MeshRenderer.forceRenderingOff values.
+Never disable their objects/components, animator, damage or polygon colliders.
+Construction validates the new sprites/view first, then suppresses meshes; all
+captured values restore on failure/dispose. Native enabled writes still execute.
+Body/aura ownership and every combat hook remain as before. Beam objects are
+outside the suppression set.
+
+Combo stages sample nailAttack1..4 at existing combo source ticks. Other attacks
+choose nailUp/nailDown from `NativeV77.Selected(hero)` identity, otherwise
+nailAir/nailAttack1, and sample `min(Ticks-epsilon, AttackProgress(hero)*Ticks)`.
+AttackProgress clamps native attack_time/attackDuration to[0,1], matching the
+native scaled timer and Quick Slash duration. Native reset/pogo/cancel wins;
+there is no independent timer, new input owner or added damage transaction.
+
+Good: a down-pogo uses the rotated art while native DownAttack remains active.
+Bad: rotating the hero root, scaling slash geometry, disabling NailSlash, or
+calling HitTaker to make new art damaging. Missing mesh/property/clip fails
+initialization with restoration, never leaves an invisible native hero.
+Source/pixel checks cover art; Release validates actual API members. Client
+tests must cover pacing, mesh suppression/restoration, charms and pogo.
+
+
+## 0.6.1 independent nail arc range
+
+1. Scope: follow original charm range without scaling Wukong body. StartSlash
+   already applies serialized scale*1/1.15/1.25/1.4 and optional M animation.
+2. Signature: NativeV77.NailRangeScale(hero)->Vector3 uses validated v77 private
+   NailSlash.scale and actual selected slash.transform.localScale; read only.
+3. Contract: abs(actual.x/base.x),abs(actual.y/base.y),1. Missing selected slash
+   returns identity. Presenter sets only its independent arc child's localScale;
+   (1-ratio)*fixed source center corrects attachment. Center Unity Y is
+   (NominalBodyHeight*ArtworkScale/2-FeetOffsetPixels)/100. Body never changes.
+   Combo native windows initialize scaling before source arcs become visible;
+   ordinary attacks already run native StartSlash. Do not run it for visuals.
+4. Validation: missing/wrong baseline field fails version gate; zero baseline
+   X/Y fails attachment/update, triggering existing detach/restoration. Arc uses
+   body enabled/color/facing, disappears outside nail clips and dies with view.
+5. Good: both charms read actual1.4 and stable upright body; base has ratio1.
+   Bad: a separate charm table, scaling the composite/root, or calling extra
+   StartSlash. Do not duplicate source hitboxes or damage to match the picture.
+6. Checks: source arc extraction/recomposition/105new pixels, unchanged874old
+   frames per size, native IL table/M sequence, Release actual member checks;
+   client verifies equip/unequip, repeated attacks, both facings, pogo, teardown.
+7. Wrong: renderer.localScale=charmScale for the whole body/composite. Correct:
+   body samples preserved poses and only nailArc follows actual native ratio.
+
+
+## 0.6.2 direction and native focus end alignment (supersedes0.5.3 origin)
+
+1. Scope: Dashmaster flames were horizontal; Fire Eye cast played too early.
+2. Signatures: NativeV77.DashingDown(hero)->bool through FlameDash.Downward;
+   NativeSpellV77.FocusSecondsRemaining->double(-1 before normal focus drain);
+   FireEyeCastClock.Observe(casting,remainingSeconds,scaledNow), Tick(now), Clear.
+3. Contract: read private native dashingDown, not held input/inferred facing.
+   Presenter selects flameDashDown with the same DashProgress clock, white color
+   and native dash visibility handling. Only offline flame Draws rotate90;
+   body, aura, arcs, view/root/colliders and path damage remain unchanged.
+   Native focus remaining=(focusMP_amount-MP_drained)*drainMP_time-drainMP_timer,
+   clamped0 while drainMP=true. Capture now+remaining once, after native charm
+   selection. Tick=(now-deadline)*30+21; unscheduled returns-1. Negative tick
+   shows only opening effect4 body;[0,21) samples original composite;>=21 uses
+   final body only. Short native charges start in source tail, never stretch.
+4. Error/lifetime matrix: wrong private field type -> fail initialization safely;
+   no drain/invalid remaining -> no schedule; invalid now/ordinary focus false,
+   death/scene/detach -> clear; repeat observations -> same deadline; pause ->
+   scaled clock unchanged; complete/cancel -> normal native/buff cleanup wins.
+5. Base/good/bad: normal .891s drain delays flames .191s; Quick .594s uses last
+   .594s at30Hz; Deep waits longer. Bad: hardcoded normal duration, restarting
+   deadline on every observer, normalized/discrete Soul frame stepping, delaying
+   native completion or rotating all hero graphics to point dash flames down.
+6. Tests: actual production deadline for startup/window/end, native-rate samples,
+   short tail, repeats/pause/cancel/recast/invalid and early native completion;
+   source directional pixels/1.5x and979old ticks, actual-reference Release.
+   Client still checks both facings, charms/Unn, interruptions and native timing.
+7. Wrong: start flames on focus entry then hold final body for long charges.
+   Correct: hold opening body without effects, end-align the original30Hz window.
+
+
+## 0.6.3 active dash protection and source death
+
+1. Scope: user requests full Flame Dash HP immunity and original Wukong death.
+   This supersedes earlier native-only dash immunity; all dash motion stays native.
+2. Signatures: Runtime.SkillProtects(self)->bool observes FlameDash/FireDemon at
+   TakeDamage/TakeHealth entry. HeroDie(orig,self)->IEnumerator starts presentation
+   then returns orig(self) unchanged. NativeV77.DeathEffect(hero)->GameObject.
+   Presenter.BeginDeath(now); SourceDeathClock(ticks,rate).Begin/Tick/Clear;
+   NativeDeathV77.Suppress/Restore and ReadyToResume.
+3. Contract: active actual dash or FireDemon rejects incoming HP damage; stale
+   ownership is observed/cleared first. No saved invincibility writes. Real death
+   captures facing/world anchor, uses original65ticks/30Hz and holds final pose;
+   ignore native enabled/alpha for this presentation only. Survivable hazard is
+   hurt/recovery, not real death. Native death iterator remains authoritative.
+4. Error/lifetime matrix: wrong death prefab/FSM/variables -> fail attachment
+   safely; source clock invalid -> no start; duplicate death -> no restart;
+   pause -> stable tick; source end -> final pose until native resume; scene/
+   hero teardown/disable/failure -> clear and restore every owned renderer flag.
+   Suppress prefab/Head/Sword graphics and only named Corpse Nail Hero pooled
+   visual spawn; leave state transitions/camera/audio/save/Geo/shade logic alive.
+5. Good: downward dash immune only while active; dead body/ghost visible after
+   native renderer disables. Bad: save isInvincible, skip Die/FSM, alter death
+   wait, activate source death on survivable spike/acid hit, or reset on every frame.
+6. Tests: actual source-clock repeats30Hz/pause/end/clear/recast/invalid, fresh
+   bundle/65original+enlarged pixel checks, compiled TakeDamage/TakeHealth and
+   original Die return boundary, all old assets unchanged. Client death/charms/
+   hazard/save/respawn acceptance remains separate.
+7. Wrong: follow native mesh enabled for the replacement death or turn off the
+   death FSM. Correct: override only source death presentation and own/restore
+   the selected native visual suppressions while native progression runs.

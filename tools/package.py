@@ -9,34 +9,69 @@ from pathlib import Path
 
 from validate_character import CHARACTER, ROOT, sha256, validate_character
 
-VERSION = "0.4.4-dev"
+VERSION = "0.6.3-dev"
 ACTIVE_CHARACTER = ROOT / json.loads((ROOT / "data/character/active-variant.json").read_text(encoding="utf-8"))["output_directory"]
 README = f"""Wukong Knight {VERSION}
 Baseline: Hollow Knight 1.5.78.11833 / Modding API v77.
 Includes default staff Wukong visuals and a grounded four-stage horizontal attack chain.
 Wukong artwork is resized offline to 1.5x baseline; no runtime appearance multiplier.
 Original project assets are preserved. Native hero collision is unchanged.
-Every grounded combo hit uses the original native slash effect, including charm variants.
+Ground/air attacks use their original Wukong staff arcs. Up nail uses the original
+rising-strike body/arc; down nail rotates only that arc 180 degrees around the hero center.
+Native nail meshes are visually suppressed; damage, reach, charms, Soul and pogo stay native.
+Only the independent Wukong arc layer follows the selected native slash scale.
+Longnail/Mark of Pride/both give native 1.15x/1.25x/1.4x; body remains offline1.5x.
+Arc and body share the same original animation tick and character-center attachment.
 The native dash key now plays Wukong's original Flame Dash pose/flame artwork.
+Dashmaster downward dashes rotate only the flames downward, keeping the body upright.
 Movement, cooldown, unlocks and wall collision retain native dash behavior.
 Each responder along the actual dash path can take one nail-level dash hit.
-Shadow-dash invulnerability stays native; the old Sharp Shadow damage source is
-temporarily suspended to prevent duplicate damage. No extra MP cost is added.
+All incoming HP damage is blocked for the actual active Flame Dash, horizontally
+or downward, and protection releases immediately on end/cancel. No saved invincibility
+flag is changed. The old Sharp Shadow damage source is temporarily suspended to
+prevent duplicate damage. No extra MP cost is added.
+Real death uses original Wukong dead:65 source ticks at30 FPS, falling/prone body
+and the original ghost at ticks8..31. The matching official bundle was freshly
+downloaded/verified; current original/offline1.5x death pixels remain exact.
+Native mesh disable/alpha no longer hides the Wukong death animation. Native
+Knight shell/debris visuals are suppressed with restoration; death/save/Geo/shade,
+dream returns and respawn processing continue through the original iterator.
 Air/up/down attacks retain native mechanics, including down-slash bouncing.
-Down + spell casts Fire Demon Slash with original relative air/finisher regions.
+Up + spell casts Fire Demon Slash with original relative air/finisher regions.
 Damage is fixed by spell tier, independent of nail upgrades: 2 x up to 11 + 14,
 or upgraded 3 x up to 11 + 22. Shaman Stone gives 3 x 11 + 21 / 5 x 11 + 33.
 Air contacts have a 100ms per-target cooldown; the finisher hits each target once.
 Native enemy hit evasion remains authoritative, so actual hits may be fewer.
-Native Quake damage/visuals are suppressed; Soul, unlocks and control recovery remain native.
+Native Scream damage/visuals are suppressed; native up-spell unlock/tier and recovery remain.
+Each replacement spell charges native MP Cost once (normally 33; Spell Twister 24).
 Original effect5 character flashes keep their movement and genuinely invisible frames.
 Air effect spawns at original +177 facing/+95 upward source pixels; original mask
 centers/dimensions use baseline pixel/world conversion independently of artwork size.
+The original skill moves forward5 source pixels/tick from tick5 through tick36,
+up to155 source pixels, limited by the native body terrain sweep. Movement inputs
+cannot steer it. The final effect/damage use the resulting moved position.
 At body tick 36 the air effect expires and the 20-tick finisher begins, even in midair.
-There is no forced dive or ground-contact requirement. Both skills reject enemy sensors
+There is no forced dive or ground-contact requirement. All custom skills reject enemy sensors
 and weapon children as enemy hurtboxes. No inherited Quake start/landing shake is added.
 Hero damage guards remain active throughout preparation, air and finisher; they release
 on completion/cancel/detach without changing save invincibility.
+Down + spell casts Flame Storm, using the original 16-tick spinning body and flames.
+Original local contact mask; per-target cap five, 100ms contact interval, native evasion.
+Damage per contact is 7/11 by down-spell tier, or 11/17 with Shaman Stone.
+Hold spell/focus to perform Jiyuan Fire Eye (汲元火眼) using native focus charge/Soul timing.
+The original casting effect4 flames wind upward around the body, followed by
+the original nested eye flashes. Both source layers run at the original30 FPS
+in the final0.7 seconds before the actual native focus completion. Earlier charge
+holds only the opening body pose, without casting flames. Shorter native charges
+use the source tail without slowing it. Completion/interruption removes the cast
+immediately. Native focus timing,
+Soul costs and buff activation remain authoritative.
+Completion activates a five-second buff with NO immediate healing. Real player attack
+HP damage heals one HP, globally at most once per second; whiffs/blocked hits do not.
+The original independent red flame ef animation loops while the buff is active,
+following the hero root/facing. Original registration and offline1.5x art are retained.
+Refreshing the buff does not stack it or reset its healing cooldown.
+Death, scene transition and disabling the Mod clear the buff.
 This is a development build. Actual game loading, rendering, combat and compatibility
 have NOT been tested in a game client. Compile/reference validation is not client acceptance.
 
@@ -137,7 +172,7 @@ def main():
         "dll": dll.relative_to(ROOT).as_posix(), "dll_bytes": dll.stat().st_size,
         "dll_sha256": sha256(dll),
         "implemented": {"character_replacement": True, "grounded_four_stage_combo": True,
-                        "active_skills": True, "flame_dash": True, "fire_demon_slash": True, "other_active_skills": False},
+                        "active_skills": True, "flame_dash": True, "fire_demon_slash": True, "flame_storm": True, "bloodthirsty_fire_eye": True, "other_active_skills": False},
         "built": args.checks_passed,
         "automatically_verified": {"source_inventory": args.checks_passed,
                                    "character_manifest_and_atlases": True,

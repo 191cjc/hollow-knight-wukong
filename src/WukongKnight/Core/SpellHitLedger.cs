@@ -13,6 +13,12 @@ namespace WukongKnight.Core
         }
         private readonly Dictionary<int, Contact> air = new Dictionary<int, Contact>();
         private readonly HashSet<int> finishers = new HashSet<int>();
+        private readonly int repeatingHitCap;
+        public SpellHitLedger(int repeatingHitCap = FireDemonDamage.AirHitCap)
+        {
+            if (repeatingHitCap <= 0) throw new ArgumentOutOfRangeException(nameof(repeatingHitCap));
+            this.repeatingHitCap = repeatingHitCap;
+        }
         public long Token { get; private set; }
         public bool Active { get; private set; }
         public bool FinisherStarted { get; private set; }
@@ -30,7 +36,7 @@ namespace WukongKnight.Core
             if (!Owns(token) || FinisherStarted || double.IsNaN(now) || double.IsInfinity(now)) return false;
             if (!air.TryGetValue(target, out Contact? contact))
                 air.Add(target, contact = new Contact { Last = double.NegativeInfinity });
-            if (contact.Count >= FireDemonDamage.AirHitCap || now - contact.Last + 0.000001 < 0.1) return false;
+            if (contact.Count >= repeatingHitCap || now - contact.Last + 0.000001 < 0.1) return false;
             contact.Count++; contact.Last = now; return true;
         }
         public bool TryFinisher(long token, int target) => Owns(token) && FinisherStarted && finishers.Add(target);

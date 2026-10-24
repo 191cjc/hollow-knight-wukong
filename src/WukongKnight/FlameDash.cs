@@ -22,6 +22,7 @@ namespace WukongKnight
         private bool disposed;
         private float lastPhysics = float.NegativeInfinity;
         public bool Active => hits.Active && !disposed;
+        public bool Downward => Active && native.DashingDown(hero);
         public double Progress => native.DashProgress(hero);
 
         public FlameDash(HeroController hero, NativeV77 native)

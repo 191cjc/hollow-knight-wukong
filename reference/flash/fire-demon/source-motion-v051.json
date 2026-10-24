@@ -1,0 +1,16 @@
+{
+  "skill_id": 1101050,
+  "start_tick": 5,
+  "end_tick": 36,
+  "physics_step": 0.1,
+  "shoot_speed": 50,
+  "travel_pixels": 155,
+  "inputs": {
+    "data/source/skills.xml": "ae4900a485e806f772ff37e5cf180f23c44801dc5db1eb532425a1a272ef43bb",
+    "reference/flash/fire-demon/as3/viewers/entitys/man/PlayerEntity.as": "3f980537cf4a0783f5e452884360f972e7040ea82928a201ed8bbe368ddea6fd",
+    "reference/flash/fire-demon/as3/viewers/entitys/man/WKEntity.as": "7ab4448b9b0b9190b828a6127864188364ba7f0e9bbdb0d12f59832b8891a9be",
+    "reference/flash/fire-demon/as3/viewers/container/BattleMap.as": "639792137a972bdbbee5335f93b1294938a40a98a681246136e5cdeece246d46",
+    "reference/flash/fire-eye/as3/utils/Physics.as": "f54cbae08ae5c9bcb8bbdf0fee26db473b0339e9c7e5fb45c9167ab3c0509a4f",
+    "reference/flash/fire-demon/as3/com/game/engine/core/GameFrame.as": "6e2b5e13bd3247ca9b87961bfc421ea7b71292dec6ca2d9acdf3575adb3f8594"
+  }
+}

@@ -1,23 +1,36 @@
 # Wukong Knight
 
 Wukong character Mod for Hollow Knight, based on archived 4399 ZMXY4 artwork.
-Development version **0.4.4-dev** includes staff visuals, a grounded four-stage
-combo, Flame Dash and Fire Demon Slash. Original artwork and earlier variants
-are preserved; the active artwork is resized offline to 1.5x.
+Development version **0.6.3-dev** includes staff visuals, the grounded four-stage
+combo, Flame Dash, Fire Demon Slash, Flame Storm and Jiyuan Fire Eye (汲元火眼).
+All originals and earlier bakes/variants are preserved. Active artwork is baked
+offline to 1.5x; native hero collision and nail reach retain their native size.
+Ground/air nail attacks now use original Wukong staff arcs. Up nail uses the
+original rising-strike action and arc; down nail rotates only that arc 180 degrees
+around the character center, with an upright airborne body. Native damage,
+charms, Soul, clashes and pogo remain authoritative. The independent arc layer
+follows actual native charm reach (Longnail1.15x, Mark of Pride1.25x, both1.4x);
+body and staff stay at their existing offline1.5x appearance.
 
-**尚未在游戏客户端验收。** 自动检查、动画预览和编译结果不能证明游戏内加载、命中、护符、魂获取及场景恢复正常。实际检查结果见 `artifacts/build-report.json`，实机项目见 [客户端验收](docs/CLIENT_ACCEPTANCE.md)。
+- **Up + spell:** Fire Demon Slash, with original moving flashes, relative masks,
+  midair finisher at the source-driven forward position, full-cast protection and input lock.
+- **Down + spell:** Flame Storm, with the original spinning action and eight-image
+  flame overlay; nearby source-mask contacts, at most five hits per target.
+- **Hold spell/focus:** Jiyuan Fire Eye (汲元火眼). Native focus timing/Soul drain
+  shows original winding flames/eye flashes at30 FPS in the final0.7s of the actual native charge (short charges use the source tail), then activates five seconds of healing on real
+  player attack damage: one HP, globally at most once per second. Original red flame aura; no instant heal.
+- **Dash:** Flame Dash retains native travel/cooldown/collision, adds path damage and blocks incoming HP damage throughout each actual dash; Dashmaster downward dashes use downward flames with the body upright.
 
-One grounded horizontal input advances one combo stage; the third stage has two
-hit windows. Directional/air attacks and pogo remain native. Flame Dash replaces
-dash art and adds path damage. Down + spell casts Fire Demon Slash with fixed
-spell damage (maximum 36/55, or 54/88 with Shaman Stone), independent of nail
-upgrades. Native Quake damage is suppressed. See
-[Fire Demon Slash](docs/FIRE_DEMON_SLASH.md) for contact rules and movement
-timing. Fire Demon uses the original moving character flashes and blink gaps,
-relative effect offsets and mask conversion. The finisher follows air-effect expiry,
-including in midair, with no forced dive. Full-cast immunity and the shared enemy
-hurtbox filter remain active. Other active
-mechanics and fist switching are not implemented.
+Fire Demon uses the up-spell unlock/tier; Storm uses the down-spell unlock/tier.
+Fixed spell damage is independent of nail upgrades and respects Shaman Stone.
+Native up/down spell damage is replaced; each cast charges the current native
+Soul cost once (including Spell Twister). See [spell controls](docs/SPELL_LAYOUT.md),
+[Fire Demon](docs/FIRE_DEMON_SLASH.md) and [client checks](docs/CLIENT_ACCEPTANCE.md).
+Forward spell, directional/air nail attacks and pogo retain native behavior.
+Fist switching and other prepared skill mechanics remain unimplemented.
+
+Actual gameplay acceptance is **pending**. Automated tests, artwork review and
+compilation are recorded separately in `artifacts/build-report.json`.
 
 源码仓库：https://github.com/191cjc/hollow-knight-wukong
 
@@ -37,13 +50,13 @@ bash scripts/build.sh
 | 输出 | 用途 |
 |---|---|
 | `artifacts/mod/WukongKnight/` | 安装整个目录，必须保留 `character/` |
-| `artifacts/WukongKnight-0.4.4-dev.zip` | DLL、说明、角色清单与引用的加工图集 |
+| `artifacts/WukongKnight-0.6.3-dev.zip` | DLL、说明、角色清单与引用的加工图集 |
 | `assets/processed/wukong/previews/` | 动画 GIF、关键姿势联系表，不进入开发包 |
 | `artifacts/validation.json` | 归档输入、解包、PNG、音频与配置检查 |
 | `artifacts/character-validation.json` | 加工图集、帧范围、时序与连击窗口检查 |
 | `artifacts/build-report.json` | 包内文件散列及实现/编译/自动检查/实机状态 |
 
-Current package: `0.4.4-dev`; older packages are retained for rollback.
+Current package: `0.6.3-dev`; older packages are retained for rollback.
 
 ## 安装与验收
 
@@ -55,8 +68,8 @@ Current package: `0.4.4-dev`; older packages are retained for rollback.
 
 Run `scripts\prepare-all-assets.bat` on Windows to generate the complete set:
 19 PNGs and 16 matching JSONs in `assets/processed/source-variants/all-1p5/`,
-and the selected 27-clip runtime variant in
-`assets/processed/variants/wukong-fire-demon-v04-1p5/`. Originals and earlier bakes remain
+and the selected 44-clip runtime variant in
+`assets/processed/variants/wukong-presentation-v062-1p5/`. Originals and earlier bakes remain
 in separate folders. See [asset variants](docs/ASSET_VARIANTS.md) and
 [Flame Dash](docs/FLAME_DASH.md) for source evidence and implementation rules.
 
@@ -103,7 +116,14 @@ API 目录需要所引用的 `Assembly-CSharp`、`MMHOOK_Assembly-CSharp`、Mono
 
 素材版权属于原权利人。当前处于研究开发阶段，尚无正式发行版本；开发包包含本次加工的角色图集，不含原始资源归档、游戏/API/Unity DLL。公开下载不等于获得再分发许可。
 
-0.4.4 keeps movement input and physical velocity locked for the entire Fire
+0.5.0 keeps movement input and physical velocity locked for the entire Fire
 Demon cast, then restores through native spell recovery. Original moving
 flashes, airborne finisher, full-cast protection and damage stay intact.
 Movement/pause/recovery gameplay checks remain pending.
+
+
+0.6.3 displays the original65-tick Wukong falling/prone death and ghost effect,
+independently of the native mesh's death visibility. Official manV535.swf was
+freshly downloaded and verified against the existing original; all current art
+pixels remain unchanged. Native death/save/Geo/shade/dream/respawn logic continues.
+See docs/DEATH_PRESENTATION.md for source and pending client checks.

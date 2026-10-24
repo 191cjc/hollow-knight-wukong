@@ -149,3 +149,122 @@ Keep original updates running and source effect5 animation/midair finisher,
 damage/immunity unchanged. Release before native recovery and stop writes on
 cancel/detach. Build/check, back up/install and verify; client movement, pause
 and recovery acceptance remains pending. See research/fire-demon-movement-lock-20261024.md.
+
+
+## 0.5.0 execution
+
+- [x] Commit complete current state before edits (a07b2ac; no push).
+- [x] Persist scope/design/source-native research before implementation.
+- [x] Implement up/down/focus adapters, actual-damage buff and Storm local contacts.
+- [x] Create new source bake/variant, preserving prior original artwork/folders.
+- [x] Add meaningful production-core and real source-image/mask checks.
+- [x] Run complete fresh Windows export, warnings-as-errors Release and closure checks.
+- [x] Review source frame previews, cross-layer contracts and lifecycle cleanup.
+- [x] Update specs/docs and install with complete backup and stopped game.
+- [x] Verify package/installed hashes; record evidence and pending gameplay.
+
+0.5.0 checkpoint: package `f369de9c912766fed6071d4f25c1d7d4d201b43fa21d5ae65946022b01304b3c`,
+DLL `6233aefc6348665d10a2f42ccddc840c3cc00224eb9bfff9b66c1d1c1099ea9c`, 25 installed
+files with a complete previous-Mod backup. 42 Python checks (41 passed, one Windows
+symlink privilege skip), 38 production C# checks and Release compilation passed.
+Gameplay acceptance remains pending; parent task stays in_progress.
+
+## 0.5.1 execution
+
+- [x] Record original motion and buff-symbol provenance.
+- [x] Restore controlled source travel and align final effect/damage.
+- [x] Decode/pack original aura in new unscaled and offline1.5x folders.
+- [x] Render aura for the exact existing buff lifetime and update public name.
+- [x] Run production/source checks, Release compilation and visual review.
+- [x] Back up/install, verify closure/hashes and preserved assets; record results.
+
+0.5.1 checkpoint:45 Python passed/one symlink-privilege skip,41 production C#
+checks and Release passed; source previews and25-file install verified. Previous
+Mod fully backed up;252preserved assets/738existing frames unchanged. ZIP
+`fd70a08e8dfa8aa67e07679f1f88a2839cb43f01293e56105a0f5820a309db8f`; DLL
+`d325708ba16679d11459e753d30969d540c3ff586d796188c8fe75fe05318e3e`. See
+research/source-motion-fire-eye-v051-20261024.md; client acceptance pending.
+
+
+## 0.5.2 casting overlay execution
+
+- [x] Identify original overlay, child transforms and source attachment semantics.
+- [x] Preserve full existing asset hash baseline and persist scope/design/plan.
+- [x] Add bounded original effect4 reader and complete cast clip/new art profile.
+- [x] Route native focus presentation to composite with immediate cancel cleanup.
+- [x] Verify real original frames/nested clocks/scaling and review final previews.
+- [x] Run full fresh export, production tests, Release and package closure.
+- [x] Back up/install with game stopped; verify all files and preserved assets.
+- [x] Record evidence, specs and pending client visual acceptance.
+
+
+0.5.2 checkpoint:49 Python passed/one Windows privilege skip,41 production C#
+checks and warnings-as-errors Release passed.27package/installed files and ZIP
+bytes verified with complete0.5.1 backup;285preserved files and748old frames in
+both sizes unchanged. Both-facing actual atlas previews reviewed. ZIP
+`84ba8f2480f3df47eee34e5f339f8ead8a4364ab6093d023a95c2ecb4a3a630a`; DLL
+`9ad0bb14f35a5d208dd685faf7569cc0474859908bc510405cef7ead7a7eb29f`. Gameplay acceptance pending.
+
+
+## 0.5.3 Fire Eye clock execution
+
+- [x] Trace source clock, native Soul drain and startup freeze; record boundary.
+- [x] Preserve all current original/variant artwork hashes before edits.
+- [x] Add scaled30Hz cast lifecycle clock and use it for source sampling.
+- [x] Hold only final body after overlay; retain native complete/cancel behavior.
+- [x] Add production clock regressions for start, repeats, pause, reset and end.
+- [x] Run fresh Python/core/Release/package checks; verify preserved art hashes.
+- [x] Back up/install stopped-game update; verify full package/installed bytes.
+- [x] Update contracts/status/research with pending client pacing acceptance.
+
+
+0.5.3 checkpoint:49Python passed/one Windows symlink privilege skip,45production
+C# checks and warnings-as-errors Release passed. All27package/installed files
+and ZIP bytes verified;322preserved assets and25character files unchanged.
+Complete0.5.2 Mod backed up; client pace/charm acceptance remains pending.
+ZIP `b25c3485e29f8e1942b257faa24bd6a9bb3014271b0dbd8d206d11958ac05158`;
+DLL `58d40a2c099e115c29d49a298c2d45b59b9646d24ae0e607a32264b7e5c29a7d`.
+
+
+## 0.6.0 nail visuals execution
+
+- [x] Identify original combo/air/up overlays and native slash ownership.
+- [x] Preview source up/down rotation; preserve322existing assets and plan scope.
+- [x] Extract bounded single-bone image reader without changing flame pixels.
+- [x] Bake seven new clips/new profile/offline1.5x variant and source regressions.
+- [x] Replace actual hero mesh submissions and choose native directional poses.
+- [x] Review both-facing actual atlas previews and all previous registered frames.
+- [x] Run full fresh Python/core/Release/package checks.
+- [x] Back up/install with stopped game; verify exact package/installed closure.
+- [x] Update source evidence/contracts/status and pending gameplay acceptance.
+
+
+## 0.6.1 native charm arc size
+
+- [x] Verify original StartSlash scale/M animation and preserve prior assets.
+- [x] Export7arc-only clips to new original/offline1.5x folders.
+- [x] Split runtime body/arc and apply actual native selected-slash scale ratio.
+- [x] Check all105new source frames and874old frames at each size; preview sizes.
+- [x] Run fresh Python/core/Release/package checks; review lifecycle/contracts.
+- [x] Back up/install while stopped, verify all files/ZIP and record evidence.
+
+
+## 0.6.2 presentation execution
+
+- [x] Trace native downward flag and focus drain timing; snapshot prior artwork.
+- [x] Add downward-only flame composite and new original/offline1.5x folders.
+- [x] Align source casting end to native focus deadline; retain30Hz/cancellation.
+- [x] Check source/pixels, all979old frames, deadline regressions and previews.
+- [x] Run fresh Python/core/Release/package checks and review compiled adapters.
+- [x] Back up/install with game stopped; verify exact files/ZIP and record evidence.
+
+
+## 0.6.3 immunity and death execution
+
+- [x] Trace actual death coroutine/prefab and original source death; re-download.
+- [x] Archive/extract matching source separately and preserve current art hashes.
+- [x] Extend incoming damage guard to actual active Flame Dash lifetime.
+- [x] Play source death despite native mesh disable; suppress/restore native visuals.
+- [x] Check source death/ghost pixels, clock lifetime and compiled hook boundaries.
+- [x] Fresh full build/package; back up/install stopped game and verify all files.
+- [x] Record evidence/specs/status and pending client death/dash acceptance.

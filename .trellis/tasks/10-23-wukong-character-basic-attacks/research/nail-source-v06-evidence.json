@@ -1,0 +1,19 @@
+{
+  "inputs": {
+    "assets/zmxy4/animations/2001/skill1V472/skeleton.json": "ee4ada874ec7f9b90f46ab492c190495d04dfeea06cf4b52e773c15965293bd1",
+    "assets/zmxy4/animations/2001/skill1V472/texture.json": "190b6665b669f16ddceac011c6320e5fdddfd9b3481431785075e0a9709b5bb4",
+    "assets/zmxy4/animations/2001/skill1V472/texture.png": "c7e2cb8b26132fbb1096cd989e6c07f7a65d7e3611352702451ecb03d495841a",
+    "assets/zmxy4/animations/2001/manV535/skeleton.json": "559d25a2e54f3b5710fa1d755f9a4978d77b4b81f7e171f29c4a23d82903a4e6",
+    "assets/zmxy4/animations/2001/manV535/texture.json": "f1cc3f24baf6ac889941383cd4ea8d8db2575c3c72945949f845e8d45cf52a57",
+    "assets/zmxy4/animations/2001/manV535/texture.png": "bf817e5670c95ede72039bbbef7bde0b46074415012910fa7f429b33f85747de",
+    "assets/zmxy4/raw/assets/man/2001/skill1V472.swf": "4c4e825bc5b564d7e11f5673431e2a71c8a33b0cdba162c450aa8cc636881c1c",
+    "reference/flash/fire-eye/casting/Entity.as": "6f26f370bea235aa162e809636af47554afdb74dd242699e21396b1439fbb50d"
+  },
+  "reader": "tools/single_bone_effects.py",
+  "compositor": "tools/nail_assets.py",
+  "rotation_center_source_pixels": [
+    0,
+    -44.5
+  ],
+  "rotation_only_applies_to_arc": true
+}

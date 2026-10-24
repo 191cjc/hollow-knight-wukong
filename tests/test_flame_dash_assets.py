@@ -35,7 +35,7 @@ class FlameDashAssetTests(unittest.TestCase):
         profile = json.loads((ROOT / "data/character/active-variant.json").read_text(encoding="utf-8"))
         variant = ROOT / profile["output_directory"]
         data = validate_character(variant).manifest
-        self.assertEqual(len(data["clips"]), 27)
+        self.assertEqual(len(data["clips"]), 45)
         self.assertTrue(set(REQUIRED_CLIPS) <= set(data["clips"]))
         self.assertTrue(all("effect" + str(i) in data["clips"] for i in range(1, 6)))
         hashes = set()

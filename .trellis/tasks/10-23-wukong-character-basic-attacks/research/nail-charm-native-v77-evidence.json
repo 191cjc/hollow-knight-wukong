@@ -1,0 +1,14 @@
+{
+  "input": "locked Modding API v77 Assembly-CSharp.dll",
+  "assembly_sha256": "0890edcd1b60ae22ea9c4a2d7c16056795b321f0efbb078d447e06730c0e784b",
+  "il_sha256": "b74d289c7402735e97cc8a557e8e1aee5f1858315c97066523b8be6ae84105a2",
+  "method": "NailSlash.StartSlash",
+  "native_range": [
+    1,
+    1.15,
+    1.25,
+    1.4
+  ],
+  "native_pride_animation_suffix": " M",
+  "implementation": "ratio of actual selected slash scale and serialized baseline"
+}

@@ -1,9 +1,11 @@
-# Fire Demon Slash (0.4.4-dev)
+# Fire Demon Slash (0.5.1-dev)
 
-Down + spell uses Wukong's original character animation and two skill effects.
+Up + spell uses Wukong's original character animation and two skill effects.
 Native input, unlocks, Soul spending and control recovery remain; the replacement
-holds the native antic for its own timeline and never enters Quake Down/Land.
+holds the native antic for its own timeline and never enters native Scream Burst or Quake Down/Land.
 Full-cast hero damage protection and corrected enemy hurtbox filtering remain.
+The up-spell unlock/tier is screamLevel. Charge the current native MP Cost once;
+its native spending state is skipped with Scream Burst. See SPELL_LAYOUT.md.
 
 ## Source presentation and timing
 
@@ -21,27 +23,35 @@ Full-cast hero damage protection and corrected enemy hurtbox filtering remain.
   lasts 20 ticks. This follows WKEntity's effect-expiry trigger, not a landing
   event. Ground and midair casts use the same source clock. No forced downward
   velocity, terrain snap or dive-floor damage source is introduced.
-- At tick 56 the cast ends and native Quake Finish / Spell End restore native
-  damage mode, spellQuake state, input, animation control and gravity. Finisher
+- At tick 56 the cast ends and native Spell End restores input, animation control and gravity. Finisher
   observation after lag samples its elapsed time; it never restarts a full phase
   or generates catch-up hits. Death/transition cleanup does not regain control
   on the dying or transitioning hero.
 - Original Quake start/landing camera events are not part of this presentation.
-  The antic's EnemyKillShake action is scoped off/restored; Down/Land states and
-  their BigShake actions are never entered. Other camera events remain available.
+  The up-spell antic has no inherited Quake camera event; native Scream Burst/End
+  and Quake Down/Land states are bypassed. Other camera events remain available.
 
 ## Movement during the cast
 
-0.4.4 explicitly maintains native RelinquishControl/IgnoreInput/ResetInput,
-zero Rigidbody2D velocity and no gravity while the custom cast is active. Observe
-runs before HeroController.Update reads movement and before/after its native
-FixedUpdate, so a held direction cannot move the physical root away from the
-world-anchored air effect. Both original updates still run exactly once. The
-source effect5 moving flashes remain animation, independent of physical motion.
+0.5.1 keeps native RelinquishControl/IgnoreInput/ResetInput, zero uncontrolled
+velocity and no gravity while restoring the original skill's own forward travel.
+Skill1101050 starts shootSpeedX50 at source tick5. The original physics advances
+0.1 seconds per30Hz source tick, giving5 source pixels/tick. WKEntity.addEff5_2
+stops forward velocity at tick36, so the unobstructed travel is155 source pixels
+in the cast-facing direction. The original world-anchored air effect stays at
+its frame5 spawn; the finisher and its mask use the moved hero root.
+
+FireDemonTravel consumes every source-time interval once. Repeated input, physics
+and hit observers cannot duplicate motion. Collider2D.Cast uses the unchanged
+native body, collision-layer mask and non-trigger blockers before applying each
+horizontal step. Blocked distance is discarded, never banked for a later jump
+through terrain. ArtworkScale does not multiply displacement or hit geometry.
+There is no forced downward movement, ground snap or target teleport. Native
+updates still run exactly once and player input cannot steer the cast.
 
 Completion and cancellation are checked before applying this hold. Native
-Quake Finish/Spell End releases input/gravity; no Rigidbody constraints or saved
-velocity are installed, and no per-frame teleport is used. Pause UI remains
+Spell End releases input/gravity; no Rigidbody constraints or saved
+velocity are installed. Source-authored travel stops at the finisher; Pause UI remains
 available, and death/scene/inactive cleanup does not force RegainControl.
 
 ## Original contact conversion and Hollow Knight balance
@@ -64,12 +74,12 @@ Native enemy hit evasion, directional protection and invulnerability still apply
 
 | Spell unlock | Air damage | Finisher | Maximum 11 + 1 | Shaman Stone |
 | --- | ---: | ---: | ---: | ---: |
-| Desolate Dive | 2 | 14 | 36 | 3 x 11 + 21 = 54 |
-| Descending Dark | 3 | 22 | 55 | 5 x 11 + 33 = 88 |
+| Howling Wraiths | 2 | 14 | 36 | 3 x 11 + 21 = 54 |
+| Abyss Shriek | 3 | 22 | 55 | 5 x 11 + 33 = 88 |
 
 These previously chosen fixed spell values remain independent of nail upgrades.
 Shaman Stone uses ceil(x1.5) per component. Totals require all contacts; they are
-not guaranteed HP loss. No native Quake damage stacks with the replacement.
+not guaranteed HP loss. No native Scream damage stacks with the replacement.
 See [archived source evidence](FIRE_DEMON_RESEARCH.md) for the original AS3 formula.
 
 ## Immunity, ownership and validation

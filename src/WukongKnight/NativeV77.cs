@@ -19,6 +19,7 @@ namespace WukongKnight
         private readonly FieldInfo selected = Field(typeof(HeroController), "slashComponent", typeof(NailSlash));
         private readonly FieldInfo poly = Field(typeof(NailSlash), "poly", typeof(PolygonCollider2D));
         private readonly FieldInfo clash = Field(typeof(NailSlash), "clashTinkPoly", typeof(PolygonCollider2D));
+        private readonly FieldInfo slashBaseScale = Field(typeof(NailSlash), "scale", typeof(Vector3));
         private readonly FieldInfo mesh = Field(typeof(NailSlash), "mesh", typeof(MeshRenderer));
         private readonly FieldInfo input = Field(typeof(HeroController), "inputHandler", typeof(InputHandler));
         private readonly FieldInfo actions = typeof(InputHandler).GetField("inputActions", Instance) ?? throw new MissingFieldException("InputHandler.inputActions");
@@ -27,6 +28,8 @@ namespace WukongKnight
         private readonly MethodInfo resetInput = Method(typeof(HeroController), "ResetInput");
         private readonly FieldInfo evasion = Field(typeof(HealthManager), "evasionByHitRemaining", typeof(float));
         private readonly FieldInfo contacts = Field(typeof(DamageEnemies), "enteredColliders", typeof(List<Collider2D>));
+        private readonly FieldInfo heroDeath = Field(typeof(HeroController), "heroDeathPrefab", typeof(GameObject));
+        private readonly FieldInfo dashDown = Field(typeof(HeroController), "dashingDown", typeof(bool));
         private readonly FieldInfo dashTimer = Field(typeof(HeroController), "dash_timer", typeof(float));
         private readonly FieldInfo dashDuration = Field(typeof(HeroController), "DASH_TIME", typeof(float));
         private readonly FieldInfo sharpShadow = Field(typeof(HeroController), "sharpShadowPrefab", typeof(GameObject));
@@ -46,6 +49,9 @@ namespace WukongKnight
         private float nativeCooldown;
         private double acceptedAt;
         private long owner;
+
+        public GameObject DeathEffect(HeroController hero) => (GameObject)heroDeath.GetValue(hero);
+        public bool DashingDown(HeroController hero) => (bool)dashDown.GetValue(hero);
 
         public bool ControlAvailable(HeroController hero) => !(bool)relinquished.GetValue(hero) && hero.CanInput();
         public bool AttackPressed(HeroController hero) => Pressed(hero, "attack", ref attackAction);
@@ -85,6 +91,34 @@ namespace WukongKnight
         public void Reset(HeroController hero) => reset.Invoke(hero, null);
         public void ResetInput(HeroController hero) => resetInput.Invoke(hero, null);
         public void ClearQueue(HeroController hero) { queue.SetValue(hero, false); queueSteps.SetValue(hero, 0); }
+
+        public double AttackProgress(HeroController hero)
+        {
+            float durationValue = (float)duration.GetValue(hero);
+            return durationValue <= 0 ? 0 : Math.Min(1, Math.Max(0, (float)attackTime.GetValue(hero) / durationValue));
+        }
+
+        public Vector3 NailRangeScale(HeroController hero)
+        {
+            NailSlash? slash = Selected(hero);
+            if (slash == null) return Vector3.one;
+            Vector3 baseline = (Vector3)slashBaseScale.GetValue(slash);
+            if (Math.Abs(baseline.x) < 0.0001f || Math.Abs(baseline.y) < 0.0001f)
+                throw new InvalidOperationException("Native nail baseline scale is invalid.");
+            // StartSlash already applied actual charm scaling. Read its result;
+            // never call it again or maintain a separate charm multiplier table.
+            Vector3 actual = slash.transform.localScale;
+            return new Vector3(Math.Abs(actual.x / baseline.x), Math.Abs(actual.y / baseline.y), 1f);
+        }
+
+        public IEnumerable<Renderer> NailRenderers(HeroController hero)
+        {
+            foreach (NailSlash slash in new[] { hero.normalSlash, hero.alternateSlash, hero.upSlash, hero.downSlash, hero.wallSlash })
+            {
+                if (slash == null) throw new InvalidOperationException("Native nail slash missing.");
+                yield return SlashRenderer(slash);
+            }
+        }
 
         public double DashProgress(HeroController hero)
         {

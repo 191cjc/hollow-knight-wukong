@@ -1,0 +1,20 @@
+{
+  "url": "https://sda.4399.com/4399swf/upload_swf/ftp15/csya/20150127/1/assets/man/2001/manV535.swf",
+  "downloaded_at": "2026-10-24",
+  "bytes": 270497,
+  "sha256": "0e209a869553b65aa84616e3691e46543ee6362c434754cd026d22e1fa2a10fd",
+  "archive_matches_prior_original": true,
+  "decoded": {
+    "skeleton.json": "559d25a2e54f3b5710fa1d755f9a4978d77b4b81f7e171f29c4a23d82903a4e6",
+    "texture.json": "f1cc3f24baf6ac889941383cd4ea8d8db2575c3c72945949f845e8d45cf52a57",
+    "texture.png": "bf817e5670c95ede72039bbbef7bde0b46074415012910fa7f429b33f85747de"
+  },
+  "source_clip": "res/dead",
+  "source_ticks": 65,
+  "source_FPS": 30,
+  "ghost_window_ticks": [
+    8,
+    32
+  ],
+  "active_variant_reused": "assets/processed/variants/wukong-presentation-v062-1p5"
+}

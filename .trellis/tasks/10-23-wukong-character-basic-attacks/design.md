@@ -125,3 +125,220 @@ Keep original updates running and source effect5 animation/midair finisher,
 damage/immunity unchanged. Release before native recovery and stop writes on
 cancel/detach. Build/check, back up/install and verify; client movement, pause
 and recovery acceptance remains pending. See research/fire-demon-movement-lock-20261024.md.
+
+
+## 0.5.0 spell adapter extension
+
+See research/spell-layout-v05-20261024.md for the approved scope and source/native
+evidence. Hold native Scream Antic1/2 for Fire Demon and Quake Antic for Storm;
+charge current native MP Cost once before bypassing their later damage/spend states.
+NativeSpellV77 validates/scopes the relevant completion events and effect objects.
+BloodthirstyFireEye preserves native focus drain/cancel, replaces only focus
+AddHealth with buff activation, and defers finish out of native action iteration.
+BloodthirstyBuff owns expiry/global cooldown/token policy. FlameStorm shares
+SpellHitLedger with cap5 and the corrected native hurtbox policy. Bake body plus
+separate source flame overlay into a new profile/folder and new offline1.5x copy.
+
+## 0.5.1 correction design
+
+The gap is in FireDemonSlash motion ownership and BloodthirstyFireEye presentation.
+The original skill1101050 starts shootSpeedX50 at frame5. PlayerEntity.shoot
+sets signed velocity; Physics uses0.1 seconds per30Hz source tick, so travel
+is5 source pixels/tick until WKEntity.addEff5_2 stops it at tick36:155px maximum.
+Restore this controlled progression with swept native body collision; consume
+each time interval once so repeated observers cannot duplicate travel. Keep air
+effect anchored to the cast root and spawn the finisher at the moved root.
+Do not add forced falling, targeting, camera shakes or input-driven movement.
+
+Original buff810001/resources17 loads810001/1.swf symbol ef, a10-frame loop
+with five lossless bitmaps. Decode premultiplied ARGB offline and preserve its
+shape matrices/registration. Add a separate fireEyeAura clip, rendered at the
+hero source root while the existing buff is active; mirror with current facing
+and clear with the existing buff lifecycle. The loaded MovieClip runs on the
+parent30Hz stage, independently of the child SWF header24Hz. New v051 profile
+and original/1.5x folders avoid rewriting prior bakes. No healing rebalance.
+
+Files: FireDemonTimeline/FireDemonSlash plus core tests for source travel;
+BloodthirstyBuff/BloodthirstyFireEye/WukongRuntime for aura clock/lifecycle;
+fire_eye_assets/bake_character/validators/profile and source checks for artwork;
+version/package/docs/evidence for reviewable export and installation.
+
+
+## 0.5.2 casting overlay
+
+Source Entity.onUpdateAnimationAfter2 attaches the skill1 effect4 armature on top
+of the body at (0,0), with shared facing, action clock and unit registration.
+The skill1 armature is local DragonBones3.0, four independent bones, 21 ticks:
+seven held winding flames at [0,14), then three nested displays at [14,21).
+Its two child armatures each last seven ticks; their clocks start on reveal.
+The existing body effect4 is17 ticks and remains an unchanged separate clip.
+Create fireEyeCast from source body tick min(t,16) plus the complete original
+21-tick overlay, above the body. Hold the final body pose for the last four
+overlay ticks. Map the composite's full21 ticks to the existing normalized
+native focus progress, with no new duration, input, health or Soul ownership.
+This explicit timing adaptation preserves the full originally independent
+overlay within native charm-dependent charging. Cancellation removes both body
+and overlay through the existing presenter selection; no lingering world effect
+or post-cancel tail. Existing fireEyeAura remains an independent buff renderer.
+Use new v052 profile/original/1.5x folders, retaining all v051 resources.
+
+
+## 0.5.3 scaled-time casting clock (supersedes0.5.2 progress mapping)
+
+Gap: BloodthirstyFireEye.Progress is zero during Focus Start/Start Slug Anim,
+then MP_drained/focusMP_amount drives all21 source ticks. Native MP_drained
+increments by1 per interval; it is not a continuous animation clock. This
+holds the first frame during startup and stretches source holds across charge
+duration. The17/21 source mismatch alone affects the final body pose only.
+
+Use FireEyeCastClock, a production engine-free scaled-time lifecycle clock,
+started on first ordinary focus observation (including startup). Sample both
+source layers at30Hz using existing fireEyeCast composite, not Soul progress.
+At tick21 select original effect4 final body pose, removing completed casting
+flames while native focus can continue. A fast native completion or cancel ends
+the visual immediately; never delay native completion to finish graphics.
+Observe before/after native updates and in existing late/physics observation;
+clear on cancellation, death, scene and dispose. Pause freezes Time.time.
+
+Boundary: BloodthirstyFireEye owns clock lifecycle, WukongPresenter consumes
+CastTick and hides completed overlay. Remove obsolete native MP-progress
+reflection and unused BloodthirstyFireEye native dependency; link the real core
+clock into existing production tests. Version/package/docs/build metadata
+record0.5.3. Reuse unchanged v052 art; no rebake/profile/variant edits, gameplay
+rebalance, input/control or collider changes. Native focus alone starts the buff.
+
+
+## 0.6.0 nail presentation boundary
+
+Source skill1V472 has separate single-local-bone image overlays for attack1..4,
+jumpAttack and effect1, attached above the same-named body by original Entity.
+Reuse original held keyframes, hidden frames and transforms. Add seven separate
+composite clips: nailAttack1..4, nailAir, nailUp and nailDown. Existing30clips
+remain unchanged in content/root space. nailDown uses the original jumpAttack
+body retimed10/15, plus effect1 arc rotated180 about(0,-44.5) source pixels.
+That center is the native-fit idle-body center: source feet6 - height101/2.
+Rotate only effect Draw matrices offline; never rotate/scale the hero collider.
+
+Extract the existing bounded single-bone reader into SingleBoneEffects so
+Flame Dash/Storm and the new six source overlays share validation/composition.
+Support displayIndex=-1 hiding; preserve current flame pixels/slot labels and
+prove all older clips retain registered pixels after the refactor. Complex
+Fire Eye/Fire Demon readers are outside this extraction. New v06 profile and
+original/1.5x folders avoid overwriting any earlier assets.
+
+WukongPresenter owns visual replacement: suppress only the actual attached
+hero normal/alternate/up/down/wall NailSlash mesh submissions with the already
+validated forceRenderingOff property. Save/restore each previous value on
+constructor failure/dispose. Leave native enabled writes, animators, polygons,
+damage, charm FSMs, contacts and beam objects running. NativeV77 owns private
+selected-slash/attack-clock reads and enumerates those hero mesh renderers.
+
+Combo source ticks keep their existing shared combo clock and select matching
+new nailAttack clip. Other nail attacks use actual native selected slash identity
+for up/down/air body selection, and native attack_time/attackDuration to fit the
+whole original action inside native timing (including Quick Slash). Capture no
+new damage/input/state ownership. Native completion, pogo and interruptions
+remain authoritative. Keep fixed offline1.5x appearance and current root facing.
+
+Files: shared/nail asset tools, bake profile/fingerprints/validators and source
+tests; NativeV77/Presenter and constructor caller; version/package/docs/evidence.
+No nail damage rebalance, reach change, projectile mechanic, spell changes or
+new native-combat hook. Source-image checks, registered old-clip comparison,
+production checks/Release and package/install validation gate delivery.
+
+
+## 0.6.1 arc-only presentation boundary
+
+Gap: composite nail sprites cannot follow native charm size without enlarging
+the body. Native StartSlash already sets scale from serialized NailSlash.scale;
+use actual selected slash.localScale / baseline scale (absolute X/Y) after its
+native transaction. Never duplicate the native multiplier table or call an
+extra StartSlash. Combo arc openings match existing native window openings,
+so scale is initialized before an arc is visible; native air/up/down runs once.
+
+Add7arc-only clips using existing nail_samples Draws and their nail_fx /
+nail_down_fx slots. Keep all37existing clips unchanged. New profile flag
+nail_separate_arcs and new v061 original/1.5x folders. Same root/canvas and
+source timing,105extra ticks; arc image retains transparent/hidden frames.
+
+Presenter adds one child SpriteRenderer above body; choose existing attack1..4,
+jumpAttack/effect1 for body, original down retiming10/15. Choose new arc-only
+clip on the very same existing nail clock. Apply native X/Y scale to only arc
+renderer. Keep its source center fixed: sourcefeet6-height101/2=-44.5, converted
+through existing offline artwork scale. Offset child by(1-ratio)*center so
+charm scaling does not drag art away from body. Facing/color/visibility follow
+body; no arc outside nail states or after cancel/dispose. Existing mesh save/
+restore remains unchanged. No root/body/collider resizing; no gameplay hooks.
+
+NativeV77 owns version-gated baseline field read. CharacterAssets/validator
+require7new arc clips. Pipeline/test changes prove source layer extraction,
+105arc frames and offline scale, unchanged874previous frames at each size,
+and native IL demonstrates4charm scales/M animation. Review0/1/both charm
+previews and Release against actual references, then package/install closure.
+Files: nail_assets/bake/validators/profile/tests, NativeV77/Presenter,
+version/package/docs/specs/evidence. Earlier pending mechanics are preserved.
+
+
+## 0.6.2 presentation boundary
+
+Only presentation is wrong: native downward dash motion and swept damage already
+follow the real velocity; Fire Eye currently starts too early. NativeV77 reads
+the validated private dashingDown flag through FlameDash.Downward. Add one offline
+flameDashDown composite in separate v062 original/1.5x folders. Rotate ONLY the
+effect2 flame Draws clockwise90 around source center(0,-44.5), keep the upright
+body/timing, unchanged horizontal frames and existing view/aura/arc transforms.
+The source coordinate system is Y down. Renderer flipX preserves downward travel
+for both facings. No hero/root/collider/gameplay transforms are added.
+
+NativeSpellV77 reads the live drainMP, drainMP_time, MP_drained, focusMP_amount and
+drainMP_timer fields. While draining, remaining=(amount-drained)*interval-timer.
+Capture scaledTime+remaining once per focus as the presentation deadline, after
+native charm selection. Original21/30 seconds of action/effect end there; earlier
+startup/wait uses effect4 body tick0 without overlay. If charge is shorter than
+the source duration, start in its tail, preserving30Hz instead of stretching it.
+No discrete Soul-progress frame clock or fixed normal/charm timing table.
+Observe calls cannot restart the deadline; pause uses scaled time. Native cancel,
+heal completion, death/scene/detach clears graphics without a tail or buff delay.
+Focus FSM/native AddHealth remains authoritative; buff/aura mechanics unchanged.
+
+Files: NativeV77/FlameDash/NativeSpellV77/Core clock/BloodthirstyFireEye/Presenter
+for read-only presentation; bake/validators/profile/tests for directional art;
+version/package/docs/specs/report for reproducible export and verified install.
+Tests cover deadline, startup, short/deep charge, repeats/pause/cancel/recast;
+exact original rotations, upright body, exported1.5x and all979old frames.
+
+
+## 0.6.3 damage and death presentation boundary
+
+Reuse the existing TakeDamage/TakeHealth entry guards: SkillProtects observes
+FlameDash and FireDemon at the callback boundary and guards either active owner.
+No saved isInvincible writes, timer extensions, dash movement/collision changes
+or added damage. End/cancel/death/scene/detach invalidates existing dash ownership.
+
+Re-download official assets/man/2001/manV535.swf over HTTPS, record URL/hash and
+extract into a new reference/flash/death folder. It matches the existing archive
+and complete65-tick dead clip:30Hz falling/prone body plus ghost ef1 at8..31.
+All current offline1.5x pixels can be reused byte-for-byte; no new bake or runtime
+appearance scaling. Original files and all earlier variants stay preserved.
+
+Native Die coroutine disables the hero mesh immediately and activates separate
+heroDeathPrefab. Presenter currently follows that disabled flag, erasing source
+death art. Hook real HeroController.Die before its original iterator executes;
+start an idempotent scaled source death clock, capture facing/world anchor, and
+show dead independently of native enabled/color. NativeDeathV77 suppresses only
+render submissions of native death prefab/Head/Sword visual outputs, preserving
+their enabled writes and all FSM/save/shade/Geo/transition actions. Never disable
+the death FSM or skip the original iterator. Do not treat survivable hazard
+respawn as real death. Restore renderer flags on resume/dispose/failure; scene
+or hero teardown clears the clock. Dream deaths also enter from the real hook.
+
+Changes: Runtime guards/death hook, NativeV77 effect lookup, NativeDeathV77 owned
+visual suppression, Presenter fixed death layer, Core source clock/tests;
+reference download/provenance/source-pixel checks and current docs/version/report.
+No changes to baker/current character variant or health/save/respawn timing.
+
+
+Native v77 evidence refinement: current Hero Death Anim stores Head only;
+Blow flings an untracked pooled Corpse Nail Hero. Suppress its exact visual-only
+FlingObjectsFromGlobalPool action while death owns presentation, saving/restoring
+Enabled; preserve all other actions/events. Legacy Sword output is optional.

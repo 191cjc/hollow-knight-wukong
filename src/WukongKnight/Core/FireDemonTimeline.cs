@@ -21,6 +21,21 @@ namespace WukongKnight.Core
         public bool Complete => Tick >= End;
         public double AirTick => Tick - AirStart;
         public double FinisherTick => Tick - FinisherStart;
+        // skill1101050 shootSpeedX50 * original Physics.deltaTime0.1 per source tick.
+        public double TravelPixels => Math.Min(AirDuration, Math.Max(0, Tick - AirStart)) * 5;
+    }
+
+    /// <summary>Consume source travel once; a blocked move never banks future distance.</summary>
+    internal sealed class FireDemonTravel
+    {
+        private double sampled;
+        public void Reset() { sampled = 0; }
+        public double Advance(FireDemonTimeline clock)
+        {
+            double distance = Math.Max(0, clock.TravelPixels - sampled);
+            sampled = Math.Max(sampled, clock.TravelPixels);
+            return distance;
+        }
     }
 
     internal readonly struct FireDemonRegion

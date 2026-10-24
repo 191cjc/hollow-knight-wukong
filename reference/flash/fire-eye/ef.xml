@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='utf-8'?>
+<tags source="assets/zmxy4/raw/assets/buff/810001/1.swf" exporter="JPEXS26.4.0">
+  <item type="DefineShapeTag" forceWriteAsLong="true" shapeId="2">
+    <shapeBounds type="RECT" Xmax="813" Xmin="-1027" Ymax="392" Ymin="-3008" nbits="13" />
+    <shapes type="SHAPEWITHSTYLE" numFillBits="2" numLineBits="0">
+      <fillStyles type="FILLSTYLEARRAY">
+        <fillStyles>
+          <item type="FILLSTYLE" bitmapId="65535" fillStyleType="65">
+            <bitmapMatrix type="MATRIX" hasRotate="false" hasScale="true" nRotateBits="0" nScaleBits="22" nTranslateBits="0" scaleX="20.0" scaleY="20.0" translateX="0" translateY="0" />
+          </item>
+          <item type="FILLSTYLE" bitmapId="1" fillStyleType="65">
+            <bitmapMatrix type="MATRIX" hasRotate="false" hasScale="true" nRotateBits="0" nScaleBits="22" nTranslateBits="13" scaleX="20.0" scaleY="20.0" translateX="-1027" translateY="-3008" />
+          </item>
+        </fillStyles>
+      </fillStyles>
+      <lineStyles type="LINESTYLEARRAY">
+        <lineStyles />
+      </lineStyles>
+      <shapeRecords>
+        <item type="StyleChangeRecord" fillStyle1="2" moveBits="13" moveDeltaX="-1027" moveDeltaY="-3008" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false" />
+        <item type="StraightEdgeRecord" deltaX="1840" generalLineFlag="false" numBits="10" vertLineFlag="false" />
+        <item type="StraightEdgeRecord" deltaY="3400" generalLineFlag="false" numBits="11" vertLineFlag="true" />
+        <item type="StraightEdgeRecord" deltaX="-1840" generalLineFlag="false" numBits="10" vertLineFlag="false" />
+        <item type="StraightEdgeRecord" deltaY="-3400" generalLineFlag="false" numBits="11" vertLineFlag="true" />
+        <item type="EndShapeRecord" endOfShape="0" />
+      </shapeRecords>
+    </shapes>
+  </item>
+  <item type="DefineShapeTag" forceWriteAsLong="true" shapeId="4">
+    <shapeBounds type="RECT" Xmax="813" Xmin="-1027" Ymax="392" Ymin="-3008" nbits="13" />
+    <shapes type="SHAPEWITHSTYLE" numFillBits="2" numLineBits="0">
+      <fillStyles type="FILLSTYLEARRAY">
+        <fillStyles>
+          <item type="FILLSTYLE" bitmapId="65535" fillStyleType="65">
+            <bitmapMatrix type="MATRIX" hasRotate="false" hasScale="true" nRotateBits="0" nScaleBits="22" nTranslateBits="0" scaleX="20.0" scaleY="20.0" translateX="0" translateY="0" />
+          </item>
+          <item type="FILLSTYLE" bitmapId="3" fillStyleType="65">
+            <bitmapMatrix type="MATRIX" hasRotate="false" hasScale="true" nRotateBits="0" nScaleBits="22" nTranslateBits="13" scaleX="20.0" scaleY="20.0" translateX="-1027" translateY="-3008" />
+          </item>
+        </fillStyles>
+      </fillStyles>
+      <lineStyles type="LINESTYLEARRAY">
+        <lineStyles />
+      </lineStyles>
+      <shapeRecords>
+        <item type="StyleChangeRecord" fillStyle1="2" moveBits="13" moveDeltaX="-1027" moveDeltaY="-3008" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false" />
+        <item type="StraightEdgeRecord" deltaX="1840" generalLineFlag="false" numBits="10" vertLineFlag="false" />
+        <item type="StraightEdgeRecord" deltaY="3400" generalLineFlag="false" numBits="11" vertLineFlag="true" />
+        <item type="StraightEdgeRecord" deltaX="-1840" generalLineFlag="false" numBits="10" vertLineFlag="false" />
+        <item type="StraightEdgeRecord" deltaY="-3400" generalLineFlag="false" numBits="11" vertLineFlag="true" />
+        <item type="EndShapeRecord" endOfShape="0" />
+      </shapeRecords>
+    </shapes>
+  </item>
+  <item type="DefineShapeTag" forceWriteAsLong="true" shapeId="6">
+    <shapeBounds type="RECT" Xmax="813" Xmin="-1027" Ymax="392" Ymin="-3008" nbits="13" />
+    <shapes type="SHAPEWITHSTYLE" numFillBits="2" numLineBits="0">
+      <fillStyles type="FILLSTYLEARRAY">
+        <fillStyles>
+          <item type="FILLSTYLE" bitmapId="65535" fillStyleType="65">
+            <bitmapMatrix type="MATRIX" hasRotate="false" hasScale="true" nRotateBits="0" nScaleBits="22" nTranslateBits="0" scaleX="20.0" scaleY="20.0" translateX="0" translateY="0" />
+          </item>
+          <item type="FILLSTYLE" bitmapId="5" fillStyleType="65">
+            <bitmapMatrix type="MATRIX" hasRotate="false" hasScale="true" nRotateBits="0" nScaleBits="22" nTranslateBits="13" scaleX="20.0" scaleY="20.0" translateX="-1027" translateY="-3008" />
+          </item>
+        </fillStyles>
+      </fillStyles>
+      <lineStyles type="LINESTYLEARRAY">
+        <lineStyles />
+      </lineStyles>
+      <shapeRecords>
+        <item type="StyleChangeRecord" fillStyle1="2" moveBits="13" moveDeltaX="-1027" moveDeltaY="-3008" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false" />
+        <item type="StraightEdgeRecord" deltaX="1840" generalLineFlag="false" numBits="10" vertLineFlag="false" />
+        <item type="StraightEdgeRecord" deltaY="3400" generalLineFlag="false" numBits="11" vertLineFlag="true" />
+        <item type="StraightEdgeRecord" deltaX="-1840" generalLineFlag="false" numBits="10" vertLineFlag="false" />
+        <item type="StraightEdgeRecord" deltaY="-3400" generalLineFlag="false" numBits="11" vertLineFlag="true" />
+        <item type="EndShapeRecord" endOfShape="0" />
+      </shapeRecords>
+    </shapes>
+  </item>
+  <item type="DefineShapeTag" forceWriteAsLong="true" shapeId="8">
+    <shapeBounds type="RECT" Xmax="813" Xmin="-1027" Ymax="392" Ymin="-3008" nbits="13" />
+    <shapes type="SHAPEWITHSTYLE" numFillBits="2" numLineBits="0">
+      <fillStyles type="FILLSTYLEARRAY">
+        <fillStyles>
+          <item type="FILLSTYLE" bitmapId="65535" fillStyleType="65">
+            <bitmapMatrix type="MATRIX" hasRotate="false" hasScale="true" nRotateBits="0" nScaleBits="22" nTranslateBits="0" scaleX="20.0" scaleY="20.0" translateX="0" translateY="0" />
+          </item>
+          <item type="FILLSTYLE" bitmapId="7" fillStyleType="65">
+            <bitmapMatrix type="MATRIX" hasRotate="false" hasScale="true" nRotateBits="0" nScaleBits="22" nTranslateBits="13" scaleX="20.0" scaleY="20.0" translateX="-1027" translateY="-3008" />
+          </item>
+        </fillStyles>
+      </fillStyles>
+      <lineStyles type="LINESTYLEARRAY">
+        <lineStyles />
+      </lineStyles>
+      <shapeRecords>
+        <item type="StyleChangeRecord" fillStyle1="2" moveBits="13" moveDeltaX="-1027" moveDeltaY="-3008" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false" />
+        <item type="StraightEdgeRecord" deltaX="1840" generalLineFlag="false" numBits="10" vertLineFlag="false" />
+        <item type="StraightEdgeRecord" deltaY="3400" generalLineFlag="false" numBits="11" vertLineFlag="true" />
+        <item type="StraightEdgeRecord" deltaX="-1840" generalLineFlag="false" numBits="10" vertLineFlag="false" />
+        <item type="StraightEdgeRecord" deltaY="-3400" generalLineFlag="false" numBits="11" vertLineFlag="true" />
+        <item type="EndShapeRecord" endOfShape="0" />
+      </shapeRecords>
+    </shapes>
+  </item>
+  <item type="DefineShapeTag" forceWriteAsLong="true" shapeId="10">
+    <shapeBounds type="RECT" Xmax="813" Xmin="-1027" Ymax="392" Ymin="-3008" nbits="13" />
+    <shapes type="SHAPEWITHSTYLE" numFillBits="2" numLineBits="0">
+      <fillStyles type="FILLSTYLEARRAY">
+        <fillStyles>
+          <item type="FILLSTYLE" bitmapId="65535" fillStyleType="65">
+            <bitmapMatrix type="MATRIX" hasRotate="false" hasScale="true" nRotateBits="0" nScaleBits="22" nTranslateBits="0" scaleX="20.0" scaleY="20.0" translateX="0" translateY="0" />
+          </item>
+          <item type="FILLSTYLE" bitmapId="9" fillStyleType="65">
+            <bitmapMatrix type="MATRIX" hasRotate="false" hasScale="true" nRotateBits="0" nScaleBits="22" nTranslateBits="13" scaleX="20.0" scaleY="20.0" translateX="-1027" translateY="-3008" />
+          </item>
+        </fillStyles>
+      </fillStyles>
+      <lineStyles type="LINESTYLEARRAY">
+        <lineStyles />
+      </lineStyles>
+      <shapeRecords>
+        <item type="StyleChangeRecord" fillStyle1="2" moveBits="13" moveDeltaX="-1027" moveDeltaY="-3008" stateFillStyle0="false" stateFillStyle1="true" stateLineStyle="false" stateMoveTo="true" stateNewStyles="false" />
+        <item type="StraightEdgeRecord" deltaX="1840" generalLineFlag="false" numBits="10" vertLineFlag="false" />
+        <item type="StraightEdgeRecord" deltaY="3400" generalLineFlag="false" numBits="11" vertLineFlag="true" />
+        <item type="StraightEdgeRecord" deltaX="-1840" generalLineFlag="false" numBits="10" vertLineFlag="false" />
+        <item type="StraightEdgeRecord" deltaY="-3400" generalLineFlag="false" numBits="11" vertLineFlag="true" />
+        <item type="EndShapeRecord" endOfShape="0" />
+      </shapeRecords>
+    </shapes>
+  </item>
+  <item type="DefineSpriteTag" forceWriteAsLong="true" frameCount="10" hasEndTag="true" spriteId="11">
+    <subTags>
+      <item type="PlaceObject2Tag" characterId="2" depth="1" forceWriteAsLong="false" placeFlagHasCharacter="true" placeFlagHasClipActions="false" placeFlagHasClipDepth="false" placeFlagHasColorTransform="false" placeFlagHasMatrix="true" placeFlagHasName="false" placeFlagHasRatio="false" placeFlagMove="false">
+        <matrix type="MATRIX" hasRotate="false" hasScale="false" nRotateBits="0" nScaleBits="0" nTranslateBits="0" translateX="0" translateY="0" />
+      </item>
+      <item type="ShowFrameTag" forceWriteAsLong="false" />
+      <item type="ShowFrameTag" forceWriteAsLong="false" />
+      <item type="PlaceObject2Tag" characterId="4" depth="1" forceWriteAsLong="false" placeFlagHasCharacter="true" placeFlagHasClipActions="false" placeFlagHasClipDepth="false" placeFlagHasColorTransform="false" placeFlagHasMatrix="false" placeFlagHasName="false" placeFlagHasRatio="false" placeFlagMove="true" />
+      <item type="ShowFrameTag" forceWriteAsLong="false" />
+      <item type="ShowFrameTag" forceWriteAsLong="false" />
+      <item type="PlaceObject2Tag" characterId="6" depth="1" forceWriteAsLong="false" placeFlagHasCharacter="true" placeFlagHasClipActions="false" placeFlagHasClipDepth="false" placeFlagHasColorTransform="false" placeFlagHasMatrix="false" placeFlagHasName="false" placeFlagHasRatio="false" placeFlagMove="true" />
+      <item type="ShowFrameTag" forceWriteAsLong="false" />
+      <item type="ShowFrameTag" forceWriteAsLong="false" />
+      <item type="PlaceObject2Tag" characterId="8" depth="1" forceWriteAsLong="false" placeFlagHasCharacter="true" placeFlagHasClipActions="false" placeFlagHasClipDepth="false" placeFlagHasColorTransform="false" placeFlagHasMatrix="false" placeFlagHasName="false" placeFlagHasRatio="false" placeFlagMove="true" />
+      <item type="ShowFrameTag" forceWriteAsLong="false" />
+      <item type="ShowFrameTag" forceWriteAsLong="false" />
+      <item type="PlaceObject2Tag" characterId="10" depth="1" forceWriteAsLong="false" placeFlagHasCharacter="true" placeFlagHasClipActions="false" placeFlagHasClipDepth="false" placeFlagHasColorTransform="false" placeFlagHasMatrix="false" placeFlagHasName="false" placeFlagHasRatio="false" placeFlagMove="true" />
+      <item type="ShowFrameTag" forceWriteAsLong="false" />
+      <item type="ShowFrameTag" forceWriteAsLong="false" />
+    </subTags>
+  </item>
+  <item type="SymbolClassTag" forceWriteAsLong="true">
+    <tags>
+      <item>11</item>
+    </tags>
+    <names>
+      <item>ef</item>
+    </names>
+  </item>
+</tags>
