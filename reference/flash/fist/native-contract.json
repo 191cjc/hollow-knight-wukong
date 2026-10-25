@@ -1,0 +1,109 @@
+{
+  "game": "1.5.78.11833",
+  "api": 77,
+  "frame_rate": 30,
+  "dream_fsm": {
+    "Cancel": {
+      "actions": [
+        "HutongGames.PlayMaker.Actions.BoolTest",
+        "HutongGames.PlayMaker.Actions.ActivateGameObject",
+        "HutongGames.PlayMaker.Actions.SendEventByName",
+        "HutongGames.PlayMaker.Actions.ActivateGameObject",
+        "HutongGames.PlayMaker.Actions.ActivateGameObject",
+        "HutongGames.PlayMaker.Actions.ActivateGameObject",
+        "HutongGames.PlayMaker.Actions.ActivateGameObject",
+        "HutongGames.PlayMaker.Actions.AudioStop",
+        "HutongGames.PlayMaker.Actions.AudioStop"
+      ],
+      "transitions": [
+        [
+          "FINISHED",
+          "Inactive"
+        ],
+        [
+          "CANCEL",
+          "Take Control"
+        ]
+      ]
+    },
+    "Inactive": {
+      "actions": [
+        "HutongGames.PlayMaker.Actions.ListenForDreamNail",
+        "HutongGames.PlayMaker.Actions.FloatAdd",
+        "HutongGames.PlayMaker.Actions.FloatTestToBool"
+      ],
+      "transitions": [
+        [
+          "BUTTON DOWN",
+          "Can Dream Nail?"
+        ]
+      ]
+    },
+    "Take Control": {
+      "actions": [
+        "HutongGames.PlayMaker.Actions.SetBoolValue",
+        "HutongGames.PlayMaker.Actions.SetBoolValue",
+        "HutongGames.PlayMaker.Actions.SendMessage",
+        "HutongGames.PlayMaker.Actions.SendMessage"
+      ],
+      "transitions": [
+        [
+          "FINISHED",
+          "Start"
+        ]
+      ]
+    },
+    "Start": {
+      "actions": [
+        "HutongGames.PlayMaker.Actions.Tk2dPlayAnimationWithEvents",
+        "HutongGames.PlayMaker.Actions.SetVelocity2d",
+        "HutongGames.PlayMaker.Actions.AudioPlayerOneShotSingle",
+        "PlayVibration"
+      ],
+      "transitions": [
+        [
+          "FINISHED",
+          "Entry Cancel Check"
+        ]
+      ]
+    },
+    "Regain Control": {
+      "actions": [
+        "HutongGames.PlayMaker.Actions.BoolTest",
+        "HutongGames.PlayMaker.Actions.SendMessage",
+        "HutongGames.PlayMaker.Actions.SendMessage"
+      ],
+      "transitions": [
+        [
+          "FINISHED",
+          "Inactive"
+        ],
+        [
+          "DREAM CONVO",
+          "Dream Convo"
+        ]
+      ]
+    },
+    "End": {
+      "actions": [
+        "HutongGames.PlayMaker.Actions.ActivateGameObject"
+      ],
+      "transitions": [
+        [
+          "FINISHED",
+          "Regain Control"
+        ]
+      ]
+    },
+    "Fsm Cancel": {
+      "actions": [
+        "HutongGames.PlayMaker.Actions.SetBoolValue",
+        "HutongGames.PlayMaker.Actions.SendEventByNameV2"
+      ],
+      "transitions": []
+    }
+  },
+  "native_impact_path": "Dream Effects/Hitbox",
+  "native_event": "DREAM IMPACT",
+  "clone_deactivate_fsm_disabled": true
+}

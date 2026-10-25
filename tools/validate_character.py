@@ -19,7 +19,9 @@ REQUIRED_CLIPS = ("idle", "walk", "runNormal", "jumpNormal", "jumpTwo", "jumpDow
 OPTIONAL_CLIPS = ("runAttack", "effect1", "effect2", "effect3", "effect4", "effect5", "ride", "runNormal1", "flameDash", "flameDashDown", "flameStorm", "fireEyeAura", "fireEyeCast",
                   "fireDemonAir", "fireDemonAirEffect", "fireDemonDive", "fireDemonLand", "fireDemonImpact",
                   "nailAttack1", "nailAttack2", "nailAttack3", "nailAttack4", "nailAir", "nailUp", "nailDown",
-                  "nailArc1", "nailArc2", "nailArc3", "nailArc4", "nailArcAir", "nailArcUp", "nailArcDown")
+                  "nailArc1", "nailArc2", "nailArc3", "nailArc4", "nailArcAir", "nailArcUp", "nailArcDown",
+                  "afterimageCombo", "godslayerCharge", "godslayerRelease", "godslayerWave", "godslayerPunch",
+                  "earthbreaker", "fireApe", "fistIdle", "afterimageIdle1", "afterimageIdle2", "afterimageIdle3", "afterimageIdle4")
 SOURCE_FILES = ("skeleton.json", "texture.json", "texture.png")
 
 
@@ -149,10 +151,16 @@ def validate_character(directory=CHARACTER, source_directory=None):
             used_atlases.add(atlas_index)
             x = integer(frame.get("x"), "frame.x")
             y = integer(frame.get("y"), "frame.y")
-            require(integer(frame.get("width"), "frame.width", 1) == width
-                    and integer(frame.get("height"), "frame.height", 1) == height,
-                    f"{name} frame differs from shared canvas")
-            require(x + width <= dimensions[atlas_index][0] and y + height <= dimensions[atlas_index][1],
+            w = integer(frame.get("width"), "frame.width", 1)
+            h = integer(frame.get("height"), "frame.height", 1)
+            if "atlas_packing" in manifest:
+                left = integer(frame.get("source_x"), "frame.source_x")
+                top = integer(frame.get("source_y"), "frame.source_y")
+                require(left + w <= width and top + h <= height, "crop outside shared canvas")
+                require(left <= manifest["root_x"] <= left + w and top <= manifest["root_y"] <= top + h, "crop excludes source root")
+            else:
+                require(w == width and h == height, f"{name} frame differs from shared canvas")
+            require(x + w <= dimensions[atlas_index][0] and y + h <= dimensions[atlas_index][1],
                     f"{name} frame outside atlas")
             ticks = integer(frame.get("duration_ticks"), "frame.duration_ticks", 1)
             require(ticks == 1, "schema v1 requires one record per source tick")

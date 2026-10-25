@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace WukongKnight
 {
-    internal enum NativeSpellSlot { Up, Down, Focus }
+    internal enum NativeSpellSlot { Up, Down, Focus, Forward }
 
     /// <summary>Scoped Spell Control timing and suppression; never supplies replacement damage.</summary>
     internal sealed class NativeSpellV77 : IDisposable
@@ -64,11 +64,12 @@ namespace WukongKnight
             foreach (object state in states) byName.Add((string)Property(state.GetType(), "Name").GetValue(state, null), state);
             string[] required = slot == NativeSpellSlot.Up ? new[] { "Scream Antic1", "Scream Antic2", "Spell End" } :
                 slot == NativeSpellSlot.Down ? new[] { "Quake Antic", "Quake Finish", "Spell End" } :
+                slot == NativeSpellSlot.Forward ? new[] { "Fireball Antic", "Spell End" } :
                 new[] { "Focus Heal", "Focus Heal 2", "Focus Get Finish", "Focus Get Finish 2", "Focus Cancel", "Focus Cancel 2" };
             foreach (string name in required)
                 if (!byName.ContainsKey(name)) throw new InvalidOperationException("Unsupported Spell Control state: " + name);
             if (slot != NativeSpellSlot.Focus)
-                foreach (string name in slot == NativeSpellSlot.Up ? new[] { "Scream Antic1", "Scream Antic2" } : new[] { "Quake Antic" })
+                foreach (string name in slot == NativeSpellSlot.Up ? new[] { "Scream Antic1", "Scream Antic2" } : slot == NativeSpellSlot.Forward ? new[] { "Fireball Antic" } : new[] { "Quake Antic" })
                 {
                     heldStates.Add(name);
                     object antic = FindAction(byName[name], "HutongGames.PlayMaker.Actions.Tk2dPlayAnimationWithEvents");
@@ -94,12 +95,12 @@ namespace WukongKnight
                 string name = (string)Property(variable.GetType(), "Name").GetValue(variable, null);
                 bool use = slot == NativeSpellSlot.Up ? name.StartsWith("Scr ", StringComparison.Ordinal) || name == "Roar Wave" :
                     slot == NativeSpellSlot.Down ? name.StartsWith("Q ", StringComparison.Ordinal) || name == "Q1 Pillar" :
-                    name.StartsWith("Focus ", StringComparison.Ordinal) || name == "Lines Anim";
+                    slot == NativeSpellSlot.Focus && (name.StartsWith("Focus ", StringComparison.Ordinal) || name == "Lines Anim");
                 if (use) selected.Add(variable);
             }
-            if (selected.Count == 0) throw new InvalidOperationException("Native spell effect variables missing");
+            if (selected.Count == 0 && slot != NativeSpellSlot.Forward) throw new InvalidOperationException("Native spell effect variables missing");
             effectVariables = selected.ToArray();
-            variableValue = Property(effectVariables[0].GetType(), "Value");
+            variableValue = Property(gameObjects.GetValue(0)!.GetType(), "Value");
             forceOff = Property(typeof(Renderer), "forceRenderingOff");
             try
             {
@@ -143,10 +144,20 @@ namespace WukongKnight
         private bool CanRecover => hero != null && hero.gameObject.activeInHierarchy &&
             !hero.cState.dead && !hero.cState.hazardDeath && !hero.cState.hazardRespawning && !hero.cState.transitioning;
 
+        // Native Set Spell Cost updates this shared variable on CHARM INDICATOR CHECK,
+        // independently of casting; directional Dream skills read the same live value.
+        public int SoulCost
+        {
+            get
+            {
+                int cost = (int)soulCostValue.GetValue(soulCost, null);
+                if (cost <= 0 || cost > 99) throw new InvalidOperationException("Unsupported native spell MP Cost");
+                return cost;
+            }
+        }
         public bool SpendSoul()
         {
-            int cost = (int)soulCostValue.GetValue(soulCost, null);
-            if (cost <= 0 || cost > 99) throw new InvalidOperationException("Unsupported native spell MP Cost");
+            int cost = SoulCost;
             if (!HoldsCast || PlayerData.instance.GetInt("MPCharge") < cost) return false;
             // The native spending state follows the antic and is intentionally skipped.
             // Charge its current cost once; it already includes native Spell Twister.

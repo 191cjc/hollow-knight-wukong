@@ -187,8 +187,13 @@ namespace WukongKnight
                 if (component == null || (component is HealthManager health && native.Evading(health))) continue;
                 bool accepted = air ? hits.TryAirHit(token, component.GetInstanceID(), Time.time) : hits.TryFinisher(token, component.GetInstanceID());
                 if (accepted)
-                    native.FireDemonHit(source, component.gameObject, air ? damage.Air : damage.Finisher,
-                        facing ? 0 : 180, !air, () => Owns(token, air));
+                {
+                    if (air) native.FireDemonHit(source, component.gameObject, damage.Air,
+                        facing ? 0 : 180, false, () => Owns(token, true));
+                    else native.SpellHit(source, component.gameObject, damage.Finisher,
+                        FistRules.PushDirection(origin.x, component.transform.position.x, facing, false),
+                        false, FistRules.KnockbackMagnitude, () => Owns(token, false));
+                }
             }
         }
         private bool Owns(long token, bool air)

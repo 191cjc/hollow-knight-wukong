@@ -15,6 +15,10 @@ internal static class Program
         cases = cases.Concat(new Action[] { FireDemonSourceTravelIsBounded, FireDemonTravelDoesNotDependOnSampling, BloodEyeVisualClockFollowsLifetime }).ToArray();
         cases = cases.Concat(new Action[] { FireEyeWaitsForEndWindow, FireEyeDeadlineUsesNativeRates, FireEyeRepeatedObserversDoNotStretchSourceFrames, FireEyeVisualPauseUsesScaledTime, FireEyeCancelledAndRecastClockIsFresh }).ToArray();
         cases = cases.Concat(new Action[] { DeathSourceClockDoesNotRestartOrLoop, DeathPauseUsesScaledTime, DeathCleanupAllowsFreshRespawn }).ToArray();
+        cases = cases.Concat(new Action[] { FistChargeReleaseThreshold, FistChargeReleaseIsLatched, FistContactsOwnSubskills, FistSourceMasksStayLocal, FistTravelIsBounded, FistBalanceHasBoundedCloneDamage }).ToArray();
+        cases = cases.Concat(new Action[] { FistChargeForcesSourceRelease, FistChargeAutoReleaseIsLatched, FistDirectionalSoulGate, FistSoulAcquisitionCanBeRevoked, FistSoulSpendingCanRevokeControl }).ToArray();
+        cases = cases.Concat(new Action[] { CopiedGodslayerGhostExpiresAtReleaseEnd, CopiedEarthbreakerGhostExpiresAtLandingEnd, IdleGhostExpiryDefersForCopy, EarthbreakerDescentIsFasterAndSamplingIndependent, FistPushUsesNativeSlamAndAwayDirection }).ToArray();
+        cases = cases.Concat(new Action[] { EarthbreakerProtectionEndsWithHeroAction, FireApeArmorKeepsOriginalDeadline, HeroRecoveryRetainsOtherActionClocks, DamageEventRestoresAcrossCasts, DamageEventRestorationRespectsNewOwner, DamageEventRefusesForeignOverride }).ToArray();
         foreach (Action test in cases)
         {
             try { test(); Console.WriteLine("PASS " + test.Method.Name); }
@@ -22,6 +26,215 @@ internal static class Program
         }
         Console.WriteLine(cases.Length + " combo-core checks passed (actual linked production source).");
         return 0;
+    }
+
+    private static void EarthbreakerProtectionEndsWithHeroAction()
+    {
+        Check(!FistRules.HeroFinished(FistAction.Earthbreaker, 0, -1, false, 0), "Earthbreaker ended at launch");
+        Check(!FistRules.HeroFinished(FistAction.Earthbreaker, 4.9, -1, false, 0), "Falling protection ended before timeout");
+        Check(!FistRules.HeroFinished(FistAction.Earthbreaker, 2, 14.0/30-.001, false, 0), "Landing tail lost protection early");
+        Check(FistRules.HeroFinished(FistAction.Earthbreaker, 2, 14.0/30, false, 0), "Landing tail retained old protection");
+        Check(FistRules.HeroFinished(FistAction.Earthbreaker, 5, -1, false, 0), "Bottomless timeout retained protection");
+        Check(FistRules.HeroFinished(FistAction.None, 0, -1, false, 0), "Stopped action still owned a defensive window");
+    }
+    private static void FireApeArmorKeepsOriginalDeadline()
+    {
+        for (int observation=0; observation<8; observation++)
+            Check(!FistRules.HeroFinished(FistAction.FireApe, 2, -1, false, 0), "Paused/repeated damage observer advanced action");
+        Check(!FistRules.HeroFinished(FistAction.FireApe, 105.0/30-.001, -1, false, 0), "Armor cut the source tail short");
+        Check(FistRules.HeroFinished(FistAction.FireApe, 105.0/30, -1, false, 0), "Armor restarted or extended the cast");
+        Check(FistRules.HeroFinished(FistAction.FireApe, 5, -1, false, 0), "Late observer retained armor");
+    }
+    private static void HeroRecoveryRetainsOtherActionClocks()
+    {
+        Check(!FistRules.HeroFinished(FistAction.Afterimage, 71.0/30-.001, -1, false, 0), "Combo tail changed");
+        Check(FistRules.HeroFinished(FistAction.Afterimage, 71.0/30, -1, false, 0), "Combo no longer ends");
+        Check(!FistRules.HeroFinished(FistAction.Godslayer, 8, -1, false, 0), "Unreleased charge ended through recovery policy");
+        Check(!FistRules.HeroFinished(FistAction.Godslayer, 3, -1, true, 25.0/30-.001), "Released tail ended early");
+        Check(FistRules.HeroFinished(FistAction.Godslayer, 3, -1, true, 25.0/30), "Released tail never recovers");
+        Check(FistRules.HeroFinished(FistAction.FireApe, double.NaN, -1, false, 0), "Invalid clock retained action");
+    }
+    private static void DamageEventRestoresAcrossCasts()
+    {
+        object original=new object(), ignored=new object(), current=original; int writes=0;
+        var gate=new DamageEventOverride(() => current, value => { current=value; writes++; }, ignored);
+        gate.Set(false); Check(ReferenceEquals(current,original) && writes==0, "Inactive gate changed native damage cancellation");
+        gate.Set(true); gate.Set(true);
+        Check(ReferenceEquals(current,ignored) && writes==1, "Held hit canceled or restarted the override");
+        gate.Set(false); gate.Set(false);
+        Check(ReferenceEquals(current,original) && writes==2, "Finish/cancel failed to restore native damage cancellation");
+        gate.Set(true); gate.Set(false);
+        Check(ReferenceEquals(current,original) && writes==4, "Recast inherited a stale damage event");
+    }
+    private static void DamageEventRestorationRespectsNewOwner()
+    {
+        object original=new object(), ignored=new object(), foreign=new object(), current=original;
+        var gate=new DamageEventOverride(() => current, value => current=value, ignored);
+        gate.Set(true); current=foreign; gate.Set(false);
+        Check(ReferenceEquals(current,foreign), "Cleanup overwrote another Mod's newer transition");
+    }
+    private static void DamageEventRefusesForeignOverride()
+    {
+        object original=new object(), ignored=new object(), foreign=new object(), current=original;
+        var gate=new DamageEventOverride(() => current, value => current=value, ignored);
+        current=foreign; bool rejected=false;
+        try { gate.Set(true); } catch (InvalidOperationException) { rejected=true; }
+        Check(rejected && ReferenceEquals(current,foreign), "Acquisition silently replaced an unowned transition");
+    }
+    private static void FistChargeReleaseThreshold()
+    {
+        var c = new GodslayerCharge();
+        Check(c.Release(38.0/30-.001,false) && !c.Full, "Early release was full");
+        c.Reset(); Check(c.Release(38.0/30,false) && c.Full, "Source frame39 threshold missed");
+        c.Reset(); Check(c.Release(38.0/60,true) && c.Full, "Dream Wielder threshold missed");
+        Check(c.ChargeTick(100,false) == 59, "Charge exceeded source automatic release frame");
+        Check(c.ChargeTick(double.NaN,false) == 0, "Invalid charge time escaped");
+    }
+    private static void CopiedGodslayerGhostExpiresAtReleaseEnd()
+    {
+        Check(!FistRules.GhostFinished(FistAction.Godslayer, false, 20, -1, 20), "Charging ghost vanished before releasing");
+        Check(!FistRules.GhostFinished(FistAction.Godslayer, true, 25.0/30-.001, -1, .9), "Copied release tail was cut short");
+        Check(FistRules.GhostFinished(FistAction.Godslayer, true, 25.0/30, -1, 1), "Copied ghost waited for ten-second idle expiry");
+        Check(FistRules.GhostFinished(FistAction.Godslayer, true, 2, -1, 2), "Slow-frame completion retained a copied ghost");
+    }
+    private static void CopiedEarthbreakerGhostExpiresAtLandingEnd()
+    {
+        Check(!FistRules.GhostFinished(FistAction.Earthbreaker, false, 1, -1, 1), "Falling ghost disappeared before landing");
+        Check(!FistRules.GhostFinished(FistAction.Earthbreaker, false, 2, 14.0/30-.001, 2), "Copied landing tail was cut short");
+        Check(FistRules.GhostFinished(FistAction.Earthbreaker, false, 2, 14.0/30, 2), "Copied landing ghost returned to idle");
+        Check(FistRules.GhostFinished(FistAction.Earthbreaker, false, 5, -1, 5), "Bottomless copied slam never expired");
+    }
+    private static void IdleGhostExpiryDefersForCopy()
+    {
+        Check(!FistRules.GhostFinished(FistAction.None, false, 0, -1, 9.999), "Unused ghost lifetime shortened");
+        Check(FistRules.GhostFinished(FistAction.None, false, 0, -1, 10), "Unused ghost did not expire at ten seconds");
+        Check(!FistRules.GhostFinished(FistAction.Earthbreaker, false, 1, -1, 11), "Idle expiry destroyed an active copy");
+        Check(FistRules.GhostFinished(FistAction.Earthbreaker, false, 1.5, .5, 11.5), "Finished copy survived after idle expiry");
+    }
+    private static void EarthbreakerDescentIsFasterAndSamplingIndependent()
+    {
+        Check(Math.Abs(FistRules.EarthbreakerStep(0,16,true)-16*17.8)<1e-8, "Ground launch changed while accelerating descent");
+        Check(FistRules.EarthbreakerStep(0,8,false)==0, "Air antic unexpectedly moved");
+        foreach (bool ground in new[] {false,true})
+        {
+            double antic=FistRules.EarthbreakerAnticTicks(ground);
+            double fall=FistRules.EarthbreakerStep(antic,antic+10,ground);
+            Check(fall==-330 && fall==-22*10*1.5, "Descent did not become1.5x faster");
+            double sum=0;
+            for (int t=0;t<40;t++)sum+=FistRules.EarthbreakerStep(t,t+1,ground);
+            Check(Math.Abs(sum-FistRules.EarthbreakerStep(0,40,ground))<1e-7, "Slow sampling changed total swept travel");
+            Check(FistRules.EarthbreakerStep(20,20,ground)==0, "Paused/repeated observation moved the body");
+        }
+    }
+    private static void FistPushUsesNativeSlamAndAwayDirection()
+    {
+        Check(FistRules.KnockbackMagnitude==2, "Fist recoil no longer matches native Quake slam");
+        Check(FistRules.PushDirection(10,11,false,false)==0 && FistRules.PushDirection(10,9,true,false)==180, "Body hits pushed an enemy toward the caster");
+        Check(FistRules.PushDirection(10,10,true,false)==0 && FistRules.PushDirection(10,10,false,false)==180, "Centered target lost facing fallback");
+        Check(FistRules.PushDirection(20,19,true,true)==0 && FistRules.PushDirection(10,11,false,true)==180, "Passing Godslayer wave pulled the target back toward the hero");
+    }
+    private static void FistChargeReleaseIsLatched()
+    {
+        var c = new GodslayerCharge(); c.Release(.1,false);
+        Check(!c.Release(10,false) && !c.Full && c.ReleasedAt == .1, "Released punch changed tier later");
+        c.Reset(); Check(!c.Released && !c.Full && c.Release(2,false) && c.Full, "Recast reused partial state");
+        c.Reset(); Check(!c.Release(double.NaN,false) && !c.Release(-1,false) && !c.Release(double.PositiveInfinity,false), "Invalid release accepted");
+        Check(c.ChargeTick(.5,false) == c.ChargeTick(.5,false), "Paused scaled time advanced charge");
+    }
+    private static void FistChargeForcesSourceRelease()
+    {
+        foreach (bool wielder in new[] { false, true })
+        {
+            var c = new GodslayerCharge(); double rate = wielder ? 60 : 30;
+            Check(!c.Observe(38 / rate, wielder, true), "Full damage threshold fired before original maximum charge");
+            Check(!c.Observe(59 / rate - .001, wielder, true) && !c.Released, "Automatic release was early");
+            Check(c.Observe(59 / rate, wielder, true) && c.Released && c.Full, "Held input did not force source frame60 release");
+            Check(Math.Abs(c.ReleasedAt - 59 / rate) < 1e-8, "Automatic release lost its source clock");
+            c.Reset(); Check(c.Observe(.1, wielder, false) && !c.Full, "Manual partial release changed");
+        }
+    }
+    private static void FistChargeAutoReleaseIsLatched()
+    {
+        var c = new GodslayerCharge();
+        Check(!c.Observe(1, false, true) && !c.Observe(1, false, true), "Repeated paused scaled time fired a wave");
+        Check(c.Observe(4, false, true) && c.Full && c.ReleasedAt == 4, "Slow frame lost the release tail before wave creation");
+        Check(!c.Observe(4, false, true) && !c.Observe(5, false, false) && c.ReleasedAt == 4, "Held input or later key-up fired twice");
+        c.Reset(); Check(!c.Observe(double.NaN, false, true) && !c.Observe(double.PositiveInfinity, false, false), "Invalid time forced a release");
+        Check(c.Observe(.2, false, false) && !c.Full, "Recast retained prior full charge");
+    }
+    private static void FistDirectionalSoulGate()
+    {
+        foreach (FistAction action in new[] { FistAction.Earthbreaker, FistAction.FireApe })
+        foreach (int cost in new[] { 33, 24, 17 })
+        {
+            int soul = cost - 1, acquired = 0, spent = 0, canceled = 0;
+            Func<bool> begin = () => { acquired++; return true; };
+            Action<int> take = n => { soul -= n; spent++; };
+            Check(!FistRules.TryBeginDream(action, cost, () => soul, begin, () => true, take, () => canceled++), "Insufficient Soul allowed a directional cast");
+            Check(acquired == 0 && spent == 0 && canceled == 0, "Rejected cast took control or Soul");
+            soul = cost;
+            Check(FistRules.TryBeginDream(action, cost, () => soul, begin, () => true, take, () => canceled++), "Exact live native cost was rejected");
+            Check(soul == 0 && acquired == 1 && spent == 1 && canceled == 0, "Successful cast did not charge live cost exactly once");
+        }
+        Check(FistRules.TryBeginDream(FistAction.Godslayer, 33, () => 0, () => true, () => true,
+            _ => { throw new Exception("Neutral Dream attack spent Soul"); }, () => { }), "Godslayer incorrectly required Soul");
+    }
+    private static void FistSoulAcquisitionCanBeRevoked()
+    {
+        int soul = 33, spent = 0, canceled = 0;
+        Check(!FistRules.TryBeginDream(FistAction.FireApe, 33, () => soul, () => false, () => true,
+            _ => spent++, () => canceled++), "Failed native acquisition began gameplay");
+        Check(spent == 0 && canceled == 0, "Failed acquisition spent Soul or forced recovery");
+        Check(!FistRules.TryBeginDream(FistAction.Earthbreaker, 33, () => soul, () => { soul = 0; return true; }, () => true,
+            _ => spent++, () => canceled++), "Soul loss during native cancellation was ignored");
+        Check(spent == 0 && canceled == 1, "Revoked acquisition spent Soul or retained control");
+        soul = 33;
+        Check(!FistRules.TryBeginDream(FistAction.FireApe, 33, () => soul, () => true, () => false,
+            _ => spent++, () => canceled++), "Lost ownership started the action/ghosts");
+        Check(spent == 0 && canceled == 2, "Lost ownership charged Soul");
+    }
+    private static void FistSoulSpendingCanRevokeControl()
+    {
+        bool owns = true; int spent = 0, canceled = 0;
+        Check(!FistRules.TryBeginDream(FistAction.FireApe, 24, () => 24, () => true, () => owns,
+            n => { spent += n; owns = false; }, () => canceled++), "Native TakeMP callback lost control but still began gameplay");
+        Check(spent == 24 && canceled == 1, "Spending hook cancellation duplicated cost or retained ownership");
+    }
+    private static void FistContactsOwnSubskills()
+    {
+        var h = new FistContacts();
+        Check(h.TryHit(0,10,2,.3,1) && !h.TryHit(0,10,2,.3,1.299), "First source interval ignored");
+        Check(h.TryHit(0,10,2,.3,1.3) && !h.TryHit(0,10,2,.3,5), "First source cap ignored");
+        Check(h.TryHit(1,10,1,0,1.3) && h.TryHit(1,11,1,0,1.3), "Independent target/subskill rejected");
+        Check(!h.TryHit(1,10,1,0,2), "Duplicate collider duplicated source hit");
+        h.Clear(); Check(h.TryHit(1,10,1,0,2), "Recast retained old hit target");
+    }
+    private static void FistSourceMasksStayLocal()
+    {
+        Check(!FistRules.Region("effect4_1",6.99,true).HasValue, "Combo hit before source frame8");
+        FireDemonRegion a=FistRules.Region("effect4_1",7,true)!.Value;
+        FireDemonRegion b=FistRules.Region("effect4_1",7,false)!.Value;
+        Check(Math.Abs(a.X+b.X)<1e-7 && a.Width == b.Width && a.Y == b.Y && a.Width < 230, "Mask mirror or extent invalid");
+        Check(!FistRules.Region("effect4_1",25,true).HasValue && FistRules.Region("effect4_2",25,true).HasValue, "Subskill boundary wrong");
+        Check(!FistRules.Region("effect5_0",68,true).HasValue && FistRules.Region("effect5_1",68,true).HasValue, "Ape roar boundary wrong");
+        Check(FistRules.Region("effect2_1",0,true)!.Value.Width < 252, "Wave replaced with room sensor");
+    }
+    private static void FistTravelIsBounded()
+    {
+        Check(FistRules.AfterimageTravel(0)==0 && FistRules.AfterimageTravel(3)==0, "Travel before source shoot frame");
+        Check(FistRules.AfterimageTravel(51)==360 && FistRules.AfterimageTravel(63)==540 && FistRules.AfterimageTravel(100)==540, "Source speed tiers/cap wrong");
+        Check(FistRules.CloneBirthTicks.SequenceEqual(new[] {11,25,39,51}) && FistRules.CloneSeconds==10, "Clone source lifecycle changed");
+    }
+    private static void FistBalanceHasBoundedCloneDamage()
+    {
+        Check(FistRules.SpellDamage(1,false)==3 && FistRules.SpellDamage(2,true)==8, "Forward tier/Shaman mapping wrong");
+        foreach (int n in new[] {5,9,13,17,21})
+        {
+            int full=FistRules.DreamDamage(FistAction.Godslayer,n,true,false,false);
+            int weak=FistRules.DreamDamage(FistAction.Godslayer,n,false,false,false);
+            int clone=FistRules.DreamDamage(FistAction.Godslayer,n,true,false,true);
+            Check(full>weak && clone>0 && clone<weak, "Free Dream/clone balance invalid");
+        }
     }
 
     private static void DeathSourceClockDoesNotRestartOrLoop()

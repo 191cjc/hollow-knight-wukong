@@ -109,6 +109,7 @@ class Draw:
     matrix: Affine
     alpha: float
     slot_path: tuple
+    color: tuple = (1, 1, 1, 0, 0, 0)
 
 
 class Sampler:
@@ -187,20 +188,20 @@ class Sampler:
                         raise ValueError("Timeline bone is missing")
                     for _, _, frame in timeline_frames(timeline, duration):
                         fields(frame, "duration transform z displayIndex colorTransform tweenEasing hide event", "frame")
-                        if frame.get("tweenEasing", 10) not in (None, 10):
+                        if frame.get("tweenEasing", 10) not in ((None, 10, 0) if self.profile.get("linear_tween", False) else (None, 10)):
                             raise ValueError("Active keyframe tween is unsupported")
                         transform(frame.get("transform", {}))
                         color = frame.get("colorTransform", {})
                         fields(color, "aM rM gM bM aO rO gO bO", "color transform")
                         for channel in "rgb":
-                            if number(color, channel + "M", 100) != 100 or number(color, channel + "O") != 0:
+                            if not self.profile.get("rgb_color_transforms", False) and (number(color, channel + "M", 100) != 100 or number(color, channel + "O") != 0):
                                 raise ValueError("RGB color transforms are unsupported")
                         if number(color, "aO") != 0 or not 0 <= number(color, "aM", 100) <= 100:
                             raise ValueError("Unsupported alpha transform")
         for clip in self.profile["clips"]:
             self.animation(self.profile["armature"], clip)
 
-    def sample(self, clip, tick, armature=None, parent=Affine(), alpha=1.0, path=(), stack=()):
+    def sample(self, clip, tick, armature=None, parent=Affine(), alpha=1.0, path=(), stack=(), color=(1, 1, 1, 0, 0, 0)):
         armature = armature or self.profile["armature"]
         if armature in stack:
             raise ValueError(f"Cyclic armature reference: {stack + (armature,)}")
@@ -214,6 +215,23 @@ class Sampler:
             if not timeline or not timeline.get("frame"):
                 continue  # Legacy hide-map: absent timeline never draws the bind pose.
             frame, child_start = selected_frame(timeline, duration, tick)
+            if self.profile.get("linear_tween", False) and frame.get("tweenEasing") == 0:
+                entries = timeline_frames(timeline, duration)
+                for i, (start, end, original) in enumerate(entries):
+                    if start <= tick < end and i + 1 < len(entries):
+                        following = entries[i+1][2]
+                        if original.get("displayIndex", 0) >= 0 and following.get("displayIndex", 0) >= 0:
+                            ratio = (tick-start) / (end-start)
+                            frame = dict(original)
+                            values = {}
+                            for key, default in (("x",0),("y",0),("scX",1),("scY",1),("skX",0),("skY",0),("pX",0),("pY",0)):
+                                a, b = number(original.get("transform", {}), key, default), number(following.get("transform", {}), key, default)
+                                delta = (b-a+180) % 360 - 180 if key.startswith("sk") else b-a
+                                values[key] = a+delta*ratio
+                            frame["transform"] = values
+                            frame["colorTransform"] = {key: number(original.get("colorTransform", {}),key,default) * (1-ratio) + number(following.get("colorTransform", {}),key,default)*ratio
+                                for key,default in [(c+suffix, 100 if suffix=='M' else 0) for c in 'argb' for suffix in ('M','O')]}
+                        break
             index = frame.get("displayIndex", 0)
             if frame.get("hide", False) or index == -1:
                 continue
@@ -226,6 +244,10 @@ class Sampler:
                              slot, frame, index, child_start, opacity))
         result = []
         for _, _, slot, frame, index, child_start, opacity in sorted(selected, key=lambda row: row[:2]):
+            ct = frame.get("colorTransform", {})
+            multiplier = tuple(number(ct, c + "M", 100) / 100 for c in "rgb")
+            offset = tuple(number(ct, c + "O") for c in "rgb")
+            tint = tuple(color[i] * multiplier[i] for i in range(3)) + tuple(color[i] * offset[i] + color[i+3] for i in range(3))
             display = slot["display"][index]
             raw, origin = frame.get("transform", {}), display.get("transform", {})
             matrix = parent.then_local(transform(raw)).then_local(Affine(
@@ -235,7 +257,7 @@ class Sampler:
             if display["type"] == "image":
                 matrix = matrix.then_local(Affine(tx=-number(origin, "pX"), ty=-number(origin, "pY")))
                 if self.images[display["name"]].getbbox():
-                    result.append(Draw(display["name"], matrix, opacity, child_path))
+                    result.append(Draw(display["name"], matrix, opacity, child_path, tint))
             else:
                 child_name = display["name"]
                 if child_name.startswith("装备/"):
@@ -246,7 +268,7 @@ class Sampler:
                     except KeyError as error:
                         raise ValueError(f"No explicit child animation for {child_name}") from error
                 result.extend(self.sample(child_clip, tick - child_start, child_name,
-                                          matrix, opacity, child_path, stack + (armature,)))
+                                          matrix, opacity, child_path, stack + (armature,), tint))
         return result
 
     def bounds(self, draws):
@@ -264,6 +286,11 @@ class Sampler:
         output = Image.new("RGBA", size)
         for draw in draws:
             source = self.images[draw.texture]
+            if draw.color != (1, 1, 1, 0, 0, 0):
+                channels = source.split()
+                source = Image.merge("RGBA", tuple(channels[i].point(
+                    [max(0, min(255, round(v * draw.color[i] + draw.color[i+3]))) for v in range(256)])
+                    for i in range(3)) + (channels[3],))
             matrix = Affine(tx=root[0], ty=root[1]).then_local(draw.matrix)
             xmin, ymin, xmax, ymax = self.bounds([draw])
             left, top = math.floor(xmin + root[0]) - 2, math.floor(ymin + root[1]) - 2

@@ -196,6 +196,10 @@ def bake_character(project_root=PROJECT_ROOT, output=None, force=False, previews
         inputs["nail_sources"] = {name: file_hash(project_root / profile["nail_effect_source"] / name)
                                   for name in ("skeleton.json", "texture.json", "texture.png")}
         inputs["nail_code"] = file_hash(Path(__file__).parent / "nail_assets.py")
+    if profile.get("fist_source"):
+        inputs["fist_sources"] = {str(p.relative_to(project_root)): file_hash(p)
+            for d in profile["fist_source"].values() for p in sorted((project_root / d).glob("*")) if p.is_file()}
+        inputs["fist_code"] = file_hash(Path(__file__).parent / "fist_assets.py")
     fingerprint = sha256(json.dumps(inputs, sort_keys=True).encode()).hexdigest()
     if not force and (output / "character.json").exists():
         try:
@@ -238,6 +242,11 @@ def bake_character(project_root=PROJECT_ROOT, output=None, force=False, previews
         extra = nail_samples(sampler, project_root / profile["nail_effect_source"], profile["nail_rotation_center_pixels"])
         if profile.get("nail_separate_arcs"):
             extra.update(nail_arc_samples(sampler, project_root / profile["nail_effect_source"], profile["nail_rotation_center_pixels"]))
+        samples.update(extra)
+        animations.update({name: {"duration": len(frames), "loop": 1} for name, frames in extra.items()})
+    if profile.get("fist_source"):
+        from fist_assets import fist_samples
+        extra = fist_samples(sampler, project_root, profile["fist_source"])
         samples.update(extra)
         animations.update({name: {"duration": len(frames), "loop": 1} for name, frames in extra.items()})
     bounds = [sampler.bounds(draws) for frames in samples.values() for draws in frames if draws]

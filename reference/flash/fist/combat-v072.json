@@ -1,0 +1,546 @@
+{
+  "version": "0.7.2-dev",
+  "native_quake_sources": [
+    {
+      "resources_asset_id": 20231,
+      "game_object": {
+        "m_FileID": 0,
+        "m_PathID": 6399
+      },
+      "fsm": "damages_enemy",
+      "float_variables": [
+        {
+          "useVariable": 1,
+          "name": "Move Angle",
+          "tooltip": "",
+          "showInInspector": 0,
+          "networkSync": 0,
+          "value": 0.0
+        },
+        {
+          "useVariable": 1,
+          "name": "Multiplier",
+          "tooltip": "",
+          "showInInspector": 0,
+          "networkSync": 0,
+          "value": 1.0
+        },
+        {
+          "useVariable": 1,
+          "name": "direction",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 180.0
+        },
+        {
+          "useVariable": 1,
+          "name": "magnitudeMult",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 2.0
+        }
+      ],
+      "int_variables": [
+        {
+          "useVariable": 1,
+          "name": "Layer",
+          "tooltip": "",
+          "showInInspector": 0,
+          "networkSync": 0,
+          "value": 0
+        },
+        {
+          "useVariable": 1,
+          "name": "Special Type",
+          "tooltip": "0=None, 1=Acid",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 0
+        },
+        {
+          "useVariable": 1,
+          "name": "attackType",
+          "tooltip": "0=Nail, 1=Generic, 2=Spell, 3=Acid, 4=Splatter, 5=RuinsWater, 6=Sharp Shadow, 7=Nail Beam",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 2
+        },
+        {
+          "useVariable": 1,
+          "name": "damageDealt",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 15
+        }
+      ],
+      "bool_variables": [
+        {
+          "useVariable": 1,
+          "name": "Ignore Invuln",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 0
+        },
+        {
+          "useVariable": 1,
+          "name": "circleDirection",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 0
+        },
+        {
+          "useVariable": 1,
+          "name": "moveDirection",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 0
+        }
+      ]
+    },
+    {
+      "resources_asset_id": 20991,
+      "game_object": {
+        "m_FileID": 0,
+        "m_PathID": 6049
+      },
+      "fsm": "damages_enemy",
+      "float_variables": [
+        {
+          "useVariable": 1,
+          "name": "Move Angle",
+          "tooltip": "",
+          "showInInspector": 0,
+          "networkSync": 0,
+          "value": 0.0
+        },
+        {
+          "useVariable": 1,
+          "name": "Multiplier",
+          "tooltip": "",
+          "showInInspector": 0,
+          "networkSync": 0,
+          "value": 1.0
+        },
+        {
+          "useVariable": 1,
+          "name": "direction",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 0.0
+        },
+        {
+          "useVariable": 1,
+          "name": "magnitudeMult",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 2.0
+        }
+      ],
+      "int_variables": [
+        {
+          "useVariable": 1,
+          "name": "Layer",
+          "tooltip": "",
+          "showInInspector": 0,
+          "networkSync": 0,
+          "value": 0
+        },
+        {
+          "useVariable": 1,
+          "name": "Special Type",
+          "tooltip": "0=None, 1=Acid",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 0
+        },
+        {
+          "useVariable": 1,
+          "name": "attackType",
+          "tooltip": "0=Nail, 1=Generic, 2=Spell, 3=Acid, 4=Splatter, 5=RuinsWater, 6=Sharp Shadow, 7=Nail Beam",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 2
+        },
+        {
+          "useVariable": 1,
+          "name": "damageDealt",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 15
+        }
+      ],
+      "bool_variables": [
+        {
+          "useVariable": 1,
+          "name": "Ignore Invuln",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 0
+        },
+        {
+          "useVariable": 1,
+          "name": "circleDirection",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 0
+        },
+        {
+          "useVariable": 1,
+          "name": "moveDirection",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 0
+        }
+      ]
+    },
+    {
+      "resources_asset_id": 23273,
+      "game_object": {
+        "m_FileID": 0,
+        "m_PathID": 4642
+      },
+      "fsm": "damages_enemy",
+      "float_variables": [
+        {
+          "useVariable": 1,
+          "name": "Move Angle",
+          "tooltip": "",
+          "showInInspector": 0,
+          "networkSync": 0,
+          "value": 0.0
+        },
+        {
+          "useVariable": 1,
+          "name": "Multiplier",
+          "tooltip": "",
+          "showInInspector": 0,
+          "networkSync": 0,
+          "value": 1.0
+        },
+        {
+          "useVariable": 1,
+          "name": "direction",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 180.0
+        },
+        {
+          "useVariable": 1,
+          "name": "magnitudeMult",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 2.0
+        }
+      ],
+      "int_variables": [
+        {
+          "useVariable": 1,
+          "name": "Layer",
+          "tooltip": "",
+          "showInInspector": 0,
+          "networkSync": 0,
+          "value": 0
+        },
+        {
+          "useVariable": 1,
+          "name": "Special Type",
+          "tooltip": "0=None, 1=Acid",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 0
+        },
+        {
+          "useVariable": 1,
+          "name": "attackType",
+          "tooltip": "0=Nail, 1=Generic, 2=Spell, 3=Acid, 4=Splatter, 5=RuinsWater, 6=Sharp Shadow, 7=Nail Beam",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 2
+        },
+        {
+          "useVariable": 1,
+          "name": "damageDealt",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 15
+        }
+      ],
+      "bool_variables": [
+        {
+          "useVariable": 1,
+          "name": "Ignore Invuln",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 0
+        },
+        {
+          "useVariable": 1,
+          "name": "circleDirection",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 0
+        },
+        {
+          "useVariable": 1,
+          "name": "moveDirection",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 0
+        }
+      ]
+    },
+    {
+      "resources_asset_id": 21822,
+      "game_object": {
+        "m_FileID": 0,
+        "m_PathID": 6974
+      },
+      "fsm": "damages_enemy",
+      "float_variables": [
+        {
+          "useVariable": 1,
+          "name": "Move Angle",
+          "tooltip": "",
+          "showInInspector": 0,
+          "networkSync": 0,
+          "value": 0.0
+        },
+        {
+          "useVariable": 1,
+          "name": "Multiplier",
+          "tooltip": "",
+          "showInInspector": 0,
+          "networkSync": 0,
+          "value": 1.0
+        },
+        {
+          "useVariable": 1,
+          "name": "direction",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 0.0
+        },
+        {
+          "useVariable": 1,
+          "name": "magnitudeMult",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 2.0
+        }
+      ],
+      "int_variables": [
+        {
+          "useVariable": 1,
+          "name": "Layer",
+          "tooltip": "",
+          "showInInspector": 0,
+          "networkSync": 0,
+          "value": 0
+        },
+        {
+          "useVariable": 1,
+          "name": "Special Type",
+          "tooltip": "0=None, 1=Acid",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 0
+        },
+        {
+          "useVariable": 1,
+          "name": "attackType",
+          "tooltip": "0=Nail, 1=Generic, 2=Spell, 3=Acid, 4=Splatter, 5=RuinsWater, 6=Sharp Shadow, 7=Nail Beam",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 2
+        },
+        {
+          "useVariable": 1,
+          "name": "damageDealt",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 15
+        }
+      ],
+      "bool_variables": [
+        {
+          "useVariable": 1,
+          "name": "Ignore Invuln",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 0
+        },
+        {
+          "useVariable": 1,
+          "name": "circleDirection",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 0
+        },
+        {
+          "useVariable": 1,
+          "name": "moveDirection",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 0
+        }
+      ]
+    },
+    {
+      "resources_asset_id": 23060,
+      "game_object": {
+        "m_FileID": 0,
+        "m_PathID": 7282
+      },
+      "fsm": "damages_enemy",
+      "float_variables": [
+        {
+          "useVariable": 1,
+          "name": "Move Angle",
+          "tooltip": "",
+          "showInInspector": 0,
+          "networkSync": 0,
+          "value": 0.0
+        },
+        {
+          "useVariable": 1,
+          "name": "Multiplier",
+          "tooltip": "",
+          "showInInspector": 0,
+          "networkSync": 0,
+          "value": 1.0
+        },
+        {
+          "useVariable": 1,
+          "name": "direction",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 180.0
+        },
+        {
+          "useVariable": 1,
+          "name": "magnitudeMult",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 0.0
+        }
+      ],
+      "int_variables": [
+        {
+          "useVariable": 1,
+          "name": "Layer",
+          "tooltip": "",
+          "showInInspector": 0,
+          "networkSync": 0,
+          "value": 0
+        },
+        {
+          "useVariable": 1,
+          "name": "Special Type",
+          "tooltip": "0=None, 1=Acid",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 0
+        },
+        {
+          "useVariable": 1,
+          "name": "attackType",
+          "tooltip": "0=Nail, 1=Generic, 2=Spell, 3=Acid, 4=Splatter, 5=RuinsWater, 6=Sharp Shadow, 7=Nail Beam",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 2
+        },
+        {
+          "useVariable": 1,
+          "name": "damageDealt",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 15
+        }
+      ],
+      "bool_variables": [
+        {
+          "useVariable": 1,
+          "name": "Ignore Invuln",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 0
+        },
+        {
+          "useVariable": 1,
+          "name": "circleDirection",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 0
+        },
+        {
+          "useVariable": 1,
+          "name": "moveDirection",
+          "tooltip": "",
+          "showInInspector": 1,
+          "networkSync": 0,
+          "value": 0
+        }
+      ]
+    }
+  ],
+  "native_recoil_rule": "HealthManager.TakeDamage calls RecoilByDirection(cardinal GetActualDirection, MagnitudeMultiplier); native Recoil preserves state/resistance/sweep behavior.",
+  "fist_push": {
+    "attack_type": "Spell",
+    "circle_direction": false,
+    "magnitude": 2,
+    "body_direction": "horizontally away from cast root; facing fallback at exact center",
+    "wave_direction": "along travel",
+    "forced_enemy_transform_or_velocity": false
+  },
+  "ghost_expiry": {
+    "unused_seconds": 10,
+    "copied_godslayer_release_seconds": 0.8333333333333334,
+    "copied_earthbreaker_landing_seconds": 0.4666666666666667,
+    "copied_earthbreaker_timeout_seconds": 5,
+    "completed_copies_return_to_idle": false,
+    "emitted_waves_independent": true
+  },
+  "earthbreaker": {
+    "previous_descent_source_pixels_per_tick": 22,
+    "descent_source_pixels_per_tick": 33,
+    "speed_ratio": 1.5,
+    "rise_and_antic_unchanged": true,
+    "terrain_sweep_unchanged": true
+  },
+  "artwork_regenerated": false,
+  "runtime_tested": false,
+  "compiled_shared_hit_audit": {
+    "fire_demon_wrapper_keeps_air_magnitude": 0.15,
+    "fire_demon_wrapper_keeps_finisher_magnitude": 1,
+    "native_spell_hit_ownership_rechecked_before_and_after_event": true
+  }
+}

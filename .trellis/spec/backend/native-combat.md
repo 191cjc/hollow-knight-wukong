@@ -349,3 +349,117 @@ tests must cover pacing, mesh suppression/restoration, charms and pogo.
 7. Wrong: follow native mesh enabled for the replacement death or turn off the
    death FSM. Correct: override only source death presentation and own/restore
    the selected native visual suppressions while native progression runs.
+
+
+## 0.7 fist and Dream ownership
+
+Neutral spell holds Fireball Antic ANIM END, charges current MP Cost once and
+finishes via Spell End, skipping native projectile creation. NativeDreamV77 validates
+actual Dream Nail states/actions and inactive Dream Effects/Hitbox before patching.
+Disable only the Inactive physical-input listener; hold Start completion with a
+real ignored event. Begin via Fsm Cancel/Take Control to preserve cancellation of
+other hero FSMs. End/Regain Control retains native Dream Convo handling. Restore
+listener entry cache when re-enabling it while Inactive; it may have been disabled
+before its first OnEnter. Never force recovery on dead/transitioning heroes.
+
+Dream direction is latched on press. Godslayer release latches tier; source38ticks
+full, Dream Wielder2x charge. Force one full release at frame60 (59elapsed ticks; Dream Wielder2x); key-up may release earlier. Full hero wave alone
+clones actual native Dream hitbox, tag/layer/Send Event FSM and SendDreamImpact;
+only clone Deactivate is disabled. Attach a kinematic Rigidbody2D/full kinematic
+contacts to replace the original inherited hero body, then move its Rigidbody
+position in fixed steps. Without it, static NPC/scenery triggers can be missed.
+No manual Soul/essence, invented DREAM NAIL event or dream triggers on ghosts.
+
+FistSkills shares actual SkillTargetPolicy before source cap/interval ledgers,
+and rechecks held state/token after native callbacks. Source masks are local with
+Y converted once; artwork1.5 does not scale damage regions. Explicit subskill caps
+are2/1/1/1/1 (Afterimage),1 per Godslayer/fall/landing,5/2 at434/400ms (Ape).
+Use bounded native-body terrain casts for hero travel; independent ghost movement
+uses equivalent bounds without adding a hero collider. Stop input/velocity writes
+before native recovery. Independent waves may outlive ordinary recovery; death,
+hazard/scene/detach destroys all ghosts/waves/dream triggers. No extra immunity.
+
+Regression: actual production charge/latched tier/pause/interval/cap/mirror/travel
+policies, full source pixels, compact frame registration and source hashes. Client
+Dream NPC/enemy/scenery behavior, keyboard/controller, terrain, damage interruptions
+and all previous skills remain mandatory pending acceptance.
+
+
+Native listener cache: v77 FsmState.OnUpdate iterates its cached ActiveActions
+without checking Enabled. set_Enabled only changes a flag. Remove the exact
+Inactive ListenForDreamNail action from that cache on attachment; retain all other
+actions. On restoration while Inactive, prime its input cache and reinsert it at
+its original order if absent. If another state is active, normal future OnEnter
+rebuilds the list using restored Enabled. Exact pinned IL is preserved under
+reference/flash/fist/native-listener-cache.txt.
+
+
+## 0.7.1 directional Dream Soul transaction
+
+NativeSpellV77.SoulCost reads/validates the actual Spell Control MP Cost. Native
+Set Spell Cost, independent of casting, updates33/24 through CHARM INDICATOR CHECK.
+Do not duplicate that charm table or modify the variable. FistRules.TryBeginDream
+rejects insufficient Soul before acquisition, rechecks Soul/ownership after native
+cancellation, charges native TakeMP once and rechecks ownership before gameplay or
+ghost mimicry. Failed acquisition never charges; failed held ownership recovers
+through native Dream Finish. Neutral Godslayer stays free. Source maximum charge
+is59elapsed ticks, distinct from38full-damage ticks. Observe latches once, keeps
+the25-tick tail/100ms wave and uses observation time after slow frames so the
+release cannot disappear before spawning. Pauses use unchanged scaled time; a
+held key never synthesizes a fresh DreamPressed edge. Damage/masks remain intact.
+
+
+## 0.7.2 copied ghost consumption and native slam recoil
+
+GhostFinished(Action,released,actionSeconds,landingSeconds,age) owns expiry:
+unused None expires at10s; copied Godslayer removes after its25/30s release tail;
+copied Earthbreaker removes14/30s after landing or5s fall timeout. FistSkills
+removes the renderer/list entry directly; never set completed copies back to None.
+Only idle ghosts accept a copy. Stop removes unreleased Godslayer copies; emitted
+waves retain their own lifetime/damage ledgers. Recheck ghost membership after
+native callbacks before continuing enumeration. Death/scene/detach still clear all.
+
+Hero/ghost EarthbreakerStep shares original17.8px/tick rise and16/8tick ground/air
+antic with33px/tick descent (1.5x prior22). Terrain casts still clamp actual motion,
+consume blocked travel and retain original damage regions and landing-tail poses.
+
+Native Q Slam Hit L/R FSMs use Spell, circleDirection=false, magnitudeMult=2 and
+horizontal0/180 directions. Fist Query now uses that recoil strength through shared
+NativeV77.SpellHit/HitTaker/HealthManager/Recoil, preserving native resistance and
+terrain sweeps. Body push direction is away from cast root (facing on exact center);
+Godslayer wave direction stays along travel even after passing the target center.
+Do not force enemy transforms/velocity or bypass invulnerability/recoil state.
+FireDemonHit delegates to the shared helper with its unchanged0.15air/1finisher
+and circleDirection values; Flame Storm also retains its existing wrapper behavior.
+No extra hero immunity, damage/HP/Soul/mask changes or artwork regeneration.
+
+
+## 0.7.3 owned defense and final-only slam recoil
+
+FireDemonSlash.Query final hits now call SpellHit with circleDirection=false,
+magnitude2 and FistRules.PushDirection away from actual effect root. Preserve
+air0.15 and FlameStorm wrapper values, source regions and airborne completion.
+
+Runtime.SkillProtects observes FistSkills at TakeDamage/TakeHealth entry; only
+owned live Earthbreaker ProtectsHP joins the existing Dash/FireDemon guards.
+HeroFinished centralizes unchanged source ends: Afterimage71ticks, Ape105ticks,
+Godslayer25-tick release tail, Earth14-tick landing tail or5s timeout. Observe
+expires ownership synchronously before hits. Ghosts/waves never protect the hero.
+
+For owned Ape only, NativeDreamV77.SetDamageResistance replaces the exact Dream
+HERO DAMAGED -> Cancel transition event with a private ignored event. Other native
+FSM events and all other recipients keep running. DamageEventOverride captures
+the original object, repeats idempotently, restores only its own replacement and
+rejects foreign acquisition. Finish/Dispose restores even on death/scene cleanup.
+Never suppress the global broadcast or entire proxy damage event.
+
+Runtime hooks StartRecoil (after native TakeDamage has handled HP/charms/death/
+hazards). Owned Ape uses NativeV77.ArmoredDamage: native DAMAGE visual/double-hit
+prefab and native Invulnerable iterator, including native Stalwart Shell duration,
+without recoil motion/SetState/freeze/control mutations. Other actions delegate
+unchanged to orig. Do not skip native TakeDamage, deduct HP manually, set saved
+isInvincible, restart source clocks, charge Soul again or ignore lethal/hazards.
+
+Validation includes exact hero end/paused observers and real scoped-event restore/
+recast/foreign-owner tests plus actual-reference Release/compiled hook inspection.
+All13character resources are reused byte-for-byte. Client acceptance stays pending.

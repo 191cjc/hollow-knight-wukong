@@ -1,0 +1,68 @@
+{
+  "inputs": {
+    "assets/zmxy4/animations/2006/manV535/skeleton.json": "b92f205f070b91c90bbc6d0c9b6f93bcdfa0fc9f688920b74fb3ccab521e6069",
+    "assets/zmxy4/animations/2006/manV535/texture.json": "eff648cedb6747495ec0d1286764c820f4e60e4d1f27f37865abcd8886238f8b",
+    "assets/zmxy4/animations/2006/manV535/texture.png": "6a400882a928f2065af2d6a32d0993e8bf644f0d5564dcaf7e217f792f700983",
+    "assets/zmxy4/animations/2006/skill1V530/skeleton.json": "f8a99f187496447b91a3ee4dc569a65623e5b42a21eeace868ce074ef3ed1ab0",
+    "assets/zmxy4/animations/2006/skill1V530/texture.json": "2b6ed89ee03acf15d0d2712fa6112302926f03b561702f0376ced2d8e3eb0d7b",
+    "assets/zmxy4/animations/2006/skill1V530/texture.png": "557ebb7d14fae2afec026788b11358d4902bf1c6553d59e5351d321d76da3532",
+    "assets/zmxy4/animations/2006/skill5/skill5_skeleton.json": "522fe6eb208e495c6530a430c3839ed113b3d99a37b0ddc0d665ca5ff692bfa7",
+    "assets/zmxy4/animations/2006/skill5/skill5_texture.json": "9d2964667dd090c378d754ac57343b40271a5eb097a297875c8f2657c00eac18",
+    "assets/zmxy4/animations/2006/skill5/skill5_texture.png": "15de4dcb9bcea9d8c29d916dc96869216115d1c950d5519302e2c5a784b4ff71",
+    "data/source/skills.xml": "ae4900a485e806f772ff37e5cf180f23c44801dc5db1eb532425a1a272ef43bb",
+    "data/source/roles.xml": "a922534bd5c28ced543d4c717b5016536c66e7bc5a0cf66ab170e3bd68e7e819",
+    "reference/flash/v5870.swf": "54d267971105016bea7708560f1f350f05ee15c1fbb246d54041ee1f51efae49",
+    "assets/zmxy4/raw/assets/man/2006/1V530.swf": "2f452991c5712ec57ff4ede435a6a90131cf981f406c88508b47b0f922820fc6"
+  },
+  "downloads": [
+    {
+      "path": "assets/man/2006/1V530.swf",
+      "url": "https://sda.4399.com/4399swf/upload_swf/ftp15/csya/20150127/1/assets/man/2006/1V530.swf",
+      "size": 20373,
+      "sha256": "2f452991c5712ec57ff4ede435a6a90131cf981f406c88508b47b0f922820fc6",
+      "magic": "4357530f509b0000",
+      "status": "downloaded"
+    },
+    {
+      "path": "assets/man/2006/manV535.swf",
+      "url": "https://sda.4399.com/4399swf/upload_swf/ftp15/csya/20150127/1/assets/man/2006/manV535.swf",
+      "size": 241329,
+      "sha256": "434f284d88df9b1df30245524491ca1e4b0727dd7663f4419b6069dd8f56794b",
+      "magic": "0a0b0105666e0403",
+      "status": "downloaded"
+    },
+    {
+      "path": "assets/man/2006/skill1V530.swf",
+      "url": "https://sda.4399.com/4399swf/upload_swf/ftp15/csya/20150127/1/assets/man/2006/skill1V530.swf",
+      "size": 1054697,
+      "sha256": "53f05638637988b5a8fef2e0a126034cee882f88943c07d08b0e38724bfb1579",
+      "magic": "0a0b0105666e0403",
+      "status": "downloaded"
+    },
+    {
+      "path": "assets/man/2006/skill5.swf",
+      "url": "https://sda.4399.com/4399swf/upload_swf/ftp15/csya/20150127/1/assets/man/2006/skill5.swf",
+      "size": 719462,
+      "sha256": "c515b718350f294e09e54893291aed532ae82b9a5663b3e108b42a5b89efcda7",
+      "magic": "0a0b0105666e0403",
+      "status": "downloaded"
+    },
+    {
+      "path": "assets/music/se2006.swf",
+      "url": "https://sda.4399.com/4399swf/upload_swf/ftp15/csya/20150127/1/assets/music/se2006.swf",
+      "size": 511,
+      "sha256": "0d7e337b9e4af443c06ff40d674800664cede231bfc04787c7383730d17cbd50",
+      "magic": "4357530fc5040000",
+      "status": "downloaded"
+    }
+  ],
+  "source_fps": 30,
+  "clone_birth_frames": [
+    12,
+    26,
+    40,
+    52
+  ],
+  "clone_lifetime_seconds": 10,
+  "full_charge_source_frame": 39
+}

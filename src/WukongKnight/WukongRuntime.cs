@@ -22,6 +22,7 @@ namespace WukongKnight
         private FireDemonSlash? fireDemon;
         private FlameStorm? flameStorm;
         private BloodthirstyFireEye? bloodEye;
+        private FistSkills? fist;
         private NailSlash? slash;
         private long nativeToken;
         private bool capturing;
@@ -49,6 +50,7 @@ namespace WukongKnight
                 On.HeroController.Attack += Attack;
                 On.HeroController.CanAttack += CanAttack;
                 On.HeroController.TakeDamage += HeroTakeDamage;
+                On.HeroController.StartRecoil += HeroStartRecoil;
                 On.HeroController.TakeHealth += HeroTakeHealth;
                 On.HeroController.AddHealth += HeroAddHealth;
                 On.HeroController.ResetAttacks += ResetAttacks;
@@ -76,7 +78,8 @@ namespace WukongKnight
                 // native spell state here too, including exact start/end boundaries.
                 flameDash?.Observe();
                 fireDemon?.Observe();
-                return (flameDash != null && flameDash.Active) || (fireDemon != null && fireDemon.Active);
+                fist?.Observe();
+                return (flameDash != null && flameDash.Active) || (fireDemon != null && fireDemon.Active) || (fist != null && fist.ProtectsHP);
             }
             catch (Exception error) { Fail(error); return false; }
         }
@@ -86,6 +89,21 @@ namespace WukongKnight
             // CanTakeDamage=false alone still lets native invulnerable heroes take
             // spike/acid damage. Guard the whole entry, without changing save flags.
             if (!SkillProtects(self)) orig(self, source, side, amount, hazardType);
+        }
+
+        private IEnumerator HeroStartRecoil(On.HeroController.orig_StartRecoil orig, HeroController self, CollisionSide side, bool spawnDamageEffect, int amount)
+        {
+            if (!disposed && !failed && self == hero)
+            {
+                try
+                {
+                    fist?.Observe();
+                    if (fist != null && fist.ResistsDamageInterruption)
+                        return native.ArmoredDamage(self, spawnDamageEffect, amount);
+                }
+                catch (Exception error) { Fail(error); }
+            }
+            return orig(self, side, spawnDamageEffect, amount);
         }
 
         private void HeroTakeHealth(On.HeroController.orig_TakeHealth orig, HeroController self, int amount)
@@ -110,6 +128,7 @@ namespace WukongKnight
                 try
                 {
                     Cancel(); flameDash?.Stop();
+                    fist?.CancelAll();
                     presenter?.BeginDeath(Time.time);
                 }
                 catch (Exception error) { Fail(error); }
@@ -136,6 +155,7 @@ namespace WukongKnight
             {
                 try
                 {
+                    fist?.Observe(true);
                     ObserveSpells(self); // Neutralize input before native LookForInput.
                     if (ShouldCancel() || (combo != null && combo.Active && (native.JumpPressed(self) || native.DashPressed(self)))) Cancel();
                     if (combo != null && combo.Active)
@@ -170,7 +190,7 @@ namespace WukongKnight
         private void ObserveSpells(HeroController self)
         {
             if (disposed || failed || self != hero) return;
-            try { fireDemon?.Observe(); flameStorm?.Observe(); bloodEye?.Observe(); }
+            try { fireDemon?.Observe(); flameStorm?.Observe(); bloodEye?.Observe(); fist?.Observe(); }
             catch (Exception error) { Fail(error); }
         }
 
@@ -188,6 +208,7 @@ namespace WukongKnight
                 fireDemon = new FireDemonSlash(self, native, assets);
                 flameStorm = new FlameStorm(self, native, assets);
                 bloodEye = new BloodthirstyFireEye(self);
+                fist = new FistSkills(self, native, assets);
                 lifetime = self.gameObject.AddComponent<WukongLifetime>();
                 lifetime.UpdateView = LateUpdate;
                 lifetime.AdvancePhysics = FixedUpdate;
@@ -201,7 +222,7 @@ namespace WukongKnight
         {
             if (!disposed && !failed && flameDash != null)
             {
-                try { flameDash.FixedUpdate(); fireDemon?.FixedUpdate(); flameStorm?.FixedUpdate(); bloodEye?.Observe(); }
+                try { flameDash.FixedUpdate(); fireDemon?.FixedUpdate(); flameStorm?.FixedUpdate(); fist?.FixedUpdate(); bloodEye?.Observe(); }
                 catch (Exception error) { Fail(error); }
             }
             if (disposed || failed || hero == null || combo == null || !combo.Active || Time.fixedTime == lastPhysics) return;
@@ -217,7 +238,7 @@ namespace WukongKnight
         private void LateUpdate()
         {
             if (disposed || failed || hero == null || presenter == null) return;
-            try { fireDemon?.UpdateView(); flameStorm?.Observe(); bloodEye?.Observe(); presenter.Update(combo, Time.time, flameDash, fireDemon, flameStorm, bloodEye); }
+            try { fireDemon?.UpdateView(); flameStorm?.Observe(); bloodEye?.Observe(); fist?.UpdateView(); presenter.Update(combo, Time.time, flameDash, fireDemon, flameStorm, bloodEye, fist); }
             catch (Exception error) { Fail(error); }
         }
 
@@ -440,7 +461,7 @@ namespace WukongKnight
         }
 
         private bool BlocksReplacedSpell(GameObject source) =>
-            fireDemon != null && fireDemon.BlocksNativeSource(source) || flameStorm != null && flameStorm.BlocksNativeSource(source);
+            fireDemon != null && fireDemon.BlocksNativeSource(source) || flameStorm != null && flameStorm.BlocksNativeSource(source) || fist != null && fist.BlocksNativeSource(source);
 
         private void DispatchHealthHit(On.HealthManager.orig_Hit orig, HealthManager self, HitInstance hit)
         {
@@ -512,6 +533,8 @@ namespace WukongKnight
         private void Detach()
         {
             Cancel();
+            FistSkills? oldFist = fist; fist = null;
+            if (oldFist != null) Cleanup(oldFist.Dispose);
             FlameDash? oldDash = flameDash; flameDash = null;
             if (oldDash != null) Cleanup(oldDash.Dispose);
             FireDemonSlash? oldSpell = fireDemon; fireDemon = null;
@@ -541,6 +564,7 @@ namespace WukongKnight
             On.HeroController.Attack -= Attack;
             On.HeroController.CanAttack -= CanAttack;
             On.HeroController.TakeDamage -= HeroTakeDamage;
+            On.HeroController.StartRecoil -= HeroStartRecoil;
             On.HeroController.TakeHealth -= HeroTakeHealth;
             On.HeroController.AddHealth -= HeroAddHealth;
             On.HeroController.ResetAttacks -= ResetAttacks;

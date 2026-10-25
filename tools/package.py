@@ -9,8 +9,9 @@ from pathlib import Path
 
 from validate_character import CHARACTER, ROOT, sha256, validate_character
 
-VERSION = "0.6.3-dev"
-ACTIVE_CHARACTER = ROOT / json.loads((ROOT / "data/character/active-variant.json").read_text(encoding="utf-8"))["output_directory"]
+VERSION = "0.7.3-dev"
+_VARIANT = json.loads((ROOT / "data/character/active-variant.json").read_text(encoding="utf-8"))
+ACTIVE_CHARACTER = ROOT / _VARIANT.get("runtime_directory", _VARIANT["output_directory"])
 README = f"""Wukong Knight {VERSION}
 Baseline: Hollow Knight 1.5.78.11833 / Modding API v77.
 Includes default staff Wukong visuals and a grounded four-stage horizontal attack chain.
@@ -37,10 +38,39 @@ Native mesh disable/alpha no longer hides the Wukong death animation. Native
 Knight shell/debris visuals are suppressed with restoration; death/save/Geo/shade,
 dream returns and respawn processing continue through the original iterator.
 Air/up/down attacks retain native mechanics, including down-slash bouncing.
+Neutral quick spell casts Afterimage Combo (残影连打), consuming native MP Cost once.
+Original 71-tick fists/flames, five local subskill regions, four 10-second afterimages.
+Afterimages mimic Earthbreaker and Godslayer at reduced damage, without dream effects.
+Dream Nail is Godslayer Strike (灭神一击): hold to charge, release to punch.
+Full charge is source frame39 (1.267s; Dream Wielder 0.633s), releasing a traveling wave.
+Only the player's full wave carries the actual native Dream Nail trigger, retaining
+thoughts/Soul/dream scenery interactions. Partial punches and clones only damage.
+Down + Dream Nail casts Earthbreaker Fist (辟地拳); upward launch on ground, then
+terrain-limited slam, or direct slam in air. Up + Dream Nail casts Fire Ape Assault
+(火猿出击), with original independent back/front fire-ape artwork and local masks.
+Dream-key attacks require Dream Nail unlock, scale with nail upgrades
+without Strength, and have recovery/cooldowns. Direction is latched at press.
+Down/up Dream actions spend current native MP Cost once (33; Spell Twister24);
+insufficient Soul prevents casting and ghosts cost no extra Soul. Neutral Dream
+remains free. Maximum-held Godslayer automatically releases at source frame60
+(1.967s, or0.983s with Dream Wielder); earlier full damage begins at frame39.
+The last two persistent ghosts use held source punch/kick poses, preserving shape.
+After copying Godslayer/Earthbreaker once, each ghost disappears at action end;
+unused ghosts retain their10-second lifetime. Earthbreaker falls1.5x faster.
+Fist hits now use original Quake-slam horizontal recoil strength2, with body hits
+pushing away from the cast root and waves along travel. Native enemy resistance
+still applies; damage and Soul costs remain unchanged.
+Earthbreaker blocks incoming HP damage for its owned launch/fall/landing action.
+Fire Ape takes normal native HP damage while resisting hit cancellation/recoil;
+native post-hit cooldown remains. Death, hazards and scene cleanup still win.
+These two directional Dream-key actions replace native Dream Gate shortcuts.
+New raw/baked/1.5x originals are retained separately. Runtime atlases crop only
+transparent margins and preserve per-frame root registration; no extra rescaling.
 Up + spell casts Fire Demon Slash with original relative air/finisher regions.
 Damage is fixed by spell tier, independent of nail upgrades: 2 x up to 11 + 14,
 or upgraded 3 x up to 11 + 22. Shaman Stone gives 3 x 11 + 21 / 5 x 11 + 33.
-Air contacts have a 100ms per-target cooldown; the finisher hits each target once.
+Air contacts have a 100ms per-target cooldown; the finisher hits each target once
+and pushes horizontally away with native down-slam recoil strength2.
 Native enemy hit evasion remains authoritative, so actual hits may be fewer.
 Native Scream damage/visuals are suppressed; native up-spell unlock/tier and recovery remain.
 Each replacement spell charges native MP Cost once (normally 33; Spell Twister 24).
@@ -172,7 +202,7 @@ def main():
         "dll": dll.relative_to(ROOT).as_posix(), "dll_bytes": dll.stat().st_size,
         "dll_sha256": sha256(dll),
         "implemented": {"character_replacement": True, "grounded_four_stage_combo": True,
-                        "active_skills": True, "flame_dash": True, "fire_demon_slash": True, "flame_storm": True, "bloodthirsty_fire_eye": True, "other_active_skills": False},
+                        "active_skills": True, "flame_dash": True, "fire_demon_slash": True, "flame_storm": True, "bloodthirsty_fire_eye": True, "afterimage_combo": True, "godslayer_strike": True, "earthbreaker_fist": True, "fire_ape_assault": True, "other_active_skills": False},
         "built": args.checks_passed,
         "automatically_verified": {"source_inventory": args.checks_passed,
                                    "character_manifest_and_atlases": True,

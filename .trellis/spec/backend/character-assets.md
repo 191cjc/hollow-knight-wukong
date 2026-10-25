@@ -245,3 +245,33 @@ It is identical to existing manV535; reuse the current complete original/offline
 final pose; original ef1 ghost is present only[8,32). Tests compare all65runtime
 death frames at both sizes to direct sampling of the fresh download. Do not
 rebake/recenter/re-scale or overwrite earlier inputs just to fix native visibility.
+
+
+## 0.7 original fist sources and compact atlases
+
+Preserve earlier folders. Fist source2006 manV535/skill1V530 is global2.3; skill5
+is local3.0. Explicit profile opt-ins permit archived RGB multipliers/offsets and
+linear tweens in2.3 only; earlier staff profiles remain strict. Local ape supports
+only its one-tick linear frames/alpha fades and parentless transforms. Fail other
+unsupported depths/tweens/colors. Partial punch samples source scale5 into10ticks.
+Both independent ape back/front layers must be present, alongside original body.
+
+active-variant output_directory retains full offline1.5x canvases; optional
+runtime_directory selects a separate packed folder. pack_character.py crops only
+transparent margins, always includes source root and shelf-packs without resampling.
+Packed frames carry source_x/source_y. Validators/runtime check the crop inside
+shared canvas, root inside crop and texture rectangle inside its atlas. Unity
+pivot subtracts crop offset before top/bottom conversion. Manifests without
+atlas_packing still require full canvas dimensions. Reconstruct every unique
+packed frame and compare exact enlarged pixels. No additional runtime scale.
+
+
+## 0.7.1 persistent afterimage poses
+
+Optional profile afterimage_idle_ticks selects four valid zero-based effect4 body
+frames (integers0..70). Omission retains the earlier11/25/39/51 compatibility.
+The active v071 profile selects11/25/40/53:39/51 are authored stretched transition
+poses;40/53 are stable punch/kick poses. Select original drawings offline; never
+compensate with a runtime stretch. Preserve earlier profiles/artwork and create
+new original/full1.5x/packed folders. Check all other1347ticks byte-for-byte at
+both sizes and exact packed reconstruction, then inspect the four ghost poses.

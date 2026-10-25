@@ -1,4 +1,4 @@
-# Fire Demon Slash (0.5.1-dev)
+# Fire Demon Slash (0.7.3-dev)
 
 Up + spell uses Wukong's original character animation and two skill effects.
 Native input, unlocks, Soul spending and control recovery remain; the replacement
@@ -102,3 +102,12 @@ Original archives, unscaled bakes, 1.5x variants and earlier ZIPs are preserved.
 Gameplay acceptance remains pending: verify moving flashes with both facings,
 ground/midair finisher timing, control/gravity recovery, actual enemy HP changes,
 full-cast immunity, no distant sensor hits and disable/re-enable/scene cleanup.
+
+
+## 0.7.3 final-hit recoil
+
+Only the final contact now uses native Q Slam Hit L/R horizontal Spell recoil
+strength2, directed away from the actual finisher root (facing fallback on exact
+center). Native enemy resistance still applies. Air-hit recoil remains0.15; Flame
+Storm retains its previous wrapper values. No dive, floor snap, Quake shake, new
+contact region or damage is added. The moved-root airborne finisher is retained.

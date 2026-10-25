@@ -1,4 +1,150 @@
-# Current status: Wukong character, nail arcs and spells
+# Current status: Wukong0.7.3 skill defense and final-hit recoil
+
+Updated2026-10-24 (Asia/Shanghai). Version0.7.3-dev installed in the authorized
+WukongKnight directory with game stopped and complete previous0.7.2 backup.
+Checkpoint e44de07 and earlier artwork remain;0.7 changes are saved in the
+0.7.3 local checkpoint commit.
+
+- Fire Demon final hit now uses native Q Slam horizontal Spell recoil magnitude2,
+  away from its actual moved effect root. Native resistance, midair completion,
+  damage/regions and air/Flame Storm recoil remain intact.
+- Earthbreaker blocks incoming HP damage throughout the actual owned player
+  launch/fall/landing tail; copies/waves never extend the protection window.
+- Fire Ape retains native HP damage/charms/callbacks/post-hit cooldown while
+  resisting ordinary hit cancellation and recoil. The exact native Dream damage
+  transition is restored on finish/cancel/dispose; death/hazards/scenes still win.
+  No cast/clock restart, additional Soul charge or saved invincibility writes.
+
+Validation:64Python passed/one Windows symlink privilege skip;71actual production
+C# core checks and warnings-as-errors Release passed. All15package/installed
+files/ZIP verified. All13active character resources are byte-identical to0.7.2;
+57clips/1349ticks/12compact pages reused. Native installed/reference recoil IL is
+identical; actual damage-effect FSM and compiled hit/guard/recovery boundaries
+reviewed. Evidence: reference/flash/fist/defense-v073.json and
+.trellis/tasks/10-23-wukong-character-basic-attacks/research/defense-v073-20261024.md.
+
+Package: artifacts/WukongKnight-0.7.3-dev.zip.
+ZIP SHA256: fc2cb558e6ff6c2a23fad38afac2ef04033d2cfc8aaeb7ac02a99f66a38c1d0d.
+DLL SHA256: ea68288ef0d8d281ae8d94496859846577da1f95262a983941ab638d1f9b9b68 (112640bytes).
+Installed at 2026-10-24T22:38:39.785196+08:00.
+Backup: installed-WukongKnight-before-0.7.3-20261024-223837.zip.
+No API/save changes or remote push. Actual client damage/armor/recoil/
+recovery acceptance is pending; **runtime_tested=false**, task in_progress.
+
+---
+
+# Previous status: Wukong0.7.2 copied ghosts and knockback
+
+Updated2026-10-24 (Asia/Shanghai). Version0.7.2-dev installed in the authorized
+WukongKnight directory with game stopped and complete previous0.7.1 backup.
+Checkpoint e44de07 and earlier artwork remain; new0.7 changes are uncommitted.
+
+- Each ghost copies Godslayer/Earthbreaker once, then disappears after its release/
+  landing tail. Busy copies are not restarted. Canceled unreleased Godslayer copies
+  are consumed. Idle ghosts retain10seconds; emitted waves finish independently.
+- Earthbreaker descent is1.5x faster (33instead of22source pixels/tick) for player
+  and copies; ground rise/air antic, landing tail and terrain sweeps are retained.
+- All fist hits use native Q Slam horizontal Spell recoil magnitude2. Body hits
+  push away from their cast root; Godslayer waves push along travel. Native enemy
+  resistance/blocking/terrain remains authoritative. No forced enemy movement or
+  added hero immunity. Damage/masks/Soul and other spell recoil remain unchanged.
+
+Validation:64Python passed/one Windows symlink privilege skip;65actual production
+C# core checks and warnings-as-errors Release passed. All15package/installed
+files/ZIP verified. All13active character files are byte-identical to0.7.1;
+57clips/1349ticks/12compact pages reused. Compiled shared spell helper retains
+Fire Demon/Storm0.15air/1finisher and circle behavior; native ownership checks
+remain before/after TAKE DAMAGE callbacks. Native/source evidence is stored in
+reference/flash/fist/combat-v072.json and docs/FIST_SKILLS.md.
+
+Package: artifacts/WukongKnight-0.7.2-dev.zip.
+ZIP SHA256: 8134013624ceb5dff4b52b8b951aaf8af41b98485effb0c6b2a04a278b15beab.
+DLL SHA256: 3c2a3db5b0435919f953e3697c91a792ace9f4d48e996ec59311798055b3c2a2 (109056bytes).
+Installed at 2026-10-24T21:00:45.280719+08:00.
+Backup: installed-WukongKnight-before-0.7.2-20261024-210043.zip.
+No API/save changes, new commit or remote push. Actual client input/combat/recoil/
+contact-damage acceptance is pending; **runtime_tested=false**, task in_progress.
+
+---
+
+# Previous status: Wukong0.7.1 fist corrections
+
+Updated2026-10-24 (Asia/Shanghai). Version0.7.1-dev installed into the authorized
+WukongKnight directory with the game stopped. The previous0.7.0 Mod is completely
+backed up; checkpoint e44de07 and all original/previous asset folders are retained.
+New0.7 work remains reviewable locally; no new commit or remote push.
+
+- Down Dream Earthbreaker and up Dream Fire Ape require current native Spell
+  Control MP Cost (normally33, Spell Twister24). Reject insufficient Soul before
+  taking control; charge native TakeMP once after acquisition and before gameplay.
+  Recheck Soul/ownership around native callbacks. Mimic ghosts cost no extra Soul;
+  neutral Godslayer stays free. Existing damage factors/masks remain unchanged.
+- Godslayer automatically fires once at source frame60 (59elapsed ticks:1.967s,
+  Dream Wielder0.983s), retaining earlier key-up release/full-tier38tick behavior,
+  native full-wave Dream interaction,25-tick release tail and100ms spawn delay.
+- Last two persistent ghosts use original held punch/kick poses40/53 instead of
+  stretched transition poses39/51. New original/full1.5x/packed folders preserve
+  all prior assets; no runtime stretch/collider changes. Both-facing preview reviewed.
+
+Validation:64Python passed/one Windows symlink-privilege skip;60actual production
+C# core checks and warnings-as-errors Release passed. All15package/installed files
+and ZIP bytes verified. All1007prior asset files unchanged. Only afterimageIdle3/4
+changed; the other1347ticks at each size are byte-identical, with unchanged
+combat/canvas/root/calibration.57clips/1349ticks/12compact pages; lossless packed
+reconstruction and source composition passed. Details: docs/FIST_SKILLS.md,
+reference/flash/fist/corrections-v071.json and artifacts/build-report.json.
+
+Package: artifacts/WukongKnight-0.7.1-dev.zip.
+ZIP SHA256: 4bd12ac765ef50bf620a436f1cd7b6b56ec13e7fd513edd06dcd8ab7649bc4d1.
+DLL SHA256: f3cb98842dbf29a809a7dcb307f93c9c6a6afbcd07ad80258e2eff7ca0c81e05 (108544bytes).
+Installed at 2026-10-24T19:59:53.052966+08:00.
+Backup: installed-WukongKnight-before-0.7.1-20261024-195951.zip.
+No API/save files modified. Actual gameplay acceptance remains pending;
+**runtime_tested=false**, parent task stays in_progress. See docs/CLIENT_ACCEPTANCE.md.
+
+---
+
+# Previous status: Wukong0.7 fist skills
+
+Updated2026-10-24 (Asia/Shanghai). Version0.7.0-dev installed into the authorized
+WukongKnight directory. Current workspace checkpoint was committed first as
+**e44de07**; new changes remain reviewable locally, with no remote push.
+
+| Input | Implemented action |
+| --- | --- |
+| Neutral quick spell | Afterimage Combo, original fists/flames, four ten-second mimic ghosts |
+| Dream Nail | Godslayer hold/release, damage; full charge retains native Dream interactions |
+| Down + Dream Nail | Earthbreaker, ground launch/air slam and terrain-limited landing |
+| Up + Dream Nail | Fire Ape, original body/back/front layers and local contacts |
+
+All previous staff/nail/up-down-spell/focus/dash/death mechanics remain integrated.
+Fist actions require native progression, use explicit balanced damage and have no
+added immunity. Directional Dream Gate shortcuts are intentionally occupied.
+Godslayer full charge38/30s, or38/60s with Dream Wielder; partial/ghost hits grant
+no native dream interactions. Source files, masks and native adapter evidence are
+under reference/flash/fist; balance/lifecycle details are in docs/FIST_SKILLS.md.
+
+Validation:63Python checks passed, one Windows symlink-privilege skip;55actual
+production C# core checks; warnings-as-errors Release compile. All15package/
+installed files and ZIP bytes verified.57clips/1349ticks/12runtime atlas pages.
+491preexisting asset files preserved unchanged. All991prior ticks remain registered;
+rebaking into the larger source canvas changes at most one premultiplied8-bit
+channel level from floating-point raster rounding. Every unique packed1.5x cell
+reconstructs its enlarged source exactly. New clips were compared to original
+source composition, and the complete effects/poses preview was inspected.
+
+Package: artifacts/WukongKnight-0.7.0-dev.zip.
+ZIP SHA256: 5d498a363a0d4513fb23bc391e7d83eb84b5b1e5f940cf041a341ca51968f2ee.
+DLL SHA256: 29e9d3a8082eebb3d09da74c5d9a633385b7d1bda39d0d2d3206273be02b82ea (107520bytes).
+Installed at 2026-10-24T19:18:33.064219+08:00 with game stopped. Complete
+initial previous0.6.3 backup: installed-WukongKnight-before-0.7.0-20261024-191008.zip.
+Native listener cache removal/restoration and standalone dream-trigger kinematic
+contacts are included in this final installation. No API/save files modified. Actual gameplay acceptance is pending,
+**runtime_tested=false**; task remains in_progress. See docs/CLIENT_ACCEPTANCE.md.
+
+---
+
+# Previous status: 0.6.3 character, nail arcs and spells
 
 Updated2026-10-24 (Asia/Shanghai). Development version: **0.6.3-dev**.
 Baseline: Windows / Hollow Knight1.5.78.11833 / Modding API v77 / Unity2020.2.2f1.

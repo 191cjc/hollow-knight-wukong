@@ -1,0 +1,100 @@
+
+System.Void HutongGames.PlayMaker.FsmState::OnUpdate()
+IL_0000: ldarg.0
+IL_0001: ldfld System.Boolean HutongGames.PlayMaker.FsmState::finished
+IL_0006: brfalse.s IL_0009
+IL_0008: ret
+IL_0009: ldarg.0
+IL_000a: ldarg.0
+IL_000b: call System.Single HutongGames.PlayMaker.FsmState::get_StateTime()
+IL_0010: call System.Single UnityEngine.Time::get_deltaTime()
+IL_0015: add
+IL_0016: call System.Void HutongGames.PlayMaker.FsmState::set_StateTime(System.Single)
+IL_001b: ldc.i4.0
+IL_001c: stloc.0
+IL_001d: br.s IL_003b
+IL_001f: ldarg.0
+IL_0020: call System.Collections.Generic.List`1<HutongGames.PlayMaker.FsmStateAction> HutongGames.PlayMaker.FsmState::get_ActiveActions()
+IL_0025: ldloc.0
+IL_0026: callvirt !0 System.Collections.Generic.List`1<HutongGames.PlayMaker.FsmStateAction>::get_Item(System.Int32)
+IL_002b: dup
+IL_002c: ldarg.0
+IL_002d: callvirt System.Void HutongGames.PlayMaker.FsmStateAction::Init(HutongGames.PlayMaker.FsmState)
+IL_0032: callvirt System.Void HutongGames.PlayMaker.FsmStateAction::OnUpdate()
+IL_0037: ldloc.0
+IL_0038: ldc.i4.1
+IL_0039: add
+IL_003a: stloc.0
+IL_003b: ldloc.0
+IL_003c: ldarg.0
+IL_003d: call System.Collections.Generic.List`1<HutongGames.PlayMaker.FsmStateAction> HutongGames.PlayMaker.FsmState::get_ActiveActions()
+IL_0042: callvirt System.Int32 System.Collections.Generic.List`1<HutongGames.PlayMaker.FsmStateAction>::get_Count()
+IL_0047: blt.s IL_001f
+IL_0049: ldarg.0
+IL_004a: call System.Void HutongGames.PlayMaker.FsmState::CheckAllActionsFinished()
+IL_004f: ret
+
+
+System.Void HutongGames.PlayMaker.FsmStateAction::set_Enabled(System.Boolean)
+IL_0000: ldarg.0
+IL_0001: ldarg.1
+IL_0002: stfld System.Boolean HutongGames.PlayMaker.FsmStateAction::enabled
+IL_0007: ret
+
+System.Collections.Generic.List`1<HutongGames.PlayMaker.FsmStateAction> HutongGames.PlayMaker.FsmState::get_ActiveActions()
+IL_0000: ldarg.0
+IL_0001: ldfld System.Collections.Generic.List`1<HutongGames.PlayMaker.FsmStateAction> HutongGames.PlayMaker.FsmState::activeActions
+IL_0006: dup
+IL_0007: brtrue.s IL_0018
+IL_0009: pop
+IL_000a: ldarg.0
+IL_000b: newobj System.Void System.Collections.Generic.List`1<HutongGames.PlayMaker.FsmStateAction>::.ctor()
+IL_0010: dup
+IL_0011: stloc.0
+IL_0012: stfld System.Collections.Generic.List`1<HutongGames.PlayMaker.FsmStateAction> HutongGames.PlayMaker.FsmState::activeActions
+IL_0017: ldloc.0
+IL_0018: ret
+
+System.Void HutongGames.PlayMaker.FsmState::OnEnter()
+IL_0000: ldarg.0
+IL_0001: call System.Int32 HutongGames.PlayMaker.FsmState::get_loopCount()
+IL_0006: stloc.0
+IL_0007: ldarg.0
+IL_0008: ldloc.0
+IL_0009: ldc.i4.1
+IL_000a: add
+IL_000b: call System.Void HutongGames.PlayMaker.FsmState::set_loopCount(System.Int32)
+IL_0010: ldarg.0
+IL_0011: call System.Int32 HutongGames.PlayMaker.FsmState::get_loopCount()
+IL_0016: ldarg.0
+IL_0017: call System.Int32 HutongGames.PlayMaker.FsmState::get_maxLoopCount()
+IL_001c: ble.s IL_002a
+IL_001e: ldarg.0
+IL_001f: ldarg.0
+IL_0020: call System.Int32 HutongGames.PlayMaker.FsmState::get_loopCount()
+IL_0025: call System.Void HutongGames.PlayMaker.FsmState::set_maxLoopCount(System.Int32)
+IL_002a: ldarg.0
+IL_002b: ldc.i4.1
+IL_002c: stfld System.Boolean HutongGames.PlayMaker.FsmState::active
+IL_0031: ldarg.0
+IL_0032: ldc.i4.0
+IL_0033: stfld System.Boolean HutongGames.PlayMaker.FsmState::finished
+IL_0038: ldarg.0
+IL_0039: call System.Collections.Generic.List`1<HutongGames.PlayMaker.FsmStateAction> HutongGames.PlayMaker.FsmState::get_finishedActions()
+IL_003e: callvirt System.Void System.Collections.Generic.List`1<HutongGames.PlayMaker.FsmStateAction>::Clear()
+IL_0043: ldarg.0
+IL_0044: call System.Single HutongGames.PlayMaker.FsmTime::get_RealtimeSinceStartup()
+IL_0049: call System.Void HutongGames.PlayMaker.FsmState::set_RealStartTime(System.Single)
+IL_004e: ldarg.0
+IL_004f: ldc.r4 0
+IL_0054: call System.Void HutongGames.PlayMaker.FsmState::set_StateTime(System.Single)
+IL_0059: ldarg.0
+IL_005a: call System.Collections.Generic.List`1<HutongGames.PlayMaker.FsmStateAction> HutongGames.PlayMaker.FsmState::get_ActiveActions()
+IL_005f: callvirt System.Void System.Collections.Generic.List`1<HutongGames.PlayMaker.FsmStateAction>::Clear()
+IL_0064: ldarg.0
+IL_0065: ldc.i4.0
+IL_0066: call System.Boolean HutongGames.PlayMaker.FsmState::ActivateActions(System.Int32)
+IL_006b: brfalse.s IL_0073
+IL_006d: ldarg.0
+IL_006e: call System.Void HutongGames.PlayMaker.FsmState::CheckAllActionsFinished()
+IL_0073: ret

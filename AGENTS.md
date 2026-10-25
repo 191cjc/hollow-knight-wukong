@@ -36,7 +36,7 @@ variant is 1.5 times the original artwork, selected by `data/character/active-va
 The complete artwork batch is `scripts/prepare-all-assets.bat`. All decoded image
 variants live in `assets/processed/source-variants/all-1p5`; the active complete
 runtime variant is selected by `data/character/active-variant.json` (currently
-`assets/processed/variants/wukong-presentation-v062-1p5`). Flame Dash is
+`assets/processed/variants/wukong-fist-v071-1p5`, with separate compact runtime atlases). Flame Dash is
 the original dash key plus original flame art and once-per-target along-path
 damage. Preserve native dash movement/cooldown/collision and avoid double damage
 from Sharp Shadow. Up + spell is Fire Demon Slash with independent fixed spell
@@ -76,3 +76,44 @@ NativeDeathV77 owns render flags/debris visual spawn only, and restores on clean
 Keep the original death iterator/FSM progression and save/Geo/shade/respawn intact.
 Current v062 character art is reused byte-for-byte; fresh verified original death
 archive/decoded copies live in reference/flash/death, not overwriting old assets.
+
+
+v07 adds FistSkills: neutral quick spell Afterimage Combo; Dream key Godslayer
+hold/release, down Dream Earthbreaker, up Dream Fire Ape. See docs/FIST_SKILLS.md.
+NativeSpell Forward holds Fireball Antic and spends current MP Cost once. NativeDream
+owns only its listener/Start completion, uses native Fsm Cancel/Take Control and
+End/Regain Control. Full hero waves alone clone native Dream Effects/Hitbox; retain
+Send Event/DREAM IMPACT handling, disable only clone Deactivate FSM. Never manually
+award Soul/essence or add dream effects to uncharged/ghost attacks. All custom HP
+queries reuse SkillTargetPolicy and original local masks. Recheck ownership after
+native events. Cancel/detach restores native control and removes actors/triggers.
+active-variant output_directory preserves full enlarged canvases; runtime_directory
+selects losslessly cropped shelf-packed atlases. Per-frame source_x/source_y retain
+original root registration; no runtime appearance scaling or collider enlargement.
+
+
+v071 directional Dream Earthbreaker/Fire Ape require live native Spell Control
+MP Cost (33/24 selected independently by native Set Spell Cost FSM) and native
+TakeMP once after acquisition; reject insufficient Soul before taking control.
+Ghost mimicry costs no extra Soul; neutral Godslayer stays free. Godslayer forces
+full release at source frame60 (59elapsed ticks), preserving earlier full-tier
+threshold38 and Dream Wielder2x. New v071 artwork selects held effect4 ticks40/53
+for ghosts3/4 instead of squashed transition39/51; earlier assets stay unchanged.
+
+
+v072 copied Godslayer/Earthbreaker ghosts are consumed after their action tail;
+remove directly instead of returning to idle, and do not restart busy copies.
+Unused ghosts still last10seconds; independently emitted waves survive their owner.
+EarthbreakerStep shares hero/ghost rise/antic and faster33px/tick descent. Fist
+hits reuse native Q Slam horizontal Spell recoil magnitude2 through SpellHit,
+away from body cast root / along wave travel. Respect native enemy recoil rules;
+never force enemy transforms or add player immunity. Other spell recoil stays
+unchanged through FireDemonHit's existing0.15/1 wrapper. Reuse v071 art unchanged.
+
+
+v073 supersedes v072's no-immunity/unchanged-FireDemon-final notes. Earthbreaker
+ProtectsHP guards the owned player action only. Fire Ape takes native HP damage
+but replaces only Dream HERO DAMAGED cancellation and ordinary StartRecoil with
+native damage VFX/Invulnerable, retaining death/hazards/scenes. DamageEventOverride
+restores only its own write on Finish/Dispose. FireDemon final uses horizontal
+Spell recoil2 away from effect root; air/FlameStorm unchanged, no forced landing.

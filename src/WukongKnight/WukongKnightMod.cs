@@ -9,7 +9,7 @@ namespace WukongKnight
         private CharacterAssets? assets;
         private WukongRuntime? runtime;
         public WukongKnightMod() : base("Wukong Knight") { }
-        public override string GetVersion() => "0.6.3-dev";
+        public override string GetVersion() => "0.7.3-dev";
 
         public override void Initialize()
         {

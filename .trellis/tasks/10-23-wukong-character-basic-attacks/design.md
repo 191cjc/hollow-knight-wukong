@@ -342,3 +342,91 @@ Native v77 evidence refinement: current Hero Death Anim stores Head only;
 Blow flings an untracked pooled Corpse Nail Hero. Suppress its exact visual-only
 FlingObjectsFromGlobalPool action while death owns presentation, saving/restoring
 Enabled; preserve all other actions/events. Legacy Sword output is optional.
+
+
+## 0.7 neutral spell and directional Dream Nail boundary
+
+The gap lives in neutral Fireball Antic and the native Dream Nail input/charge
+FSM. Extend NativeSpellV77 with Forward antic ownership: suppress native Fireball
+spawn progression and charge live MP Cost once. FistSkills owns original action
+clocks, local source masks, terrain-clamped movement, persistent four afterimages
+and their Godslayer/Earthbreaker mimicry. One action owns native control at a
+time; cleanup invalidates tokens before restoring input/gravity/animation.
+Dream attacks require hasDreamNail; no soul cost, explicit recovery/cooldowns
+keep the free attacks bounded. Native basic/awakened Dream impact eligibility is retained; Dream Wielder affects
+charge; neutral spell tier/Shaman retain spell balancing. Direction is latched
+on press. Charge releases on key-up; full charge waits without auto-repeat.
+Only full Godslayer projectiles include a clone of the actual native Dream Effects
+Hitbox (tag/layer/FSM), resized to the source contact rectangle and activated
+within the real projectile lifetime. Native DREAM IMPACT/SendDreamImpact and
+other collider-driven dream recipients stay native; no manual essence/save writes
+or room broadcasts. Clones do not acquire this native interaction.
+
+NativeDreamV77 disables/restores only the native Inactive input listener while
+custom Dream actions own that key. The native Start antic completion is held for
+custom action lifetime, then recovered through native End/Regain Control. Existing
+Dream Gate up/down shortcuts are intentionally occupied by the requested attacks.
+The source WK2Entity gives birth ticks 12/26/40/52, punch release threshold frame
+39 and release tail frame 60, five contact subskills and ape independent back/front
+entities. Preserve those body/overlay layers and original30Hz pacing. No fist
+mode switch for normal staff attacks and no native body/collider enlargement.
+
+Files: new bounded fist artwork reader/profile and bake/validator additions;
+new Core rules/clock/roster and runtime FistSkills/NativeDreamV77; small native
+spell/input, Runtime/Presenter integration; source evidence/tests/docs/version.
+Prior assets stay read-only; compare registered previous ticks across new canvas.
+
+
+Final source boundaries: preserve source Godslayer partial10-tick loop; standalone
+full Dream trigger needs a scoped kinematic Rigidbody2D/full kinematic contacts
+because it no longer inherits the hero body. Ghost Earthbreaker uses independent
+terrain-swept native-size bounds and source pose holds, with no physical hero
+collider. Compact runtime atlases add validated crop offsets while retaining a
+separate complete enlarged version for all original asset comparisons.
+
+
+## 0.7.1 correction boundary
+
+The gaps live in FistSkills directional Dream acquisition, GodslayerCharge and the fist offline idle-pose selection. Read the live native Spell Control MP Cost and use native TakeMP; reject insufficient Soul before ownership and start/mimic only after successful acquisition/spending. Verify native cost updates rather than duplicate charm constants. Restore automatic source-frame60 release (59 elapsed ticks; Dream Wielder double rate), latching once and preserving the25-tick tail/100ms wave delay. Inspect original clone idle resources/body poses and repair the last two exported poses in new original/1.5x/packed folders. Changes are limited to these rules/adapters, asset profile/generator, meaningful regression coverage and version/evidence/docs. No damage rebalance, native trigger/collider changes or prior-art overwrites.
+
+
+## 0.7.2 change boundary
+
+The gaps live in FistSkills ghost completion, duplicated Earthbreaker movement
+and use of weak FireDemon air-hit recoil. A completed copy currently changes to
+None and idles; instead destroy the ghost immediately after its release/landing
+tail. Canceling an unreleased copied charge also removes that consumed ghost;
+already emitted waves finish independently. Centralize unchanged rise/antic and
+1.5x descent (22->33 original pixels/tick) for hero and ghost, preserving terrain
+sweeps and consuming blocked travel. Reuse native HitTaker/HealthManager/Recoil
+with the original Q Slam Hit L/R Spell magnitude2, horizontal away from the cast
+root for body hits and along travel for Godslayer waves. Extend the shared native
+spell-hit helper; retain existing Fire Demon/Storm recoil values. Tests cover
+copy lifetime boundaries, fast/batched descent and native-style push directions.
+No new invulnerability, forced enemy transforms/velocity, altered HP/Soul/masks,
+artwork or unrelated skill changes. Files: FistSkills, Core FistRules, NativeV77,
+production tests, version/package/docs/spec/evidence/report. Client behavior is
+separate from build validation.
+
+
+## 0.7.3 change boundary
+
+The gaps live in FireDemonSlash.Query's final HitInstance, Runtime's existing
+incoming HP guards, the native Dream Nail HERO DAMAGED global transition, and
+HeroController.StartRecoil after native TakeDamage has handled HP/death/hazards.
+Use native horizontal Spell recoil magnitude2 for the Fire Demon final hit only;
+leave air/Flame Storm values intact. Reuse FistRules.PushDirection. Add owned
+Earthbreaker to the existing TakeDamage/TakeHealth guard without saved flags.
+For owned Fire Ape, temporarily replace only Dream's HERO DAMAGED transition
+event, restoring on Finish/Dispose, and replace ordinary StartRecoil with native
+damage presentation and the native Invulnerable coroutine (including Stalwart
+Shell duration), omitting recoil/freeze/control changes. Native TakeDamage still
+handles HP, charms, callbacks, lethal and hazard branches unchanged.
+
+Files: FistSkills/FistRules for action lifetime/defense ownership; Runtime and
+NativeV77 for the native reaction boundary; NativeDreamV77 for a scoped exact
+transition override; FireDemonSlash for the final hit; linked production tests,
+version/package, evidence/contracts/status/report. Consolidate the existing hero
+end predicate without changing timing; test exact ends, pause, cancellation and
+other skills. No forced landing/enemy transforms, global event suppression,
+manual HP deductions, restarted casts/costs/clocks, asset regeneration or commits.

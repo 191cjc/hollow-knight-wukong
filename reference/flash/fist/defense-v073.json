@@ -1,0 +1,83 @@
+{
+  "version": "0.7.3-dev",
+  "native_api": "v77",
+  "native_quake_slam": "combat-v072.json",
+  "inputs": {
+    "reference_Assembly_CSharp_sha256": "0890edcd1b60ae22ea9c4a2d7c16056795b321f0efbb078d447e06730c0e784b",
+    "installed_Assembly_CSharp_sha256": "5944411bd93830369390a4b51766ee68c4ab26195b299e25a07b5e7d0e00086d",
+    "installed_PlayMaker_sha256": "0ef0e7829d125e1f632c8a189260ec6c6882630be6932c8c7ae032efbc53469a"
+  },
+  "dream_global_transitions": [
+    {
+      "fsmEvent": {
+        "name": "FSM CANCEL",
+        "isSystemEvent": 0,
+        "isGlobal": 0
+      },
+      "toState": "Cancel",
+      "linkStyle": 0,
+      "linkConstraint": 0,
+      "colorIndex": 0
+    },
+    {
+      "fsmEvent": {
+        "name": "HERO DAMAGED",
+        "isSystemEvent": 0,
+        "isGlobal": 1
+      },
+      "toState": "Cancel",
+      "linkStyle": 0,
+      "linkConstraint": 0,
+      "colorIndex": 0
+    },
+    {
+      "fsmEvent": {
+        "name": "LEAVING SCENE",
+        "isSystemEvent": 0,
+        "isGlobal": 0
+      },
+      "toState": "Allow Dream Gate",
+      "linkStyle": 0,
+      "linkConstraint": 0,
+      "colorIndex": 0
+    }
+  ],
+  "native_take_damage": {
+    "hp": "native PlayerData.TakeHealth after ModHooks/charm processing",
+    "lethal_branch": "before StartRecoil; native Die iterator",
+    "hazards": "native DieFromHazard branches before StartRecoil",
+    "ordinary_reaction": "StartRecoil(side,spawnDamageEffect,damageAmount) only after native HP/death/hazard handling"
+  },
+  "native_start_recoil": {
+    "damage_vfx": "damageEffectFSM.SendEvent(DAMAGE) and takeHitDoublePrefab when spawnDamageEffect && damageAmount>1",
+    "cooldown": "native HeroController.Invulnerable(INVUL_TIME_STAL if equippedCharm_4 else INVUL_TIME)",
+    "armor_omits": "ResetMotion, gravity/facing/SetState changes, recoilFrozen/recoiling writes and FreezeMoment",
+    "reference_and_installed_coroutine_IL_identical": true
+  },
+  "event_override": "Fsm.ProcessEvent compares the live global transition FsmEvent object by reference; FsmTransition.set_FsmEvent replaces that object. Change exact owned Dream HERO DAMAGED event only; restore on Finish/Dispose.",
+  "implementation": {
+    "fire_demon_final": {
+      "AttackType": "Spell",
+      "circle_direction": false,
+      "magnitude": 2,
+      "direction": "horizontal away from actual effect root"
+    },
+    "earthbreaker": "Runtime.TakeDamage/TakeHealth guard, observed live owned hero action only",
+    "fire_ape": "native HP pipeline plus scoped Dream event override and native Invulnerable iterator instead of StartRecoil"
+  },
+  "artwork_changed": false,
+  "runtime_tested": false,
+  "native_damage_effect": {
+    "resources_path_id": 24140,
+    "no_FSM_CANCEL_or_HERO_DAMAGED_sends": true,
+    "native_DAMAGE_particles_shake_and_health_effects_retained": true
+  },
+  "compiled_boundaries_reviewed": [
+    "TakeDamage retains orig unless actual HP guard active",
+    "Earthbreaker ProtectsHP action3 only; FireApe interruption resistance action4 only",
+    "StartRecoil orig retained for every other action",
+    "ArmoredDamage uses native Invulnerable and no manual HP/recoil flags",
+    "Dream Finish restores damage event before native End",
+    "Final-only SpellHit retains native callback ownership checks"
+  ]
+}

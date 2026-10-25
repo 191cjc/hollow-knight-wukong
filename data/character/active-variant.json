@@ -1,6 +1,7 @@
 {
-  "source_directory": "assets/processed/wukong-presentation-v062-original",
-  "output_directory": "assets/processed/variants/wukong-presentation-v062-1p5",
+  "source_directory": "assets/processed/wukong-fist-v071-original",
+  "output_directory": "assets/processed/variants/wukong-fist-v071-1p5",
   "scale": 1.5,
-  "bake_profile": "data/character/wukong-staff-presentation-v062.json"
+  "bake_profile": "data/character/wukong-fist-v071.json",
+  "runtime_directory": "assets/processed/variants/wukong-fist-v071-1p5-packed"
 }

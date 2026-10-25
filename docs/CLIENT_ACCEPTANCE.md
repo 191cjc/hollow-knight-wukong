@@ -190,3 +190,53 @@ Automated checks and frame preview do not establish these client results.
   return behavior. Survivable spike/acid falls use native hazard recovery.
 - [ ] Respawn/scene/disable restores native visibility and leaves no frozen corpse,
   invulnerability, old source time or altered saved state.
+
+
+## 0.7 fist skills pending
+
+- Neutral quick spell: source71ticks, one native MP Cost, no native projectile;
+  four ghost births and ten-second expiry/recast, forward terrain stops.
+- Dream press/hold/release: partial damages only; full1.267s (Wielder0.633s)
+  damages and retains native thoughts/Soul/dream scenery interactions. Hold past
+  full and verify automatic release at1.967s (Wielder0.983s), with exactly one
+  wave/tail and no repeat while held. Try static NPCs/scenery and moving enemies.
+- Down/up Dream Soul: below33 cannot start; exactly33 spends once. Equip Spell
+  Twister and repeat below/exactly24; unequip and verify33 immediately. Ghosts do
+  not multiply cost; neutral Dream remains free at zero Soul. Test interruptions.
+- Last two persistent ghosts: stable punch/kick proportions at offline1.5x; no
+  flattened orange transition drawing. First two and the main combo stay intact.
+- Copied Godslayer/Earthbreaker ghosts disappear at the end of their release/
+  landing action, without returning to idle or copying a second time. Early-charge
+  interruption removes consumed ghosts; emitted waves finish independently. Unused
+  ghosts still expire at ten seconds, and a late-starting copy may finish first.
+- Earthbreaker descent is1.5x faster for hero/copies, preserving antic/rise/landing
+  poses and terrain clamping. Check air casts, ceilings, thin platforms and pause.
+- Fist hits use native Quake-slam horizontal recoil magnitude2: targets on either
+  side of body casts move away, passing waves continue pushing forward, and ghosts
+  do not stack manual velocity. Check Hornet/Buzzers and naturally recoil-resistant
+  bosses; no forced displacement. Recheck Fire Demon/Storm.
+- Down Dream: ground launch then slam; direct air slam, ceiling/floor/platform
+  contact, bottomless timeout and recovery; ghosts use their own swept motion.
+- Up Dream: both ape layers, all local punches/roar, source forward travel and
+  recovery/cooldown. Nonlethal hits must deduct normal HP without canceling,
+  displacing or restarting Fire Ape. Check native Stalwart Shell post-hit duration;
+  lethal damage, spikes/acid, scenes and disable must still terminate it.
+- Direction changes after press must not select another action. Movement input
+  must not drift the hero. Verify pause, slow frames, interruption/death/scene,
+  disable/re-enable, keyboard/controller, locked Dream Nail and previous skills.
+- Hornet and Buzzers outside actual masks must take no damage. Multiple child
+  colliders must respect per-target source caps. Ghost hits never grant extra
+  dream effects. Dream Gate shortcuts are intentionally occupied by the new keys.
+
+
+0.7.3 additions (not runtime-tested):
+- Fire Demon final hit pushes nearby targets away horizontally with native slam
+  strength, including left/right targets and midair casts. Native recoil-resistant
+  bosses retain their resistance. Air contacts/Flame Storm remain unchanged.
+- Earthbreaker blocks contact/projectile and direct HP damage for launch, fall and
+  landing tail; damage resumes immediately after finish/cancel/timeout. Repeat
+  casts and surviving ghost copies must not extend player immunity.
+- Fire Ape remains damageable, retains the source action/clock and one Soul cost
+  through a nonlethal hit, and recovers control at the original source end. Damage
+  afterward must cancel ordinary Godslayer again. No persisted armor after scene/
+  death/hazard/cancel/detach. Recheck HUD/blue health/overcharm/damage charms.

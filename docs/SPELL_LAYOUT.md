@@ -1,20 +1,27 @@
-# Spell controls (0.6.2-dev)
+# Spell controls (0.7.3-dev)
 
 The 0.4.4 workspace was committed before these changes as
 `a07b2ac4981caca2b84af7a4f9ae1dc270a3d42d`. No remote push was made.
 
 | Input | Replacement | Native progression |
 | --- | --- | --- |
+| Neutral quick spell | Afterimage Combo (残影连打) | Native forward spell unlock/tier (`fireballLevel`), current MP Cost once |
+| Dream Nail | Godslayer Strike (灭神一击) | Hold/release or automatic maximum; full charge preserves native Dream impact |
+| Down + Dream Nail | Earthbreaker Fist (辟地拳) | Native Dream Nail unlock; current native MP Cost once |
+| Up + Dream Nail | Fire Ape Assault (火猿出击) | Native Dream Nail unlock; current native MP Cost once |
 | Up + spell | Fire Demon Slash | Howling Wraiths / Abyss Shriek (`screamLevel`) |
 | Down + spell | Flame Storm | Desolate Dive / Descending Dark (`quakeLevel`) |
 | Hold spell/focus | Jiyuan Fire Eye (汲元火眼) | Native focus eligibility, charge, cancellation and Soul drain |
 | Dash | Flame Dash | Native dash movement, cooldown, unlock and collision |
 
-Forward spells, directional/air nail attacks and pogo retain native behavior.
-The up/down replacements each charge the FSM's current `MP Cost` once when
+Directional/air nail attacks and pogo retain native behavior.
+See FIST_SKILLS.md for the new four-action source, charge, balance and lifecycle contract.
+The neutral/up/down spell replacements each charge the FSM's current `MP Cost` once when
 entering the held antic: normally 33 Soul, or 24 with Spell Twister. The native
 spending states occur after the antic and are skipped with their damage states;
 explicitly charging once also fixes the previous held-Quake resource gap.
+Down/up Dream actions use that same live cost, reject insufficient Soul before
+acquisition and spend once on successful start. Only neutral Dream remains free.
 
 ## Jiyuan Fire Eye (汲元火眼)
 
@@ -99,3 +106,13 @@ refresh, full HP, stale tokens and Storm timing/caps/masks/damage. Source image
 checks compare all new Storm frames and the Fire Eye action to the real source.
 Compilation, preview, ZIP and installed-file verification are recorded in the
 build report; gameplay remains pending in `CLIENT_ACCEPTANCE.md`.
+
+
+## 0.7.3 defense and final-hit update
+
+Up spell Fire Demon final contact uses native slam-strength horizontal enemy
+recoil2 without forced landing. Down Dream Earthbreaker prevents incoming HP
+damage throughout its owned launch/fall/landing action. Up Dream Fire Ape remains
+vulnerable to native HP damage but continues its source action through ordinary
+hits, retaining native post-hit cooldown. Death/hazards/scenes still win and
+cleanup restores the exact native Dream damage transition. See FIST_SKILLS.md.

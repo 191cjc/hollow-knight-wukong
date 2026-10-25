@@ -1,0 +1,122 @@
+{
+  "profile_version": 1,
+  "character_id": "2001",
+  "appearance": "default_staff",
+  "source_directory": "assets/zmxy4/animations/2001/manV535",
+  "armature": "res",
+  "equipment_animation": "1",
+  "child_animations": {
+    "特效元件/11111": "unnamed",
+    "特效元件/lang": "unnamed",
+    "ride": "ride",
+    "sprite/cbidle": "unnamed"
+  },
+  "filler_normalization": "exact_rgba_0_0_0_1",
+  "canvas_padding": 4,
+  "atlas_max_size": 2048,
+  "clips": [
+    "idle",
+    "walk",
+    "runNormal",
+    "runAttack",
+    "attack1",
+    "attack2",
+    "attack3",
+    "attack4",
+    "hurtStand",
+    "dead",
+    "jumpNormal",
+    "jumpTwo",
+    "jumpAttack",
+    "jumpDown",
+    "effect1",
+    "effect2",
+    "effect3",
+    "effect4",
+    "effect5",
+    "ride",
+    "runNormal1"
+  ],
+  "combat": {
+    "chain_grace_seconds": 0.35,
+    "stages": [
+      {
+        "clip": "attack1",
+        "buffer_open_tick": 4,
+        "hit_windows": [
+          {
+            "start_tick": 4,
+            "end_tick": 7
+          }
+        ],
+        "range_multiplier": 1.0
+      },
+      {
+        "clip": "attack2",
+        "buffer_open_tick": 5,
+        "hit_windows": [
+          {
+            "start_tick": 5,
+            "end_tick": 8
+          }
+        ],
+        "range_multiplier": 1.0
+      },
+      {
+        "clip": "attack3",
+        "buffer_open_tick": 3,
+        "hit_windows": [
+          {
+            "start_tick": 3,
+            "end_tick": 5
+          },
+          {
+            "start_tick": 11,
+            "end_tick": 14
+          }
+        ],
+        "range_multiplier": 1.0
+      },
+      {
+        "clip": "attack4",
+        "buffer_open_tick": 5,
+        "hit_windows": [
+          {
+            "start_tick": 5,
+            "end_tick": 8
+          }
+        ],
+        "range_multiplier": 1.0
+      }
+    ]
+  },
+  "flame_dash_effect_source": "assets/zmxy4/animations/2001/skill1V472",
+  "fire_demon_effect_source": "assets/zmxy4/animations/2001/skill5",
+  "flame_storm_effect_source": "assets/zmxy4/animations/2001/skill1V472",
+  "fire_eye_effect_source": {
+    "swf": "assets/zmxy4/raw/assets/buff/810001/1.swf",
+    "timeline": "reference/flash/fire-eye/ef.xml"
+  },
+  "fire_eye_cast_source": "assets/zmxy4/animations/2001/skill1V472",
+  "nail_effect_source": "assets/zmxy4/animations/2001/skill1V472",
+  "nail_rotation_center_pixels": [
+    0,
+    -44.5
+  ],
+  "nail_separate_arcs": true,
+  "flame_dash_down_center_pixels": [
+    0,
+    -44.5
+  ],
+  "fist_source": {
+    "body": "assets/zmxy4/animations/2006/manV535",
+    "effects": "assets/zmxy4/animations/2006/skill1V530",
+    "ape": "assets/zmxy4/animations/2006/skill5"
+  },
+  "afterimage_idle_ticks": [
+    11,
+    25,
+    40,
+    53
+  ]
+}

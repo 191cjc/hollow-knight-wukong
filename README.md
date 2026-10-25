@@ -1,8 +1,9 @@
 # Wukong Knight
 
 Wukong character Mod for Hollow Knight, based on archived 4399 ZMXY4 artwork.
-Development version **0.6.3-dev** includes staff visuals, the grounded four-stage
-combo, Flame Dash, Fire Demon Slash, Flame Storm and Jiyuan Fire Eye (汲元火眼).
+Development version **0.7.3-dev** includes staff visuals, the grounded four-stage
+combo, Flame Dash, Fire Demon Slash, Flame Storm, Jiyuan Fire Eye (汲元火眼),
+Afterimage Combo and the three Dream-key fist skills.
 All originals and earlier bakes/variants are preserved. Active artwork is baked
 offline to 1.5x; native hero collision and nail reach retain their native size.
 Ground/air nail attacks now use original Wukong staff arcs. Up nail uses the
@@ -12,6 +13,13 @@ charms, Soul, clashes and pogo remain authoritative. The independent arc layer
 follows actual native charm reach (Longnail1.15x, Mark of Pride1.25x, both1.4x);
 body and staff stay at their existing offline1.5x appearance.
 
+- **Neutral quick spell:** Afterimage Combo (残影连打), leaving four ten-second ghosts
+  that mimic Earthbreaker/Godslayer with reduced damage.
+- **Dream Nail:** damaging Godslayer Strike (灭神一击). Hold to charge, release to
+  punch; a fully charged wave retains native Dream Nail effects (1.267s charge,
+  or0.633s with Dream Wielder).
+- **Down + Dream Nail:** Earthbreaker Fist (辟地拳), a terrain-limited ground/air slam.
+- **Up + Dream Nail:** Fire Ape Assault (火猿出击), with original layered ape/roar.
 - **Up + spell:** Fire Demon Slash, with original moving flashes, relative masks,
   midair finisher at the source-driven forward position, full-cast protection and input lock.
 - **Down + spell:** Flame Storm, with the original spinning action and eight-image
@@ -26,8 +34,16 @@ Fixed spell damage is independent of nail upgrades and respects Shaman Stone.
 Native up/down spell damage is replaced; each cast charges the current native
 Soul cost once (including Spell Twister). See [spell controls](docs/SPELL_LAYOUT.md),
 [Fire Demon](docs/FIRE_DEMON_SLASH.md) and [client checks](docs/CLIENT_ACCEPTANCE.md).
-Forward spell, directional/air nail attacks and pogo retain native behavior.
-Fist switching and other prepared skill mechanics remain unimplemented.
+Directional/air nail attacks and pogo retain native behavior.
+The new fist actions occupy individual slots; ordinary staff attacks stay available.
+Dream-key actions require Dream Nail and replace Dream Gate shortcuts. Down/up
+Dream spend the native spell Soul cost once (33; Spell Twister24); insufficient
+Soul prevents casting. Neutral Godslayer remains free and automatically fires at
+source maximum charge (1.967s, Dream Wielder0.983s). Last two ghosts use original
+held punch/kick poses, preserving proportions. Copies are consumed at action end;
+Earthbreaker descent is1.5x faster. Fist hits use native down-slam horizontal recoil
+strength2, respecting enemy recoil rules and preserving other spell values.
+See [fist skills](docs/FIST_SKILLS.md) for source, balance and pending client checks.
 
 Actual gameplay acceptance is **pending**. Automated tests, artwork review and
 compilation are recorded separately in `artifacts/build-report.json`.
@@ -50,13 +66,13 @@ bash scripts/build.sh
 | 输出 | 用途 |
 |---|---|
 | `artifacts/mod/WukongKnight/` | 安装整个目录，必须保留 `character/` |
-| `artifacts/WukongKnight-0.6.3-dev.zip` | DLL、说明、角色清单与引用的加工图集 |
+| `artifacts/WukongKnight-0.7.3-dev.zip` | DLL、说明、角色清单与引用的加工图集 |
 | `assets/processed/wukong/previews/` | 动画 GIF、关键姿势联系表，不进入开发包 |
 | `artifacts/validation.json` | 归档输入、解包、PNG、音频与配置检查 |
 | `artifacts/character-validation.json` | 加工图集、帧范围、时序与连击窗口检查 |
 | `artifacts/build-report.json` | 包内文件散列及实现/编译/自动检查/实机状态 |
 
-Current package: `0.6.3-dev`; older packages are retained for rollback.
+Current package: `0.7.3-dev`; older packages are retained for rollback.
 
 ## 安装与验收
 
@@ -68,8 +84,10 @@ Current package: `0.6.3-dev`; older packages are retained for rollback.
 
 Run `scripts\prepare-all-assets.bat` on Windows to generate the complete set:
 19 PNGs and 16 matching JSONs in `assets/processed/source-variants/all-1p5/`,
-and the selected 44-clip runtime variant in
-`assets/processed/variants/wukong-presentation-v062-1p5/`. Originals and earlier bakes remain
+and the selected57-clip/1349-tick fist variant. Full enlarged canvases live in
+`assets/processed/variants/wukong-fist-v071-1p5/`; the separate
+`wukong-fist-v071-1p5-packed/` runtime folder uses12compact atlas pages.
+Originals and earlier bakes remain
 in separate folders. See [asset variants](docs/ASSET_VARIANTS.md) and
 [Flame Dash](docs/FLAME_DASH.md) for source evidence and implementation rules.
 
@@ -127,3 +145,9 @@ independently of the native mesh's death visibility. Official manV535.swf was
 freshly downloaded and verified against the existing original; all current art
 pixels remain unchanged. Native death/save/Geo/shade/dream/respawn logic continues.
 See docs/DEATH_PRESENTATION.md for source and pending client checks.
+
+
+0.7.3 adds native slam-strength horizontal recoil to the Fire Demon final hit,
+full owned-action Earthbreaker HP protection, and Fire Ape hit interruption
+resistance while retaining normal native HP damage and post-hit cooldown.
+Death/hazards/scenes remain authoritative. Artwork and Soul costs are unchanged.

@@ -171,3 +171,43 @@ original ZMXY4 Wukong death resource and display its complete death action/effec
 instead of the Knight death body. Preserve source and current offline1.5x art,
 native death/save/shade/Geo/dream/respawn processing and all prior mechanics.
 Build/check/back up/install directly for later client acceptance.
+
+
+## 0.7 fist skill layout
+
+Current workspace must first be committed (checkpoint e44de07). Replace neutral
+Vengeful Spirit/Shade Soul with original Wukong Afterimage Combo. Dream Nail
+becomes a damaging charge-and-release Godslayer Strike; only fully charged hits
+carry the original Dream Nail interactions. Down + Dream Nail uses Earthbreaker
+Fist and up + Dream Nail uses Fire Ape Assault. Preserve all existing staff/nail,
+up/down spells, focus, dash immunity and death behavior. Use original complete
+fist body/effects, preserved archives and separate offline 1.5x variants.
+Native save/progression/HP/Soul/scene systems stay authoritative. The four
+afterimages should mimic Godslayer Strike and Earthbreaker as in the source.
+Build/check/back up/install directly; gameplay acceptance remains pending.
+
+
+## 0.7.1 fist corrections
+
+Earthbreaker and Fire Ape require and spend the native spell Soul cost once per successful player cast. Mimic ghosts cost no extra Soul. Restore unsquashed proportions for the last two persistent afterimages through offline art generation. Godslayer must force a full release at original frame60 rather than waiting indefinitely, while preserving earlier key-up release/full-tier behavior and native Dream interactions. Preserve original/previous assets, build/check/back up/install directly; runtime acceptance remains pending.
+
+
+## 0.7.2 copied ghost expiry and fist knockback
+
+A ghost must disappear after its copied Godslayer/Earthbreaker action completes,
+instead of returning to idle until its original ten-second expiry. Speed up
+Earthbreaker descent. Add enemy knockback like native down-spell slam to the fist
+attacks and their copies, including Fire Ape, to reduce contact collisions while
+attacking. Retain native enemy recoil/resistance, resource/damage/mask rules and
+all artwork. Build/check/back up/install directly; client acceptance pending.
+
+
+## 0.7.3 skill defense and Fire Demon finisher
+
+Fire Demon Slash final hit must push enemies horizontally with native down-slam
+strength while retaining its source-relative airborne finisher. Earthbreaker must
+prevent incoming HP damage throughout the owned player action. Fire Ape must
+retain native HP damage but resist ordinary hit cancellation/recoil during its
+owned action. Death, hazards, scene changes and teardown remain authoritative.
+Preserve Soul costs, damage, masks, actors and artwork; build/check/back up/install
+directly, with gameplay acceptance still pending.

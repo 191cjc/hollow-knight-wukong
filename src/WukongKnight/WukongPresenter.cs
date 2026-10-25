@@ -101,7 +101,7 @@ namespace WukongKnight
         }
 
         public void Update(ComboTimeline? combo, double now, FlameDash? flameDash = null, FireDemonSlash? fireDemon = null,
-            FlameStorm? flameStorm = null, BloodthirstyFireEye? bloodEye = null)
+            FlameStorm? flameStorm = null, BloodthirstyFireEye? bloodEye = null, FistSkills? fist = null)
         {
             if (disposed) return;
             HeroControllerStates state = hero.cState;
@@ -115,6 +115,7 @@ namespace WukongKnight
             else if (flameDash != null && flameDash.Active && state.dashing) desired = flameDash.Downward ? "flameDashDown" : "flameDash";
             else if (fireDemon != null && fireDemon.Active) desired = fireDemon.Clip;
             else if (flameStorm != null && flameStorm.Active) desired = "flameStorm";
+            else if (fist != null && fist.Active) desired = fist.Clip;
             else if (bloodEye != null && bloodEye.Casting) desired = "fireEyeCast";
             else if (state.transitioning || state.casting || state.focusing || state.superDashing || state.dashing || state.backDashing) desired = "idle";
             else if (combo != null && combo.Active) desired = "nailAttack" + (combo.StageIndex + 1);
@@ -141,6 +142,7 @@ namespace WukongKnight
             if (flameStorm != null && flameStorm.Active && desired == "flameStorm") ticks = flameStorm.Tick;
             if (bloodEye != null && bloodEye.Casting && desired == "fireEyeCast")
                 ticks = bloodEye.CastTick;
+            if (fist != null && fist.Active && desired == fist.Clip) ticks = fist.Tick;
             // Hold the opening body without flames until the final source-duration
             // window, then run both source layers at 30 Hz to native completion.
             bool nail = desired.StartsWith("nail", StringComparison.Ordinal);
@@ -185,7 +187,7 @@ namespace WukongKnight
             view.transform.localScale = new Vector3(scale / parentScale.x, scale / parentScale.y, 1f);
             // Default staff source faces right. No second flip follows the Knight's negative root X.
             renderer.flipX = !(dying ? deathFacingRight : fireDemon != null && fireDemon.Active ? fireDemon.FacingRight :
-                flameStorm != null && flameStorm.Active ? flameStorm.FacingRight : state.facingRight);
+                flameStorm != null && flameStorm.Active ? flameStorm.FacingRight : fist != null && fist.Active ? fist.FacingRight : state.facingRight);
             nailArc.flipX = renderer.flipX;
         }
 

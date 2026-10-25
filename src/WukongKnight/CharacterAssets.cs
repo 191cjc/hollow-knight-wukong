@@ -28,7 +28,7 @@ namespace WukongKnight
     /// <summary>The only decoder for version 1 of the generated character contract.</summary>
     internal sealed class CharacterAssets : IDisposable
     {
-        private static readonly string[] RequiredClips = { "idle", "walk", "runNormal", "jumpNormal", "jumpTwo", "jumpDown", "jumpAttack", "hurtStand", "dead", "attack1", "attack2", "attack3", "attack4", "flameDash", "flameDashDown", "flameStorm", "fireEyeAura", "fireEyeCast", "effect4", "effect5", "fireDemonAir", "fireDemonAirEffect", "fireDemonDive", "fireDemonLand", "fireDemonImpact", "nailAttack1", "nailAttack2", "nailAttack3", "nailAttack4", "nailAir", "nailUp", "nailDown", "nailArc1", "nailArc2", "nailArc3", "nailArc4", "nailArcAir", "nailArcUp", "nailArcDown" };
+        private static readonly string[] RequiredClips = { "idle", "walk", "runNormal", "jumpNormal", "jumpTwo", "jumpDown", "jumpAttack", "hurtStand", "dead", "attack1", "attack2", "attack3", "attack4", "flameDash", "flameDashDown", "flameStorm", "fireEyeAura", "fireEyeCast", "effect4", "effect5", "fireDemonAir", "fireDemonAirEffect", "fireDemonDive", "fireDemonLand", "fireDemonImpact", "nailAttack1", "nailAttack2", "nailAttack3", "nailAttack4", "nailAir", "nailUp", "nailDown", "nailArc1", "nailArc2", "nailArc3", "nailArc4", "nailArcAir", "nailArcUp", "nailArcDown", "afterimageCombo", "godslayerCharge", "godslayerRelease", "godslayerWave", "godslayerPunch", "earthbreaker", "fireApe", "afterimageIdle1", "afterimageIdle2", "afterimageIdle3", "afterimageIdle4" };
         private readonly List<Texture2D> textures = new List<Texture2D>();
         private readonly List<Sprite> sprites = new List<Sprite>();
         public Dictionary<string, CharacterClip> Clips { get; } = new Dictionary<string, CharacterClip>();
@@ -92,11 +92,16 @@ namespace WukongKnight
                 {
                     int index = Int(frame, "atlas"), x = Int(frame, "x"), y = Int(frame, "y");
                     int width = Int(frame, "width"), height = Int(frame, "height"), duration = Int(frame, "duration_ticks");
-                    Require(index >= 0 && index < textures.Count && x >= 0 && y >= 0 && width == canvasWidth && height == canvasHeight && duration > 0, "Invalid frame rectangle.");
+                    Require(index >= 0 && index < textures.Count && x >= 0 && y >= 0 && width > 0 && height > 0 && width <= canvasWidth && height <= canvasHeight && duration > 0, "Invalid frame rectangle.");
+                    int cropX = root["atlas_packing"] == null ? 0 : Int(frame, "source_x");
+                    int cropY = root["atlas_packing"] == null ? 0 : Int(frame, "source_y");
+                    Require(cropX >= 0 && cropY >= 0 && (long)cropX + width <= canvasWidth && (long)cropY + height <= canvasHeight, "Crop outside source canvas.");
+                    Require(root["atlas_packing"] != null || width == canvasWidth && height == canvasHeight, "Unexpected cropped frame.");
+                    Require(cropX <= rootX && rootX <= cropX + width && cropY <= rootY && rootY <= cropY + height, "Crop excludes source root.");
                     Texture2D texture = textures[index];
                     Require((long)x + width <= texture.width && (long)y + height <= texture.height, "Frame outside atlas.");
                     // PNG rectangles and pivots are top-left; Unity rectangles and pivots are bottom-left.
-                    Sprite sprite = Sprite.Create(texture, new Rect(x, texture.height - y - height, width, height), new Vector2(rootX / width, 1f - rootY / height), 100f, 0, SpriteMeshType.FullRect);
+                    Sprite sprite = Sprite.Create(texture, new Rect(x, texture.height - y - height, width, height), new Vector2((rootX - cropX) / width, 1f - (rootY - cropY) / height), 100f, 0, SpriteMeshType.FullRect);
                     sprites.Add(sprite); clipSprites.Add(sprite); tick = checked(tick + duration); ends.Add(tick);
                 }
                 Require(tick == total, "Clip duration mismatch: " + property.Name);

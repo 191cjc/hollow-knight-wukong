@@ -268,3 +268,47 @@ DLL `58d40a2c099e115c29d49a298c2d45b59b9646d24ae0e607a32264b7e5c29a7d`.
 - [x] Check source death/ghost pixels, clock lifetime and compiled hook boundaries.
 - [x] Fresh full build/package; back up/install stopped game and verify all files.
 - [x] Record evidence/specs/status and pending client death/dash acceptance.
+
+
+## 0.7 fist skills execution
+
+- [x] Commit current workspace checkpoint e44de07 before new implementation.
+- [x] Snapshot current asset/report hashes and inspect native Dream Nail/Fireball.
+- [x] Trace WK2 source clocks, masks, clone behavior and complete art layers.
+- [x] Add new original/offline1.5x fist clips preserving all earlier artwork.
+- [x] Implement neutral Afterimage Combo and four persistent mimic afterimages.
+- [x] Implement charged Godslayer native dream interactions, Earthbreaker and Ape.
+- [x] Integrate presentation/input/damage/cleanup without prior-skill regressions.
+- [x] Add meaningful clock/token/damage/source-image regressions; inspect previews.
+- [x] Run fresh checks/build/package, back up/install stopped game, verify hashes.
+- [x] Update specs/status/research; retain pending gameplay acceptance.
+
+
+## 0.7.1 execution
+
+- [x] Verify native spell cost selection and source clone/max-charge evidence.
+- [x] Implement one-time paid directional Dream casts and forced Godslayer release.
+- [x] Generate unsquashed offline clone poses in new preserved folders.
+- [x] Run production/core/source/pixel/Release/package checks and preview.
+- [x] Back up/install with game stopped; verify installed hashes.
+- [x] Update evidence/contracts/status; gameplay remains pending.
+
+
+## 0.7.2 execution
+
+- [x] Inspect native down-slam recoil and current ghost/movement ownership.
+- [x] Remove completed/canceled copied ghosts and centralize faster descent.
+- [x] Use native slam-strength fist recoil without changing other spells.
+- [x] Run meaningful core/full build/package checks and preserve artwork hashes.
+- [x] Back up/install stopped-game update; verify all installed files.
+- [x] Record contracts/evidence/status with gameplay acceptance pending.
+
+
+## 0.7.3 execution
+
+- [x] Verify native HP/recoil/Invulnerable and Dream cancellation evidence.
+- [x] Add final-only native slam recoil and scoped Earthbreaker immunity.
+- [x] Add Fire Ape damage-resistant ownership without changing native HP paths.
+- [x] Test lifetime boundaries, inspect compiled hooks, and run full build/package.
+- [x] Preserve all character hashes; back up/install with game stopped and verify.
+- [x] Update evidence/contracts/status; retain pending gameplay acceptance.

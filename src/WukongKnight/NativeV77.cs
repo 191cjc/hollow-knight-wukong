@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
@@ -28,6 +29,12 @@ namespace WukongKnight
         private readonly MethodInfo resetInput = Method(typeof(HeroController), "ResetInput");
         private readonly FieldInfo evasion = Field(typeof(HealthManager), "evasionByHitRemaining", typeof(float));
         private readonly FieldInfo contacts = Field(typeof(DamageEnemies), "enteredColliders", typeof(List<Collider2D>));
+        private readonly MethodInfo invulnerable = typeof(HeroController).GetMethod("Invulnerable", Instance, null, new[] { typeof(float) }, null)
+            ?? throw new MissingMethodException("HeroController.Invulnerable(float)");
+        private readonly FieldInfo invulTime = Field(typeof(HeroController), "INVUL_TIME", typeof(float));
+        private readonly FieldInfo invulTimeStal = Field(typeof(HeroController), "INVUL_TIME_STAL", typeof(float));
+        private readonly FieldInfo damageEffect = FieldByTypeName(typeof(HeroController), "damageEffectFSM", "PlayMakerFSM");
+        private readonly FieldInfo doubleHitEffect = Field(typeof(HeroController), "takeHitDoublePrefab", typeof(GameObject));
         private readonly FieldInfo heroDeath = Field(typeof(HeroController), "heroDeathPrefab", typeof(GameObject));
         private readonly FieldInfo dashDown = Field(typeof(HeroController), "dashingDown", typeof(bool));
         private readonly FieldInfo dashTimer = Field(typeof(HeroController), "dash_timer", typeof(float));
@@ -44,6 +51,8 @@ namespace WukongKnight
         private FieldInfo? jumpAction;
         private FieldInfo? dashAction;
         private FieldInfo? upAction;
+        private FieldInfo? downAction;
+        private FieldInfo? dreamAction;
         private PropertyInfo? isPressed;
         private float savedDuration;
         private float nativeCooldown;
@@ -57,12 +66,16 @@ namespace WukongKnight
         public bool AttackPressed(HeroController hero) => Pressed(hero, "attack", ref attackAction);
         public bool JumpPressed(HeroController hero) => Pressed(hero, "jump", ref jumpAction);
         public bool DashPressed(HeroController hero) => Pressed(hero, "dash", ref dashAction);
-        public bool UpHeld(HeroController hero)
+        public bool DreamPressed(HeroController hero) => Pressed(hero, "dreamNail", ref dreamAction);
+        public bool DreamHeld(HeroController hero) => Held(hero, "dreamNail", ref dreamAction);
+        public bool DownHeld(HeroController hero) => Held(hero, "down", ref downAction);
+        public bool UpHeld(HeroController hero) => Held(hero, "up", ref upAction);
+        private bool Held(HeroController hero, string name, ref FieldInfo? actionField)
         {
             object? handler = input.GetValue(hero); if (handler == null) return false;
             object? actionSet = actions.GetValue(handler); if (actionSet == null) return false;
-            if (upAction == null) upAction = actionSet.GetType().GetField("up", Instance) ?? throw new MissingFieldException("HeroActions.up");
-            object? action = upAction.GetValue(actionSet); if (action == null) return false;
+            if (actionField == null) actionField = actionSet.GetType().GetField(name, Instance) ?? throw new MissingFieldException("HeroActions." + name);
+            object? action = actionField.GetValue(actionSet); if (action == null) return false;
             if (isPressed == null) isPressed = action.GetType().GetProperty("IsPressed", Instance) ?? throw new MissingMemberException("PlayerAction.IsPressed");
             return (bool)isPressed.GetValue(action, null);
         }
@@ -169,15 +182,35 @@ namespace WukongKnight
             }, 1);
         }
 
+        // Called only after native TakeDamage has applied HP, charms, death and hazards.
+        // Keep its normal damage VFX and native post-hit cooldown, without motion/freeze.
+        public IEnumerator ArmoredDamage(HeroController hero, bool spawnDamageEffect, int damage)
+        {
+            if (spawnDamageEffect)
+            {
+                object effect = damageEffect.GetValue(hero);
+                (effect.GetType().GetMethod("SendEvent", new[] { typeof(string) })
+                    ?? throw new MissingMethodException("Damage effect.SendEvent(string)"))
+                    .Invoke(effect, new object[] { "DAMAGE" });
+                if (damage > 1)
+                    UnityEngine.Object.Instantiate((GameObject)doubleHitEffect.GetValue(hero), hero.transform.position, hero.transform.rotation);
+            }
+            return (IEnumerator)invulnerable.Invoke(hero, new object[] {
+                (float)(PlayerData.instance.GetBool("equippedCharm_4") ? invulTimeStal : invulTime).GetValue(hero) });
+        }
+
         public void FireDemonHit(GameObject source, GameObject target, int damage, float direction, bool finisher, Func<bool> stillOwned)
+            => SpellHit(source, target, damage, direction, finisher, finisher ? 1f : 0.15f, stillOwned);
+
+        public void SpellHit(GameObject source, GameObject target, int damage, float direction, bool circleDirection, float magnitude, Func<bool> stillOwned)
         {
             if (!stillOwned() || source == null || target == null) return;
             takeDamageEvent.Invoke(null, new object[] { target, "TAKE DAMAGE", false });
             if (!stillOwned() || source == null || target == null) return;
             HitTaker.Hit(target, new HitInstance {
                 Source = source, AttackType = AttackTypes.Spell, DamageDealt = damage,
-                Direction = direction, CircleDirection = finisher, IgnoreInvulnerable = false,
-                MagnitudeMultiplier = finisher ? 1f : 0.15f, Multiplier = 1f
+                Direction = direction, CircleDirection = circleDirection, IgnoreInvulnerable = false,
+                MagnitudeMultiplier = magnitude, Multiplier = 1f
             }, 1);
         }
 
