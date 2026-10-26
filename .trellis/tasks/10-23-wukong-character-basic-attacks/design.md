@@ -484,3 +484,27 @@ Stop reason/landing confirmation. Version/package/evidence/spec/status docs reco
 the new contract. Validate against actual native assembly/prefab/FSM and compiled
 completion/cancellation call paths; run existing core and Release/package checks.
 All active artwork hashes must remain unchanged. Gameplay stays separate.
+
+
+## 0.7.6 change boundary
+
+The behavior gap lives in FlameStorm's held down-spell adapter and FistSkills'
+directional Dream router. Runtime will own exactly one NativeDreamV77, borrowed
+by both skills and disposed after both. Down-spell suppression moves to FistSkills;
+Earthbreaker acquires its held Quake Antic, charges live MP Cost once, and recovers
+through Spell End. Its existing confirmed-landing-only QuakeInvuln call remains
+the only recovery grant (no duplicate native Quake Finish grant on cancel).
+
+Storm acquires shared Dream control on a down-Dream press, charges live MP Cost
+once through the existing controlled-action transaction, and finishes Dream only
+while its own hit ledger is active. Retain its16-tick action, local mask/caps and
+successful native recovery timer formerly provided by Quake Finish. Shared Dream
+eligibility retains menu/conversation checks and down-air support. Fist ignores
+down-Dream input. Never rewrite physical button state or duplicate Dream adapters.
+
+Files: Runtime attachment/disposal/input order; FlameStorm native owner; FistSkills
+down-spell acquisition/owner recovery; NativeDream shared eligibility; NativeSpell
+explicit non-Quake recovery; Core controlled transaction extracted without changing
+existing FistRules semantics and regression tests; version/package and current docs.
+All art/resources stay byte-identical. No forced enemy state transitions, rebalance,
+new armor/colliders/assets, remote Git changes or gameplay acceptance claims.

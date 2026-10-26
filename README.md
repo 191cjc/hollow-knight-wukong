@@ -1,9 +1,9 @@
 # Wukong Knight
 
 Wukong character Mod for Hollow Knight, based on archived 4399 ZMXY4 artwork.
-Development version **0.7.5-dev** includes staff visuals, the grounded four-stage
+Development version **0.7.6-dev** includes staff visuals, the grounded four-stage
 combo, Flame Dash, Fire Demon Slash, Flame Storm, Jiyuan Fire Eye (汲元火眼),
-Afterimage Combo and the three Dream-key fist skills.
+Afterimage Combo, Earthbreaker and the Dream-key skills.
 All originals and earlier bakes/variants are preserved. Active artwork is baked
 offline to 1.5x; native hero collision and nail reach retain their native size.
 Ground/air nail attacks now use original Wukong staff arcs. Up nail uses the
@@ -19,20 +19,21 @@ body and staff stay at their existing offline1.5x appearance.
 - **Dream Nail:** damaging Godslayer Strike (灭神一击). Hold to charge, release to
   punch; a fully charged wave retains native Dream Nail effects (1.267s charge,
   or0.633s with Dream Wielder).
-- **Down + Dream Nail:** Earthbreaker Fist (辟地拳), a terrain-limited ground/air slam.
+- **Down + Dream Nail:** Flame Storm (烈焰风暴), the original spinning action/flames,
+  with nearby source-mask contacts and at most five hits per target.
 - **Up + Dream Nail:** moving-awakening Fire Ape Assault (火猿出击), with original
   back/front effects following the free hero. Normal incoming damage/recoil applies.
 - **Up + spell:** Fire Demon Slash, with original moving flashes, relative masks,
   midair finisher at the source-driven forward position, full-cast protection and input lock.
-- **Down + spell:** Flame Storm, with the original spinning action and eight-image
-  flame overlay; nearby source-mask contacts, at most five hits per target.
+- **Down + spell:** Earthbreaker Fist (辟地拳), a terrain-limited ground/air slam.
 - **Hold spell/focus:** Jiyuan Fire Eye (汲元火眼). Native focus timing/Soul drain
   shows original winding flames/eye flashes at30 FPS in the final0.7s of the actual native charge (short charges use the source tail), then activates five seconds of healing on real
   player attack damage: one HP, globally at most once per second. Original red flame aura; no instant heal.
 - **Dash:** Flame Dash retains native travel/cooldown/collision, adds path damage and blocks incoming HP damage throughout each actual dash; Dashmaster downward dashes use downward flames with the body upright.
 
-Fire Demon uses the up-spell unlock/tier; Storm uses the down-spell unlock/tier.
-Fixed spell damage is independent of nail upgrades and respects Shaman Stone.
+Fire Demon uses the up-spell unlock/tier. Earthbreaker uses the down-spell unlock
+while retaining its nail-based damage. Dream-key Storm requires Dream Nail and
+retains quakeLevel fixed spell damage and Shaman Stone scaling.
 Native up/down spell damage is replaced; each cast charges the current native
 Soul cost once (including Spell Twister). See [spell controls](docs/SPELL_LAYOUT.md),
 [Fire Demon](docs/FIRE_DEMON_SLASH.md) and [client checks](docs/CLIENT_ACCEPTANCE.md).
@@ -68,13 +69,13 @@ bash scripts/build.sh
 | 输出 | 用途 |
 |---|---|
 | `artifacts/mod/WukongKnight/` | 安装整个目录，必须保留 `character/` |
-| `artifacts/WukongKnight-0.7.5-dev.zip` | DLL、说明、角色清单与引用的加工图集 |
+| `artifacts/WukongKnight-0.7.6-dev.zip` | DLL、说明、角色清单与引用的加工图集 |
 | `assets/processed/wukong/previews/` | 动画 GIF、关键姿势联系表，不进入开发包 |
 | `artifacts/validation.json` | 归档输入、解包、PNG、音频与配置检查 |
 | `artifacts/character-validation.json` | 加工图集、帧范围、时序与连击窗口检查 |
 | `artifacts/build-report.json` | 包内文件散列及实现/编译/自动检查/实机状态 |
 
-Current package: `0.7.5-dev`; older packages are retained for rollback.
+Current package: `0.7.6-dev`; older packages are retained for rollback.
 
 ## 安装与验收
 
@@ -167,3 +168,9 @@ original down-spell QuakeInvuln timer (live native default0.4s). Current full-ac
 protection stays intact; after recovery, native ordinary-damage/expiry/hazard rules
 apply. Interrupted casts, unlanded timeouts and copied ghosts grant no timer.
 All v074 artwork is reused byte-for-byte. Client timing/combat acceptance is pending.
+
+
+0.7.6 swaps only the directional routes: down spell is Earthbreaker, down Dream
+is Flame Storm. Costs, damage, source masks, artwork and Earthbreaker immunity/
+confirmed-landing recovery remain unchanged. Storm retains native recovery at a
+successful source end, with no full-action HP guard or forced enemy hurt states.

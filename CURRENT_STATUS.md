@@ -1,4 +1,36 @@
-# Current status: Wukong0.7.5 native down-spell recovery
+# Current status: Wukong0.7.6 directional control swap
+
+Updated2026-10-26 (Asia/Shanghai). Installed0.7.6-dev in the authorized WukongKnight
+directory at 2026-10-26T22:13:22.043917+08:00, with the game stopped. Down spell is
+Earthbreaker Fist; down Dream is Flame Storm. Live native Soul cost once, damage,
+source masks/clocks, ghost mimicry, all artwork and Earthbreaker full-action/
+confirmed-landing recovery are preserved. One Runtime-owned Dream adapter is
+shared and restored after both borrowers finish. Storm retains its successful
+native recovery. Other inputs and detached summons retain existing behavior.
+
+Forced enemy hurt-state transitions are assessed only, not implemented. Supporting
+selected common enemies is moderate effort; reliable all-enemy/Boss support needs
+per-enemy state/phase rules and attack-residue cleanup. Some enemies lack a hurt
+pose. Existing native damage/recoil events remain authoritative.
+
+Validation:66Python passed/one Windows symlink-privilege skip;76actual linked C#
+core checks and warnings-as-errors Release passed. Native/compiled ownership,
+Soul and recovery paths reviewed;19installed files/ZIP verified. All17character
+resources remain byte-identical (59clips/1559ticks/16pages). No API/save changes.
+Client gameplay/input/combat acceptance pending: runtime_tested=false, task
+in_progress. This checkpoint records all0.7.6 changes after baseline05ea9ea.
+The user authorized a local commit; no remote push was requested.
+
+Package: artifacts/WukongKnight-0.7.6-dev.zip.
+ZIP SHA256: bdc1cfff83eb5fe19a85ee25f06f85e2b52ab1cd20083eccac564695611ba93b.
+DLL SHA256: 3fba97edae4e339e77b581d21d200e13fc3e6012c290f46e28d1b248b2e32b43 (115200bytes).
+Backup: installed-WukongKnight-before-0.7.6-20261026-221319.zip.
+Backup SHA256: 411d7e8056fee9c72daf6a9bc64a3e1136375510bee842d5ec41c402026c9fa3.
+Evidence: reference/flash/fist/control-swap-v076.json and task research/control-swap-v076-20261026.md.
+
+---
+
+# Previous status: Wukong0.7.5 native down-spell recovery
 
 Updated2026-10-26 (Asia/Shanghai). Version0.7.5-dev is installed in the authorized
 WukongKnight directory with the game stopped and a complete previous0.7.4 backup.

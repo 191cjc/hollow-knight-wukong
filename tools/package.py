@@ -9,7 +9,7 @@ from pathlib import Path
 
 from validate_character import CHARACTER, ROOT, sha256, validate_character
 
-VERSION = "0.7.5-dev"
+VERSION = "0.7.6-dev"
 _VARIANT = json.loads((ROOT / "data/character/active-variant.json").read_text(encoding="utf-8"))
 ACTIVE_CHARACTER = ROOT / _VARIANT.get("runtime_directory", _VARIANT["output_directory"])
 README = f"""Wukong Knight {VERSION}
@@ -46,11 +46,11 @@ Dream Nail is Godslayer Strike (灭神一击): hold to charge, release to punch.
 Full charge is source frame39 (1.267s; Dream Wielder 0.633s), releasing a traveling wave.
 Only the player's full wave carries the actual native Dream Nail trigger, retaining
 thoughts/Soul/dream scenery interactions. Partial punches and clones only damage.
-Down + Dream Nail casts Earthbreaker Fist (辟地拳); upward launch on ground, then
+Down + spell casts Earthbreaker Fist (辟地拳); upward launch on ground, then
 terrain-limited slam, or direct slam in air. Up + Dream Nail casts Fire Ape Assault
 (火猿出击), with original independent back/front fire-ape artwork and local masks.
-Dream-key attacks require Dream Nail unlock, scale with nail upgrades
-without Strength, and have recovery/cooldowns. Godslayer/Earthbreaker latch direction
+Fist attacks retain nail-upgrade damage; Dream-key skills require Dream Nail unlock
+and have recovery/cooldowns. Godslayer/Earthbreaker ignore Strength and latch direction
 at press; moving-awakening Fire Ape follows current position/facing.
 Down/up Dream actions spend current native MP Cost once (33; Spell Twister24);
 insufficient Soul prevents casting and ghosts cost no extra Soul. Neutral Dream
@@ -91,7 +91,7 @@ There is no forced dive or ground-contact requirement. All custom skills reject 
 and weapon children as enemy hurtboxes. No inherited Quake start/landing shake is added.
 Hero damage guards remain active throughout preparation, air and finisher; they release
 on completion/cancel/detach without changing save invincibility.
-Down + spell casts Flame Storm, using the original 16-tick spinning body and flames.
+Down + Dream Nail casts Flame Storm, using the original 16-tick spinning body and flames.
 Original local contact mask; per-target cap five, 100ms contact interval, native evasion.
 Damage per contact is 7/11 by down-spell tier, or 11/17 with Shaman Stone.
 Hold spell/focus to perform Jiyuan Fire Eye (汲元火眼) using native focus charge/Soul timing.

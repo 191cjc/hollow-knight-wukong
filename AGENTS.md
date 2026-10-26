@@ -135,3 +135,11 @@ Use the real live INVUL_TIME_QUAKE timer (default0.4s); retain native ordinary-d
 and hazard rules. Keep existing full-action HP guards, and never grant the timer
 from cancellation, unlanded timeout, copied ghosts, death/hazards/scenes or disposal.
 No custom post-action HP guard or saved invincibility; active v074 art is unchanged.
+
+
+v076 swaps down spell to Earthbreaker and down Dream to Flame Storm. Runtime owns
+one NativeDreamV77 borrowed by both skills, disposed after both. Fist owns down
+Quake suppression; Earthbreaker finishes Spell End and keeps confirmed-landing-only
+QuakeInvuln. Storm charges live MP Cost once, owns Dream only while its ledger is
+active, and preserves successful native recovery. Never finish another owner's
+Dream or duplicate Quake recovery on cancellation. No forced enemy hurt FSM work.

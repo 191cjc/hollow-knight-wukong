@@ -518,3 +518,24 @@ timeout, Godslayer, detached summons and copied ghosts grant no recovery timer.
 No polling refresh: stopped body ownership prevents repeated end observations.
 Native update/cancellation handles expiry. Actual native IL/prefab/FSM and compiled
 success/cancel paths must be reviewed; package character bytes stay unchanged.
+
+
+## 0.7.6 directional control ownership
+
+Runtime creates one NativeDreamV77 and disposes it after FistSkills/FlameStorm.
+Both borrow it. Shared CanBegin keeps native menu/control/unlock gates; only
+down-Dream Storm extends air eligibility. Storm owns its ledger and may Finish
+Dream only after an active ledger is revoked. Fist input ignores down Dream.
+Core TryBeginControlled is the original TryBeginDream transaction extracted with
+unchanged pre/post-acquisition Soul/ownership checks and exception recovery.
+
+FistSkills owns native Down adapter/suppression. Observe each held Quake Antic
+once, charge live MP Cost once, then begin unchanged Earthbreaker. Holding/Owns
+choose down spell for Earthbreaker, Dream for Godslayer. FinishCast(false) routes
+to Spell End and skips Quake Finish; confirmed player landing alone grants the
+existing native recovery. Adapter disposal also skips Quake recovery. Storm
+clears prior parry protection on start and grants original QuakeInvuln once only
+after successful Dream recovery, preserving its old down-spell finish semantics.
+Masks, source clocks, damage factors, ghost mimicry and all artwork are unchanged.
+Native recoil/events do not universally force enemy hurt states; that feature is
+not implemented. Client input/combat/recovery acceptance remains pending.

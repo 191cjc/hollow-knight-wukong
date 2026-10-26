@@ -67,7 +67,12 @@ namespace WukongKnight.Core
             Func<bool> holds, Action<int> spend, Action cancel)
         {
             if (action != FistAction.Godslayer && !RequiresSoul(action)) return false;
-            bool paid = RequiresSoul(action);
+            return TryBeginControlled(RequiresSoul(action), cost, soul, acquire, holds, spend, cancel);
+        }
+        // Shared by paid Dream Storm and the already-held down-spell Earthbreaker.
+        public static bool TryBeginControlled(bool paid, int cost, Func<int> soul, Func<bool> acquire,
+            Func<bool> holds, Action<int> spend, Action cancel)
+        {
             if (paid && (cost <= 0 || cost > 99 || soul() < cost)) return false;
             if (!acquire()) return false;
             // Native cancellation and TakeMP hooks may revoke control or change Soul.

@@ -1,4 +1,4 @@
-# Spell controls (0.7.5-dev)
+# Spell controls (0.7.6-dev)
 
 The 0.4.4 workspace was committed before these changes as
 `a07b2ac4981caca2b84af7a4f9ae1dc270a3d42d`. No remote push was made.
@@ -7,10 +7,10 @@ The 0.4.4 workspace was committed before these changes as
 | --- | --- | --- |
 | Neutral quick spell | Afterimage Combo (残影连打) | Native forward spell unlock/tier (`fireballLevel`), current MP Cost once |
 | Dream Nail | Godslayer Strike (灭神一击) | Hold/release or automatic maximum; full charge preserves native Dream impact |
-| Down + Dream Nail | Earthbreaker Fist (辟地拳) | Native Dream Nail unlock; current native MP Cost once |
+| Down + Dream Nail | Flame Storm (烈焰风暴) | Native Dream Nail unlock; quakeLevel damage tier; current native MP Cost once |
 | Up + Dream Nail | Fire Ape Assault (火猿出击) | Native Dream Nail unlock; current native MP Cost once |
 | Up + spell | Fire Demon Slash | Howling Wraiths / Abyss Shriek (`screamLevel`) |
-| Down + spell | Flame Storm | Desolate Dive / Descending Dark (`quakeLevel`) |
+| Down + spell | Earthbreaker Fist (辟地拳) | Desolate Dive / Descending Dark unlock; unchanged nail-based damage |
 | Hold spell/focus | Jiyuan Fire Eye (汲元火眼) | Native focus eligibility, charge, cancellation and Soul drain |
 | Dash | Flame Dash | Native dash movement, cooldown, unlock and collision |
 
@@ -70,7 +70,7 @@ The original staff `effect3` body and separate `skill1V472/effect3` eight-image
 flame overlay play for 16 ticks at 30 FPS (about 0.533 seconds). Source WKEntity
 holds gravity and velocity while spinning. The adaptation maintains native input
 denial, zero velocity and no gravity during the action; native finish releases
-control. No extra invulnerability is granted to this skill.
+control. There is no full-action HP guard. Its successful native recovery timer is retained.
 
 Original `ab_effect3` is sprite39 placing rectangular shape32. At the right-facing
 hero source root its Unity Y-up center is (-6.4639412, 35.0111057), dimensions
@@ -112,7 +112,7 @@ build report; gameplay remains pending in `CLIENT_ACCEPTANCE.md`.
 ## 0.7.3 defense and final-hit update
 
 Up spell Fire Demon final contact uses native slam-strength horizontal enemy
-recoil2 without forced landing. Down Dream Earthbreaker prevents incoming HP
+recoil2 without forced landing. Down-spell Earthbreaker prevents incoming HP
 damage throughout its owned launch/fall/landing action. Up Dream Fire Ape remains
 vulnerable to native HP damage but continues its source action through ordinary
 hits, retaining native post-hit cooldown. Death/hazards/scenes still win and
@@ -131,9 +131,28 @@ Both still spend current native MP Cost once. Earthbreaker/Godslayer are unchang
 
 ## 0.7.5 native recovery protection
 
-Successful up-spell Fire Demon and player down-Dream Earthbreaker completion now
+Successful up-spell Fire Demon and player down-spell Earthbreaker completion now
 use original QuakeInvuln once after control recovery. Native INVUL_TIME_QUAKE
 defaults to0.4s, protecting against ordinary enemy contact/projectile damage;
 native hazard/expiry rules remain. Existing protection during each action stays
 intact. Canceled actions, Earthbreaker without confirmed landing and copied ghosts
 do not grant the recovery timer. No other skill/asset/HP/Soul rules are changed.
+
+
+## 0.7.6 route swap and enemy hurt feasibility
+
+Storm now starts on down-Dream input (including air), using the same live MP Cost
+and shared controlled transaction as paid native-held casts. Its16-tick motion
+lock, mask, five-hit/100ms cap, quakeLevel/Shaman damage and artwork are unchanged.
+Successful end calls native QuakeInvuln after Dream End, retaining the old Quake
+Finish recovery; canceled/dead/hazard/scene/disposed actions do not grant it.
+Earthbreaker now starts in native Quake Antic and finishes through Spell End;
+its existing confirmed-landing-only recovery call prevents duplicate/cancel grants.
+
+Forced enemy hurt states are assessed only. The current path dispatches TAKE
+DAMAGE and HitTaker/HealthManager native hit events and recoil. More recoil does
+not guarantee interruption. Common enemies with verified hurt FSMs can be handled
+at moderate effort, but bosses need explicit supported FSM/state/phase rules and
+cleanup of attack hitboxes/projectiles. Some enemies lack a dedicated hurt pose.
+Universal reliable support is substantially harder; a supported-enemy adapter
+with native fallback is recommended over unconditional FSM state mutation.

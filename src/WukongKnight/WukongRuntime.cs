@@ -23,6 +23,7 @@ namespace WukongKnight
         private FlameStorm? flameStorm;
         private BloodthirstyFireEye? bloodEye;
         private FistSkills? fist;
+        private NativeDreamV77? dream;
         private NailSlash? slash;
         private long nativeToken;
         private bool capturing;
@@ -139,6 +140,7 @@ namespace WukongKnight
             {
                 try
                 {
+                    flameStorm?.Observe(true);
                     fist?.Observe(true);
                     ObserveSpells(self); // Neutralize input before native LookForInput.
                     if (ShouldCancel() || (combo != null && combo.Active && (native.JumpPressed(self) || native.DashPressed(self)))) Cancel();
@@ -190,9 +192,11 @@ namespace WukongKnight
                 presenter = new WukongPresenter(self, assets, native);
                 flameDash = new FlameDash(self, native);
                 fireDemon = new FireDemonSlash(self, native, assets);
-                flameStorm = new FlameStorm(self, native, assets);
                 bloodEye = new BloodthirstyFireEye(self);
-                fist = new FistSkills(self, native, assets);
+                dream = new NativeDreamV77(self);
+                var skills = new FistSkills(self, native, assets, dream);
+                fist = skills;
+                flameStorm = new FlameStorm(self, native, assets, dream, () => skills.SoulCost);
                 lifetime = self.gameObject.AddComponent<WukongLifetime>();
                 lifetime.UpdateView = LateUpdate;
                 lifetime.AdvancePhysics = FixedUpdate;
@@ -445,7 +449,7 @@ namespace WukongKnight
         }
 
         private bool BlocksReplacedSpell(GameObject source) =>
-            fireDemon != null && fireDemon.BlocksNativeSource(source) || flameStorm != null && flameStorm.BlocksNativeSource(source) || fist != null && fist.BlocksNativeSource(source);
+            fireDemon != null && fireDemon.BlocksNativeSource(source) || fist != null && fist.BlocksNativeSource(source);
 
         private void DispatchHealthHit(On.HealthManager.orig_Hit orig, HealthManager self, HitInstance hit)
         {
@@ -525,6 +529,8 @@ namespace WukongKnight
             if (oldSpell != null) Cleanup(oldSpell.Dispose);
             FlameStorm? oldStorm = flameStorm; flameStorm = null;
             if (oldStorm != null) Cleanup(oldStorm.Dispose);
+            NativeDreamV77? oldDream = dream; dream = null;
+            if (oldDream != null) Cleanup(oldDream.Dispose);
             BloodthirstyFireEye? oldEye = bloodEye; bloodEye = null;
             if (oldEye != null) Cleanup(oldEye.Dispose);
             if (lifetime != null)

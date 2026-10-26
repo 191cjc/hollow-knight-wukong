@@ -1,0 +1,71 @@
+{
+  "version": "0.7.6-dev",
+  "runtime_tested": false,
+  "controls": {
+    "down_spell": "Earthbreaker Fist",
+    "down_dream": "Flame Storm"
+  },
+  "compiled_review": {
+    "single_runtime_owned_Dream_adapter": true,
+    "both_skills_use_controlled_Soul_transaction": true,
+    "earthbreaker_holds_down_spell": true,
+    "earthbreaker_finish_skips_automatic_Quake_recovery": true,
+    "earthbreaker_recovery_requires_confirmed_player_landing": true,
+    "storm_finishes_only_its_active_ledger": true,
+    "storm_successful_recovery_preserved": true,
+    "cancel_dispose_timeout_cannot_grant_player_landing_recovery": true,
+    "log": "control-swap-v076-compiled.txt",
+    "sha256": "dc46d0fdc86e1553df10fb2b5fa37da01d57c5ea4675adeec253f689bfa0c20a"
+  },
+  "native_review": {
+    "Quake_Antic_functions": [
+      "CancelParryInvuln",
+      "RelinquishControl",
+      "StopAnimationControl",
+      "AffectedByGravity"
+    ],
+    "Quake_Finish_functions": [
+      "SetDamageModeFSM",
+      "SetCState",
+      "QuakeInvuln"
+    ],
+    "Spell_End_functions": [
+      "RegainControl",
+      "StartAnimationControl"
+    ],
+    "held_antic_does_not_enter_native_Quake_invulnerability_states": true,
+    "successful_recovery_duration": "live INVUL_TIME_QUAKE; serialized0.4s",
+    "source": "existing Spell Control resources.assets20204 and quake-recovery-v075.json"
+  },
+  "forced_hurt_assessment": {
+    "implemented": false,
+    "native_path": "TAKE DAMAGE -> HitTaker -> HealthManager hit/damage events and Recoil",
+    "common_enemy_difficulty": "moderate with verified per-enemy FSM support",
+    "universal_boss_support": "high; heterogeneous hurt/stun/phase states and active attack residue",
+    "universal_hurt_animation_exists": false,
+    "recommendation": "supported-enemy adapters with native fallback"
+  },
+  "artwork_resources_preserved": 17,
+  "source_clips": 59,
+  "source_ticks": 1559,
+  "runtime_atlases": 16,
+  "validation": {
+    "python_passed": 66,
+    "python_skipped": 1,
+    "core_passed": 76,
+    "Release_warnings_as_errors": true
+  },
+  "installation": {
+    "path": "D:\\SteamLibrary\\steamapps\\common\\Hollow Knight\\hollow_knight_Data\\Managed\\Mods\\WukongKnight",
+    "installed_at": "2026-10-26T22:13:22.043917+08:00",
+    "previous_mod_backup": "C:\\Users\\19122\\Documents\\Codex\\2026-10-23\\qin\\work\\backups\\installed-WukongKnight-before-0.7.6-20261026-221319.zip",
+    "previous_mod_backup_sha256": "411d7e8056fee9c72daf6a9bc64a3e1136375510bee842d5ec41c402026c9fa3",
+    "previous_mod_files": 19,
+    "installed_file_count": 19,
+    "installed_files_verified": true,
+    "game_was_stopped": true,
+    "api_or_save_files_modified": false
+  },
+  "dll_sha256": "3fba97edae4e339e77b581d21d200e13fc3e6012c290f46e28d1b248b2e32b43",
+  "zip_sha256": "bdc1cfff83eb5fe19a85ee25f06f85e2b52ab1cd20083eccac564695611ba93b"
+}

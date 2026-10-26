@@ -1,4 +1,4 @@
-# Fist skills (0.7.5-dev)
+# Fist skills (0.7.6-dev)
 
 Original fist checkpoint: e44de07. The0.7.4/0.7.5 changes start from committed
 0.7.3 checkpoint bf81c06 and are recorded together in the subsequent workspace
@@ -8,7 +8,8 @@ checkpoint. GitHub uploads use the verified SSH remote.
 | --- | --- | --- |
 | Neutral quick spell | Afterimage Combo (残影连打) | Native fireballLevel; current MP Cost once, including Spell Twister |
 | Dream Nail | Godslayer Strike (灭神一击) | Requires native Dream Nail unlock; hold then release, no Soul cost |
-| Down + Dream Nail | Earthbreaker Fist (辟地拳) | Direction latched on press; ground launch or airborne slam; current native MP Cost once |
+| Down + spell | Earthbreaker Fist (辟地拳) | Native quake unlock; ground launch or airborne slam; current native MP Cost once |
+| Down + Dream Nail | Flame Storm (烈焰风暴) | Native Dream Nail unlock; fixed quakeLevel damage; current native MP Cost once |
 | Up + Dream Nail | Moving-awakening Fire Ape (火猿出击·动觉醒) | Follows live hero position/direction; current native MP Cost once |
 
 Existing staff attacks, up/down spells, focus, dash and death remain integrated.
@@ -174,9 +175,19 @@ back/front clips live in separate v074 original/full1.5x/packed directories.
 ## 0.7.5 post-action recovery
 
 Successful player Earthbreaker landing recovery now calls original QuakeInvuln
-once, after Dream Finish and a live-hero recheck. It grants the native down-spell
+once, after native control recovery and a live-hero recheck. It grants the native down-spell
 timer: INVUL_TIME_QUAKE, default0.4s, against ordinary enemy damage. Native Update
 and hazard rules handle expiry/acceptance. Existing full-action immunity remains.
 Copied ghosts, canceled actions, unlanded bottomless timeout, death/hazard/scene
 and teardown do not grant the timer. Godslayer and detached Ape/Afterimage stay
 unchanged; no added armor or custom post-action HP guard. Artwork stays identical.
+
+
+## 0.7.6 native ownership
+
+Earthbreaker owns held Quake Antic instead of Dream Start, and suppresses native
+Quake damage/effects. Its masks, nail factors, terrain travel, copied ghosts and
+full-action immunity are unchanged. Spell End skips automatic Quake Finish so
+only confirmed player landing grants one QuakeInvuln; cancel/timeout grants none.
+Storm and Godslayer borrow one Runtime-owned Dream adapter; neither may end the
+other's action. Finish both skill owners before disposing the shared adapter.

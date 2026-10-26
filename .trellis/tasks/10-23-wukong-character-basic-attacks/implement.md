@@ -331,3 +331,12 @@ DLL `58d40a2c099e115c29d49a298c2d45b59b9646d24ae0e607a32264b7e5c29a7d`.
 - [x] Inspect compiled success/cancel paths and run core/Release/package checks.
 - [x] Preserve art; back up/install stopped-game update and verify all files.
 - [x] Record current status/evidence; retain pending gameplay acceptance.
+
+
+## 0.7.6 execution
+
+- [x] Trace native Spell/Dream ownership, Soul transactions and recovery paths.
+- [x] Swap native routes with one shared Dream adapter and scoped recovery.
+- [x] Validate resource acquisition/cancellation and actual-reference Release build.
+- [x] Preserve artwork; back up/install while stopped and verify package hashes.
+- [x] Record evidence/spec/status and forced-hurt feasibility; gameplay pending.

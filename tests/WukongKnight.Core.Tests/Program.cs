@@ -20,6 +20,7 @@ internal static class Program
         cases = cases.Concat(new Action[] { CopiedGodslayerGhostExpiresAtReleaseEnd, CopiedEarthbreakerGhostExpiresAtLandingEnd, IdleGhostExpiryDefersForCopy, EarthbreakerDescentIsFasterAndSamplingIndependent, FistPushUsesNativeSlamAndAwayDirection }).ToArray();
         cases = cases.Concat(new Action[] { EarthbreakerProtectionEndsWithHeroAction, FireApeKeepsOriginalDeadline, HeroRecoveryRetainsOtherActionClocks }).ToArray();
         cases = cases.Concat(new Action[] { DetachedSummonsKeepIndependentClocks, AfterimageTrailBirthsRetainPositionsAcrossSlowFrames, DetachedCancellationRejectsStaleWork, SummonsSpendSoulWithoutTakingControl, SummonPaymentCanRevokeSpawn, DetachedContactsKeepCapsWhenFacingChanges }).ToArray();
+        cases = cases.Concat(new Action[] { ControlledCastRejectsInsufficientAndRevokedSoul, ControlledCastPaymentAndExceptionReleaseOwner }).ToArray();
         foreach (Action test in cases)
         {
             try { test(); Console.WriteLine("PASS " + test.Method.Name); }
@@ -29,6 +30,39 @@ internal static class Program
         return 0;
     }
 
+    private static void ControlledCastRejectsInsufficientAndRevokedSoul()
+    {
+        int soul=23, acquired=0, spent=0, recovered=0;
+        bool held=false;
+        Func<bool> acquire=() => { acquired++; held=true; return true; };
+        Func<bool> cast=() => FistRules.TryBeginControlled(true,24,() => soul,acquire,() => held,
+            n => { spent+=n; soul-=n; },() => { recovered++; held=false; });
+        Check(!cast() && acquired==0 && spent==0 && recovered==0, "Insufficient Storm Soul took Dream control");
+        soul=24;
+        Check(!FistRules.TryBeginControlled(true,24,() => soul,
+            () => { acquired++; held=true; soul=0; return true; },() => held,
+            n => spent+=n,() => { recovered++; held=false; }), "Acquisition callback changed Soul without rejecting cast");
+        Check(spent==0 && recovered==1 && !held, "Revoked acquisition retained control or spent Soul");
+        soul=24;
+        Check(cast() && spent==24 && soul==0 && held && recovered==1, "Valid reacquisition did not spend exactly once");
+    }
+    private static void ControlledCastPaymentAndExceptionReleaseOwner()
+    {
+        bool held=true;
+        int spent=0, recovered=0;
+        Check(!FistRules.TryBeginControlled(true,33,() => 33,() => held,() => held,
+            n => { spent+=n; held=false; },() => recovered++), "Revoked held spell started Earthbreaker");
+        Check(spent==33 && recovered==1, "Payment revocation duplicated Soul or missed recovery");
+        held=true;
+        bool threw=false;
+        try
+        {
+            FistRules.TryBeginControlled(true,33,() => 33,() => held,() => held,
+                n => { throw new InvalidOperationException("MP hook failure"); },() => { recovered++; held=false; });
+        }
+        catch (InvalidOperationException) { threw=true; }
+        Check(threw && !held && recovered==2, "MP hook exception stranded native control");
+    }
     private static void DetachedSummonsKeepIndependentClocks()
     {
         var combo=new FistSummonClock(FistAction.Afterimage,10);

@@ -232,3 +232,12 @@ give the same native recovery protection to successful Fire Demon Slash and play
 Earthbreaker finishes. Preserve their current full-action immunity, every other
 skill, resource/damage/movement rules and all artwork. Build/check/back up/install
 directly for later client review; no commit/push requested.
+
+
+## 0.7.6 directional control swap
+
+Down + spell casts Earthbreaker Fist; down + Dream Nail casts Flame Storm.
+Preserve each skill's existing Soul cost, damage, masks, movement, artwork and
+defense/recovery behavior. Neutral/up Dream and other controls remain unchanged.
+Assess forced enemy hurt-state transitions for Storm, without implementing them.
+Build/check/back up/install directly for later client review; no commit/push.

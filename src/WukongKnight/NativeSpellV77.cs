@@ -145,11 +145,11 @@ namespace WukongKnight
             return field;
         }
 
-        public void FinishCast()
+        public void FinishCast(bool quakeRecovery = true)
         {
             if (!HoldsCast || !CanRecover) return;
             // Forward never took control: Spell End would incorrectly clear velocity.
-            setState.Invoke(spell, new object[] { slot == NativeSpellSlot.Forward ? "Inactive" : slot == NativeSpellSlot.Down ? "Quake Finish" : "Spell End" });
+            setState.Invoke(spell, new object[] { slot == NativeSpellSlot.Forward ? "Inactive" : slot == NativeSpellSlot.Down && quakeRecovery ? "Quake Finish" : "Spell End" });
         }
 
         private bool CanRecover => hero != null && hero.gameObject.activeInHierarchy &&
@@ -236,7 +236,7 @@ namespace WukongKnight
             try
             {
                 if (slot == NativeSpellSlot.Focus) FinishFocus(State.Contains("2") || State == "Focus S", true);
-                else FinishCast();
+                else FinishCast(false);
             }
             finally { try { Restore(); } finally { disposed = true; } }
         }

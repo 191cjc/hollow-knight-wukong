@@ -54,6 +54,7 @@ namespace WukongKnight
         private readonly HeroController hero;
         private readonly NativeV77 native;
         private readonly NativeSpellV77 forward;
+        private readonly NativeSpellV77 down;
         private readonly NativeDreamV77 dream;
         private readonly CharacterAssets assets;
         private readonly Collider2D body;
@@ -83,6 +84,9 @@ namespace WukongKnight
         private bool disposed;
         private long token;
         private string lastForward = "";
+        private string lastDown = "";
+        public int SoulCost => forward.SoulCost;
+        private bool Holding => action == FistAction.Earthbreaker ? down.HoldsCast : dream.Holding;
         public bool Active => !disposed && action != FistAction.None;
         public bool FacingRight => facing;
         public bool ProtectsHP => action == FistAction.Earthbreaker && Owns(token);
@@ -98,9 +102,9 @@ namespace WukongKnight
             get { Bounds b = body.bounds; return new Vector3(b.center.x, b.min.y + feet * units, hero.transform.position.z); }
         }
         private bool Alive => hero != null && hero.gameObject.activeInHierarchy && !hero.cState.dead && !hero.cState.hazardDeath && !hero.cState.hazardRespawning && !hero.cState.transitioning;
-        public FistSkills(HeroController hero, NativeV77 native, CharacterAssets assets)
+        public FistSkills(HeroController hero, NativeV77 native, CharacterAssets assets, NativeDreamV77 dream)
         {
-            this.hero = hero; this.native = native; this.assets = assets;
+            this.hero = hero; this.native = native; this.assets = assets; this.dream = dream;
             body = hero.GetComponent<Collider2D>() ?? throw new InvalidOperationException("Hero collider missing");
             motion = hero.GetComponent<Rigidbody2D>() ?? throw new InvalidOperationException("Hero motion missing");
             nativeBody = hero.GetComponent<Renderer>();
@@ -108,11 +112,11 @@ namespace WukongKnight
             if (units <= 0) throw new InvalidOperationException("Invalid fist body calibration");
             source = new GameObject("WukongKnight.FistDamage");
             material = new Material(Shader.Find("Sprites/Default") ?? throw new InvalidOperationException("Sprite shader missing"));
-            NativeSpellV77? f = null; NativeDreamV77? d = null;
-            try { f = new NativeSpellV77(hero, NativeSpellSlot.Forward); d = new NativeDreamV77(hero); forward = f; dream = d; }
+            NativeSpellV77? f = null; NativeSpellV77? d = null;
+            try { f = new NativeSpellV77(hero, NativeSpellSlot.Forward); d = new NativeSpellV77(hero, NativeSpellSlot.Down); forward = f; down = d; }
             catch { d?.Dispose(); f?.Dispose(); UnityEngine.Object.Destroy(material); UnityEngine.Object.Destroy(source); throw; }
         }
-        public bool BlocksNativeSource(GameObject candidate) => forward.BlocksSource(candidate);
+        public bool BlocksNativeSource(GameObject candidate) => forward.BlocksSource(candidate) || down.BlocksSource(candidate);
         public void Observe(bool input = false)
         {
             if (disposed || observing) return;
@@ -122,6 +126,21 @@ namespace WukongKnight
                 if (!Alive) { Stop(); ClearActors(); return; }
                 if (Time.timeScale <= 0) return;
                 ExpireSummons();
+                down.SuppressEffects();
+                string downState = down.State;
+                if (downState != lastDown)
+                {
+                    lastDown = downState;
+                    if (down.HoldsState(downState))
+                    {
+                        bool accepted = FistRules.TryBeginControlled(true, down.SoulCost,
+                            () => PlayerData.instance.GetInt("MPCharge"), () => !Active && !dream.Holding && down.HoldsCast,
+                            () => Alive && !disposed && down.HoldsCast, hero.TakeMP, () => down.FinishCast(false));
+                        if (accepted) Begin(FistAction.Earthbreaker);
+                        else down.FinishCast(false);
+                        lastDown = down.State;
+                    }
+                }
                 string state = forward.State;
                 if (state != lastForward)
                 {
@@ -146,9 +165,9 @@ namespace WukongKnight
                 if (input && Time.timeScale > 0 && lastInputFrame != Time.frameCount)
                 {
                     lastInputFrame = Time.frameCount;
-                    if (!Active && native.DreamPressed(hero) && EligibleDream())
+                    if (!Active && !native.DownHeld(hero) && native.DreamPressed(hero) && EligibleDream())
                     {
-                        FistAction chosen = native.DownHeld(hero) ? FistAction.Earthbreaker : native.UpHeld(hero) ? FistAction.FireApe : FistAction.Godslayer;
+                        FistAction chosen = native.UpHeld(hero) ? FistAction.FireApe : FistAction.Godslayer;
                         if (chosen == FistAction.FireApe)
                         {
                             if (ape == null && Time.time >= nextApe && FistRules.TryBeginSummon(chosen, forward.SoulCost,
@@ -160,7 +179,7 @@ namespace WukongKnight
                     }
                 }
                 if (!Active) return;
-                if (hero.cState.recoiling || hero.cState.recoilFrozen || !dream.Holding) { Stop(); return; }
+                if (hero.cState.recoiling || hero.cState.recoilFrozen || !Holding) { Stop(); return; }
                 if (action == FistAction.Godslayer) charge.Observe(Elapsed, Wielder, native.DreamHeld(hero));
                 if (FistRules.ActionFinished(action, Elapsed, landedAt < 0 ? -1 : Time.time - landedAt,
                     charge.Released, Elapsed - charge.ReleasedAt)) { Stop(true); return; }
@@ -169,14 +188,7 @@ namespace WukongKnight
             }
             finally { observing = false; }
         }
-        private bool EligibleDream()
-        {
-            HeroControllerStates s = hero.cState;
-            if (!PlayerData.instance.GetBool("hasDreamNail") || !native.ControlAvailable(hero) || dream.State != "Inactive" ||
-                s.attacking || s.dashing || s.backDashing || s.superDashing || s.casting || s.focusing || s.recoiling || s.recoilFrozen || s.wallSliding) return false;
-            // Native eligibility protects conversations/menus; down adds an airborne slam.
-            return hero.CanDreamNail() || (!s.onGround && native.DownHeld(hero) && hero.CanInput());
-        }
+        private bool EligibleDream() => dream.CanBegin(native);
         private void Begin(FistAction chosen)
         {
             action = chosen; token++; started = Time.time; facing = hero.cState.facingRight;
@@ -328,7 +340,7 @@ namespace WukongKnight
             }
             catch { DestroyWave(w); throw; }
         }
-        private bool Owns(long t) => !disposed && Alive && Active && t == token && !hero.cState.recoiling && !hero.cState.recoilFrozen && dream.Holding;
+        private bool Owns(long t) => !disposed && Alive && Active && t == token && !hero.cState.recoiling && !hero.cState.recoilFrozen && Holding;
         private void Query(Vector3 origin, bool right, FireDemonRegion? optional, FistContacts ledger, int window, int cap, double interval, int damage, Func<bool> owns, bool projectile = false)
         {
             if (!optional.HasValue || !owns()) return;
@@ -439,13 +451,16 @@ namespace WukongKnight
         public void Stop(bool completed = false)
         {
             if (!Active) return;
-            bool quakeRecovery = completed && action == FistAction.Earthbreaker && landedAt >= 0;
+            bool earthbreaker = action == FistAction.Earthbreaker;
+            bool quakeRecovery = completed && earthbreaker && landedAt >= 0;
             action=FistAction.None; token++; hits.Clear();
             nextDream=Time.time+.25;
             for (int i=ghosts.Count-1;i>=0;i--)
                 if (ghosts[i].Action == FistAction.Godslayer && !ghosts[i].Released) RemoveGhost(i);
             if (Alive) hero.AffectedByGravity(true);
-            dream.Finish();
+            // Skip native Quake Finish: only a confirmed landing grants the timer below.
+            if (earthbreaker) { down.FinishCast(false); lastDown = down.State; }
+            else dream.Finish();
             // Copies, canceled actions and unlanded timeouts never grant this timer.
             if (quakeRecovery && !disposed && Alive && !hero.cState.recoiling && !hero.cState.recoilFrozen) hero.QuakeInvuln();
         }
@@ -455,7 +470,7 @@ namespace WukongKnight
             try { Stop(); } finally
             {
                 disposed=true; ClearActors();
-                try { dream.Dispose(); } finally { try { forward.Dispose(); } finally { UnityEngine.Object.Destroy(material); UnityEngine.Object.Destroy(source); } }
+                try { down.Dispose(); } finally { try { forward.Dispose(); } finally { UnityEngine.Object.Destroy(material); UnityEngine.Object.Destroy(source); } }
             }
         }
     }

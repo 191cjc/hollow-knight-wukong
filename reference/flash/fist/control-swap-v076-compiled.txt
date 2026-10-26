@@ -1,0 +1,1058 @@
+
+System.Void WukongKnight.FlameStorm::Observe(System.Boolean)
+IL_0000: newobj System.Void WukongKnight.FlameStorm/<>c__DisplayClass26_0::.ctor()
+IL_0005: stloc.0
+IL_0006: ldloc.0
+IL_0007: ldarg.0
+IL_0008: stfld WukongKnight.FlameStorm WukongKnight.FlameStorm/<>c__DisplayClass26_0::<>4__this
+IL_000d: ldarg.0
+IL_000e: ldfld System.Boolean WukongKnight.FlameStorm::disposed
+IL_0013: brtrue.s IL_001d
+IL_0015: ldarg.0
+IL_0016: ldfld System.Boolean WukongKnight.FlameStorm::observing
+IL_001b: brfalse.s IL_001e
+IL_001d: ret
+IL_001e: ldarg.0
+IL_001f: ldc.i4.1
+IL_0020: stfld System.Boolean WukongKnight.FlameStorm::observing
+IL_0025: ldloc.0
+IL_0026: ldarg.0
+IL_0027: ldfld HeroController WukongKnight.FlameStorm::hero
+IL_002c: ldfld HeroControllerStates HeroController::cState
+IL_0031: stfld HeroControllerStates WukongKnight.FlameStorm/<>c__DisplayClass26_0::s
+IL_0036: ldarg.0
+IL_0037: ldfld HeroController WukongKnight.FlameStorm::hero
+IL_003c: callvirt UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+IL_0041: callvirt System.Boolean UnityEngine.GameObject::get_activeInHierarchy()
+IL_0046: brfalse.s IL_0096
+IL_0048: ldloc.0
+IL_0049: ldfld HeroControllerStates WukongKnight.FlameStorm/<>c__DisplayClass26_0::s
+IL_004e: ldfld System.Boolean HeroControllerStates::dead
+IL_0053: brtrue.s IL_0096
+IL_0055: ldloc.0
+IL_0056: ldfld HeroControllerStates WukongKnight.FlameStorm/<>c__DisplayClass26_0::s
+IL_005b: ldfld System.Boolean HeroControllerStates::hazardDeath
+IL_0060: brtrue.s IL_0096
+IL_0062: ldloc.0
+IL_0063: ldfld HeroControllerStates WukongKnight.FlameStorm/<>c__DisplayClass26_0::s
+IL_0068: ldfld System.Boolean HeroControllerStates::hazardRespawning
+IL_006d: brtrue.s IL_0096
+IL_006f: ldloc.0
+IL_0070: ldfld HeroControllerStates WukongKnight.FlameStorm/<>c__DisplayClass26_0::s
+IL_0075: ldfld System.Boolean HeroControllerStates::transitioning
+IL_007a: brtrue.s IL_0096
+IL_007c: ldloc.0
+IL_007d: ldfld HeroControllerStates WukongKnight.FlameStorm/<>c__DisplayClass26_0::s
+IL_0082: ldfld System.Boolean HeroControllerStates::recoiling
+IL_0087: brtrue.s IL_0096
+IL_0089: ldloc.0
+IL_008a: ldfld HeroControllerStates WukongKnight.FlameStorm/<>c__DisplayClass26_0::s
+IL_008f: ldfld System.Boolean HeroControllerStates::recoilFrozen
+IL_0094: brfalse.s IL_00a2
+IL_0096: ldarg.0
+IL_0097: ldc.i4.0
+IL_0098: call System.Void WukongKnight.FlameStorm::Stop(System.Boolean)
+IL_009d: leave IL_0296
+IL_00a2: call System.Single UnityEngine.Time::get_timeScale()
+IL_00a7: ldc.r4 0
+IL_00ac: bgt.un.s IL_00b3
+IL_00ae: leave IL_0296
+IL_00b3: ldarg.0
+IL_00b4: ldfld WukongKnight.Core.SpellHitLedger WukongKnight.FlameStorm::hits
+IL_00b9: callvirt System.Boolean WukongKnight.Core.SpellHitLedger::get_Active()
+IL_00be: brfalse.s IL_00d9
+IL_00c0: ldarg.0
+IL_00c1: ldfld WukongKnight.NativeDreamV77 WukongKnight.FlameStorm::dream
+IL_00c6: callvirt System.Boolean WukongKnight.NativeDreamV77::get_Holding()
+IL_00cb: brtrue.s IL_00d9
+IL_00cd: ldarg.0
+IL_00ce: ldc.i4.0
+IL_00cf: call System.Void WukongKnight.FlameStorm::Stop(System.Boolean)
+IL_00d4: leave IL_0296
+IL_00d9: ldarg.1
+IL_00da: brfalse IL_0226
+IL_00df: ldarg.0
+IL_00e0: ldfld System.Int32 WukongKnight.FlameStorm::lastInputFrame
+IL_00e5: call System.Int32 UnityEngine.Time::get_frameCount()
+IL_00ea: beq IL_0226
+IL_00ef: ldarg.0
+IL_00f0: call System.Int32 UnityEngine.Time::get_frameCount()
+IL_00f5: stfld System.Int32 WukongKnight.FlameStorm::lastInputFrame
+IL_00fa: ldarg.0
+IL_00fb: ldfld WukongKnight.Core.SpellHitLedger WukongKnight.FlameStorm::hits
+IL_0100: callvirt System.Boolean WukongKnight.Core.SpellHitLedger::get_Active()
+IL_0105: brtrue IL_0226
+IL_010a: ldarg.0
+IL_010b: ldfld WukongKnight.NativeV77 WukongKnight.FlameStorm::native
+IL_0110: ldarg.0
+IL_0111: ldfld HeroController WukongKnight.FlameStorm::hero
+IL_0116: callvirt System.Boolean WukongKnight.NativeV77::DownHeld(HeroController)
+IL_011b: brfalse IL_0226
+IL_0120: ldarg.0
+IL_0121: ldfld WukongKnight.NativeV77 WukongKnight.FlameStorm::native
+IL_0126: ldarg.0
+IL_0127: ldfld HeroController WukongKnight.FlameStorm::hero
+IL_012c: callvirt System.Boolean WukongKnight.NativeV77::DreamPressed(HeroController)
+IL_0131: brfalse IL_0226
+IL_0136: ldarg.0
+IL_0137: ldfld WukongKnight.NativeDreamV77 WukongKnight.FlameStorm::dream
+IL_013c: ldarg.0
+IL_013d: ldfld WukongKnight.NativeV77 WukongKnight.FlameStorm::native
+IL_0142: ldc.i4.1
+IL_0143: callvirt System.Boolean WukongKnight.NativeDreamV77::CanBegin(WukongKnight.NativeV77,System.Boolean)
+IL_0148: brfalse IL_0226
+IL_014d: ldc.i4.1
+IL_014e: ldarg.0
+IL_014f: ldfld System.Func`1<System.Int32> WukongKnight.FlameStorm::soulCost
+IL_0154: callvirt !0 System.Func`1<System.Int32>::Invoke()
+IL_0159: ldsfld System.Func`1<System.Int32> WukongKnight.FlameStorm/<>c::<>9__26_0
+IL_015e: dup
+IL_015f: brtrue.s IL_0178
+IL_0161: pop
+IL_0162: ldsfld WukongKnight.FlameStorm/<>c WukongKnight.FlameStorm/<>c::<>9
+IL_0167: ldftn System.Int32 WukongKnight.FlameStorm/<>c::<Observe>b__26_0()
+IL_016d: newobj System.Void System.Func`1<System.Int32>::.ctor(System.Object,System.IntPtr)
+IL_0172: dup
+IL_0173: stsfld System.Func`1<System.Int32> WukongKnight.FlameStorm/<>c::<>9__26_0
+IL_0178: ldarg.0
+IL_0179: ldfld WukongKnight.NativeDreamV77 WukongKnight.FlameStorm::dream
+IL_017e: ldftn System.Boolean WukongKnight.NativeDreamV77::Begin()
+IL_0184: newobj System.Void System.Func`1<System.Boolean>::.ctor(System.Object,System.IntPtr)
+IL_0189: ldloc.0
+IL_018a: ldftn System.Boolean WukongKnight.FlameStorm/<>c__DisplayClass26_0::<Observe>b__1()
+IL_0190: newobj System.Void System.Func`1<System.Boolean>::.ctor(System.Object,System.IntPtr)
+IL_0195: ldarg.0
+IL_0196: ldfld HeroController WukongKnight.FlameStorm::hero
+IL_019b: ldftn System.Void HeroController::TakeMP(System.Int32)
+IL_01a1: newobj System.Void System.Action`1<System.Int32>::.ctor(System.Object,System.IntPtr)
+IL_01a6: ldarg.0
+IL_01a7: ldfld WukongKnight.NativeDreamV77 WukongKnight.FlameStorm::dream
+IL_01ac: ldftn System.Void WukongKnight.NativeDreamV77::Finish()
+IL_01b2: newobj System.Void System.Action::.ctor(System.Object,System.IntPtr)
+IL_01b7: call System.Boolean WukongKnight.Core.FistRules::TryBeginControlled(System.Boolean,System.Int32,System.Func`1<System.Int32>,System.Func`1<System.Boolean>,System.Func`1<System.Boolean>,System.Action`1<System.Int32>,System.Action)
+IL_01bc: brfalse.s IL_0226
+IL_01be: ldarg.0
+IL_01bf: ldfld WukongKnight.Core.SpellHitLedger WukongKnight.FlameStorm::hits
+IL_01c4: callvirt System.Int64 WukongKnight.Core.SpellHitLedger::Begin()
+IL_01c9: pop
+IL_01ca: ldarg.0
+IL_01cb: ldfld HeroController WukongKnight.FlameStorm::hero
+IL_01d0: callvirt System.Void HeroController::CancelParryInvuln()
+IL_01d5: ldarg.0
+IL_01d6: call System.Single UnityEngine.Time::get_time()
+IL_01db: conv.r8
+IL_01dc: stfld System.Double WukongKnight.FlameStorm::started
+IL_01e1: ldarg.0
+IL_01e2: ldloc.0
+IL_01e3: ldfld HeroControllerStates WukongKnight.FlameStorm/<>c__DisplayClass26_0::s
+IL_01e8: ldfld System.Boolean HeroControllerStates::facingRight
+IL_01ed: stfld System.Boolean WukongKnight.FlameStorm::facing
+IL_01f2: ldarg.0
+IL_01f3: ldc.r4 -∞
+IL_01f8: stfld System.Single WukongKnight.FlameStorm::lastPhysics
+IL_01fd: ldarg.0
+IL_01fe: call PlayerData PlayerData::get_instance()
+IL_0203: ldstr "quakeLevel"
+IL_0208: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_020d: call PlayerData PlayerData::get_instance()
+IL_0212: ldstr "equippedCharm_19"
+IL_0217: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_021c: call System.Int32 WukongKnight.Core.FlameStormRules::Damage(System.Int32,System.Boolean)
+IL_0221: stfld System.Int32 WukongKnight.FlameStorm::damage
+IL_0226: ldarg.0
+IL_0227: call System.Boolean WukongKnight.FlameStorm::get_Active()
+IL_022c: brtrue.s IL_0230
+IL_022e: leave.s IL_0296
+IL_0230: ldarg.0
+IL_0231: call WukongKnight.Core.FlameStormClock WukongKnight.FlameStorm::get_Clock()
+IL_0236: stloc.1
+IL_0237: ldloca.s V_1
+IL_0239: call System.Boolean WukongKnight.Core.FlameStormClock::get_Complete()
+IL_023e: brfalse.s IL_0249
+IL_0240: ldarg.0
+IL_0241: ldc.i4.1
+IL_0242: call System.Void WukongKnight.FlameStorm::Stop(System.Boolean)
+IL_0247: leave.s IL_0296
+IL_0249: ldarg.0
+IL_024a: ldfld HeroController WukongKnight.FlameStorm::hero
+IL_024f: callvirt System.Void HeroController::RelinquishControl()
+IL_0254: ldarg.0
+IL_0255: ldfld HeroController WukongKnight.FlameStorm::hero
+IL_025a: callvirt System.Void HeroController::IgnoreInput()
+IL_025f: ldarg.0
+IL_0260: ldfld WukongKnight.NativeV77 WukongKnight.FlameStorm::native
+IL_0265: ldarg.0
+IL_0266: ldfld HeroController WukongKnight.FlameStorm::hero
+IL_026b: callvirt System.Void WukongKnight.NativeV77::ResetInput(HeroController)
+IL_0270: ldarg.0
+IL_0271: ldfld HeroController WukongKnight.FlameStorm::hero
+IL_0276: ldc.i4.0
+IL_0277: callvirt System.Void HeroController::AffectedByGravity(System.Boolean)
+IL_027c: ldarg.0
+IL_027d: ldfld UnityEngine.Rigidbody2D WukongKnight.FlameStorm::motion
+IL_0282: call UnityEngine.Vector2 UnityEngine.Vector2::get_zero()
+IL_0287: callvirt System.Void UnityEngine.Rigidbody2D::set_velocity(UnityEngine.Vector2)
+IL_028c: leave.s IL_0296
+IL_028e: ldarg.0
+IL_028f: ldc.i4.0
+IL_0290: stfld System.Boolean WukongKnight.FlameStorm::observing
+IL_0295: endfinally
+IL_0296: ret
+
+System.Void WukongKnight.FlameStorm::Stop(System.Boolean)
+IL_0000: ldarg.0
+IL_0001: ldfld WukongKnight.Core.SpellHitLedger WukongKnight.FlameStorm::hits
+IL_0006: callvirt System.Boolean WukongKnight.Core.SpellHitLedger::get_Active()
+IL_000b: brtrue.s IL_000e
+IL_000d: ret
+IL_000e: ldarg.0
+IL_000f: ldfld WukongKnight.Core.SpellHitLedger WukongKnight.FlameStorm::hits
+IL_0014: ldarg.0
+IL_0015: ldfld WukongKnight.Core.SpellHitLedger WukongKnight.FlameStorm::hits
+IL_001a: callvirt System.Int64 WukongKnight.Core.SpellHitLedger::get_Token()
+IL_001f: callvirt System.Void WukongKnight.Core.SpellHitLedger::Stop(System.Int64)
+IL_0024: ldarg.0
+IL_0025: ldfld WukongKnight.NativeDreamV77 WukongKnight.FlameStorm::dream
+IL_002a: callvirt System.Void WukongKnight.NativeDreamV77::Finish()
+IL_002f: ldarg.0
+IL_0030: ldfld HeroController WukongKnight.FlameStorm::hero
+IL_0035: ldfld HeroControllerStates HeroController::cState
+IL_003a: stloc.0
+IL_003b: ldarg.1
+IL_003c: brfalse.s IL_0093
+IL_003e: ldarg.0
+IL_003f: ldfld System.Boolean WukongKnight.FlameStorm::disposed
+IL_0044: brtrue.s IL_0093
+IL_0046: ldarg.0
+IL_0047: ldfld HeroController WukongKnight.FlameStorm::hero
+IL_004c: callvirt UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+IL_0051: callvirt System.Boolean UnityEngine.GameObject::get_activeInHierarchy()
+IL_0056: brfalse.s IL_0093
+IL_0058: ldloc.0
+IL_0059: ldfld System.Boolean HeroControllerStates::dead
+IL_005e: brtrue.s IL_0093
+IL_0060: ldloc.0
+IL_0061: ldfld System.Boolean HeroControllerStates::hazardDeath
+IL_0066: brtrue.s IL_0093
+IL_0068: ldloc.0
+IL_0069: ldfld System.Boolean HeroControllerStates::hazardRespawning
+IL_006e: brtrue.s IL_0093
+IL_0070: ldloc.0
+IL_0071: ldfld System.Boolean HeroControllerStates::transitioning
+IL_0076: brtrue.s IL_0093
+IL_0078: ldloc.0
+IL_0079: ldfld System.Boolean HeroControllerStates::recoiling
+IL_007e: brtrue.s IL_0093
+IL_0080: ldloc.0
+IL_0081: ldfld System.Boolean HeroControllerStates::recoilFrozen
+IL_0086: brtrue.s IL_0093
+IL_0088: ldarg.0
+IL_0089: ldfld HeroController WukongKnight.FlameStorm::hero
+IL_008e: callvirt System.Void HeroController::QuakeInvuln()
+IL_0093: ret
+
+System.Void WukongKnight.FistSkills::Observe(System.Boolean)
+IL_0000: ldarg.0
+IL_0001: ldfld System.Boolean WukongKnight.FistSkills::disposed
+IL_0006: brtrue.s IL_0010
+IL_0008: ldarg.0
+IL_0009: ldfld System.Boolean WukongKnight.FistSkills::observing
+IL_000e: brfalse.s IL_0011
+IL_0010: ret
+IL_0011: ldarg.0
+IL_0012: ldc.i4.1
+IL_0013: stfld System.Boolean WukongKnight.FistSkills::observing
+IL_0018: ldarg.0
+IL_0019: call System.Boolean WukongKnight.FistSkills::get_Alive()
+IL_001e: brtrue.s IL_0032
+IL_0020: ldarg.0
+IL_0021: ldc.i4.0
+IL_0022: call System.Void WukongKnight.FistSkills::Stop(System.Boolean)
+IL_0027: ldarg.0
+IL_0028: call System.Void WukongKnight.FistSkills::ClearActors()
+IL_002d: leave IL_04c9
+IL_0032: call System.Single UnityEngine.Time::get_timeScale()
+IL_0037: ldc.r4 0
+IL_003c: bgt.un.s IL_0043
+IL_003e: leave IL_04c9
+IL_0043: ldarg.0
+IL_0044: call System.Void WukongKnight.FistSkills::ExpireSummons()
+IL_0049: ldarg.0
+IL_004a: ldfld WukongKnight.NativeSpellV77 WukongKnight.FistSkills::down
+IL_004f: callvirt System.Void WukongKnight.NativeSpellV77::SuppressEffects()
+IL_0054: ldarg.0
+IL_0055: ldfld WukongKnight.NativeSpellV77 WukongKnight.FistSkills::down
+IL_005a: callvirt System.String WukongKnight.NativeSpellV77::get_State()
+IL_005f: stloc.0
+IL_0060: ldloc.0
+IL_0061: ldarg.0
+IL_0062: ldfld System.String WukongKnight.FistSkills::lastDown
+IL_0067: call System.Boolean System.String::op_Inequality(System.String,System.String)
+IL_006c: brfalse IL_0116
+IL_0071: ldarg.0
+IL_0072: ldloc.0
+IL_0073: stfld System.String WukongKnight.FistSkills::lastDown
+IL_0078: ldarg.0
+IL_0079: ldfld WukongKnight.NativeSpellV77 WukongKnight.FistSkills::down
+IL_007e: ldloc.0
+IL_007f: callvirt System.Boolean WukongKnight.NativeSpellV77::HoldsState(System.String)
+IL_0084: brfalse IL_0116
+IL_0089: ldc.i4.1
+IL_008a: ldarg.0
+IL_008b: ldfld WukongKnight.NativeSpellV77 WukongKnight.FistSkills::down
+IL_0090: callvirt System.Int32 WukongKnight.NativeSpellV77::get_SoulCost()
+IL_0095: ldsfld System.Func`1<System.Int32> WukongKnight.FistSkills/<>c::<>9__65_0
+IL_009a: dup
+IL_009b: brtrue.s IL_00b4
+IL_009d: pop
+IL_009e: ldsfld WukongKnight.FistSkills/<>c WukongKnight.FistSkills/<>c::<>9
+IL_00a3: ldftn System.Int32 WukongKnight.FistSkills/<>c::<Observe>b__65_0()
+IL_00a9: newobj System.Void System.Func`1<System.Int32>::.ctor(System.Object,System.IntPtr)
+IL_00ae: dup
+IL_00af: stsfld System.Func`1<System.Int32> WukongKnight.FistSkills/<>c::<>9__65_0
+IL_00b4: ldarg.0
+IL_00b5: ldftn System.Boolean WukongKnight.FistSkills::<Observe>b__65_1()
+IL_00bb: newobj System.Void System.Func`1<System.Boolean>::.ctor(System.Object,System.IntPtr)
+IL_00c0: ldarg.0
+IL_00c1: ldftn System.Boolean WukongKnight.FistSkills::<Observe>b__65_2()
+IL_00c7: newobj System.Void System.Func`1<System.Boolean>::.ctor(System.Object,System.IntPtr)
+IL_00cc: ldarg.0
+IL_00cd: ldfld HeroController WukongKnight.FistSkills::hero
+IL_00d2: ldftn System.Void HeroController::TakeMP(System.Int32)
+IL_00d8: newobj System.Void System.Action`1<System.Int32>::.ctor(System.Object,System.IntPtr)
+IL_00dd: ldarg.0
+IL_00de: ldftn System.Void WukongKnight.FistSkills::<Observe>b__65_3()
+IL_00e4: newobj System.Void System.Action::.ctor(System.Object,System.IntPtr)
+IL_00e9: call System.Boolean WukongKnight.Core.FistRules::TryBeginControlled(System.Boolean,System.Int32,System.Func`1<System.Int32>,System.Func`1<System.Boolean>,System.Func`1<System.Boolean>,System.Action`1<System.Int32>,System.Action)
+IL_00ee: brfalse.s IL_00f9
+IL_00f0: ldarg.0
+IL_00f1: ldc.i4.3
+IL_00f2: call System.Void WukongKnight.FistSkills::Begin(WukongKnight.Core.FistAction)
+IL_00f7: br.s IL_0105
+IL_00f9: ldarg.0
+IL_00fa: ldfld WukongKnight.NativeSpellV77 WukongKnight.FistSkills::down
+IL_00ff: ldc.i4.0
+IL_0100: callvirt System.Void WukongKnight.NativeSpellV77::FinishCast(System.Boolean)
+IL_0105: ldarg.0
+IL_0106: ldarg.0
+IL_0107: ldfld WukongKnight.NativeSpellV77 WukongKnight.FistSkills::down
+IL_010c: callvirt System.String WukongKnight.NativeSpellV77::get_State()
+IL_0111: stfld System.String WukongKnight.FistSkills::lastDown
+IL_0116: ldarg.0
+IL_0117: ldfld WukongKnight.NativeSpellV77 WukongKnight.FistSkills::forward
+IL_011c: callvirt System.String WukongKnight.NativeSpellV77::get_State()
+IL_0121: stloc.1
+IL_0122: ldloc.1
+IL_0123: ldarg.0
+IL_0124: ldfld System.String WukongKnight.FistSkills::lastForward
+IL_0129: call System.Boolean System.String::op_Inequality(System.String,System.String)
+IL_012e: brfalse IL_0211
+IL_0133: ldarg.0
+IL_0134: ldloc.1
+IL_0135: stfld System.String WukongKnight.FistSkills::lastForward
+IL_013a: ldarg.0
+IL_013b: ldfld WukongKnight.NativeSpellV77 WukongKnight.FistSkills::forward
+IL_0140: ldloc.1
+IL_0141: callvirt System.Boolean WukongKnight.NativeSpellV77::HoldsState(System.String)
+IL_0146: brfalse IL_0211
+IL_014b: ldarg.0
+IL_014c: call UnityEngine.Vector3 WukongKnight.FistSkills::get_Origin()
+IL_0151: stloc.2
+IL_0152: ldarg.0
+IL_0153: ldfld HeroController WukongKnight.FistSkills::hero
+IL_0158: ldfld HeroControllerStates HeroController::cState
+IL_015d: ldfld System.Boolean HeroControllerStates::facingRight
+IL_0162: stloc.3
+IL_0163: ldc.i4.0
+IL_0164: stloc.s V_4
+IL_0166: ldarg.0
+IL_0167: call System.Boolean WukongKnight.FistSkills::get_Active()
+IL_016c: brtrue.s IL_01d5
+IL_016e: ldarg.0
+IL_016f: ldfld System.Int32 WukongKnight.FistSkills::lastSummonFrame
+IL_0174: call System.Int32 UnityEngine.Time::get_frameCount()
+IL_0179: beq.s IL_01d5
+IL_017b: ldarg.0
+IL_017c: call System.Int32 UnityEngine.Time::get_frameCount()
+IL_0181: stfld System.Int32 WukongKnight.FistSkills::lastSummonFrame
+IL_0186: ldc.i4.1
+IL_0187: ldarg.0
+IL_0188: ldfld WukongKnight.NativeSpellV77 WukongKnight.FistSkills::forward
+IL_018d: callvirt System.Int32 WukongKnight.NativeSpellV77::get_SoulCost()
+IL_0192: ldsfld System.Func`1<System.Int32> WukongKnight.FistSkills/<>c::<>9__65_4
+IL_0197: dup
+IL_0198: brtrue.s IL_01b1
+IL_019a: pop
+IL_019b: ldsfld WukongKnight.FistSkills/<>c WukongKnight.FistSkills/<>c::<>9
+IL_01a0: ldftn System.Int32 WukongKnight.FistSkills/<>c::<Observe>b__65_4()
+IL_01a6: newobj System.Void System.Func`1<System.Int32>::.ctor(System.Object,System.IntPtr)
+IL_01ab: dup
+IL_01ac: stsfld System.Func`1<System.Int32> WukongKnight.FistSkills/<>c::<>9__65_4
+IL_01b1: ldarg.0
+IL_01b2: ldftn System.Boolean WukongKnight.FistSkills::<Observe>b__65_5()
+IL_01b8: newobj System.Void System.Func`1<System.Boolean>::.ctor(System.Object,System.IntPtr)
+IL_01bd: ldarg.0
+IL_01be: ldfld HeroController WukongKnight.FistSkills::hero
+IL_01c3: ldftn System.Void HeroController::TakeMP(System.Int32)
+IL_01c9: newobj System.Void System.Action`1<System.Int32>::.ctor(System.Object,System.IntPtr)
+IL_01ce: call System.Boolean WukongKnight.Core.FistRules::TryBeginSummon(WukongKnight.Core.FistAction,System.Int32,System.Func`1<System.Int32>,System.Func`1<System.Boolean>,System.Action`1<System.Int32>)
+IL_01d3: stloc.s V_4
+IL_01d5: leave.s IL_01f5
+IL_01d7: ldarg.0
+IL_01d8: ldfld WukongKnight.NativeSpellV77 WukongKnight.FistSkills::forward
+IL_01dd: ldc.i4.1
+IL_01de: callvirt System.Void WukongKnight.NativeSpellV77::FinishCast(System.Boolean)
+IL_01e3: ldarg.0
+IL_01e4: ldarg.0
+IL_01e5: ldfld WukongKnight.NativeSpellV77 WukongKnight.FistSkills::forward
+IL_01ea: callvirt System.String WukongKnight.NativeSpellV77::get_State()
+IL_01ef: stfld System.String WukongKnight.FistSkills::lastForward
+IL_01f4: endfinally
+IL_01f5: ldloc.s V_4
+IL_01f7: brfalse.s IL_0211
+IL_01f9: ldarg.0
+IL_01fa: call System.Boolean WukongKnight.FistSkills::get_Alive()
+IL_01ff: brfalse.s IL_0211
+IL_0201: ldarg.0
+IL_0202: ldfld System.Boolean WukongKnight.FistSkills::disposed
+IL_0207: brtrue.s IL_0211
+IL_0209: ldarg.0
+IL_020a: ldloc.2
+IL_020b: ldloc.3
+IL_020c: call System.Void WukongKnight.FistSkills::BeginAfterimage(UnityEngine.Vector3,System.Boolean)
+IL_0211: ldarg.1
+IL_0212: brfalse IL_03a3
+IL_0217: call System.Single UnityEngine.Time::get_timeScale()
+IL_021c: ldc.r4 0
+IL_0221: ble.un IL_03a3
+IL_0226: ldarg.0
+IL_0227: ldfld System.Int32 WukongKnight.FistSkills::lastInputFrame
+IL_022c: call System.Int32 UnityEngine.Time::get_frameCount()
+IL_0231: beq IL_03a3
+IL_0236: ldarg.0
+IL_0237: call System.Int32 UnityEngine.Time::get_frameCount()
+IL_023c: stfld System.Int32 WukongKnight.FistSkills::lastInputFrame
+IL_0241: ldarg.0
+IL_0242: call System.Boolean WukongKnight.FistSkills::get_Active()
+IL_0247: brtrue IL_03a3
+IL_024c: ldarg.0
+IL_024d: ldfld WukongKnight.NativeV77 WukongKnight.FistSkills::native
+IL_0252: ldarg.0
+IL_0253: ldfld HeroController WukongKnight.FistSkills::hero
+IL_0258: callvirt System.Boolean WukongKnight.NativeV77::DownHeld(HeroController)
+IL_025d: brtrue IL_03a3
+IL_0262: ldarg.0
+IL_0263: ldfld WukongKnight.NativeV77 WukongKnight.FistSkills::native
+IL_0268: ldarg.0
+IL_0269: ldfld HeroController WukongKnight.FistSkills::hero
+IL_026e: callvirt System.Boolean WukongKnight.NativeV77::DreamPressed(HeroController)
+IL_0273: brfalse IL_03a3
+IL_0278: ldarg.0
+IL_0279: call System.Boolean WukongKnight.FistSkills::EligibleDream()
+IL_027e: brfalse IL_03a3
+IL_0283: ldarg.0
+IL_0284: ldfld WukongKnight.NativeV77 WukongKnight.FistSkills::native
+IL_0289: ldarg.0
+IL_028a: ldfld HeroController WukongKnight.FistSkills::hero
+IL_028f: callvirt System.Boolean WukongKnight.NativeV77::UpHeld(HeroController)
+IL_0294: brtrue.s IL_0299
+IL_0296: ldc.i4.2
+IL_0297: br.s IL_029a
+IL_0299: ldc.i4.4
+IL_029a: stloc.s V_5
+IL_029c: ldloc.s V_5
+IL_029e: ldc.i4.4
+IL_029f: bne.un.s IL_031b
+IL_02a1: ldarg.0
+IL_02a2: ldfld WukongKnight.FistSkills/Summon WukongKnight.FistSkills::ape
+IL_02a7: brtrue IL_03a3
+IL_02ac: call System.Single UnityEngine.Time::get_time()
+IL_02b1: conv.r8
+IL_02b2: ldarg.0
+IL_02b3: ldfld System.Double WukongKnight.FistSkills::nextApe
+IL_02b8: blt.un IL_03a3
+IL_02bd: ldloc.s V_5
+IL_02bf: ldarg.0
+IL_02c0: ldfld WukongKnight.NativeSpellV77 WukongKnight.FistSkills::forward
+IL_02c5: callvirt System.Int32 WukongKnight.NativeSpellV77::get_SoulCost()
+IL_02ca: ldsfld System.Func`1<System.Int32> WukongKnight.FistSkills/<>c::<>9__65_6
+IL_02cf: dup
+IL_02d0: brtrue.s IL_02e9
+IL_02d2: pop
+IL_02d3: ldsfld WukongKnight.FistSkills/<>c WukongKnight.FistSkills/<>c::<>9
+IL_02d8: ldftn System.Int32 WukongKnight.FistSkills/<>c::<Observe>b__65_6()
+IL_02de: newobj System.Void System.Func`1<System.Int32>::.ctor(System.Object,System.IntPtr)
+IL_02e3: dup
+IL_02e4: stsfld System.Func`1<System.Int32> WukongKnight.FistSkills/<>c::<>9__65_6
+IL_02e9: ldarg.0
+IL_02ea: ldftn System.Boolean WukongKnight.FistSkills::<Observe>b__65_7()
+IL_02f0: newobj System.Void System.Func`1<System.Boolean>::.ctor(System.Object,System.IntPtr)
+IL_02f5: ldarg.0
+IL_02f6: ldfld HeroController WukongKnight.FistSkills::hero
+IL_02fb: ldftn System.Void HeroController::TakeMP(System.Int32)
+IL_0301: newobj System.Void System.Action`1<System.Int32>::.ctor(System.Object,System.IntPtr)
+IL_0306: call System.Boolean WukongKnight.Core.FistRules::TryBeginSummon(WukongKnight.Core.FistAction,System.Int32,System.Func`1<System.Int32>,System.Func`1<System.Boolean>,System.Action`1<System.Int32>)
+IL_030b: brfalse IL_03a3
+IL_0310: ldarg.0
+IL_0311: call System.Void WukongKnight.FistSkills::BeginApe()
+IL_0316: br IL_03a3
+IL_031b: call System.Single UnityEngine.Time::get_time()
+IL_0320: conv.r8
+IL_0321: ldarg.0
+IL_0322: ldfld System.Double WukongKnight.FistSkills::nextDream
+IL_0327: blt.un.s IL_03a3
+IL_0329: ldloc.s V_5
+IL_032b: ldarg.0
+IL_032c: ldfld WukongKnight.NativeSpellV77 WukongKnight.FistSkills::forward
+IL_0331: callvirt System.Int32 WukongKnight.NativeSpellV77::get_SoulCost()
+IL_0336: ldsfld System.Func`1<System.Int32> WukongKnight.FistSkills/<>c::<>9__65_8
+IL_033b: dup
+IL_033c: brtrue.s IL_0355
+IL_033e: pop
+IL_033f: ldsfld WukongKnight.FistSkills/<>c WukongKnight.FistSkills/<>c::<>9
+IL_0344: ldftn System.Int32 WukongKnight.FistSkills/<>c::<Observe>b__65_8()
+IL_034a: newobj System.Void System.Func`1<System.Int32>::.ctor(System.Object,System.IntPtr)
+IL_034f: dup
+IL_0350: stsfld System.Func`1<System.Int32> WukongKnight.FistSkills/<>c::<>9__65_8
+IL_0355: ldarg.0
+IL_0356: ldfld WukongKnight.NativeDreamV77 WukongKnight.FistSkills::dream
+IL_035b: ldftn System.Boolean WukongKnight.NativeDreamV77::Begin()
+IL_0361: newobj System.Void System.Func`1<System.Boolean>::.ctor(System.Object,System.IntPtr)
+IL_0366: ldarg.0
+IL_0367: ldftn System.Boolean WukongKnight.FistSkills::<Observe>b__65_9()
+IL_036d: newobj System.Void System.Func`1<System.Boolean>::.ctor(System.Object,System.IntPtr)
+IL_0372: ldarg.0
+IL_0373: ldfld HeroController WukongKnight.FistSkills::hero
+IL_0378: ldftn System.Void HeroController::TakeMP(System.Int32)
+IL_037e: newobj System.Void System.Action`1<System.Int32>::.ctor(System.Object,System.IntPtr)
+IL_0383: ldarg.0
+IL_0384: ldfld WukongKnight.NativeDreamV77 WukongKnight.FistSkills::dream
+IL_0389: ldftn System.Void WukongKnight.NativeDreamV77::Finish()
+IL_038f: newobj System.Void System.Action::.ctor(System.Object,System.IntPtr)
+IL_0394: call System.Boolean WukongKnight.Core.FistRules::TryBeginDream(WukongKnight.Core.FistAction,System.Int32,System.Func`1<System.Int32>,System.Func`1<System.Boolean>,System.Func`1<System.Boolean>,System.Action`1<System.Int32>,System.Action)
+IL_0399: brfalse.s IL_03a3
+IL_039b: ldarg.0
+IL_039c: ldloc.s V_5
+IL_039e: call System.Void WukongKnight.FistSkills::Begin(WukongKnight.Core.FistAction)
+IL_03a3: ldarg.0
+IL_03a4: call System.Boolean WukongKnight.FistSkills::get_Active()
+IL_03a9: brtrue.s IL_03b0
+IL_03ab: leave IL_04c9
+IL_03b0: ldarg.0
+IL_03b1: ldfld HeroController WukongKnight.FistSkills::hero
+IL_03b6: ldfld HeroControllerStates HeroController::cState
+IL_03bb: ldfld System.Boolean HeroControllerStates::recoiling
+IL_03c0: brtrue.s IL_03dc
+IL_03c2: ldarg.0
+IL_03c3: ldfld HeroController WukongKnight.FistSkills::hero
+IL_03c8: ldfld HeroControllerStates HeroController::cState
+IL_03cd: ldfld System.Boolean HeroControllerStates::recoilFrozen
+IL_03d2: brtrue.s IL_03dc
+IL_03d4: ldarg.0
+IL_03d5: call System.Boolean WukongKnight.FistSkills::get_Holding()
+IL_03da: brtrue.s IL_03e8
+IL_03dc: ldarg.0
+IL_03dd: ldc.i4.0
+IL_03de: call System.Void WukongKnight.FistSkills::Stop(System.Boolean)
+IL_03e3: leave IL_04c9
+IL_03e8: ldarg.0
+IL_03e9: ldfld WukongKnight.Core.FistAction WukongKnight.FistSkills::action
+IL_03ee: ldc.i4.2
+IL_03ef: bne.un.s IL_041a
+IL_03f1: ldarg.0
+IL_03f2: ldfld WukongKnight.Core.GodslayerCharge WukongKnight.FistSkills::charge
+IL_03f7: ldarg.0
+IL_03f8: call System.Double WukongKnight.FistSkills::get_Elapsed()
+IL_03fd: ldarg.0
+IL_03fe: call System.Boolean WukongKnight.FistSkills::get_Wielder()
+IL_0403: ldarg.0
+IL_0404: ldfld WukongKnight.NativeV77 WukongKnight.FistSkills::native
+IL_0409: ldarg.0
+IL_040a: ldfld HeroController WukongKnight.FistSkills::hero
+IL_040f: callvirt System.Boolean WukongKnight.NativeV77::DreamHeld(HeroController)
+IL_0414: callvirt System.Boolean WukongKnight.Core.GodslayerCharge::Observe(System.Double,System.Boolean,System.Boolean)
+IL_0419: pop
+IL_041a: ldarg.0
+IL_041b: ldfld WukongKnight.Core.FistAction WukongKnight.FistSkills::action
+IL_0420: ldarg.0
+IL_0421: call System.Double WukongKnight.FistSkills::get_Elapsed()
+IL_0426: ldarg.0
+IL_0427: ldfld System.Double WukongKnight.FistSkills::landedAt
+IL_042c: ldc.r8 0
+IL_0435: blt.s IL_0446
+IL_0437: call System.Single UnityEngine.Time::get_time()
+IL_043c: conv.r8
+IL_043d: ldarg.0
+IL_043e: ldfld System.Double WukongKnight.FistSkills::landedAt
+IL_0443: sub
+IL_0444: br.s IL_044f
+IL_0446: ldc.r8 -1
+IL_044f: ldarg.0
+IL_0450: ldfld WukongKnight.Core.GodslayerCharge WukongKnight.FistSkills::charge
+IL_0455: callvirt System.Boolean WukongKnight.Core.GodslayerCharge::get_Released()
+IL_045a: ldarg.0
+IL_045b: call System.Double WukongKnight.FistSkills::get_Elapsed()
+IL_0460: ldarg.0
+IL_0461: ldfld WukongKnight.Core.GodslayerCharge WukongKnight.FistSkills::charge
+IL_0466: callvirt System.Double WukongKnight.Core.GodslayerCharge::get_ReleasedAt()
+IL_046b: sub
+IL_046c: call System.Boolean WukongKnight.Core.FistRules::ActionFinished(WukongKnight.Core.FistAction,System.Double,System.Double,System.Boolean,System.Double)
+IL_0471: brfalse.s IL_047c
+IL_0473: ldarg.0
+IL_0474: ldc.i4.1
+IL_0475: call System.Void WukongKnight.FistSkills::Stop(System.Boolean)
+IL_047a: leave.s IL_04c9
+IL_047c: ldarg.0
+IL_047d: ldfld HeroController WukongKnight.FistSkills::hero
+IL_0482: callvirt System.Void HeroController::RelinquishControl()
+IL_0487: ldarg.0
+IL_0488: ldfld HeroController WukongKnight.FistSkills::hero
+IL_048d: callvirt System.Void HeroController::IgnoreInput()
+IL_0492: ldarg.0
+IL_0493: ldfld WukongKnight.NativeV77 WukongKnight.FistSkills::native
+IL_0498: ldarg.0
+IL_0499: ldfld HeroController WukongKnight.FistSkills::hero
+IL_049e: callvirt System.Void WukongKnight.NativeV77::ResetInput(HeroController)
+IL_04a3: ldarg.0
+IL_04a4: ldfld HeroController WukongKnight.FistSkills::hero
+IL_04a9: ldc.i4.0
+IL_04aa: callvirt System.Void HeroController::AffectedByGravity(System.Boolean)
+IL_04af: ldarg.0
+IL_04b0: ldfld UnityEngine.Rigidbody2D WukongKnight.FistSkills::motion
+IL_04b5: call UnityEngine.Vector2 UnityEngine.Vector2::get_zero()
+IL_04ba: callvirt System.Void UnityEngine.Rigidbody2D::set_velocity(UnityEngine.Vector2)
+IL_04bf: leave.s IL_04c9
+IL_04c1: ldarg.0
+IL_04c2: ldc.i4.0
+IL_04c3: stfld System.Boolean WukongKnight.FistSkills::observing
+IL_04c8: endfinally
+IL_04c9: ret
+
+System.Void WukongKnight.FistSkills::Stop(System.Boolean)
+IL_0000: ldarg.0
+IL_0001: call System.Boolean WukongKnight.FistSkills::get_Active()
+IL_0006: brtrue.s IL_0009
+IL_0008: ret
+IL_0009: ldarg.0
+IL_000a: ldfld WukongKnight.Core.FistAction WukongKnight.FistSkills::action
+IL_000f: ldc.i4.3
+IL_0010: ceq
+IL_0012: stloc.0
+IL_0013: ldarg.1
+IL_0014: ldloc.0
+IL_0015: and
+IL_0016: brfalse.s IL_002e
+IL_0018: ldarg.0
+IL_0019: ldfld System.Double WukongKnight.FistSkills::landedAt
+IL_001e: ldc.r8 0
+IL_0027: clt.un
+IL_0029: ldc.i4.0
+IL_002a: ceq
+IL_002c: br.s IL_002f
+IL_002e: ldc.i4.0
+IL_002f: stloc.1
+IL_0030: ldarg.0
+IL_0031: ldc.i4.0
+IL_0032: stfld WukongKnight.Core.FistAction WukongKnight.FistSkills::action
+IL_0037: ldarg.0
+IL_0038: ldarg.0
+IL_0039: ldfld System.Int64 WukongKnight.FistSkills::token
+IL_003e: ldc.i4.1
+IL_003f: conv.i8
+IL_0040: add
+IL_0041: stfld System.Int64 WukongKnight.FistSkills::token
+IL_0046: ldarg.0
+IL_0047: ldfld WukongKnight.Core.FistContacts WukongKnight.FistSkills::hits
+IL_004c: callvirt System.Void WukongKnight.Core.FistContacts::Clear()
+IL_0051: ldarg.0
+IL_0052: call System.Single UnityEngine.Time::get_time()
+IL_0057: conv.r8
+IL_0058: ldc.r8 0.25
+IL_0061: add
+IL_0062: stfld System.Double WukongKnight.FistSkills::nextDream
+IL_0067: ldarg.0
+IL_0068: ldfld System.Collections.Generic.List`1<WukongKnight.FistSkills/Ghost> WukongKnight.FistSkills::ghosts
+IL_006d: callvirt System.Int32 System.Collections.Generic.List`1<WukongKnight.FistSkills/Ghost>::get_Count()
+IL_0072: ldc.i4.1
+IL_0073: sub
+IL_0074: stloc.2
+IL_0075: br.s IL_00a9
+IL_0077: ldarg.0
+IL_0078: ldfld System.Collections.Generic.List`1<WukongKnight.FistSkills/Ghost> WukongKnight.FistSkills::ghosts
+IL_007d: ldloc.2
+IL_007e: callvirt !0 System.Collections.Generic.List`1<WukongKnight.FistSkills/Ghost>::get_Item(System.Int32)
+IL_0083: ldfld WukongKnight.Core.FistAction WukongKnight.FistSkills/Ghost::Action
+IL_0088: ldc.i4.2
+IL_0089: bne.un.s IL_00a5
+IL_008b: ldarg.0
+IL_008c: ldfld System.Collections.Generic.List`1<WukongKnight.FistSkills/Ghost> WukongKnight.FistSkills::ghosts
+IL_0091: ldloc.2
+IL_0092: callvirt !0 System.Collections.Generic.List`1<WukongKnight.FistSkills/Ghost>::get_Item(System.Int32)
+IL_0097: ldfld System.Boolean WukongKnight.FistSkills/Ghost::Released
+IL_009c: brtrue.s IL_00a5
+IL_009e: ldarg.0
+IL_009f: ldloc.2
+IL_00a0: call System.Void WukongKnight.FistSkills::RemoveGhost(System.Int32)
+IL_00a5: ldloc.2
+IL_00a6: ldc.i4.1
+IL_00a7: sub
+IL_00a8: stloc.2
+IL_00a9: ldloc.2
+IL_00aa: ldc.i4.0
+IL_00ab: bge.s IL_0077
+IL_00ad: ldarg.0
+IL_00ae: call System.Boolean WukongKnight.FistSkills::get_Alive()
+IL_00b3: brfalse.s IL_00c1
+IL_00b5: ldarg.0
+IL_00b6: ldfld HeroController WukongKnight.FistSkills::hero
+IL_00bb: ldc.i4.1
+IL_00bc: callvirt System.Void HeroController::AffectedByGravity(System.Boolean)
+IL_00c1: ldloc.0
+IL_00c2: brfalse.s IL_00e3
+IL_00c4: ldarg.0
+IL_00c5: ldfld WukongKnight.NativeSpellV77 WukongKnight.FistSkills::down
+IL_00ca: ldc.i4.0
+IL_00cb: callvirt System.Void WukongKnight.NativeSpellV77::FinishCast(System.Boolean)
+IL_00d0: ldarg.0
+IL_00d1: ldarg.0
+IL_00d2: ldfld WukongKnight.NativeSpellV77 WukongKnight.FistSkills::down
+IL_00d7: callvirt System.String WukongKnight.NativeSpellV77::get_State()
+IL_00dc: stfld System.String WukongKnight.FistSkills::lastDown
+IL_00e1: br.s IL_00ee
+IL_00e3: ldarg.0
+IL_00e4: ldfld WukongKnight.NativeDreamV77 WukongKnight.FistSkills::dream
+IL_00e9: callvirt System.Void WukongKnight.NativeDreamV77::Finish()
+IL_00ee: ldloc.1
+IL_00ef: brfalse.s IL_0130
+IL_00f1: ldarg.0
+IL_00f2: ldfld System.Boolean WukongKnight.FistSkills::disposed
+IL_00f7: brtrue.s IL_0130
+IL_00f9: ldarg.0
+IL_00fa: call System.Boolean WukongKnight.FistSkills::get_Alive()
+IL_00ff: brfalse.s IL_0130
+IL_0101: ldarg.0
+IL_0102: ldfld HeroController WukongKnight.FistSkills::hero
+IL_0107: ldfld HeroControllerStates HeroController::cState
+IL_010c: ldfld System.Boolean HeroControllerStates::recoiling
+IL_0111: brtrue.s IL_0130
+IL_0113: ldarg.0
+IL_0114: ldfld HeroController WukongKnight.FistSkills::hero
+IL_0119: ldfld HeroControllerStates HeroController::cState
+IL_011e: ldfld System.Boolean HeroControllerStates::recoilFrozen
+IL_0123: brtrue.s IL_0130
+IL_0125: ldarg.0
+IL_0126: ldfld HeroController WukongKnight.FistSkills::hero
+IL_012b: callvirt System.Void HeroController::QuakeInvuln()
+IL_0130: ret
+
+System.Void WukongKnight.NativeSpellV77::FinishCast(System.Boolean)
+IL_0000: ldarg.0
+IL_0001: call System.Boolean WukongKnight.NativeSpellV77::get_HoldsCast()
+IL_0006: brfalse.s IL_0010
+IL_0008: ldarg.0
+IL_0009: call System.Boolean WukongKnight.NativeSpellV77::get_CanRecover()
+IL_000e: brtrue.s IL_0011
+IL_0010: ret
+IL_0011: ldarg.0
+IL_0012: ldfld System.Reflection.MethodInfo WukongKnight.NativeSpellV77::setState
+IL_0017: ldarg.0
+IL_0018: ldfld UnityEngine.Component WukongKnight.NativeSpellV77::spell
+IL_001d: ldc.i4.1
+IL_001e: newarr System.Object
+IL_0023: dup
+IL_0024: ldc.i4.0
+IL_0025: ldarg.0
+IL_0026: ldfld WukongKnight.NativeSpellSlot WukongKnight.NativeSpellV77::slot
+IL_002b: ldc.i4.3
+IL_002c: beq.s IL_0049
+IL_002e: ldarg.0
+IL_002f: ldfld WukongKnight.NativeSpellSlot WukongKnight.NativeSpellV77::slot
+IL_0034: ldc.i4.1
+IL_0035: ceq
+IL_0037: ldarg.1
+IL_0038: and
+IL_0039: brtrue.s IL_0042
+IL_003b: ldstr "Spell End"
+IL_0040: br.s IL_004e
+IL_0042: ldstr "Quake Finish"
+IL_0047: br.s IL_004e
+IL_0049: ldstr "Inactive"
+IL_004e: stelem.ref
+IL_004f: callvirt System.Object System.Reflection.MethodBase::Invoke(System.Object,System.Object[])
+IL_0054: pop
+IL_0055: ret
+
+System.Void WukongKnight.WukongRuntime::TryAttach(HeroController)
+IL_0000: ldarg.0
+IL_0001: ldfld System.Boolean WukongKnight.WukongRuntime::disposed
+IL_0006: brtrue.s IL_004a
+IL_0008: ldarg.0
+IL_0009: ldfld System.Boolean WukongKnight.WukongRuntime::failed
+IL_000e: brtrue.s IL_004a
+IL_0010: ldarg.1
+IL_0011: ldnull
+IL_0012: call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+IL_0017: brtrue.s IL_004a
+IL_0019: ldarg.1
+IL_001a: callvirt UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+IL_001f: callvirt System.Boolean UnityEngine.GameObject::get_activeInHierarchy()
+IL_0024: brfalse.s IL_004a
+IL_0026: ldarg.1
+IL_0027: ldfld HeroControllerStates HeroController::cState
+IL_002c: brfalse.s IL_004a
+IL_002e: ldarg.1
+IL_002f: ldfld NailSlash HeroController::normalSlash
+IL_0034: ldnull
+IL_0035: call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+IL_003a: brtrue.s IL_004a
+IL_003c: ldarg.1
+IL_003d: ldfld NailSlash HeroController::alternateSlash
+IL_0042: ldnull
+IL_0043: call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+IL_0048: brfalse.s IL_004b
+IL_004a: ret
+IL_004b: ldarg.0
+IL_004c: ldfld HeroController WukongKnight.WukongRuntime::hero
+IL_0051: ldarg.1
+IL_0052: call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+IL_0057: brfalse.s IL_005a
+IL_0059: ret
+IL_005a: ldarg.0
+IL_005b: call System.Void WukongKnight.WukongRuntime::Detach()
+IL_0060: newobj System.Void WukongKnight.WukongRuntime/<>c__DisplayClass37_0::.ctor()
+IL_0065: stloc.0
+IL_0066: ldarg.0
+IL_0067: ldarg.1
+IL_0068: stfld HeroController WukongKnight.WukongRuntime::hero
+IL_006d: ldarg.0
+IL_006e: ldarg.0
+IL_006f: ldfld WukongKnight.CharacterAssets WukongKnight.WukongRuntime::assets
+IL_0074: callvirt WukongKnight.Core.ComboStage[] WukongKnight.CharacterAssets::get_Stages()
+IL_0079: ldarg.0
+IL_007a: ldfld WukongKnight.CharacterAssets WukongKnight.WukongRuntime::assets
+IL_007f: callvirt System.Double WukongKnight.CharacterAssets::get_FrameRate()
+IL_0084: ldarg.0
+IL_0085: ldfld WukongKnight.CharacterAssets WukongKnight.WukongRuntime::assets
+IL_008a: callvirt System.Double WukongKnight.CharacterAssets::get_GraceSeconds()
+IL_008f: newobj System.Void WukongKnight.Core.ComboTimeline::.ctor(WukongKnight.Core.ComboStage[],System.Double,System.Double)
+IL_0094: stfld WukongKnight.Core.ComboTimeline WukongKnight.WukongRuntime::combo
+IL_0099: ldarg.0
+IL_009a: ldarg.1
+IL_009b: ldarg.0
+IL_009c: ldfld WukongKnight.CharacterAssets WukongKnight.WukongRuntime::assets
+IL_00a1: ldarg.0
+IL_00a2: ldfld WukongKnight.NativeV77 WukongKnight.WukongRuntime::native
+IL_00a7: newobj System.Void WukongKnight.WukongPresenter::.ctor(HeroController,WukongKnight.CharacterAssets,WukongKnight.NativeV77)
+IL_00ac: stfld WukongKnight.WukongPresenter WukongKnight.WukongRuntime::presenter
+IL_00b1: ldarg.0
+IL_00b2: ldarg.1
+IL_00b3: ldarg.0
+IL_00b4: ldfld WukongKnight.NativeV77 WukongKnight.WukongRuntime::native
+IL_00b9: newobj System.Void WukongKnight.FlameDash::.ctor(HeroController,WukongKnight.NativeV77)
+IL_00be: stfld WukongKnight.FlameDash WukongKnight.WukongRuntime::flameDash
+IL_00c3: ldarg.0
+IL_00c4: ldarg.1
+IL_00c5: ldarg.0
+IL_00c6: ldfld WukongKnight.NativeV77 WukongKnight.WukongRuntime::native
+IL_00cb: ldarg.0
+IL_00cc: ldfld WukongKnight.CharacterAssets WukongKnight.WukongRuntime::assets
+IL_00d1: newobj System.Void WukongKnight.FireDemonSlash::.ctor(HeroController,WukongKnight.NativeV77,WukongKnight.CharacterAssets)
+IL_00d6: stfld WukongKnight.FireDemonSlash WukongKnight.WukongRuntime::fireDemon
+IL_00db: ldarg.0
+IL_00dc: ldarg.1
+IL_00dd: newobj System.Void WukongKnight.BloodthirstyFireEye::.ctor(HeroController)
+IL_00e2: stfld WukongKnight.BloodthirstyFireEye WukongKnight.WukongRuntime::bloodEye
+IL_00e7: ldarg.0
+IL_00e8: ldarg.1
+IL_00e9: newobj System.Void WukongKnight.NativeDreamV77::.ctor(HeroController)
+IL_00ee: stfld WukongKnight.NativeDreamV77 WukongKnight.WukongRuntime::dream
+IL_00f3: ldloc.0
+IL_00f4: ldarg.1
+IL_00f5: ldarg.0
+IL_00f6: ldfld WukongKnight.NativeV77 WukongKnight.WukongRuntime::native
+IL_00fb: ldarg.0
+IL_00fc: ldfld WukongKnight.CharacterAssets WukongKnight.WukongRuntime::assets
+IL_0101: ldarg.0
+IL_0102: ldfld WukongKnight.NativeDreamV77 WukongKnight.WukongRuntime::dream
+IL_0107: newobj System.Void WukongKnight.FistSkills::.ctor(HeroController,WukongKnight.NativeV77,WukongKnight.CharacterAssets,WukongKnight.NativeDreamV77)
+IL_010c: stfld WukongKnight.FistSkills WukongKnight.WukongRuntime/<>c__DisplayClass37_0::skills
+IL_0111: ldarg.0
+IL_0112: ldloc.0
+IL_0113: ldfld WukongKnight.FistSkills WukongKnight.WukongRuntime/<>c__DisplayClass37_0::skills
+IL_0118: stfld WukongKnight.FistSkills WukongKnight.WukongRuntime::fist
+IL_011d: ldarg.0
+IL_011e: ldarg.1
+IL_011f: ldarg.0
+IL_0120: ldfld WukongKnight.NativeV77 WukongKnight.WukongRuntime::native
+IL_0125: ldarg.0
+IL_0126: ldfld WukongKnight.CharacterAssets WukongKnight.WukongRuntime::assets
+IL_012b: ldarg.0
+IL_012c: ldfld WukongKnight.NativeDreamV77 WukongKnight.WukongRuntime::dream
+IL_0131: ldloc.0
+IL_0132: ldftn System.Int32 WukongKnight.WukongRuntime/<>c__DisplayClass37_0::<TryAttach>b__0()
+IL_0138: newobj System.Void System.Func`1<System.Int32>::.ctor(System.Object,System.IntPtr)
+IL_013d: newobj System.Void WukongKnight.FlameStorm::.ctor(HeroController,WukongKnight.NativeV77,WukongKnight.CharacterAssets,WukongKnight.NativeDreamV77,System.Func`1<System.Int32>)
+IL_0142: stfld WukongKnight.FlameStorm WukongKnight.WukongRuntime::flameStorm
+IL_0147: ldarg.0
+IL_0148: ldarg.1
+IL_0149: callvirt UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+IL_014e: callvirt !!0 UnityEngine.GameObject::AddComponent<WukongKnight.WukongLifetime>()
+IL_0153: stfld WukongKnight.WukongLifetime WukongKnight.WukongRuntime::lifetime
+IL_0158: ldarg.0
+IL_0159: ldfld WukongKnight.WukongLifetime WukongKnight.WukongRuntime::lifetime
+IL_015e: ldarg.0
+IL_015f: ldftn System.Void WukongKnight.WukongRuntime::LateUpdate()
+IL_0165: newobj System.Void System.Action::.ctor(System.Object,System.IntPtr)
+IL_016a: stfld System.Action WukongKnight.WukongLifetime::UpdateView
+IL_016f: ldarg.0
+IL_0170: ldfld WukongKnight.WukongLifetime WukongKnight.WukongRuntime::lifetime
+IL_0175: ldarg.0
+IL_0176: ldftn System.Void WukongKnight.WukongRuntime::FixedUpdate()
+IL_017c: newobj System.Void System.Action::.ctor(System.Object,System.IntPtr)
+IL_0181: stfld System.Action WukongKnight.WukongLifetime::AdvancePhysics
+IL_0186: ldarg.0
+IL_0187: ldfld WukongKnight.WukongLifetime WukongKnight.WukongRuntime::lifetime
+IL_018c: ldarg.0
+IL_018d: ldftn System.Void WukongKnight.WukongRuntime::Detach()
+IL_0193: newobj System.Void System.Action::.ctor(System.Object,System.IntPtr)
+IL_0198: stfld System.Action WukongKnight.WukongLifetime::DetachOwner
+IL_019d: leave.s IL_01a9
+IL_019f: stloc.1
+IL_01a0: ldarg.0
+IL_01a1: ldloc.1
+IL_01a2: call System.Void WukongKnight.WukongRuntime::Fail(System.Exception)
+IL_01a7: leave.s IL_01a9
+IL_01a9: ret
+
+System.Void WukongKnight.WukongRuntime::Detach()
+IL_0000: ldarg.0
+IL_0001: ldc.i4.1
+IL_0002: call System.Void WukongKnight.WukongRuntime::Cancel(System.Boolean)
+IL_0007: ldarg.0
+IL_0008: ldfld WukongKnight.FistSkills WukongKnight.WukongRuntime::fist
+IL_000d: stloc.0
+IL_000e: ldarg.0
+IL_000f: ldnull
+IL_0010: stfld WukongKnight.FistSkills WukongKnight.WukongRuntime::fist
+IL_0015: ldloc.0
+IL_0016: brfalse.s IL_002b
+IL_0018: ldarg.0
+IL_0019: ldloc.0
+IL_001a: dup
+IL_001b: ldvirtftn System.Void WukongKnight.FistSkills::Dispose()
+IL_0021: newobj System.Void System.Action::.ctor(System.Object,System.IntPtr)
+IL_0026: call System.Void WukongKnight.WukongRuntime::Cleanup(System.Action)
+IL_002b: ldarg.0
+IL_002c: ldfld WukongKnight.FlameDash WukongKnight.WukongRuntime::flameDash
+IL_0031: stloc.1
+IL_0032: ldarg.0
+IL_0033: ldnull
+IL_0034: stfld WukongKnight.FlameDash WukongKnight.WukongRuntime::flameDash
+IL_0039: ldloc.1
+IL_003a: brfalse.s IL_004f
+IL_003c: ldarg.0
+IL_003d: ldloc.1
+IL_003e: dup
+IL_003f: ldvirtftn System.Void WukongKnight.FlameDash::Dispose()
+IL_0045: newobj System.Void System.Action::.ctor(System.Object,System.IntPtr)
+IL_004a: call System.Void WukongKnight.WukongRuntime::Cleanup(System.Action)
+IL_004f: ldarg.0
+IL_0050: ldfld WukongKnight.FireDemonSlash WukongKnight.WukongRuntime::fireDemon
+IL_0055: stloc.2
+IL_0056: ldarg.0
+IL_0057: ldnull
+IL_0058: stfld WukongKnight.FireDemonSlash WukongKnight.WukongRuntime::fireDemon
+IL_005d: ldloc.2
+IL_005e: brfalse.s IL_0073
+IL_0060: ldarg.0
+IL_0061: ldloc.2
+IL_0062: dup
+IL_0063: ldvirtftn System.Void WukongKnight.FireDemonSlash::Dispose()
+IL_0069: newobj System.Void System.Action::.ctor(System.Object,System.IntPtr)
+IL_006e: call System.Void WukongKnight.WukongRuntime::Cleanup(System.Action)
+IL_0073: ldarg.0
+IL_0074: ldfld WukongKnight.FlameStorm WukongKnight.WukongRuntime::flameStorm
+IL_0079: stloc.3
+IL_007a: ldarg.0
+IL_007b: ldnull
+IL_007c: stfld WukongKnight.FlameStorm WukongKnight.WukongRuntime::flameStorm
+IL_0081: ldloc.3
+IL_0082: brfalse.s IL_0097
+IL_0084: ldarg.0
+IL_0085: ldloc.3
+IL_0086: dup
+IL_0087: ldvirtftn System.Void WukongKnight.FlameStorm::Dispose()
+IL_008d: newobj System.Void System.Action::.ctor(System.Object,System.IntPtr)
+IL_0092: call System.Void WukongKnight.WukongRuntime::Cleanup(System.Action)
+IL_0097: ldarg.0
+IL_0098: ldfld WukongKnight.NativeDreamV77 WukongKnight.WukongRuntime::dream
+IL_009d: stloc.s V_4
+IL_009f: ldarg.0
+IL_00a0: ldnull
+IL_00a1: stfld WukongKnight.NativeDreamV77 WukongKnight.WukongRuntime::dream
+IL_00a6: ldloc.s V_4
+IL_00a8: brfalse.s IL_00be
+IL_00aa: ldarg.0
+IL_00ab: ldloc.s V_4
+IL_00ad: dup
+IL_00ae: ldvirtftn System.Void WukongKnight.NativeDreamV77::Dispose()
+IL_00b4: newobj System.Void System.Action::.ctor(System.Object,System.IntPtr)
+IL_00b9: call System.Void WukongKnight.WukongRuntime::Cleanup(System.Action)
+IL_00be: ldarg.0
+IL_00bf: ldfld WukongKnight.BloodthirstyFireEye WukongKnight.WukongRuntime::bloodEye
+IL_00c4: stloc.s V_5
+IL_00c6: ldarg.0
+IL_00c7: ldnull
+IL_00c8: stfld WukongKnight.BloodthirstyFireEye WukongKnight.WukongRuntime::bloodEye
+IL_00cd: ldloc.s V_5
+IL_00cf: brfalse.s IL_00e5
+IL_00d1: ldarg.0
+IL_00d2: ldloc.s V_5
+IL_00d4: dup
+IL_00d5: ldvirtftn System.Void WukongKnight.BloodthirstyFireEye::Dispose()
+IL_00db: newobj System.Void System.Action::.ctor(System.Object,System.IntPtr)
+IL_00e0: call System.Void WukongKnight.WukongRuntime::Cleanup(System.Action)
+IL_00e5: ldarg.0
+IL_00e6: ldfld WukongKnight.WukongLifetime WukongKnight.WukongRuntime::lifetime
+IL_00eb: ldnull
+IL_00ec: call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+IL_00f1: brfalse.s IL_0129
+IL_00f3: ldarg.0
+IL_00f4: ldfld WukongKnight.WukongLifetime WukongKnight.WukongRuntime::lifetime
+IL_00f9: ldnull
+IL_00fa: stfld System.Action WukongKnight.WukongLifetime::DetachOwner
+IL_00ff: ldarg.0
+IL_0100: ldfld WukongKnight.WukongLifetime WukongKnight.WukongRuntime::lifetime
+IL_0105: ldnull
+IL_0106: stfld System.Action WukongKnight.WukongLifetime::UpdateView
+IL_010b: ldarg.0
+IL_010c: ldfld WukongKnight.WukongLifetime WukongKnight.WukongRuntime::lifetime
+IL_0111: ldnull
+IL_0112: stfld System.Action WukongKnight.WukongLifetime::AdvancePhysics
+IL_0117: ldarg.0
+IL_0118: ldfld WukongKnight.WukongLifetime WukongKnight.WukongRuntime::lifetime
+IL_011d: call System.Void UnityEngine.Object::Destroy(UnityEngine.Object)
+IL_0122: ldarg.0
+IL_0123: ldnull
+IL_0124: stfld WukongKnight.WukongLifetime WukongKnight.WukongRuntime::lifetime
+IL_0129: ldarg.0
+IL_012a: ldfld WukongKnight.WukongPresenter WukongKnight.WukongRuntime::presenter
+IL_012f: stloc.s V_6
+IL_0131: ldarg.0
+IL_0132: ldnull
+IL_0133: stfld WukongKnight.WukongPresenter WukongKnight.WukongRuntime::presenter
+IL_0138: ldarg.0
+IL_0139: ldnull
+IL_013a: stfld WukongKnight.Core.ComboTimeline WukongKnight.WukongRuntime::combo
+IL_013f: ldarg.0
+IL_0140: ldnull
+IL_0141: stfld HeroController WukongKnight.WukongRuntime::hero
+IL_0146: ldloc.s V_6
+IL_0148: brfalse.s IL_015e
+IL_014a: ldarg.0
+IL_014b: ldloc.s V_6
+IL_014d: dup
+IL_014e: ldvirtftn System.Void WukongKnight.WukongPresenter::Dispose()
+IL_0154: newobj System.Void System.Action::.ctor(System.Object,System.IntPtr)
+IL_0159: call System.Void WukongKnight.WukongRuntime::Cleanup(System.Action)
+IL_015e: ret

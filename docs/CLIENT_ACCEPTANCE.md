@@ -273,3 +273,16 @@ Automated checks and frame preview do not establish these client results.
   new tail follows the game's native rules rather than the full-action HP guard.
 - Check both spell tiers/charms, keyboard/controller, concurrent detached combo/
   moving Ape, Godslayer, staff attacks/pogo, dash/focus/death and previous skills.
+
+
+## 0.7.6 control swap (pending)
+
+- Down spell: Earthbreaker ground rise/air fall, masks/copies and full-action HP
+  protection; one native recovery timer only after confirmed player landing.
+- Down Dream: Storm ground/air original16ticks, flames/local hits and one MP cost;
+  normal interruption during the action, native recovery after successful finish.
+- Check insufficient/exact33Soul and Spell Twister24, held buttons, repeated casts,
+  pause/slow frames, keyboard/controller, death/hazards/scenes and Mod teardown.
+- Alternating Storm/Godslayer must not leave control locked or cancel a new owner;
+  neutral/up Dream, independent summons and all earlier skills remain usable.
+- No forced enemy hurt-state transitions are implemented in this update.

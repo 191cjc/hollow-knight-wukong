@@ -70,6 +70,14 @@ namespace WukongKnight
             }
             catch { Restore(); throw; }
         }
+        public bool CanBegin(NativeV77 native, bool airborneDown = false)
+        {
+            HeroControllerStates s = hero.cState;
+            if (disposed || !PlayerData.instance.GetBool("hasDreamNail") || !native.ControlAvailable(hero) || State != "Inactive" ||
+                s.attacking || s.dashing || s.backDashing || s.superDashing || s.casting || s.focusing || s.recoiling || s.recoilFrozen || s.wallSliding) return false;
+            // Keep native menu/conversation gates; only down-Dream adds air casting.
+            return hero.CanDreamNail() || (airborneDown && !s.onGround && native.DownHeld(hero) && hero.CanInput());
+        }
         public bool Begin()
         {
             if (disposed || owned || State != "Inactive") return false;
