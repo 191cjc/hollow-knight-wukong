@@ -50,7 +50,6 @@ namespace WukongKnight
                 On.HeroController.Attack += Attack;
                 On.HeroController.CanAttack += CanAttack;
                 On.HeroController.TakeDamage += HeroTakeDamage;
-                On.HeroController.StartRecoil += HeroStartRecoil;
                 On.HeroController.TakeHealth += HeroTakeHealth;
                 On.HeroController.AddHealth += HeroAddHealth;
                 On.HeroController.ResetAttacks += ResetAttacks;
@@ -89,21 +88,6 @@ namespace WukongKnight
             // CanTakeDamage=false alone still lets native invulnerable heroes take
             // spike/acid damage. Guard the whole entry, without changing save flags.
             if (!SkillProtects(self)) orig(self, source, side, amount, hazardType);
-        }
-
-        private IEnumerator HeroStartRecoil(On.HeroController.orig_StartRecoil orig, HeroController self, CollisionSide side, bool spawnDamageEffect, int amount)
-        {
-            if (!disposed && !failed && self == hero)
-            {
-                try
-                {
-                    fist?.Observe();
-                    if (fist != null && fist.ResistsDamageInterruption)
-                        return native.ArmoredDamage(self, spawnDamageEffect, amount);
-                }
-                catch (Exception error) { Fail(error); }
-            }
-            return orig(self, side, spawnDamageEffect, amount);
         }
 
         private void HeroTakeHealth(On.HeroController.orig_TakeHealth orig, HeroController self, int amount)
@@ -564,7 +548,6 @@ namespace WukongKnight
             On.HeroController.Attack -= Attack;
             On.HeroController.CanAttack -= CanAttack;
             On.HeroController.TakeDamage -= HeroTakeDamage;
-            On.HeroController.StartRecoil -= HeroStartRecoil;
             On.HeroController.TakeHealth -= HeroTakeHealth;
             On.HeroController.AddHealth -= HeroAddHealth;
             On.HeroController.ResetAttacks -= ResetAttacks;

@@ -21,7 +21,7 @@ OPTIONAL_CLIPS = ("runAttack", "effect1", "effect2", "effect3", "effect4", "effe
                   "nailAttack1", "nailAttack2", "nailAttack3", "nailAttack4", "nailAir", "nailUp", "nailDown",
                   "nailArc1", "nailArc2", "nailArc3", "nailArc4", "nailArcAir", "nailArcUp", "nailArcDown",
                   "afterimageCombo", "godslayerCharge", "godslayerRelease", "godslayerWave", "godslayerPunch",
-                  "earthbreaker", "fireApe", "fistIdle", "afterimageIdle1", "afterimageIdle2", "afterimageIdle3", "afterimageIdle4")
+                  "earthbreaker", "fireApe", "fireApeAwakenedBack", "fireApeAwakenedFront", "fistIdle", "afterimageIdle1", "afterimageIdle2", "afterimageIdle3", "afterimageIdle4")
 SOURCE_FILES = ("skeleton.json", "texture.json", "texture.png")
 
 

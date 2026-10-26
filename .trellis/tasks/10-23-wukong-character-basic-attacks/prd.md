@@ -211,3 +211,24 @@ retain native HP damage but resist ordinary hit cancellation/recoil during its
 owned action. Death, hazards, scene changes and teardown remain authoritative.
 Preserve Soul costs, damage, masks, actors and artwork; build/check/back up/install
 directly, with gameplay acceptance still pending.
+
+
+## 0.7.4 free-body summoned skills
+
+Neutral spell summons one independent Afterimage Combo attacker. It follows the
+original combo route and leaves the four existing persistent/mimicking afterimages;
+the player retains normal animation, movement, attacks, gravity and vulnerability.
+Fire Ape uses source moving-awakening behavior: back/front effects follow current
+player position and direction while the player remains free. Remove all prior
+Fire Ape armor. Preserve Soul costs, source clocks/masks/damage/knockback, other
+skills and original/previous assets. Build/check/back up/install directly for
+later client acceptance; no new commit/push is requested.
+
+
+## 0.7.5 native down-spell recovery protection
+
+Confirm whether native down spell grants post-action invulnerability. If present,
+give the same native recovery protection to successful Fire Demon Slash and player
+Earthbreaker finishes. Preserve their current full-action immunity, every other
+skill, resource/damage/movement rules and all artwork. Build/check/back up/install
+directly for later client review; no commit/push requested.

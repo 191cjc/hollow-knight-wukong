@@ -463,3 +463,58 @@ isInvincible, restart source clocks, charge Soul again or ignore lethal/hazards.
 Validation includes exact hero end/paused observers and real scoped-event restore/
 recast/foreign-owner tests plus actual-reference Release/compiled hook inspection.
 All13character resources are reused byte-for-byte. Client acceptance stays pending.
+
+
+## 0.7.4 independent combo and moving-awakening Ape
+
+This supersedes v073 Ape armor. Native StartRecoil and Dream HERO DAMAGED are
+untouched. Only Godslayer/Earthbreaker use FistSkills.Active and hero control.
+Afterimage and Ape use separate Summon references, FistSummonClock, source
+position/facing/tier and FistContacts. OwnsSummon requires the current reference,
+live hero and clock; ordinary damage/hero-action cancellation does not revoke
+the actor, but death/hazard/scene/detach clears it. Cancel clocks before destroying
+renderers; recheck identity after native damage callbacks.
+
+Neutral forward gate is Has Fireball? IntCompare.greaterThan CAST, after native
+eligibility/cost/direction/unlock checks, before Wallside? FlipSprite and Fireball
+Antic writes. Replace only that event with a real ignored event; restore on detach.
+Spend live native TakeMP once and return directly to Inactive, avoiding Spell End
+velocity/control/gravity resets. Up/down/focus routes stay intact. Protect repeated
+same-frame observations from duplicate payment; recheck owner after MP callbacks.
+
+Combo clone travel uses existing swept native-size box helper, never hero Move.
+Split540px travel at births11/25/39/51 so slow frames keep four trail positions.
+Recast replaces clone/old ghosts but retains independent waves and Ape.
+
+Source skill5Awake1 immediately returns hero to idle and follows both effect5_0/1
+bodyPosition/facing each frame. Ape therefore never enters Dream.Begin/Finish,
+never takes control or writes hero motion, and renders only new body-free source
+back/front clips around the ordinary presenter. Its local masks/caps/cooldowns
+follow the same live root/facing without resetting the ledger on turns/hits.
+Reject a duplicate live Ape; use its separate previous3s post-effect cooldown.
+
+Regressions: independent clocks/expiry, cancellation/recast/stale work, slow-frame
+trail spacing, native Soul gates/MP revocation, independent local contact budgets,
+body-free source layers, unchanged prior clip pixels and lossless packed art.
+Compiled boundaries and native serialized gate events must also be inspected.
+Client keyboard/controller/free movement/combat/terrain/cleanup remain pending.
+
+
+## 0.7.5 native Quake recovery timer
+
+Native Spell Control Quake Finish calls HeroController.QuakeInvuln, assigning live
+INVUL_TIME_QUAKE to parryInvulnTimer. Installed resources.assets HeroController19582
+serializes0.400000006s. HeroController.Update decrements Time.deltaTime; TakeDamage
+honors the timer for ordinary hazardType1. Native spike/acid/hazard and direct-HP
+rules remain distinct. Never replace this with a custom blanket TakeDamage/TakeHealth
+post-action guard or saved isInvincible flag.
+
+FireDemonSlash calls the real method once after successful source-end recovery;
+FistSkills.Stop(completed:true) calls it only for confirmed player Earthbreaker
+landing. Both invalidate body-hit/action ownership and finish native recovery first,
+then recheck live nonrecoiling hero/disposal before granting the timer. Their full
+owned-action guards remain unchanged. Cancel/Dispose, death/hazard/scene, unlanded
+timeout, Godslayer, detached summons and copied ghosts grant no recovery timer.
+No polling refresh: stopped body ownership prevents repeated end observations.
+Native update/cancellation handles expiry. Actual native IL/prefab/FSM and compiled
+success/cancel paths must be reviewed; package character bytes stay unchanged.

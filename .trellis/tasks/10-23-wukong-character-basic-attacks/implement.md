@@ -312,3 +312,22 @@ DLL `58d40a2c099e115c29d49a298c2d45b59b9646d24ae0e607a32264b7e5c29a7d`.
 - [x] Test lifetime boundaries, inspect compiled hooks, and run full build/package.
 - [x] Preserve all character hashes; back up/install with game stopped and verify.
 - [x] Update evidence/contracts/status; retain pending gameplay acceptance.
+
+
+## 0.7.4 execution
+
+- [x] Trace source moving-awakening and native pre-antic neutral-spell gate.
+- [x] Preserve assets; add opt-in body-free Ape back/front variants and validation.
+- [x] Split detached combo/Ape ownership from hero actions; remove prior armor.
+- [x] Test clocks/transactions/trail births/masks/lifetimes and source/pixel parity.
+- [x] Run full Release/package checks, inspect compiled boundaries and previews.
+- [x] Back up/install stopped-game update; verify files and record pending gameplay.
+
+
+## 0.7.5 execution
+
+- [x] Verify native Quake Finish/QuakeInvuln and serialized0.4s configuration.
+- [x] Add native recovery call only to successful hero action completion.
+- [x] Inspect compiled success/cancel paths and run core/Release/package checks.
+- [x] Preserve art; back up/install stopped-game update and verify all files.
+- [x] Record current status/evidence; retain pending gameplay acceptance.

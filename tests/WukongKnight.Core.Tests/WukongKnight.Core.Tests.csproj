@@ -17,7 +17,7 @@
     <Compile Include="../../src/WukongKnight/Core/FireEyeCastClock.cs" Link="FireEyeCastClock.cs" />
     <Compile Include="../../src/WukongKnight/Core/SourceDeathClock.cs" Link="SourceDeathClock.cs" />
     <Compile Include="../../src/WukongKnight/Core/FlameStormRules.cs" Link="FlameStormRules.cs" />
-    <Compile Include="../../src/WukongKnight/Core/DamageEventOverride.cs" Link="DamageEventOverride.cs" />
+    <Compile Include="../../src/WukongKnight/Core/FistSummonClock.cs" Link="FistSummonClock.cs" />
     <Compile Include="../../src/WukongKnight/Core/FistRules.cs" Link="FistRules.cs" />
     <Compile Include="../../src/WukongKnight/Core/FistGeometry.cs" Link="FistGeometry.cs" />
   </ItemGroup>

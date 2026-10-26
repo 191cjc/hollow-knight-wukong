@@ -1,4 +1,4 @@
-# Fire Demon Slash (0.7.3-dev)
+# Fire Demon Slash (0.7.4-dev)
 
 Up + spell uses Wukong's original character animation and two skill effects.
 Native input, unlocks, Soul spending and control recovery remain; the replacement
@@ -111,3 +111,15 @@ strength2, directed away from the actual finisher root (facing fallback on exact
 center). Native enemy resistance still applies. Air-hit recoil remains0.15; Flame
 Storm retains its previous wrapper values. No dive, floor snap, Quake shake, new
 contact region or damage is added. The moved-root airborne finisher is retained.
+
+
+## 0.7.5 post-action recovery
+
+At successful source end (56ticks/30Hz), release cast/hit ownership and finish
+native Spell End, then call original HeroController.QuakeInvuln once if the hero
+remains alive/nonrecoiling and the adapter is not disposed. Native live
+INVUL_TIME_QUAKE defaults to0.4s. Native ordinary-damage, spike/acid/hazard and
+expiry rules apply after the existing full-action HP guard ends. Cancellation,
+failed Soul payment, death/hazard/scene and disposal grant no recovery timer.
+Do not require landing or change source motion/effects/hits/Soul. Existing v074
+character resources are byte-identical. Gameplay timing remains pending.

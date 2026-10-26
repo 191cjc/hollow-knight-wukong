@@ -1,7 +1,7 @@
 # Wukong Knight
 
 Wukong character Mod for Hollow Knight, based on archived 4399 ZMXY4 artwork.
-Development version **0.7.3-dev** includes staff visuals, the grounded four-stage
+Development version **0.7.5-dev** includes staff visuals, the grounded four-stage
 combo, Flame Dash, Fire Demon Slash, Flame Storm, Jiyuan Fire Eye (汲元火眼),
 Afterimage Combo and the three Dream-key fist skills.
 All originals and earlier bakes/variants are preserved. Active artwork is baked
@@ -13,13 +13,15 @@ charms, Soul, clashes and pogo remain authoritative. The independent arc layer
 follows actual native charm reach (Longnail1.15x, Mark of Pride1.25x, both1.4x);
 body and staff stay at their existing offline1.5x appearance.
 
-- **Neutral quick spell:** Afterimage Combo (残影连打), leaving four ten-second ghosts
-  that mimic Earthbreaker/Godslayer with reduced damage.
+- **Neutral quick spell:** summons one independent Afterimage Combo (残影连打)
+  attacker that leaves four ten-second ghosts. The hero acts freely; ghosts mimic
+  Earthbreaker/Godslayer with reduced damage.
 - **Dream Nail:** damaging Godslayer Strike (灭神一击). Hold to charge, release to
   punch; a fully charged wave retains native Dream Nail effects (1.267s charge,
   or0.633s with Dream Wielder).
 - **Down + Dream Nail:** Earthbreaker Fist (辟地拳), a terrain-limited ground/air slam.
-- **Up + Dream Nail:** Fire Ape Assault (火猿出击), with original layered ape/roar.
+- **Up + Dream Nail:** moving-awakening Fire Ape Assault (火猿出击), with original
+  back/front effects following the free hero. Normal incoming damage/recoil applies.
 - **Up + spell:** Fire Demon Slash, with original moving flashes, relative masks,
   midair finisher at the source-driven forward position, full-cast protection and input lock.
 - **Down + spell:** Flame Storm, with the original spinning action and eight-image
@@ -66,13 +68,13 @@ bash scripts/build.sh
 | 输出 | 用途 |
 |---|---|
 | `artifacts/mod/WukongKnight/` | 安装整个目录，必须保留 `character/` |
-| `artifacts/WukongKnight-0.7.3-dev.zip` | DLL、说明、角色清单与引用的加工图集 |
+| `artifacts/WukongKnight-0.7.5-dev.zip` | DLL、说明、角色清单与引用的加工图集 |
 | `assets/processed/wukong/previews/` | 动画 GIF、关键姿势联系表，不进入开发包 |
 | `artifacts/validation.json` | 归档输入、解包、PNG、音频与配置检查 |
 | `artifacts/character-validation.json` | 加工图集、帧范围、时序与连击窗口检查 |
 | `artifacts/build-report.json` | 包内文件散列及实现/编译/自动检查/实机状态 |
 
-Current package: `0.7.3-dev`; older packages are retained for rollback.
+Current package: `0.7.5-dev`; older packages are retained for rollback.
 
 ## 安装与验收
 
@@ -151,3 +153,17 @@ See docs/DEATH_PRESENTATION.md for source and pending client checks.
 full owned-action Earthbreaker HP protection, and Fire Ape hit interruption
 resistance while retaining normal native HP damage and post-hit cooldown.
 Death/hazards/scenes remain authoritative. Artwork and Soul costs are unchanged.
+
+
+0.7.4 changes Afterimage Combo into one independently moving attacker that leaves
+the existing four ghosts while the hero remains free. Fire Ape now uses source
+moving-awakening effects following live hero position/direction, with no forced
+body action/travel. Prior Ape armor is removed; native incoming damage/recoil
+remain intact. Original/previous assets are retained in separate variant folders.
+
+
+0.7.5 gives successful Fire Demon Slash and player Earthbreaker recovery the
+original down-spell QuakeInvuln timer (live native default0.4s). Current full-action
+protection stays intact; after recovery, native ordinary-damage/expiry/hazard rules
+apply. Interrupted casts, unlanded timeouts and copied ghosts grant no timer.
+All v074 artwork is reused byte-for-byte. Client timing/combat acceptance is pending.

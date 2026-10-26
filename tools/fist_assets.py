@@ -117,6 +117,9 @@ def fist_samples(sampler, root, source):
         'godslayerPunch': [fx.sample('effect2_2', t) for t in range(10)],
         'fistIdle': [pose('idle', t) for t in range(18)],
     }
+    if sampler.profile.get('fire_ape_moving_awakening', False):
+        result['fireApeAwakenedBack'] = [ape.sample('effect5_0', t) for t in range(105)]
+        result['fireApeAwakenedFront'] = [fx.sample('effect5_1', t) for t in range(105)]
     # Original release jumps to source frame60 (1-based) for both charge tiers.
     result['godslayerRelease'] = result['godslayerCharge'][59:]
     # Birth ticks39/51 are deliberately stretched transition drawings. Persistent

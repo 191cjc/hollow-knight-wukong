@@ -33,6 +33,9 @@ namespace WukongKnight
         private bool observing;
         private bool disposed;
         private FireDemonTimeline Clock => new FireDemonTimeline(Time.time - started);
+        private bool CanRecover => hero != null && hero.gameObject.activeInHierarchy && !hero.cState.dead &&
+            !hero.cState.hazardDeath && !hero.cState.hazardRespawning && !hero.cState.transitioning &&
+            !hero.cState.recoiling && !hero.cState.recoilFrozen;
         public bool Active => !disposed && hits.Active && spell.HoldsState(state);
         public string Clip => "effect5";
         public double Tick => Clock.Tick;
@@ -76,7 +79,7 @@ namespace WukongKnight
             {
                 spell.SuppressEffects();
                 string next = spell.State;
-                if (hero == null || !hero.gameObject.activeInHierarchy || hero.cState.dead || hero.cState.hazardDeath || hero.cState.hazardRespawning || hero.cState.transitioning || hero.cState.recoiling || hero.cState.recoilFrozen)
+                if (!CanRecover)
                 {
                     Cancel(); state = next;
                     spell.FinishCast(); return;
@@ -100,7 +103,10 @@ namespace WukongKnight
                 FireDemonTimeline clock = Clock;
                 if (clock.Complete)
                 {
-                    Cancel(); spell.FinishCast(); state = spell.State; return;
+                    Cancel(); spell.FinishCast(); state = spell.State;
+                    // Same recovery timer as native Quake Finish, after control returns.
+                    if (!disposed && CanRecover) hero.QuakeInvuln();
+                    return;
                 }
                 // Native antic relinquishes only on entry. Keep its input/motion
                 // invariant for the longer source timeline, before native updates.

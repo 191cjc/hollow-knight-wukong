@@ -1,4 +1,81 @@
-# Current status: Wukong0.7.3 skill defense and final-hit recoil
+# Current status: Wukong0.7.5 native down-spell recovery
+
+Updated2026-10-26 (Asia/Shanghai). Version0.7.5-dev is installed in the authorized
+WukongKnight directory with the game stopped and a complete previous0.7.4 backup.
+Baseline bf81c06 is preserved. This checkpoint records the complete0.7.4/0.7.5
+source/config/test/documentation changes. The user authorized committing and
+pushing all current changes; origin now uses verified SSH authentication.
+
+Native Spell Control Quake Finish calls HeroController.QuakeInvuln, assigning live
+INVUL_TIME_QUAKE (installed prefab default0.4s) to parryInvulnTimer. Fire Demon now
+calls that same method once after successful source-end control recovery; player
+Earthbreaker calls it once after confirmed landing recovery. Existing full-action
+HP guards remain. The new recovery tail follows native ordinary-damage/hazard/
+expiry rules, without a custom HP guard or saved invincibility. Cancellation,
+unlanded timeout, ghosts, death/hazards/scenes and teardown grant no timer.
+Other skills, movement, damage, Soul and all17active character resources stay intact.
+
+Validation:66Python passed/one Windows symlink-privilege skip;74actual production
+C# core checks and warnings-as-errors Release passed. Native serialized prefab/FSM,
+installed QuakeInvuln/Update/TakeDamage and actual compiled success/cancel paths
+were reviewed. All19package/installed file hashes and archive bytes verified.
+All17character resources are byte-identical to0.7.4 (59clips/1559ticks/16pages).
+
+Package: artifacts/WukongKnight-0.7.5-dev.zip.
+ZIP SHA256: 4aa3c475eab814ad9c99476895285cd24d3aa36cd9169a6789c129c711ef21ef.
+DLL SHA256: 22d5815734409e60f807408f391f40fb3224b9c3881bd8ef784538c661388b25 (113664bytes).
+Installed at 2026-10-26T21:27:17.336268+08:00.
+Backup: installed-WukongKnight-before-0.7.5-20261026-212714.zip.
+Backup SHA256: 289a269aa8f47c3561681e987360637574c4d8883974db438ef4fd93fcd416be.
+No API/save modifications. Client recovery/contact/projectile/hazard/expiry and
+prior-skill acceptance remain pending; **runtime_tested=false**, task in_progress.
+Evidence: reference/flash/fist/quake-recovery-v075.json and
+.trellis/tasks/10-23-wukong-character-basic-attacks/research/quake-recovery-v075-20261026.md.
+
+---
+
+# Previous status: Wukong0.7.4 independent summons
+
+Updated2026-10-26 (Asia/Shanghai). Version0.7.4-dev is installed in the authorized
+WukongKnight directory with the game stopped and a complete previous0.7.3 backup.
+Local checkpoint bf81c06 is preserved; this request remains uncommitted.
+
+- Neutral spell summons one independent Afterimage Combo attacker. Its original
+  71-tick route/hits and four persistent trail ghosts run while the hero moves,
+  jumps, attacks or casts. Terrain sweeps affect only the clone. Neutral casting
+  pays live MP Cost once and returns directly from Has Fireball? to Inactive,
+  avoiding native antic/flip/control/gravity/velocity writes and Spell End resets.
+- Up Dream Fire Ape uses source skill5Awake1 moving awakening: body-free105-tick
+  back/front effects follow live hero position/facing around ordinary animation.
+  Normal incoming HP damage, recoil and hit pause run. Prior armor, StartRecoil
+  hook and Dream damage transition override are removed. The effect retains its
+  local hit caps/cooldowns and separate3s post-effect cooldown; cost remains once.
+- Godslayer/Earthbreaker retain hero ownership and existing copied-ghost behavior;
+  Earthbreaker immunity and Fire Demon final recoil remain. Ordinary actions/hits
+  leave summons running; death/hazards/scenes/detach remove every actor/trigger.
+
+Validation:66Python passed/one Windows symlink-privilege skip;74actual production
+C# core checks and warnings-as-errors Release passed. All19package/installed
+files and ZIP bytes verified. All1308previous asset files retain their SHA256;
+all57previous clips/1349ticks preserve pixels, timing, root and combat. New
+v074 original/full1.5x/packed folders add only two body-free layers:59clips,
+1559ticks,16compact pages. Packed pixels, both-facing artwork previews and actual
+compiled ownership/forward-recovery/no-armor boundaries were reviewed.
+
+Package: artifacts/WukongKnight-0.7.4-dev.zip.
+ZIP SHA256: 12c0a3ede15ea74d5d902376c6882fe0a4d93584dddcded0004b3d7b6171c577.
+DLL SHA256: 8f9043b0db33eef4313a09acb61fba7509ab33a4c52aeb50f46c605656af6de6 (113152bytes).
+Installed at 2026-10-26T20:49:12.265687+08:00.
+Backup: installed-WukongKnight-before-0.7.4-20261026-204909.zip.
+Backup SHA256: 5a42c2d234bb50f0abfeccafb773dadca57e121a09c31ae981a7a3bee4d87f1f.
+No API/save modifications or new commit/push. Client free movement, controls,
+damage/recoil/terrain and cleanup acceptance remain pending; **runtime_tested=false**,
+task in_progress. See reference/flash/fist/detached-v074.json and
+.trellis/tasks/10-23-wukong-character-basic-attacks/research/detached-v074-20261026.md.
+
+---
+
+# Previous status: Wukong0.7.3 skill defense and final-hit recoil
 
 Updated2026-10-24 (Asia/Shanghai). Version0.7.3-dev installed in the authorized
 WukongKnight directory with game stopped and complete previous0.7.2 backup.

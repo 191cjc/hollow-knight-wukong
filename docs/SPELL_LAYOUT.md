@@ -1,4 +1,4 @@
-# Spell controls (0.7.3-dev)
+# Spell controls (0.7.5-dev)
 
 The 0.4.4 workspace was committed before these changes as
 `a07b2ac4981caca2b84af7a4f9ae1dc270a3d42d`. No remote push was made.
@@ -95,10 +95,11 @@ ceil(x1.5). Maximums assume full contact and are not guaranteed enemy HP loss.
 
 ## Artwork and verification
 
-`data/character/wukong-staff-presentation-v062.json` produces the separate
-`assets/processed/wukong-presentation-v062-original` bake. The active offline1.5x
-copy is `assets/processed/variants/wukong-presentation-v062-1p5`:45clips,991ticks,
-32atlas pages. This includes the original spell/nail art and flameDashDown. All earlier original/variant folders and archived inputs are preserved.
+`data/character/wukong-fist-v074.json` produces the separate
+`assets/processed/wukong-fist-v074-original` bake. The active offline1.5x copy is
+`assets/processed/variants/wukong-fist-v074-1p5`; its -packed runtime copy contains
+59clips/1559ticks/16pages, including the body-free moving-awakening Ape layers.
+All earlier original/variant folders, clip pixels and archived inputs are preserved.
 Run `scripts/prepare-all-assets.bat` to repeat preparation.
 
 Production core tests cover buff boundaries, real HP loss, global cooldown,
@@ -116,3 +117,23 @@ damage throughout its owned launch/fall/landing action. Up Dream Fire Ape remain
 vulnerable to native HP damage but continues its source action through ordinary
 hits, retaining native post-hit cooldown. Death/hazards/scenes still win and
 cleanup restores the exact native Dream damage transition. See FIST_SKILLS.md.
+
+
+## 0.7.4 free-player adaptation (supersedes Ape armor)
+
+Neutral spell summons an independent Afterimage attacker, then immediately returns
+the native pre-antic route to Inactive without motion/control/gravity writes. The
+clone attacks/moves/leaves ghosts while the hero acts freely. Up Dream Fire Ape
+uses source moving awakening, follows live hero position/direction, and leaves
+hero action/animation untouched. Native damage and recoil are fully restored.
+Both still spend current native MP Cost once. Earthbreaker/Godslayer are unchanged.
+
+
+## 0.7.5 native recovery protection
+
+Successful up-spell Fire Demon and player down-Dream Earthbreaker completion now
+use original QuakeInvuln once after control recovery. Native INVUL_TIME_QUAKE
+defaults to0.4s, protecting against ordinary enemy contact/projectile damage;
+native hazard/expiry rules remain. Existing protection during each action stays
+intact. Canceled actions, Earthbreaker without confirmed landing and copied ghosts
+do not grant the recovery timer. No other skill/asset/HP/Soul rules are changed.

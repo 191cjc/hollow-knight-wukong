@@ -18,7 +18,8 @@ internal static class Program
         cases = cases.Concat(new Action[] { FistChargeReleaseThreshold, FistChargeReleaseIsLatched, FistContactsOwnSubskills, FistSourceMasksStayLocal, FistTravelIsBounded, FistBalanceHasBoundedCloneDamage }).ToArray();
         cases = cases.Concat(new Action[] { FistChargeForcesSourceRelease, FistChargeAutoReleaseIsLatched, FistDirectionalSoulGate, FistSoulAcquisitionCanBeRevoked, FistSoulSpendingCanRevokeControl }).ToArray();
         cases = cases.Concat(new Action[] { CopiedGodslayerGhostExpiresAtReleaseEnd, CopiedEarthbreakerGhostExpiresAtLandingEnd, IdleGhostExpiryDefersForCopy, EarthbreakerDescentIsFasterAndSamplingIndependent, FistPushUsesNativeSlamAndAwayDirection }).ToArray();
-        cases = cases.Concat(new Action[] { EarthbreakerProtectionEndsWithHeroAction, FireApeArmorKeepsOriginalDeadline, HeroRecoveryRetainsOtherActionClocks, DamageEventRestoresAcrossCasts, DamageEventRestorationRespectsNewOwner, DamageEventRefusesForeignOverride }).ToArray();
+        cases = cases.Concat(new Action[] { EarthbreakerProtectionEndsWithHeroAction, FireApeKeepsOriginalDeadline, HeroRecoveryRetainsOtherActionClocks }).ToArray();
+        cases = cases.Concat(new Action[] { DetachedSummonsKeepIndependentClocks, AfterimageTrailBirthsRetainPositionsAcrossSlowFrames, DetachedCancellationRejectsStaleWork, SummonsSpendSoulWithoutTakingControl, SummonPaymentCanRevokeSpawn, DetachedContactsKeepCapsWhenFacingChanges }).ToArray();
         foreach (Action test in cases)
         {
             try { test(); Console.WriteLine("PASS " + test.Method.Name); }
@@ -28,58 +29,104 @@ internal static class Program
         return 0;
     }
 
+    private static void DetachedSummonsKeepIndependentClocks()
+    {
+        var combo=new FistSummonClock(FistAction.Afterimage,10);
+        var ape=new FistSummonClock(FistAction.FireApe,11);
+        var held=new GodslayerCharge(); held.Release(.2,false); held.Reset();
+        for (int i=0;i<5;i++)
+        {
+            Check(combo.Tick(11)==30 && ape.Tick(11)==0, "Repeated observation or another skill reset a summon clock");
+            Check(combo.Active(11) && ape.Active(11), "One summon hid the other");
+        }
+        Check(!combo.Active(10+71.0/30) && ape.Active(10+71.0/30), "Combo completion ended the moving Ape");
+        Check(ape.Active(11+105.0/30-.001) && !ape.Active(11+105.0/30), "Ape lost original105-tick lifetime");
+        Check(!ape.Active(double.NaN) && !combo.Active(double.PositiveInfinity), "Invalid source clock retained damage");
+    }
+    private static void AfterimageTrailBirthsRetainPositionsAcrossSlowFrames()
+    {
+        foreach (bool slow in new[] {false,true})
+        {
+            var clock=new FistSummonClock(FistAction.Afterimage,0);
+            var positions=new List<double>(); double position=0;
+            for (int tick=1;tick<=71;tick++)
+            {
+                if (slow && tick<71) continue;
+                while (clock.NextAfterimageStep(tick/30.0,out double pixels,out int birth))
+                {
+                    position+=pixels;
+                    if (birth!=0) { Check(birth==positions.Count+1,"Trail born out of order"); positions.Add(position); }
+                }
+            }
+            Check(positions.SequenceEqual(new[] {60.0,165.0,270.0,360.0}), "Slow frame collapsed the four trail positions");
+            Check(position==540,"Detached clone changed original total forward travel");
+            Check(!clock.NextAfterimageStep(71.0/30,out _,out _),"Repeated fixed step moved the clone twice");
+        }
+    }
+    private static void DetachedCancellationRejectsStaleWork()
+    {
+        var old=new FistSummonClock(FistAction.Afterimage,0);
+        old.NextAfterimageStep(.5,out _,out _); old.Cancel();
+        var fresh=new FistSummonClock(FistAction.Afterimage,1);
+        Check(!old.Active(1) && !old.NextAfterimageStep(2,out _,out _),"Canceled actor retained callbacks/trail births");
+        Check(fresh.Active(1) && fresh.Tick(1)==0,"Recast inherited previous clock");
+        var ape=new FistSummonClock(FistAction.FireApe,0); fresh.Cancel();
+        Check(ape.Active(2),"Replacing combo canceled an unrelated Ape");
+    }
+    private static void SummonsSpendSoulWithoutTakingControl()
+    {
+        foreach (FistAction action in new[] {FistAction.Afterimage,FistAction.FireApe})
+        foreach (int cost in new[] {33,24})
+        {
+            int soul=cost-1, spends=0; bool eligible=true;
+            Func<bool> start=() => FistRules.TryBeginSummon(action,cost,() => soul,() => eligible,n => { soul-=n; spends++; });
+            Check(!start() && spends==0,"Insufficient Soul started a summon");
+            soul=cost; Check(start() && soul==0 && spends==1,"Summon did not spend live native cost exactly once");
+            soul=cost; eligible=false; Check(!start() && soul==cost && spends==1,"Duplicate/ineligible cast spent Soul");
+        }
+        Check(!FistRules.TryBeginSummon(FistAction.Godslayer,33,() => 99,() => true,_ => { throw new Exception("Unexpected payment"); }),"Owned hero skill used detached payment");
+    }
+    private static void SummonPaymentCanRevokeSpawn()
+    {
+        bool alive=true; int paid=0;
+        bool accepted=FistRules.TryBeginSummon(FistAction.FireApe,33,() => 33,() => alive,n => { paid+=n; alive=false; });
+        Check(!accepted && paid==33,"Native Soul callback could spawn a dead/stale actor or charged twice");
+    }
+    private static void DetachedContactsKeepCapsWhenFacingChanges()
+    {
+        var ape=new FistContacts(); var clone=new FistContacts();
+        Check(ape.TryHit(0,7,5,.434,0),"Initial detached contact rejected");
+        Check(!ape.TryHit(0,7,5,.434,.1),"Turning/moving could reset detached cooldown");
+        Check(clone.TryHit(0,7,2,.3,.1),"Independent clone shared Ape's cooldown");
+        for (int i=1;i<5;i++) Check(ape.TryHit(0,7,5,.434,i*.434),"Source punches lost a contact");
+        Check(!ape.TryHit(0,7,5,.434,3),"Ape recentered and exceeded its per-target cap");
+        Check(ape.TryHit(1,7,2,.4,3),"Front roar lost independent subskill budget");
+    }
     private static void EarthbreakerProtectionEndsWithHeroAction()
     {
-        Check(!FistRules.HeroFinished(FistAction.Earthbreaker, 0, -1, false, 0), "Earthbreaker ended at launch");
-        Check(!FistRules.HeroFinished(FistAction.Earthbreaker, 4.9, -1, false, 0), "Falling protection ended before timeout");
-        Check(!FistRules.HeroFinished(FistAction.Earthbreaker, 2, 14.0/30-.001, false, 0), "Landing tail lost protection early");
-        Check(FistRules.HeroFinished(FistAction.Earthbreaker, 2, 14.0/30, false, 0), "Landing tail retained old protection");
-        Check(FistRules.HeroFinished(FistAction.Earthbreaker, 5, -1, false, 0), "Bottomless timeout retained protection");
-        Check(FistRules.HeroFinished(FistAction.None, 0, -1, false, 0), "Stopped action still owned a defensive window");
+        Check(!FistRules.ActionFinished(FistAction.Earthbreaker, 0, -1, false, 0), "Earthbreaker ended at launch");
+        Check(!FistRules.ActionFinished(FistAction.Earthbreaker, 4.9, -1, false, 0), "Falling protection ended before timeout");
+        Check(!FistRules.ActionFinished(FistAction.Earthbreaker, 2, 14.0/30-.001, false, 0), "Landing tail lost protection early");
+        Check(FistRules.ActionFinished(FistAction.Earthbreaker, 2, 14.0/30, false, 0), "Landing tail retained old protection");
+        Check(FistRules.ActionFinished(FistAction.Earthbreaker, 5, -1, false, 0), "Bottomless timeout retained protection");
+        Check(FistRules.ActionFinished(FistAction.None, 0, -1, false, 0), "Stopped action still owned a defensive window");
     }
-    private static void FireApeArmorKeepsOriginalDeadline()
+    private static void FireApeKeepsOriginalDeadline()
     {
         for (int observation=0; observation<8; observation++)
-            Check(!FistRules.HeroFinished(FistAction.FireApe, 2, -1, false, 0), "Paused/repeated damage observer advanced action");
-        Check(!FistRules.HeroFinished(FistAction.FireApe, 105.0/30-.001, -1, false, 0), "Armor cut the source tail short");
-        Check(FistRules.HeroFinished(FistAction.FireApe, 105.0/30, -1, false, 0), "Armor restarted or extended the cast");
-        Check(FistRules.HeroFinished(FistAction.FireApe, 5, -1, false, 0), "Late observer retained armor");
+            Check(!FistRules.ActionFinished(FistAction.FireApe, 2, -1, false, 0), "Paused/repeated damage observer advanced action");
+        Check(!FistRules.ActionFinished(FistAction.FireApe, 105.0/30-.001, -1, false, 0), "Ape effect cut the source tail short");
+        Check(FistRules.ActionFinished(FistAction.FireApe, 105.0/30, -1, false, 0), "Ape clock restarted or extended the effect");
+        Check(FistRules.ActionFinished(FistAction.FireApe, 5, -1, false, 0), "Late observer retained the effect");
     }
     private static void HeroRecoveryRetainsOtherActionClocks()
     {
-        Check(!FistRules.HeroFinished(FistAction.Afterimage, 71.0/30-.001, -1, false, 0), "Combo tail changed");
-        Check(FistRules.HeroFinished(FistAction.Afterimage, 71.0/30, -1, false, 0), "Combo no longer ends");
-        Check(!FistRules.HeroFinished(FistAction.Godslayer, 8, -1, false, 0), "Unreleased charge ended through recovery policy");
-        Check(!FistRules.HeroFinished(FistAction.Godslayer, 3, -1, true, 25.0/30-.001), "Released tail ended early");
-        Check(FistRules.HeroFinished(FistAction.Godslayer, 3, -1, true, 25.0/30), "Released tail never recovers");
-        Check(FistRules.HeroFinished(FistAction.FireApe, double.NaN, -1, false, 0), "Invalid clock retained action");
-    }
-    private static void DamageEventRestoresAcrossCasts()
-    {
-        object original=new object(), ignored=new object(), current=original; int writes=0;
-        var gate=new DamageEventOverride(() => current, value => { current=value; writes++; }, ignored);
-        gate.Set(false); Check(ReferenceEquals(current,original) && writes==0, "Inactive gate changed native damage cancellation");
-        gate.Set(true); gate.Set(true);
-        Check(ReferenceEquals(current,ignored) && writes==1, "Held hit canceled or restarted the override");
-        gate.Set(false); gate.Set(false);
-        Check(ReferenceEquals(current,original) && writes==2, "Finish/cancel failed to restore native damage cancellation");
-        gate.Set(true); gate.Set(false);
-        Check(ReferenceEquals(current,original) && writes==4, "Recast inherited a stale damage event");
-    }
-    private static void DamageEventRestorationRespectsNewOwner()
-    {
-        object original=new object(), ignored=new object(), foreign=new object(), current=original;
-        var gate=new DamageEventOverride(() => current, value => current=value, ignored);
-        gate.Set(true); current=foreign; gate.Set(false);
-        Check(ReferenceEquals(current,foreign), "Cleanup overwrote another Mod's newer transition");
-    }
-    private static void DamageEventRefusesForeignOverride()
-    {
-        object original=new object(), ignored=new object(), foreign=new object(), current=original;
-        var gate=new DamageEventOverride(() => current, value => current=value, ignored);
-        current=foreign; bool rejected=false;
-        try { gate.Set(true); } catch (InvalidOperationException) { rejected=true; }
-        Check(rejected && ReferenceEquals(current,foreign), "Acquisition silently replaced an unowned transition");
+        Check(!FistRules.ActionFinished(FistAction.Afterimage, 71.0/30-.001, -1, false, 0), "Combo tail changed");
+        Check(FistRules.ActionFinished(FistAction.Afterimage, 71.0/30, -1, false, 0), "Combo no longer ends");
+        Check(!FistRules.ActionFinished(FistAction.Godslayer, 8, -1, false, 0), "Unreleased charge ended through recovery policy");
+        Check(!FistRules.ActionFinished(FistAction.Godslayer, 3, -1, true, 25.0/30-.001), "Released tail ended early");
+        Check(FistRules.ActionFinished(FistAction.Godslayer, 3, -1, true, 25.0/30), "Released tail never recovers");
+        Check(FistRules.ActionFinished(FistAction.FireApe, double.NaN, -1, false, 0), "Invalid clock retained action");
     }
     private static void FistChargeReleaseThreshold()
     {

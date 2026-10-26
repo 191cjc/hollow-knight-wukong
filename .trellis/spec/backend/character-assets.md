@@ -275,3 +275,14 @@ poses;40/53 are stable punch/kick poses. Select original drawings offline; never
 compensate with a runtime stretch. Preserve earlier profiles/artwork and create
 new original/full1.5x/packed folders. Check all other1347ticks byte-for-byte at
 both sizes and exact packed reconstruction, then inspect the four ghost poses.
+
+
+## 0.7.4 moving Ape effect-only layers
+
+Profile fire_ape_moving_awakening opt-in adds fireApeAwakenedBack/Front,105ticks
+each. Back contains only original fistApe effect5_0 draws; front contains only
+original fistFx effect5_1. Preserve every old fireApe body composite and all prior
+clips. Runtime places back behind ordinary hero sprite and front ahead, following
+live root/facing; no appearance scaling or baked player body. Separate v074
+original/full1.5x/packed folders retain all earlier files. Validate body-free
+source draws, every previous1349tick's pixels and lossless packed reconstruction.

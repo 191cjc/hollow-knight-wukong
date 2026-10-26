@@ -1,0 +1,99 @@
+{
+  "version": "0.7.4-dev",
+  "runtime_tested": false,
+  "source": {
+    "file": "WK2Entity.as",
+    "sha256": "3ad081a17d375210f1c24ce9fa3fb342b972418368fe65c91af07ab5a78a587f",
+    "moving_awakening": "skill5Awake1: toSkill75 immediately toIdle; both effects follow live bodyPosition and direction; no duplicate effect5_0"
+  },
+  "neutral_gate": {
+    "state": "Has Fireball?",
+    "action": "IntCompare",
+    "held_event_field": "greaterThan",
+    "original_event": "CAST",
+    "serialized_event_parameters": [
+      {
+        "field": "equal",
+        "raw_bytes": [
+          67,
+          65,
+          78,
+          67,
+          69,
+          76
+        ]
+      },
+      {
+        "field": "lessThan",
+        "raw_bytes": [
+          67,
+          65,
+          78,
+          67,
+          69,
+          76
+        ]
+      },
+      {
+        "field": "greaterThan",
+        "raw_bytes": [
+          67,
+          65,
+          83,
+          84
+        ]
+      }
+    ],
+    "upstream_native_checks": [
+      "CanCast",
+      "MPCharge vs MP Cost",
+      "Spell Choice/QC",
+      "fireballLevel >0"
+    ],
+    "skipped_states": [
+      "Wallside?",
+      "Fireball Antic",
+      "Spell End"
+    ],
+    "return_state": "Inactive"
+  },
+  "afterimage": {
+    "duration_ticks": 71,
+    "source_FPS": 30,
+    "max_source_travel_pixels": 540,
+    "ghost_birth_ticks": [
+      11,
+      25,
+      39,
+      51
+    ],
+    "ghost_birth_unblocked_distances": [
+      60,
+      165,
+      270,
+      360
+    ],
+    "hero_control_or_motion_owned": false
+  },
+  "ape": {
+    "duration_ticks": 105,
+    "follows_live_hero_position_and_facing": true,
+    "clips": [
+      "fireApeAwakenedBack",
+      "fireApeAwakenedFront"
+    ],
+    "body_draws_baked": false,
+    "hero_control_or_motion_owned": false,
+    "armor": false,
+    "native_recoil_hook": false,
+    "native_dream_damage_event_override": false
+  },
+  "artwork": {
+    "new_folders": "wukong-fist-v074-*",
+    "previous_asset_snapshot_count": 1308,
+    "previous_clips": 57,
+    "previous_ticks": 1349,
+    "new_clips": 59,
+    "new_ticks": 1559
+  }
+}

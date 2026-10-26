@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
@@ -29,12 +28,6 @@ namespace WukongKnight
         private readonly MethodInfo resetInput = Method(typeof(HeroController), "ResetInput");
         private readonly FieldInfo evasion = Field(typeof(HealthManager), "evasionByHitRemaining", typeof(float));
         private readonly FieldInfo contacts = Field(typeof(DamageEnemies), "enteredColliders", typeof(List<Collider2D>));
-        private readonly MethodInfo invulnerable = typeof(HeroController).GetMethod("Invulnerable", Instance, null, new[] { typeof(float) }, null)
-            ?? throw new MissingMethodException("HeroController.Invulnerable(float)");
-        private readonly FieldInfo invulTime = Field(typeof(HeroController), "INVUL_TIME", typeof(float));
-        private readonly FieldInfo invulTimeStal = Field(typeof(HeroController), "INVUL_TIME_STAL", typeof(float));
-        private readonly FieldInfo damageEffect = FieldByTypeName(typeof(HeroController), "damageEffectFSM", "PlayMakerFSM");
-        private readonly FieldInfo doubleHitEffect = Field(typeof(HeroController), "takeHitDoublePrefab", typeof(GameObject));
         private readonly FieldInfo heroDeath = Field(typeof(HeroController), "heroDeathPrefab", typeof(GameObject));
         private readonly FieldInfo dashDown = Field(typeof(HeroController), "dashingDown", typeof(bool));
         private readonly FieldInfo dashTimer = Field(typeof(HeroController), "dash_timer", typeof(float));
@@ -180,23 +173,6 @@ namespace WukongKnight
                 Source = source, AttackType = AttackTypes.SharpShadow, DamageDealt = damage,
                 Direction = direction, IgnoreInvulnerable = false, MagnitudeMultiplier = 1f, Multiplier = 1f
             }, 1);
-        }
-
-        // Called only after native TakeDamage has applied HP, charms, death and hazards.
-        // Keep its normal damage VFX and native post-hit cooldown, without motion/freeze.
-        public IEnumerator ArmoredDamage(HeroController hero, bool spawnDamageEffect, int damage)
-        {
-            if (spawnDamageEffect)
-            {
-                object effect = damageEffect.GetValue(hero);
-                (effect.GetType().GetMethod("SendEvent", new[] { typeof(string) })
-                    ?? throw new MissingMethodException("Damage effect.SendEvent(string)"))
-                    .Invoke(effect, new object[] { "DAMAGE" });
-                if (damage > 1)
-                    UnityEngine.Object.Instantiate((GameObject)doubleHitEffect.GetValue(hero), hero.transform.position, hero.transform.rotation);
-            }
-            return (IEnumerator)invulnerable.Invoke(hero, new object[] {
-                (float)(PlayerData.instance.GetBool("equippedCharm_4") ? invulTimeStal : invulTime).GetValue(hero) });
         }
 
         public void FireDemonHit(GameObject source, GameObject target, int damage, float direction, bool finisher, Func<bool> stillOwned)

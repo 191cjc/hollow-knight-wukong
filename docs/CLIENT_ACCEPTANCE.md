@@ -240,3 +240,36 @@ Automated checks and frame preview do not establish these client results.
   through a nonlethal hit, and recovers control at the original source end. Damage
   afterward must cancel ordinary Godslayer again. No persisted armor after scene/
   death/hazard/cancel/detach. Recheck HUD/blue health/overcharm/damage charms.
+
+
+0.7.4 supersedes the earlier locked-body Afterimage and armored Ape checks:
+- While running/jumping/falling, neutral spell summons the moving combo actor
+  without resetting player speed, gravity, facing or body animation. Move away,
+  attack or cast while it completes; its hits/ghosts remain at its own positions.
+- Four trail ghosts keep distinct source birth positions, stable held poses,
+  ten-second idle life and one-time Godslayer/Earthbreaker mimic expiry. Recast
+  replaces the actor/old ghosts, with no extra wave/Ape/hero cancellation.
+- Up Dream: move/jump/turn/attack/cast throughout moving-awakening Ape; back Ape
+  follows behind body, front roar ahead, with no duplicate locked punching body.
+- Ordinary hits must deduct HP and knock/stun the player normally: no armor or
+  broad immunity. Ape/clone effects may continue independently. Death, spikes/acid,
+  scene transitions and Mod disable clear all actors. Damage resumes normally
+  after other protected skills end. Recheck native damage charms and HUD.
+- Check insufficient/exact33andSpellTwister24Soul, successful casts charged once,
+  no duplicate active Ape or duplicate same-frame payment, separate cooldowns,
+  live local Hornet/Buzzer hurtboxes, native enemy recoil and pause/slow frames.
+
+
+## 0.7.5 native down-spell recovery protection (pending)
+
+- Complete Fire Demon on ground/in air and Earthbreaker after real landing: input
+  and ordinary motion return, and ordinary enemy contact/projectiles are ignored
+  for about0.4s afterward. The original full-action protection must stay continuous.
+- After the native timer expires, ordinary damage/recoil works again. Repeated
+  observers, pause/unpause and stale callbacks must not refresh it.
+- A canceled/failed cast, unlanded timeout, copied Earthbreaker landing, death,
+  hazard/scene change or Mod teardown must not grant an extra recovery timer.
+- Compare spikes/acid and other hazard behavior with native Quake recovery: this
+  new tail follows the game's native rules rather than the full-action HP guard.
+- Check both spell tiers/charms, keyboard/controller, concurrent detached combo/
+  moving Ape, Godslayer, staff attacks/pogo, dash/focus/death and previous skills.

@@ -36,7 +36,7 @@ variant is 1.5 times the original artwork, selected by `data/character/active-va
 The complete artwork batch is `scripts/prepare-all-assets.bat`. All decoded image
 variants live in `assets/processed/source-variants/all-1p5`; the active complete
 runtime variant is selected by `data/character/active-variant.json` (currently
-`assets/processed/variants/wukong-fist-v071-1p5`, with separate compact runtime atlases). Flame Dash is
+`assets/processed/variants/wukong-fist-v074-1p5`, with separate compact runtime atlases). Flame Dash is
 the original dash key plus original flame art and once-per-target along-path
 damage. Preserve native dash movement/cooldown/collision and avoid double damage
 from Sharp Shadow. Up + spell is Fire Demon Slash with independent fixed spell
@@ -117,3 +117,21 @@ but replaces only Dream HERO DAMAGED cancellation and ordinary StartRecoil with
 native damage VFX/Invulnerable, retaining death/hazards/scenes. DamageEventOverride
 restores only its own write on Finish/Dispose. FireDemon final uses horizontal
 Spell recoil2 away from effect root; air/FlameStorm unchanged, no forced landing.
+
+
+v074 supersedes the locked Afterimage/Ape and v073 Ape-armor behavior. Only
+Godslayer/Earthbreaker own the hero. Afterimage is a detached source-clock actor;
+Ape is body-free back/front effects following live hero root/facing (skill5Awake1).
+Neutral spell holds Has Fireball? IntCompare.greaterThan CAST before Wallside?
+and Fireball Antic; pay once then return directly to Inactive, never Spell End.
+Do not mutate player velocity/control/gravity/animation for either summon. Remove
+Ape StartRecoil/Dream damage overrides. Actor death/hazard/scene/detach cleanup
+and per-actor ledgers remain mandatory. v074 artwork is in new preserved folders.
+
+
+v075 adds native QuakeInvuln recovery to successful Fire Demon source completion
+and confirmed player Earthbreaker landing completion, after native control recovery.
+Use the real live INVUL_TIME_QUAKE timer (default0.4s); retain native ordinary-damage
+and hazard rules. Keep existing full-action HP guards, and never grant the timer
+from cancellation, unlanded timeout, copied ghosts, death/hazards/scenes or disposal.
+No custom post-action HP guard or saved invincibility; active v074 art is unchanged.

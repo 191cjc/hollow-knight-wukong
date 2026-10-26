@@ -25,9 +25,6 @@ namespace WukongKnight
         private readonly object originalCompletion;
         private readonly object hold;
         private readonly GameObject hitTemplate;
-        private readonly object damageTransition;
-        private readonly PropertyInfo transitionEvent;
-        private readonly DamageEventOverride damageOverride;
         private bool owned;
         private bool disposed;
         public string State => disposed || fsm == null ? "" : (string)state.GetValue(fsm, null);
@@ -46,20 +43,6 @@ namespace WukongKnight
             foreach (object s in (Array)Prop(fsm.GetType(), "FsmStates").GetValue(fsm, null)) states.Add((string)Prop(s.GetType(), "Name").GetValue(s, null), s);
             foreach (string n in new[] { "Inactive", "Fsm Cancel", "Take Control", "Start", "End", "Regain Control" })
                 if (!states.ContainsKey(n)) throw new InvalidOperationException("Unsupported Dream state " + n);
-            object? damaged = null;
-            foreach (object transition in (Array)Prop(fsm.GetType(), "FsmGlobalTransitions").GetValue(fsm, null))
-                if ((string)Prop(transition.GetType(), "EventName").GetValue(transition, null) == "HERO DAMAGED")
-                {
-                    if (damaged != null || (string)Prop(transition.GetType(), "ToState").GetValue(transition, null) != "Cancel")
-                        throw new InvalidOperationException("Unsupported Dream damage transition");
-                    damaged = transition;
-                }
-            damageTransition = damaged ?? throw new InvalidOperationException("Dream damage transition missing");
-            transitionEvent = Prop(damageTransition.GetType(), "FsmEvent");
-            object originalDamageEvent = transitionEvent.GetValue(damageTransition, null);
-            object ignoreDamageEvent = Activator.CreateInstance(originalDamageEvent.GetType(), new object[] { "WUKONG DREAM DAMAGE HELD" });
-            damageOverride = new DamageEventOverride(() => transitionEvent.GetValue(damageTransition, null),
-                value => transitionEvent.SetValue(damageTransition, value, null), ignoreDamageEvent);
             inactiveState = states["Inactive"];
             listener = Action(inactiveState, "ListenForDreamNail");
             activeActions = inactiveState.GetType().GetProperty("ActiveActions", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
@@ -96,14 +79,8 @@ namespace WukongKnight
             if (!Holding) { Finish(); return false; }
             return true;
         }
-        public void SetDamageResistance(bool active)
-        {
-            if (active && !Holding) throw new InvalidOperationException("Cannot armor an unowned Dream cast");
-            damageOverride.Set(active);
-        }
         public void Finish()
         {
-            SetDamageResistance(false);
             bool held = Holding; owned = false;
             if (held && hero != null && hero.gameObject.activeInHierarchy && !hero.cState.dead && !hero.cState.hazardDeath && !hero.cState.hazardRespawning && !hero.cState.transitioning)
             {
@@ -162,7 +139,6 @@ namespace WukongKnight
         }
         private void Restore()
         {
-            SetDamageResistance(false);
             // An action disabled before its first entry has no cached input handler.
             // Prime only this listener when restoring it in its active state.
             if (wasEnabled && State == "Inactive")

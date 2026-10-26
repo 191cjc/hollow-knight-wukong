@@ -1,25 +1,29 @@
-# Fist skills (0.7.3-dev)
+# Fist skills (0.7.5-dev)
 
-Checkpoint before this change: e44de07. No remote push.
+Original fist checkpoint: e44de07. The0.7.4/0.7.5 changes start from committed
+0.7.3 checkpoint bf81c06 and are recorded together in the subsequent workspace
+checkpoint. GitHub uploads use the verified SSH remote.
 
 | Input | Action | Cost / progression |
 | --- | --- | --- |
 | Neutral quick spell | Afterimage Combo (残影连打) | Native fireballLevel; current MP Cost once, including Spell Twister |
 | Dream Nail | Godslayer Strike (灭神一击) | Requires native Dream Nail unlock; hold then release, no Soul cost |
 | Down + Dream Nail | Earthbreaker Fist (辟地拳) | Direction latched on press; ground launch or airborne slam; current native MP Cost once |
-| Up + Dream Nail | Fire Ape Assault (火猿出击) | Direction latched on press; current native MP Cost once |
+| Up + Dream Nail | Moving-awakening Fire Ape (火猿出击·动觉醒) | Follows live hero position/direction; current native MP Cost once |
 
 Existing staff attacks, up/down spells, focus, dash and death remain integrated.
 Directional Dream Gate shortcuts now use the requested fist actions. Menus, locked
 Dream Nail, death, transitions and conflicting native control prevent new casts.
 Earthbreaker blocks incoming HP damage throughout its owned player action,
 including launch, fall and landing tail. Copies/waves do not extend this window.
-Fire Ape still takes native HP damage, but HERO DAMAGED cannot cancel its owned
-Dream action and ordinary StartRecoil cannot stop or displace it. Native damage
-charms, UI and post-hit Invulnerable timing (including Stalwart Shell) remain.
-Death, hazards, scene changes and teardown still terminate the action; the original
-Dream damage transition is restored on every finish/cancel. No saved invincibility
-flag, manual HP deduction, cast restart or additional Soul charge is used.
+Afterimage and moving-awakening Fire Ape are independent summons, never owned
+player actions. The player keeps native movement, attacks, animation and gravity.
+Fire Ape follows the current hero root/facing, with its back layer behind the body
+and roar in front; it never shows the original locked punching-body pose. No armor:
+normal incoming HP damage, native recoil, hit pause and invincibility cooldown run
+unchanged. Ordinary hits affect the player while independent effects continue.
+Death/hazard/scene/detach destroys all actors. No StartRecoil hook, Dream damage
+event override, manual HP writes or saved invincibility is used.
 All four fist actions and copied hits now use native Q Slam horizontal spell recoil
 magnitude2, replacing the weak0.15 multiplier. Body hits push away from their cast
 root; Godslayer waves push along travel even after passing a target center. Native
@@ -30,8 +34,9 @@ contact caps, Soul rules and other spells retain their previous values.
 Earthbreaker and Fire Ape use the live native Spell Control MP Cost: normally33
 Soul, or24 with Spell Twister. The separate native Set Spell Cost FSM updates it
 on CHARM INDICATOR CHECK, independently of a spell cast. Insufficient Soul rejects
-the action before taking control; successful acquisition charges native TakeMP
-once, then starts the action/mimicry. Recheck Soul/ownership after native callbacks.
+the action. Earthbreaker acquires native control before charging TakeMP once;
+Fire Ape pays once without acquiring control. Recheck eligibility/ownership after
+native callbacks before starting either action.
 Canceled acquisition produces no action or extra ghost charge. Godslayer remains
 free and keeps native full-charge Dream interactions. Damage factors are unchanged.
 
@@ -43,7 +48,9 @@ in reference/flash/fist. Root/masks use baseline pixels per world unit, independ
 of offline artwork enlargement. Sensor/weapon filtering reuses SkillTargetPolicy;
 rangeFront=999 is never used as a collision extent.
 
-Afterimage uses source effect4 for 71 ticks at 30Hz. Five original local masks
+One independently summoned attacker uses source effect4 for71ticks at30Hz,
+with latched position/facing, its own contact ledger and source travel. The hero
+stays free and can move/jump/attack/cast other skills concurrently. Five original local masks
 have independent caps 2/1/1/1/1; the double punch has a 300ms contact interval.
 Each contact deals 3/5 damage for normal/upgraded forward spell, or 5/8 with
 Shaman Stone. Maximum stationary full contact is 18/30 or 30/48. Native evasion
@@ -91,8 +98,9 @@ air casts use an eight-tick antic then fall. Descent is33original pixels/tick
 and ghost use the same movement rule, with blocked distance consumed normally. The unchanged hero body is swept
 at every movement step; falling pose holds source frame18 until contact and
 landing resumes frame19. Timeout bounds a bottomless fall. Ape uses original
-105-tick body, independent back ape and front roar, with terrain-limited source
-forward travel. Movement input is denied while the owned action is active.
+105-tick back/front effects as source skill5Awake1 moving awakening. The hero
+uses ordinary movement/animation/facing; no scripted forward travel or input hold.
+Movement is denied only during owned Godslayer/Earthbreaker actions.
 
 Adaptations: fixed Hollow Knight damage/recovery replaces source RPG stats/MP.
 Godslayer now follows the archived source automatic maximum-charge release.
@@ -104,8 +112,9 @@ Native scenery collision and full gameplay behavior still need client acceptance
 
 ## Preserved artwork and compact runtime atlases
 
-wukong-fist-v071-original contains all prior clips plus twelve new clips. A separate
-1.5x variant keeps the resized full canvases. The runtime -packed folder trims only
+wukong-fist-v074-original preserves all57earlier clips/1349ticks and adds two
+105-tick body-free Ape layers:59clips/1559ticks total. Its separate1.5x variant
+keeps full canvases, and16compact runtime pages retain exact pixels. The -packed folder trims only
 transparent margins, includes the shared root in every crop and shelf-packs them.
 Each frame records source_x/source_y to retain exact pivot/feet registration.
 No pixels are resampled during packing; reconstructing every unique cell must equal
@@ -139,3 +148,35 @@ actions. On restoration while Inactive, prime its input cache and reinsert it at
 its original order if absent. If another state is active, normal future OnEnter
 rebuilds the list using restored Enabled. Exact pinned IL is preserved under
 reference/flash/fist/native-listener-cache.txt.
+
+
+## 0.7.4 neutral spell entry and summon ownership
+
+Has Fireball? IntCompare.greaterThan CAST is held after native CanCast, MP and
+fireballLevel checks, before Wallside? FlipSprite and Fireball Antic motion/control
+actions. TakeMP charges live MP Cost once; return directly to Inactive. Do not
+enter Spell End, which would clear velocity and reset control/gravity. Up/down/
+focus stay on their native routes. Repeated same-frame observations cannot pay twice.
+
+The combo actor alone travels540source pixels through terrain-swept bounds and
+births four ghosts at elapsed ticks11/25/39/51. Travel steps split at birth ticks
+so slow frames keep distinct positions. Recast replaces that actor/old ghosts;
+independent waves/Ape survive. Player movement never changes clone origin/facing.
+Hero Godslayer/Earthbreaker can still trigger existing ghost mimicry.
+
+Ape acquires no Dream FSM/control, cannot duplicate while active, and retains the
+previous3s post-effect cooldown independently of the other Dream actions. Source
+local masks/caps5/2 and434/400ms cooldowns remain in one ledger across player
+movement/turns/hits. Original body composite remains archived; new effect-only
+back/front clips live in separate v074 original/full1.5x/packed directories.
+
+
+## 0.7.5 post-action recovery
+
+Successful player Earthbreaker landing recovery now calls original QuakeInvuln
+once, after Dream Finish and a live-hero recheck. It grants the native down-spell
+timer: INVUL_TIME_QUAKE, default0.4s, against ordinary enemy damage. Native Update
+and hazard rules handle expiry/acceptance. Existing full-action immunity remains.
+Copied ghosts, canceled actions, unlanded bottomless timeout, death/hazard/scene
+and teardown do not grant the timer. Godslayer and detached Ape/Afterimage stay
+unchanged; no added armor or custom post-action HP guard. Artwork stays identical.

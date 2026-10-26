@@ -50,6 +50,35 @@ class FistAssetTests(unittest.TestCase):
         self.assertTrue(any(d.texture.startswith('fistFx/') for f in self.samples['fireApe'] for d in f))
         self.assertTrue(any(d.color != (1,1,1,0,0,0) for f in self.samples['afterimageCombo'] for d in f))
 
+    def test_moving_ape_has_source_back_front_effects_without_body(self):
+        for name,prefix in [('fireApeAwakenedBack','fistApe/'),('fireApeAwakenedFront','fistFx/')]:
+            frames=self.samples[name]
+            self.assertEqual(len(frames),105)
+            self.assertTrue(any(frames))
+            self.assertTrue(all(d.texture.startswith(prefix) for f in frames for d in f))
+            for tick,frame in enumerate(frames):
+                source=[d for d in self.samples['fireApe'][tick] if d.texture.startswith(prefix)]
+                self.assertEqual(frame,source,(name,tick))
+        source=(ROOT/'reference/flash/fist/WK2Entity.as').read_text()
+        self.assertIn('if(skill5Awake1 && currentActionState == 75)',source)
+        self.assertIn('_effect5_1.updateDirection(this.direction)',source)
+        self.assertIn('_effect5_2.updateDirection(this.direction)',source)
+
+    def test_every_previous_clip_retains_original_pixels(self):
+        old_folder=ROOT/'assets/processed/wukong-fist-v071-original'
+        old=json.loads((old_folder/'character.json').read_text())
+        self.assertEqual([(self.manifest[k]) for k in ('canvas_width','canvas_height','root_x','root_y','nominal_body_height','combat')],
+                         [(old[k]) for k in ('canvas_width','canvas_height','root_x','root_y','nominal_body_height','combat')])
+        seen=set()
+        for name,clip in old['clips'].items():
+            new=self.manifest['clips'][name]
+            self.assertEqual((new['duration_ticks'],new['loop']),(clip['duration_ticks'],clip['loop']))
+            for tick,f in enumerate(clip['frames']):
+                pair=tuple(f[k] for k in ('atlas','x','y','width','height'))+tuple(new['frames'][tick][k] for k in ('atlas','x','y','width','height'))
+                if pair in seen:continue
+                seen.add(pair)
+                self.assertEqual(cell(old_folder,old,f).tobytes(),cell(self.original,self.manifest,new['frames'][tick]).tobytes(),(name,tick))
+
     def test_persistent_afterimages_use_unsquashed_held_source_poses(self):
         # Birth39/51 are orange stretched smears; persistent clones need the next
         # held punch/kick drawings, not a stretch applied to those transition art.

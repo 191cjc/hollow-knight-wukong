@@ -430,3 +430,57 @@ version/package, evidence/contracts/status/report. Consolidate the existing hero
 end predicate without changing timing; test exact ends, pause, cancellation and
 other skills. No forced landing/enemy transforms, global event suppression,
 manual HP deductions, restarted casts/costs/clocks, asset regeneration or commits.
+
+
+## 0.7.4 change boundary
+
+The behavior gap lives in FistSkills owning both Afterimage/Ape as hero actions,
+NativeSpell's late Fireball Antic interception and the Ape body/effects composite.
+Move Afterimage to one detached actor with its own clock/travel/contact ledger,
+latched origin/facing/damage, terrain sweeps and four trail births. Recasts replace
+that actor/old ghosts without canceling independent waves/Ape or the hero. Hero
+Godslayer/Earthbreaker remain owned actions and preserve existing immunity/mimicry.
+
+For neutral spell, hold only Has Fireball? IntCompare.greaterThan CAST after native
+CanCast/Soul/direction/unlock checks, before Wallside? FlipSprite or Fireball Antic
+control/velocity/gravity writes. Charge native TakeMP once, then return directly
+to Inactive without Spell End motion/control resets. Keep the up/down/focus routes.
+
+Up Dream Ape uses an independent paid transaction without Dream.Begin/Finish,
+and original skill5Awake1 semantics: no duplicate live Ape, source105ticks, live
+hero-root/facing follow, back behind body and roar in front, no scripted hero
+travel/pose. Retain its previous post-effect3s cooldown separately from hero Dream
+actions. Remove the StartRecoil hook/helper and Dream damage override plus unused
+Core gate/tests; all ordinary incoming damage/recoil/cancellation stays native.
+Death/hazards/scene/detach remove detached actors, ghosts and waves; ordinary hits
+can recoil the hero without canceling independent skill effects.
+
+Add opt-in effect-only back/front clips in new v074 original/full1.5x/packed
+folders; keep every previous pixel/clip/file. Files: FistSkills, bounded production
+Core summon clock/transaction and tests, NativeSpell/Dream/Runtime/NativeV77,
+asset sampler/profile/loaders/validators/tests, version/package and evidence/docs.
+A local terrain-box helper shares existing ghost behavior with the detached clone;
+regressions verify unchanged sweeping and source travel/birth boundaries. No
+rebalance, appearance scaling/collider edits, archive overwrites, forced movement
+or remote Git work. Gameplay acceptance remains distinct from build verification.
+
+
+## 0.7.5 change boundary
+
+Native Spell Control Quake Finish calls HeroController.QuakeInvuln, assigning live
+INVUL_TIME_QUAKE (serialized0.4s) to parryInvulnTimer. Native Update/TakeDamage own
+expiry and damage-type semantics. Fire Demon currently ends through Spell End,
+Earthbreaker through Dream End, so both bypass that native recovery call.
+
+Call the actual QuakeInvuln method once after successful Fire Demon source-end
+recovery and confirmed player Earthbreaker landing recovery. Keep full-action HP
+guards intact. Never call it for canceled casts, unlanded bottomless timeout,
+ghosts, death/hazard/scene/dispose. Recheck live hero after recovery callbacks.
+No custom timer, saved invincibility flag, blanket post-cast HP guard, collider/
+movement/animation/damage/Soul changes, asset generation or armor is required.
+
+Runtime files: FireDemonSlash natural completion/liveness and FistSkills normal
+Stop reason/landing confirmation. Version/package/evidence/spec/status docs record
+the new contract. Validate against actual native assembly/prefab/FSM and compiled
+completion/cancellation call paths; run existing core and Release/package checks.
+All active artwork hashes must remain unchanged. Gameplay stays separate.

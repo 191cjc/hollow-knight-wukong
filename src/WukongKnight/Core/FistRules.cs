@@ -47,13 +47,20 @@ namespace WukongKnight.Core
     internal static partial class FistRules
     {
         // These end predicates are also observed synchronously before incoming hits.
-        public static bool HeroFinished(FistAction action, double elapsed, double landingSeconds, bool released, double releaseSeconds)
+        public static bool ActionFinished(FistAction action, double elapsed, double landingSeconds, bool released, double releaseSeconds)
         {
             if (double.IsNaN(elapsed) || double.IsInfinity(elapsed) || elapsed < 0) return true;
             if (action == FistAction.Afterimage) return elapsed * 30 >= 71;
             if (action == FistAction.FireApe) return elapsed * 30 >= 105;
             if (action == FistAction.Godslayer) return released && releaseSeconds >= 25.0 / 30;
             return action != FistAction.Earthbreaker || landingSeconds >= 14.0 / 30 || elapsed >= 5;
+        }
+        public static bool TryBeginSummon(FistAction action, int cost, Func<int> soul, Func<bool> eligible, Action<int> spend)
+        {
+            if (action != FistAction.Afterimage && action != FistAction.FireApe || cost <= 0 || cost > 99 || !eligible() || soul() < cost) return false;
+            spend(cost);
+            // Native MP hooks can synchronously kill/replace the hero or cancel the route.
+            return eligible();
         }
         public static bool RequiresSoul(FistAction action) => action == FistAction.Earthbreaker || action == FistAction.FireApe;
         public static bool TryBeginDream(FistAction action, int cost, Func<int> soul, Func<bool> acquire,

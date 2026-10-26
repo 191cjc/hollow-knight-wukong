@@ -9,7 +9,7 @@ from pathlib import Path
 
 from validate_character import CHARACTER, ROOT, sha256, validate_character
 
-VERSION = "0.7.3-dev"
+VERSION = "0.7.5-dev"
 _VARIANT = json.loads((ROOT / "data/character/active-variant.json").read_text(encoding="utf-8"))
 ACTIVE_CHARACTER = ROOT / _VARIANT.get("runtime_directory", _VARIANT["output_directory"])
 README = f"""Wukong Knight {VERSION}
@@ -38,8 +38,9 @@ Native mesh disable/alpha no longer hides the Wukong death animation. Native
 Knight shell/debris visuals are suppressed with restoration; death/save/Geo/shade,
 dream returns and respawn processing continue through the original iterator.
 Air/up/down attacks retain native mechanics, including down-slash bouncing.
-Neutral quick spell casts Afterimage Combo (残影连打), consuming native MP Cost once.
-Original 71-tick fists/flames, five local subskill regions, four 10-second afterimages.
+Neutral quick spell summons one independent Afterimage Combo (残影连打) attacker,
+consuming native MP Cost once. The player remains free to move/jump/attack/cast.
+The clone performs the original71-tick route/hits and leaves four10-second afterimages.
 Afterimages mimic Earthbreaker and Godslayer at reduced damage, without dream effects.
 Dream Nail is Godslayer Strike (灭神一击): hold to charge, release to punch.
 Full charge is source frame39 (1.267s; Dream Wielder 0.633s), releasing a traveling wave.
@@ -49,7 +50,8 @@ Down + Dream Nail casts Earthbreaker Fist (辟地拳); upward launch on ground, 
 terrain-limited slam, or direct slam in air. Up + Dream Nail casts Fire Ape Assault
 (火猿出击), with original independent back/front fire-ape artwork and local masks.
 Dream-key attacks require Dream Nail unlock, scale with nail upgrades
-without Strength, and have recovery/cooldowns. Direction is latched at press.
+without Strength, and have recovery/cooldowns. Godslayer/Earthbreaker latch direction
+at press; moving-awakening Fire Ape follows current position/facing.
 Down/up Dream actions spend current native MP Cost once (33; Spell Twister24);
 insufficient Soul prevents casting and ghosts cost no extra Soul. Neutral Dream
 remains free. Maximum-held Godslayer automatically releases at source frame60
@@ -61,8 +63,12 @@ Fist hits now use original Quake-slam horizontal recoil strength2, with body hit
 pushing away from the cast root and waves along travel. Native enemy resistance
 still applies; damage and Soul costs remain unchanged.
 Earthbreaker blocks incoming HP damage for its owned launch/fall/landing action.
-Fire Ape takes normal native HP damage while resisting hit cancellation/recoil;
-native post-hit cooldown remains. Death, hazards and scene cleanup still win.
+Successful Fire Demon/Earthbreaker recovery also calls native QuakeInvuln once:
+the original down-spell0.4s protection against ordinary enemy damage. Native expiry
+and hazard rules apply. Canceled casts/unlanded timeouts/copies grant no recovery timer.
+Fire Ape uses moving-awakening back/front effects following the free player's
+position/facing. No punching-body override or forced travel. Prior armor is removed;
+incoming HP damage/recoil/hit pause remain native. Death/hazards/scenes clear actors.
 These two directional Dream-key actions replace native Dream Gate shortcuts.
 New raw/baked/1.5x originals are retained separately. Runtime atlases crop only
 transparent margins and preserve per-frame root registration; no extra rescaling.

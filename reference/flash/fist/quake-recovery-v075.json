@@ -1,0 +1,38 @@
+{
+  "version": "0.7.5-dev",
+  "runtime_tested": false,
+  "native_game": "1.5.78.11833 / API77",
+  "native_hero_prefabs": [
+    {
+      "file": "resources.assets",
+      "component_id": 19582,
+      "INVUL_TIME_QUAKE": 0.4000000059604645,
+      "adjacent_INVUL_TIME": 1.2999999523162842,
+      "adjacent_INVUL_TIME_STAL": 1.75
+    }
+  ],
+  "native_spell_FSM_id": 20204,
+  "relevant_states": [
+    {
+      "state": "Quake Antic",
+      "functions": [
+        "CancelParryInvuln",
+        "RelinquishControl",
+        "StopAnimationControl",
+        "AffectedByGravity"
+      ]
+    },
+    {
+      "state": "Quake Finish",
+      "functions": [
+        "QuakeInvuln"
+      ]
+    }
+  ],
+  "native_QuakeInvuln": "parryInvulnTimer = INVUL_TIME_QUAKE; no saved invincibility or damage-mode writes",
+  "native_expiry": "HeroController.Update subtracts Time.deltaTime; native TakeDamage checks timer for ordinary hazardType1",
+  "native_CancelParryInvuln": "Quake Antic clears previous parry timer when starting a new native down spell",
+  "adaptation": "Call original QuakeInvuln once on successful Fire Demon source-end recovery and confirmed player Earthbreaker landing recovery; never on canceled casts, bottomless fall, ghosts, death/hazard/scene/dispose",
+  "preserved_artwork": true,
+  "Assembly-CSharp_sha256": "5944411bd93830369390a4b51766ee68c4ab26195b299e25a07b5e7d0e00086d"
+}
