@@ -6,10 +6,10 @@ checkpoint. GitHub uploads use the verified SSH remote.
 
 | Input | Action | Cost / progression |
 | --- | --- | --- |
-| Neutral quick spell | Afterimage Combo (残影连打) | Native fireballLevel; current MP Cost once, including Spell Twister |
+| Neutral quick spell | Flame Storm (烈焰风暴) | Native forward spell unlock; fixed quakeLevel damage; current MP Cost once, including Spell Twister |
 | Dream Nail | Godslayer Strike (灭神一击) | Requires native Dream Nail unlock; hold then release, no Soul cost |
 | Down + spell | Earthbreaker Fist (辟地拳) | Native quake unlock; ground launch or airborne slam; current native MP Cost once |
-| Down + Dream Nail | Flame Storm (烈焰风暴) | Native Dream Nail unlock; fixed quakeLevel damage; current native MP Cost once |
+| Down + Dream Nail | Afterimage Combo (残影连打) | Native Dream Nail unlock; fireballLevel damage tier; current native MP Cost once |
 | Up + Dream Nail | Moving-awakening Fire Ape (火猿出击·动觉醒) | Follows live hero position/direction; current native MP Cost once |
 
 Existing staff attacks, up/down spells, focus, dash and death remain integrated.
@@ -191,3 +191,15 @@ full-action immunity are unchanged. Spell End skips automatic Quake Finish so
 only confirmed player landing grants one QuakeInvuln; cancel/timeout grants none.
 Storm and Godslayer borrow one Runtime-owned Dream adapter; neither may end the
 other's action. Finish both skill owners before disposing the shared adapter.
+
+
+## 0.7.6 Afterimage / Storm input swap
+
+This supersedes the 0.7.4 neutral-spell entry and the shared Storm/Godslayer Dream
+note. Down + Dream Nail summons Afterimage with `CanBegin(native, true)`, so the
+airborne down-Dream route stays available. Origin/facing are captured on press;
+the live Spell Control MP Cost is paid once and eligibility is rechecked after
+TakeMP. Native Dream is never begun or finished for it, and the player stays free.
+Recast still replaces the old actor and its ghosts. Fist skills keep only the Down
+spell adapter; Flame Storm owns the neutral-spell Forward adapter, held at Fireball
+Antic and released through Spell End. Godslayer is the sole Dream owner.

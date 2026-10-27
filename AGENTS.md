@@ -143,3 +143,10 @@ Quake suppression; Earthbreaker finishes Spell End and keeps confirmed-landing-o
 QuakeInvuln. Storm charges live MP Cost once, owns Dream only while its ledger is
 active, and preserves successful native recovery. Never finish another owner's
 Dream or duplicate Quake recovery on cancellation. No forced enemy hurt FSM work.
+
+
+v076 follow-up swaps Afterimage/Storm: neutral quick spell is Flame Storm, down
+Dream is detached Afterimage. Storm alone owns Forward, held at Fireball Antic
+ANIM END, pays live MP Cost once, finishes via Spell End, successful-only
+QuakeInvuln. Afterimage uses CanBegin(native,true), never Dream Begin/Finish;
+Godslayer is the sole Dream owner. Keep the Storm enemy-damage attribution draft.

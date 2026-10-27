@@ -36,6 +36,8 @@ namespace WukongKnight
         private bool slashRendererEnabled;
         private int pulseWindow = -1;
         private bool facingAtStage;
+        private int healthHitDepth;
+        private long healthHitSequence;
         private readonly DeferredContactCleanup<DamageEnemies> contactCleanup = new DeferredContactCleanup<DamageEnemies>();
 
         public WukongRuntime(CharacterAssets assets, Action<string> logError)
@@ -140,7 +142,7 @@ namespace WukongKnight
             {
                 try
                 {
-                    flameStorm?.Observe(true);
+                    flameStorm?.Observe();
                     fist?.Observe(true);
                     ObserveSpells(self); // Neutralize input before native LookForInput.
                     if (ShouldCancel() || (combo != null && combo.Active && (native.JumpPressed(self) || native.DashPressed(self)))) Cancel();
@@ -194,9 +196,8 @@ namespace WukongKnight
                 fireDemon = new FireDemonSlash(self, native, assets);
                 bloodEye = new BloodthirstyFireEye(self);
                 dream = new NativeDreamV77(self);
-                var skills = new FistSkills(self, native, assets, dream);
-                fist = skills;
-                flameStorm = new FlameStorm(self, native, assets, dream, () => skills.SoulCost);
+                fist = new FistSkills(self, native, assets, dream);
+                flameStorm = new FlameStorm(self, native, assets);
                 lifetime = self.gameObject.AddComponent<WukongLifetime>();
                 lifetime.UpdateView = LateUpdate;
                 lifetime.AdvancePhysics = FixedUpdate;
@@ -434,22 +435,48 @@ namespace WukongKnight
 
         private void HealthHit(On.HealthManager.orig_Hit orig, HealthManager self, HitInstance hit)
         {
-            if (BlocksReplacedSpell(hit.Source)) return;
-            BloodthirstyFireEye? eye = bloodEye;
-            long token = eye == null ? -1 : eye.BuffToken;
-            int before = self.hp;
-            DispatchHealthHit(orig, self, hit);
-            bool playerDamage = hit.AttackType == AttackTypes.Nail || hit.AttackType == AttackTypes.NailBeam ||
-                hit.AttackType == AttackTypes.Spell || hit.AttackType == AttackTypes.SharpShadow;
-            if (playerDamage && token >= 0 && ReferenceEquals(eye, bloodEye) && eye != null && !failed && !disposed)
+            long sequence = ++healthHitSequence;
+            healthHitDepth++;
+            try
             {
-                try { eye.AfterEnemyHit(token, before, self.hp); }
-                catch (Exception error) { Fail(error); }
+                if (BlocksReplacedSpell(hit.Source)) return;
+                FlameStorm? storm = flameStorm;
+                ScopedEnemyDamage<GameObject, HealthManager>? attempt = null;
+                if (storm != null && hit.AttackType == AttackTypes.Spell && !failed && !disposed)
+                {
+                    try { attempt = storm.BeginEnemyHit(hit.Source, self, healthHitDepth, sequence); }
+                    catch (Exception error) { Fail(error); }
+                }
+                BloodthirstyFireEye? eye = bloodEye;
+                long token = eye == null ? -1 : eye.BuffToken;
+                int before = self.hp;
+                DispatchHealthHit(orig, self, hit);
+                int after = self.hp;
+                bool playerDamage = hit.AttackType == AttackTypes.Nail || hit.AttackType == AttackTypes.NailBeam ||
+                    hit.AttackType == AttackTypes.Spell || hit.AttackType == AttackTypes.SharpShadow;
+                if (playerDamage && token >= 0 && ReferenceEquals(eye, bloodEye) && eye != null && !failed && !disposed)
+                {
+                    try { eye.AfterEnemyHit(token, before, self.hp); }
+                    catch (Exception error) { Fail(error); }
+                }
+                if (attempt != null && storm != null && ReferenceEquals(storm, flameStorm) && !failed && !disposed)
+                {
+                    // The accepted result will feed a verified native cancellation profile.
+                    // No enemy state is changed until that profile's cleanup contract is established.
+                    try
+                    {
+                        storm.Observe();
+                        _ = storm.CompleteEnemyHit(attempt, hit.Source, self, after, healthHitSequence);
+                    }
+                    catch (Exception error) { Fail(error); }
+                }
             }
+            finally { healthHitDepth--; }
         }
 
         private bool BlocksReplacedSpell(GameObject source) =>
-            fireDemon != null && fireDemon.BlocksNativeSource(source) || fist != null && fist.BlocksNativeSource(source);
+            fireDemon != null && fireDemon.BlocksNativeSource(source) || fist != null && fist.BlocksNativeSource(source) ||
+            flameStorm != null && flameStorm.BlocksNativeSource(source);
 
         private void DispatchHealthHit(On.HealthManager.orig_Hit orig, HealthManager self, HitInstance hit)
         {

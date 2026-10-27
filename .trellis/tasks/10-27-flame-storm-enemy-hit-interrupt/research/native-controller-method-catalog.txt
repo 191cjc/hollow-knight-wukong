@@ -1,0 +1,1663 @@
+Source: .tools/hollow-knight-api-v77/Assembly-CSharp.dll; global-namespace TypeDef method names.
+<Module>: 
+INIParser: get_FileName, get_iniString, Open, Open, OpenFromString, ToString, Initialize, Close, ParseSectionName, ParseKeyValuePair, isComment, Refresh, PerformFlush, IsSectionExists, IsKeyExists, SectionDelete, KeyDelete, ReadValue, WriteValue, EncodeByteArray, DecodeByteArray, ReadValue, ReadValue, ReadValue, ReadValue, ReadValue, ReadValue, WriteValue, WriteValue, WriteValue, WriteValue, WriteValue, WriteValue, .ctor
+ChangeFontByLanguage: Awake, Start, OnEnable, SetFont, GetFontScale, .ctor
+FontScaleLangTypes: 
+FontScaleLang: GetFontScale, .ctor
+RotationController: Update, .ctor
+UIWindowBase: Start, OnDrag, ChangeStrength, ChangeVibrancy, .ctor
+GeneratePortraitFrame: Start, .ctor
+GrimmEnemyRange: OnEnable, IsEnemyInRange, GetTarget, OnTriggerEnter2D, OnTriggerExit2D, ClearEnemyList, .ctor
+HeroPlatformStick: OnCollisionEnter2D, OnCollisionExit2D, .ctor
+LensCAAndDistortion: get_material, Start, OnRenderImage, Update, OnDisable, .ctor
+LocalizationSettings: GetLanguageEnum, .ctor
+LocalizedTextMesh: Awake, LocalizeTextMesh, .ctor
+LogoLanguage: OnEnable, SetSprite, .ctor
+ObjectBounce: add_OnBounce, remove_OnBounce, Start, FixedUpdate, Update, OnCollisionEnter2D, StopBounce, StartBounce, SetBounceFactor, SetBounceAnimation, .ctor
+BounceEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+Bullet: OnEnable, OnDisable, Shoot, .ctor
+<Shoot>d__5: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+Explosion: OnEnable, Shrink, .ctor
+<Shrink>d__3: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+Turret: Awake, Update, .ctor
+ObjectPool: get_instance, Awake, Start, CreateStartupPools, CreatePool, CreatePool, RevertToStartState, Spawn, Spawn, Spawn, Spawn, Spawn, Spawn, Spawn, Spawn, Spawn, Spawn, Spawn, Spawn, Recycle, Recycle, Recycle, RecycleAll, RecycleAll, RecycleAll, IsSpawned, CountPooled, CountPooled, CountSpawned, CountSpawned, CountAllPooled, GetPooled, GetPooled, GetSpawned, GetSpawned, DestroyPooled, DestroyPooled, DestroyPooled, DestroyPooled, DestroyAll, DestroyAll, .ctor, .cctor, orig_Spawn, orig_CreatePool
+StartupPool: .ctor
+ObjectPoolExtensions: CreatePool, CreatePool, CreatePool, CreatePool, Spawn, Spawn, Spawn, Spawn, Spawn, Spawn, Spawn, Spawn, Spawn, Spawn, Spawn, Spawn, Recycle, Recycle, RecycleAll, RecycleAll, CountPooled, CountPooled, CountSpawned, CountSpawned, GetSpawned, GetSpawned, GetSpawned, GetSpawned, GetSpawned, GetSpawned, GetPooled, GetPooled, GetPooled, GetPooled, GetPooled, GetPooled, DestroyPooled, DestroyPooled, DestroyAll, DestroyAll
+PlayMakerAnimatorIKProxy: add_OnAnimatorIKEvent, remove_OnAnimatorIKEvent, OnAnimatorIK, .ctor
+PlayMakerAnimatorMoveProxy: add_OnAnimatorMoveEvent, remove_OnAnimatorMoveEvent, Start, Update, OnAnimatorMove, .ctor
+PlayMakerAnimatorStateSynchronization: Start, RegisterHash, Update, Synchronize, SwitchState, .ctor
+HashTableSortKeysfromValues: Start, Update, .ctor
+PlayMakerArrayListProxy: get_arrayList, Awake, isCollectionDefined, TakeSnapShot, RevertToSnapShot, Add, AddRange, InspectorEdit, Set, Remove, PreFillArrayList, .ctor
+PlayMakerCollectionProxy: getFsmVariableType, dispatchEvent, cleanPrefilledLists, .ctor
+VariableEnum: 
+PlayMakerHashTableProxy: get_hashTable, Awake, isCollectionDefined, TakeSnapShot, RevertToSnapShot, InspectorEdit, PreFillHashTable, .ctor
+AnimSpeedLerp: Reset, OnEnter, OnUpdate, OnExit, .ctor
+CreateGameObjectPool: Reset, OnEnter, .ctor
+GetHero: Reset, OnEnter, .ctor
+PreSpawnGameObjects: Reset, OnEnter, .ctor
+GetNextPreSpawnedGameObject: Reset, OnEnter, .ctor
+RestoreGameObjectPositions: Reset, OnEnter, .ctor
+SetRigidbodySimulated2D: Reset, OnEnter, DoSetIsKinematic, .ctor
+IHitResponder: Hit
+HitTaker: Hit
+HitInstance: GetActualDirection
+AttackTypes: 
+SpecialTypes: 
+TimeLimitSet: Reset, OnEnter, .ctor
+TimeLimitCheck: Reset, OnEnter, .ctor
+WaitForHeroInPosition: Reset, OnEnter, .ctor
+<>c__DisplayClass3_0: .ctor, <OnEnter>b__0
+PlayMakerUnity2DProxy: AddOnCollisionEnter2dDelegate, RemoveOnCollisionEnter2dDelegate, AddOnCollisionStay2dDelegate, RemoveOnCollisionStay2dDelegate, AddOnCollisionExit2dDelegate, RemoveOnCollisionExit2dDelegate, AddOnTriggerEnter2dDelegate, RemoveOnTriggerEnter2dDelegate, AddOnTriggerStay2dDelegate, RemoveOnTriggerStay2dDelegate, AddOnTriggerExit2dDelegate, RemoveOnTriggerExit2dDelegate, help, Start, RefreshImplementation, OnCollisionEnter2D, OnCollisionStay2D, OnCollisionExit2D, OnTriggerEnter2D, OnTriggerStay2D, OnTriggerExit2D, CheckGameObjectEventsImplementation, CheckFsmEventsImplementation, CheckTransition, .ctor, orig_Start
+OnCollisionEnter2dDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+OnCollisionStay2dDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+OnCollisionExit2dDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+OnTriggerEnter2dDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+OnTriggerStay2dDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+OnTriggerExit2dDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+PlayMakerUnity2d: RecordLastRaycastHitInfo, GetLastRaycastHitInfo, Awake, OnLevelWasLoaded, isAvailable, ForwardEventToGameObject, ForwardCollisionToCurrentState, .ctor, .cctor
+Collision2DType: 
+Trigger2DType: 
+PlayMakerUtils_Extensions: IndexOf, IndexOf, IndexOf, LastIndexOf, LastIndexOf, LastIndexOf
+PlayMakerUtilsDotNetExtensions: Contains
+PlayMakerUtils: SendEventToGameObject, SendEventToGameObject, SendEventToGameObject, SendEventToGameObject, DoesTargetImplementsEvent, DoesGameObjectImplementsEvent, DoesGameObjectImplementsEvent, DoesFsmImplementsEvent, FindFsmOnGameObject, RefreshValueFromFsmVar, GetValueFromFsmVar, ApplyValueToFsmVar, GetFloatFromObject, ParseFsmVarToString, ParseValueToString, ParseValueToString, ParseValueFromString, ParseValueFromString, ParseValueFromString, ParseValueFromString, .ctor
+PlayMakerUGuiCanvasRaycastFilterEventsProxy: IsRaycastLocationValid, .ctor
+PlayMakerUGuiComponentProxy: Start, Update, SetupEventTarget, SetupVariableTarget, SetupUiListeners, OnClick, OnValueChanged, OnValueChanged, OnValueChanged, onEndEdit, SetFsmVariable, SetFsmVariable, SetFsmVariable, SetFsmVariable, FirePlayMakerEvent, DoesTargetImplementsEvent, GetEventString, .ctor
+ActionType: 
+PlayMakerProxyEventTarget: 
+PlayMakerProxyVariableTarget: 
+FsmVariableSetup: 
+FsmEventSetup: 
+PlayMakerUGuiDragEventsProxy: OnBeginDrag, OnDrag, OnEndDrag, .ctor
+PlayMakerUGuiDropEventsProxy: OnDrop, .ctor
+PlayMakerUGuiPointerEventsProxy: OnPointerClick, OnPointerDown, OnPointerEnter, OnPointerExit, OnPointerUp, .ctor
+PlayMakerUGuiSceneProxy: Start, Update, .ctor
+CustomActionTest: OnEnter, OnUpdate, OnFixedUpdate, OnLateUpdate, OnExit, ErrorCheck, .ctor
+IncrementRenderQueue: Start, Update, .ctor
+TrackMouseMovement: Start, Update, .ctor
+iTweenFSMEvents: iTweenOnStart, iTweenOnComplete, .ctor, .cctor
+iTweenFSMType: 
+PlanarRealtimeReflection: OnWillRenderObject, OnDisable, UpdateCameraModes, CreateSurfaceObjects, sgn, CameraSpacePlane, CalculateObliqueMatrix, CalculateReflectionMatrix, .ctor, .cctor
+RealtimeReflections: OnEnable, Start, LateUpdate, UpdateCubemap, OnDisable, .ctor
+AcidCorpseSplash: Start, CorpseSplash, .ctor, <Start>b__7_0
+<CorpseSplash>d__8: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+ActivateIfPlayerdataTrue: Start, .ctor
+ActiveRecycler: .ctor
+AnimatorSequence: Awake, Update, Begin, get_IsPlaying, Skip, get_IsSkipped, get_FadeByController, set_FadeByController, .ctor
+BasicSpriteAnimator: get_Length, Awake, OnEnable, OnDisable, Animate, .ctor
+<Animate>d__11: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+CameraControlAnimationEvents: BigShake, SmallShake, AverageShake, EnemyKillShake, SmallRumble, MedRumble, BigRumble, StopRumble, SendCameraEvent, SetCameraBool, .ctor
+ChainSequence: get_CurrentSequence, get_IsCurrentSkipped, get_IsSkipped, add_TransitionedToNextSequence, remove_TransitionedToNextSequence, Awake, Update, Begin, Next, get_IsPlaying, Skip, SkipSingle, get_FadeByController, set_FadeByController, .ctor
+TransitionedToNextSequenceDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+CheckpointSprite: Awake, OnEnable, Start, Show, Hide, Update, Update, .ctor
+States: 
+CinematicPlayer: Awake, OnDestroy, Start, Update, Update10, SkipVideo, TriggerStartVideo, TriggerStopVideo, UnlockSkip, StartVideo, FinishVideo, FinishInGameVideo, WaitForStagFadeOut, .ctor
+MovieTrigger: 
+FadeInSpeed: 
+FadeOutSpeed: 
+VideoType: 
+<SkipVideo>d__33: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<StartVideo>d__37: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<WaitForStagFadeOut>d__40: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+CinematicSequence: get_VideoPlayer, get_IsSkipped, get_IsLooping, set_IsLooping, Awake, OnDestroy, Update, Begin, UpdateBlanker, get_IsPlaying, Skip, get_FadeByController, set_FadeByController, .ctor
+CinematicVideoFaderStyles: 
+CinematicFormats: 
+CinematicFormatUtils: GetExtension
+CinematicVideoPlayerConfig: get_VideoReference, get_MeshRenderer, get_AudioSource, get_FaderStyle, get_ImplicitVolume, .ctor
+CinematicVideoPlayer: get_Config, .ctor, Dispose, get_IsLoading, get_IsPlaying, get_IsLooping, set_IsLooping, get_Volume, set_Volume, Play, Stop, get_CurrentTime, Update, Create
+EmbeddedCinematicVideoPlayer: .ctor, GetAbsolutePath, Dispose, get_Volume, set_Volume, get_IsLoading, get_IsLooping, set_IsLooping, get_IsPlaying, Play, Stop, OnPrepareCompleted
+DesktopCinematicVideoPlayer: .ctor, GetAbsolutePath
+CinematicVideoReference: get_VideoFileName, get_VideoAssetPath, get_AudioAssetPath, get_EmbeddedVideoClip, .ctor
+CreditsHelper: Start, BeginCredits, ShouldStopHere, .ctor
+CreditsType: 
+CutsceneHelper: Start, LoadNextScene, SkipCutscene, UnlockSkip, DoSceneLoad, .ctor
+NextScene: 
+<Start>d__9: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<SkipCutscene>d__11: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+DeactivateAfter2dtkAnimation: OnEnable, Update, .ctor
+FadeSequence: get_IsSkipped, get_FadeRate, get_FadeByController, set_FadeByController, get_IsPlaying, Awake, Begin, Update, Skip, UpdateFade, .ctor
+FlashMaterialGroup: Awake, Start, Update, .ctor
+HeroAnimationController: get_actorState, set_actorState, get_prevActorState, set_prevActorState, get_stateBeforeControl, set_stateBeforeControl, get_controlEnabled, set_controlEnabled, Awake, Start, Update, ResetAll, ResetPlays, UpdateState, PlayClip, UpdateAnimation, CanPlayIdle, CanPlayLookDown, canPlayTurn, AnimationCompleteDelegate, PlayIdle, PlayRun, Play, PlayFromFrame, StopControl, StartControl, StartControlWithoutSettingState, FinishedDash, StopAttack, GetCurrentClipDuration, GetClipDuration, .ctor
+InfectedBurstLarge: Awake, Start, OnTriggerEnter2D, .ctor
+InfectedBurstSmall: Awake, Start, OnTriggerEnter2D, .ctor
+InvulnerablePulse: Start, Update, startInvulnerablePulse, stopInvulnerablePulse, updateSpriteColor, .ctor
+NextSceneOnInput: get_AcceptingInput, get_ButtonPressed, Start, UnlockSkip, Update, Skip, .ctor
+NextSceneType: 
+OpeningSequence: OnEnable, OnDisable, Start, StartAsync, StartSync, Update, IsLevelReady, Skip, OnChangingSequences, .ctor
+<StartAsync>d__12: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<StartSync>d__13: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Skip>d__16: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+PlayFromRandomFrame: Start, .ctor
+PlayFromRandomFrameMecanim: Awake, Start, OnEnable, DoPlay, DelayStart, .ctor
+<DelayStart>d__7: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+RandomFrame: Start, .ctor
+RecycleAfter2dtkAnimation: OnEnable, Update, .ctor
+RemapTK2DSpriteAnimator: Start, Update, .ctor
+AnimationRemap: 
+SetAngleToVelocity: Update, .ctor
+ShineAnimSequence: Start, ShineSequence, .ctor
+ShineObject: ShineAnim, .ctor
+<ShineAnim>d__3: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<ShineSequence>d__5: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+SkippableSequence: Begin, get_IsPlaying, Skip, get_IsSkipped, get_FadeByController, set_FadeByController, .ctor
+SpinSelfSimple: Update, OnEnable, DoSpin, .ctor
+SplashAnimator: OnEnable, .ctor
+SpriteFadeMaterial: Awake, Start, FadeBack, FadeBackRoutine, .ctor
+<>c__DisplayClass8_0: .ctor, <FadeBackRoutine>b__0
+<FadeBackRoutine>d__8: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+SpriteFlash: Start, OnDisable, Update, GeoFlash, flash, CancelFlash, FlashingSuperDash, FlashingGhostWounded, FlashingWhiteStay, FlashingWhiteStayMoth, FlashingFury, FlashingOrange, flashInfected, flashDung, flashDungQuick, flashSporeQuick, flashWhiteQuick, flashInfectedLong, flashArmoured, flashBenchRest, flashDreamImpact, flashMothDepart, flashSoulGet, flashShadeGet, flashWhiteLong, flashOvercharmed, flashFocusHeal, flashFocusGet, flashWhitePulse, flashHealBlue, FlashShadowRecharge, flashInfectedLoop, FlashGrimmflame, FlashGrimmHit, SendToChildren, .ctor
+StagTravel: Start, FadeInRoutine, Update, NotifyFetchComplete, get_IsReadyToActivate, Skip, .ctor
+StagTravelAsyncLoadInfo: .ctor, NotifyFetchComplete, IsReadyToActivate, NotifyFinished
+<Start>d__10: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<FadeInRoutine>d__11: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Skip>d__16: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+StopAnimatorsAtPoint: Awake, Start, SetCanStop, SetCannotStop, Update, .ctor, <Start>b__7_0, <Start>b__7_1
+TinkEffect: Awake, Start, OnTriggerEnter2D, .ctor
+XB1CinematicVideoPlayer: .ctor, Dispose, get_Volume, set_Volume, get_IsLoading, get_IsLooping, set_IsLooping, get_IsPlaying, Play, Stop, OnPrepareCompleted
+HazardRespawnMarker: Awake, Update, .ctor
+HazardRespawnTrigger: Awake, Start, OnTriggerEnter2D, .ctor
+RespawnMarker: .ctor
+RespawnTrigger: Awake, Start, OnTriggerEnter2D, .ctor
+SimpleFadeOut: Awake, OnEnable, Update, FadeOut, .ctor
+SimpleSpriteFade: Awake, OnEnable, Update, FadeIn, FadeOut, .ctor
+SpriteFadePulse: Awake, OnEnable, Update, FadeIn, FadeOut, .ctor
+WalkArea: Awake, Start, OnTriggerEnter2D, OnTriggerStay2D, OnTriggerExit2D, Deactivate, OnDisable, .ctor
+ArrayForEnumAttribute: get_IsValid, .ctor, EnsureArraySize
+AtmosCue: get_Snapshot, IsChannelEnabled, .ctor
+AudioEvent: Reset, SelectPitch, SpawnAndPlayOneShot
+AudioEventRandom: Reset, SelectPitch, SpawnAndPlayOneShot
+PlayAudioEvent: Reset, OnEnter, .ctor
+AudioManager: get_CurrentMusicCue, Start, ApplyAtmosCue, BeginApplyAtmosCue, ApplyMusicCue, BeginApplyMusicCue, UpdateMusicSync, ApplyMusicSnapshot, BeginApplyMusicSnapshot, .ctor
+<BeginApplyAtmosCue>d__11: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<BeginApplyMusicCue>d__13: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<BeginApplyMusicSnapshot>d__17: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+AtmosChannels: 
+MusicChannels: 
+AudioSourcePitchRandomizer: Awake, .ctor
+GateSetAudio: OnTriggerEnter2D, .ctor
+HeroAudioController: Awake, PlaySound, StopSound, StopAllSounds, PauseAllSounds, UnPauseAllSounds, RandomizePitch, ResetPitch, FadeInVolume, .ctor
+<FadeInVolume>d__23: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+MatchMasterTimeSample: Update, .ctor
+MenuAudioController: Awake, Start, PlaySelect, PlaySubmit, PlayCancel, PlaySlider, PlayStartGame, .ctor
+<Start>d__7: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+MusicCue: get_OriginalMusicEventName, get_OriginalMusicTrackNumber, get_Snapshot, GetChannelInfo, ResolveAlternatives, .ctor
+MusicChannelInfo: get_Clip, get_IsEnabled, get_IsSyncRequired, .ctor
+Alternative: 
+MusicChannelSync: 
+MusicRegion: Reset, OnTriggerEnter2D, OnTriggerExit2D, FadeIn, FadeOut, .ctor
+<FadeIn>d__14: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+MuteAudioChannel: get_Volume, set_Volume, OnEnable, OnDisable, LinearToDecibel, DecibelToLinear, .ctor
+PlayAudioAndRecycle: OnEnable, Update, .ctor
+RandomAudioClipTable: Reset, SelectClip, SelectPitch, PlayOneShotUnsafe, .ctor
+Option: 
+RandomAudioClipTableExtensions: PlayOneShot, SpawnAndPlayOneShot
+RegionSetAudio: OnTriggerEnter2D, OnTriggerStay2D, OnTriggerExit2D, .ctor
+SetSceneAudio: Start, .ctor
+SnapshotOnActivation: OnEnable, OnDisable, .ctor
+SpawnableAudioSource: Awake, OnEnable, Update, Stop, .ctor
+StartAudioPlayerAfterHeroInPosition: Start, .ctor
+<Start>d__0: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+AudioLoopMaster: Start, Update, SetSyncAction, SetSyncSub, SetSyncMainAlt, SetSyncTension, SetSyncExtra, .ctor
+BigBouncer: .ctor
+BlurControl: .ctor
+BounceShroom: Awake, Start, Idle, PlayAnims, GetAnimName, BounceSmall, Bounce, BounceLarge, .ctor, .cctor, <Start>b__19_0
+AnimType: 
+<Idle>d__20: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Bounce>d__24: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+BridgeLever: Awake, Start, OnTriggerEnter2D, OpenBridge, .ctor
+<OpenBridge>d__13: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+BridgeSection: Awake, Open, Open, OpenFence, .ctor
+<Open>d__7: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<OpenFence>d__8: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+BlurManager: Awake, Update, .ctor
+CameraController: GameInit, SceneInit, ApplyEffectConfiguration, LateUpdate, OnDisable, FreezeInPlace, FadeOut, FadeSceneIn, LockToArea, ReleaseLock, ResetStartTimer, SnapTo, UpdateTargetDestinationDelta, SetMode, KeepWithinSceneBounds, KeepWithinSceneBounds, IsAtSceneBounds, IsAtHorizontalSceneBounds, IsTouchingSides, KeepWithinLockBounds, GetTilemapInfo, PositionToHero, DoPositionToHero, PositionToHeroFacing, PositionToHeroFacing, GetPositionToHeroFacing, FadeInFailSafe, StopFailSafe, OnLevelUnload, OnDestroy, .ctor
+CameraMode: 
+<DoPositionToHero>d__74: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<FadeInFailSafe>d__78: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+CameraFreezeInPlace: Reset, OnEnter, .ctor
+CameraRepositionToHero: OnEnter, .ctor
+CameraFade: Awake, Start, OnGUI, SetScreenOverlayColor, StartFade, FadeToBlack, FadeToTransparent, .ctor
+FadeTypes: 
+<Start>d__11: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+CameraLockArea: Awake, Start, IsInApplicableGameState, OnTriggerEnter2D, OnTriggerStay2D, OnTriggerExit2D, OnDisable, ValidateBounds, SetXMin, SetXMax, .ctor, orig_Start
+<Start>d__26: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Start>d__9: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.IEnumerator.Reset
+CameraTarget: GameInit, SceneInit, Update, EnterLockZone, EnterLockZoneInstant, ExitLockZone, SetDampTime, SetSuperDash, SetQuake, FreezeInPlace, PositionToStart, .ctor
+TargetMode: 
+ForceCameraAspect: add_ViewportAspectChanged, remove_ViewportAspectChanged, get_CurrentViewportAspect, set_CurrentViewportAspect, Awake, Start, Update, SetOverscanViewport, AutoScaleViewport, .ctor
+ForceCameraAspectLite: Start, Update, AutoScaleViewport, .ctor
+GameCameras: get_sceneParticles, set_sceneParticles, get_instance, Awake, Start, SceneInit, OnDestroy, SetupGameRefs, StartScene, MoveMenuToHUDCamera, DisableHUDCamIfAllowed, StopCameraShake, ResumeCameraShake, DisableImageEffects, EnableImageEffects, SetOverscan, TestParentForPosition, .ctor, orig_get_instance
+HUDCamera: OnEnable, MoveMenuToHUDCamera, .ctor
+RequestFadeSceneIn: Start, .ctor
+<Start>d__2: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+ShaderQualities: 
+CheatManager: get_IsCheatsEnabled, Init, get_IsInstaKillEnabled, Start, OnDestroy, Update, ToggleCheatMenu, OnGUI, OpenStagStations, CheatButton, SafetyCheatButton, Restore, Kill, GetGeo, .ctor
+<Start>d__19: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+CollisionEnterEvent: add_OnCollisionEntered, remove_OnCollisionEntered, add_OnCollisionEnteredDirectional, remove_OnCollisionEnteredDirectional, Awake, OnCollisionEnter2D, OnCollisionStay2D, HandleCollision, CheckTouching, .ctor
+CollisionEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+Direction: 
+DirectionalCollisionEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+ColorFader: add_OnFadeEnd, remove_OnFadeEnd, Reset, Start, Setup, Fade, Fade, .ctor
+FadeEndEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+<Fade>d__20: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+FadeColorFader: Reset, OnEnter, .ctor
+FadeType: 
+HeroActions: .ctor
+HeroBox: Start, OnTriggerEnter2D, OnTriggerStay2D, CheckForDamage, IsHitTypeBuffered, LateUpdate, ApplyBufferedHit, .ctor
+HeroController: get_fallTimer, set_fallTimer, get_geoCounter, set_geoCounter, get_proxyFSM, set_proxyFSM, get_sceneEntryGate, set_sceneEntryGate, add_heroInPosition, remove_heroInPosition, add_OnTakenDamage, remove_OnTakenDamage, add_OnDeath, remove_OnDeath, get_IsDreamReturning, get_instance, get_SilentInstance, get_UnsafeInstance, Awake, Start, SceneInit, Update, FixedUpdate, Update10, OnLevelUnload, OnDisable, Move, Jump, DoubleJump, Attack, Dash, BackDash, ShadowDash, SuperDash, FaceRight, FaceLeft, StartMPDrain, StopMPDrain, SetBackOnGround, SetStartWithWallslide, SetStartWithJump, SetStartWithFullJump, SetStartWithDash, SetStartWithAttack, SetSuperDashExit, SetQuakeExit, SetTakeNoDamage, EndTakeNoDamage, SetHeroParent, IsSwimming, NotSwimming, EnableRenderer, ResetAirMoves, SetConveyorSpeed, SetConveyorSpeedV, EnterWithoutInput, SetDarkness, CancelHeroJump, CharmUpdate, checkEnvironment, SetBenchRespawn, SetHazardRespawn, AddGeo, ToZero, AddGeoQuietly, AddGeoToCounter, TakeGeo, UpdateGeo, CanInput, CanTalk, FlipSprite, NailParry, NailParryRecover, QuakeInvuln, CancelParryInvuln, CycloneInvuln, SetWieldingLantern, TakeDamage, GetEntryGateName, AddMPCharge, SoulGain, AddMPChargeSpa, TryAddMPChargeSpa, SetMPCharge, TakeMP, TakeMPQuick, TakeReserveMP, AddHealth, TakeHealth, MaxHealth, MaxHealthKeepBlue, AddToMaxHealth, ClearMP, ClearMPSendEvents, AddToMaxMPReserve, Bounce, BounceHigh, ShroomBounce, RecoilLeft, RecoilRight, RecoilRightLong, RecoilLeftLong, RecoilDown, ForceHardLanding, EnterSceneDreamGate, EnterScene, LeaveScene, BetaLeave, BetaReturn, Respawn, HazardRespawn, StartCyclone, EndCyclone, GetState, GetCState, SetCState, ResetHardLandingTimer, CancelSuperDash, RelinquishControlNotVelocity, RelinquishControl, RegainControl, PreventCastByDialogueEnd, CanCast, CanFocus, CanNailArt, CanQuickMap, CanInspect, CanBackDash, CanSuperDash, CanDreamNail, CanDreamGate, CanInteract, CanOpenInventory, SetDamageMode, SetDamageModeFSM, ResetQuakeDamage, SetDamageMode, StopAnimationControl, StartAnimationControl, IgnoreInput, IgnoreInputWithoutReset, AcceptInput, Pause, UnPause, NearBench, SetWalkZone, ResetState, StopPlayingAudio, PauseAudio, UnPauseAudio, PauseInput, UnPauseInput, SpawnSoftLandingPrefab, AffectedByGravity, LookForInput, LookForQueueInput, HeroJump, HeroJumpNoEffect, DoWallJump, DoDoubleJump, DoHardLanding, DoAttack, HeroDash, StartFallRumble, SetState, FinishedEnteringScene, Die, DieFromHazard, StartRecoil, Invulnerable, FirstFadeIn, FallCheck, OutOfBoundsCheck, ConfirmOutOfBounds, FailSafeChecks, LocateSpawnPoint, CancelJump, CancelDoubleJump, CancelDash, CancelWallsliding, CancelBackDash, CancelDownAttack, CancelAttack, CancelBounce, CancelRecoilHorizontal, CancelDamageRecoil, CancelFallEffects, ResetAttacks, ResetAttacksDash, ResetMotion, ResetMotionNotVelocity, ResetLook, ResetInput, BackOnGround, JumpReleased, FinishedDashing, SetStartingMotionState, SetStartingMotionState, EnterAcid, ExitAcid, TileMapTest, TilemapTestPause, StopTilemapTest, CheckForTerrainThunk, CheckStillTouchingWall, CheckForBump, CheckNearRoof, CheckTouchingGround, CheckTouching, CheckTouchingAdvanced, FindCollisionDirection, CanJump, CanDoubleJump, CanInfiniteAirJump, CanSwim, CanDash, CanAttack, CanNailCharge, CanWallSlide, CanTakeDamage, CanWallJump, ShouldHardLand, OnCollisionEnter2D, OnCollisionStay2D, OnCollisionExit2D, SetupGameRefs, SetupPools, FilterInput, FindGroundPoint, FindGroundPointY, .ctor, <Start>b__383_0, orig_StartMPDrain, orig_Update, OrigDashVector, orig_Dash, orig_CharmUpdate, orig_DoAttack
+HeroInPosition: .ctor, Invoke, BeginInvoke, EndInvoke
+TakeDamageEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+HeroDeathEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+<EnterScene>d__469: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<BetaLeave>d__471: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<BetaReturn>d__472: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Respawn>d__473: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<HazardRespawn>d__474: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Die>d__532: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<DieFromHazard>d__533: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<StartRecoil>d__534: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Invulnerable>d__535: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<FirstFadeIn>d__536: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<TilemapTestPause>d__567: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<CheckForTerrainThunk>d__569: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+HeroControllerStates: .ctor, GetState, SetState, Reset
+InGameCutsceneInfo: get_IsInCutscene, get_CameraPosition, Awake, OnDestroy, .ctor
+NailSlash: Awake, StartSlash, FixedUpdate, OnTriggerEnter2D, Bounce, OnTriggerStay2D, Disable, SetLongnail, SetMantis, SetFury, CancelAttack, .ctor, orig_OnTriggerEnter2D
+DamageEffectTicker: OnEnable, Update, OnTriggerEnter2D, OnTriggerExit2D, EmptyDamageList, SetDamageEvent, SetDamageInterval, .ctor
+Achievement: .ctor
+AchievementRecord: .ctor
+AchievementRecordFloat: .ctor
+AchievementRecordInt: .ctor
+AchievementsList: FindAchievement, AchievementExists, .ctor
+GameConfig: .ctor
+GameVersionData: GetGameVersionString, .ctor
+GameVersion: 
+PlayerAchievements: .ctor
+SaveConfig: .ctor
+SaveSet: 
+SaveGameData: .ctor
+DeactivateAfterDelay: Awake, OnEnable, Update, .ctor
+DeactivateIfPlayerdataFalse: Start, OnEnable, .ctor
+DeactivateIfPlayerdataFalseDelayed: Start, OnEnable, DoCheck, .ctor
+DeactivateIfPlayerdataTrue: Start, OnEnable, .ctor
+DeactivateInDarknessWithoutLantern: Start, .ctor
+DebrisParticle: Reset, Awake, OnEnable, Update, .ctor
+DirectionTest: 
+DisableAfterTime: OnEnable, Update, .ctor
+DisableIfZPos: Start, .ctor
+DontClinkGates: .ctor
+DropCrystal: Start, OnEnable, FixedUpdate, OnCollisionEnter2D, LateUpdate, StartConveyorMove, StopConveyorMove, .ctor
+ActivateChildrenOnContact: OnTriggerEnter2D, .ctor
+BeatControl: Update, OnDestroy, .ctor
+BlurPlane: get_OriginalMaterial, set_OriginalMaterial, get_BlurPlaneCount, GetBlurPlane, get_ClosestBlurPlane, add_BlurPlanesChanged, remove_BlurPlanesChanged, get_PlaneZ, Init, Awake, OnEnable, OnDisable, SetPlaneVisibility, SetPlaneMaterial, .ctor
+BlurPlanesChangedDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+BrightnessEffect: OnRenderImage, SetBrightness, SetContrast, .ctor
+CameraShake: Init, Awake, OnEnable, OnDisable, ShakeSingle, Shake, .ctor
+CameraShakeCues: 
+ColorCurvesManager: SetFactor, SetSaturationA, SetSaturationB, Start, Update, UpdateScript, EditorHasChanged, PairKeyframes, SimplePairKeyframes, CreatePair, CreateCurveFromKeyframes, AverageKeyframe, PairCurvesKeyframes, UpdateScriptParameters, PairedListsInitiated, .ctor
+<>c__DisplayClass36_0: .ctor, <PairKeyframes>b__0
+ColourPainter: Awake, Update, OnTriggerEnter2D, DoPaint, .ctor
+CrystalPieceSize: OnEnable, .ctor
+DashEffect: OnEnable, PlayDashPuff, PlayDust, PlayGrass, PlayBone, PlaySpaEffects, Update, .ctor
+GradeMarker: OnEnable, OnDisable, Start, OnUnloadingLevel, SetStartSizeForTrigger, Activate, Deactivate, ActivateGradual, DeactivateGradual, Update, UpdateLow, .ctor, orig_Start, OnStart, orig_Update, orig_UpdateLow, orig_Deactivate
+<OnStart>d__5: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.IEnumerator.Reset
+GradeOverride: Start, OnEnable, OnDisable, Activate, Deactivate, .ctor
+GradeTrigger: Start, OnTriggerEnter2D, OnTriggerExit2D, .ctor
+GradeZone: Start, .ctor
+GrassBehaviour: get_SharedMaterial, Awake, Start, OnEnable, OnDisable, DelayedInfectedCheck, LateUpdate, FixedUpdate, OnTriggerEnter2D, OnTriggerExit2D, CutReact, WindReact, PlayRandomSound, SetPushAmount, .ctor, .cctor
+<DelayedInfectedCheck>d__37: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+GrassCut: Awake, OnTriggerEnter2D, ShouldCut, .ctor
+GrassSpriteBehaviour: Awake, Start, OnBecameVisible, OnBecameInvisible, OnTriggerEnter2D, Init, SetWindy, SetNotWindy, .ctor
+GrassWind: Awake, OnTriggerEnter2D, DelayReact, .ctor
+<DelayReact>d__3: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+HardLandEffect: OnEnable, Update, .ctor
+JumpEffects: OnEnable, Update, GetHero, CheckForFall, PlayTrail, PlayJumpPuff, SplashOut, .ctor
+KeepWorldPosition: Update, .ctor
+LightBlur: get_PassGroupCount, set_PassGroupCount, get_BlurPassCount, Awake, OnDestroy, CheckResources, OnRenderImage, .ctor
+LightBlurredBackground: get_RenderTextureHeight, set_RenderTextureHeight, Awake, OnEnable, OnCameraAspectChanged, OnDisable, get_PassGroupCount, set_PassGroupCount, OnBlurPlanesChanged, LateUpdate, UpdateCameraClipPlanes, .ctor, .cctor
+PaintSplat: Start, Update, .ctor
+ParticleSystemAutoDisable: Start, Update, .ctor
+ParticleSystemAutoRecycle: Start, Update, .ctor
+PlayParticleOnEntry: Start, OnTriggerEnter2D, OnTriggerExit2D, .ctor
+RandomRotation: Start, OnEnable, RandomRotate, .ctor
+RandomRotationRange: Start, OnEnable, RandomRotate, .ctor
+ReduceParticleEffects: Start, SetEmission, OnEnable, OnDisable, .ctor
+NewBehaviourScript: .ctor
+SceneColorManager: get_markerActive, set_markerActive, SetFactor, SetSaturationA, SetSaturationB, get_startBufferActive, set_startBufferActive, GameInit, SceneInit, Update, OnLevelUnload, OnDisable, ForceRefresh, FinishBufferPeriod, MarkerActive, UpdateScript, EditorHasChanged, PairKeyframes, SimplePairKeyframes, CreatePair, CreateCurveFromKeyframes, AverageKeyframe, PairCurvesKeyframes, UpdateScriptParameters, PairedListsInitiated, UpdateSceneType, .ctor
+<ForceRefresh>d__52: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<>c__DisplayClass57_0: .ctor, <PairKeyframes>b__0
+SceneParticlesController: SceneInit, EnableParticles, DisableParticles, BeginScene, .ctor
+SceneParticles: .ctor
+SceneryTriggerCircle: get_active, set_active, Awake, OnTriggerEnter2D, OnTriggerStay2D, OnTriggerExit2D, RandomizePitch, ResetPitch, .ctor
+SoftLandEffect: OnEnable, Update, .ctor
+EndBeta: Awake, Start, Update, OnTriggerEnter2D, Reactivate, .ctor
+AlertRange: get_IsHeroInRange, Awake, OnTriggerEnter2D, OnTriggerExit2D, StillInColliders, Find, .ctor
+FindAlertRange: Reset, OnEnter, .ctor
+CheckAlertRange: Reset, OnEnter, OnUpdate, Apply, .ctor
+CheckAlertRangeByName: Reset, OnEnter, OnUpdate, Apply, .ctor
+BigCentipede: get_EntryPoint, get_ExitPoint, get_Direction, Awake, Start, UnBurrow, Burrow, FixedUpdate, Update, .ctor
+BigCentipedeSection: Awake, Update, .ctor
+BrokenVesselGlob: OnEnable, Update, FixedUpdate, FaceAngle, ProjectileSquash, .ctor
+Climber: Awake, Start, Walk, Turn, GetVelocity, CheckGround, CheckWall, Stun, DoStun, FireRayLocal, GetTweenPos, StickToGround, .ctor
+Direction: 
+<Walk>d__17: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Turn>d__18: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<DoStun>d__23: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+ConstrainPosition: Update, .ctor
+Corpse: Awake, Setup, Start, Update, Complete, OnCollisionEnter2D, OnCollisionStay2D, OnCollision, Land, LandEffects, Smash, Acid, DropThroughFloor, DisableFlame, .ctor
+States: 
+<DropThroughFloor>d__47: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<DisableFlame>d__48: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+CorpseBitEnd: Update, .ctor
+CorpseChunker: LandEffects, .ctor
+CorpseDeathStun: Start, DeathStun, Jitter, .ctor, <>n__0
+<DeathStun>d__1: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Jitter>d__2: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+CorpseDeathStunChunker: Start, DeathStun, Jitter, .ctor, <>n__0
+<DeathStun>d__2: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Jitter>d__3: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+CorpseFungusExplode: LandEffects, DoLandEffects, Jitter, .ctor
+<DoLandEffects>d__6: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Jitter>d__7: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+CorpseGoopExplode: Start, LandEffects, DoLandEffects, Jitter, .ctor
+<DoLandEffects>d__4: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Jitter>d__5: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+CorpseHatcher: Smash, .ctor
+CorpseSpineBurst: LandEffects, DoLandEffects, .ctor
+<DoLandEffects>d__6: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+CorpseZomHive: LandEffects, .ctor
+Crawler: Awake, Start, Walk, Turn, CheckRayLocal, .ctor, <Start>b__10_0
+CrawlerType: 
+<Walk>d__11: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Turn>d__12: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+CycloneDust: Start, OnEnable, Update, .ctor
+DamageEnemies: Reset, OnCollisionEnter2D, OnTriggerEnter2D, OnTriggerExit2D, OnDisable, FixedUpdate, DoDamage, .ctor
+DamageHero: OnEnable, .ctor
+SetDamageHeroAmount: Reset, OnEnter, .ctor
+DestroyOutOfBounds: Update, .ctor
+EnemyDeathTypes: 
+EnemyDeathEffects: Start, PreInstantiate, RecieveDeathEvent, RecordKillForJournal, EmitCorpse, EmitEffects, EmitSound, EmitInfectedEffects, EmitSmallInfectedEffects, EmitLargeInfectedEffects, ShakeCameraIfVisible, EmitEssence, .ctor, .cctor, orig_RecieveDeathEvent, orig_RecordKillForJournal
+SendDeathEvent: Reset, OnEnter, .ctor
+SetEffectOrigin: Reset, OnEnter, .ctor
+SetCorpseSpawnPoint: Reset, OnEnter, .ctor
+PreSpawnCorpse: Reset, OnEnter, .ctor
+EnemyDeathEffectsBlackKnight: EmitEffects, .ctor
+EnemyDeathEffectsBubble: EmitEffects, .ctor
+EnemyDeathEffectsDung: EmitEffects, .ctor
+EnemyDeathEffectsNoEffect: EmitEffects, .ctor
+EnemyDeathEffectsUninfected: EmitEffects, .ctor
+EnemyDreamnailReaction: Reset, Start, RecieveDreamImpact, MakeReady, SetConvoTitle, ShowConvo, Update, .ctor
+States: 
+MakeEnemyDreamnailReactionReady: Reset, OnEnter, .ctor
+SetDreamNailConvo: Reset, OnEnter, .ctor
+SendDreamImpact: Reset, OnEnter, .ctor
+EnemyHitEffectsArmoured: Awake, RecieveHitEffect, Update, .ctor
+EnemyHitEffectsBlackKnight: Awake, RecieveHitEffect, Update, .ctor
+EnemyHitEffectsGhost: Awake, RecieveHitEffect, Update, .ctor
+EnemyHitEffectsShade: Awake, RecieveHitEffect, Update, .ctor
+EnemyHitEffectsUninfected: Awake, RecieveHitEffect, Update, .ctor
+EnemyKillEventListener: Awake, OnEnable, OnDisable, Die, .ctor
+EnemySpawner: add_OnEnemySpawned, remove_OnEnemySpawned, Awake, Start, Update, .ctor, <Start>b__16_0
+EnemyWakeRegion: OnTriggerEnter2D, OnTriggerExit2D, .ctor
+ExtraDamageTypes: 
+IExtraDamageable: RecieveExtraDamage
+ExtraDamageable: Awake, LateUpdate, RecieveExtraDamage, GetDamageOfType, ApplyExtraDamageToHealthManager, .ctor
+SendExtraDamage: Reset, OnEnter, .ctor
+FakeBat: Awake, Init, OnEnable, OnDisable, Start, Update, NotifyAllBossAwake, NotifyBossAwake, SendAllOut, SendOut, SendOutRoutine, BringAllIn, BringIn, BringInRoutine, FaceDirection, Accelerate, .ctor
+States: 
+<SendOutRoutine>d__19: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<BringInRoutine>d__22: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+HealthManager: add_OnDeath, remove_OnDeath, get_IsInvincible, set_IsInvincible, get_InvincibleFromDirection, set_InvincibleFromDirection, Awake, OnEnable, Start, CheckPersistence, Update, Hit, Invincible, TakeDamage, NonFatalHit, ApplyExtraDamage, Die, SendDeathEvent, SetGeoFlashing, IsBlockingByDirection, SetBattleScene, GetAttackDirection, SetPreventInvincibleEffect, SetGeoSmall, SetGeoMedium, SetGeoLarge, GetIsDead, SetIsDead, SetDamageOverride, SetSendKilledToObject, CheckInvincible, .ctor, <Awake>b__69_0, <Awake>b__69_1
+HPScaleGG: GetScaledHP
+DeathEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+<CheckPersistence>d__73: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<CheckPersistence>d__1: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.IEnumerator.Reset
+SetBattleScene: Reset, OnEnter, .ctor
+SetInvincible: Reset, OnEnter, .ctor
+SetSpecialDeath: Reset, OnEnter, .ctor
+SetSendKilledToObject: Reset, OnEnter, .ctor
+InstaDeath: Reset, OnEnter, .ctor
+SetHP: Reset, OnEnter, .ctor
+AddHP: Reset, OnEnter, .ctor
+SubtractHP: Reset, OnEnter, .ctor
+GetHP: Reset, OnEnter, .ctor
+GetHPEveryFrame: Reset, OnEnter, OnUpdate, .ctor
+GetIsDead: Reset, OnEnter, .ctor
+SetIsDead: Reset, OnEnter, .ctor
+SetGeoDrop: Reset, OnEnter, .ctor
+PreventInvincibleEffect: Reset, OnEnter, .ctor
+SetHealthManagerReset: Reset, OnEnter, .ctor
+SetDamageOverride: Reset, OnEnter, .ctor
+CheckInvincibility: Reset, OnEnter, .ctor
+SendHealthManagerDeathEvent: Reset, OnEnter, .ctor
+IHitEffectReciever: RecieveHitEffect
+PlayHitEffects: Awake, Reset, OnEnter, .ctor
+HiveKnightStinger: OnEnable, Update, .ctor
+InfectedEnemyEffects: Reset, Awake, RecieveHitEffect, Update, .ctor
+KeepRotation: Start, Update, .ctor
+KnightHatchling: get_IsGrounded, get_CurrentState, set_CurrentState, get_LastFrameState, set_LastFrameState, get_PreviousState, set_PreviousState, Awake, Start, OnEnable, OnDisable, FixedUpdate, Spawn, GetHeroDistance, TeleEnd, FsmHitLanded, Explode, FsmCharmsEnd, CharmsEnd, FsmHazardReload, FsmBenchRestStart, FsmBenchRestEnd, WakeUp, FsmQuickSpawn, FsmDreamGateOut, DreamGateOut, DoFace, DoChase, DoBuzz, DoChaseSimple, .ctor, <Start>b__49_0, <Start>b__49_1, <Start>b__49_2, <Start>b__49_3
+TypeDetails: 
+State: 
+<Spawn>d__53: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<TeleEnd>d__55: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Explode>d__57: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<CharmsEnd>d__59: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<WakeUp>d__63: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<DreamGateOut>d__66: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+LimitBehaviour: OnDisable, Add, RemoveFirst, RemoveSelf, .ctor, .cctor
+BehaviourListAdd: Reset, OnEnter, .ctor
+BehaviourListRemove: Reset, OnEnter, .ctor
+LineOfSightDetector: get_CanSeeHero, Awake, Update, .ctor
+GetCanSeeHero: Reset, OnEnter, OnUpdate, Apply, .ctor
+CheckCanSeeHero: Reset, OnEnter, OnUpdate, Apply, .ctor
+Recoil: get_SkipFreezingByController, set_SkipFreezingByController, add_OnHandleFreeze, remove_OnHandleFreeze, add_OnCancelRecoil, remove_OnCancelRecoil, get_IsRecoiling, Reset, Awake, OnEnable, RecoilByHealthManagerFSMParameters, RecoilByDamage, RecoilByDirection, CancelRecoil, Freeze, FixedUpdate, UpdatePhysics, SetRecoilSpeed, .ctor
+FreezeEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+CancelRecoilEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+States: 
+BeginRecoil: Reset, OnEnter, .ctor
+SetRecoilSpeed: Reset, OnEnter, .ctor
+SetRecoilFreeze: OnEnter, .ctor
+SendEnemyMessageTrigger: Start, FixedUpdate, OnTriggerStay2D, SendEvent, SendWalkerGoInDirection, .ctor
+SendFSMEventOnEntry: OnTriggerEnter2D, .ctor
+SpellFluke: Awake, Start, DoDamage, OnEnable, Update, Burst, BurstSequence, .ctor, <Start>b__16_0, <Start>b__16_1
+<BurstSequence>d__21: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+Sweep: .ctor, Check, Check
+TrackSpawnedEnemies: get_TotalTracked, get_TotalAlive, Add, .ctor
+<>c: .cctor, .ctor, <get_TotalAlive>b__3_0
+TrackSpawnedEnemiesAdd: Reset, OnEnter, AddTracked, .ctor
+<>c__DisplayClass4_0: .ctor, <OnEnter>b__0
+TrackSpawnedEnemiesGetInfo: Reset, OnEnter, .ctor
+Walker: Awake, Start, Update, StartMoving, CancelTurn, Go, RecieveGoMessage, Stop, ChangeFacing, BeginWaitingForConditions, UpdateWaitingForConditions, BeginStopped, UpdateStopping, EndStopping, BeginWalkingOrTurning, BeginWalking, UpdateWalking, BeginTurning, UpdateTurning, EndTurning, ClearTurnCooldown, .ctor
+States: 
+StopReasons: 
+WalkerAction: Reset, OnEnter, OnUpdate, Apply, .ctor
+StopWalker: Apply, .ctor
+StartWalker: Reset, Apply, .ctor
+CancelWalkerTurn: Apply, .ctor
+SetWalkerFacing: Reset, Apply, .ctor
+SetWalkerSpeed: Reset, Apply, .ctor
+SetWalkerStartInactive: Reset, Apply, .ctor
+EnemyBullet: Awake, OnEnable, Update, OnCollisionEnter2D, OnTriggerEnter2D, OrbitShieldHit, Collision, .ctor
+<Collision>d__18: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+DestroyEnemyBullet: Reset, OnEnter, .ctor
+EnemyPusher: OnCollisionEnter2D, .ctor
+EnemyPusherIgnore: Reset, OnEnter, .ctor
+EventRegister: add_OnReceivedEvent, remove_OnReceivedEvent, Awake, OnDestroy, ReceiveEvent, SwitchEvent, SendEvent, SubscribeEvent, UnsubscribeEvent, .ctor, .cctor
+RegisteredEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+SendEventToRegister: Reset, OnEnter, .ctor
+AddEventRegister: Reset, OnEnter, .ctor
+ExtraDamageableProxy: IExtraDamageable.RecieveExtraDamage, .ctor
+FaceAngleSimple: OnEnable, Update, DoAngle, .ctor
+FinishingRigidBody: Reset, Awake, OnEnable, Update, Conclude, .ctor
+Conclusions: 
+States: 
+AchievementListener: OnEnable, OnDisable, CaptureAchievementEvent, .ctor
+ActiveRegion: OnTriggerEnter2D, .ctor
+AutoRecycleSelf: OnEnable, Update, Update20, OnDisable, OnApplicationQuit, StartTimer, RecycleSelf, .ctor
+<StartTimer>d__10: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+BetaGateChanger: SwitchToBetaExit, .ctor
+CaptureAnimationEvent: Start, SetPlayerDataBoolTrue, SetPlayerDataBoolFalse, IncrementPlayerDataInt, DecrementPlayerDataInt, GetPlayerDataBool, GetPlayerDataInt, GetPlayerDataFloat, GetPlayerDataString, EquipCharm, UnequipCharm, UpdateBlueHealth, .ctor
+DirectionUtils: GetCardinalDirection, NegSafeMod, GetX, GetY
+FSMActivator: Awake, Activate, ActivateStaggered, Deactivate, DeactivateStaggered, .ctor
+<ActivateStaggered>d__6: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<DeactivateStaggered>d__8: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+FixVerticalAlign: OnEnable, Start, AlignText, AlignTextKeymap, .ctor
+LabelFixType: 
+GameCompletionScreen: Start, .ctor
+GameSettings: .ctor, LoadGameOptionsSettings, SaveGameOptionsSettings, ResetGameOptionsSettings, LoadVideoSettings, SaveVideoSettings, ResetVideoSettings, LoadOverscanSettings, SaveOverscanSettings, ResetOverscanSettings, LoadOverscanConfigured, LoadBrightnessSettings, SaveBrightnessSettings, ResetBrightnessSettings, LoadBrightnessConfigured, LoadAudioSettings, SaveAudioSettings, ResetAudioSettings, LoadKeyboardSettings, LoadAndUpgradeKeyboardKey, SaveKeyboardSettings, LoadGamepadSettings, SaveGamepadSettings, ResetGamepadSettings, RemapGamepadTypeForSettings, LoadInt, HasSetting, LoadEnum, LoadBool, LoadFloat, LoadString, LogMissingKey, LogLoadedKey, LogLoadedKey, LogLoadedKey, LogSavedKey, LogSavedKey, LogSavedKey, CommandArgumentUsed
+MakeSkippable: Awake, Start, UnlockSkip, .ctor
+SkipType: 
+OpeningGameplayCredits: Start, .ctor
+PerformanceHUD: get_Shared, Init, get_FpsFrames, set_FpsFrames, Awake, OnEnable, OnDisable, Update, GameManager_SceneTransitionBegan, UpdateSceneLoadRecordContent, ReportUpload, GetTimeStr, UpdateMemory, OnGUI, LabelWithShadow, .ctor
+LoadReport: .ctor
+<>c__DisplayClass26_0: .ctor, <GameManager_SceneTransitionBegan>b__0, <GameManager_SceneTransitionBegan>b__1, <GameManager_SceneTransitionBegan>b__2, <GameManager_SceneTransitionBegan>b__3, <GameManager_SceneTransitionBegan>b__4, <GameManager_SceneTransitionBegan>b__5
+<ReportUpload>d__28: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<>c__DisplayClass31_0: .ctor, <OnGUI>b__0, <OnGUI>b__1
+PermadeathUnlock: Start, .ctor
+PersonalObjectPool: Start, OnEnable, CreateStartupPools, CreatePool, DestroyMyPooledObjects, .ctor
+StartupPool: .ctor
+SaveDataUpgradeHandler: CleanupVersionText, ClearDreamGate, UpdateMap, UpgradeSaveData, UpgradeSystemData, .cctor
+SceneSplit: .ctor, ShouldHandleSplit
+SystemDataUpgrade: 
+<>c: .cctor, .ctor, <.cctor>b__9_0
+Singleton`1: get_instance, Awake, OnDestroy, .ctor, .cctor
+TitleLogo: AnimationFinished, .ctor
+TriggerActivateComponent: Start, OnTriggerEnter2D, OnTriggerExit2D, DisableTimer, .ctor
+<DisableTimer>d__6: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+TriggerActivateGameObject: Start, OnTriggerEnter2D, OnTriggerStay2D, OnTriggerExit2D, .ctor
+TutorialEntryPauser: Start, EnableControl, .ctor
+GenerateJournalNewDot: Start, .ctor
+GetNailDamage: Reset, OnEnter, .ctor
+GlobalPrefabDefaults: Awake, Start, SpawnBlood, .ctor
+SpawnBlood: Reset, OnEnter, Spawn, .ctor
+SpawnBloodTime: Reset, OnEnter, OnUpdate, .ctor
+BossDoorCage: Awake, Start, Unlock, UnlockRoutine, StartShakeLock, StopShakeLock, .ctor, <Start>b__6_0
+<UnlockRoutine>d__8: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+BossDoorCompletionStates: Start, OnTriggerEnter2D, .ctor
+CompletionState: .ctor
+BossDoorTargetLock: get_IsUnlocked, set_IsUnlocked, Awake, Start, UnlockSequence, StartRoarLock, StopRoarLock, .ctor
+BossDoorTarget: Evaluate, .ctor
+<>c__DisplayClass11_0: .ctor, <Start>b__0
+<UnlockSequence>d__12: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+BossSceneCheckSource: 
+BossScene: get_DisplayIcon, get_ForceAssetUnload, get_Tier1Scene, get_Tier2Scene, get_Tier3Scene, IsUnlocked, IsUnlockedSelf, .ctor
+BossTest: IsUnlocked, .ctor
+BoolTest: 
+IntTest: 
+Comparison: 
+SharedDataTest: 
+GGCheckBossSceneUnlocked: Reset, get_IsTrue, .ctor
+BossSceneController: add_OnBossesDead, remove_OnBossesDead, add_OnBossSceneComplete, remove_OnBossSceneComplete, get_IsBossScene, get_HasTransitionedIn, set_HasTransitionedIn, get_IsTransitioning, get_CanTransition, set_CanTransition, get_BossLevel, set_BossLevel, get_DreamReturnEvent, set_DreamReturnEvent, get_BossHealthLookup, set_BossHealthLookup, Awake, OnDestroy, Start, Update, Setup, SetKnightDamaged, CheckBossesDead, EndBossScene, EndSceneDelayed, DoDreamReturn, ApplyBindings, RestoreBindings, ReportHealth, .ctor, .cctor, <Awake>b__50_0, <Setup>b__54_0
+SetupEventDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+BossHealthDetails: 
+<Start>d__52: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<>c__DisplayClass58_0: .ctor, <EndSceneDelayed>b__0
+<EndSceneDelayed>d__58: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+EndGGBossScene: OnEnter, .ctor
+CheckGGBossLevel: Reset, OnEnter, .ctor
+GGCheckIfBossScene: Reset, OnEnter, .ctor
+GGSetCanTransition: set_BoolValue, .ctor
+GGWaitForBossSceneTransitionIn: Reset, OnEnter, OnUpdate, DoCheck, .ctor
+BossSequence: get_Count, GetSceneAt, GetSceneObjectName, CanLoad, GetBossScene, IsUnlocked, IsSceneHidden, .ctor
+BossSequenceBindingsDisplay: Start, CountBindings, CountCompletedBindings, CountTotalBindings, .ctor
+GGGetCompletedBindings: get_IntValue, .ctor
+GGGetTotalBindings: get_IntValue, .ctor
+BossSequenceBindingsDoor: Awake, Start, OnTriggerEnter2D, SetUnlocked, DoUnlockAnimation, .ctor
+<DoUnlockAnimation>d__13: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+BossSequenceController: get_BoundNail, get_BoundShell, get_BoundCharms, get_BoundSoul, get_KnightDamaged, set_KnightDamaged, get_PreviousCompletion, get_Timer, set_Timer, get_WasCompleted, set_WasCompleted, get_IsInSequence, get_IsLastBossScene, get_BossIndex, get_BossCount, get_ShouldUnlockGGMode, get_BoundMaxHealth, get_BoundNailDamage, get_ForceAssetUnload, Reset, SetupNewSequence, CheckLoadSequence, LoadCurrentSequence, ApplyBindings, RestoreBindings, ResetBindingDisplay, SetupBossScene, IncrementBossIndex, FinishBossScene, FinishLastBossScene, CheckIfSequence, SetMinValue, SetCharmsEquipped
+ChallengeBindings: 
+BossSequenceData: .ctor
+<ResetBindingDisplay>d__47: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<>c__DisplayClass48_0: .ctor, <SetupBossScene>b__0
+<>c__DisplayClass48_1: .ctor, <SetupBossScene>b__1
+GGCheckBoundSoul: Reset, OnEnter, .ctor
+GGCheckIfBossSequenceCompleted: Reset, OnEnter, .ctor
+GGCheckIfFirstBossScene: get_IsTrue, .ctor
+GGCheckIfLastBossScene: get_IsTrue, .ctor
+GGCheckIfBossSequence: get_IsTrue, .ctor
+GGCheckBossSequenceList: Reset, get_IsTrue, .ctor
+GGCheckBoundHeart: Reset, get_IsTrue, .ctor
+CheckSource: 
+GGCheckBoundNail: get_IsTrue, .ctor
+GGCheckBoundCharms: get_IsTrue, .ctor
+GGResetBossSequenceController: OnEnter, .ctor
+GGCheckIsBossRushMode: get_IsTrue, .ctor
+BossSequenceDoor: get_CurrentCompletion, set_CurrentCompletion, Start, SaveState, IsUnlocked, SetDisplayState, ShowLockUI, OnTriggerEnter2D, StartShake, StopShake, DoorUnlockSequence, .ctor
+Completion: get_None
+<DoorUnlockSequence>d__50: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+ShowBossDoorLockedUI: Reset, OnEnter, .ctor
+GGCountCompletedBossDoors: get_IntValue, .ctor
+GGGetBossDoorCompletion: Reset, OnEnter, .ctor
+BossStatue: add_OnStatueSwapFinished, remove_OnStatueSwapFinished, add_OnSeenNewStatue, remove_OnSeenNewStatue, get_UsingDreamVersion, set_UsingDreamVersion, get_StatueState, set_StatueState, get_DreamStatueState, set_DreamStatueState, get_HasRegularVersion, get_HasDreamVersion, Awake, Start, SetPlaquesVisible, SetPlaqueState, SetDreamVersion, UpdateDetails, SwapStatues, Jitter, PlayAnimWait, PlayParticlesDelay, PlayAudioEventDelayed, OnDrawGizmosSelected, .ctor, <Start>b__61_0
+StatueSwapEndEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+SeenNewStatueEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+Completion: get_None
+BossUIDetails: 
+<SwapStatues>d__67: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Jitter>d__68: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<PlayAnimWait>d__69: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<PlayParticlesDelay>d__70: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<PlayAudioEventDelayed>d__71: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+BossStatueCompletionStates: OnValidate, Start, GetHighestCompletedTier, GetIsTierCompleted, CountCompletion, HasCompletedTier, .ctor
+Tiers: 
+State: SetActive
+IBossStatueToggle: SetOwner, SetState
+BossStatueDreamToggle: OnEnable, Start, OnTriggerEnter2D, Fade, SetOwner, SetState, .ctor, <Start>b__15_0
+<Fade>d__17: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+BossStatueExtraFlashEffect: Start, DoAppear, AppearRoutine, .ctor, <Start>b__5_0
+<>c__DisplayClass5_0: .ctor, <Start>b__1
+<AppearRoutine>d__7: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+BossStatueFlashEffect: add_OnFlashBegin, remove_OnFlashBegin, Awake, Start, FlashRoutine, FlashApex, .ctor
+FlashCompleteDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+<>c__DisplayClass14_0: .ctor, <Start>b__0
+<FlashRoutine>d__15: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+BossStatueLever: Enable, OnTriggerEnter2D, SetOwner, SetState, .ctor, <SetOwner>b__9_0
+BossStatueLoadManager: get_ShouldUnload, OnEnable, OnDisable, Clear, RecordBossScene, .ctor, .cctor
+BossStatueSetUnlockIndicator: Start, CheckIfNewBossStatue, .ctor, <Start>b__1_0
+BossStatueTrophyPlaque: SetDisplay, DoTierCompleteEffect, TierCompleteEffectDelayed, SetDisplayObject, GetDisplayType, .ctor
+DisplayType: 
+<TierCompleteEffectDelayed>d__8: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+BossSummaryBoard: Start, Show, Hide, .ctor
+ShowBossSummaryUI: Reset, OnEnter, .ctor
+EndBossSceneTimer: OnEnable, OnDisable, Delayed, .ctor
+<Delayed>d__3: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+BossChallengeUI: add_OnCancel, remove_OnCancel, add_OnLevelSelected, remove_OnLevelSelected, Awake, Start, Setup, ShowUnlockEffect, SetFirstSelected, Hide, Hide, HideAnim, LoadBoss, LoadBoss, RecordLastSelected, .ctor, .cctor
+HideEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+LevelSelectedEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+ButtonDisplay: SetupNavigation, SetState, .ctor
+<ShowUnlockEffect>d__27: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<SetFirstSelected>d__28: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<HideAnim>d__31: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<>c__DisplayClass33_0: .ctor, <LoadBoss>b__0, <LoadBoss>b__1
+<>c__DisplayClass33_1: .ctor, <LoadBoss>b__2
+ShowBossChallengeUI: Reset, OnEnter, .ctor, .cctor
+<>c__DisplayClass8_0: .ctor
+<>c__DisplayClass8_1: .ctor, <OnEnter>b__0
+<>c__DisplayClass8_2: .ctor, <OnEnter>b__1
+BossDoorChallengeCompleteUI: Start, Update, ShowAchievements, Sequence, GetBindingIcon, .ctor
+BindingIcon: SetAlreadyVisible, DoAppearAnim, DoAllAppearAnim, SetAllUnlocked, .ctor
+<DoAppearAnim>d__5: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<DoAllAppearAnim>d__6: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<ShowAchievements>d__33: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Sequence>d__34: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+BossDoorChallengeUI: add_OnHidden, remove_OnHidden, add_OnBegin, remove_OnBegin, Awake, Start, OnEnable, Setup, UpdateAllButtons, Show, ShowSequence, Hide, HideSequence, Begin, .ctor
+HideEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+BeginEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+<ShowSequence>d__30: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<HideSequence>d__32: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+ShowBossDoorChallengeUI: Reset, OnEnter, .ctor, .cctor
+<>c__DisplayClass6_0: .ctor, <OnEnter>b__0
+<>c__DisplayClass6_1: .ctor, <OnEnter>b__1
+BossDoorChallengeUIBindingButton: add_OnButtonSelected, remove_OnButtonSelected, add_OnButtonCancelled, remove_OnButtonCancelled, get_Selected, Awake, Reset, OnDisable, OnSubmit, SetAllSelected, SetAnimSizeDelayed, OnCancel, OnPointerClick, .ctor, .cctor
+OnSelectionEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+OnCancelEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+<SetAnimSizeDelayed>d__31: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+BossDoorLockUI: Awake, Show, Hide, ShowRoutine, HideRoutine, FadeButtonPrompts, .ctor
+<ShowRoutine>d__11: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<HideRoutine>d__12: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<FadeButtonPrompts>d__13: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+BossDoorLockUIIcon: Awake, SetUnlocked, PlayAnimWithDelay, .ctor
+<PlayAnimWithDelay>d__8: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+BossSummaryUI: Awake, Start, SetupUI, CreateListItem, Show, Hide, Close, .ctor
+<Close>d__11: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+GodfinderGateIcon: Reset, OnValidate, SetIcon, Evaluate, .ctor
+IconType: 
+GodfinderGateIconManager: OnValidate, OnEnable, DoLayout, .ctor
+GodfinderIcon: Awake, Start, Update, ShowIcon, ShowIconQueued, Show, Hide, .ctor
+<Show>d__11: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+ShowGodfinderIcon: Reset, OnEnter, .ctor
+ShowGodfinderIconQueued: Reset, OnEnter, .ctor
+GodfinderInvIcon: Awake, OnEnable, .ctor
+BossSceneExtra: IsUnlocked, .ctor
+RadialLayoutUI: Update, OnTransformChildrenChanged, HasValueChanged, UpdateUI, .ctor
+UnlockGGMode: Start, SetUnlocked, .ctor
+HeroDetect: add_OnEnter, remove_OnEnter, add_OnExit, remove_OnExit, OnTriggerEnter2D, OnTriggerExit2D, .ctor
+ColliderEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+ControllerMapping: .ctor
+InputHandler: add_OnCursorVisibilityChange, remove_OnCursorVisibilityChange, get_mappableControllerActions, set_mappableControllerActions, get_unmappedActions, set_unmappedActions, get_pauseAllowed, set_pauseAllowed, get_skipMode, set_skipMode, add_RefreshActiveControllerEvent, remove_RefreshActiveControllerEvent, Awake, Start, OnDestroy, SceneInit, OnGUI, SetCursorVisible, SetCursorEnabled, Update, ControllerAttached, ControllerActivated, ControllerDetached, PlayingInput, CutsceneInput, StagCutsceneInput, BetaEndInput, AttachHeroController, StopAcceptingInput, StartAcceptingInput, PreventPause, AllowPause, UpdateActiveController, StopUIInput, StartUIInput, StopMouseInput, EnableMouseInput, SetSkipMode, RefreshPlayerData, ResetDefaultKeyBindings, ResetDefaultControllerButtonBindings, ResetAllControllerButtonBindings, SendKeyBindingsToGameSettings, SendButtonBindingsToGameSettings, MapControllerButtons, RemapUIButtons, ActionButtonToPlayerAction, GetKeyBindingForAction, GetKeyBindingForActionBinding, GetButtonBindingForAction, GetActionForMappableControllerButton, GetActionForDefaultControllerButton, PrintMappings, ActionButtonLocalizedKey, ActionButtonLocalizedKey, StopCutsceneInput, UnlockStagInput, SetupGamepadUIInputActions, RemoveGamepadUIInputActions, DestroyCurrentActionSet, SetActiveGamepadType, MapDefaultKeyboardLayout, MapKeyboardLayoutFromGameSettings, AddKeyBinding, SetupNonMappableBindings, SetupMappableControllerBindingsList, .ctor
+KeyOrMouseBinding: .ctor, .ctor, IsNone, ToString
+CursorVisibilityChange: .ctor, Invoke, BeginInvoke, EndInvoke
+TFRMode: 
+ActiveControllerSwitch: .ctor, Invoke, BeginInvoke, EndInvoke
+<SetupGamepadUIInputActions>d__103: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+InputModuleActionAdaptor: Start, .ctor
+InputModuleBinder: OnEnable, OnDisable, OnAcceptRejectInputStyleChanged, BindAndApplyActions, .ctor
+MyActionSet: .ctor
+NativeInputModuleManager: get_IsUsed, set_IsUsed, get_IsRestartRequired, Awake, OnDestroy, OnEnable, ChangeIsUsed, .ctor
+PreMenuInputModuleActionAdaptor: OnEnable, OnDisable, CreateActions, DestroyActions, .ctor
+PreMenuInputModuleActions: .ctor
+GeoControl: Awake, Start, OnEnable, FixedUpdate, SetSize, SetFlashing, OnCollisionEnter2D, OnTriggerEnter2D, PlayCollectSound, Disable, DisableAfterTime, Getter, .ctor
+Size: .ctor
+<DisableAfterTime>d__32: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Getter>d__33: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+GrimmballControl: get_Force, set_Force, get_TweenY, set_TweenY, Awake, OnEnable, OnDisable, OnTriggerEnter2D, DoHit, Fire, DoFire, Shrink, .ctor
+<DoFire>d__23: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Shrink>d__24: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+FireGrimmBall: Reset, OnEnter, .ctor
+SoulOrb: Awake, Start, OnDisable, OnEnable, Update, SceneLoading, Zoom, FireAtTarget, FaceAngle, ProjectileSquash, .ctor
+<Zoom>d__24: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+SpawnJarControl: Awake, OnEnable, Behaviour, SetEnemySpawn, .ctor
+<Behaviour>d__16: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+SetSpawnJarContents: Reset, OnEnter, .ctor
+WeaverlingEnemyList: OnEnable, OnTriggerEnter2D, OnTriggerExit2D, GetTarget, .ctor
+GetEnemyTarget: Reset, OnEnter, .ctor
+KeepInScene: Start, OnEnable, Update, .ctor
+KeepWorldScalePositive: Update, .ctor
+KeepWorldScalePositiveLate: LateUpdate, .ctor
+KillOnContact: OnCollisionEnter2D, .ctor
+LimitSendEvents: OnEnable, Update, Add, .ctor
+CheckSendEventLimit: Reset, OnEnter, .ctor
+ActivatePerLanguage: Start, .ctor
+LangBoolPair: 
+AutoLocalizeTextUI: Awake, OnEnable, OnDisable, RefreshTextFromLocalization, .ctor
+DisplayCurrentLanguage: Awake, OnEnable, .ctor
+LocalisationHelper: GetProcessed, .cctor
+FontSource: 
+GetLanguageStringProcessed: Reset, OnEnter, .ctor
+LocaliseSprite: Awake, Start, .ctor
+LangSpritePair: 
+PlatformSpecificLocalisation: Awake, .ctor
+PlatformKey: 
+AchievementHandler: get_achievementsList, set_achievementsList, add_AwardAchievementEvent, remove_AwardAchievementEvent, Awake, Start, AwardAchievementToPlayer, AchievementWasAwarded, ResetAllAchievements, FlushRecordsToDisk, QueueAchievement, AwardQueuedAchievements, AwardAllAchievements, CanAwardAchievement, .ctor
+AchievementAwarded: .ctor, Invoke, BeginInvoke, EndInvoke
+ConfigManager: get_CameraShakeMultiplier, set_CameraShakeMultiplier, get_ControllerRumbleMultiplier, set_ControllerRumbleMultiplier, get_IsConfigFileSupported, get_IsSavingConfig, set_IsSavingConfig, Init, LoadConfig, SetDefaultLanguageSetting, SaveConfig, IsLanguageValid
+GameManager: get_TimeSlowed, get_inputHandler, set_inputHandler, get_achievementHandler, set_achievementHandler, get_AudioManager, get_cameraCtrl, set_cameraCtrl, get_hero_ctrl, set_hero_ctrl, get_heroLight, set_heroLight, get_sm, set_sm, get_ui, set_ui, get_tilemap, set_tilemap, get_soulOrb_fsm, set_soulOrb_fsm, get_soulVessel_fsm, set_soulVessel_fsm, get_PlayTime, get_RespawningHero, set_RespawningHero, add_SavePersistentObjects, remove_SavePersistentObjects, add_ResetSemiPersistentObjects, remove_ResetSemiPersistentObjects, add_DestroyPersonalPools, remove_DestroyPersonalPools, add_UnloadingLevel, remove_UnloadingLevel, add_RefreshLanguageText, remove_RefreshLanguageText, add_RefreshParticleLevel, remove_RefreshParticleLevel, add_OnLoadedBoss, remove_OnLoadedBoss, add_OnFinishedEnteringScene, remove_OnFinishedEnteringScene, add_OnFinishedSceneTransition, remove_OnFinishedSceneTransition, get_IsInSceneTransition, set_IsInSceneTransition, get_HasFinishedEnteringScene, get_WorldInfo, get_IsLoadingSceneTransition, get_LoadVisualization, get_CurrentLoadDuration, get_IsUsingCustomLoadAnimation, get_instance, get_UnsafeInstance, Awake, Start, Update, UpdateEngagement, LevelActivated, OnDisable, OnApplicationQuit, BeginSceneTransition, add_SceneTransitionBegan, remove_SceneTransitionBegan, BeginSceneTransitionRoutine, TransitionScene, ChangeToScene, WarpToDreamGate, LeftScene, PlayerDead, PlayerDeadFromHazard, ReadyForRespawn, HazardRespawn, TimePasses, FadeSceneIn, FadeSceneInWithDelay, IsGamePaused, SetGameMap, CalculateNotchesUsed, GetLanguageAsString, GetEntryGateName, SetPlayerDataBool, SetPlayerDataInt, SetPlayerDataFloat, SetPlayerDataString, IncrementPlayerDataInt, DecrementPlayerDataInt, IntAdd, GetPlayerDataBool, GetPlayerDataInt, GetPlayerDataFloat, GetPlayerDataString, SetPlayerDataVector3, GetPlayerDataVector3, GetPlayerDataVariable, SetPlayerDataVariable, EquipCharm, UnequipCharm, RefreshOvercharm, UpdateBlueHealth, SetCurrentMapZoneAsRespawn, SetMapZoneToSpecific, StartSoulLimiter, EndSoulLimiter, UpdateGameMap, CheckAllMaps, AddToScenesVisited, GetIsSceneVisited, AddToBenchList, AddToGrubList, AddToFlameList, AddToCocoonList, AddToDreamPlantList, AddToDreamPlantCList, CountGameCompletion, CountCharms, CountJournalEntries, ActivateTestingCheats, GetAllPowerups, StoryRecord_death, StoryRecord_rescueGrub, StoryRecord_defeatedShade, StoryRecord_discoveredArea, StoryRecord_travelledToArea, StoryRecord_bankDeposit, StoryRecord_bankWithdraw, StoryRecord_boughtCorniferMap, StoryRecord_visited, StoryRecord_defeated, StoryRecord_jiji, StoryRecord_rodeStag, StoryRecord_acquired, StoryRecord_bought, StoryRecord_quit, StoryRecord_rest, StoryRecord_upgradeNail, StoryRecord_heartPiece, StoryRecord_maxHealthUp, StoryRecord_soulPiece, StoryRecord_maxSoulUp, StoryRecord_charmsChanged, StoryRecord_charmEquipped, StoryRecord_start, AwardAchievement, QueueAchievement, AwardQueuedAchievements, IsAchievementAwarded, ClearAllAchievements, CheckCharmAchievements, CheckGrubAchievements, CheckStagStationAchievements, CheckMapAchievement, CheckJournalAchievements, CheckAllAchievements, CheckBanishmentAchievement, SetStatusRecordInt, GetStatusRecordInt, ResetStatusRecords, SaveStatusRecords, SetState, LoadScene, LoadSceneAdditive, OnNextLevelReady, OnWillActivateFirstLevel, LoadFirstScene, LoadPermadeathUnlockScene, LoadMrMushromScene, LoadOpeningCinematic, PositionHeroAtSceneEntrance, FindEntryPoint, FindTransitionPoint, EnterHero, FinishedEnteringScene, SetupGameRefs, SetupSceneRefs, SetupHeroRefs, BeginScene, UpdateUIStateFromGameState, SkipCutscene, SkipCutsceneNoMash, NoLongerFirstGame, SetupStatusModifiers, MatchBackerCreditsSetting, RefreshLocalization, RefreshParticleSystems, ApplyNativeInput, EnablePermadeathMode, GetCurrentMapZone, GetSceneWidth, GetSceneHeight, GetSceneManager, GetFormattedMapZoneString, UpdateSceneName, GetBaseSceneName, GetSceneNameString, GetTileMap, RefreshTilemapInfo, SaveLevelState, ResetSemiPersistentItems, IsMenuScene, IsTitleScreenScene, IsGameplayScene, IsNonGameplayScene, IsCinematicScene, IsStagTravelScene, IsBetaEndScene, IsTutorialScene, IsTestScene, IsBossDoorScene, ShouldKeepHUDCameraActive, GetSceneZoneName, CountBits, IsUnloadAssetsRequired, HasSaveFile, SaveGame, ShowSaveIcon, HideSaveIcon, SaveGame, ResetGameTimer, IncreaseGameTimer, SaveGame, LoadGameFromUI, LoadGameFromUIRoutine, LoadGame, ClearSaveFile, GetSaveStatsForSlot, PauseGameToggleByMenu, PauseGameToggle, SetTimeScale, SetTimeScale, FreezeMoment, FreezeMoment, FreezeMomentGC, FreezeMoment, EnsureSaveSlotSpace, StartNewGame, RunStartNewGame, ContinueGame, RunContinueGame, ReturnToMainMenu, WillTerminateInBackground, Platform.IDisengageHandler.OnDisengage, GetControllerConnectionState, EmergencyReturnToMenu, QuitGame, LoadedBoss, DoDestroyPersonalPools, GetImplicitCinematicVolume, .ctor, .cctor, orig_get_ui, orig_set_ui, orig_OnApplicationQuit, orig_LoadScene, orig_BeginSceneTransition, orig_ClearSaveFile, orig_PlayerDead, ModdedSavePath, orig_SetupSceneRefs, orig_OnWillActivateFirstLevel, PauseToggleDynamicMenu
+SavePersistentState: .ctor, Invoke, BeginInvoke, EndInvoke
+ResetSemiPersistentState: .ctor, Invoke, BeginInvoke, EndInvoke
+DestroyPooledObjects: .ctor, Invoke, BeginInvoke, EndInvoke
+UnloadLevel: .ctor, Invoke, BeginInvoke, EndInvoke
+RefreshLanguage: .ctor, Invoke, BeginInvoke, EndInvoke
+RefreshParticles: .ctor, Invoke, BeginInvoke, EndInvoke
+BossLoad: .ctor, Invoke, BeginInvoke, EndInvoke
+EnterSceneEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+SceneTransitionFinishEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+SceneLoadVisualizations: 
+SceneLoadInfo: NotifyFetchComplete, IsReadyToActivate, NotifyFinished, .ctor
+SceneTransitionBeganDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+ReturnToMainMenuSaveModes: 
+ControllerConnectionStates: 
+<>c: .cctor, .ctor, <UpdateEngagement>b__162_0, <SaveGame>b__325_0
+<>c__DisplayClass174_0: .ctor, <BeginSceneTransitionRoutine>b__0, <BeginSceneTransitionRoutine>b__1, <BeginSceneTransitionRoutine>b__2, <BeginSceneTransitionRoutine>b__3, <BeginSceneTransitionRoutine>b__4
+<BeginSceneTransitionRoutine>d__174: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<TransitionScene>d__175: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<>c__DisplayClass179_0: .ctor, <PlayerDead>b__0
+<PlayerDead>d__179: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<PlayerDeadFromHazard>d__180: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<FadeSceneInWithDelay>d__185: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<LoadSceneAdditive>d__271: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<LoadFirstScene>d__274: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<SkipCutsceneNoMash>d__289: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<>c__DisplayClass332_0: .ctor, <SaveGame>b__3, <SaveGame>b__2, <SaveGame>b__4, <SaveGame>b__0, <SaveGame>b__1
+<>c__DisplayClass334_0: .ctor, <LoadGameFromUIRoutine>b__0
+<LoadGameFromUIRoutine>d__334: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<>c__DisplayClass335_0: .ctor, <LoadGame>b__0, <LoadGame>b__1
+<>c__DisplayClass336_0: .ctor, <ClearSaveFile>b__0, <ClearSaveFile>b__1
+<>c__DisplayClass337_0: .ctor, <GetSaveStatsForSlot>b__0, <GetSaveStatsForSlot>b__1, <GetSaveStatsForSlot>b__2, <GetSaveStatsForSlot>b__4
+<>c__DisplayClass337_1: .ctor, <GetSaveStatsForSlot>b__3
+<PauseGameToggleByMenu>d__338: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<PauseGameToggle>d__339: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<SetTimeScale>d__340: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<FreezeMoment>d__343: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<FreezeMomentGC>d__344: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<FreezeMoment>d__345: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<RunStartNewGame>d__348: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<RunContinueGame>d__350: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<>c__DisplayClass352_0: .ctor, <ReturnToMainMenu>b__0
+<ReturnToMainMenu>d__352: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<>c__DisplayClass354_0: .ctor, <Platform.IDisengageHandler.OnDisengage>b__0
+<QuitGame>d__358: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<>c__DisplayClass24_0: .ctor, <SaveGame>b__3, <SaveGame>b__2, <SaveGame>b__4, <SaveGame>b__0, <SaveGame>b__1
+<>c__DisplayClass27_0: .ctor, <LoadGame>b__0, <LoadGame>b__1
+<>c__DisplayClass28_0: .ctor, <GetSaveStatsForSlot>b__0, <GetSaveStatsForSlot>b__1, <GetSaveStatsForSlot>b__2, <GetSaveStatsForSlot>b__4
+<>c__DisplayClass28_1: .ctor, <GetSaveStatsForSlot>b__3
+<LoadFirstScene>d__38: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.IEnumerator.Reset
+<LoadSceneAdditive>d__37: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.IEnumerator.Reset
+<PauseToggleDynamicMenu>d__42: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.IEnumerator.Reset
+<PlayerDead>d__9: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.IEnumerator.Reset
+WaitForBossLoad: Reset, OnEnter, .ctor
+<>c__DisplayClass2_0: .ctor, <OnEnter>b__0
+WaitForFinishedEnteringScene: Reset, OnEnter, .ctor
+<>c__DisplayClass2_0: .ctor, <OnEnter>b__0
+GetRespawningHero: Reset, OnEnter, .ctor
+SetRespawningHero: Reset, OnEnter, .ctor
+CheckCurrentMapZone: Reset, OnEnter, .ctor
+CheckSceneName: Reset, OnEnter, .ctor
+DestroyPersonalPools: OnEnter, .ctor
+WaitForSceneLoadFinish: Reset, OnEnter, .ctor
+<>c__DisplayClass2_0: .ctor, <OnEnter>b__0
+CheckCanDreamWarpInScene: get_IsTrue, .ctor, .cctor
+<>c: .cctor, .ctor, <.ctor>b__4_0, <.ctor>b__4_1, <.cctor>b__5_0
+SaveStats: get_maxHealth, set_maxHealth, get_geo, set_geo, get_mapZone, set_mapZone, get_playTime, set_playTime, get_maxMPReserve, set_maxMPReserve, get_permadeathMode, set_permadeathMode, get_bossRushMode, set_bossRushMode, get_completionPercentage, set_completionPercentage, get_unlockedCompletionRate, set_unlockedCompletionRate, .ctor, GetPlaytimeHHMM, GetPlaytimeHHMMSS, GetCompletionPercentage, GetMPSlotsVisible, get_LoadedMods, set_LoadedMods, get_Name, set_Name
+PlayTime: get_time, get_Hours, get_Minutes, get_Seconds, get_HasHours, get_HasMinutes
+SceneManager: Start, SetLighting, Update, GetDarknessLevel, SetWindy, AdjustSaturation, AdjustSaturationForPlatform, PrintDebugInfo, DrawBlackBorders, AddSceneMapped, UpdateSceneSettings, .ctor, .cctor, orig_Update, orig_Start
+<>c__DisplayClass41_0: .ctor, <Start>b__0
+StartManager: Awake, Start, GetControllerSpriteForPlatform, SwitchToMenuScene, SetLanguage, FadeIn, FadeOut, CheckIsLanguageSet, ConfirmLanguage, CancelLanguage, ShowLanguageSelect, LanguageSettingDone, .ctor, orig_Start
+<Start>d__25: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<FadeIn>d__29: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<FadeOut>d__30: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<ShowLanguageSelect>d__34: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<LanguageSettingDone>d__35: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Start>d__6: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.IEnumerator.Reset
+UIManager: get_IsFadingMenu, get_IsAnimatingMenus, get_instance, Awake, SceneInit, Start, SetState, SetMenuState, SetupRefs, SetUIStartState, ShowMainMenuHome, StartMenuAnimationCoroutine, StartMenuAnimationCoroutineWorker, UIGoToOptionsMenu, UILeaveOptionsMenu, UIExplicitSwitchUser, UIGoToEngageMenu, UIGoToNoSaveMenu, UIGoToMainMenu, UIGoToProfileMenu, UIReturnToProfileMenu, UIMainStartGame, UIGoToControllerMenu, UIGoToRemapControllerMenu, UIGoToKeyboardMenu, UIGoToAudioMenu, UIGoToVideoMenu, UIGoToPauseMenu, UIClosePauseMenu, UIClearPauseMenu, UnClearPauseMenu, UIGoToOverscanMenu, UIGoToBrightnessMenu, UIGoToGameOptionsMenu, UIGoToAchievementsMenu, UIGoToExtrasMenu, UIGoToExtrasContentMenu, UIShowQuitGamePrompt, UIShowReturnMenuPrompt, UIShowResolutionPrompt, UILeaveExitToMenuPrompt, UIGoToPlayModeMenu, UIReturnToMainMenu, UIGoToMenuCredits, UIStartNewGame, UIStartNewGameContinue, StartNewGame, ContinueGame, GoToEngageMenu, GoToNoSaveMenu, GoToMainMenu, GoToProfileMenu, PrepareSaveFilesInOrder, GoToOptionsMenu, GoToControllerMenu, GoToRemapControllerMenu, GoToKeyboardMenu, GoToAudioMenu, GoToVideoMenu, GoToOverscanMenu, GoToBrightnessMenu, GoToGameOptionsMenu, GoToAchievementsMenu, GoToExtrasMenu, GoToExtrasContentMenu, GoToQuitGamePrompt, GoToReturnMenuPrompt, GoToResolutionPrompt, LeaveOptionsMenu, LeaveExitToMenuPrompt, GoToPlayModeMenu, ReturnToMainMenu, GoToPauseMenu, GoToMenuCredits, ShowCutscenePrompt, HideCutscenePrompt, ApplyAudioMenuSettings, ApplyVideoMenuSettings, ApplyControllerMenuSettings, ApplyRemapGamepadMenuSettings, ApplyKeyboardMenuSettings, ApplyOverscanSettings, ApplyBrightnessSettings, ApplyGameMenuSettings, SaveOverscanSettings, SaveBrightnessSettings, DefaultAudioMenuSettings, DefaultVideoMenuSettings, DefaultGamepadMenuSettings, DefaultKeyboardMenuSettings, DefaultGameMenuSettings, LoadStoredSettings, LoadAudioSettings, LoadVideoSettings, LoadGameOptionsSettings, LoadControllerSettings, RefreshAudioControls, RefreshVideoControls, DisableFrameCapSetting, DisableVsyncSetting, RefreshKeyboardControls, RefreshGameOptionsControls, RefreshAchievementsList, UpdateMenuAchievementStatus, TogglePauseGame, QuitGame, FadeOutMenuAudio, AudioGoToPauseMenu, AudioGoToGameplay, ConfigureMenu, HideCurrentMenu, ShowMenu, HideMenu, HideMenuInstant, HideSaveProfileMenu, DisableScreens, ShowCanvas, HideCanvas, ShowCanvasGroup, HideCanvasGroup, FadeInCanvasGroup, FadeInCanvasGroupAlpha, FadeOutCanvasGroup, FadeInSprite, FadeOutSprite, EnableChildren, EnableChildren, DisableChildren, GetAnimationClipLength, MakeMenuLean, .ctor, <Start>b__105_0, <Start>b__105_1, get_currentDynamicMenu, set_currentDynamicMenu, add_EditMenus, remove_EditMenus, add_BeforeHideDynamicMenu, remove_BeforeHideDynamicMenu, orig_get_instance, LoadImage, orig_Awake, orig_Start, orig_HideCurrentMenu, UIGoToDynamicMenu, GoToDynamicMenu, UILeaveDynamicMenu, LeaveDynamicMenu, UIPauseToDynamicMenu, PauseToDynamicMenu
+<ShowMainMenuHome>d__110: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<StartMenuAnimationCoroutineWorker>d__112: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<>c__DisplayClass148_0: .ctor, <StartNewGame>b__0
+<GoToEngageMenu>d__150: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<GoToNoSaveMenu>d__151: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<GoToMainMenu>d__152: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<GoToProfileMenu>d__153: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<PrepareSaveFilesInOrder>d__154: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<GoToOptionsMenu>d__155: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<GoToControllerMenu>d__156: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<GoToRemapControllerMenu>d__157: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<GoToKeyboardMenu>d__158: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<GoToAudioMenu>d__159: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<GoToVideoMenu>d__160: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<GoToOverscanMenu>d__161: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<GoToBrightnessMenu>d__162: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<GoToGameOptionsMenu>d__163: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<GoToAchievementsMenu>d__164: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<GoToExtrasMenu>d__165: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<GoToExtrasContentMenu>d__166: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<GoToQuitGamePrompt>d__167: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<GoToReturnMenuPrompt>d__168: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<GoToResolutionPrompt>d__169: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<LeaveOptionsMenu>d__170: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<LeaveExitToMenuPrompt>d__171: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<GoToPlayModeMenu>d__172: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<>c__DisplayClass173_0: .ctor, <ReturnToMainMenu>b__0
+<ReturnToMainMenu>d__173: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<GoToPauseMenu>d__174: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<GoToMenuCredits>d__175: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<HideCurrentMenu>d__212: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<ShowMenu>d__213: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<HideMenu>d__214: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<HideSaveProfileMenu>d__216: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<FadeInCanvasGroup>d__222: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<FadeInCanvasGroupAlpha>d__223: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<FadeOutCanvasGroup>d__224: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<FadeInSprite>d__225: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<FadeOutSprite>d__226: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<GoToDynamicMenu>d__25: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.IEnumerator.Reset
+<LeaveDynamicMenu>d__27: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.IEnumerator.Reset
+<PauseToDynamicMenu>d__30: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.IEnumerator.Reset
+MegaJellyZap: Awake, OnEnable, OnDisable, ZapSequence, MultiZapSequence, .ctor
+Type: 
+<ZapSequence>d__15: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<MultiZapSequence>d__16: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+NonBouncer: SetActive, .ctor
+PaintBullet: Awake, OnEnable, Update, OnTriggerEnter2D, OnTriggerExit2D, OnCollisionEnter2D, OrbitShieldHit, Collision, SetColourBlue, SetColourRed, SetBlue, SetRed, SetPink, .ctor
+<Collision>d__30: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+ParticleSystemAutoDestroy: Start, Update, .ctor
+AchievementIDMap: GetServiceIdForInternalId, .ctor
+AchievementIDPair: get_InternalId, get_ServiceId, .ctor
+ActionQueue: .ctor, Next, Enqueue
+ActionQueueCallback: .ctor, Invoke, BeginInvoke, EndInvoke
+CoreLoop: Init, InvokeNext, EnqueueInvokeNext, FireInvokeNext, Update, .ctor
+DelayedInvoke: .ctor
+CoroutineQueue: .ctor, Enqueue, Run
+<Run>d__5: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+CustomSharedData: get_SharedData, get_Responder, set_Responder, .ctor, LoadFromJSON, SaveToJSON, HasKey, DeleteKey, DeleteAll, GetBool, SetBool, GetInt, SetInt, GetFloat, SetFloat, GetString, SetString, Save, OnModified
+SharedDataSerializableBlob: FromSharedData, ToSharedData, .ctor
+SharedDataSerializablePair: 
+IResponder: OnModified
+DesktopPlatform: Awake, CreateOnlineSubsystem, OnDestroy, Update, get_DisplayName, GetSaveSlotPath, IsSaveSlotInUse, LocalIsSaveSlotInUse, ReadSaveSlot, LocalReadSaveSlot, EnsureSaveSlotSpace, WriteSaveSlot, GetBackupNumber, ClearSaveSlot, get_SharedData, get_EncryptedSharedData, IsAchievementUnlocked, PushAchievementUnlock, ResetAchievements, get_AreAchievementsFetched, get_HasNativeAchievementsDialog, get_AcceptRejectInputStyle, IncludesPlugin, OnOnlineSubsystemAchievementsFetched, get_ShowLanguageSelect, get_IsControllerImplicit, get_WillPreloadSaveFiles, get_EngagementRequirement, get_EngagementState, get_EngagedDisplayName, get_EngagedDisplayImage, GetVibrationMixer, .ctor, <CreateOnlineSubsystem>b__7_0
+CreateOnlineSubsystemDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+<>c__DisplayClass14_0: .ctor, <LocalIsSaveSlotInUse>b__0
+<>c__DisplayClass16_0: .ctor, <LocalReadSaveSlot>b__0
+<>c__DisplayClass17_0: .ctor, <EnsureSaveSlotSpace>b__0
+<>c__DisplayClass18_0: .ctor, <WriteSaveSlot>b__0
+<>c__DisplayClass20_0: .ctor, <ClearSaveSlot>b__0
+DesktopOnlineSubsystem: Dispose, Update, IsAchievementUnlocked, PushAchievementUnlock, ResetAchievements, get_AreAchievementsFetched, get_HasNativeAchievementsDialog, get_HandlesGameSaves, get_WillPreloadSaveFiles, IsSaveSlotInUse, ReadSaveSlot, WriteSaveSlot, ClearSaveSlot, get_EngagementRequirement, get_EngagementState, get_EngagedDisplayName, get_EngagedDisplayImage, .ctor
+GamepadVibrationMixer: get_IsPaused, set_IsPaused, get_PlayingEmissionCount, GetPlayingEmission, .ctor, PlayEmission, StopAllEmissions, StopAllEmissionsWithTag, get_CurrentValues, Update, AdjustForPlatform
+GamepadVibrationEmission: get_IsLooping, set_IsLooping, get_IsPlaying, get_Tag, set_Tag, get_Target, set_Target, .ctor, Stop, GetCurrentValues, Advance, ToString
+Values: get_IsNearlyZero
+PlatformAdjustments: 
+Platform: add_PlatformBecameCurrent, remove_PlatformBecameCurrent, get_DisplayName, GetSystemLanguage, get_ShowLanguageSelect, get_IsFileSystemProtected, get_WillPreloadSaveFiles, get_IsSaveStoreMounted, MountSaveStore, IsSaveSlotIndexValid, GetSaveSlotFileName, IsSaveSlotInUse, ReadSaveSlot, EnsureSaveSlotSpace, WriteSaveSlot, ClearSaveSlot, get_SharedData, get_EncryptedSharedData, AdjustGameSettings, get_IsFiringAchievementsFromSavesAllowed, IsAchievementUnlocked, PushAchievementUnlock, ResetAchievements, get_AreAchievementsFetched, add_AchievementsFetched, remove_AchievementsFetched, OnAchievementsFetched, get_HasNativeAchievementsDialog, ShowNativeAchievementsDialog, SetSocialPresence, AddSocialStat, FlushSocialEvents, get_WillManageResolution, get_WillDisplayGraphicsSettings, AdjustGraphicsSettings, get_InitialGraphicsTier, get_GraphicsTier, ChangeGraphicsTier, OnGraphicsTierChanged, add_GraphicsTierChanged, remove_GraphicsTierChanged, GetMaximumShaderLOD, get_IsSpriteScalingApplied, get_SpriteScalingFactor, get_WillDisplayControllerSettings, get_WillDisplayKeyboardSettings, get_WillDisplayQuitButton, get_IsControllerImplicit, get_IsMouseSupported, get_WillEverPauseOnControllerDisconnected, get_IsPausingOnControllerDisconnected, get_AcceptRejectInputStyle, add_AcceptRejectInputStyleChanged, remove_AcceptRejectInputStyleChanged, GetMenuAction, get_FetchScenesBeforeFade, get_MaximumLoadDurationForNonCriticalGarbageCollection, get_MaximumSceneTransitionsWithoutNonCriticalGarbageCollection, get_EngagementRequirement, get_EngagementState, get_IsSavingAllowedByEngagement, ClearEngagement, UpdateWaitingForEngagement, get_CanReEngage, get_EngagedDisplayName, get_EngagedDisplayImage, get_DisengageHandler, SetDisengageHandler, add_EngagedDisplayInfoChanged, remove_EngagedDisplayInfoChanged, NotifyEngagedDisplayInfoChanged, get_IsPlayerPrefsLoaded, get_RequiresPreferencesSyncOnEngage, get_Current, Awake, OnDestroy, Update, BecomeCurrent, Init, CreatePlatform, CreatePlatform, get_IsPlatformSimulationEnabled, .ctor, .cctor, orig_IsSaveSlotIndexValid, orig_GetSaveSlotFileName
+SaveSlotFileNameUsage: 
+ISharedData: HasKey, DeleteKey, DeleteAll, GetBool, SetBool, GetInt, SetInt, GetFloat, SetFloat, GetString, SetString, Save
+AchievementsFetchedDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+GraphicsTiers: 
+GraphicsTierChangedDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+AcceptRejectInputStyles: 
+AcceptRejectInputStyleChangedDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+MenuActions: 
+EngagementRequirements: 
+EngagementStates: 
+IDisengageHandler: OnDisengage
+OnEngagedDisplayInfoChanged: .ctor, Invoke, BeginInvoke, EndInvoke
+PlatformSimulation: get_IsPlatformSimulationEnabled
+PlatformVibrationHelper: .ctor, Destroy, UpdateVibration, GetMixer
+PlayerPrefsSharedData: get_IsEncrypted, .ctor, ReadEncrypted, WriteEncrypted, HasKey, DeleteKey, DeleteAll, GetBool, SetBool, GetInt, SetInt, GetFloat, SetFloat, GetString, SetString, Save
+SteamOnlineSubsystem: IsPackaged, .ctor, Dispose, Update, OnSteamLogMessage, OnGameOverlayActivated, OnStatsReceived, get_AreAchievementsFetched, OnSteamShutdown, OnAchievementStored, PushAchievementUnlock, IsAchievementUnlocked, ResetAchievements
+TimeController: get_SlowMotionTimeScale, set_SlowMotionTimeScale, get_PauseTimeScale, set_PauseTimeScale, get_PlatformBackgroundTimeScale, set_PlatformBackgroundTimeScale, get_GenericTimeScale, set_GenericTimeScale, .cctor, SetTimeScaleFactor
+PlayerData: InitMapBools, HasMapForScene, get_CurrentMaxHealth, get_instance, set_instance, .ctor, PrintStory, Reset, UpdateGameMap, CheckAllMaps, SetBool, SetInt, IncrementInt, IntAdd, SetFloat, DecrementInt, GetBool, GetInt, GetFloat, GetString, SetString, SetVector3, GetVector3, SetVariable, GetVariable, AddHealth, TakeHealth, MaxHealth, ActivateTestingCheats, GetAllPowerups, AddToMaxHealth, UpdateBlueHealth, AddGeo, TakeGeo, WouldDie, AddMPCharge, TakeMP, TakeReserveMP, ClearMP, AddToMaxMPReserve, StartSoulLimiter, EndSoulLimiter, EquipCharm, UnequipCharm, CalculateNotchesUsed, SetBenchRespawn, SetBenchRespawn, SetBenchRespawn, SetHazardRespawn, SetHazardRespawn, CountGameCompletion, CountCharms, CountJournalEntries, SetupNewPlayerData, AddGGPlayerDataOverrides, SetBoolSwappedArgs, SetFloatSwappedArgs, SetIntSwappedArgs, SetStringSwappedArgs, SetVector3SwappedArgs, SetVariableSwappedArgs, SetBoolInternal, GetBoolInternal, SetIntInternal, GetIntInternal, SetFloatInternal, GetFloatInternal, SetStringInternal, GetStringInternal, SetVector3Internal, GetVector3Internal, SetVariableInternal, GetVariableInternal, TakeHealthInternal, orig_UpdateBlueHealth, orig_AddHealth
+MapBools: 
+PositionShadeMarkerPerDoor: Start, .ctor
+DoorShadePosition: 
+PreInstantiateGameObject: get_InstantiatedGameObject, Awake, .ctor
+GetPreInstantiatedGameObject: Reset, OnEnter, .ctor
+Probability: GetRandomGameObjectByProbability, .ctor
+ProbabilityGameObject: .ctor
+<>c: .cctor, .ctor, <GetRandomGameObjectByProbability>b__1_0
+PromptMarker: Awake, Start, OnDestroy, RecycleOnLevelLoad, OnEnable, Update, SetLabel, Show, Hide, RecycleDelayed, SetOwner, .ctor
+<RecycleDelayed>d__14: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+ShowPromptMarker: Reset, OnEnter, .ctor
+HidePromptMarker: Reset, OnEnter, .ctor
+Breakable: Reset, Awake, Start, CreateAdditionalDebrisParts, BreakSelf, Hit, SpawnNailHitEffect, SetStaticPartsActivation, Break, .ctor, <Awake>b__27_0, <Awake>b__27_1
+FlingObject: .ctor, Fling
+BreakableInfectedVine: Awake, Start, OnTriggerEnter2D, SpawnSpatters, .ctor
+BreakableObject: Awake, Start, OnTriggerEnter2D, .ctor
+Direction: .ctor
+FlingObject: Fling, .ctor
+BreakablePole: Reset, Start, Hit, .ctor
+BreakablePoleSimple: Awake, Start, OnTriggerEnter2D, .ctor
+BreakablePoleTopLand: OnCollisionEnter2D, .ctor
+IExternalDebris: InitExternalDebris
+BreakableWithExternalDebris: CreateAdditionalDebrisParts, Spawn, .ctor, .cctor
+ExternalDebris: 
+WeightedExternalDebrisItem: .ctor
+ConveyorBelt: OnCollisionEnter2D, OnCollisionExit2D, .ctor
+ConveyorMovement: OnEnable, StartConveyorMove, StopConveyorMove, LateUpdate, .ctor
+ConveyorMovementHero: Start, StartConveyorMove, StopConveyorMove, LateUpdate, .ctor
+ConveyorSpeedZone: OnTriggerEnter2D, .ctor
+ConveyorZone: Start, OnTriggerEnter2D, OnTriggerExit2D, .ctor
+<>c__DisplayClass3_0: .ctor, <Start>b__0
+DebrisPiece: Reset, Awake, OnEnable, OnDisable, Launch, FixedUpdate, Spin, .ctor
+DestructibleProp: .ctor
+DreamPlant: Awake, Start, OnTriggerEnter2D, AddOrbCount, RemoveOrbCount, ShowPrompt, CheckOrbs, .ctor, <Awake>b__28_0, <Awake>b__28_1, <Start>b__29_0, <Start>b__29_1
+<CheckOrbs>d__34: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+DreamPlantOrb: Awake, Start, OnTriggerEnter2D, Show, SetActive, Spread, Disable, DisableAfterTime, TweenPosition, .ctor, .cctor
+<>c__DisplayClass24_0: .ctor, <Awake>b__0, <Awake>b__1
+<Spread>d__29: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<DisableAfterTime>d__31: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<TweenPosition>d__32: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+DreamPlatform: Awake, Start, OnEnable, Show, Hide, PlayAnimation, .ctor, <Start>b__9_0, <Start>b__9_1
+Drip: Awake, Start, DripRoutine, DropDrip, .ctor
+<DripRoutine>d__10: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<DropDrip>d__11: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+Dripper: OnEnable, OnDisable, Behaviour, .ctor
+<Behaviour>d__4: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+DropPlatform: Awake, Start, OnCollisionEnter2D, PlaySound, Idle, Flip, Jitter, .ctor
+<Flip>d__16: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Jitter>d__17: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+DustyPlatform: Reset, Awake, Update, OnCollisionEnter2D, SpawnRocks, SetRateOverTime, .ctor
+EnviroRegion: Start, OnTriggerEnter2D, OnTriggerExit2D, .ctor
+FlipPlatform: Awake, Start, OnCollisionEnter2D, PlaySound, Idle, Flip, Jitter, .ctor, <Start>b__16_0
+<Idle>d__19: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Flip>d__20: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Jitter>d__21: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+GeoRock: OnEnable, OnDisable, Start, LevelActivated, SaveState, SetMyID, UpdateHitsLeftFromFSM, .ctor
+GeoRockData: .ctor
+GlobControl: Awake, OnEnable, Start, OnTriggerEnter2D, Break, CheckForGround, .ctor
+<>c__DisplayClass16_0: .ctor, <Start>b__0, <Start>b__1
+<Break>d__18: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+GlowResponse: OnValidate, Awake, HandleUpgrade, Start, OnTriggerEnter2D, OnTriggerExit2D, FadeTo, Fade, FadeEnd, .ctor
+<Fade>d__16: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+GlowResponseEnd: Reset, OnEnter, .ctor
+Grass: Init, Reset, Awake, OnDestroy, Start, OnTriggerEnter2D, Push, PushAll, Hit, Update, .ctor, .cctor
+GrassTypes: 
+FSMActionReplacements: SetMaterialColor, CheckDirectionWithBrokenBehaviour
+Directions: 
+GrubBGControl: Awake, Start, Idle, Wave, .ctor, <Start>b__9_0
+<Idle>d__10: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Wave>d__11: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+HealthCocoon: Awake, Start, PlaySound, Animate, OnTriggerEnter2D, SetBroken, FlingObjects, SetScuttlerAmount, .ctor, <Awake>b__20_0, <Awake>b__20_1
+FlingPrefab: SetupPool, Spawn, .ctor
+<Animate>d__23: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+IdleBuzzing: Reset, Awake, Start, FixedUpdate, Buzz, .ctor
+IgnoreHeroCollision: Start, Ignore, OnCollisionEnter2D, .ctor
+<>c__DisplayClass0_0: .ctor, <Start>b__0
+JellyEgg: OnTriggerEnter2D, Burst, .ctor
+LiftPlatform: Start, Update, OnCollisionEnter2D, .ctor
+LookAnimNPC: Awake, Start, OnDrawGizmosSelected, Update, .ctor, <Start>b__14_0, <Start>b__14_1
+AnimState: 
+MaskByYPos: OnEnable, Update, .ctor
+NoHardLanding: .ctor
+NonSlider: .ctor
+NonThunker: SetActive, .ctor
+RandomAudioStart: Start, Update, .ctor
+RestBench: Start, OnTriggerEnter2D, OnTriggerExit2D, .ctor
+Roof: OnCollisionEnter2D, .ctor
+RuinsLift: Start, HideChains, GetPositionY, IsCurrentPositionTerminus, KeepInBounds, .ctor
+<>c: .cctor, .ctor, <Start>b__3_0
+<HideChains>d__4: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+ScuttlerControl: Awake, Start, Update, Land, Run, Bounce, Heal, Hit, .ctor, <Start>b__38_1, <Start>b__38_0
+<Land>d__40: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Run>d__41: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Bounce>d__42: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<>c__DisplayClass43_0: .ctor, <Heal>b__0
+<Heal>d__43: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+SlopePlat: Start, Update, .ctor
+SnapToGround: Awake, OnEnable, .ctor
+SpatterHoney: Start, OnEnable, Update, Impact, FaceAngle, ProjectileSquash, OnCollisionEnter2D, .ctor
+SpatterOrange: Start, OnEnable, Update, Impact, FaceAngle, ProjectileSquash, OnCollisionEnter2D, OnTriggerEnter2D, .ctor
+StalactiteControl: Awake, Start, HandleTriggerEnter, Fall, OnTriggerEnter2D, FlingObjects, .ctor
+<Fall>d__28: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+SteepSlope: Start, OnCollisionStay2D, OnCollisionEnter2D, OnCollisionExit2D, .ctor
+TouchShake: Start, OnTriggerEnter2D, DoAnimation, SpriteAnimation, tk2dAnimation, .ctor
+<DoAnimation>d__10: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<SpriteAnimation>d__11: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<tk2dAnimation>d__12: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+TownGrass: OnTriggerEnter2D, .ctor
+VinePlatform: Awake, Start, Update, Land, OnCollisionEnter2D, PlaySound, PlayerLand, OnDrawGizmosSelected, .ctor, <Start>b__23_0, <Start>b__23_1, <Start>b__23_2
+<>c: .cctor, .ctor, <Start>b__23_3
+<>c__DisplayClass28_0: .ctor, <PlayerLand>b__0
+<PlayerLand>d__28: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+VinePlatformCut: Awake, OnTriggerEnter2D, Cut, Disable, .ctor
+WalkSlope: Start, .ctor
+WaterDrip: Awake, Start, Drip, OnCollisionEnter2D, .ctor
+<Drip>d__13: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+PushableRubble: Awake, OnTriggerEnter2D, Push, EndRubble, EndRubbleContinuation, .ctor
+QuitToMenu: Start, .ctor
+<Start>d__0: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+RandomScale: Start, OnEnable, ApplyScale, IExternalDebris.InitExternalDebris, .ctor
+RestBenchTilt: GetTilt, .ctor
+SendPlaymakerEventOnEnable: OnEnable, .ctor
+SetParticleScale: Start, Update, .ctor
+SetRandomSpriteId: Awake, Init, IExternalDebris.InitExternalDebris, .ctor
+SetZ: OnEnable, SetPosition, .ctor
+<SetPosition>d__6: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+SetZRandom: OnEnable, .ctor
+ShadowGateColliderControl: Awake, Start, OnDestroy, Setup, FixedUpdate, .ctor
+SimpleRock: Start, FixedUpdate, OnTriggerEnter, .ctor
+SpawnStagMenu: Start, SendEvent, OnDestroy, .ctor
+<>c__DisplayClass1_0: .ctor, <Start>b__0
+SpellGetOrb: Start, OnEnable, Update, FaceAngle, ProjectileSquash, Collect, .ctor
+SpinSelf: Start, FixedUpdate, .ctor
+SpriteTweenColorNeutral: ColorReturnNeutral, updateSpriteColor, onEnable, .ctor
+SteamManager: get_Instance, get_Initialized, SteamAPIDebugTextHook, Awake, OnEnable, OnDestroy, Update, .ctor, .cctor
+TextMeshOrderingLayer: Start, .ctor
+AutoZSorter: .ctor
+CodeProfiler: Awake, OnGUI, Begin, End, Update, .ctor, .cctor
+ProfilerRecording: .ctor, Start, Stop, Reset, BalanceError, get_Seconds, get_Count
+GateSnap: Update, .ctor
+OnScreenDebugInfo: Awake, Start, LevelActivated, OnEnable, OnDisable, OnGUI, ShowFPS, ShowGameInfo, ShowInput, ShowLoadingTime, ShowTargetFrameRate, OnLevelUnload, RetrieveInfo, ReadInput, .ctor, orig_Awake
+<Start>d__20: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<>O: 
+ParallaxSorter: Awake, .ctor
+PrefabSwapper: contains, .ctor
+SaveSlotOverrides: OnValidate, Awake, .ctor
+SceneImporter: .ctor
+SetBlurDepth: Start, .ctor
+SetVersionNumber: Awake, Start, .ctor
+TrackTriggerObjects: get_InsideCount, OnDisable, OnEnable, FixedUpdate, OnHeroInPosition, GetOverlappedColliders, OnTriggerEnter2D, OnTriggerExit2D, OnExit, IsIgnored, .ctor, .cctor
+AddTrackTrigger: Reset, OnEnter, .ctor
+CheckTrackTriggerCount: Reset, OnPreprocess, OnEnter, OnFixedUpdate, CheckCount, .ctor
+IntTest: 
+TransitionPoint: add_OnBeforeTransition, remove_OnBeforeTransition, get_TransitionPoints, Init, Awake, OnDestroy, Start, OnTriggerEnter2D, OnTriggerStay2D, OnDrawGizmos, GetGatePosition, SetTargetScene, .ctor, .cctor
+BeforeTransitionEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+TriggerEnterEvent: add_OnTriggerEntered, remove_OnTriggerEntered, add_OnTriggerExited, remove_OnTriggerExited, add_OnTriggerStayed, remove_OnTriggerStayed, Start, OnTriggerEnter2D, OnTriggerExit2D, OnTriggerStay2D, .ctor
+CollisionEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+<>c__DisplayClass12_0: .ctor, <Start>b__0
+TriggerEnterEventSubscribe: Reset, OnEnter, OnExit, SendEnteredEvent, SendExitedEvent, SendStayedEvent, .ctor
+TriggerEnterSendMessage: OnTriggerEnter2D, .ctor
+AchievementPopup: add_OnFinish, remove_OnFinish, Awake, Setup, Update, .ctor
+SelfEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+FadeState: 
+AchievementPopupHandler: Awake, Start, Setup, HandleAchievementEvent, GetPooledPopup, DisableAll, .ctor
+ActionButtonIcon: get_Action, OnEnable, OnDisable, CheckHideIcon, SetAction, SetActionString, .ctor
+ActionButtonIconBase: add_OnIconUpdate, remove_OnIconUpdate, get_Action, Awake, OnEnable, OnDisable, GetButtonIcon, RefreshController, RefreshButtonIcon, .ctor
+IconUpdateEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+AreaTitle: Awake, .ctor
+AreaTitleController: Start, FindAreaTitle, DoPlay, OnDestroy, OnTriggerEnter2D, Play, CheckArea, Finish, VisitPause, UnvisitPause, .ctor, <Start>b__16_0, <CheckArea>b__22_0
+Area: .ctor, .ctor
+<VisitPause>d__24: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<UnvisitPause>d__25: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<>c: .cctor, .ctor, <.ctor>b__26_0, <.ctor>b__26_1, <.ctor>b__26_2, <.ctor>b__26_3
+BetaEndPrompt: Awake, Start, Update, BeginEnd, .ctor
+<Start>d__5: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<BeginEnd>d__7: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+BrightnessSetting: Start, UpdateValue, UpdateTextValue, SetBrightness, RefreshValueFromSettings, DoneMode, NormalMode, .ctor
+BrummFlamePin: Start, OnEnable, .ctor
+BuildEquippedCharms: Start, BuildCharmList, UpdateNotches, GetObjectAt, GetUICount, GetItemName, .ctor
+CanvasGroupRemap: Awake, Update, Sync, .ctor
+CaptureMouseEvents: OnPointerEnter, OnPointerExit, .ctor
+CharmDisplay: Reset, Start, Check, FixedUpdate, .ctor, .cctor
+CharmIconList: Awake, Start, GetSprite, .ctor
+CharmItem: GetListNumber, SetListNumber, .ctor
+CinematicSkipPopup: Awake, Show, ShowRoutine, Hide, Update, .ctor
+Texts: 
+<ShowRoutine>d__10: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+ConnectControllerPanel: Start, Update, UpdateContent, .ctor
+ContentPackDetailsUI: Awake, ShowPackDetails, OnEnable, OnDisable, UpdateDelayed, UndoMenuStyle, .ctor
+ContentPackDetails: .ctor
+<UpdateDelayed>d__17: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+ControllerButtonLabel: Awake, OnEnable, ShowCurrentBinding, .ctor
+ControllerButtonPositions: .ctor
+ControllerDetect: Awake, OnEnable, OnDisable, ControllerActivated, ControllerAttached, ControllerDetached, ShowController, HideButtonLabels, LookForActiveController, .ctor
+ControllerImage: .ctor
+CopyParentSprite: Start, .ctor
+CursorHighlight: Awake, Start, Update, MoveCursor, .ctor
+DialogueBox: Start, SetConversation, ShowPage, ShowNextPage, ShowPrevPage, HideText, StartConversation, TypewriteCurrentPage, ShowNextChar, StopTypewriter, SpeedupTypewriter, RestoreTypewriter, SendEndEvent, SendPageEndEvent, SendConvEndEvent, GetFirstCharIndexOnPage, GetLastCharIndexOnPage, PrintPageInfo, PrintPageInfoAll, PrintCurrentConversation, .ctor
+<TypewriteCurrentPage>d__18: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+DisplayItemAmount: OnEnable, .ctor
+DisplayOnWorldMapOnly: OnEnable, .ctor
+EngagedUserPanel: Awake, OnDestroy, Start, UpdateContent, .ctor
+EngagementPromptPanel: Start, Update, UpdateContent, .ctor
+FadeGroup: OnEnable, Update, FadeUp, FadeDown, FadeDownFast, DisableRenderers, .ctor
+FadeGroupUp: Reset, OnEnter, .ctor
+FadeGroupDown: Reset, OnEnter, .ctor
+FlamePin: Start, OnEnable, .ctor
+GameCameraTextureDisplay: Awake, LateUpdate, UpdateDisplay, .ctor
+GameMap: OnEnable, OnDisable, Start, LevelReady, OnLevelWasLoaded, SetCompassPoint, GetDoorValues, SetupMap, GetTilemapDimensions, WorldMap, QuickMapAncientBasin, QuickMapCity, QuickMapCliffs, QuickMapCrossroads, QuickMapCrystalPeak, QuickMapDeepnest, QuickMapFogCanyon, QuickMapFungalWastes, QuickMapGreenpath, QuickMapKingdomsEdge, QuickMapQueensGardens, QuickMapRestingGrounds, QuickMapDirtmouth, QuickMapWaterways, CloseQuickMap, PositionDreamGateMarker, PositionCompass, Update, DisableMarkers, SetManualTilemap, SetDoorValues, SetCustomCompassPos, SetInRoom, SetCanPan, GetDoorMapZone, GetInRoom, SetPanArrows, KeepWithinBounds, StopPan, StartPan, SetupMapMarkers, .ctor
+MapStopPan: Reset, OnEnter, .ctor
+MapStartPan: Reset, OnEnter, .ctor
+GameMenuOptions: OnEnable, ConfigureNavigation, .ctor
+GeoCounter: Awake, Start, UpdateGeo, NewSceneRefresh, AddGeo, TakeGeo, ToZero, Update, .ctor
+GetTMProLeftVertex: Start, GetLeftmostVertex, .ctor
+GrubPin: Start, OnEnable, .ctor
+InvAnimateUpAndDown: Awake, Update, AnimateUp, AnimateDown, ReplayUpAnim, .ctor
+InvCharmBackboard: Awake, OnEnable, SelectCharm, GetCharmNum, GetCharmString, GetCharmNumString, .ctor
+SelectCharmBackboard: Reset, OnEnter, .ctor
+GetCharmNum: Reset, OnEnter, .ctor
+GetCharmString: Reset, OnEnter, .ctor
+GetCharmNumString: Reset, OnEnter, .ctor
+InvItemDisplay: Awake, OnEnable, .ctor
+InvMarker: OnDisable, .ctor
+InvMarkerCollide: OnTriggerEnter2D, OnTriggerExit2D, .ctor
+InvNailArtBackboard: Awake, OnEnable, .ctor
+InvNailSprite: Awake, OnEnable, .ctor
+InvRelicBackboard: Awake, OnEnable, .ctor
+InvVesselFragments: OnEnable, .ctor
+InventoryArrowContainer: Start, OnDestroy, Setup, .ctor
+JournalEntryStats: Awake, OnEnable, OnDisable, Update, GetNameConvo, GetDescConvo, GetNotesConvo, GetPlayerDataBoolName, GetPlayerDataKillsName, GetPlayerDataNewDataName, GetItemNumber, GetSprite, GetWarriorGhost, GetGrimm, .ctor
+JournalList: BuildEnemyList, UpdateEnemyList, GetItemCount, GetNameConvo, GetDescConvo, GetWarriorGhost, GetGrimm, GetNotesConvo, GetPlayerDataBoolName, GetPlayerDataKillsName, GetPlayerDataNewDataName, GetSprite, GetYDistance, GetFirstNewItem, .ctor
+JournalListOld: Start, BuildItemList, GetItemCount, GetNameConvo, GetDescConvo, GetWarriorGhost, GetNotesConvo, GetPlayerDataBoolName, GetPlayerDataKillsName, GetPlayerDataNewDataName, GetSprite, GetYDistance, GetFirstNewItem, .ctor
+KeyboardButtonSkins: .ctor
+LinkRendererState: Start, Update, UpdateLink, .ctor
+LoadingCanvas: Start, Update, .ctor
+LoadingPulse: Start, Update, .ctor
+LoadingSpinner: get_DisplayDelayAdjustment, set_DisplayDelayAdjustment, get_DisplayDelay, OnEnable, Start, Update, .ctor
+MainMenuOptions: ConfigureNavigation, .ctor
+MapMarkerButton: Awake, OnEnable, Update, DoDisable, .ctor
+DisableType: 
+MapMarkerMenu: Update, Open, Close, StartMarkerPlacement, PanMap, MarkerSelect, PlaceMarker, RemoveMarker, MarkerSelectLeft, MarkerSelectRight, UpdateAmounts, AddToCollidingList, RemoveFromCollidingList, IsColliding, IsNotColliding, .ctor
+OpenMarkerMenu: Reset, OnEnter, .ctor
+CloseMarkerMenu: Reset, OnEnter, .ctor
+MapNextAreaDisplay: OnEnable, ActivateChildren, DeactivateChildren, .ctor
+MappableControllerButton: Start, OnEnable, GetBinding, ListenForNewButton, ShowCurrentBinding, AbortRebind, StopActionListening, OnBindingFound, OnBindingAdded, OnBindingRejected, OnSubmit, OnPointerClick, OnCancel, StopListeningForNewButton, SetupUnmappableButtons, SetupBindingListenOptions, SetupRefs, .ctor, orig_SetupUnmappableButtons, InitCustomActions, OnDestroy, GetBindingPublic, orig_GetBinding, orig_SetupBindingListenOptions, orig_ShowCurrentBinding, orig_SetupRefs
+MappableKey: Start, OnEnable, GetBinding, ListenForNewButton, ShowCurrentBinding, AbortRebind, StopActionListening, OnBindingFound, OnBindingAdded, OnBindingRejected, OnSubmit, OnPointerClick, OnCancel, StopListeningForNewKey, SetupUnmappableKeys, SetupBindingListenOptions, SetupRefs, .ctor, InitCustomActions, OnDestroy, orig_GetBinding, orig_SetupBindingListenOptions, orig_SetupRefs
+MenuAchievement: .ctor
+MenuAchievementsList: get_init, set_init, AddMenuAchievement, FindAchievement, MarkInit, .ctor
+MenuAudioSlider: Start, UpdateValue, RefreshValueFromSettings, UpdateTextValue, SetMasterLevel, SetMusicLevel, SetSoundLevel, GetVolumeLevel, .ctor
+AudioSettingType: 
+MenuButtonAchievementListCondition: IsFulfilled, .ctor
+MenuButtonChineseListCondition: IsFulfilled, .ctor
+MenuButtonControllerListCondition: IsFulfilled, .ctor
+MenuButtonGraphicsListCondition: IsFulfilled, .ctor
+MenuButtonIcon: get_Action, .ctor
+SetMenuButtonIconAction: Reset, OnEnter, .ctor
+MenuButtonKeyboardListCondition: IsFulfilled, .ctor
+MenuButtonList: Awake, Start, OnEnable, DoSelect, OnDestroy, SelectDelayed, ClearLastSelected, ClearAllLastSelected, .ctor, .cctor, AddSelectable, AddSelectableEnd, AddSelectable, ClearSelectables, RecalculateNavigation
+Entry: get_Selectable, get_Condition, get_AlsoAffectParent, .ctor
+<>c__DisplayClass9_0: .ctor, <Start>b__0
+<SelectDelayed>d__13: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+MenuButtonListCondition: IsFulfilled, .ctor
+MenuButtonListPlatformCondition: IsFulfilled, .ctor
+PlatformBoolPair: 
+MenuButtonNativeInputListCondition: IsFulfilled, .ctor
+MenuButtonQuitListCondition: IsFulfilled, .ctor
+MenuButtonSwitchUserListCondition: IsFulfilled, .ctor
+MenuScreen: get_screenCanvasGroup, HighlightDefault, .ctor
+MenuSetting: Start, RefreshValueFromGameSettings, UpdateSetting, .ctor, get_customApplySetting, set_customApplySetting, get_customRefreshSetting, set_customRefreshSetting, orig_UpdateSetting, orig_RefreshValueFromGameSettings
+MenuSettingType: 
+ApplySetting: .ctor, Invoke, BeginInvoke, EndInvoke
+RefreshSetting: .ctor, Invoke, BeginInvoke, EndInvoke
+MenuStyleTitle: SetTitle, .ctor
+TitleSpriteCollection: 
+MenuStyleUnlock: Start, Unlock, .ctor
+MenuStyleUnlockAction: Reset, OnEnter, .ctor
+MenuStyles: get_CurrentStyle, Awake, Start, LoadStyle, OnDestroy, SetStyle, SwitchStyle, Fade, StopAudio, FadeOutAudio, UnlockFromAchievements, UpdateTitle, .ctor
+MenuStyle: get_IsAvailable, SetInitialAudioVolumes, .ctor
+CameraCurves: .ctor
+StyleSettings: 
+StyleSettingsPlatform: 
+FadeType: 
+<SwitchStyle>d__21: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Fade>d__22: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<FadeOutAudio>d__24: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+MeshSortingOrder: Awake, Update, OnValidate, .ctor
+ModalDialog: get_modalWindow, HighlightDefault, .ctor
+OverscanSetting: Start, UpdateValue, UpdateTextValue, SetOverscan, RefreshValueFromSettings, DoneMode, NormalMode, .ctor
+PlatformSpecificSprite: OnEnable, .ctor
+PlatformSpriteMatch: 
+PlayParticleEffects: PlayParticleSystems, .ctor
+PreselectOption: HighlightDefault, SetDefaultHighlight, DeselectAll, ForceDeselect, .ctor
+<ForceDeselect>d__4: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+ProgressSaveMessagePanel: OnEnable, .ctor
+RemoteDisable: RemoteDisableObject, .ctor
+RemoteDisableChild: RemoteDisableObject, RemoteEnableObject, .ctor
+ReplaceTextLineBreaks: Start, .ctor
+ResolutionCountdownTimer: Start, StartTimer, CancelTimer, TickDown, CountDown, RollbackRes, .ctor
+<CountDown>d__9: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<RollbackRes>d__10: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+RoughMapRoom: Start, OnEnable, .ctor
+SaveProfileHealthBar: Awake, showHealth, .ctor
+SaveProfileMPSlots: Awake, showMPSlots, .ctor
+SaveSlotBackgrounds: GetBackground, GetBackground, .ctor
+AreaBackground: .ctor
+ScrollBarHandle: Awake, Start, UpdatePosition, .ctor
+SetPosIfPlayerdataBool: OnEnable, OnDisable, DoCheck, .ctor
+SetTextMeshProGameText: Awake, Start, UpdateText, ChangedLanguage, .ctor
+ShopItemStats: Awake, OnEnable, Update, GetCost, GetNotchCost, GetCharmsRequired, GetRelicNumber, GetNameConvo, GetDescConvo, GetPlayerDataBoolName, GetRequiredPlayerDataBoolName, GetRemovalPlayerDataBoolName, GetItemNumber, GetSpecialType, CanBuy, SetCanBuy, SetDescConvo, SetCost, .ctor
+ShopMenuStock: Start, SpawnStock, UpdateStock, BuildFromMasterList, StockLeft, BuildItemList, GetItemCount, GetCost, GetNotchCost, GetNameConvo, GetDescConvo, GetPlayerDataBoolName, GetSpecialType, GetRelicNumber, GetCharmsRequired, GetYDistance, GetItemSprite, GetItemSpriteScale, CanBuy, GetItemGameObject, .ctor
+StandaloneLoadingSpinner: Setup, OnEnable, Start, LateUpdate, .ctor
+StartGameEventTrigger: OnSubmit, OnPointerClick, IsFulfilled, .ctor
+Throbber: Update, .ctor
+UIAnimationEvents: OnEnable, OnDisable, AnimateIn, AnimateOut, .ctor
+UIButtonSkins: get_listeningKey, set_listeningKey, get_listeningButton, set_listeningButton, Start, OnEnable, GetButtonSkinFor, GetKeyboardSkinFor, GetControllerButtonSkinFor, GetButtonSkinFor, ShowCurrentKeyboardMappings, ShowCurrentButtonMappings, RefreshKeyMappings, RefreshButtonMappings, ListeningForKeyRebind, ListeningForButtonRebind, FinishedListeningForKey, FinishedListeningForButton, GetButtonSkinFor, GetButtonSkinFor, SetupRefs, .ctor, AddMappableKey, RemoveMappableKey, AddMappableControllerButton, RemoveMappableControllerButton, orig_RefreshKeyMappings, orig_ShowCurrentKeyboardMappings, orig_RefreshButtonMappings, orig_ShowCurrentButtonMappings, orig_GetButtonSkinFor, orig_SetupRefs
+<ShowCurrentKeyboardMappings>d__76: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<ShowCurrentButtonMappings>d__77: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<ShowCurrentButtonMappings>d__20: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, <>m__Finally1, System.Collections.IEnumerator.Reset
+<ShowCurrentKeyboardMappings>d__18: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, <>m__Finally1, System.Collections.IEnumerator.Reset
+ButtonSkin: .ctor
+UpdateTextWithSliderValue: Start, UpdateValue, .ctor
+VideoMenuOptions: ConfigureNavigation, .ctor
+VisibilityControl: Awake, Reveal, Hide, .ctor
+ControlType: 
+ZeroAlphaOnStart: Start, .ctor
+UnboldIfCJK: OnEnable, .ctor
+AssetNamePickerAttribute: get_SearchFilter, .ctor
+BuildMetadata: get_BranchName, get_Revision, get_CommitTime, get_MachineName, get_BuildTime, get_Embedded, Create, .ctor
+Collision2DUtils: GetSafeContact, .cctor
+Collision2DSafeContact: 
+CommandLineArguments: get_ShowPerformanceHUD, set_ShowPerformanceHUD, get_RemoteSaveDirectory, set_RemoteSaveDirectory, get_EnableDeveloperCheats, set_EnableDeveloperCheats, .cctor
+Constants: GetConstantValue
+GetConstantsValue: Reset, OnEnter, .ctor
+DeactivateGameObjectPerBuildType: OnEnable, .ctor
+DeprecatedPrefab: Start, .ctor
+Encryption: Encrypt, Decrypt, Encrypt, Decrypt, .cctor
+Extensions: GetFirstInteractable, PlayOnSource, SetActiveChildren, SetActiveWithChildren, HasParameter, PlayAnimWait, PlayAnimGetTime, MultiplyElements, MultiplyElements, SetPositionX, SetPositionY, SetPositionZ, SetPosition2D, SetPosition2D, SetPosition3D, SetScaleX, SetScaleY, SetScaleZ, SetRotationZ, SetScaleMatching, GetPositionX, GetPositionY, GetPositionZ, GetScaleX, GetScaleY, GetScaleZ, GetRotation2D, SetRotation2D, IsAny
+<PlayAnimWait>d__5: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+FSMUtility: ObtainFsmList, ReleaseFsmList, ContainsFSM, LocateFSM, LocateMyFSM, GetFSM, SendEventToGameObject, SendEventToGameObject, GetSafe, GetBool, GetInt, GetFloat, GetString, GetVector3, SetBool, SetInt, SetFloat, SetString, FindFSMWithPersistentBool, FindFSMWithPersistentInt, .cctor
+CheckFsmStateAction: get_IsTrue, Reset, OnEnter, .ctor
+GetIntFsmStateAction: get_IntValue, Reset, OnEnter, .ctor
+SetBoolFsmStateAction: set_BoolValue, Reset, OnEnter, .ctor
+FlingUtils: SpawnAndFling, FlingChildren, FlingObject
+Config: 
+ChildrenConfig: 
+SelfConfig: 
+GCManager: get_IsSupported, get_IsAutomaticCollectionEnabled, set_IsAutomaticCollectionEnabled, Collect, Init, GetMemoryUsage, Update, .ctor
+GizmoUtility: DrawText
+Helper: GetCollidingLayerMaskForLayer, GetReflectedAngle, GetRandomVector3InRange, GetRandomVector2InRange, IsRayHittingNoTriggers, IsRayHittingNoTriggers, CombinePaths, FileOrFolderExists, DeleteFileOrFolder, CopyFileOrFolder, DeepCopy, MoveFileOrFolder, CheckMatchingSearchFilter, ParseSearchString
+<>c: .cctor, .ctor, <CombinePaths>b__7_0
+<>c__DisplayClass13_0: .ctor, <CheckMatchingSearchFilter>b__0
+ObjectPoolAuditor: RecordPoolCreated, RecordSpawned, RecordDespawned
+ParticleSystemCollisionLagFix: .ctor
+PerBuildTypeOnEnableResponse: OnEnable, DoEvent, .ctor
+Tk2dSpriteColorResponse: 
+WeightedItem: get_Weight, .ctor
+RandomTable: TrySelectValue, SelectValue
+RegionDebugger: Start, .ctor
+SceneLoad: get_TargetSceneName, get_IsFetchAllowed, set_IsFetchAllowed, get_IsActivationAllowed, set_IsActivationAllowed, get_IsUnloadAssetsRequired, set_IsUnloadAssetsRequired, get_IsGarbageCollectRequired, set_IsGarbageCollectRequired, get_IsFinished, set_IsFinished, .ctor, get_BeginTime, RecordBeginTime, RecordEndTime, GetDuration, Begin, BeginRoutine, add_FetchComplete, remove_FetchComplete, add_WillActivate, remove_WillActivate, add_ActivationComplete, remove_ActivationComplete, add_Complete, remove_Complete, add_StartCalled, remove_StartCalled, add_BossLoaded, remove_BossLoaded, add_Finish, remove_Finish
+Phases: 
+PhaseInfo: .ctor
+FetchCompleteDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+WillActivateDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+ActivationCompleteDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+CompleteDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+StartCalledDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+BossLoadCompleteDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+FinishDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+<BeginRoutine>d__35: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+StaticVariableList: Clear, SetValue, GetValue, Exists
+SetStaticVariable: Reset, OnEnter, .ctor
+GetStaticVariable: Reset, OnEnter, .ctor
+CheckStaticBool: Reset, OnEnter, .ctor
+StringEncrypt: EncryptData, DecryptData, .ctor, .cctor
+TimeScaleIndependentUpdate: get_deltaTime, set_deltaTime, Awake, Update, TimeScaleIndependentWaitForSeconds, .ctor
+<TimeScaleIndependentWaitForSeconds>d__7: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+TimeUtility: Wait, WaitForRealSeconds
+<Wait>d__0: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<WaitForRealSeconds>d__1: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+CharmVibrations: PlayRegularPlace, PlayFailedPlace, PlayOvercharmPlace, PlayOvercharmHit, PlayOvercharmFinalHit, PlayDelayedVibration, PlayDelayedVibrationRoutine, .ctor
+<PlayDelayedVibrationRoutine>d__11: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+GamepadVibration: get_SmallMotor, get_LargeMotor, get_PlaybackRate, Reset, GetDuration, GetDuration, .ctor
+VibrationEffect: OnEnable, .ctor
+PreloadVibration: Reset, OnEnter, .ctor
+PlayVibration: Reset, OnEnter, Play, OnUpdate, EnqueueNextLoop, .ctor
+StopVibration: Reset, OnEnter, .ctor
+VibrationManager: get_IsMuted, set_IsMuted, GetMixer, PlayVibrationClipOneShot, StopAllVibration, StopAllVibrationsWithTag
+IVibrationMixerProvider: GetVibrationMixer
+VibrationMixer: get_IsPaused, set_IsPaused, PlayEmission, get_PlayingEmissionCount, GetPlayingEmission, StopAllEmissions, StopAllEmissionsWithTag, .ctor
+VibrationEmission: get_Target, set_Target, get_IsLooping, set_IsLooping, get_Tag, set_Tag, get_IsPlaying, Stop, .ctor
+UnsupportedVibrationEmission: .ctor, get_Target, set_Target, get_IsLooping, set_IsLooping, get_IsPlaying, get_Tag, set_Tag, Stop
+VibrationData: get_LowFidelityVibration, get_HighFidelityVibration, get_GamepadVibration, Create
+VibrationTarget: get_Motors, .ctor
+LowFidelityVibrations: 
+VibrationMotors: 
+VibrationPlayer: get_VibrationData, set_VibrationData, get_Target, set_Target, get_PlayAutomatically, set_PlayAutomatically, get_IsLooping, set_IsLooping, get_VibrationTag, set_VibrationTag, OnEnable, OnDisable, Play, Stop, .ctor
+VibrationPlayerPlay: Reset, OnEnter, .ctor
+VibrationPlayerStop: Reset, OnEnter, .ctor
+VibrationPlayerSetMotors: Reset, OnEnter, .ctor
+LiftChain: Awake, GoDown, GoUp, Stop, .ctor
+LiftChainAction: Reset, OnEnter, OnUpdate, Apply, .ctor
+MoveLiftChain: Apply, .ctor
+StopLiftChain: Apply, .ctor
+MyGuid: get_guid, Generate, GetGuid, .ctor
+PersistentBoolItem: add_OnSetSaveState, remove_OnSetSaveState, add_OnGetSaveState, remove_OnGetSaveState, Awake, OnEnable, OnDisable, Start, SaveState, ResetState, SetMyID, PreSetup, UpdateActivatedFromFSM, LookForMyFSM, .ctor
+BoolEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+BoolRefEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+PersistentBoolData: .ctor
+GetPersistentBool: Reset, OnEnter, .ctor
+GetPersistentBoolFromSaveData: ShouldHideDirect, Reset, OnEnter, .ctor
+PersistentIntItem: Awake, OnEnable, OnDisable, Start, SaveState, ResetState, SetMyID, UpdateValueFromFSM, SetValueOnFSM, LookForMyFSM, .ctor
+PersistentIntData: .ctor
+SceneAdditiveLoadConditional: get_SceneNameToLoad, get_ShouldLoadBoss, OnEnable, OnDisable, LoadAll, LoadRoutine, .ctor, .cctor
+BoolTest: 
+IntTest: 
+TestType: 
+<LoadAll>d__26: .ctor, System.IDisposable.Dispose, MoveNext, <>m__Finally1, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<LoadRoutine>d__27: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+SceneData: get_instance, set_instance, .ctor, Reset, SaveMyState, SaveMyState, SaveMyState, ResetSemiPersistentItems, FindMyState, FindMyState, FindMyState, SetupNewSceneData, FindGeoRockInList, FindPersistentBoolItemInList, FindPersistentIntItemInList
+SceneManagerSettings: .ctor, .ctor
+ScenePreloader: Start, OnGUI, LoadRoutine, FinishPendingOperations, Cleanup, .ctor, .cctor
+SceneLoadOp: .ctor
+<LoadRoutine>d__11: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<FinishPendingOperations>d__12: .ctor, System.IDisposable.Dispose, MoveNext, <>m__Finally1, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+WorldInfo: NameLooksLikeGameplayScene, GetSceneInfo, .ctor, .cctor
+SceneInfo: .ctor
+TransitionInfo: 
+ZoneTags: 
+WorldNavigation: .cctor
+SceneItem: .ctor
+TransitionItem: .ctor
+SecurePlayerPrefsDemo: Start, .ctor
+SecureplayerPrefsDemoClass: get_playID, set_playID, get_type, set_type, get_incremental, set_incremental, .ctor
+tk2dCamera: get_CameraSettings, get_CurrentResolutionOverride, get_InheritConfig, set_InheritConfig, get_UnityCamera, get_Instance, CameraForLayer, get_ScreenExtents, get_NativeScreenExtents, get_TargetResolution, get_NativeResolution, get_ScreenOffset, get_resolution, get_ScreenResolution, get_ScaledResolution, get_ZoomFactor, set_ZoomFactor, get_zoomScale, set_zoomScale, get_ScreenCamera, Awake, OnEnable, OnDestroy, OnPreCull, GetSizeAtDistance, get_SettingsRoot, OrthoOffCenter, GetScaleForOverride, GetOffsetForOverride, GetProjectionMatrixForOverride, GetScreenPixelDimensions, Upgrade, UpdateCameraMatrix, .ctor, .cctor
+tk2dCameraAnchor: get_AnchorPoint, set_AnchorPoint, get_AnchorOffsetPixels, set_AnchorOffsetPixels, get_AnchorToNativeBounds, set_AnchorToNativeBounds, get_AnchorCamera, set_AnchorCamera, get_AnchorTk2dCamera, get_myTransform, Start, UpdateTransform, ForceUpdateTransform, LateUpdate, .ctor
+tk2dCameraSettings: .ctor
+ProjectionType: 
+OrthographicType: 
+OrthographicOrigin: 
+tk2dCameraResolutionOverride: Match, Upgrade, get_DefaultOverride, .ctor
+MatchByType: 
+AutoScaleMode: 
+FitMode: 
+tk2dFont: Upgrade, .ctor, .cctor
+tk2dFontChar: .ctor
+tk2dFontKerning: .ctor
+tk2dFontData: get_inst, Init, ResetPlatformData, OnDestroy, InitDictionary, SetDictionary, .ctor
+tk2dTextGeomGen: Data, GetMeshDimensionsForString, GetYAnchorForHeight, GetXAnchorForWidth, PostAlignTextData, GetFullHexColorComponent, GetCompactHexColorComponent, GetStyleHexColor, SetColorsFromStyleCommand, SetGradientTexUFromStyleCommand, HandleStyleCommand, GetTextMeshGeomDesc, SetTextMeshGeom, SetTextMeshIndices, .cctor
+GeomData: .ctor
+tk2dTextMeshData: .ctor
+tk2dTextMesh: get_FormattedText, UpgradeData, GetInlineStyleCommandLength, FormatText, FormatText, FormatText, SetNeedUpdate, get_font, set_font, get_formatting, set_formatting, get_wordWrapWidth, set_wordWrapWidth, get_text, set_text, get_color, set_color, get_color2, set_color2, get_useGradient, set_useGradient, get_anchor, set_anchor, get_scale, set_scale, get_kerning, set_kerning, get_maxChars, set_maxChars, get_textureGradient, set_textureGradient, get_inlineStyling, set_inlineStyling, get_Spacing, set_Spacing, get_LineSpacing, set_LineSpacing, get_SortingOrder, set_SortingOrder, InitInstance, get_CachedRenderer, Awake, OnDestroy, get_useInlineStyling, NumDrawnCharacters, NumTotalCharacters, GetMeshDimensionsForString, GetEstimatedMeshBoundsForString, Init, Init, Commit, DoNotUse__CommitInternal, MakePixelPerfect, UsesSpriteCollection, UpdateMaterial, ForceBuild, .ctor
+UpdateFlags: 
+tk2dButton: add_ButtonPressedEvent, remove_ButtonPressedEvent, add_ButtonAutoFireEvent, remove_ButtonAutoFireEvent, add_ButtonDownEvent, remove_ButtonDownEvent, add_ButtonUpEvent, remove_ButtonUpEvent, OnEnable, Start, UpdateSpriteIds, PlaySound, coScale, LocalWaitForSeconds, coHandleButtonPress, Update, .ctor
+ButtonHandlerDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+<coScale>d__34: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<LocalWaitForSeconds>d__35: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<coHandleButtonPress>d__36: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+tk2dResource: .ctor
+tk2dResourceTocEntry: .ctor
+tk2dAssetPlatform: .ctor
+tk2dSystem: .ctor, get_inst, get_inst_NoCreate, get_CurrentPlatform, set_CurrentPlatform, get_OverrideBuildMaterial, GetAssetPlatform, LoadResourceByGUIDImpl, LoadResourceByNameImpl, LoadResourceByGUID, LoadResourceByName, .cctor
+tk2dUpdateManager: get_Instance, QueueCommit, FlushQueues, OnEnable, LateUpdate, coSuperLateUpdate, QueueCommitInternal, FlushQueuesInternal, .ctor
+<coSuperLateUpdate>d__7: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+tk2dAnimatedSprite: get_Animator, CheckAddAnimatorInternal, NeedBoxCollider, get_Library, set_Library, get_DefaultClipId, set_DefaultClipId, get_g_paused, set_g_paused, get_Paused, set_Paused, ProxyCompletedHandler, ProxyEventTriggeredHandler, OnEnable, OnDisable, Start, AddComponent, Play, Play, PlayFromFrame, Play, PlayFromFrame, Play, Play, Play, get_CurrentClip, get_ClipTimeSeconds, get_ClipFps, set_ClipFps, Stop, StopAndResetFrame, isPlaying, IsPlaying, IsPlaying, get_Playing, GetClipIdByName, GetClipByName, get_DefaultFps, Pause, Resume, SetFrame, SetFrame, UpdateAnimation, .ctor
+AnimationCompleteDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+AnimationEventDelegate: .ctor, Invoke, BeginInvoke, EndInvoke
+tk2dBaseSprite: get_Collection, set_Collection, add_SpriteChanged, remove_SpriteChanged, InitInstance, get_color, set_color, get_scale, set_scale, get_CachedRenderer, get_SortingOrder, set_SortingOrder, get_FlipX, set_FlipX, get_FlipY, set_FlipY, get_spriteId, set_spriteId, SetSprite, SetSprite, SetSprite, SetSprite, MakePixelPerfect, UpdateMaterial, UpdateColors, UpdateVertices, UpdateGeometry, GetCurrentVertexCount, Build, GetSpriteIdByName, AddComponent, AddComponent, GetNumVertices, GetNumIndices, SetPositions, SetColors, GetBounds, GetUntrimmedBounds, AdjustedMeshBounds, GetCurrentSpriteDef, get_CurrentSprite, ReshapeBounds, NeedBoxCollider, UpdateCollider, CreateCollider, Awake, CreateSimpleBoxCollider, UsesSpriteCollection, ForceBuild, CreateFromTexture, .ctor
+Anchor: 
+tk2dClippedSprite: get_ClipRect, set_ClipRect, get_clipBottomLeft, set_clipBottomLeft, get_clipTopRight, set_clipTopRight, get_CreateBoxCollider, set_CreateBoxCollider, Awake, OnDestroy, SetColors, SetGeometry, Build, UpdateGeometry, UpdateColors, UpdateVertices, UpdateColorsImpl, UpdateGeometryImpl, UpdateCollider, CreateCollider, UpdateMaterial, GetCurrentVertexCount, ReshapeBounds, .ctor
+tk2dEditorSpriteDataUnloader: Register, Unregister, .ctor
+tk2dPixelPerfectHelper: get_inst, Awake, Setup, CalculateScaleForPerspectiveCamera, get_CameraIsOrtho, .ctor, .cctor
+tk2dSlicedSprite: get_BorderOnly, set_BorderOnly, get_dimensions, set_dimensions, get_anchor, set_anchor, SetBorder, get_CreateBoxCollider, set_CreateBoxCollider, Awake, OnDestroy, SetColors, SetGeometry, SetIndices, NearEnough, PermanentUpgradeLegacyMode, Build, UpdateGeometry, UpdateColors, UpdateVertices, UpdateIndices, UpdateColorsImpl, UpdateGeometryImpl, UpdateCollider, CreateCollider, UpdateMaterial, GetCurrentVertexCount, ReshapeBounds, .ctor
+tk2dSprite: Awake, OnDestroy, Build, AddComponent, AddComponent, CreateFromTexture, UpdateGeometry, UpdateColors, UpdateVertices, UpdateColorsImpl, UpdateVerticesImpl, UpdateGeometryImpl, UpdateMaterial, GetCurrentVertexCount, ForceBuild, ReshapeBounds, .ctor
+tk2dSpriteAnimationFrame: CopyFrom, CopyTriggerFrom, ClearTrigger, CopyFrom, .ctor
+tk2dSpriteAnimationClip: get_Duration, .ctor, .ctor, CopyFrom, Clear, get_Empty, GetFrame
+WrapMode: 
+tk2dSpriteAnimation: GetClipByName, GetClipById, GetClipIdByName, GetClipIdByName, get_FirstValidClip, .ctor
+tk2dSpriteAnimator: get_g_Paused, set_g_Paused, get_Paused, set_Paused, get_Library, set_Library, get_DefaultClipId, set_DefaultClipId, get_DefaultClip, OnEnable, Start, get_Sprite, AddComponent, GetClipByNameVerbose, Play, Play, Play, PlayFromFrame, PlayFromFrame, PlayFromFrame, PlayFrom, PlayFrom, PlayFrom, Play, Stop, StopAndResetFrame, IsPlaying, IsPlaying, get_Playing, get_CurrentClip, get_ClipTimeSeconds, get_ClipFps, set_ClipFps, GetClipById, get_DefaultFps, GetClipIdByName, GetClipByName, Pause, Resume, SetFrame, SetFrame, get_CurrentFrame, UpdateAnimation, ClipNameError, ClipIdError, WarpClipToLocalTime, SetFrameInternal, ProcessEvents, OnAnimationCompleted, LateUpdate, SetSprite, .ctor, .cctor
+State: 
+tk2dSpriteAttachPoint: Awake, OnEnable, OnDisable, UpdateAttachPointTransform, GetInstanceName, HandleSpriteChanged, .ctor, .cctor
+tk2dSpriteColliderIsland: IsValid, CopyFrom, CompareTo, .ctor
+tk2dLinkedSpriteCollection: .ctor
+tk2dSpriteCollectionDefinition: CopyFrom, Clear, CompareTo, .ctor
+Anchor: 
+Pad: 
+ColliderType: 
+PolygonColliderCap: 
+ColliderColor: 
+Source: 
+DiceFilter: 
+ColliderData: CopyFrom, CompareTo, .ctor
+Type: 
+tk2dSpriteCollectionDefault: .ctor
+tk2dSpriteSheetSource: CopyFrom, CompareTo, get_Name, .ctor
+Anchor: 
+SplitMethod: 
+tk2dSpriteCollectionFont: CopyFrom, get_Name, get_InUse, .ctor
+tk2dSpriteCollectionPlatform: get_Valid, CopyFrom, .ctor
+tk2dSpriteCollection: get_DoNotUse__TextureRefs, set_DoNotUse__TextureRefs, get_HasPlatformData, Upgrade, .ctor
+NormalGenerationMode: 
+TextureCompression: 
+AtlasFormat: 
+AttachPointTestSprite: CompareTo, CopyFrom, .ctor
+tk2dCollider2DData: .ctor
+tk2dSpriteColliderDefinition: .ctor, get_Radius, get_Size
+Type: 
+tk2dSpriteDefinition: get_Valid, GetBounds, GetUntrimmedBounds, .ctor
+ColliderType: 
+PhysicsEngine: 
+FlipMode: 
+AttachPoint: CopyFrom, CompareTo, .ctor
+tk2dSpriteCollectionData: get_Transient, set_Transient, get_Count, GetSpriteIdByName, GetSpriteIdByName, ClearDictionary, GetSpriteDefinition, InitDictionary, get_FirstValidDefinition, IsValidSpriteId, get_FirstValidDefinitionIndex, InitMaterialIds, get_inst, Init, CreateFromTexture, CreateFromTexturePacker, ResetPlatformData, DestroyTextureInsts, UnloadTextures, DestroyMaterialInsts, OnDestroy, .ctor, .cctor
+tk2dSpriteCollectionSize: Explicit, PixelsPerMeter, ForResolution, ForTk2dCamera, ForTk2dCamera, Default, CopyFromLegacy, CopyFrom, get_OrthoSize, get_TargetHeight, .ctor
+Type: 
+tk2dSpriteFromTexture: get_Sprite, Awake, get_HasSpriteCollection, OnDestroy, Create, Clear, ForceBuild, DestroyInternal, .ctor
+tk2dSpriteGeomGen: SetSpriteColors, GetAnchorOffset, GetSpriteGeomDesc, SetSpriteGeom, SetSpriteIndices, GetClippedSpriteGeomDesc, SetClippedSpriteGeom, SetClippedSpriteIndices, GetSlicedSpriteGeomDesc, SetSlicedSpriteGeom, SetSlicedSpriteIndices, GetTiledSpriteGeomDesc, SetTiledSpriteGeom, SetTiledSpriteIndices, SetBoxMeshData, SetSpriteDefinitionMeshData, SetSpriteVertexNormals, .cctor
+tk2dBatchedSprite: get_BoxColliderOffsetZ, set_BoxColliderOffsetZ, get_BoxColliderExtentZ, set_BoxColliderExtentZ, get_FormattedText, set_FormattedText, get_ClippedSpriteRegionBottomLeft, set_ClippedSpriteRegionBottomLeft, get_ClippedSpriteRegionTopRight, set_ClippedSpriteRegionTopRight, get_SlicedSpriteBorderBottomLeft, set_SlicedSpriteBorderBottomLeft, get_SlicedSpriteBorderTopRight, set_SlicedSpriteBorderTopRight, get_Dimensions, set_Dimensions, get_IsDrawn, CheckFlag, SetFlag, get_CachedBoundsCenter, set_CachedBoundsCenter, get_CachedBoundsExtents, set_CachedBoundsExtents, GetSpriteDefinition, .ctor
+Type: 
+Flags: 
+tk2dStaticSpriteBatcher: CheckFlag, SetFlag, Awake, UpgradeData, OnDestroy, UpdateMatrices, Build, SortBatchedSprites, GetMaterial, BuildRenderMesh, BuildPhysicsMesh, BuildPhysicsMesh2D, BuildPhysicsMesh3D, UsesSpriteCollection, ForceBuild, .ctor, .cctor
+Flags: 
+<>c: .cctor, .ctor, <UpdateMatrices>b__15_0
+tk2dTiledSprite: get_dimensions, set_dimensions, get_anchor, set_anchor, get_CreateBoxCollider, set_CreateBoxCollider, Awake, OnDestroy, SetColors, Build, UpdateGeometry, UpdateColors, UpdateVertices, UpdateColorsImpl, UpdateGeometryImpl, UpdateCollider, CreateCollider, UpdateMaterial, GetCurrentVertexCount, ReshapeBounds, .ctor
+tk2dUtil: get_UndoEnabled, set_UndoEnabled, BeginGroup, EndGroup, DestroyImmediate, CreateGameObject, CreateMesh, AddComponent, SetActive, SetTransformParent, SetDirty, .cctor
+tk2dTileFlags: 
+tk2dTileMap: get_Editor__SpriteCollection, set_Editor__SpriteCollection, get_SpriteCollectionInst, get_AllowEdit, Awake, OnDestroy, Build, ForceBuild, ClearSpawnedInstances, SetPrefabsRootActive, Build, GetTileAtPosition, GetTileFracAtPosition, GetTilePosition, GetTileIdAtPosition, GetTileInfoForTileId, GetInterpolatedColorAtPosition, UsesSpriteCollection, EndEditMode, TouchMesh, DestroyMesh, GetTilePrefabsListCount, get_TilePrefabsList, GetTilePrefabsListItem, SetTilePrefabsList, get_Layers, set_Layers, get_ColorChannel, set_ColorChannel, get_PrefabsRoot, set_PrefabsRoot, GetTile, GetTileFlags, SetTile, SetTileFlags, ClearTile, .ctor
+TilemapPrefabInstance: .ctor
+BuildFlags: 
+tk2dTileMapData: get_NumLayers, get_Layers, GetTileInfoForSprite, GetOrCreateTileInfo, GetTileOffset, InitLayers, .ctor
+SortMethod: 
+TileType: 
+ColorMode: 
+tk2dUIBaseItemControl: get_SendMessageTarget, set_SendMessageTarget, ChangeGameObjectActiveState, ChangeGameObjectActiveStateWithNullCheck, DoSendMessage, .ctor
+tk2dUIDragItem: OnEnable, OnDisable, UpdateBtnPosition, CalculateNewPos, ButtonDown, ButtonRelease, .ctor
+tk2dUIDropDownItem: get_Index, set_Index, add_OnItemSelected, remove_OnItemSelected, get_LabelText, set_LabelText, OnEnable, OnDisable, ItemSelected, .ctor
+tk2dUIDropDownMenu: get_ItemList, set_ItemList, add_OnSelectedItemChange, remove_OnSelectedItemChange, get_Index, set_Index, get_SelectedItem, get_SendMessageTarget, set_SendMessageTarget, get_MenuLayoutItem, set_MenuLayoutItem, get_TemplateLayoutItem, set_TemplateLayoutItem, Awake, OnEnable, OnDisable, UpdateList, SetSelectedItem, CreateAnotherDropDownItem, ItemSelected, ExpandButtonPressed, ExpandList, CollapseList, DropDownItemHoverBtnToggle, OnDestroy, .ctor
+tk2dUIHoverItem: add_OnToggleHover, remove_OnToggleHover, get_IsOver, set_IsOver, Start, OnEnable, OnDisable, HoverOver, HoverOut, SetState, .ctor
+tk2dUIMultiStateToggleButton: add_OnStateToggle, remove_OnStateToggle, get_Index, set_Index, Start, OnEnable, OnDisable, ButtonClick, ButtonDown, ButtonToggle, SetState, .ctor
+tk2dUIProgressBar: add_OnProgressComplete, remove_OnProgressComplete, Start, get_Value, set_Value, InitializeSlicedSpriteDimensions, .ctor
+tk2dUIScrollableArea: get_ContentLength, set_ContentLength, get_VisibleAreaLength, set_VisibleAreaLength, get_BackgroundLayoutItem, set_BackgroundLayoutItem, get_ContentLayoutContainer, set_ContentLayoutContainer, get_SendMessageTarget, set_SendMessageTarget, add_OnScroll, remove_OnScroll, get_Value, set_Value, SetScrollPercentWithoutEvent, MeasureContentLength, OnEnable, OnDisable, Start, BackgroundHoverOverScrollWheelChange, ScrollBarMove, get_ContentContainerOffset, set_ContentContainerOffset, SetContentPosition, BackgroundButtonDown, BackgroundOverUpdate, UpdateSwipeScrollDestintationPosition, BackgroundButtonRelease, BackgroundButtonHoverOver, BackgroundButtonHoverOut, CalculateClickWorldPos, UpdateScrollbarActiveState, ContentLengthVisibleAreaLengthChange, UnpressAllUIItemChildren, TargetOnScrollCallback, GetRendererBoundsInChildren, LayoutReshaped, ContentLayoutChangeCallback, .ctor, .cctor
+Axes: 
+tk2dUIScrollbar: get_BarLayoutItem, set_BarLayoutItem, add_OnScroll, remove_OnScroll, get_SendMessageTarget, set_SendMessageTarget, get_Value, set_Value, SetScrollPercentWithoutEvent, OnEnable, OnDisable, Awake, Start, TrackHoverScrollWheelChange, SetScrollThumbPosition, MoveScrollThumbButton, CalculateClickWorldPos, ScrollToPosition, ScrollTrackButtonDown, ScrollTrackButtonHoverOver, ScrollTrackButtonHoverOut, ScrollThumbButtonDown, ScrollThumbButtonRelease, ScrollUpButtonDown, ScrollUpButtonUp, ScrollDownButtonDown, ScrollDownButtonUp, ScrollUpFixed, ScrollDownFixed, CheckRepeatScrollUpDownButton, ScrollDirection, CalcScrollPercentOffsetButtonScrollDistance, LayoutReshaped, .ctor
+Axes: 
+tk2dUISoundItem: OnEnable, OnDisable, PlayDownSound, PlayUpSound, PlayClickSound, PlayReleaseSound, PlaySound, .ctor
+tk2dUITextInput: get_LayoutItem, set_LayoutItem, get_SendMessageTarget, set_SendMessageTarget, get_IsFocus, get_Text, set_Text, Awake, Start, OnEnable, OnDisable, SetFocus, SetFocus, FormatTextForDisplay, ListenForKeyboardTextUpdate, InputSelected, InputDeselected, AnyPress, SetState, SetCursorPosition, ShowDisplayText, HideDisplayText, LayoutReshaped, .ctor
+tk2dUIToggleButton: add_OnToggle, remove_OnToggle, get_IsOn, set_IsOn, get_IsInToggleGroup, set_IsInToggleGroup, Start, OnEnable, OnDisable, ButtonClick, ButtonDown, ButtonToggle, SetState, .ctor
+tk2dUIToggleButtonGroup: get_ToggleBtns, get_SelectedIndex, set_SelectedIndex, get_SelectedToggleButton, set_SelectedToggleButton, add_OnChange, remove_OnChange, Awake, Setup, AddNewToggleButtons, ClearExistingToggleBtns, SetToggleButtonUsingSelectedIndex, ButtonToggle, SetSelectedIndexFromSelectedToggleButton, .ctor
+tk2dUIToggleControl: .ctor
+tk2dUITweenItem: get_UseOnReleaseInsteadOfOnUp, Awake, OnEnable, OnDisable, ButtonDown, ButtonUp, ScaleTween, InternalSetUseOnReleaseInsteadOfOnUp, .ctor
+<ScaleTween>d__16: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+tk2dUIUpDownButton: get_UseOnReleaseInsteadOfOnUp, Start, OnEnable, OnDisable, ButtonUp, ButtonDown, SetState, InternalSetUseOnReleaseInsteadOfOnUp, .ctor
+tk2dUIUpDownHoverButton: get_UseOnReleaseInsteadOfOnUp, get_IsOver, set_IsOver, add_OnToggleOver, remove_OnToggleOver, Start, OnEnable, OnDisable, ButtonUp, ButtonDown, ButtonHoverOver, ButtonHoverOut, SetState, InternalSetUseOnReleaseInsteadOfOnUp, .ctor
+tk2dUIAudioManager: get_Instance, Awake, Setup, Play, .ctor
+tk2dUICamera: get_RaycastType, AssignRaycastLayerMask, get_FilteredMask, get_HostCamera, OnEnable, OnDisable, .ctor
+tk2dRaycastType: 
+tk2dUIItem: add_OnDown, remove_OnDown, add_OnUp, remove_OnUp, add_OnClick, remove_OnClick, add_OnRelease, remove_OnRelease, add_OnHoverOver, remove_OnHoverOver, add_OnHoverOut, remove_OnHoverOut, add_OnDownUIItem, remove_OnDownUIItem, add_OnUpUIItem, remove_OnUpUIItem, add_OnClickUIItem, remove_OnClickUIItem, add_OnReleaseUIItem, remove_OnReleaseUIItem, add_OnHoverOverUIItem, remove_OnHoverOverUIItem, add_OnHoverOutUIItem, remove_OnHoverOutUIItem, Awake, Start, get_IsPressed, get_Touch, get_ParentUIItem, UpdateParent, ManuallySetParent, RemoveParent, Press, Press, UpdateTouch, DoSendMessage, Release, CurrentOverUIItem, CheckIsUIItemChildOfMe, Exit, HoverOver, HoverOut, GetParentUIItem, SimulateClick, InternalSetIsChildOfAnotherUIItem, InternalGetIsChildOfAnotherUIItem, .ctor
+tk2dUILayoutItem: FixedSizeLayoutItem, .ctor
+tk2dUILayout: get_ItemCount, add_OnReshape, remove_OnReshape, Reset, Reshape, SetBounds, GetMinBounds, GetMaxBounds, Refresh, .ctor
+tk2dUILayoutContainer: GetInnerSize, DoChildLayout, add_OnChangeContent, remove_OnChangeContent, Reshape, AddLayout, AddLayoutAtIndex, RemoveLayout, .ctor
+tk2dUILayoutContainerSizer: DoChildLayout, .ctor
+tk2dUIManager: get_Instance, get_Instance__NoCreate, get_UICamera, set_UICamera, GetUICameraForControl, RegisterCamera, UnregisterCamera, get_InputEnabled, set_InputEnabled, get_PressedUIItem, get_PressedUIItems, get_UseMultiTouch, set_UseMultiTouch, add_OnAnyPress, remove_OnAnyPress, add_OnInputUpdate, remove_OnInputUpdate, add_OnScrollWheelChange, remove_OnScrollWheelChange, SortCameras, Awake, HookUpLegacyCamera, Start, Setup, Update, CheckInputs, CheckMultiTouchInputs, RaycastForUIItem, OverrideClearAllChildrenPresses, .ctor, .cctor
+<>c: .cctor, .ctor, <SortCameras>b__59_0
+tk2dUIMask: get_ThisMeshFilter, get_ThisBoxCollider, Awake, OnDestroy, FillMesh, OnDrawGizmosSelected, Build, ReshapeBounds, .ctor, .cctor
+tk2dUISpriteAnimator: LateUpdate, .ctor
+tk2dUITime: get_deltaTime, Init, Update, .cctor
+tk2dUITouch: get_phase, set_phase, get_fingerId, set_fingerId, get_position, set_position, get_deltaPosition, set_deltaPosition, get_deltaTime, set_deltaTime, .ctor, .ctor, ToString
+TextMeshSharpener: Start, Update, resize, .ctor
+WaveEffectControl: Start, OnEnable, Update, FixedUpdate, .ctor
+iTween: Init, CameraFadeFrom, CameraFadeFrom, CameraFadeTo, CameraFadeTo, ValueTo, FadeFrom, FadeFrom, FadeTo, FadeTo, ColorFrom, ColorFrom, ColorTo, ColorTo, AudioFrom, AudioFrom, AudioTo, AudioTo, Stab, Stab, LookFrom, LookFrom, LookTo, LookTo, MoveTo, MoveTo, MoveFrom, MoveFrom, MoveAdd, MoveAdd, MoveBy, MoveBy, ScaleTo, ScaleTo, ScaleFrom, ScaleFrom, ScaleAdd, ScaleAdd, ScaleBy, ScaleBy, RotateTo, RotateTo, RotateFrom, RotateFrom, RotateAdd, RotateAdd, RotateBy, RotateBy, ShakePosition, ShakePosition, ShakeScale, ShakeScale, ShakeRotation, ShakeRotation, PunchPosition, PunchPosition, PunchRotation, PunchRotation, PunchScale, PunchScale, GenerateTargets, GenerateRectTargets, GenerateColorTargets, GenerateVector3Targets, GenerateVector2Targets, GenerateFloatTargets, GenerateColorToTargets, GenerateAudioToTargets, GenerateStabTargets, GenerateLookToTargets, GenerateMoveToPathTargets, GenerateMoveToTargets, GenerateMoveByTargets, GenerateScaleToTargets, GenerateScaleByTargets, GenerateScaleAddTargets, GenerateRotateToTargets, GenerateRotateAddTargets, GenerateRotateByTargets, GenerateShakePositionTargets, GenerateShakeScaleTargets, GenerateShakeRotationTargets, GeneratePunchPositionTargets, GeneratePunchRotationTargets, GeneratePunchScaleTargets, ApplyRectTargets, ApplyColorTargets, ApplyVector3Targets, ApplyVector2Targets, ApplyFloatTargets, ApplyColorToTargets, ApplyAudioToTargets, ApplyStabTargets, ApplyMoveToPathTargets, ApplyMoveToTargets, ApplyMoveByTargets, ApplyScaleToTargets, ApplyLookToTargets, ApplyRotateToTargets, ApplyRotateAddTargets, ApplyShakePositionTargets, ApplyShakeScaleTargets, ApplyShakeRotationTargets, ApplyPunchPositionTargets, ApplyPunchRotationTargets, ApplyPunchScaleTargets, TweenDelay, TweenStart, TweenRestart, TweenUpdate, TweenComplete, TweenLoop, RectUpdate, Vector3Update, Vector2Update, FloatUpdate, FadeUpdate, FadeUpdate, ColorUpdate, ColorUpdate, AudioUpdate, AudioUpdate, RotateUpdate, RotateUpdate, ScaleUpdate, ScaleUpdate, MoveUpdate, MoveUpdate, LookUpdate, LookUpdate, PathLength, PathLength, CameraTexture, PutOnPath, PutOnPath, PutOnPath, PutOnPath, PointOnPath, DrawLine, DrawLine, DrawLine, DrawLine, DrawLineGizmos, DrawLineGizmos, DrawLineGizmos, DrawLineGizmos, DrawLineHandles, DrawLineHandles, DrawLineHandles, DrawLineHandles, PointOnPath, DrawPath, DrawPath, DrawPath, DrawPath, DrawPathGizmos, DrawPathGizmos, DrawPathGizmos, DrawPathGizmos, DrawPathHandles, DrawPathHandles, DrawPathHandles, DrawPathHandles, CameraFadeDepth, CameraFadeDestroy, CameraFadeSwap, CameraFadeAdd, CameraFadeAdd, CameraFadeAdd, Resume, Resume, Resume, Resume, Resume, Resume, Pause, Pause, Pause, Pause, Pause, Pause, Count, Count, Count, Count, Stop, Stop, StopByName, Stop, Stop, Stop, StopByName, Stop, StopByName, Hash, Awake, Start, Update, FixedUpdate, LateUpdate, OnEnable, OnDisable, DrawLineHelper, DrawPathHelper, PathControlPointGenerator, Interp, Launch, CleanArgs, GenerateID, RetrieveArgs, GetEasingFunction, UpdatePercentage, CallBack, Dispose, ConflictCheck, EnableKinematic, DisableKinematic, ResumeDelay, linear, clerp, spring, easeInQuad, easeOutQuad, easeInOutQuad, easeInCubic, easeOutCubic, easeInOutCubic, easeInQuart, easeOutQuart, easeInOutQuart, easeInQuint, easeOutQuint, easeInOutQuint, easeInSine, easeOutSine, easeInOutSine, easeInExpo, easeOutExpo, easeInOutExpo, easeInCirc, easeOutCirc, easeInOutCirc, easeInBounce, easeOutBounce, easeInOutBounce, easeInBack, easeOutBack, easeInOutBack, punch, easeInElastic, easeOutElastic, easeInOutElastic, .ctor, .cctor
+EasingFunction: .ctor, Invoke, BeginInvoke, EndInvoke
+ApplyTween: .ctor, Invoke, BeginInvoke, EndInvoke
+EaseType: 
+LoopType: 
+NamedValueColor: 
+Defaults: .cctor
+CRSpline: .ctor, Interp
+<TweenDelay>d__149: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<TweenRestart>d__151: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Start>d__239: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<>c__DisplayClass28_0: .ctor, <GetSpriteIndexByHashCode>b__0
+<>c__DisplayClass29_0: .ctor, <GetSpriteIndexByIndex>b__0
+AnchorPositions: 
+ColorTweenMode: 
+ColorTweenCallback: .ctor
+FloatTweenCallback: .ctor
+<Start>d__2: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+Resources: 
+DropdownItem: get_text, set_text, get_image, set_image, get_rectTransform, set_rectTransform, get_toggle, set_toggle, OnPointerEnter, OnCancel, .ctor
+OptionData: get_text, set_text, get_image, set_image, .ctor, .ctor, .ctor, .ctor
+OptionDataList: get_options, set_options, .ctor
+DropdownEvent: .ctor
+<>c__DisplayClass54_0: .ctor, <Show>b__0
+<DelayedDestroyDropdownList>d__66: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+FontAssetTypes: 
+<>c: .cctor, .ctor, <AddGlyphInfo>b__34_0
+ContentType: 
+InputType: 
+CharacterValidation: 
+LineType: 
+OnValidateInput: .ctor, Invoke, BeginInvoke, EndInvoke
+SubmitEvent: .ctor
+OnChangeEvent: .ctor
+EditState: 
+<CaretBlink>d__168: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<MouseDragOutsideRect>d__184: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<>c: .cctor, .ctor, <.cctor>b__3_0
+FallbackMaterial: .ctor
+MaskingMaterial: .ctor
+<>c__DisplayClass6_0: .ctor, <GetBaseMaterial>b__0
+<>c__DisplayClass8_0: .ctor, <AddMaskingMaterial>b__0
+<>c__DisplayClass9_0: .ctor, <RemoveStencilMaterial>b__0
+<>c__DisplayClass10_0: .ctor, <ReleaseBaseMaterial>b__0
+LineBreakingTable: .ctor
+TextInputSources: 
+LineSegment: .ctor
+<>c__DisplayClass3_0: .ctor, <AddKerningPair>b__0
+<>c__DisplayClass4_0: .ctor, <RemoveKerningPair>b__0
+<>c: .cctor, .ctor, <SortKerningPairs>b__6_0, <SortKerningPairs>b__6_1
+<>c__DisplayClass4_0: .ctor, <WeldVertices>b__0
+<>c__DisplayClass6_0: .ctor, <RemoveDuplicateFaces>b__0
+<>c__DisplayClass4_0: .ctor, <WeldVertices>b__0
+<>c__DisplayClass6_0: .ctor, <RemoveDuplicateEdges>b__0
+<SelectAfterFrame>d__4: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<ValidateDeselect>d__10: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+MenuButtonType: 
+<TargetDisplayHack>d__11: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+ApplyOnType: 
+<ValidateDeselect>d__11: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<RefreshOnNextFrame>d__28: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+OnSelectedEvent: .ctor, Invoke, BeginInvoke, EndInvoke
+<ValidateDeselect>d__24: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+PauseButtonType: 
+SaveFileStates: 
+SaveSlot: 
+SlotState: 
+<>c__DisplayClass54_0: .ctor, <Prepare>b__0, <Prepare>b__1
+<ReloadCorrupted>d__58: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<>c: .cctor, .ctor, <ClearSaveFile>b__66_0
+<FadeInCanvasGroupAfterDelay>d__67: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<AnimateToSlotState>d__68: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<ValidateDeselect>d__71: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+FrameMultiple: 
+DetectPhase: 
+AnalogSnapshotEntry: TrackMinMaxValue
+Button: 
+<>c: .cctor, .ctor, <AttachDevice>b__88_0
+KeyMapping: .ctor, .ctor, .ctor, .ctor, get_IsPressed, get_Name
+<>c__DisplayClass9_0: .ctor, <DetectDevice>b__0, <DetectDevice>b__1, <DetectDevice>b__2, <DetectDevice>b__3
+ButtonMap: .ctor
+ButtonTarget: 
+AnalogTarget: 
+SnapAngles: 
+GizmoShowOption: 
+<UpdateScreenSizeAtEndOfFrame>d__28: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<>c__DisplayClass20_0: .ctor, <DetectDevice>b__0, <DetectDevice>b__1, <DetectDevice>b__2, <DetectDevice>b__3
+<>c: .cctor, .ctor, <FindInstances>b__12_0, <Awake>b__14_0
+<>c: .cctor, .ctor, <OnEnable>b__4_1, <OnEnable>b__4_2, <OnEnable>b__4_3
+OnGameSaveLoadedHandler: .ctor, Invoke, BeginInvoke, EndInvoke
+OnErrorHandler: .ctor, Invoke, BeginInvoke, EndInvoke
+GameSaves: .ctor
+MappingAxis: 
+<>c: .cctor, .ctor, <DoGetAverageValue>b__8_0
+ArrayMakerParseStringAs: 
+SplitSpecialChars: 
+FsmVariableEnum: 
+CollisionSide: 
+CollisionSide: 
+RectTransformFlipOptions: 
+LocalPositionReference: 
+AnchorReference: 
+MessageType: 
+<Walk>d__28: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+<Turn>d__29: .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.Reset, System.Collections.IEnumerator.get_Current
+FrameUpdateSelector: 
+AxisPlane: 
+Calculation: 
+Calculation: 
+EasingFunction: .ctor, Invoke, BeginInvoke, EndInvoke
+EaseType: 
+AnimatorFrameUpdateSelector: 
+ArrayTransferType: 
+ArrayPasteType: 
+Operation: 
+FloatRounding: 
+ShapeType: 
+Operation: 
+AxisPlane: 
+BaseOrientation: 
+TimeInfo: 
+Operation: 
+RotationAxes: 
+RotationAxes: 
+MapProjection: 
+everyFrameOptions: 
+MessageType: 
+Destination: 
+AxisPlane: 
+aTan2EnumAxis: 
+Vector3Operation: 
+AxisRestriction: 
+<PrivateImplementationDetails>: ComputeStringHash
+__StaticArrayInitTypeSize=12: 
+__StaticArrayInitTypeSize=17: 
+__StaticArrayInitTypeSize=24: 
+__StaticArrayInitTypeSize=28: 
+__StaticArrayInitTypeSize=32: 
+__StaticArrayInitTypeSize=40: 
+__StaticArrayInitTypeSize=96: 
+__StaticArrayInitTypeSize=122: 
+__StaticArrayInitTypeSize=144: 
+__StaticArrayInitTypeSize=216: 
+RectData: .ctor, .ctor, .ctor
+<>c__DisplayClass19_0: .ctor, <CreateButton>b__0
+<>c__DisplayClass20_0: .ctor, <CreateToggle>b__0
+<FadeInCanvasGroup>d__23: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.IEnumerator.Reset
+<FadeOutCanvasGroup>d__24: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.IEnumerator.Reset
+<Chunks>d__14: System.Collections.Generic.IEnumerator<System.String>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.IEnumerator.Reset, System.Collections.Generic.IEnumerable<System.String>.GetEnumerator, System.Collections.IEnumerable.GetEnumerator
+MenuEntry: .ctor
+<>c__DisplayClass9_0: .ctor, <ClearOldModlogs>b__0
+<>c: .cctor, .ctor, <.ctor>b__8_0, <.ctor>b__8_1
+<>c: .cctor, .ctor, <.cctor>b__9_0, <GetAllMods>b__228_1
+<>c__DisplayClass228_0: .ctor, <GetAllMods>b__0
+<>c: .cctor, .ctor, <InitMenuCreation>b__3_6, <InitMenuCreation>b__3_12, <InitMenuCreation>b__3_19
+<>c__DisplayClass3_0: .ctor, <InitMenuCreation>b__3
+<>c__DisplayClass3_1: .ctor, <InitMenuCreation>b__7, <InitMenuCreation>b__9, <InitMenuCreation>b__10, <InitMenuCreation>b__11
+<>c__DisplayClass3_2: .ctor, <InitMenuCreation>b__14
+<>c__DisplayClass3_3: .ctor, <InitMenuCreation>b__16
+<>c__DisplayClass6_0: .ctor, <CreateModMenu>b__0, <CreateModMenu>b__1
+ModLoadState: 
+ModInstance: .ctor
+ModErrorState: 
+<>c: .cctor, .ctor, <LoadModsInit>b__16_0, <LoadModsInit>b__16_2
+<>c__DisplayClass16_0: .ctor, <LoadModsInit>g__Resolve|1
+<>c__DisplayClass16_1: .ctor, <LoadModsInit>b__3
+<LoadModsInit>d__16: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.IEnumerator.Reset
+<>c: .cctor, .ctor, <Preload>b__4_0, <DoPreloadAssetBundle>b__6_0, <DoPreloadAssetBundle>b__6_1, <DoPreloadAssetBundle>b__6_2, <DoPreloadRepackedScenes>b__7_0, <DoPreloadRepackedScenes>b__7_1, <DoPreloadRepackedScenes>b__7_5, <DoPreloadRepackedScenes>b__7_4, <DoPreloadScenes>b__8_5, <DoPreloadScenes>b__8_6, <DoPreloadScenes>b__8_4
+<>c__DisplayClass6_0: .ctor
+<>c__DisplayClass6_1: .ctor
+<>c__DisplayClass6_2: .ctor
+<>c__DisplayClass6_3: .ctor, <DoPreloadAssetBundle>b__3
+<>c__DisplayClass7_0: .ctor, <DoPreloadRepackedScenes>b__2, <DoPreloadRepackedScenes>b__3
+<>c__DisplayClass8_0: .ctor, <DoPreloadScenes>g__GetModScenePreloadedObjects|0, <DoPreloadScenes>g__GetPreloadObjectsOperation|1, <DoPreloadScenes>g__CleanupPreloadOperation|2, <DoPreloadScenes>g__StartPreloadOperation|3
+<<DoPreloadScenes>g__GetPreloadObjectsOperation|1>d: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.IEnumerator.Reset
+<>c__DisplayClass8_1: .ctor, <DoPreloadScenes>b__7
+<>c__DisplayClass8_2: .ctor, <DoPreloadScenes>g__DoLoad|8
+<<DoPreloadScenes>g__DoLoad|8>d: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.IEnumerator.Reset
+<CleanUpPreloading>d__9: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.IEnumerator.Reset
+<DoPreloadAssetBundle>d__6: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.IEnumerator.Reset
+<DoPreloadRepackedScenes>d__7: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.IEnumerator.Reset
+<DoPreloadScenes>d__8: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.IEnumerator.Reset
+<Preload>d__4: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.IEnumerator.Reset
+<>O: 
+<>c__DisplayClass9_0`1: .ctor, <CacheFields>b__0
+Mode: 
+<>c: .cctor, .ctor, <GetTypesSafely>b__0_0
+<>c__DisplayClass2_0: .ctor, <GetGameObjectFromArray>b__0
+<>c__DisplayClass0_0: .ctor, <SetDynamicMenuCancel>b__0
+<>c__DisplayClass1_0: .ctor, <AddKeybind>b__0
+<>c__DisplayClass2_0: .ctor, <AddButtonBind>b__0
+ScrollMovingNavGraph: get_SelectionPadding, set_SelectionPadding, AddNavigationNode, BuildNavigation
+<>c: .cctor, .ctor, <AddScrollPaneContent>b__1_1
+<>c__DisplayClass1_0: .ctor, <AddScrollPaneContent>b__0
+ChainDir: 
+<>c__DisplayClass1_0: .ctor, <CreateMenuBuilderWithBackButton>b__0, <CreateMenuBuilderWithBackButton>b__1, <CreateMenuBuilderWithBackButton>b__2
+<>c__DisplayClass2_0: .ctor, <AddModMenuContent>b__2
+<>c__DisplayClass2_1: .ctor, <AddModMenuContent>b__0, <AddModMenuContent>b__1
+<>c__DisplayClass3_0: .ctor, <CreateMenuScreen>b__0, <CreateMenuScreen>b__3, <CreateMenuScreen>b__2, <CreateMenuScreen>b__1
+TextFont: 
+<SelectDelayed>d__5: System.Collections.Generic.IEnumerator<System.Object>.get_Current, System.Collections.IEnumerator.get_Current, .ctor, System.IDisposable.Dispose, MoveNext, System.Collections.IEnumerator.Reset
+<>c: .cctor, .ctor, <ReadJson>b__1_0, <WriteJson>b__2_0

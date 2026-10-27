@@ -1,0 +1,3921 @@
+TYPE Climber base=UnityEngine.MonoBehaviour
+FIELD System.Boolean Climber::startRight
+FIELD System.Boolean Climber::clockwise
+FIELD System.Single Climber::speed
+FIELD System.Single Climber::spinTime
+FIELD System.Single Climber::wallRayPadding
+FIELD UnityEngine.Vector2 Climber::constrain
+FIELD UnityEngine.Vector2 Climber::previousPos
+FIELD System.Single Climber::minTurnDistance
+FIELD UnityEngine.Vector2 Climber::previousTurnPos
+FIELD Climber/Direction Climber::currentDirection
+FIELD UnityEngine.Coroutine Climber::turnRoutine
+FIELD UnityEngine.Rigidbody2D Climber::body
+FIELD UnityEngine.BoxCollider2D Climber::col
+FIELD tk2dSpriteAnimator Climber::anim
+METHOD System.Void Climber::Awake()
+IL_0000: ldarg.0
+IL_0001: ldarg.0
+IL_0002: call !!0 UnityEngine.Component::GetComponent<UnityEngine.Rigidbody2D>()
+IL_0007: stfld UnityEngine.Rigidbody2D Climber::body
+IL_000c: ldarg.0
+IL_000d: ldarg.0
+IL_000e: call !!0 UnityEngine.Component::GetComponent<UnityEngine.BoxCollider2D>()
+IL_0013: stfld UnityEngine.BoxCollider2D Climber::col
+IL_0018: ldarg.0
+IL_0019: ldarg.0
+IL_001a: call !!0 UnityEngine.Component::GetComponent<tk2dSpriteAnimator>()
+IL_001f: stfld tk2dSpriteAnimator Climber::anim
+IL_0024: ret
+METHOD System.Void Climber::Start()
+IL_0000: ldarg.0
+IL_0001: callvirt System.Void Climber::StickToGround()
+IL_0006: ldarg.0
+IL_0007: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_000c: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_localScale()
+IL_0011: ldfld System.Single UnityEngine.Vector3::x
+IL_0016: call System.Single UnityEngine.Mathf::Sign(System.Single)
+IL_001b: stloc.0
+IL_001c: ldarg.0
+IL_001d: ldfld System.Boolean Climber::startRight
+IL_0022: brtrue.s IL_002c
+IL_0024: ldloc.0
+IL_0025: ldc.r4 -1
+IL_002a: mul
+IL_002b: stloc.0
+IL_002c: ldarg.0
+IL_002d: ldloc.0
+IL_002e: ldc.r4 0
+IL_0033: cgt
+IL_0035: stfld System.Boolean Climber::clockwise
+IL_003a: ldarg.0
+IL_003b: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0040: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_eulerAngles()
+IL_0045: ldfld System.Single UnityEngine.Vector3::z
+IL_004a: ldc.r4 360
+IL_004f: rem
+IL_0050: stloc.2
+IL_0051: ldloc.2
+IL_0052: ldc.r4 45
+IL_0057: blt.un.s IL_0075
+IL_0059: ldloc.2
+IL_005a: ldc.r4 135
+IL_005f: bgt.un.s IL_0075
+IL_0061: ldarg.0
+IL_0062: ldarg.0
+IL_0063: ldfld System.Boolean Climber::clockwise
+IL_0068: brtrue.s IL_006d
+IL_006a: ldc.i4.1
+IL_006b: br.s IL_006e
+IL_006d: ldc.i4.3
+IL_006e: stfld Climber/Direction Climber::currentDirection
+IL_0073: br.s IL_00cf
+IL_0075: ldloc.2
+IL_0076: ldc.r4 135
+IL_007b: blt.un.s IL_0099
+IL_007d: ldloc.2
+IL_007e: ldc.r4 225
+IL_0083: bgt.un.s IL_0099
+IL_0085: ldarg.0
+IL_0086: ldarg.0
+IL_0087: ldfld System.Boolean Climber::clockwise
+IL_008c: brtrue.s IL_0091
+IL_008e: ldc.i4.0
+IL_008f: br.s IL_0092
+IL_0091: ldc.i4.2
+IL_0092: stfld Climber/Direction Climber::currentDirection
+IL_0097: br.s IL_00cf
+IL_0099: ldloc.2
+IL_009a: ldc.r4 225
+IL_009f: blt.un.s IL_00bd
+IL_00a1: ldloc.2
+IL_00a2: ldc.r4 315
+IL_00a7: bgt.un.s IL_00bd
+IL_00a9: ldarg.0
+IL_00aa: ldarg.0
+IL_00ab: ldfld System.Boolean Climber::clockwise
+IL_00b0: brtrue.s IL_00b5
+IL_00b2: ldc.i4.3
+IL_00b3: br.s IL_00b6
+IL_00b5: ldc.i4.1
+IL_00b6: stfld Climber/Direction Climber::currentDirection
+IL_00bb: br.s IL_00cf
+IL_00bd: ldarg.0
+IL_00be: ldarg.0
+IL_00bf: ldfld System.Boolean Climber::clockwise
+IL_00c4: brtrue.s IL_00c9
+IL_00c6: ldc.i4.2
+IL_00c7: br.s IL_00ca
+IL_00c9: ldc.i4.0
+IL_00ca: stfld Climber/Direction Climber::currentDirection
+IL_00cf: ldarg.0
+IL_00d0: call !!0 UnityEngine.Component::GetComponent<Recoil>()
+IL_00d5: stloc.1
+IL_00d6: ldloc.1
+IL_00d7: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_00dc: brfalse.s IL_00f7
+IL_00de: ldloc.1
+IL_00df: ldc.i4.1
+IL_00e0: callvirt System.Void Recoil::set_SkipFreezingByController(System.Boolean)
+IL_00e5: ldloc.1
+IL_00e6: ldarg.0
+IL_00e7: ldftn System.Void Climber::Stun()
+IL_00ed: newobj System.Void Recoil/FreezeEvent::.ctor(System.Object,System.IntPtr)
+IL_00f2: callvirt System.Void Recoil::add_OnHandleFreeze(Recoil/FreezeEvent)
+IL_00f7: ldarg.0
+IL_00f8: ldarg.0
+IL_00f9: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_00fe: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_0103: call UnityEngine.Vector2 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector3)
+IL_0108: stfld UnityEngine.Vector2 Climber::previousPos
+IL_010d: ldarg.0
+IL_010e: ldarg.0
+IL_010f: callvirt System.Collections.IEnumerator Climber::Walk()
+IL_0114: call UnityEngine.Coroutine UnityEngine.MonoBehaviour::StartCoroutine(System.Collections.IEnumerator)
+IL_0119: pop
+IL_011a: ret
+METHOD System.Collections.IEnumerator Climber::Walk()
+IL_0000: ldc.i4.0
+IL_0001: newobj System.Void Climber/<Walk>d__17::.ctor(System.Int32)
+IL_0006: dup
+IL_0007: ldarg.0
+IL_0008: stfld Climber Climber/<Walk>d__17::<>4__this
+IL_000d: ret
+METHOD System.Collections.IEnumerator Climber::Turn(System.Boolean,System.Boolean)
+IL_0000: ldc.i4.0
+IL_0001: newobj System.Void Climber/<Turn>d__18::.ctor(System.Int32)
+IL_0006: dup
+IL_0007: ldarg.0
+IL_0008: stfld Climber Climber/<Turn>d__18::<>4__this
+IL_000d: dup
+IL_000e: ldarg.1
+IL_000f: stfld System.Boolean Climber/<Turn>d__18::turnClockwise
+IL_0014: dup
+IL_0015: ldarg.2
+IL_0016: stfld System.Boolean Climber/<Turn>d__18::tweenPos
+IL_001b: ret
+METHOD UnityEngine.Vector2 Climber::GetVelocity(Climber/Direction)
+IL_0000: call UnityEngine.Vector2 UnityEngine.Vector2::get_zero()
+IL_0005: stloc.0
+IL_0006: ldarg.1
+IL_0007: switch IL_001e,IL_0032,IL_0047,IL_005c
+IL_001c: br.s IL_006e
+IL_001e: ldloca.s V_0
+IL_0020: ldarg.0
+IL_0021: ldfld System.Single Climber::speed
+IL_0026: ldc.r4 0
+IL_002b: call System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_0030: br.s IL_006e
+IL_0032: ldloca.s V_0
+IL_0034: ldc.r4 0
+IL_0039: ldarg.0
+IL_003a: ldfld System.Single Climber::speed
+IL_003f: neg
+IL_0040: call System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_0045: br.s IL_006e
+IL_0047: ldloca.s V_0
+IL_0049: ldarg.0
+IL_004a: ldfld System.Single Climber::speed
+IL_004f: neg
+IL_0050: ldc.r4 0
+IL_0055: call System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_005a: br.s IL_006e
+IL_005c: ldloca.s V_0
+IL_005e: ldc.r4 0
+IL_0063: ldarg.0
+IL_0064: ldfld System.Single Climber::speed
+IL_0069: call System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_006e: ldloc.0
+IL_006f: ret
+METHOD System.Boolean Climber::CheckGround()
+IL_0000: ldarg.0
+IL_0001: call UnityEngine.Vector2 UnityEngine.Vector2::get_down()
+IL_0006: ldc.r4 1
+IL_000b: callvirt UnityEngine.RaycastHit2D Climber::FireRayLocal(UnityEngine.Vector2,System.Single)
+IL_0010: stloc.0
+IL_0011: ldloca.s V_0
+IL_0013: call UnityEngine.Collider2D UnityEngine.RaycastHit2D::get_collider()
+IL_0018: ldnull
+IL_0019: call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+IL_001e: ret
+METHOD System.Boolean Climber::CheckWall()
+IL_0000: ldarg.0
+IL_0001: ldarg.0
+IL_0002: ldfld System.Boolean Climber::clockwise
+IL_0007: brtrue.s IL_0010
+IL_0009: call UnityEngine.Vector2 UnityEngine.Vector2::get_left()
+IL_000e: br.s IL_0015
+IL_0010: call UnityEngine.Vector2 UnityEngine.Vector2::get_right()
+IL_0015: ldarg.0
+IL_0016: ldfld UnityEngine.BoxCollider2D Climber::col
+IL_001b: callvirt UnityEngine.Vector2 UnityEngine.BoxCollider2D::get_size()
+IL_0020: ldfld System.Single UnityEngine.Vector2::x
+IL_0025: ldc.r4 2
+IL_002a: div
+IL_002b: ldarg.0
+IL_002c: ldfld System.Single Climber::wallRayPadding
+IL_0031: add
+IL_0032: callvirt UnityEngine.RaycastHit2D Climber::FireRayLocal(UnityEngine.Vector2,System.Single)
+IL_0037: stloc.0
+IL_0038: ldloca.s V_0
+IL_003a: call UnityEngine.Collider2D UnityEngine.RaycastHit2D::get_collider()
+IL_003f: ldnull
+IL_0040: call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+IL_0045: ret
+METHOD System.Void Climber::Stun()
+IL_0000: ldarg.0
+IL_0001: ldfld UnityEngine.Coroutine Climber::turnRoutine
+IL_0006: brtrue.s IL_001b
+IL_0008: ldarg.0
+IL_0009: call System.Void UnityEngine.MonoBehaviour::StopAllCoroutines()
+IL_000e: ldarg.0
+IL_000f: ldarg.0
+IL_0010: callvirt System.Collections.IEnumerator Climber::DoStun()
+IL_0015: call UnityEngine.Coroutine UnityEngine.MonoBehaviour::StartCoroutine(System.Collections.IEnumerator)
+IL_001a: pop
+IL_001b: ret
+METHOD System.Collections.IEnumerator Climber::DoStun()
+IL_0000: ldc.i4.0
+IL_0001: newobj System.Void Climber/<DoStun>d__23::.ctor(System.Int32)
+IL_0006: dup
+IL_0007: ldarg.0
+IL_0008: stfld Climber Climber/<DoStun>d__23::<>4__this
+IL_000d: ret
+METHOD UnityEngine.RaycastHit2D Climber::FireRayLocal(UnityEngine.Vector2,System.Single)
+IL_0000: ldarg.0
+IL_0001: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0006: ldarg.0
+IL_0007: ldfld UnityEngine.BoxCollider2D Climber::col
+IL_000c: callvirt UnityEngine.Vector2 UnityEngine.Collider2D::get_offset()
+IL_0011: call UnityEngine.Vector3 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector2)
+IL_0016: callvirt UnityEngine.Vector3 UnityEngine.Transform::TransformPoint(UnityEngine.Vector3)
+IL_001b: call UnityEngine.Vector2 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector3)
+IL_0020: ldarg.0
+IL_0021: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0026: ldarg.1
+IL_0027: call UnityEngine.Vector3 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector2)
+IL_002c: callvirt UnityEngine.Vector3 UnityEngine.Transform::TransformDirection(UnityEngine.Vector3)
+IL_0031: call UnityEngine.Vector2 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector3)
+IL_0036: stloc.0
+IL_0037: dup
+IL_0038: ldloc.0
+IL_0039: ldarg.2
+IL_003a: ldc.i4 256
+IL_003f: call UnityEngine.RaycastHit2D UnityEngine.Physics2D::Raycast(UnityEngine.Vector2,UnityEngine.Vector2,System.Single,System.Int32)
+IL_0044: stloc.1
+IL_0045: call UnityEngine.Vector3 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector2)
+IL_004a: ldloc.0
+IL_004b: call UnityEngine.Vector3 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector2)
+IL_0050: call System.Void UnityEngine.Debug::DrawRay(UnityEngine.Vector3,UnityEngine.Vector3)
+IL_0055: ldloc.1
+IL_0056: ret
+METHOD UnityEngine.Vector2 Climber::GetTweenPos(Climber/Direction)
+IL_0000: call UnityEngine.Vector2 UnityEngine.Vector2::get_zero()
+IL_0005: stloc.0
+IL_0006: ldarg.1
+IL_0007: switch IL_0021,IL_0129,IL_01af,IL_00a5
+IL_001c: br IL_0230
+IL_0021: ldarg.0
+IL_0022: ldfld System.Boolean Climber::clockwise
+IL_0027: brtrue.s IL_005d
+IL_0029: ldarg.0
+IL_002a: ldfld UnityEngine.BoxCollider2D Climber::col
+IL_002f: callvirt UnityEngine.Vector2 UnityEngine.BoxCollider2D::get_size()
+IL_0034: ldfld System.Single UnityEngine.Vector2::x
+IL_0039: ldc.r4 2
+IL_003e: div
+IL_003f: ldarg.0
+IL_0040: ldfld UnityEngine.BoxCollider2D Climber::col
+IL_0045: callvirt UnityEngine.Vector2 UnityEngine.BoxCollider2D::get_size()
+IL_004a: ldfld System.Single UnityEngine.Vector2::y
+IL_004f: ldc.r4 2
+IL_0054: div
+IL_0055: neg
+IL_0056: newobj System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_005b: br.s IL_008e
+IL_005d: ldarg.0
+IL_005e: ldfld UnityEngine.BoxCollider2D Climber::col
+IL_0063: callvirt UnityEngine.Vector2 UnityEngine.BoxCollider2D::get_size()
+IL_0068: ldfld System.Single UnityEngine.Vector2::x
+IL_006d: ldc.r4 2
+IL_0072: div
+IL_0073: ldarg.0
+IL_0074: ldfld UnityEngine.BoxCollider2D Climber::col
+IL_0079: callvirt UnityEngine.Vector2 UnityEngine.BoxCollider2D::get_size()
+IL_007e: ldfld System.Single UnityEngine.Vector2::y
+IL_0083: ldc.r4 2
+IL_0088: div
+IL_0089: newobj System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_008e: stloc.0
+IL_008f: ldloca.s V_0
+IL_0091: ldflda System.Single UnityEngine.Vector2::x
+IL_0096: dup
+IL_0097: ldind.r4
+IL_0098: ldarg.0
+IL_0099: ldfld System.Single Climber::wallRayPadding
+IL_009e: add
+IL_009f: stind.r4
+IL_00a0: br IL_0230
+IL_00a5: ldarg.0
+IL_00a6: ldfld System.Boolean Climber::clockwise
+IL_00ab: brtrue.s IL_00e0
+IL_00ad: ldarg.0
+IL_00ae: ldfld UnityEngine.BoxCollider2D Climber::col
+IL_00b3: callvirt UnityEngine.Vector2 UnityEngine.BoxCollider2D::get_size()
+IL_00b8: ldfld System.Single UnityEngine.Vector2::x
+IL_00bd: ldc.r4 2
+IL_00c2: div
+IL_00c3: ldarg.0
+IL_00c4: ldfld UnityEngine.BoxCollider2D Climber::col
+IL_00c9: callvirt UnityEngine.Vector2 UnityEngine.BoxCollider2D::get_size()
+IL_00ce: ldfld System.Single UnityEngine.Vector2::y
+IL_00d3: ldc.r4 2
+IL_00d8: div
+IL_00d9: newobj System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_00de: br.s IL_0112
+IL_00e0: ldarg.0
+IL_00e1: ldfld UnityEngine.BoxCollider2D Climber::col
+IL_00e6: callvirt UnityEngine.Vector2 UnityEngine.BoxCollider2D::get_size()
+IL_00eb: ldfld System.Single UnityEngine.Vector2::x
+IL_00f0: ldc.r4 2
+IL_00f5: div
+IL_00f6: neg
+IL_00f7: ldarg.0
+IL_00f8: ldfld UnityEngine.BoxCollider2D Climber::col
+IL_00fd: callvirt UnityEngine.Vector2 UnityEngine.BoxCollider2D::get_size()
+IL_0102: ldfld System.Single UnityEngine.Vector2::y
+IL_0107: ldc.r4 2
+IL_010c: div
+IL_010d: newobj System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_0112: stloc.0
+IL_0113: ldloca.s V_0
+IL_0115: ldflda System.Single UnityEngine.Vector2::y
+IL_011a: dup
+IL_011b: ldind.r4
+IL_011c: ldarg.0
+IL_011d: ldfld System.Single Climber::wallRayPadding
+IL_0122: add
+IL_0123: stind.r4
+IL_0124: br IL_0230
+IL_0129: ldarg.0
+IL_012a: ldfld System.Boolean Climber::clockwise
+IL_012f: brtrue.s IL_0166
+IL_0131: ldarg.0
+IL_0132: ldfld UnityEngine.BoxCollider2D Climber::col
+IL_0137: callvirt UnityEngine.Vector2 UnityEngine.BoxCollider2D::get_size()
+IL_013c: ldfld System.Single UnityEngine.Vector2::x
+IL_0141: ldc.r4 2
+IL_0146: div
+IL_0147: neg
+IL_0148: ldarg.0
+IL_0149: ldfld UnityEngine.BoxCollider2D Climber::col
+IL_014e: callvirt UnityEngine.Vector2 UnityEngine.BoxCollider2D::get_size()
+IL_0153: ldfld System.Single UnityEngine.Vector2::y
+IL_0158: ldc.r4 2
+IL_015d: div
+IL_015e: neg
+IL_015f: newobj System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_0164: br.s IL_0198
+IL_0166: ldarg.0
+IL_0167: ldfld UnityEngine.BoxCollider2D Climber::col
+IL_016c: callvirt UnityEngine.Vector2 UnityEngine.BoxCollider2D::get_size()
+IL_0171: ldfld System.Single UnityEngine.Vector2::x
+IL_0176: ldc.r4 2
+IL_017b: div
+IL_017c: ldarg.0
+IL_017d: ldfld UnityEngine.BoxCollider2D Climber::col
+IL_0182: callvirt UnityEngine.Vector2 UnityEngine.BoxCollider2D::get_size()
+IL_0187: ldfld System.Single UnityEngine.Vector2::y
+IL_018c: ldc.r4 2
+IL_0191: div
+IL_0192: neg
+IL_0193: newobj System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_0198: stloc.0
+IL_0199: ldloca.s V_0
+IL_019b: ldflda System.Single UnityEngine.Vector2::y
+IL_01a0: dup
+IL_01a1: ldind.r4
+IL_01a2: ldarg.0
+IL_01a3: ldfld System.Single Climber::wallRayPadding
+IL_01a8: sub
+IL_01a9: stind.r4
+IL_01aa: br IL_0230
+IL_01af: ldarg.0
+IL_01b0: ldfld System.Boolean Climber::clockwise
+IL_01b5: brtrue.s IL_01eb
+IL_01b7: ldarg.0
+IL_01b8: ldfld UnityEngine.BoxCollider2D Climber::col
+IL_01bd: callvirt UnityEngine.Vector2 UnityEngine.BoxCollider2D::get_size()
+IL_01c2: ldfld System.Single UnityEngine.Vector2::x
+IL_01c7: ldc.r4 2
+IL_01cc: div
+IL_01cd: neg
+IL_01ce: ldarg.0
+IL_01cf: ldfld UnityEngine.BoxCollider2D Climber::col
+IL_01d4: callvirt UnityEngine.Vector2 UnityEngine.BoxCollider2D::get_size()
+IL_01d9: ldfld System.Single UnityEngine.Vector2::y
+IL_01de: ldc.r4 2
+IL_01e3: div
+IL_01e4: newobj System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_01e9: br.s IL_021e
+IL_01eb: ldarg.0
+IL_01ec: ldfld UnityEngine.BoxCollider2D Climber::col
+IL_01f1: callvirt UnityEngine.Vector2 UnityEngine.BoxCollider2D::get_size()
+IL_01f6: ldfld System.Single UnityEngine.Vector2::x
+IL_01fb: ldc.r4 2
+IL_0200: div
+IL_0201: neg
+IL_0202: ldarg.0
+IL_0203: ldfld UnityEngine.BoxCollider2D Climber::col
+IL_0208: callvirt UnityEngine.Vector2 UnityEngine.BoxCollider2D::get_size()
+IL_020d: ldfld System.Single UnityEngine.Vector2::y
+IL_0212: ldc.r4 2
+IL_0217: div
+IL_0218: neg
+IL_0219: newobj System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_021e: stloc.0
+IL_021f: ldloca.s V_0
+IL_0221: ldflda System.Single UnityEngine.Vector2::x
+IL_0226: dup
+IL_0227: ldind.r4
+IL_0228: ldarg.0
+IL_0229: ldfld System.Single Climber::wallRayPadding
+IL_022e: sub
+IL_022f: stind.r4
+IL_0230: ldloc.0
+IL_0231: ret
+METHOD System.Void Climber::StickToGround()
+IL_0000: ldarg.0
+IL_0001: call UnityEngine.Vector2 UnityEngine.Vector2::get_down()
+IL_0006: ldc.r4 2
+IL_000b: callvirt UnityEngine.RaycastHit2D Climber::FireRayLocal(UnityEngine.Vector2,System.Single)
+IL_0010: stloc.0
+IL_0011: ldloca.s V_0
+IL_0013: call UnityEngine.Collider2D UnityEngine.RaycastHit2D::get_collider()
+IL_0018: ldnull
+IL_0019: call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+IL_001e: brfalse.s IL_0037
+IL_0020: ldarg.0
+IL_0021: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0026: ldloca.s V_0
+IL_0028: call UnityEngine.Vector2 UnityEngine.RaycastHit2D::get_point()
+IL_002d: call UnityEngine.Vector3 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector2)
+IL_0032: callvirt System.Void UnityEngine.Transform::set_position(UnityEngine.Vector3)
+IL_0037: ret
+METHOD System.Void Climber::.ctor()
+IL_0000: ldarg.0
+IL_0001: ldc.i4.1
+IL_0002: stfld System.Boolean Climber::startRight
+IL_0007: ldarg.0
+IL_0008: ldc.i4.1
+IL_0009: stfld System.Boolean Climber::clockwise
+IL_000e: ldarg.0
+IL_000f: ldc.r4 2
+IL_0014: stfld System.Single Climber::speed
+IL_0019: ldarg.0
+IL_001a: ldc.r4 0.25
+IL_001f: stfld System.Single Climber::spinTime
+IL_0024: ldarg.0
+IL_0025: ldc.r4 0.1
+IL_002a: stfld System.Single Climber::wallRayPadding
+IL_002f: ldarg.0
+IL_0030: ldc.r4 0.1
+IL_0035: ldc.r4 0.1
+IL_003a: newobj System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_003f: stfld UnityEngine.Vector2 Climber::constrain
+IL_0044: ldarg.0
+IL_0045: ldc.r4 0.25
+IL_004a: stfld System.Single Climber::minTurnDistance
+IL_004f: ldarg.0
+IL_0050: call System.Void UnityEngine.MonoBehaviour::.ctor()
+IL_0055: ret
+TYPE Crawler base=UnityEngine.MonoBehaviour
+FIELD System.Single Crawler::speed
+FIELD UnityEngine.Transform Crawler::wallCheck
+FIELD UnityEngine.Transform Crawler::groundCheck
+FIELD UnityEngine.Vector2 Crawler::velocity
+FIELD Crawler/CrawlerType Crawler::type
+FIELD UnityEngine.Rigidbody2D Crawler::body
+FIELD Recoil Crawler::recoil
+FIELD tk2dSpriteAnimator Crawler::anim
+METHOD System.Void Crawler::Awake()
+IL_0000: ldarg.0
+IL_0001: ldarg.0
+IL_0002: call !!0 UnityEngine.Component::GetComponent<UnityEngine.Rigidbody2D>()
+IL_0007: stfld UnityEngine.Rigidbody2D Crawler::body
+IL_000c: ldarg.0
+IL_000d: ldarg.0
+IL_000e: call !!0 UnityEngine.Component::GetComponent<Recoil>()
+IL_0013: stfld Recoil Crawler::recoil
+IL_0018: ldarg.0
+IL_0019: ldarg.0
+IL_001a: call !!0 UnityEngine.Component::GetComponent<tk2dSpriteAnimator>()
+IL_001f: stfld tk2dSpriteAnimator Crawler::anim
+IL_0024: ret
+METHOD System.Void Crawler::Start()
+IL_0000: ldarg.0
+IL_0001: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0006: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_eulerAngles()
+IL_000b: ldfld System.Single UnityEngine.Vector3::z
+IL_0010: stloc.0
+IL_0011: ldloc.0
+IL_0012: ldc.r4 45
+IL_0017: blt.un.s IL_005a
+IL_0019: ldloc.0
+IL_001a: ldc.r4 135
+IL_001f: bgt.un.s IL_005a
+IL_0021: ldarg.0
+IL_0022: ldc.i4.2
+IL_0023: stfld Crawler/CrawlerType Crawler::type
+IL_0028: ldarg.0
+IL_0029: ldc.r4 0
+IL_002e: ldarg.0
+IL_002f: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0034: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_localScale()
+IL_0039: ldfld System.Single UnityEngine.Vector3::x
+IL_003e: neg
+IL_003f: call System.Single UnityEngine.Mathf::Sign(System.Single)
+IL_0044: ldarg.0
+IL_0045: ldfld System.Single Crawler::speed
+IL_004a: mul
+IL_004b: newobj System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_0050: stfld UnityEngine.Vector2 Crawler::velocity
+IL_0055: br IL_014f
+IL_005a: ldloc.0
+IL_005b: ldc.r4 135
+IL_0060: blt.un.s IL_00bc
+IL_0062: ldloc.0
+IL_0063: ldc.r4 225
+IL_0068: bgt.un.s IL_00bc
+IL_006a: ldarg.0
+IL_006b: ldarg.0
+IL_006c: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0071: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_localScale()
+IL_0076: ldfld System.Single UnityEngine.Vector3::y
+IL_007b: ldc.r4 0
+IL_0080: bgt.s IL_0085
+IL_0082: ldc.i4.0
+IL_0083: br.s IL_0086
+IL_0085: ldc.i4.1
+IL_0086: stfld Crawler/CrawlerType Crawler::type
+IL_008b: ldarg.0
+IL_008c: ldarg.0
+IL_008d: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0092: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_localScale()
+IL_0097: ldfld System.Single UnityEngine.Vector3::x
+IL_009c: call System.Single UnityEngine.Mathf::Sign(System.Single)
+IL_00a1: ldarg.0
+IL_00a2: ldfld System.Single Crawler::speed
+IL_00a7: mul
+IL_00a8: ldc.r4 0
+IL_00ad: newobj System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_00b2: stfld UnityEngine.Vector2 Crawler::velocity
+IL_00b7: br IL_014f
+IL_00bc: ldloc.0
+IL_00bd: ldc.r4 225
+IL_00c2: blt.un.s IL_0101
+IL_00c4: ldloc.0
+IL_00c5: ldc.r4 315
+IL_00ca: bgt.un.s IL_0101
+IL_00cc: ldarg.0
+IL_00cd: ldc.i4.2
+IL_00ce: stfld Crawler/CrawlerType Crawler::type
+IL_00d3: ldarg.0
+IL_00d4: ldc.r4 0
+IL_00d9: ldarg.0
+IL_00da: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_00df: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_localScale()
+IL_00e4: ldfld System.Single UnityEngine.Vector3::x
+IL_00e9: call System.Single UnityEngine.Mathf::Sign(System.Single)
+IL_00ee: ldarg.0
+IL_00ef: ldfld System.Single Crawler::speed
+IL_00f4: mul
+IL_00f5: newobj System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_00fa: stfld UnityEngine.Vector2 Crawler::velocity
+IL_00ff: br.s IL_014f
+IL_0101: ldarg.0
+IL_0102: ldarg.0
+IL_0103: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0108: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_localScale()
+IL_010d: ldfld System.Single UnityEngine.Vector3::y
+IL_0112: ldc.r4 0
+IL_0117: bgt.s IL_011c
+IL_0119: ldc.i4.1
+IL_011a: br.s IL_011d
+IL_011c: ldc.i4.0
+IL_011d: stfld Crawler/CrawlerType Crawler::type
+IL_0122: ldarg.0
+IL_0123: ldarg.0
+IL_0124: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0129: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_localScale()
+IL_012e: ldfld System.Single UnityEngine.Vector3::x
+IL_0133: neg
+IL_0134: call System.Single UnityEngine.Mathf::Sign(System.Single)
+IL_0139: ldarg.0
+IL_013a: ldfld System.Single Crawler::speed
+IL_013f: mul
+IL_0140: ldc.r4 0
+IL_0145: newobj System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_014a: stfld UnityEngine.Vector2 Crawler::velocity
+IL_014f: ldarg.0
+IL_0150: ldfld Recoil Crawler::recoil
+IL_0155: ldc.r4 0
+IL_015a: callvirt System.Void Recoil::SetRecoilSpeed(System.Single)
+IL_015f: ldarg.0
+IL_0160: ldfld Recoil Crawler::recoil
+IL_0165: ldarg.0
+IL_0166: ldftn System.Void Crawler::<Start>b__10_0()
+IL_016c: newobj System.Void Recoil/CancelRecoilEvent::.ctor(System.Object,System.IntPtr)
+IL_0171: callvirt System.Void Recoil::add_OnCancelRecoil(Recoil/CancelRecoilEvent)
+IL_0176: ldarg.0
+IL_0177: ldfld Crawler/CrawlerType Crawler::type
+IL_017c: stloc.1
+IL_017d: ldloc.1
+IL_017e: brfalse.s IL_0188
+IL_0180: ldloc.1
+IL_0181: ldc.i4.1
+IL_0182: sub
+IL_0183: ldc.i4.1
+IL_0184: ble.un.s IL_01a6
+IL_0186: br.s IL_01c2
+IL_0188: ldarg.0
+IL_0189: ldfld UnityEngine.Rigidbody2D Crawler::body
+IL_018e: ldc.r4 1
+IL_0193: callvirt System.Void UnityEngine.Rigidbody2D::set_gravityScale(System.Single)
+IL_0198: ldarg.0
+IL_0199: ldfld Recoil Crawler::recoil
+IL_019e: ldc.i4.0
+IL_019f: stfld System.Boolean Recoil::freezeInPlace
+IL_01a4: br.s IL_01c2
+IL_01a6: ldarg.0
+IL_01a7: ldfld UnityEngine.Rigidbody2D Crawler::body
+IL_01ac: ldc.r4 0
+IL_01b1: callvirt System.Void UnityEngine.Rigidbody2D::set_gravityScale(System.Single)
+IL_01b6: ldarg.0
+IL_01b7: ldfld Recoil Crawler::recoil
+IL_01bc: ldc.i4.1
+IL_01bd: stfld System.Boolean Recoil::freezeInPlace
+IL_01c2: ldarg.0
+IL_01c3: ldarg.0
+IL_01c4: callvirt System.Collections.IEnumerator Crawler::Walk()
+IL_01c9: call UnityEngine.Coroutine UnityEngine.MonoBehaviour::StartCoroutine(System.Collections.IEnumerator)
+IL_01ce: pop
+IL_01cf: ret
+METHOD System.Collections.IEnumerator Crawler::Walk()
+IL_0000: ldc.i4.0
+IL_0001: newobj System.Void Crawler/<Walk>d__11::.ctor(System.Int32)
+IL_0006: dup
+IL_0007: ldarg.0
+IL_0008: stfld Crawler Crawler/<Walk>d__11::<>4__this
+IL_000d: ret
+METHOD System.Collections.IEnumerator Crawler::Turn()
+IL_0000: ldc.i4.0
+IL_0001: newobj System.Void Crawler/<Turn>d__12::.ctor(System.Int32)
+IL_0006: dup
+IL_0007: ldarg.0
+IL_0008: stfld Crawler Crawler/<Turn>d__12::<>4__this
+IL_000d: ret
+METHOD System.Boolean Crawler::CheckRayLocal(UnityEngine.Vector2,UnityEngine.Vector2,System.Single)
+IL_0000: ldarg.0
+IL_0001: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0006: ldarg.1
+IL_0007: call UnityEngine.Vector3 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector2)
+IL_000c: callvirt UnityEngine.Vector3 UnityEngine.Transform::TransformPoint(UnityEngine.Vector3)
+IL_0011: call UnityEngine.Vector2 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector3)
+IL_0016: stloc.0
+IL_0017: ldarg.0
+IL_0018: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_001d: ldarg.2
+IL_001e: call UnityEngine.Vector3 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector2)
+IL_0023: callvirt UnityEngine.Vector3 UnityEngine.Transform::TransformDirection(UnityEngine.Vector3)
+IL_0028: call UnityEngine.Vector2 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector3)
+IL_002d: stloc.1
+IL_002e: ldloc.0
+IL_002f: ldloc.1
+IL_0030: ldarg.3
+IL_0031: ldc.i4 256
+IL_0036: call UnityEngine.RaycastHit2D UnityEngine.Physics2D::Raycast(UnityEngine.Vector2,UnityEngine.Vector2,System.Single,System.Int32)
+IL_003b: stloc.2
+IL_003c: ldloc.0
+IL_003d: call UnityEngine.Vector3 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector2)
+IL_0042: ldloc.0
+IL_0043: ldloc.1
+IL_0044: ldarg.3
+IL_0045: call UnityEngine.Vector2 UnityEngine.Vector2::op_Multiply(UnityEngine.Vector2,System.Single)
+IL_004a: call UnityEngine.Vector2 UnityEngine.Vector2::op_Addition(UnityEngine.Vector2,UnityEngine.Vector2)
+IL_004f: call UnityEngine.Vector3 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector2)
+IL_0054: call System.Void UnityEngine.Debug::DrawLine(UnityEngine.Vector3,UnityEngine.Vector3)
+IL_0059: ldloca.s V_2
+IL_005b: call UnityEngine.Collider2D UnityEngine.RaycastHit2D::get_collider()
+IL_0060: ldnull
+IL_0061: call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+IL_0066: ret
+METHOD System.Void Crawler::.ctor()
+IL_0000: ldarg.0
+IL_0001: ldc.r4 2
+IL_0006: stfld System.Single Crawler::speed
+IL_000b: ldarg.0
+IL_000c: call System.Void UnityEngine.MonoBehaviour::.ctor()
+IL_0011: ret
+METHOD System.Void Crawler::<Start>b__10_0()
+IL_0000: ldarg.0
+IL_0001: ldfld UnityEngine.Rigidbody2D Crawler::body
+IL_0006: ldarg.0
+IL_0007: ldfld UnityEngine.Vector2 Crawler::velocity
+IL_000c: callvirt System.Void UnityEngine.Rigidbody2D::set_velocity(UnityEngine.Vector2)
+IL_0011: ret
+TYPE EnemyHitEffectsArmoured base=UnityEngine.MonoBehaviour
+FIELD UnityEngine.Vector3 EnemyHitEffectsArmoured::effectOrigin
+FIELD UnityEngine.AudioSource EnemyHitEffectsArmoured::audioPlayerPrefab
+FIELD AudioEvent EnemyHitEffectsArmoured::enemyDamage
+FIELD UnityEngine.GameObject EnemyHitEffectsArmoured::dustHit
+FIELD UnityEngine.GameObject EnemyHitEffectsArmoured::armourHit
+FIELD SpriteFlash EnemyHitEffectsArmoured::spriteFlash
+FIELD System.Boolean EnemyHitEffectsArmoured::didFireThisFrame
+METHOD System.Void EnemyHitEffectsArmoured::Awake()
+IL_0000: ldarg.0
+IL_0001: ldarg.0
+IL_0002: call !!0 UnityEngine.Component::GetComponent<SpriteFlash>()
+IL_0007: stfld SpriteFlash EnemyHitEffectsArmoured::spriteFlash
+IL_000c: ret
+METHOD System.Void EnemyHitEffectsArmoured::RecieveHitEffect(System.Single)
+IL_0000: ldarg.0
+IL_0001: ldfld System.Boolean EnemyHitEffectsArmoured::didFireThisFrame
+IL_0006: brfalse.s IL_0009
+IL_0008: ret
+IL_0009: ldarg.0
+IL_000a: ldflda AudioEvent EnemyHitEffectsArmoured::enemyDamage
+IL_000f: ldarg.0
+IL_0010: ldfld UnityEngine.AudioSource EnemyHitEffectsArmoured::audioPlayerPrefab
+IL_0015: ldarg.0
+IL_0016: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_001b: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_0020: call System.Void AudioEvent::SpawnAndPlayOneShot(UnityEngine.AudioSource,UnityEngine.Vector3)
+IL_0025: ldarg.0
+IL_0026: ldfld SpriteFlash EnemyHitEffectsArmoured::spriteFlash
+IL_002b: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_0030: brfalse.s IL_003d
+IL_0032: ldarg.0
+IL_0033: ldfld SpriteFlash EnemyHitEffectsArmoured::spriteFlash
+IL_0038: callvirt System.Void SpriteFlash::flashArmoured()
+IL_003d: ldarg.0
+IL_003e: ldfld UnityEngine.GameObject EnemyHitEffectsArmoured::dustHit
+IL_0043: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_0048: brtrue.s IL_004d
+IL_004a: ldnull
+IL_004b: br.s IL_006e
+IL_004d: ldarg.0
+IL_004e: ldfld UnityEngine.GameObject EnemyHitEffectsArmoured::dustHit
+IL_0053: ldarg.0
+IL_0054: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0059: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_005e: ldarg.0
+IL_005f: ldfld UnityEngine.Vector3 EnemyHitEffectsArmoured::effectOrigin
+IL_0064: call UnityEngine.Vector3 UnityEngine.Vector3::op_Addition(UnityEngine.Vector3,UnityEngine.Vector3)
+IL_0069: call UnityEngine.GameObject ObjectPoolExtensions::Spawn(UnityEngine.GameObject,UnityEngine.Vector3)
+IL_006e: stloc.0
+IL_006f: ldloc.0
+IL_0070: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_0075: brfalse.s IL_0087
+IL_0077: ldloc.0
+IL_0078: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_007d: ldc.r4 -0.01
+IL_0082: call System.Void Extensions::SetPositionZ(UnityEngine.Transform,System.Single)
+IL_0087: ldarg.1
+IL_0088: call System.Int32 DirectionUtils::GetCardinalDirection(System.Single)
+IL_008d: stloc.1
+IL_008e: ldloc.1
+IL_008f: switch IL_00a9,IL_0143,IL_00f6,IL_018a
+IL_00a4: br IL_01cf
+IL_00a9: ldloc.0
+IL_00aa: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_00af: brfalse.s IL_00d0
+IL_00b1: ldloc.0
+IL_00b2: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_00b7: ldc.r4 180
+IL_00bc: ldc.r4 90
+IL_00c1: ldc.r4 270
+IL_00c6: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL_00cb: callvirt System.Void UnityEngine.Transform::set_eulerAngles(UnityEngine.Vector3)
+IL_00d0: ldarg.0
+IL_00d1: ldfld UnityEngine.GameObject EnemyHitEffectsArmoured::armourHit
+IL_00d6: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_00db: brfalse IL_01cf
+IL_00e0: ldarg.0
+IL_00e1: ldfld UnityEngine.GameObject EnemyHitEffectsArmoured::armourHit
+IL_00e6: ldstr "ARMOUR HIT R"
+IL_00eb: ldc.i4.0
+IL_00ec: call System.Void FSMUtility::SendEventToGameObject(UnityEngine.GameObject,System.String,System.Boolean)
+IL_00f1: br IL_01cf
+IL_00f6: ldloc.0
+IL_00f7: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_00fc: brfalse.s IL_011d
+IL_00fe: ldloc.0
+IL_00ff: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_0104: ldc.r4 0
+IL_0109: ldc.r4 90
+IL_010e: ldc.r4 270
+IL_0113: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL_0118: callvirt System.Void UnityEngine.Transform::set_eulerAngles(UnityEngine.Vector3)
+IL_011d: ldarg.0
+IL_011e: ldfld UnityEngine.GameObject EnemyHitEffectsArmoured::armourHit
+IL_0123: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_0128: brfalse IL_01cf
+IL_012d: ldarg.0
+IL_012e: ldfld UnityEngine.GameObject EnemyHitEffectsArmoured::armourHit
+IL_0133: ldstr "ARMOUR HIT L"
+IL_0138: ldc.i4.0
+IL_0139: call System.Void FSMUtility::SendEventToGameObject(UnityEngine.GameObject,System.String,System.Boolean)
+IL_013e: br IL_01cf
+IL_0143: ldloc.0
+IL_0144: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_0149: brfalse.s IL_016a
+IL_014b: ldloc.0
+IL_014c: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_0151: ldc.r4 270
+IL_0156: ldc.r4 90
+IL_015b: ldc.r4 270
+IL_0160: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL_0165: callvirt System.Void UnityEngine.Transform::set_eulerAngles(UnityEngine.Vector3)
+IL_016a: ldarg.0
+IL_016b: ldfld UnityEngine.GameObject EnemyHitEffectsArmoured::armourHit
+IL_0170: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_0175: brfalse.s IL_01cf
+IL_0177: ldarg.0
+IL_0178: ldfld UnityEngine.GameObject EnemyHitEffectsArmoured::armourHit
+IL_017d: ldstr "ARMOUR HIT U"
+IL_0182: ldc.i4.0
+IL_0183: call System.Void FSMUtility::SendEventToGameObject(UnityEngine.GameObject,System.String,System.Boolean)
+IL_0188: br.s IL_01cf
+IL_018a: ldloc.0
+IL_018b: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_0190: brfalse.s IL_01b1
+IL_0192: ldloc.0
+IL_0193: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_0198: ldc.r4 -72.5
+IL_019d: ldc.r4 -180
+IL_01a2: ldc.r4 -180
+IL_01a7: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL_01ac: callvirt System.Void UnityEngine.Transform::set_eulerAngles(UnityEngine.Vector3)
+IL_01b1: ldarg.0
+IL_01b2: ldfld UnityEngine.GameObject EnemyHitEffectsArmoured::armourHit
+IL_01b7: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_01bc: brfalse.s IL_01cf
+IL_01be: ldarg.0
+IL_01bf: ldfld UnityEngine.GameObject EnemyHitEffectsArmoured::armourHit
+IL_01c4: ldstr "ARMOUR HIT D"
+IL_01c9: ldc.i4.0
+IL_01ca: call System.Void FSMUtility::SendEventToGameObject(UnityEngine.GameObject,System.String,System.Boolean)
+IL_01cf: ldarg.0
+IL_01d0: ldc.i4.1
+IL_01d1: stfld System.Boolean EnemyHitEffectsArmoured::didFireThisFrame
+IL_01d6: ret
+METHOD System.Void EnemyHitEffectsArmoured::Update()
+IL_0000: ldarg.0
+IL_0001: ldc.i4.0
+IL_0002: stfld System.Boolean EnemyHitEffectsArmoured::didFireThisFrame
+IL_0007: ret
+METHOD System.Void EnemyHitEffectsArmoured::.ctor()
+IL_0000: ldarg.0
+IL_0001: call System.Void UnityEngine.MonoBehaviour::.ctor()
+IL_0006: ret
+TYPE EnemyHitEffectsBlackKnight base=UnityEngine.MonoBehaviour
+FIELD UnityEngine.Vector3 EnemyHitEffectsBlackKnight::effectOrigin
+FIELD UnityEngine.AudioSource EnemyHitEffectsBlackKnight::audioPlayerPrefab
+FIELD AudioEvent EnemyHitEffectsBlackKnight::enemyDamage
+FIELD UnityEngine.GameObject EnemyHitEffectsBlackKnight::hitFlashOrange
+FIELD UnityEngine.GameObject EnemyHitEffectsBlackKnight::hitPuffLarge
+FIELD SpriteFlash EnemyHitEffectsBlackKnight::spriteFlash
+FIELD System.Boolean EnemyHitEffectsBlackKnight::didFireThisFrame
+METHOD System.Void EnemyHitEffectsBlackKnight::Awake()
+IL_0000: ldarg.0
+IL_0001: ldarg.0
+IL_0002: call !!0 UnityEngine.Component::GetComponent<SpriteFlash>()
+IL_0007: stfld SpriteFlash EnemyHitEffectsBlackKnight::spriteFlash
+IL_000c: ret
+METHOD System.Void EnemyHitEffectsBlackKnight::RecieveHitEffect(System.Single)
+IL_0000: ldarg.0
+IL_0001: ldfld System.Boolean EnemyHitEffectsBlackKnight::didFireThisFrame
+IL_0006: brfalse.s IL_0009
+IL_0008: ret
+IL_0009: ldarg.0
+IL_000a: call UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+IL_000f: ldstr "DAMAGE FLASH"
+IL_0014: ldc.i4.1
+IL_0015: call System.Void FSMUtility::SendEventToGameObject(UnityEngine.GameObject,System.String,System.Boolean)
+IL_001a: ldarg.0
+IL_001b: ldflda AudioEvent EnemyHitEffectsBlackKnight::enemyDamage
+IL_0020: ldarg.0
+IL_0021: ldfld UnityEngine.AudioSource EnemyHitEffectsBlackKnight::audioPlayerPrefab
+IL_0026: ldarg.0
+IL_0027: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_002c: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_0031: call System.Void AudioEvent::SpawnAndPlayOneShot(UnityEngine.AudioSource,UnityEngine.Vector3)
+IL_0036: ldarg.0
+IL_0037: ldfld SpriteFlash EnemyHitEffectsBlackKnight::spriteFlash
+IL_003c: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_0041: brfalse.s IL_004e
+IL_0043: ldarg.0
+IL_0044: ldfld SpriteFlash EnemyHitEffectsBlackKnight::spriteFlash
+IL_0049: callvirt System.Void SpriteFlash::flashInfected()
+IL_004e: ldarg.0
+IL_004f: ldfld UnityEngine.GameObject EnemyHitEffectsBlackKnight::hitFlashOrange
+IL_0054: ldarg.0
+IL_0055: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_005a: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_005f: ldarg.0
+IL_0060: ldfld UnityEngine.Vector3 EnemyHitEffectsBlackKnight::effectOrigin
+IL_0065: call UnityEngine.Vector3 UnityEngine.Vector3::op_Addition(UnityEngine.Vector3,UnityEngine.Vector3)
+IL_006a: call UnityEngine.GameObject ObjectPoolExtensions::Spawn(UnityEngine.GameObject,UnityEngine.Vector3)
+IL_006f: pop
+IL_0070: ldarg.0
+IL_0071: ldfld UnityEngine.GameObject EnemyHitEffectsBlackKnight::hitPuffLarge
+IL_0076: ldarg.0
+IL_0077: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_007c: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_0081: ldarg.0
+IL_0082: ldfld UnityEngine.Vector3 EnemyHitEffectsBlackKnight::effectOrigin
+IL_0087: call UnityEngine.Vector3 UnityEngine.Vector3::op_Addition(UnityEngine.Vector3,UnityEngine.Vector3)
+IL_008c: call UnityEngine.GameObject ObjectPoolExtensions::Spawn(UnityEngine.GameObject,UnityEngine.Vector3)
+IL_0091: stloc.0
+IL_0092: ldarg.1
+IL_0093: call System.Int32 DirectionUtils::GetCardinalDirection(System.Single)
+IL_0098: stloc.1
+IL_0099: ldloc.1
+IL_009a: switch IL_00b4,IL_00f6,IL_00d5,IL_0117
+IL_00af: br IL_0136
+IL_00b4: ldloc.0
+IL_00b5: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_00ba: ldc.r4 0
+IL_00bf: ldc.r4 90
+IL_00c4: ldc.r4 270
+IL_00c9: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL_00ce: callvirt System.Void UnityEngine.Transform::set_eulerAngles(UnityEngine.Vector3)
+IL_00d3: br.s IL_0136
+IL_00d5: ldloc.0
+IL_00d6: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_00db: ldc.r4 180
+IL_00e0: ldc.r4 90
+IL_00e5: ldc.r4 270
+IL_00ea: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL_00ef: callvirt System.Void UnityEngine.Transform::set_eulerAngles(UnityEngine.Vector3)
+IL_00f4: br.s IL_0136
+IL_00f6: ldloc.0
+IL_00f7: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_00fc: ldc.r4 270
+IL_0101: ldc.r4 90
+IL_0106: ldc.r4 270
+IL_010b: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL_0110: callvirt System.Void UnityEngine.Transform::set_eulerAngles(UnityEngine.Vector3)
+IL_0115: br.s IL_0136
+IL_0117: ldloc.0
+IL_0118: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_011d: ldc.r4 -72.5
+IL_0122: ldc.r4 -180
+IL_0127: ldc.r4 -180
+IL_012c: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL_0131: callvirt System.Void UnityEngine.Transform::set_eulerAngles(UnityEngine.Vector3)
+IL_0136: ldarg.0
+IL_0137: ldc.i4.1
+IL_0138: stfld System.Boolean EnemyHitEffectsBlackKnight::didFireThisFrame
+IL_013d: ret
+METHOD System.Void EnemyHitEffectsBlackKnight::Update()
+IL_0000: ldarg.0
+IL_0001: ldc.i4.0
+IL_0002: stfld System.Boolean EnemyHitEffectsBlackKnight::didFireThisFrame
+IL_0007: ret
+METHOD System.Void EnemyHitEffectsBlackKnight::.ctor()
+IL_0000: ldarg.0
+IL_0001: call System.Void UnityEngine.MonoBehaviour::.ctor()
+IL_0006: ret
+TYPE EnemyHitEffectsGhost base=UnityEngine.MonoBehaviour
+FIELD UnityEngine.Vector3 EnemyHitEffectsGhost::effectOrigin
+FIELD UnityEngine.AudioSource EnemyHitEffectsGhost::audioPlayerPrefab
+FIELD AudioEvent EnemyHitEffectsGhost::enemyDamage
+FIELD UnityEngine.GameObject EnemyHitEffectsGhost::ghostHitPt
+FIELD UnityEngine.GameObject EnemyHitEffectsGhost::slashEffectGhost1
+FIELD UnityEngine.GameObject EnemyHitEffectsGhost::slashEffectGhost2
+FIELD SpriteFlash EnemyHitEffectsGhost::spriteFlash
+FIELD System.Boolean EnemyHitEffectsGhost::didFireThisFrame
+METHOD System.Void EnemyHitEffectsGhost::Awake()
+IL_0000: ldarg.0
+IL_0001: ldarg.0
+IL_0002: call !!0 UnityEngine.Component::GetComponent<SpriteFlash>()
+IL_0007: stfld SpriteFlash EnemyHitEffectsGhost::spriteFlash
+IL_000c: ret
+METHOD System.Void EnemyHitEffectsGhost::RecieveHitEffect(System.Single)
+IL_0000: ldarg.0
+IL_0001: ldfld System.Boolean EnemyHitEffectsGhost::didFireThisFrame
+IL_0006: brfalse.s IL_0009
+IL_0008: ret
+IL_0009: ldarg.0
+IL_000a: call UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+IL_000f: ldstr "DAMAGE FLASH"
+IL_0014: ldc.i4.1
+IL_0015: call System.Void FSMUtility::SendEventToGameObject(UnityEngine.GameObject,System.String,System.Boolean)
+IL_001a: ldarg.0
+IL_001b: ldflda AudioEvent EnemyHitEffectsGhost::enemyDamage
+IL_0020: ldarg.0
+IL_0021: ldfld UnityEngine.AudioSource EnemyHitEffectsGhost::audioPlayerPrefab
+IL_0026: ldarg.0
+IL_0027: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_002c: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_0031: call System.Void AudioEvent::SpawnAndPlayOneShot(UnityEngine.AudioSource,UnityEngine.Vector3)
+IL_0036: ldarg.0
+IL_0037: ldfld SpriteFlash EnemyHitEffectsGhost::spriteFlash
+IL_003c: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_0041: brfalse.s IL_004e
+IL_0043: ldarg.0
+IL_0044: ldfld SpriteFlash EnemyHitEffectsGhost::spriteFlash
+IL_0049: callvirt System.Void SpriteFlash::flashFocusHeal()
+IL_004e: ldarg.0
+IL_004f: ldfld UnityEngine.GameObject EnemyHitEffectsGhost::ghostHitPt
+IL_0054: ldarg.0
+IL_0055: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_005a: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_005f: ldarg.0
+IL_0060: ldfld UnityEngine.Vector3 EnemyHitEffectsGhost::effectOrigin
+IL_0065: call UnityEngine.Vector3 UnityEngine.Vector3::op_Addition(UnityEngine.Vector3,UnityEngine.Vector3)
+IL_006a: call UnityEngine.GameObject ObjectPoolExtensions::Spawn(UnityEngine.GameObject,UnityEngine.Vector3)
+IL_006f: stloc.0
+IL_0070: ldarg.1
+IL_0071: call System.Int32 DirectionUtils::GetCardinalDirection(System.Single)
+IL_0076: stloc.1
+IL_0077: ldloc.1
+IL_0078: switch IL_0092,IL_02bc,IL_01a7,IL_03d1
+IL_008d: br IL_04e1
+IL_0092: ldloc.0
+IL_0093: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_0098: ldc.r4 -22.5
+IL_009d: call System.Void Extensions::SetRotation2D(UnityEngine.Transform,System.Single)
+IL_00a2: ldloca.s V_2
+IL_00a4: initobj FlingUtils/Config
+IL_00aa: ldloca.s V_2
+IL_00ac: ldarg.0
+IL_00ad: ldfld UnityEngine.GameObject EnemyHitEffectsGhost::slashEffectGhost1
+IL_00b2: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_00b7: ldloca.s V_2
+IL_00b9: ldc.i4.2
+IL_00ba: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_00bf: ldloca.s V_2
+IL_00c1: ldc.i4.3
+IL_00c2: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_00c7: ldloca.s V_2
+IL_00c9: ldc.r4 20
+IL_00ce: stfld System.Single FlingUtils/Config::SpeedMin
+IL_00d3: ldloca.s V_2
+IL_00d5: ldc.r4 35
+IL_00da: stfld System.Single FlingUtils/Config::SpeedMax
+IL_00df: ldloca.s V_2
+IL_00e1: ldc.r4 -40
+IL_00e6: stfld System.Single FlingUtils/Config::AngleMin
+IL_00eb: ldloca.s V_2
+IL_00ed: ldc.r4 40
+IL_00f2: stfld System.Single FlingUtils/Config::AngleMax
+IL_00f7: ldloca.s V_2
+IL_00f9: ldc.r4 0
+IL_00fe: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_0103: ldloca.s V_2
+IL_0105: ldc.r4 0
+IL_010a: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_010f: ldloc.2
+IL_0110: ldarg.0
+IL_0111: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0116: ldarg.0
+IL_0117: ldfld UnityEngine.Vector3 EnemyHitEffectsGhost::effectOrigin
+IL_011c: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_0121: pop
+IL_0122: ldloca.s V_2
+IL_0124: initobj FlingUtils/Config
+IL_012a: ldloca.s V_2
+IL_012c: ldarg.0
+IL_012d: ldfld UnityEngine.GameObject EnemyHitEffectsGhost::slashEffectGhost2
+IL_0132: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_0137: ldloca.s V_2
+IL_0139: ldc.i4.2
+IL_013a: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_013f: ldloca.s V_2
+IL_0141: ldc.i4.3
+IL_0142: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_0147: ldloca.s V_2
+IL_0149: ldc.r4 20
+IL_014e: stfld System.Single FlingUtils/Config::SpeedMin
+IL_0153: ldloca.s V_2
+IL_0155: ldc.r4 35
+IL_015a: stfld System.Single FlingUtils/Config::SpeedMax
+IL_015f: ldloca.s V_2
+IL_0161: ldc.r4 -40
+IL_0166: stfld System.Single FlingUtils/Config::AngleMin
+IL_016b: ldloca.s V_2
+IL_016d: ldc.r4 40
+IL_0172: stfld System.Single FlingUtils/Config::AngleMax
+IL_0177: ldloca.s V_2
+IL_0179: ldc.r4 0
+IL_017e: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_0183: ldloca.s V_2
+IL_0185: ldc.r4 0
+IL_018a: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_018f: ldloc.2
+IL_0190: ldarg.0
+IL_0191: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0196: ldarg.0
+IL_0197: ldfld UnityEngine.Vector3 EnemyHitEffectsGhost::effectOrigin
+IL_019c: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_01a1: pop
+IL_01a2: br IL_04e1
+IL_01a7: ldloc.0
+IL_01a8: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_01ad: ldc.r4 160
+IL_01b2: call System.Void Extensions::SetRotation2D(UnityEngine.Transform,System.Single)
+IL_01b7: ldloca.s V_2
+IL_01b9: initobj FlingUtils/Config
+IL_01bf: ldloca.s V_2
+IL_01c1: ldarg.0
+IL_01c2: ldfld UnityEngine.GameObject EnemyHitEffectsGhost::slashEffectGhost1
+IL_01c7: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_01cc: ldloca.s V_2
+IL_01ce: ldc.i4.2
+IL_01cf: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_01d4: ldloca.s V_2
+IL_01d6: ldc.i4.3
+IL_01d7: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_01dc: ldloca.s V_2
+IL_01de: ldc.r4 20
+IL_01e3: stfld System.Single FlingUtils/Config::SpeedMin
+IL_01e8: ldloca.s V_2
+IL_01ea: ldc.r4 35
+IL_01ef: stfld System.Single FlingUtils/Config::SpeedMax
+IL_01f4: ldloca.s V_2
+IL_01f6: ldc.r4 140
+IL_01fb: stfld System.Single FlingUtils/Config::AngleMin
+IL_0200: ldloca.s V_2
+IL_0202: ldc.r4 220
+IL_0207: stfld System.Single FlingUtils/Config::AngleMax
+IL_020c: ldloca.s V_2
+IL_020e: ldc.r4 0
+IL_0213: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_0218: ldloca.s V_2
+IL_021a: ldc.r4 0
+IL_021f: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_0224: ldloc.2
+IL_0225: ldarg.0
+IL_0226: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_022b: ldarg.0
+IL_022c: ldfld UnityEngine.Vector3 EnemyHitEffectsGhost::effectOrigin
+IL_0231: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_0236: pop
+IL_0237: ldloca.s V_2
+IL_0239: initobj FlingUtils/Config
+IL_023f: ldloca.s V_2
+IL_0241: ldarg.0
+IL_0242: ldfld UnityEngine.GameObject EnemyHitEffectsGhost::slashEffectGhost2
+IL_0247: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_024c: ldloca.s V_2
+IL_024e: ldc.i4.2
+IL_024f: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_0254: ldloca.s V_2
+IL_0256: ldc.i4.3
+IL_0257: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_025c: ldloca.s V_2
+IL_025e: ldc.r4 20
+IL_0263: stfld System.Single FlingUtils/Config::SpeedMin
+IL_0268: ldloca.s V_2
+IL_026a: ldc.r4 35
+IL_026f: stfld System.Single FlingUtils/Config::SpeedMax
+IL_0274: ldloca.s V_2
+IL_0276: ldc.r4 140
+IL_027b: stfld System.Single FlingUtils/Config::AngleMin
+IL_0280: ldloca.s V_2
+IL_0282: ldc.r4 220
+IL_0287: stfld System.Single FlingUtils/Config::AngleMax
+IL_028c: ldloca.s V_2
+IL_028e: ldc.r4 0
+IL_0293: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_0298: ldloca.s V_2
+IL_029a: ldc.r4 0
+IL_029f: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_02a4: ldloc.2
+IL_02a5: ldarg.0
+IL_02a6: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_02ab: ldarg.0
+IL_02ac: ldfld UnityEngine.Vector3 EnemyHitEffectsGhost::effectOrigin
+IL_02b1: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_02b6: pop
+IL_02b7: br IL_04e1
+IL_02bc: ldloc.0
+IL_02bd: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_02c2: ldc.r4 70
+IL_02c7: call System.Void Extensions::SetRotation2D(UnityEngine.Transform,System.Single)
+IL_02cc: ldloca.s V_2
+IL_02ce: initobj FlingUtils/Config
+IL_02d4: ldloca.s V_2
+IL_02d6: ldarg.0
+IL_02d7: ldfld UnityEngine.GameObject EnemyHitEffectsGhost::slashEffectGhost1
+IL_02dc: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_02e1: ldloca.s V_2
+IL_02e3: ldc.i4.2
+IL_02e4: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_02e9: ldloca.s V_2
+IL_02eb: ldc.i4.3
+IL_02ec: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_02f1: ldloca.s V_2
+IL_02f3: ldc.r4 20
+IL_02f8: stfld System.Single FlingUtils/Config::SpeedMin
+IL_02fd: ldloca.s V_2
+IL_02ff: ldc.r4 35
+IL_0304: stfld System.Single FlingUtils/Config::SpeedMax
+IL_0309: ldloca.s V_2
+IL_030b: ldc.r4 50
+IL_0310: stfld System.Single FlingUtils/Config::AngleMin
+IL_0315: ldloca.s V_2
+IL_0317: ldc.r4 130
+IL_031c: stfld System.Single FlingUtils/Config::AngleMax
+IL_0321: ldloca.s V_2
+IL_0323: ldc.r4 0
+IL_0328: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_032d: ldloca.s V_2
+IL_032f: ldc.r4 0
+IL_0334: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_0339: ldloc.2
+IL_033a: ldarg.0
+IL_033b: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0340: ldarg.0
+IL_0341: ldfld UnityEngine.Vector3 EnemyHitEffectsGhost::effectOrigin
+IL_0346: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_034b: pop
+IL_034c: ldloca.s V_2
+IL_034e: initobj FlingUtils/Config
+IL_0354: ldloca.s V_2
+IL_0356: ldarg.0
+IL_0357: ldfld UnityEngine.GameObject EnemyHitEffectsGhost::slashEffectGhost2
+IL_035c: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_0361: ldloca.s V_2
+IL_0363: ldc.i4.2
+IL_0364: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_0369: ldloca.s V_2
+IL_036b: ldc.i4.3
+IL_036c: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_0371: ldloca.s V_2
+IL_0373: ldc.r4 20
+IL_0378: stfld System.Single FlingUtils/Config::SpeedMin
+IL_037d: ldloca.s V_2
+IL_037f: ldc.r4 35
+IL_0384: stfld System.Single FlingUtils/Config::SpeedMax
+IL_0389: ldloca.s V_2
+IL_038b: ldc.r4 50
+IL_0390: stfld System.Single FlingUtils/Config::AngleMin
+IL_0395: ldloca.s V_2
+IL_0397: ldc.r4 130
+IL_039c: stfld System.Single FlingUtils/Config::AngleMax
+IL_03a1: ldloca.s V_2
+IL_03a3: ldc.r4 0
+IL_03a8: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_03ad: ldloca.s V_2
+IL_03af: ldc.r4 0
+IL_03b4: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_03b9: ldloc.2
+IL_03ba: ldarg.0
+IL_03bb: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_03c0: ldarg.0
+IL_03c1: ldfld UnityEngine.Vector3 EnemyHitEffectsGhost::effectOrigin
+IL_03c6: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_03cb: pop
+IL_03cc: br IL_04e1
+IL_03d1: ldloc.0
+IL_03d2: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_03d7: ldc.r4 -110
+IL_03dc: call System.Void Extensions::SetRotation2D(UnityEngine.Transform,System.Single)
+IL_03e1: ldloca.s V_2
+IL_03e3: initobj FlingUtils/Config
+IL_03e9: ldloca.s V_2
+IL_03eb: ldarg.0
+IL_03ec: ldfld UnityEngine.GameObject EnemyHitEffectsGhost::slashEffectGhost1
+IL_03f1: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_03f6: ldloca.s V_2
+IL_03f8: ldc.i4.2
+IL_03f9: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_03fe: ldloca.s V_2
+IL_0400: ldc.i4.3
+IL_0401: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_0406: ldloca.s V_2
+IL_0408: ldc.r4 20
+IL_040d: stfld System.Single FlingUtils/Config::SpeedMin
+IL_0412: ldloca.s V_2
+IL_0414: ldc.r4 35
+IL_0419: stfld System.Single FlingUtils/Config::SpeedMax
+IL_041e: ldloca.s V_2
+IL_0420: ldc.r4 230
+IL_0425: stfld System.Single FlingUtils/Config::AngleMin
+IL_042a: ldloca.s V_2
+IL_042c: ldc.r4 310
+IL_0431: stfld System.Single FlingUtils/Config::AngleMax
+IL_0436: ldloca.s V_2
+IL_0438: ldc.r4 0
+IL_043d: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_0442: ldloca.s V_2
+IL_0444: ldc.r4 0
+IL_0449: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_044e: ldloc.2
+IL_044f: ldarg.0
+IL_0450: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0455: ldarg.0
+IL_0456: ldfld UnityEngine.Vector3 EnemyHitEffectsGhost::effectOrigin
+IL_045b: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_0460: pop
+IL_0461: ldloca.s V_2
+IL_0463: initobj FlingUtils/Config
+IL_0469: ldloca.s V_2
+IL_046b: ldarg.0
+IL_046c: ldfld UnityEngine.GameObject EnemyHitEffectsGhost::slashEffectGhost2
+IL_0471: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_0476: ldloca.s V_2
+IL_0478: ldc.i4.2
+IL_0479: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_047e: ldloca.s V_2
+IL_0480: ldc.i4.3
+IL_0481: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_0486: ldloca.s V_2
+IL_0488: ldc.r4 20
+IL_048d: stfld System.Single FlingUtils/Config::SpeedMin
+IL_0492: ldloca.s V_2
+IL_0494: ldc.r4 35
+IL_0499: stfld System.Single FlingUtils/Config::SpeedMax
+IL_049e: ldloca.s V_2
+IL_04a0: ldc.r4 230
+IL_04a5: stfld System.Single FlingUtils/Config::AngleMin
+IL_04aa: ldloca.s V_2
+IL_04ac: ldc.r4 310
+IL_04b1: stfld System.Single FlingUtils/Config::AngleMax
+IL_04b6: ldloca.s V_2
+IL_04b8: ldc.r4 0
+IL_04bd: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_04c2: ldloca.s V_2
+IL_04c4: ldc.r4 0
+IL_04c9: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_04ce: ldloc.2
+IL_04cf: ldarg.0
+IL_04d0: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_04d5: ldarg.0
+IL_04d6: ldfld UnityEngine.Vector3 EnemyHitEffectsGhost::effectOrigin
+IL_04db: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_04e0: pop
+IL_04e1: ldarg.0
+IL_04e2: ldc.i4.1
+IL_04e3: stfld System.Boolean EnemyHitEffectsGhost::didFireThisFrame
+IL_04e8: ret
+METHOD System.Void EnemyHitEffectsGhost::Update()
+IL_0000: ldarg.0
+IL_0001: ldc.i4.0
+IL_0002: stfld System.Boolean EnemyHitEffectsGhost::didFireThisFrame
+IL_0007: ret
+METHOD System.Void EnemyHitEffectsGhost::.ctor()
+IL_0000: ldarg.0
+IL_0001: call System.Void UnityEngine.MonoBehaviour::.ctor()
+IL_0006: ret
+TYPE EnemyHitEffectsShade base=UnityEngine.MonoBehaviour
+FIELD UnityEngine.Vector3 EnemyHitEffectsShade::effectOrigin
+FIELD UnityEngine.AudioSource EnemyHitEffectsShade::audioPlayerPrefab
+FIELD AudioEvent EnemyHitEffectsShade::hollowShadeStartled
+FIELD AudioEvent EnemyHitEffectsShade::heroDamage
+FIELD UnityEngine.GameObject EnemyHitEffectsShade::hitFlashBlack
+FIELD UnityEngine.GameObject EnemyHitEffectsShade::hitShade
+FIELD UnityEngine.GameObject EnemyHitEffectsShade::slashEffectGhostDark1
+FIELD UnityEngine.GameObject EnemyHitEffectsShade::slashEffectGhostDark2
+FIELD UnityEngine.GameObject EnemyHitEffectsShade::slashEffectShade
+FIELD tk2dSprite EnemyHitEffectsShade::sprite
+FIELD System.Boolean EnemyHitEffectsShade::didFireThisFrame
+METHOD System.Void EnemyHitEffectsShade::Awake()
+IL_0000: ldarg.0
+IL_0001: ldarg.0
+IL_0002: call !!0 UnityEngine.Component::GetComponent<tk2dSprite>()
+IL_0007: stfld tk2dSprite EnemyHitEffectsShade::sprite
+IL_000c: ret
+METHOD System.Void EnemyHitEffectsShade::RecieveHitEffect(System.Single)
+IL_0000: ldarg.0
+IL_0001: ldfld System.Boolean EnemyHitEffectsShade::didFireThisFrame
+IL_0006: brfalse.s IL_0009
+IL_0008: ret
+IL_0009: ldarg.0
+IL_000a: call UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+IL_000f: ldstr "DAMAGE FLASH"
+IL_0014: ldc.i4.1
+IL_0015: call System.Void FSMUtility::SendEventToGameObject(UnityEngine.GameObject,System.String,System.Boolean)
+IL_001a: ldarg.0
+IL_001b: ldflda AudioEvent EnemyHitEffectsShade::hollowShadeStartled
+IL_0020: ldarg.0
+IL_0021: ldfld UnityEngine.AudioSource EnemyHitEffectsShade::audioPlayerPrefab
+IL_0026: ldarg.0
+IL_0027: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_002c: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_0031: call System.Void AudioEvent::SpawnAndPlayOneShot(UnityEngine.AudioSource,UnityEngine.Vector3)
+IL_0036: ldarg.0
+IL_0037: ldflda AudioEvent EnemyHitEffectsShade::heroDamage
+IL_003c: ldarg.0
+IL_003d: ldfld UnityEngine.AudioSource EnemyHitEffectsShade::audioPlayerPrefab
+IL_0042: ldarg.0
+IL_0043: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0048: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_004d: call System.Void AudioEvent::SpawnAndPlayOneShot(UnityEngine.AudioSource,UnityEngine.Vector3)
+IL_0052: ldarg.0
+IL_0053: ldfld tk2dSprite EnemyHitEffectsShade::sprite
+IL_0058: call UnityEngine.Color UnityEngine.Color::get_black()
+IL_005d: callvirt System.Void tk2dBaseSprite::set_color(UnityEngine.Color)
+IL_0062: ldarg.0
+IL_0063: ldstr "ColorReturnNeutral"
+IL_0068: call System.Void UnityEngine.Component::SendMessage(System.String)
+IL_006d: ldarg.0
+IL_006e: ldfld UnityEngine.GameObject EnemyHitEffectsShade::hitFlashBlack
+IL_0073: ldarg.0
+IL_0074: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0079: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_007e: ldarg.0
+IL_007f: ldfld UnityEngine.Vector3 EnemyHitEffectsShade::effectOrigin
+IL_0084: call UnityEngine.Vector3 UnityEngine.Vector3::op_Addition(UnityEngine.Vector3,UnityEngine.Vector3)
+IL_0089: call UnityEngine.GameObject ObjectPoolExtensions::Spawn(UnityEngine.GameObject,UnityEngine.Vector3)
+IL_008e: pop
+IL_008f: ldarg.0
+IL_0090: ldfld UnityEngine.GameObject EnemyHitEffectsShade::hitShade
+IL_0095: ldarg.0
+IL_0096: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_009b: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_00a0: ldarg.0
+IL_00a1: ldfld UnityEngine.Vector3 EnemyHitEffectsShade::effectOrigin
+IL_00a6: call UnityEngine.Vector3 UnityEngine.Vector3::op_Addition(UnityEngine.Vector3,UnityEngine.Vector3)
+IL_00ab: call UnityEngine.GameObject ObjectPoolExtensions::Spawn(UnityEngine.GameObject,UnityEngine.Vector3)
+IL_00b0: stloc.0
+IL_00b1: ldc.r4 1
+IL_00b6: stloc.1
+IL_00b7: ldc.r4 1
+IL_00bc: stloc.2
+IL_00bd: ldc.r4 0
+IL_00c2: stloc.3
+IL_00c3: ldc.r4 360
+IL_00c8: stloc.s V_4
+IL_00ca: ldarg.1
+IL_00cb: call System.Int32 DirectionUtils::GetCardinalDirection(System.Single)
+IL_00d0: stloc.s V_5
+IL_00d2: ldloc.s V_5
+IL_00d4: switch IL_022d,IL_036c,IL_00ee,IL_04ab
+IL_00e9: br IL_05e5
+IL_00ee: ldloc.0
+IL_00ef: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_00f4: ldc.r4 0
+IL_00f9: ldc.r4 -90
+IL_00fe: ldc.r4 0
+IL_0103: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL_0108: callvirt System.Void UnityEngine.Transform::set_eulerAngles(UnityEngine.Vector3)
+IL_010d: ldc.r4 -1
+IL_0112: stloc.1
+IL_0113: ldc.r4 -1.75
+IL_0118: stloc.2
+IL_0119: ldc.r4 -30
+IL_011e: stloc.3
+IL_011f: ldc.r4 30
+IL_0124: stloc.s V_4
+IL_0126: ldloca.s V_6
+IL_0128: initobj FlingUtils/Config
+IL_012e: ldloca.s V_6
+IL_0130: ldarg.0
+IL_0131: ldfld UnityEngine.GameObject EnemyHitEffectsShade::slashEffectGhostDark1
+IL_0136: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_013b: ldloca.s V_6
+IL_013d: ldc.i4.2
+IL_013e: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_0143: ldloca.s V_6
+IL_0145: ldc.i4.3
+IL_0146: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_014b: ldloca.s V_6
+IL_014d: ldc.r4 20
+IL_0152: stfld System.Single FlingUtils/Config::SpeedMin
+IL_0157: ldloca.s V_6
+IL_0159: ldc.r4 35
+IL_015e: stfld System.Single FlingUtils/Config::SpeedMax
+IL_0163: ldloca.s V_6
+IL_0165: ldc.r4 140
+IL_016a: stfld System.Single FlingUtils/Config::AngleMin
+IL_016f: ldloca.s V_6
+IL_0171: ldc.r4 220
+IL_0176: stfld System.Single FlingUtils/Config::AngleMax
+IL_017b: ldloca.s V_6
+IL_017d: ldc.r4 0
+IL_0182: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_0187: ldloca.s V_6
+IL_0189: ldc.r4 0
+IL_018e: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_0193: ldloc.s V_6
+IL_0195: ldarg.0
+IL_0196: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_019b: ldarg.0
+IL_019c: ldfld UnityEngine.Vector3 EnemyHitEffectsShade::effectOrigin
+IL_01a1: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_01a6: pop
+IL_01a7: ldloca.s V_6
+IL_01a9: initobj FlingUtils/Config
+IL_01af: ldloca.s V_6
+IL_01b1: ldarg.0
+IL_01b2: ldfld UnityEngine.GameObject EnemyHitEffectsShade::slashEffectGhostDark2
+IL_01b7: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_01bc: ldloca.s V_6
+IL_01be: ldc.i4.2
+IL_01bf: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_01c4: ldloca.s V_6
+IL_01c6: ldc.i4.3
+IL_01c7: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_01cc: ldloca.s V_6
+IL_01ce: ldc.r4 20
+IL_01d3: stfld System.Single FlingUtils/Config::SpeedMin
+IL_01d8: ldloca.s V_6
+IL_01da: ldc.r4 35
+IL_01df: stfld System.Single FlingUtils/Config::SpeedMax
+IL_01e4: ldloca.s V_6
+IL_01e6: ldc.r4 140
+IL_01eb: stfld System.Single FlingUtils/Config::AngleMin
+IL_01f0: ldloca.s V_6
+IL_01f2: ldc.r4 220
+IL_01f7: stfld System.Single FlingUtils/Config::AngleMax
+IL_01fc: ldloca.s V_6
+IL_01fe: ldc.r4 0
+IL_0203: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_0208: ldloca.s V_6
+IL_020a: ldc.r4 0
+IL_020f: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_0214: ldloc.s V_6
+IL_0216: ldarg.0
+IL_0217: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_021c: ldarg.0
+IL_021d: ldfld UnityEngine.Vector3 EnemyHitEffectsShade::effectOrigin
+IL_0222: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_0227: pop
+IL_0228: br IL_05e5
+IL_022d: ldloc.0
+IL_022e: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_0233: ldc.r4 0
+IL_0238: ldc.r4 90
+IL_023d: ldc.r4 0
+IL_0242: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL_0247: callvirt System.Void UnityEngine.Transform::set_eulerAngles(UnityEngine.Vector3)
+IL_024c: ldc.r4 1
+IL_0251: stloc.1
+IL_0252: ldc.r4 1.75
+IL_0257: stloc.2
+IL_0258: ldc.r4 -30
+IL_025d: stloc.3
+IL_025e: ldc.r4 30
+IL_0263: stloc.s V_4
+IL_0265: ldloca.s V_6
+IL_0267: initobj FlingUtils/Config
+IL_026d: ldloca.s V_6
+IL_026f: ldarg.0
+IL_0270: ldfld UnityEngine.GameObject EnemyHitEffectsShade::slashEffectGhostDark1
+IL_0275: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_027a: ldloca.s V_6
+IL_027c: ldc.i4.2
+IL_027d: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_0282: ldloca.s V_6
+IL_0284: ldc.i4.3
+IL_0285: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_028a: ldloca.s V_6
+IL_028c: ldc.r4 20
+IL_0291: stfld System.Single FlingUtils/Config::SpeedMin
+IL_0296: ldloca.s V_6
+IL_0298: ldc.r4 35
+IL_029d: stfld System.Single FlingUtils/Config::SpeedMax
+IL_02a2: ldloca.s V_6
+IL_02a4: ldc.r4 -40
+IL_02a9: stfld System.Single FlingUtils/Config::AngleMin
+IL_02ae: ldloca.s V_6
+IL_02b0: ldc.r4 40
+IL_02b5: stfld System.Single FlingUtils/Config::AngleMax
+IL_02ba: ldloca.s V_6
+IL_02bc: ldc.r4 0
+IL_02c1: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_02c6: ldloca.s V_6
+IL_02c8: ldc.r4 0
+IL_02cd: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_02d2: ldloc.s V_6
+IL_02d4: ldarg.0
+IL_02d5: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_02da: ldarg.0
+IL_02db: ldfld UnityEngine.Vector3 EnemyHitEffectsShade::effectOrigin
+IL_02e0: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_02e5: pop
+IL_02e6: ldloca.s V_6
+IL_02e8: initobj FlingUtils/Config
+IL_02ee: ldloca.s V_6
+IL_02f0: ldarg.0
+IL_02f1: ldfld UnityEngine.GameObject EnemyHitEffectsShade::slashEffectGhostDark2
+IL_02f6: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_02fb: ldloca.s V_6
+IL_02fd: ldc.i4.2
+IL_02fe: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_0303: ldloca.s V_6
+IL_0305: ldc.i4.3
+IL_0306: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_030b: ldloca.s V_6
+IL_030d: ldc.r4 20
+IL_0312: stfld System.Single FlingUtils/Config::SpeedMin
+IL_0317: ldloca.s V_6
+IL_0319: ldc.r4 35
+IL_031e: stfld System.Single FlingUtils/Config::SpeedMax
+IL_0323: ldloca.s V_6
+IL_0325: ldc.r4 -40
+IL_032a: stfld System.Single FlingUtils/Config::AngleMin
+IL_032f: ldloca.s V_6
+IL_0331: ldc.r4 40
+IL_0336: stfld System.Single FlingUtils/Config::AngleMax
+IL_033b: ldloca.s V_6
+IL_033d: ldc.r4 0
+IL_0342: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_0347: ldloca.s V_6
+IL_0349: ldc.r4 0
+IL_034e: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_0353: ldloc.s V_6
+IL_0355: ldarg.0
+IL_0356: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_035b: ldarg.0
+IL_035c: ldfld UnityEngine.Vector3 EnemyHitEffectsShade::effectOrigin
+IL_0361: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_0366: pop
+IL_0367: br IL_05e5
+IL_036c: ldloc.0
+IL_036d: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_0372: ldc.r4 -90
+IL_0377: ldc.r4 90
+IL_037c: ldc.r4 0
+IL_0381: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL_0386: callvirt System.Void UnityEngine.Transform::set_eulerAngles(UnityEngine.Vector3)
+IL_038b: ldc.r4 1
+IL_0390: stloc.1
+IL_0391: ldc.r4 1.75
+IL_0396: stloc.2
+IL_0397: ldc.r4 60
+IL_039c: stloc.3
+IL_039d: ldc.r4 120
+IL_03a2: stloc.s V_4
+IL_03a4: ldloca.s V_6
+IL_03a6: initobj FlingUtils/Config
+IL_03ac: ldloca.s V_6
+IL_03ae: ldarg.0
+IL_03af: ldfld UnityEngine.GameObject EnemyHitEffectsShade::slashEffectGhostDark1
+IL_03b4: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_03b9: ldloca.s V_6
+IL_03bb: ldc.i4.2
+IL_03bc: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_03c1: ldloca.s V_6
+IL_03c3: ldc.i4.3
+IL_03c4: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_03c9: ldloca.s V_6
+IL_03cb: ldc.r4 20
+IL_03d0: stfld System.Single FlingUtils/Config::SpeedMin
+IL_03d5: ldloca.s V_6
+IL_03d7: ldc.r4 35
+IL_03dc: stfld System.Single FlingUtils/Config::SpeedMax
+IL_03e1: ldloca.s V_6
+IL_03e3: ldc.r4 50
+IL_03e8: stfld System.Single FlingUtils/Config::AngleMin
+IL_03ed: ldloca.s V_6
+IL_03ef: ldc.r4 130
+IL_03f4: stfld System.Single FlingUtils/Config::AngleMax
+IL_03f9: ldloca.s V_6
+IL_03fb: ldc.r4 0
+IL_0400: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_0405: ldloca.s V_6
+IL_0407: ldc.r4 0
+IL_040c: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_0411: ldloc.s V_6
+IL_0413: ldarg.0
+IL_0414: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0419: ldarg.0
+IL_041a: ldfld UnityEngine.Vector3 EnemyHitEffectsShade::effectOrigin
+IL_041f: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_0424: pop
+IL_0425: ldloca.s V_6
+IL_0427: initobj FlingUtils/Config
+IL_042d: ldloca.s V_6
+IL_042f: ldarg.0
+IL_0430: ldfld UnityEngine.GameObject EnemyHitEffectsShade::slashEffectGhostDark2
+IL_0435: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_043a: ldloca.s V_6
+IL_043c: ldc.i4.2
+IL_043d: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_0442: ldloca.s V_6
+IL_0444: ldc.i4.3
+IL_0445: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_044a: ldloca.s V_6
+IL_044c: ldc.r4 20
+IL_0451: stfld System.Single FlingUtils/Config::SpeedMin
+IL_0456: ldloca.s V_6
+IL_0458: ldc.r4 35
+IL_045d: stfld System.Single FlingUtils/Config::SpeedMax
+IL_0462: ldloca.s V_6
+IL_0464: ldc.r4 50
+IL_0469: stfld System.Single FlingUtils/Config::AngleMin
+IL_046e: ldloca.s V_6
+IL_0470: ldc.r4 130
+IL_0475: stfld System.Single FlingUtils/Config::AngleMax
+IL_047a: ldloca.s V_6
+IL_047c: ldc.r4 0
+IL_0481: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_0486: ldloca.s V_6
+IL_0488: ldc.r4 0
+IL_048d: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_0492: ldloc.s V_6
+IL_0494: ldarg.0
+IL_0495: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_049a: ldarg.0
+IL_049b: ldfld UnityEngine.Vector3 EnemyHitEffectsShade::effectOrigin
+IL_04a0: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_04a5: pop
+IL_04a6: br IL_05e5
+IL_04ab: ldloc.0
+IL_04ac: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_04b1: ldc.r4 -90
+IL_04b6: ldc.r4 90
+IL_04bb: ldc.r4 0
+IL_04c0: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL_04c5: callvirt System.Void UnityEngine.Transform::set_eulerAngles(UnityEngine.Vector3)
+IL_04ca: ldc.r4 1
+IL_04cf: stloc.1
+IL_04d0: ldc.r4 1.75
+IL_04d5: stloc.2
+IL_04d6: ldc.r4 -60
+IL_04db: stloc.3
+IL_04dc: ldc.r4 -120
+IL_04e1: stloc.s V_4
+IL_04e3: ldloca.s V_6
+IL_04e5: initobj FlingUtils/Config
+IL_04eb: ldloca.s V_6
+IL_04ed: ldarg.0
+IL_04ee: ldfld UnityEngine.GameObject EnemyHitEffectsShade::slashEffectGhostDark1
+IL_04f3: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_04f8: ldloca.s V_6
+IL_04fa: ldc.i4.2
+IL_04fb: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_0500: ldloca.s V_6
+IL_0502: ldc.i4.3
+IL_0503: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_0508: ldloca.s V_6
+IL_050a: ldc.r4 20
+IL_050f: stfld System.Single FlingUtils/Config::SpeedMin
+IL_0514: ldloca.s V_6
+IL_0516: ldc.r4 35
+IL_051b: stfld System.Single FlingUtils/Config::SpeedMax
+IL_0520: ldloca.s V_6
+IL_0522: ldc.r4 230
+IL_0527: stfld System.Single FlingUtils/Config::AngleMin
+IL_052c: ldloca.s V_6
+IL_052e: ldc.r4 310
+IL_0533: stfld System.Single FlingUtils/Config::AngleMax
+IL_0538: ldloca.s V_6
+IL_053a: ldc.r4 0
+IL_053f: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_0544: ldloca.s V_6
+IL_0546: ldc.r4 0
+IL_054b: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_0550: ldloc.s V_6
+IL_0552: ldarg.0
+IL_0553: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0558: ldarg.0
+IL_0559: ldfld UnityEngine.Vector3 EnemyHitEffectsShade::effectOrigin
+IL_055e: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_0563: pop
+IL_0564: ldloca.s V_6
+IL_0566: initobj FlingUtils/Config
+IL_056c: ldloca.s V_6
+IL_056e: ldarg.0
+IL_056f: ldfld UnityEngine.GameObject EnemyHitEffectsShade::slashEffectGhostDark2
+IL_0574: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_0579: ldloca.s V_6
+IL_057b: ldc.i4.2
+IL_057c: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_0581: ldloca.s V_6
+IL_0583: ldc.i4.3
+IL_0584: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_0589: ldloca.s V_6
+IL_058b: ldc.r4 20
+IL_0590: stfld System.Single FlingUtils/Config::SpeedMin
+IL_0595: ldloca.s V_6
+IL_0597: ldc.r4 35
+IL_059c: stfld System.Single FlingUtils/Config::SpeedMax
+IL_05a1: ldloca.s V_6
+IL_05a3: ldc.r4 230
+IL_05a8: stfld System.Single FlingUtils/Config::AngleMin
+IL_05ad: ldloca.s V_6
+IL_05af: ldc.r4 310
+IL_05b4: stfld System.Single FlingUtils/Config::AngleMax
+IL_05b9: ldloca.s V_6
+IL_05bb: ldc.r4 0
+IL_05c0: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_05c5: ldloca.s V_6
+IL_05c7: ldc.r4 0
+IL_05cc: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_05d1: ldloc.s V_6
+IL_05d3: ldarg.0
+IL_05d4: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_05d9: ldarg.0
+IL_05da: ldfld UnityEngine.Vector3 EnemyHitEffectsShade::effectOrigin
+IL_05df: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_05e4: pop
+IL_05e5: ldc.i4.0
+IL_05e6: stloc.s V_7
+IL_05e8: br.s IL_0635
+IL_05ea: ldarg.0
+IL_05eb: ldfld UnityEngine.GameObject EnemyHitEffectsShade::slashEffectShade
+IL_05f0: ldarg.0
+IL_05f1: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_05f6: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_05fb: ldarg.0
+IL_05fc: ldfld UnityEngine.Vector3 EnemyHitEffectsShade::effectOrigin
+IL_0601: call UnityEngine.Vector3 UnityEngine.Vector3::op_Addition(UnityEngine.Vector3,UnityEngine.Vector3)
+IL_0606: call UnityEngine.GameObject ObjectPoolExtensions::Spawn(UnityEngine.GameObject,UnityEngine.Vector3)
+IL_060b: dup
+IL_060c: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_0611: ldloc.1
+IL_0612: ldloc.2
+IL_0613: call System.Single UnityEngine.Random::Range(System.Single,System.Single)
+IL_0618: call System.Void Extensions::SetScaleX(UnityEngine.Transform,System.Single)
+IL_061d: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_0622: ldloc.3
+IL_0623: ldloc.s V_4
+IL_0625: call System.Single UnityEngine.Random::Range(System.Single,System.Single)
+IL_062a: call System.Void Extensions::SetRotation2D(UnityEngine.Transform,System.Single)
+IL_062f: ldloc.s V_7
+IL_0631: ldc.i4.1
+IL_0632: add
+IL_0633: stloc.s V_7
+IL_0635: ldloc.s V_7
+IL_0637: ldc.i4.3
+IL_0638: blt.s IL_05ea
+IL_063a: ldarg.0
+IL_063b: ldc.i4.1
+IL_063c: stfld System.Boolean EnemyHitEffectsShade::didFireThisFrame
+IL_0641: ret
+METHOD System.Void EnemyHitEffectsShade::Update()
+IL_0000: ldarg.0
+IL_0001: ldc.i4.0
+IL_0002: stfld System.Boolean EnemyHitEffectsShade::didFireThisFrame
+IL_0007: ret
+METHOD System.Void EnemyHitEffectsShade::.ctor()
+IL_0000: ldarg.0
+IL_0001: call System.Void UnityEngine.MonoBehaviour::.ctor()
+IL_0006: ret
+TYPE EnemyHitEffectsUninfected base=UnityEngine.MonoBehaviour
+FIELD UnityEngine.Vector3 EnemyHitEffectsUninfected::effectOrigin
+FIELD UnityEngine.AudioSource EnemyHitEffectsUninfected::audioPlayerPrefab
+FIELD AudioEvent EnemyHitEffectsUninfected::enemyDamage
+FIELD UnityEngine.GameObject EnemyHitEffectsUninfected::uninfectedHitPt
+FIELD UnityEngine.GameObject EnemyHitEffectsUninfected::slashEffectGhost1
+FIELD UnityEngine.GameObject EnemyHitEffectsUninfected::slashEffectGhost2
+FIELD SpriteFlash EnemyHitEffectsUninfected::spriteFlash
+FIELD System.Boolean EnemyHitEffectsUninfected::sendDamageFlashEvent
+FIELD System.Boolean EnemyHitEffectsUninfected::didFireThisFrame
+METHOD System.Void EnemyHitEffectsUninfected::Awake()
+IL_0000: ldarg.0
+IL_0001: ldarg.0
+IL_0002: call !!0 UnityEngine.Component::GetComponent<SpriteFlash>()
+IL_0007: stfld SpriteFlash EnemyHitEffectsUninfected::spriteFlash
+IL_000c: ret
+METHOD System.Void EnemyHitEffectsUninfected::RecieveHitEffect(System.Single)
+IL_0000: ldarg.0
+IL_0001: ldfld System.Boolean EnemyHitEffectsUninfected::didFireThisFrame
+IL_0006: brfalse.s IL_0009
+IL_0008: ret
+IL_0009: ldarg.0
+IL_000a: ldfld System.Boolean EnemyHitEffectsUninfected::sendDamageFlashEvent
+IL_000f: brfalse.s IL_0022
+IL_0011: ldarg.0
+IL_0012: call UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+IL_0017: ldstr "DAMAGE FLASH"
+IL_001c: ldc.i4.1
+IL_001d: call System.Void FSMUtility::SendEventToGameObject(UnityEngine.GameObject,System.String,System.Boolean)
+IL_0022: ldarg.0
+IL_0023: ldflda AudioEvent EnemyHitEffectsUninfected::enemyDamage
+IL_0028: ldarg.0
+IL_0029: ldfld UnityEngine.AudioSource EnemyHitEffectsUninfected::audioPlayerPrefab
+IL_002e: ldarg.0
+IL_002f: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0034: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_0039: call System.Void AudioEvent::SpawnAndPlayOneShot(UnityEngine.AudioSource,UnityEngine.Vector3)
+IL_003e: ldarg.0
+IL_003f: ldfld SpriteFlash EnemyHitEffectsUninfected::spriteFlash
+IL_0044: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_0049: brfalse.s IL_0056
+IL_004b: ldarg.0
+IL_004c: ldfld SpriteFlash EnemyHitEffectsUninfected::spriteFlash
+IL_0051: callvirt System.Void SpriteFlash::flashFocusHeal()
+IL_0056: ldnull
+IL_0057: stloc.0
+IL_0058: ldarg.0
+IL_0059: ldfld UnityEngine.GameObject EnemyHitEffectsUninfected::uninfectedHitPt
+IL_005e: ldarg.0
+IL_005f: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0064: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_0069: ldarg.0
+IL_006a: ldfld UnityEngine.Vector3 EnemyHitEffectsUninfected::effectOrigin
+IL_006f: call UnityEngine.Vector3 UnityEngine.Vector3::op_Addition(UnityEngine.Vector3,UnityEngine.Vector3)
+IL_0074: call UnityEngine.GameObject ObjectPoolExtensions::Spawn(UnityEngine.GameObject,UnityEngine.Vector3)
+IL_0079: stloc.0
+IL_007a: ldarg.1
+IL_007b: call System.Int32 DirectionUtils::GetCardinalDirection(System.Single)
+IL_0080: stloc.1
+IL_0081: ldloc.1
+IL_0082: switch IL_009c,IL_02d6,IL_01b9,IL_03f3
+IL_0097: br IL_050b
+IL_009c: ldloc.0
+IL_009d: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_00a2: brfalse.s IL_00b4
+IL_00a4: ldloc.0
+IL_00a5: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_00aa: ldc.r4 -45
+IL_00af: call System.Void Extensions::SetRotation2D(UnityEngine.Transform,System.Single)
+IL_00b4: ldloca.s V_2
+IL_00b6: initobj FlingUtils/Config
+IL_00bc: ldloca.s V_2
+IL_00be: ldarg.0
+IL_00bf: ldfld UnityEngine.GameObject EnemyHitEffectsUninfected::slashEffectGhost1
+IL_00c4: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_00c9: ldloca.s V_2
+IL_00cb: ldc.i4.2
+IL_00cc: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_00d1: ldloca.s V_2
+IL_00d3: ldc.i4.3
+IL_00d4: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_00d9: ldloca.s V_2
+IL_00db: ldc.r4 20
+IL_00e0: stfld System.Single FlingUtils/Config::SpeedMin
+IL_00e5: ldloca.s V_2
+IL_00e7: ldc.r4 35
+IL_00ec: stfld System.Single FlingUtils/Config::SpeedMax
+IL_00f1: ldloca.s V_2
+IL_00f3: ldc.r4 -40
+IL_00f8: stfld System.Single FlingUtils/Config::AngleMin
+IL_00fd: ldloca.s V_2
+IL_00ff: ldc.r4 40
+IL_0104: stfld System.Single FlingUtils/Config::AngleMax
+IL_0109: ldloca.s V_2
+IL_010b: ldc.r4 0
+IL_0110: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_0115: ldloca.s V_2
+IL_0117: ldc.r4 0
+IL_011c: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_0121: ldloc.2
+IL_0122: ldarg.0
+IL_0123: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0128: ldarg.0
+IL_0129: ldfld UnityEngine.Vector3 EnemyHitEffectsUninfected::effectOrigin
+IL_012e: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_0133: pop
+IL_0134: ldloca.s V_2
+IL_0136: initobj FlingUtils/Config
+IL_013c: ldloca.s V_2
+IL_013e: ldarg.0
+IL_013f: ldfld UnityEngine.GameObject EnemyHitEffectsUninfected::slashEffectGhost2
+IL_0144: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_0149: ldloca.s V_2
+IL_014b: ldc.i4.2
+IL_014c: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_0151: ldloca.s V_2
+IL_0153: ldc.i4.3
+IL_0154: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_0159: ldloca.s V_2
+IL_015b: ldc.r4 10
+IL_0160: stfld System.Single FlingUtils/Config::SpeedMin
+IL_0165: ldloca.s V_2
+IL_0167: ldc.r4 35
+IL_016c: stfld System.Single FlingUtils/Config::SpeedMax
+IL_0171: ldloca.s V_2
+IL_0173: ldc.r4 -40
+IL_0178: stfld System.Single FlingUtils/Config::AngleMin
+IL_017d: ldloca.s V_2
+IL_017f: ldc.r4 40
+IL_0184: stfld System.Single FlingUtils/Config::AngleMax
+IL_0189: ldloca.s V_2
+IL_018b: ldc.r4 0
+IL_0190: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_0195: ldloca.s V_2
+IL_0197: ldc.r4 0
+IL_019c: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_01a1: ldloc.2
+IL_01a2: ldarg.0
+IL_01a3: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_01a8: ldarg.0
+IL_01a9: ldfld UnityEngine.Vector3 EnemyHitEffectsUninfected::effectOrigin
+IL_01ae: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_01b3: pop
+IL_01b4: br IL_050b
+IL_01b9: ldloc.0
+IL_01ba: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_01bf: brfalse.s IL_01d1
+IL_01c1: ldloc.0
+IL_01c2: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_01c7: ldc.r4 -225
+IL_01cc: call System.Void Extensions::SetRotation2D(UnityEngine.Transform,System.Single)
+IL_01d1: ldloca.s V_2
+IL_01d3: initobj FlingUtils/Config
+IL_01d9: ldloca.s V_2
+IL_01db: ldarg.0
+IL_01dc: ldfld UnityEngine.GameObject EnemyHitEffectsUninfected::slashEffectGhost1
+IL_01e1: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_01e6: ldloca.s V_2
+IL_01e8: ldc.i4.2
+IL_01e9: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_01ee: ldloca.s V_2
+IL_01f0: ldc.i4.3
+IL_01f1: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_01f6: ldloca.s V_2
+IL_01f8: ldc.r4 20
+IL_01fd: stfld System.Single FlingUtils/Config::SpeedMin
+IL_0202: ldloca.s V_2
+IL_0204: ldc.r4 35
+IL_0209: stfld System.Single FlingUtils/Config::SpeedMax
+IL_020e: ldloca.s V_2
+IL_0210: ldc.r4 140
+IL_0215: stfld System.Single FlingUtils/Config::AngleMin
+IL_021a: ldloca.s V_2
+IL_021c: ldc.r4 220
+IL_0221: stfld System.Single FlingUtils/Config::AngleMax
+IL_0226: ldloca.s V_2
+IL_0228: ldc.r4 0
+IL_022d: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_0232: ldloca.s V_2
+IL_0234: ldc.r4 0
+IL_0239: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_023e: ldloc.2
+IL_023f: ldarg.0
+IL_0240: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0245: ldarg.0
+IL_0246: ldfld UnityEngine.Vector3 EnemyHitEffectsUninfected::effectOrigin
+IL_024b: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_0250: pop
+IL_0251: ldloca.s V_2
+IL_0253: initobj FlingUtils/Config
+IL_0259: ldloca.s V_2
+IL_025b: ldarg.0
+IL_025c: ldfld UnityEngine.GameObject EnemyHitEffectsUninfected::slashEffectGhost2
+IL_0261: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_0266: ldloca.s V_2
+IL_0268: ldc.i4.2
+IL_0269: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_026e: ldloca.s V_2
+IL_0270: ldc.i4.3
+IL_0271: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_0276: ldloca.s V_2
+IL_0278: ldc.r4 10
+IL_027d: stfld System.Single FlingUtils/Config::SpeedMin
+IL_0282: ldloca.s V_2
+IL_0284: ldc.r4 35
+IL_0289: stfld System.Single FlingUtils/Config::SpeedMax
+IL_028e: ldloca.s V_2
+IL_0290: ldc.r4 140
+IL_0295: stfld System.Single FlingUtils/Config::AngleMin
+IL_029a: ldloca.s V_2
+IL_029c: ldc.r4 220
+IL_02a1: stfld System.Single FlingUtils/Config::AngleMax
+IL_02a6: ldloca.s V_2
+IL_02a8: ldc.r4 0
+IL_02ad: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_02b2: ldloca.s V_2
+IL_02b4: ldc.r4 0
+IL_02b9: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_02be: ldloc.2
+IL_02bf: ldarg.0
+IL_02c0: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_02c5: ldarg.0
+IL_02c6: ldfld UnityEngine.Vector3 EnemyHitEffectsUninfected::effectOrigin
+IL_02cb: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_02d0: pop
+IL_02d1: br IL_050b
+IL_02d6: ldloc.0
+IL_02d7: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_02dc: brfalse.s IL_02ee
+IL_02de: ldloc.0
+IL_02df: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_02e4: ldc.r4 45
+IL_02e9: call System.Void Extensions::SetRotation2D(UnityEngine.Transform,System.Single)
+IL_02ee: ldloca.s V_2
+IL_02f0: initobj FlingUtils/Config
+IL_02f6: ldloca.s V_2
+IL_02f8: ldarg.0
+IL_02f9: ldfld UnityEngine.GameObject EnemyHitEffectsUninfected::slashEffectGhost1
+IL_02fe: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_0303: ldloca.s V_2
+IL_0305: ldc.i4.2
+IL_0306: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_030b: ldloca.s V_2
+IL_030d: ldc.i4.3
+IL_030e: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_0313: ldloca.s V_2
+IL_0315: ldc.r4 20
+IL_031a: stfld System.Single FlingUtils/Config::SpeedMin
+IL_031f: ldloca.s V_2
+IL_0321: ldc.r4 35
+IL_0326: stfld System.Single FlingUtils/Config::SpeedMax
+IL_032b: ldloca.s V_2
+IL_032d: ldc.r4 50
+IL_0332: stfld System.Single FlingUtils/Config::AngleMin
+IL_0337: ldloca.s V_2
+IL_0339: ldc.r4 130
+IL_033e: stfld System.Single FlingUtils/Config::AngleMax
+IL_0343: ldloca.s V_2
+IL_0345: ldc.r4 0
+IL_034a: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_034f: ldloca.s V_2
+IL_0351: ldc.r4 0
+IL_0356: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_035b: ldloc.2
+IL_035c: ldarg.0
+IL_035d: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0362: ldarg.0
+IL_0363: ldfld UnityEngine.Vector3 EnemyHitEffectsUninfected::effectOrigin
+IL_0368: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_036d: pop
+IL_036e: ldloca.s V_2
+IL_0370: initobj FlingUtils/Config
+IL_0376: ldloca.s V_2
+IL_0378: ldarg.0
+IL_0379: ldfld UnityEngine.GameObject EnemyHitEffectsUninfected::slashEffectGhost2
+IL_037e: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_0383: ldloca.s V_2
+IL_0385: ldc.i4.2
+IL_0386: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_038b: ldloca.s V_2
+IL_038d: ldc.i4.3
+IL_038e: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_0393: ldloca.s V_2
+IL_0395: ldc.r4 10
+IL_039a: stfld System.Single FlingUtils/Config::SpeedMin
+IL_039f: ldloca.s V_2
+IL_03a1: ldc.r4 35
+IL_03a6: stfld System.Single FlingUtils/Config::SpeedMax
+IL_03ab: ldloca.s V_2
+IL_03ad: ldc.r4 50
+IL_03b2: stfld System.Single FlingUtils/Config::AngleMin
+IL_03b7: ldloca.s V_2
+IL_03b9: ldc.r4 130
+IL_03be: stfld System.Single FlingUtils/Config::AngleMax
+IL_03c3: ldloca.s V_2
+IL_03c5: ldc.r4 0
+IL_03ca: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_03cf: ldloca.s V_2
+IL_03d1: ldc.r4 0
+IL_03d6: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_03db: ldloc.2
+IL_03dc: ldarg.0
+IL_03dd: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_03e2: ldarg.0
+IL_03e3: ldfld UnityEngine.Vector3 EnemyHitEffectsUninfected::effectOrigin
+IL_03e8: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_03ed: pop
+IL_03ee: br IL_050b
+IL_03f3: ldloc.0
+IL_03f4: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_03f9: brfalse.s IL_040b
+IL_03fb: ldloc.0
+IL_03fc: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_0401: ldc.r4 225
+IL_0406: call System.Void Extensions::SetRotation2D(UnityEngine.Transform,System.Single)
+IL_040b: ldloca.s V_2
+IL_040d: initobj FlingUtils/Config
+IL_0413: ldloca.s V_2
+IL_0415: ldarg.0
+IL_0416: ldfld UnityEngine.GameObject EnemyHitEffectsUninfected::slashEffectGhost1
+IL_041b: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_0420: ldloca.s V_2
+IL_0422: ldc.i4.2
+IL_0423: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_0428: ldloca.s V_2
+IL_042a: ldc.i4.3
+IL_042b: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_0430: ldloca.s V_2
+IL_0432: ldc.r4 20
+IL_0437: stfld System.Single FlingUtils/Config::SpeedMin
+IL_043c: ldloca.s V_2
+IL_043e: ldc.r4 35
+IL_0443: stfld System.Single FlingUtils/Config::SpeedMax
+IL_0448: ldloca.s V_2
+IL_044a: ldc.r4 230
+IL_044f: stfld System.Single FlingUtils/Config::AngleMin
+IL_0454: ldloca.s V_2
+IL_0456: ldc.r4 310
+IL_045b: stfld System.Single FlingUtils/Config::AngleMax
+IL_0460: ldloca.s V_2
+IL_0462: ldc.r4 0
+IL_0467: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_046c: ldloca.s V_2
+IL_046e: ldc.r4 0
+IL_0473: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_0478: ldloc.2
+IL_0479: ldarg.0
+IL_047a: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_047f: ldarg.0
+IL_0480: ldfld UnityEngine.Vector3 EnemyHitEffectsUninfected::effectOrigin
+IL_0485: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_048a: pop
+IL_048b: ldloca.s V_2
+IL_048d: initobj FlingUtils/Config
+IL_0493: ldloca.s V_2
+IL_0495: ldarg.0
+IL_0496: ldfld UnityEngine.GameObject EnemyHitEffectsUninfected::slashEffectGhost2
+IL_049b: stfld UnityEngine.GameObject FlingUtils/Config::Prefab
+IL_04a0: ldloca.s V_2
+IL_04a2: ldc.i4.2
+IL_04a3: stfld System.Int32 FlingUtils/Config::AmountMin
+IL_04a8: ldloca.s V_2
+IL_04aa: ldc.i4.3
+IL_04ab: stfld System.Int32 FlingUtils/Config::AmountMax
+IL_04b0: ldloca.s V_2
+IL_04b2: ldc.r4 10
+IL_04b7: stfld System.Single FlingUtils/Config::SpeedMin
+IL_04bc: ldloca.s V_2
+IL_04be: ldc.r4 35
+IL_04c3: stfld System.Single FlingUtils/Config::SpeedMax
+IL_04c8: ldloca.s V_2
+IL_04ca: ldc.r4 230
+IL_04cf: stfld System.Single FlingUtils/Config::AngleMin
+IL_04d4: ldloca.s V_2
+IL_04d6: ldc.r4 310
+IL_04db: stfld System.Single FlingUtils/Config::AngleMax
+IL_04e0: ldloca.s V_2
+IL_04e2: ldc.r4 0
+IL_04e7: stfld System.Single FlingUtils/Config::OriginVariationX
+IL_04ec: ldloca.s V_2
+IL_04ee: ldc.r4 0
+IL_04f3: stfld System.Single FlingUtils/Config::OriginVariationY
+IL_04f8: ldloc.2
+IL_04f9: ldarg.0
+IL_04fa: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_04ff: ldarg.0
+IL_0500: ldfld UnityEngine.Vector3 EnemyHitEffectsUninfected::effectOrigin
+IL_0505: call UnityEngine.GameObject[] FlingUtils::SpawnAndFling(FlingUtils/Config,UnityEngine.Transform,UnityEngine.Vector3)
+IL_050a: pop
+IL_050b: ldarg.0
+IL_050c: ldc.i4.1
+IL_050d: stfld System.Boolean EnemyHitEffectsUninfected::didFireThisFrame
+IL_0512: ret
+METHOD System.Void EnemyHitEffectsUninfected::Update()
+IL_0000: ldarg.0
+IL_0001: ldc.i4.0
+IL_0002: stfld System.Boolean EnemyHitEffectsUninfected::didFireThisFrame
+IL_0007: ret
+METHOD System.Void EnemyHitEffectsUninfected::.ctor()
+IL_0000: ldarg.0
+IL_0001: ldc.i4.1
+IL_0002: stfld System.Boolean EnemyHitEffectsUninfected::sendDamageFlashEvent
+IL_0007: ldarg.0
+IL_0008: call System.Void UnityEngine.MonoBehaviour::.ctor()
+IL_000d: ret
+TYPE InfectedEnemyEffects base=UnityEngine.MonoBehaviour
+FIELD SpriteFlash InfectedEnemyEffects::spriteFlash
+FIELD UnityEngine.Vector3 InfectedEnemyEffects::effectOrigin
+FIELD AudioEvent InfectedEnemyEffects::impactAudio
+FIELD UnityEngine.AudioSource InfectedEnemyEffects::audioSourcePrefab
+FIELD UnityEngine.GameObject InfectedEnemyEffects::hitFlashOrangePrefab
+FIELD UnityEngine.GameObject InfectedEnemyEffects::spatterOrangePrefab
+FIELD UnityEngine.GameObject InfectedEnemyEffects::hitPuffPrefab
+FIELD System.Boolean InfectedEnemyEffects::noBlood
+FIELD System.Boolean InfectedEnemyEffects::didFireThisFrame
+METHOD System.Void InfectedEnemyEffects::Reset()
+IL_0000: ldarg.0
+IL_0001: ldflda AudioEvent InfectedEnemyEffects::impactAudio
+IL_0006: call System.Void AudioEvent::Reset()
+IL_000b: ret
+METHOD System.Void InfectedEnemyEffects::Awake()
+IL_0000: ldarg.0
+IL_0001: ldarg.0
+IL_0002: call !!0 UnityEngine.Component::GetComponent<SpriteFlash>()
+IL_0007: stfld SpriteFlash InfectedEnemyEffects::spriteFlash
+IL_000c: ret
+METHOD System.Void InfectedEnemyEffects::RecieveHitEffect(System.Single)
+IL_0000: ldarg.0
+IL_0001: ldfld System.Boolean InfectedEnemyEffects::didFireThisFrame
+IL_0006: brfalse.s IL_0009
+IL_0008: ret
+IL_0009: ldarg.0
+IL_000a: ldfld SpriteFlash InfectedEnemyEffects::spriteFlash
+IL_000f: ldnull
+IL_0010: call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+IL_0015: brfalse.s IL_0022
+IL_0017: ldarg.0
+IL_0018: ldfld SpriteFlash InfectedEnemyEffects::spriteFlash
+IL_001d: callvirt System.Void SpriteFlash::flashInfected()
+IL_0022: ldarg.0
+IL_0023: call UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+IL_0028: ldstr "DAMAGE FLASH"
+IL_002d: ldc.i4.1
+IL_002e: call System.Void FSMUtility::SendEventToGameObject(UnityEngine.GameObject,System.String,System.Boolean)
+IL_0033: ldarg.0
+IL_0034: ldflda AudioEvent InfectedEnemyEffects::impactAudio
+IL_0039: ldarg.0
+IL_003a: ldfld UnityEngine.AudioSource InfectedEnemyEffects::audioSourcePrefab
+IL_003f: ldarg.0
+IL_0040: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0045: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_004a: call System.Void AudioEvent::SpawnAndPlayOneShot(UnityEngine.AudioSource,UnityEngine.Vector3)
+IL_004f: ldarg.0
+IL_0050: ldfld UnityEngine.GameObject InfectedEnemyEffects::hitFlashOrangePrefab
+IL_0055: ldarg.0
+IL_0056: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_005b: ldarg.0
+IL_005c: ldfld UnityEngine.Vector3 InfectedEnemyEffects::effectOrigin
+IL_0061: callvirt UnityEngine.Vector3 UnityEngine.Transform::TransformPoint(UnityEngine.Vector3)
+IL_0066: call UnityEngine.GameObject ObjectPoolExtensions::Spawn(UnityEngine.GameObject,UnityEngine.Vector3)
+IL_006b: pop
+IL_006c: ldarg.1
+IL_006d: call System.Int32 DirectionUtils::GetCardinalDirection(System.Single)
+IL_0072: stloc.0
+IL_0073: ldloc.0
+IL_0074: switch IL_008e,IL_01fc,IL_0145,IL_0274
+IL_0089: br IL_0325
+IL_008e: ldarg.0
+IL_008f: ldfld System.Boolean InfectedEnemyEffects::noBlood
+IL_0094: brtrue.s IL_0115
+IL_0096: ldsfld GlobalPrefabDefaults GlobalPrefabDefaults::Instance
+IL_009b: ldarg.0
+IL_009c: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_00a1: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_00a6: ldarg.0
+IL_00a7: ldfld UnityEngine.Vector3 InfectedEnemyEffects::effectOrigin
+IL_00ac: call UnityEngine.Vector3 UnityEngine.Vector3::op_Addition(UnityEngine.Vector3,UnityEngine.Vector3)
+IL_00b1: ldc.i4.3
+IL_00b2: ldc.i4.4
+IL_00b3: ldc.r4 10
+IL_00b8: ldc.r4 15
+IL_00bd: ldc.r4 120
+IL_00c2: ldc.r4 150
+IL_00c7: ldloca.s V_1
+IL_00c9: initobj System.Nullable`1<UnityEngine.Color>
+IL_00cf: ldloc.1
+IL_00d0: callvirt System.Void GlobalPrefabDefaults::SpawnBlood(UnityEngine.Vector3,System.Int16,System.Int16,System.Single,System.Single,System.Single,System.Single,System.Nullable`1<UnityEngine.Color>)
+IL_00d5: ldsfld GlobalPrefabDefaults GlobalPrefabDefaults::Instance
+IL_00da: ldarg.0
+IL_00db: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_00e0: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_00e5: ldarg.0
+IL_00e6: ldfld UnityEngine.Vector3 InfectedEnemyEffects::effectOrigin
+IL_00eb: call UnityEngine.Vector3 UnityEngine.Vector3::op_Addition(UnityEngine.Vector3,UnityEngine.Vector3)
+IL_00f0: ldc.i4.8
+IL_00f1: ldc.i4.s 15
+IL_00f3: ldc.r4 10
+IL_00f8: ldc.r4 25
+IL_00fd: ldc.r4 30
+IL_0102: ldc.r4 60
+IL_0107: ldloca.s V_1
+IL_0109: initobj System.Nullable`1<UnityEngine.Color>
+IL_010f: ldloc.1
+IL_0110: callvirt System.Void GlobalPrefabDefaults::SpawnBlood(UnityEngine.Vector3,System.Int16,System.Int16,System.Single,System.Single,System.Single,System.Single,System.Nullable`1<UnityEngine.Color>)
+IL_0115: ldarg.0
+IL_0116: ldfld UnityEngine.GameObject InfectedEnemyEffects::hitPuffPrefab
+IL_011b: ldarg.0
+IL_011c: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0121: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_0126: ldc.r4 0
+IL_012b: ldc.r4 90
+IL_0130: ldc.r4 270
+IL_0135: call UnityEngine.Quaternion UnityEngine.Quaternion::Euler(System.Single,System.Single,System.Single)
+IL_013a: call UnityEngine.GameObject ObjectPoolExtensions::Spawn(UnityEngine.GameObject,UnityEngine.Vector3,UnityEngine.Quaternion)
+IL_013f: pop
+IL_0140: br IL_0325
+IL_0145: ldarg.0
+IL_0146: ldfld System.Boolean InfectedEnemyEffects::noBlood
+IL_014b: brtrue.s IL_01cc
+IL_014d: ldsfld GlobalPrefabDefaults GlobalPrefabDefaults::Instance
+IL_0152: ldarg.0
+IL_0153: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0158: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_015d: ldarg.0
+IL_015e: ldfld UnityEngine.Vector3 InfectedEnemyEffects::effectOrigin
+IL_0163: call UnityEngine.Vector3 UnityEngine.Vector3::op_Addition(UnityEngine.Vector3,UnityEngine.Vector3)
+IL_0168: ldc.i4.3
+IL_0169: ldc.i4.4
+IL_016a: ldc.r4 10
+IL_016f: ldc.r4 15
+IL_0174: ldc.r4 30
+IL_0179: ldc.r4 60
+IL_017e: ldloca.s V_1
+IL_0180: initobj System.Nullable`1<UnityEngine.Color>
+IL_0186: ldloc.1
+IL_0187: callvirt System.Void GlobalPrefabDefaults::SpawnBlood(UnityEngine.Vector3,System.Int16,System.Int16,System.Single,System.Single,System.Single,System.Single,System.Nullable`1<UnityEngine.Color>)
+IL_018c: ldsfld GlobalPrefabDefaults GlobalPrefabDefaults::Instance
+IL_0191: ldarg.0
+IL_0192: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0197: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_019c: ldarg.0
+IL_019d: ldfld UnityEngine.Vector3 InfectedEnemyEffects::effectOrigin
+IL_01a2: call UnityEngine.Vector3 UnityEngine.Vector3::op_Addition(UnityEngine.Vector3,UnityEngine.Vector3)
+IL_01a7: ldc.i4.8
+IL_01a8: ldc.i4.s 10
+IL_01aa: ldc.r4 15
+IL_01af: ldc.r4 25
+IL_01b4: ldc.r4 120
+IL_01b9: ldc.r4 150
+IL_01be: ldloca.s V_1
+IL_01c0: initobj System.Nullable`1<UnityEngine.Color>
+IL_01c6: ldloc.1
+IL_01c7: callvirt System.Void GlobalPrefabDefaults::SpawnBlood(UnityEngine.Vector3,System.Int16,System.Int16,System.Single,System.Single,System.Single,System.Single,System.Nullable`1<UnityEngine.Color>)
+IL_01cc: ldarg.0
+IL_01cd: ldfld UnityEngine.GameObject InfectedEnemyEffects::hitPuffPrefab
+IL_01d2: ldarg.0
+IL_01d3: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_01d8: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_01dd: ldc.r4 180
+IL_01e2: ldc.r4 90
+IL_01e7: ldc.r4 270
+IL_01ec: call UnityEngine.Quaternion UnityEngine.Quaternion::Euler(System.Single,System.Single,System.Single)
+IL_01f1: call UnityEngine.GameObject ObjectPoolExtensions::Spawn(UnityEngine.GameObject,UnityEngine.Vector3,UnityEngine.Quaternion)
+IL_01f6: pop
+IL_01f7: br IL_0325
+IL_01fc: ldarg.0
+IL_01fd: ldfld System.Boolean InfectedEnemyEffects::noBlood
+IL_0202: brtrue.s IL_0244
+IL_0204: ldsfld GlobalPrefabDefaults GlobalPrefabDefaults::Instance
+IL_0209: ldarg.0
+IL_020a: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_020f: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_0214: ldarg.0
+IL_0215: ldfld UnityEngine.Vector3 InfectedEnemyEffects::effectOrigin
+IL_021a: call UnityEngine.Vector3 UnityEngine.Vector3::op_Addition(UnityEngine.Vector3,UnityEngine.Vector3)
+IL_021f: ldc.i4.8
+IL_0220: ldc.i4.s 10
+IL_0222: ldc.r4 20
+IL_0227: ldc.r4 30
+IL_022c: ldc.r4 80
+IL_0231: ldc.r4 100
+IL_0236: ldloca.s V_1
+IL_0238: initobj System.Nullable`1<UnityEngine.Color>
+IL_023e: ldloc.1
+IL_023f: callvirt System.Void GlobalPrefabDefaults::SpawnBlood(UnityEngine.Vector3,System.Int16,System.Int16,System.Single,System.Single,System.Single,System.Single,System.Nullable`1<UnityEngine.Color>)
+IL_0244: ldarg.0
+IL_0245: ldfld UnityEngine.GameObject InfectedEnemyEffects::hitPuffPrefab
+IL_024a: ldarg.0
+IL_024b: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0250: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_0255: ldc.r4 270
+IL_025a: ldc.r4 90
+IL_025f: ldc.r4 270
+IL_0264: call UnityEngine.Quaternion UnityEngine.Quaternion::Euler(System.Single,System.Single,System.Single)
+IL_0269: call UnityEngine.GameObject ObjectPoolExtensions::Spawn(UnityEngine.GameObject,UnityEngine.Vector3,UnityEngine.Quaternion)
+IL_026e: pop
+IL_026f: br IL_0325
+IL_0274: ldarg.0
+IL_0275: ldfld System.Boolean InfectedEnemyEffects::noBlood
+IL_027a: brtrue.s IL_02fa
+IL_027c: ldsfld GlobalPrefabDefaults GlobalPrefabDefaults::Instance
+IL_0281: ldarg.0
+IL_0282: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0287: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_028c: ldarg.0
+IL_028d: ldfld UnityEngine.Vector3 InfectedEnemyEffects::effectOrigin
+IL_0292: call UnityEngine.Vector3 UnityEngine.Vector3::op_Addition(UnityEngine.Vector3,UnityEngine.Vector3)
+IL_0297: ldc.i4.4
+IL_0298: ldc.i4.5
+IL_0299: ldc.r4 15
+IL_029e: ldc.r4 25
+IL_02a3: ldc.r4 140
+IL_02a8: ldc.r4 180
+IL_02ad: ldloca.s V_1
+IL_02af: initobj System.Nullable`1<UnityEngine.Color>
+IL_02b5: ldloc.1
+IL_02b6: callvirt System.Void GlobalPrefabDefaults::SpawnBlood(UnityEngine.Vector3,System.Int16,System.Int16,System.Single,System.Single,System.Single,System.Single,System.Nullable`1<UnityEngine.Color>)
+IL_02bb: ldsfld GlobalPrefabDefaults GlobalPrefabDefaults::Instance
+IL_02c0: ldarg.0
+IL_02c1: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_02c6: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_02cb: ldarg.0
+IL_02cc: ldfld UnityEngine.Vector3 InfectedEnemyEffects::effectOrigin
+IL_02d1: call UnityEngine.Vector3 UnityEngine.Vector3::op_Addition(UnityEngine.Vector3,UnityEngine.Vector3)
+IL_02d6: ldc.i4.4
+IL_02d7: ldc.i4.5
+IL_02d8: ldc.r4 15
+IL_02dd: ldc.r4 25
+IL_02e2: ldc.r4 360
+IL_02e7: ldc.r4 400
+IL_02ec: ldloca.s V_1
+IL_02ee: initobj System.Nullable`1<UnityEngine.Color>
+IL_02f4: ldloc.1
+IL_02f5: callvirt System.Void GlobalPrefabDefaults::SpawnBlood(UnityEngine.Vector3,System.Int16,System.Int16,System.Single,System.Single,System.Single,System.Single,System.Nullable`1<UnityEngine.Color>)
+IL_02fa: ldarg.0
+IL_02fb: ldfld UnityEngine.GameObject InfectedEnemyEffects::hitPuffPrefab
+IL_0300: ldarg.0
+IL_0301: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0306: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_030b: ldc.r4 -72.5
+IL_0310: ldc.r4 -180
+IL_0315: ldc.r4 -180
+IL_031a: call UnityEngine.Quaternion UnityEngine.Quaternion::Euler(System.Single,System.Single,System.Single)
+IL_031f: call UnityEngine.GameObject ObjectPoolExtensions::Spawn(UnityEngine.GameObject,UnityEngine.Vector3,UnityEngine.Quaternion)
+IL_0324: pop
+IL_0325: ldarg.0
+IL_0326: ldc.i4.1
+IL_0327: stfld System.Boolean InfectedEnemyEffects::didFireThisFrame
+IL_032c: ret
+METHOD System.Void InfectedEnemyEffects::Update()
+IL_0000: ldarg.0
+IL_0001: ldc.i4.0
+IL_0002: stfld System.Boolean InfectedEnemyEffects::didFireThisFrame
+IL_0007: ret
+METHOD System.Void InfectedEnemyEffects::.ctor()
+IL_0000: ldarg.0
+IL_0001: call System.Void UnityEngine.MonoBehaviour::.ctor()
+IL_0006: ret
+TYPE Walker base=UnityEngine.MonoBehaviour
+FIELD LineOfSightDetector Walker::lineOfSightDetector
+FIELD AlertRange Walker::alertRange
+FIELD UnityEngine.Rigidbody2D Walker::body
+FIELD UnityEngine.Collider2D Walker::bodyCollider
+FIELD tk2dSpriteAnimator Walker::animator
+FIELD UnityEngine.AudioSource Walker::audioSource
+FIELD UnityEngine.Camera Walker::mainCamera
+FIELD HeroController Walker::hero
+FIELD System.Single Walker::CameraDistanceForActivation
+FIELD System.Single Walker::WaitHeroXThreshold
+FIELD System.Boolean Walker::ambush
+FIELD System.String Walker::idleClip
+FIELD System.String Walker::turnClip
+FIELD System.String Walker::walkClip
+FIELD System.Single Walker::edgeXAdjuster
+FIELD System.Boolean Walker::preventScaleChange
+FIELD System.Boolean Walker::preventTurn
+FIELD System.Single Walker::pauseTimeMin
+FIELD System.Single Walker::pauseTimeMax
+FIELD System.Single Walker::pauseWaitMin
+FIELD System.Single Walker::pauseWaitMax
+FIELD System.Boolean Walker::pauses
+FIELD System.Single Walker::rightScale
+FIELD System.Boolean Walker::startInactive
+FIELD System.Int32 Walker::turnAfterIdlePercentage
+FIELD System.Single Walker::turnPause
+FIELD System.Boolean Walker::waitForHeroX
+FIELD System.Single Walker::waitHeroX
+FIELD System.Single Walker::walkSpeedL
+FIELD System.Single Walker::walkSpeedR
+FIELD System.Boolean Walker::ignoreHoles
+FIELD System.Boolean Walker::preventTurningToFaceHero
+FIELD Walker/States Walker::state
+FIELD System.Boolean Walker::didFulfilCameraDistanceCondition
+FIELD System.Boolean Walker::didFulfilHeroXCondition
+FIELD System.Int32 Walker::currentFacing
+FIELD System.Int32 Walker::turningFacing
+FIELD System.Single Walker::walkTimeRemaining
+FIELD System.Single Walker::pauseTimeRemaining
+FIELD System.Single Walker::turnCooldownRemaining
+FIELD Walker/StopReasons Walker::stopReason
+METHOD System.Void Walker::Awake()
+IL_0000: ldarg.0
+IL_0001: ldarg.0
+IL_0002: call !!0 UnityEngine.Component::GetComponent<UnityEngine.Rigidbody2D>()
+IL_0007: stfld UnityEngine.Rigidbody2D Walker::body
+IL_000c: ldarg.0
+IL_000d: ldarg.0
+IL_000e: call !!0 UnityEngine.Component::GetComponent<UnityEngine.Collider2D>()
+IL_0013: stfld UnityEngine.Collider2D Walker::bodyCollider
+IL_0018: ldarg.0
+IL_0019: ldarg.0
+IL_001a: call !!0 UnityEngine.Component::GetComponent<tk2dSpriteAnimator>()
+IL_001f: stfld tk2dSpriteAnimator Walker::animator
+IL_0024: ldarg.0
+IL_0025: ldarg.0
+IL_0026: call !!0 UnityEngine.Component::GetComponent<UnityEngine.AudioSource>()
+IL_002b: stfld UnityEngine.AudioSource Walker::audioSource
+IL_0030: ret
+METHOD System.Void Walker::Start()
+IL_0000: ldarg.0
+IL_0001: call GameCameras GameCameras::get_instance()
+IL_0006: ldfld UnityEngine.Camera GameCameras::mainCamera
+IL_000b: stfld UnityEngine.Camera Walker::mainCamera
+IL_0010: ldarg.0
+IL_0011: call HeroController HeroController::get_instance()
+IL_0016: stfld HeroController Walker::hero
+IL_001b: ldarg.0
+IL_001c: ldfld System.Int32 Walker::currentFacing
+IL_0021: brtrue.s IL_004b
+IL_0023: ldarg.0
+IL_0024: ldarg.0
+IL_0025: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_002a: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_localScale()
+IL_002f: ldfld System.Single UnityEngine.Vector3::x
+IL_0034: ldarg.0
+IL_0035: ldfld System.Single Walker::rightScale
+IL_003a: mul
+IL_003b: ldc.r4 0
+IL_0040: bge.s IL_0045
+IL_0042: ldc.i4.m1
+IL_0043: br.s IL_0046
+IL_0045: ldc.i4.1
+IL_0046: stfld System.Int32 Walker::currentFacing
+IL_004b: ldarg.0
+IL_004c: ldfld Walker/States Walker::state
+IL_0051: brtrue.s IL_0065
+IL_0053: ldarg.0
+IL_0054: ldsfld System.Single UnityEngine.Mathf::Epsilon
+IL_0059: neg
+IL_005a: stfld System.Single Walker::turnCooldownRemaining
+IL_005f: ldarg.0
+IL_0060: callvirt System.Void Walker::BeginWaitingForConditions()
+IL_0065: ret
+METHOD System.Void Walker::Update()
+IL_0000: ldarg.0
+IL_0001: ldarg.0
+IL_0002: ldfld System.Single Walker::turnCooldownRemaining
+IL_0007: call System.Single UnityEngine.Time::get_deltaTime()
+IL_000c: sub
+IL_000d: stfld System.Single Walker::turnCooldownRemaining
+IL_0012: ldarg.0
+IL_0013: ldfld Walker/States Walker::state
+IL_0018: stloc.0
+IL_0019: ldloc.0
+IL_001a: ldc.i4.1
+IL_001b: sub
+IL_001c: switch IL_0032,IL_0039,IL_0040,IL_0047
+IL_0031: ret
+IL_0032: ldarg.0
+IL_0033: callvirt System.Void Walker::UpdateWaitingForConditions()
+IL_0038: ret
+IL_0039: ldarg.0
+IL_003a: callvirt System.Void Walker::UpdateStopping()
+IL_003f: ret
+IL_0040: ldarg.0
+IL_0041: callvirt System.Void Walker::UpdateWalking()
+IL_0046: ret
+IL_0047: ldarg.0
+IL_0048: callvirt System.Void Walker::UpdateTurning()
+IL_004d: ret
+METHOD System.Void Walker::StartMoving()
+IL_0000: ldarg.0
+IL_0001: ldfld Walker/States Walker::state
+IL_0006: ldc.i4.2
+IL_0007: beq.s IL_0012
+IL_0009: ldarg.0
+IL_000a: ldfld Walker/States Walker::state
+IL_000f: ldc.i4.1
+IL_0010: bne.un.s IL_003f
+IL_0012: ldarg.0
+IL_0013: ldc.i4.0
+IL_0014: stfld System.Boolean Walker::startInactive
+IL_0019: ldarg.0
+IL_001a: ldfld System.Int32 Walker::currentFacing
+IL_001f: brtrue.s IL_0031
+IL_0021: ldc.i4.0
+IL_0022: ldc.i4.2
+IL_0023: call System.Int32 UnityEngine.Random::Range(System.Int32,System.Int32)
+IL_0028: brfalse.s IL_002d
+IL_002a: ldc.i4.1
+IL_002b: br.s IL_002e
+IL_002d: ldc.i4.m1
+IL_002e: stloc.0
+IL_002f: br.s IL_0038
+IL_0031: ldarg.0
+IL_0032: ldfld System.Int32 Walker::currentFacing
+IL_0037: stloc.0
+IL_0038: ldarg.0
+IL_0039: ldloc.0
+IL_003a: callvirt System.Void Walker::BeginWalkingOrTurning(System.Int32)
+IL_003f: ldarg.0
+IL_0040: callvirt System.Void Walker::Update()
+IL_0045: ret
+METHOD System.Void Walker::CancelTurn()
+IL_0000: ldarg.0
+IL_0001: ldfld Walker/States Walker::state
+IL_0006: ldc.i4.4
+IL_0007: bne.un.s IL_0015
+IL_0009: ldarg.0
+IL_000a: ldarg.0
+IL_000b: ldfld System.Int32 Walker::currentFacing
+IL_0010: callvirt System.Void Walker::BeginWalking(System.Int32)
+IL_0015: ret
+METHOD System.Void Walker::Go(System.Int32)
+IL_0000: ldarg.0
+IL_0001: ldsfld System.Single UnityEngine.Mathf::Epsilon
+IL_0006: neg
+IL_0007: stfld System.Single Walker::turnCooldownRemaining
+IL_000c: ldarg.0
+IL_000d: ldfld Walker/States Walker::state
+IL_0012: ldc.i4.2
+IL_0013: beq.s IL_001e
+IL_0015: ldarg.0
+IL_0016: ldfld Walker/States Walker::state
+IL_001b: ldc.i4.3
+IL_001c: bne.un.s IL_0027
+IL_001e: ldarg.0
+IL_001f: ldarg.1
+IL_0020: callvirt System.Void Walker::BeginWalkingOrTurning(System.Int32)
+IL_0025: br.s IL_003f
+IL_0027: ldarg.0
+IL_0028: ldfld Walker/States Walker::state
+IL_002d: ldc.i4.4
+IL_002e: bne.un.s IL_003f
+IL_0030: ldarg.0
+IL_0031: ldfld System.Int32 Walker::currentFacing
+IL_0036: ldarg.1
+IL_0037: bne.un.s IL_003f
+IL_0039: ldarg.0
+IL_003a: callvirt System.Void Walker::CancelTurn()
+IL_003f: ldarg.0
+IL_0040: callvirt System.Void Walker::Update()
+IL_0045: ret
+METHOD System.Void Walker::RecieveGoMessage(System.Int32)
+IL_0000: ldarg.0
+IL_0001: ldfld Walker/States Walker::state
+IL_0006: ldc.i4.2
+IL_0007: bne.un.s IL_0012
+IL_0009: ldarg.0
+IL_000a: ldfld Walker/StopReasons Walker::stopReason
+IL_000f: ldc.i4.1
+IL_0010: beq.s IL_0019
+IL_0012: ldarg.0
+IL_0013: ldarg.1
+IL_0014: callvirt System.Void Walker::Go(System.Int32)
+IL_0019: ret
+METHOD System.Void Walker::Stop(Walker/StopReasons)
+IL_0000: ldarg.0
+IL_0001: ldarg.1
+IL_0002: callvirt System.Void Walker::BeginStopped(Walker/StopReasons)
+IL_0007: ret
+METHOD System.Void Walker::ChangeFacing(System.Int32)
+IL_0000: ldarg.0
+IL_0001: ldfld Walker/States Walker::state
+IL_0006: ldc.i4.4
+IL_0007: bne.un.s IL_0019
+IL_0009: ldarg.0
+IL_000a: ldarg.1
+IL_000b: stfld System.Int32 Walker::turningFacing
+IL_0010: ldarg.0
+IL_0011: ldarg.1
+IL_0012: neg
+IL_0013: stfld System.Int32 Walker::currentFacing
+IL_0018: ret
+IL_0019: ldarg.0
+IL_001a: ldarg.1
+IL_001b: stfld System.Int32 Walker::currentFacing
+IL_0020: ret
+METHOD System.Void Walker::BeginWaitingForConditions()
+IL_0000: ldarg.0
+IL_0001: ldc.i4.1
+IL_0002: stfld Walker/States Walker::state
+IL_0007: ldarg.0
+IL_0008: ldc.i4.0
+IL_0009: stfld System.Boolean Walker::didFulfilCameraDistanceCondition
+IL_000e: ldarg.0
+IL_000f: ldc.i4.0
+IL_0010: stfld System.Boolean Walker::didFulfilHeroXCondition
+IL_0015: ldarg.0
+IL_0016: callvirt System.Void Walker::UpdateWaitingForConditions()
+IL_001b: ret
+METHOD System.Void Walker::UpdateWaitingForConditions()
+IL_0000: ldarg.0
+IL_0001: ldfld System.Boolean Walker::didFulfilCameraDistanceCondition
+IL_0006: brtrue.s IL_003e
+IL_0008: ldarg.0
+IL_0009: ldfld UnityEngine.Camera Walker::mainCamera
+IL_000e: callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0013: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_0018: ldarg.0
+IL_0019: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_001e: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_0023: call UnityEngine.Vector3 UnityEngine.Vector3::op_Subtraction(UnityEngine.Vector3,UnityEngine.Vector3)
+IL_0028: stloc.0
+IL_0029: ldloca.s V_0
+IL_002b: call System.Single UnityEngine.Vector3::get_sqrMagnitude()
+IL_0030: ldc.r4 3600
+IL_0035: bge.un.s IL_003e
+IL_0037: ldarg.0
+IL_0038: ldc.i4.1
+IL_0039: stfld System.Boolean Walker::didFulfilCameraDistanceCondition
+IL_003e: ldarg.0
+IL_003f: ldfld System.Boolean Walker::didFulfilCameraDistanceCondition
+IL_0044: brfalse.s IL_0086
+IL_0046: ldarg.0
+IL_0047: ldfld System.Boolean Walker::didFulfilHeroXCondition
+IL_004c: brtrue.s IL_0086
+IL_004e: ldarg.0
+IL_004f: ldfld HeroController Walker::hero
+IL_0054: ldnull
+IL_0055: call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+IL_005a: brfalse.s IL_0086
+IL_005c: ldarg.0
+IL_005d: ldfld HeroController Walker::hero
+IL_0062: callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0067: call System.Single Extensions::GetPositionX(UnityEngine.Transform)
+IL_006c: ldarg.0
+IL_006d: ldfld System.Single Walker::waitHeroX
+IL_0072: sub
+IL_0073: call System.Single UnityEngine.Mathf::Abs(System.Single)
+IL_0078: ldc.r4 1
+IL_007d: bge.un.s IL_0086
+IL_007f: ldarg.0
+IL_0080: ldc.i4.1
+IL_0081: stfld System.Boolean Walker::didFulfilHeroXCondition
+IL_0086: ldarg.0
+IL_0087: ldfld System.Boolean Walker::didFulfilCameraDistanceCondition
+IL_008c: brfalse.s IL_00bb
+IL_008e: ldarg.0
+IL_008f: ldfld System.Boolean Walker::waitForHeroX
+IL_0094: brfalse.s IL_009e
+IL_0096: ldarg.0
+IL_0097: ldfld System.Boolean Walker::didFulfilHeroXCondition
+IL_009c: brfalse.s IL_00bb
+IL_009e: ldarg.0
+IL_009f: ldfld System.Boolean Walker::startInactive
+IL_00a4: brtrue.s IL_00bb
+IL_00a6: ldarg.0
+IL_00a7: ldfld System.Boolean Walker::ambush
+IL_00ac: brtrue.s IL_00bb
+IL_00ae: ldarg.0
+IL_00af: ldc.i4.0
+IL_00b0: callvirt System.Void Walker::BeginStopped(Walker/StopReasons)
+IL_00b5: ldarg.0
+IL_00b6: callvirt System.Void Walker::StartMoving()
+IL_00bb: ret
+METHOD System.Void Walker::BeginStopped(Walker/StopReasons)
+IL_0000: ldarg.0
+IL_0001: ldc.i4.2
+IL_0002: stfld Walker/States Walker::state
+IL_0007: ldarg.0
+IL_0008: ldarg.1
+IL_0009: stfld Walker/StopReasons Walker::stopReason
+IL_000e: ldarg.0
+IL_000f: ldfld UnityEngine.AudioSource Walker::audioSource
+IL_0014: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_0019: brfalse.s IL_0026
+IL_001b: ldarg.0
+IL_001c: ldfld UnityEngine.AudioSource Walker::audioSource
+IL_0021: callvirt System.Void UnityEngine.AudioSource::Stop()
+IL_0026: ldarg.1
+IL_0027: brtrue.s IL_009a
+IL_0029: ldarg.0
+IL_002a: ldfld tk2dSpriteAnimator Walker::animator
+IL_002f: ldarg.0
+IL_0030: ldfld System.String Walker::idleClip
+IL_0035: callvirt tk2dSpriteAnimationClip tk2dSpriteAnimator::GetClipByName(System.String)
+IL_003a: stloc.0
+IL_003b: ldloc.0
+IL_003c: brfalse.s IL_004a
+IL_003e: ldarg.0
+IL_003f: ldfld tk2dSpriteAnimator Walker::animator
+IL_0044: ldloc.0
+IL_0045: callvirt System.Void tk2dSpriteAnimator::Play(tk2dSpriteAnimationClip)
+IL_004a: ldarg.0
+IL_004b: ldfld UnityEngine.Rigidbody2D Walker::body
+IL_0050: ldarg.0
+IL_0051: ldfld UnityEngine.Rigidbody2D Walker::body
+IL_0056: callvirt UnityEngine.Vector2 UnityEngine.Rigidbody2D::get_velocity()
+IL_005b: ldc.r4 0
+IL_0060: ldc.r4 1
+IL_0065: newobj System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_006a: call UnityEngine.Vector2 UnityEngine.Vector2::Scale(UnityEngine.Vector2,UnityEngine.Vector2)
+IL_006f: callvirt System.Void UnityEngine.Rigidbody2D::set_velocity(UnityEngine.Vector2)
+IL_0074: ldarg.0
+IL_0075: ldfld System.Boolean Walker::pauses
+IL_007a: brfalse.s IL_0094
+IL_007c: ldarg.0
+IL_007d: ldarg.0
+IL_007e: ldfld System.Single Walker::pauseTimeMin
+IL_0083: ldarg.0
+IL_0084: ldfld System.Single Walker::pauseTimeMax
+IL_0089: call System.Single UnityEngine.Random::Range(System.Single,System.Single)
+IL_008e: stfld System.Single Walker::pauseTimeRemaining
+IL_0093: ret
+IL_0094: ldarg.0
+IL_0095: callvirt System.Void Walker::EndStopping()
+IL_009a: ret
+METHOD System.Void Walker::UpdateStopping()
+IL_0000: ldarg.0
+IL_0001: ldfld Walker/StopReasons Walker::stopReason
+IL_0006: brtrue.s IL_002d
+IL_0008: ldarg.0
+IL_0009: ldarg.0
+IL_000a: ldfld System.Single Walker::pauseTimeRemaining
+IL_000f: call System.Single UnityEngine.Time::get_deltaTime()
+IL_0014: sub
+IL_0015: stfld System.Single Walker::pauseTimeRemaining
+IL_001a: ldarg.0
+IL_001b: ldfld System.Single Walker::pauseTimeRemaining
+IL_0020: ldc.r4 0
+IL_0025: bgt.un.s IL_002d
+IL_0027: ldarg.0
+IL_0028: callvirt System.Void Walker::EndStopping()
+IL_002d: ret
+METHOD System.Void Walker::EndStopping()
+IL_0000: ldarg.0
+IL_0001: ldfld System.Int32 Walker::currentFacing
+IL_0006: brtrue.s IL_001c
+IL_0008: ldarg.0
+IL_0009: ldc.i4.0
+IL_000a: ldc.i4.2
+IL_000b: call System.Int32 UnityEngine.Random::Range(System.Int32,System.Int32)
+IL_0010: brfalse.s IL_0015
+IL_0012: ldc.i4.m1
+IL_0013: br.s IL_0016
+IL_0015: ldc.i4.1
+IL_0016: callvirt System.Void Walker::BeginWalkingOrTurning(System.Int32)
+IL_001b: ret
+IL_001c: ldc.i4.0
+IL_001d: ldc.i4.s 100
+IL_001f: call System.Int32 UnityEngine.Random::Range(System.Int32,System.Int32)
+IL_0024: ldarg.0
+IL_0025: ldfld System.Int32 Walker::turnAfterIdlePercentage
+IL_002a: bge.s IL_003a
+IL_002c: ldarg.0
+IL_002d: ldarg.0
+IL_002e: ldfld System.Int32 Walker::currentFacing
+IL_0033: neg
+IL_0034: callvirt System.Void Walker::BeginTurning(System.Int32)
+IL_0039: ret
+IL_003a: ldarg.0
+IL_003b: ldarg.0
+IL_003c: ldfld System.Int32 Walker::currentFacing
+IL_0041: callvirt System.Void Walker::BeginWalking(System.Int32)
+IL_0046: ret
+METHOD System.Void Walker::BeginWalkingOrTurning(System.Int32)
+IL_0000: ldarg.0
+IL_0001: ldfld System.Int32 Walker::currentFacing
+IL_0006: ldarg.1
+IL_0007: bne.un.s IL_0011
+IL_0009: ldarg.0
+IL_000a: ldarg.1
+IL_000b: callvirt System.Void Walker::BeginWalking(System.Int32)
+IL_0010: ret
+IL_0011: ldarg.0
+IL_0012: ldarg.1
+IL_0013: callvirt System.Void Walker::BeginTurning(System.Int32)
+IL_0018: ret
+METHOD System.Void Walker::BeginWalking(System.Int32)
+IL_0000: ldarg.0
+IL_0001: ldc.i4.3
+IL_0002: stfld Walker/States Walker::state
+IL_0007: ldarg.0
+IL_0008: ldfld tk2dSpriteAnimator Walker::animator
+IL_000d: ldarg.0
+IL_000e: ldfld System.String Walker::walkClip
+IL_0013: callvirt System.Void tk2dSpriteAnimator::Play(System.String)
+IL_0018: ldarg.0
+IL_0019: ldfld System.Boolean Walker::preventScaleChange
+IL_001e: brtrue.s IL_0034
+IL_0020: ldarg.0
+IL_0021: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0026: ldarg.1
+IL_0027: conv.r4
+IL_0028: ldarg.0
+IL_0029: ldfld System.Single Walker::rightScale
+IL_002e: mul
+IL_002f: call System.Void Extensions::SetScaleX(UnityEngine.Transform,System.Single)
+IL_0034: ldarg.0
+IL_0035: ldarg.0
+IL_0036: ldfld System.Single Walker::pauseWaitMin
+IL_003b: ldarg.0
+IL_003c: ldfld System.Single Walker::pauseWaitMax
+IL_0041: call System.Single UnityEngine.Random::Range(System.Single,System.Single)
+IL_0046: stfld System.Single Walker::walkTimeRemaining
+IL_004b: ldarg.0
+IL_004c: ldfld UnityEngine.AudioSource Walker::audioSource
+IL_0051: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_0056: brfalse.s IL_0063
+IL_0058: ldarg.0
+IL_0059: ldfld UnityEngine.AudioSource Walker::audioSource
+IL_005e: callvirt System.Void UnityEngine.AudioSource::Play()
+IL_0063: ldarg.0
+IL_0064: ldfld UnityEngine.Rigidbody2D Walker::body
+IL_0069: ldarg.1
+IL_006a: ldc.i4.0
+IL_006b: bgt.s IL_0075
+IL_006d: ldarg.0
+IL_006e: ldfld System.Single Walker::walkSpeedL
+IL_0073: br.s IL_007b
+IL_0075: ldarg.0
+IL_0076: ldfld System.Single Walker::walkSpeedR
+IL_007b: ldarg.0
+IL_007c: ldfld UnityEngine.Rigidbody2D Walker::body
+IL_0081: callvirt UnityEngine.Vector2 UnityEngine.Rigidbody2D::get_velocity()
+IL_0086: ldfld System.Single UnityEngine.Vector2::y
+IL_008b: newobj System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_0090: callvirt System.Void UnityEngine.Rigidbody2D::set_velocity(UnityEngine.Vector2)
+IL_0095: ret
+METHOD System.Void Walker::UpdateWalking()
+IL_0000: ldarg.0
+IL_0001: ldfld System.Single Walker::turnCooldownRemaining
+IL_0006: ldc.r4 0
+IL_000b: cgt.un
+IL_000d: ldc.i4.0
+IL_000e: ceq
+IL_0010: brfalse IL_0193
+IL_0015: ldloca.s V_0
+IL_0017: ldarg.0
+IL_0018: ldfld UnityEngine.Collider2D Walker::bodyCollider
+IL_001d: ldc.i4.1
+IL_001e: ldarg.0
+IL_001f: ldfld System.Int32 Walker::currentFacing
+IL_0024: sub
+IL_0025: ldc.i4.3
+IL_0026: ldc.r4 0.1
+IL_002b: call System.Void Sweep::.ctor(UnityEngine.Collider2D,System.Int32,System.Int32,System.Single)
+IL_0030: ldloca.s V_0
+IL_0032: ldarg.0
+IL_0033: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0038: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_003d: call UnityEngine.Vector2 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector3)
+IL_0042: ldarg.0
+IL_0043: ldfld UnityEngine.Collider2D Walker::bodyCollider
+IL_0048: callvirt UnityEngine.Bounds UnityEngine.Collider2D::get_bounds()
+IL_004d: stloc.1
+IL_004e: ldloca.s V_1
+IL_0050: call UnityEngine.Vector3 UnityEngine.Bounds::get_extents()
+IL_0055: ldfld System.Single UnityEngine.Vector3::x
+IL_005a: ldc.r4 0.5
+IL_005f: add
+IL_0060: ldc.i4 256
+IL_0065: call System.Boolean Sweep::Check(UnityEngine.Vector2,System.Single,System.Int32)
+IL_006a: brfalse.s IL_007a
+IL_006c: ldarg.0
+IL_006d: ldarg.0
+IL_006e: ldfld System.Int32 Walker::currentFacing
+IL_0073: neg
+IL_0074: callvirt System.Void Walker::BeginTurning(System.Int32)
+IL_0079: ret
+IL_007a: ldarg.0
+IL_007b: ldfld System.Boolean Walker::preventTurningToFaceHero
+IL_0080: brtrue IL_0107
+IL_0085: ldarg.0
+IL_0086: ldfld HeroController Walker::hero
+IL_008b: ldnull
+IL_008c: call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+IL_0091: brfalse.s IL_00c0
+IL_0093: ldarg.0
+IL_0094: ldfld HeroController Walker::hero
+IL_0099: callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_009e: call System.Single Extensions::GetPositionX(UnityEngine.Transform)
+IL_00a3: ldarg.0
+IL_00a4: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_00a9: call System.Single Extensions::GetPositionX(UnityEngine.Transform)
+IL_00ae: cgt
+IL_00b0: ldarg.0
+IL_00b1: ldfld System.Int32 Walker::currentFacing
+IL_00b6: ldc.i4.0
+IL_00b7: cgt
+IL_00b9: ceq
+IL_00bb: ldc.i4.0
+IL_00bc: ceq
+IL_00be: br.s IL_00c1
+IL_00c0: ldc.i4.0
+IL_00c1: brfalse.s IL_0107
+IL_00c3: ldarg.0
+IL_00c4: ldfld LineOfSightDetector Walker::lineOfSightDetector
+IL_00c9: ldnull
+IL_00ca: call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+IL_00cf: brfalse.s IL_0107
+IL_00d1: ldarg.0
+IL_00d2: ldfld LineOfSightDetector Walker::lineOfSightDetector
+IL_00d7: callvirt System.Boolean LineOfSightDetector::get_CanSeeHero()
+IL_00dc: brfalse.s IL_0107
+IL_00de: ldarg.0
+IL_00df: ldfld AlertRange Walker::alertRange
+IL_00e4: ldnull
+IL_00e5: call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+IL_00ea: brfalse.s IL_0107
+IL_00ec: ldarg.0
+IL_00ed: ldfld AlertRange Walker::alertRange
+IL_00f2: callvirt System.Boolean AlertRange::get_IsHeroInRange()
+IL_00f7: brfalse.s IL_0107
+IL_00f9: ldarg.0
+IL_00fa: ldarg.0
+IL_00fb: ldfld System.Int32 Walker::currentFacing
+IL_0100: neg
+IL_0101: callvirt System.Void Walker::BeginTurning(System.Int32)
+IL_0106: ret
+IL_0107: ldarg.0
+IL_0108: ldfld System.Boolean Walker::ignoreHoles
+IL_010d: brtrue IL_0193
+IL_0112: ldloca.s V_2
+IL_0114: ldarg.0
+IL_0115: ldfld UnityEngine.Collider2D Walker::bodyCollider
+IL_011a: ldc.i4.3
+IL_011b: ldc.i4.3
+IL_011c: ldc.r4 0.1
+IL_0121: call System.Void Sweep::.ctor(UnityEngine.Collider2D,System.Int32,System.Int32,System.Single)
+IL_0126: ldloca.s V_2
+IL_0128: ldarg.0
+IL_0129: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_012e: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_0133: call UnityEngine.Vector2 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector3)
+IL_0138: ldarg.0
+IL_0139: ldfld UnityEngine.Collider2D Walker::bodyCollider
+IL_013e: callvirt UnityEngine.Bounds UnityEngine.Collider2D::get_bounds()
+IL_0143: stloc.1
+IL_0144: ldloca.s V_1
+IL_0146: call UnityEngine.Vector3 UnityEngine.Bounds::get_extents()
+IL_014b: ldfld System.Single UnityEngine.Vector3::x
+IL_0150: ldc.r4 0.5
+IL_0155: add
+IL_0156: ldarg.0
+IL_0157: ldfld System.Single Walker::edgeXAdjuster
+IL_015c: add
+IL_015d: ldarg.0
+IL_015e: ldfld System.Int32 Walker::currentFacing
+IL_0163: conv.r4
+IL_0164: mul
+IL_0165: ldc.r4 0
+IL_016a: newobj System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_016f: call UnityEngine.Vector2 UnityEngine.Vector2::op_Addition(UnityEngine.Vector2,UnityEngine.Vector2)
+IL_0174: ldc.r4 0.25
+IL_0179: ldc.i4 256
+IL_017e: call System.Boolean Sweep::Check(UnityEngine.Vector2,System.Single,System.Int32)
+IL_0183: brtrue.s IL_0193
+IL_0185: ldarg.0
+IL_0186: ldarg.0
+IL_0187: ldfld System.Int32 Walker::currentFacing
+IL_018c: neg
+IL_018d: callvirt System.Void Walker::BeginTurning(System.Int32)
+IL_0192: ret
+IL_0193: ldarg.0
+IL_0194: ldfld System.Boolean Walker::pauses
+IL_0199: brfalse.s IL_01c2
+IL_019b: ldarg.0
+IL_019c: ldarg.0
+IL_019d: ldfld System.Single Walker::walkTimeRemaining
+IL_01a2: call System.Single UnityEngine.Time::get_deltaTime()
+IL_01a7: sub
+IL_01a8: stfld System.Single Walker::walkTimeRemaining
+IL_01ad: ldarg.0
+IL_01ae: ldfld System.Single Walker::walkTimeRemaining
+IL_01b3: ldc.r4 0
+IL_01b8: bgt.un.s IL_01c2
+IL_01ba: ldarg.0
+IL_01bb: ldc.i4.0
+IL_01bc: callvirt System.Void Walker::BeginStopped(Walker/StopReasons)
+IL_01c1: ret
+IL_01c2: ldarg.0
+IL_01c3: ldfld UnityEngine.Rigidbody2D Walker::body
+IL_01c8: ldarg.0
+IL_01c9: ldfld System.Int32 Walker::currentFacing
+IL_01ce: ldc.i4.0
+IL_01cf: bgt.s IL_01d9
+IL_01d1: ldarg.0
+IL_01d2: ldfld System.Single Walker::walkSpeedL
+IL_01d7: br.s IL_01df
+IL_01d9: ldarg.0
+IL_01da: ldfld System.Single Walker::walkSpeedR
+IL_01df: ldarg.0
+IL_01e0: ldfld UnityEngine.Rigidbody2D Walker::body
+IL_01e5: callvirt UnityEngine.Vector2 UnityEngine.Rigidbody2D::get_velocity()
+IL_01ea: ldfld System.Single UnityEngine.Vector2::y
+IL_01ef: newobj System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_01f4: callvirt System.Void UnityEngine.Rigidbody2D::set_velocity(UnityEngine.Vector2)
+IL_01f9: ret
+METHOD System.Void Walker::BeginTurning(System.Int32)
+IL_0000: ldarg.0
+IL_0001: ldc.i4.4
+IL_0002: stfld Walker/States Walker::state
+IL_0007: ldarg.0
+IL_0008: ldarg.1
+IL_0009: stfld System.Int32 Walker::turningFacing
+IL_000e: ldarg.0
+IL_000f: ldfld System.Boolean Walker::preventTurn
+IL_0014: brfalse.s IL_001d
+IL_0016: ldarg.0
+IL_0017: callvirt System.Void Walker::EndTurning()
+IL_001c: ret
+IL_001d: ldarg.0
+IL_001e: ldarg.0
+IL_001f: ldfld System.Single Walker::turnPause
+IL_0024: stfld System.Single Walker::turnCooldownRemaining
+IL_0029: ldarg.0
+IL_002a: ldfld UnityEngine.Rigidbody2D Walker::body
+IL_002f: ldarg.0
+IL_0030: ldfld UnityEngine.Rigidbody2D Walker::body
+IL_0035: callvirt UnityEngine.Vector2 UnityEngine.Rigidbody2D::get_velocity()
+IL_003a: ldc.r4 0
+IL_003f: ldc.r4 1
+IL_0044: newobj System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_0049: call UnityEngine.Vector2 UnityEngine.Vector2::Scale(UnityEngine.Vector2,UnityEngine.Vector2)
+IL_004e: callvirt System.Void UnityEngine.Rigidbody2D::set_velocity(UnityEngine.Vector2)
+IL_0053: ldarg.0
+IL_0054: ldfld tk2dSpriteAnimator Walker::animator
+IL_0059: ldarg.0
+IL_005a: ldfld System.String Walker::turnClip
+IL_005f: callvirt System.Void tk2dSpriteAnimator::Play(System.String)
+IL_0064: ldarg.0
+IL_0065: call UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+IL_006a: ldarg.1
+IL_006b: ldc.i4.0
+IL_006c: bgt.s IL_0075
+IL_006e: ldstr "TURN LEFT"
+IL_0073: br.s IL_007a
+IL_0075: ldstr "TURN RIGHT"
+IL_007a: ldc.i4.0
+IL_007b: call System.Void FSMUtility::SendEventToGameObject(UnityEngine.GameObject,System.String,System.Boolean)
+IL_0080: ret
+METHOD System.Void Walker::UpdateTurning()
+IL_0000: ldarg.0
+IL_0001: ldfld UnityEngine.Rigidbody2D Walker::body
+IL_0006: ldarg.0
+IL_0007: ldfld UnityEngine.Rigidbody2D Walker::body
+IL_000c: callvirt UnityEngine.Vector2 UnityEngine.Rigidbody2D::get_velocity()
+IL_0011: ldc.r4 0
+IL_0016: ldc.r4 1
+IL_001b: newobj System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_0020: call UnityEngine.Vector2 UnityEngine.Vector2::Scale(UnityEngine.Vector2,UnityEngine.Vector2)
+IL_0025: callvirt System.Void UnityEngine.Rigidbody2D::set_velocity(UnityEngine.Vector2)
+IL_002a: ldarg.0
+IL_002b: ldfld tk2dSpriteAnimator Walker::animator
+IL_0030: callvirt System.Boolean tk2dSpriteAnimator::get_Playing()
+IL_0035: brtrue.s IL_003d
+IL_0037: ldarg.0
+IL_0038: callvirt System.Void Walker::EndTurning()
+IL_003d: ret
+METHOD System.Void Walker::EndTurning()
+IL_0000: ldarg.0
+IL_0001: ldarg.0
+IL_0002: ldfld System.Int32 Walker::turningFacing
+IL_0007: stfld System.Int32 Walker::currentFacing
+IL_000c: ldarg.0
+IL_000d: ldarg.0
+IL_000e: ldfld System.Int32 Walker::currentFacing
+IL_0013: callvirt System.Void Walker::BeginWalking(System.Int32)
+IL_0018: ret
+METHOD System.Void Walker::ClearTurnCooldown()
+IL_0000: ldarg.0
+IL_0001: ldsfld System.Single UnityEngine.Mathf::Epsilon
+IL_0006: neg
+IL_0007: stfld System.Single Walker::turnCooldownRemaining
+IL_000c: ret
+METHOD System.Void Walker::.ctor()
+IL_0000: ldarg.0
+IL_0001: call System.Void UnityEngine.MonoBehaviour::.ctor()
+IL_0006: ret
+TYPE ScuttlerControl base=UnityEngine.MonoBehaviour
+FIELD System.Boolean ScuttlerControl::startIdle
+FIELD System.Boolean ScuttlerControl::startRunning
+FIELD System.String ScuttlerControl::killedPDBool
+FIELD System.String ScuttlerControl::killsPDBool
+FIELD System.String ScuttlerControl::newDataPDBool
+FIELD System.String ScuttlerControl::runAnim
+FIELD System.String ScuttlerControl::landAnim
+FIELD UnityEngine.GameObject ScuttlerControl::corpsePrefab
+FIELD UnityEngine.GameObject ScuttlerControl::splatEffectChild
+FIELD UnityEngine.GameObject ScuttlerControl::journalUpdateMsgPrefab
+FIELD UnityEngine.AudioSource ScuttlerControl::audioSourcePrefab
+FIELD AudioEvent ScuttlerControl::bounceSound
+FIELD TriggerEnterEvent ScuttlerControl::heroAlert
+FIELD System.Boolean ScuttlerControl::healthScuttler
+FIELD UnityEngine.GameObject ScuttlerControl::strikeNailPrefab
+FIELD UnityEngine.GameObject ScuttlerControl::slashImpactPrefab
+FIELD UnityEngine.GameObject ScuttlerControl::fireballHitPrefab
+FIELD AudioEvent ScuttlerControl::deathSound1
+FIELD AudioEvent ScuttlerControl::deathSound2
+FIELD UnityEngine.GameObject ScuttlerControl::pool
+FIELD UnityEngine.GameObject ScuttlerControl::screenFlash
+FIELD UnityEngine.Color ScuttlerControl::bloodColor
+FIELD UnityEngine.Transform ScuttlerControl::hero
+FIELD System.Single ScuttlerControl::maxSpeed
+FIELD System.Single ScuttlerControl::acceleration
+FIELD System.Boolean ScuttlerControl::landed
+FIELD UnityEngine.Coroutine ScuttlerControl::runRoutine
+FIELD UnityEngine.Coroutine ScuttlerControl::bounceRoutine
+FIELD System.Single ScuttlerControl::rayLength
+FIELD UnityEngine.Vector2 ScuttlerControl::rayOrigin
+FIELD tk2dSpriteAnimator ScuttlerControl::anim
+FIELD UnityEngine.Rigidbody2D ScuttlerControl::body
+FIELD UnityEngine.AudioSource ScuttlerControl::source
+FIELD System.Boolean ScuttlerControl::alive
+FIELD System.Boolean ScuttlerControl::reverseRun
+FIELD System.Single ScuttlerControl::activateDelay
+FIELD System.Single ScuttlerControl::activateTime
+METHOD System.Void ScuttlerControl::Awake()
+IL_0000: ldarg.0
+IL_0001: ldarg.0
+IL_0002: call !!0 UnityEngine.Component::GetComponent<tk2dSpriteAnimator>()
+IL_0007: stfld tk2dSpriteAnimator ScuttlerControl::anim
+IL_000c: ldarg.0
+IL_000d: ldarg.0
+IL_000e: call !!0 UnityEngine.Component::GetComponent<UnityEngine.Rigidbody2D>()
+IL_0013: stfld UnityEngine.Rigidbody2D ScuttlerControl::body
+IL_0018: ldarg.0
+IL_0019: ldarg.0
+IL_001a: call !!0 UnityEngine.Component::GetComponent<UnityEngine.AudioSource>()
+IL_001f: stfld UnityEngine.AudioSource ScuttlerControl::source
+IL_0024: ret
+METHOD System.Void ScuttlerControl::Start()
+IL_0000: ldarg.0
+IL_0001: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0006: ldc.r4 1.35
+IL_000b: ldc.r4 1.5
+IL_0010: call System.Single UnityEngine.Random::Range(System.Single,System.Single)
+IL_0015: call System.Void Extensions::SetScaleMatching(UnityEngine.Transform,System.Single)
+IL_001a: ldarg.0
+IL_001b: ldc.r4 6
+IL_0020: ldc.r4 9
+IL_0025: call System.Single UnityEngine.Random::Range(System.Single,System.Single)
+IL_002a: stfld System.Single ScuttlerControl::maxSpeed
+IL_002f: ldarg.0
+IL_0030: call HeroController HeroController::get_instance()
+IL_0035: callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_003a: stfld UnityEngine.Transform ScuttlerControl::hero
+IL_003f: ldarg.0
+IL_0040: call System.Single UnityEngine.Time::get_time()
+IL_0045: ldarg.0
+IL_0046: ldfld System.Single ScuttlerControl::activateDelay
+IL_004b: add
+IL_004c: stfld System.Single ScuttlerControl::activateTime
+IL_0051: ldarg.0
+IL_0052: call !!0 UnityEngine.Component::GetComponent<UnityEngine.Collider2D>()
+IL_0057: stloc.0
+IL_0058: ldloc.0
+IL_0059: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_005e: brfalse.s IL_00ae
+IL_0060: ldarg.0
+IL_0061: ldloc.0
+IL_0062: callvirt UnityEngine.Bounds UnityEngine.Collider2D::get_bounds()
+IL_0067: stloc.1
+IL_0068: ldloca.s V_1
+IL_006a: call UnityEngine.Vector3 UnityEngine.Bounds::get_size()
+IL_006f: ldfld System.Single UnityEngine.Vector3::x
+IL_0074: ldc.r4 2
+IL_0079: div
+IL_007a: ldc.r4 0.1
+IL_007f: add
+IL_0080: stfld System.Single ScuttlerControl::rayLength
+IL_0085: ldarg.0
+IL_0086: ldloc.0
+IL_0087: callvirt UnityEngine.Bounds UnityEngine.Collider2D::get_bounds()
+IL_008c: stloc.1
+IL_008d: ldloca.s V_1
+IL_008f: call UnityEngine.Vector3 UnityEngine.Bounds::get_center()
+IL_0094: ldarg.0
+IL_0095: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_009a: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_009f: call UnityEngine.Vector3 UnityEngine.Vector3::op_Subtraction(UnityEngine.Vector3,UnityEngine.Vector3)
+IL_00a4: call UnityEngine.Vector2 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector3)
+IL_00a9: stfld UnityEngine.Vector2 ScuttlerControl::rayOrigin
+IL_00ae: ldarg.0
+IL_00af: ldfld UnityEngine.AudioSource ScuttlerControl::source
+IL_00b4: ldc.i4.0
+IL_00b5: callvirt System.Void UnityEngine.Behaviour::set_enabled(System.Boolean)
+IL_00ba: ldarg.0
+IL_00bb: ldfld System.Boolean ScuttlerControl::healthScuttler
+IL_00c0: brfalse.s IL_00dc
+IL_00c2: ldarg.0
+IL_00c3: call GameManager GameManager::get_instance()
+IL_00c8: ldfld PlayerData GameManager::playerData
+IL_00cd: ldstr "equippedCharm_27"
+IL_00d2: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_00d7: stfld System.Boolean ScuttlerControl::reverseRun
+IL_00dc: ldarg.0
+IL_00dd: ldfld System.Boolean ScuttlerControl::startRunning
+IL_00e2: brtrue.s IL_010e
+IL_00e4: ldarg.0
+IL_00e5: ldfld System.Boolean ScuttlerControl::startIdle
+IL_00ea: brtrue.s IL_010e
+IL_00ec: ldarg.0
+IL_00ed: call !!0 UnityEngine.Component::GetComponentInChildren<CollisionEnterEvent>()
+IL_00f2: stloc.2
+IL_00f3: ldloc.2
+IL_00f4: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_00f9: brfalse.s IL_0155
+IL_00fb: ldloc.2
+IL_00fc: ldarg.0
+IL_00fd: ldftn System.Void ScuttlerControl::<Start>b__38_1(CollisionEnterEvent/Direction,UnityEngine.Collision2D)
+IL_0103: newobj System.Void CollisionEnterEvent/DirectionalCollisionEvent::.ctor(System.Object,System.IntPtr)
+IL_0108: callvirt System.Void CollisionEnterEvent::add_OnCollisionEnteredDirectional(CollisionEnterEvent/DirectionalCollisionEvent)
+IL_010d: ret
+IL_010e: ldarg.0
+IL_010f: ldfld System.Boolean ScuttlerControl::startIdle
+IL_0114: brfalse.s IL_013b
+IL_0116: ldarg.0
+IL_0117: ldfld TriggerEnterEvent ScuttlerControl::heroAlert
+IL_011c: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_0121: brfalse.s IL_013b
+IL_0123: ldarg.0
+IL_0124: ldfld TriggerEnterEvent ScuttlerControl::heroAlert
+IL_0129: ldarg.0
+IL_012a: ldftn System.Void ScuttlerControl::<Start>b__38_0(UnityEngine.Collider2D,UnityEngine.GameObject)
+IL_0130: newobj System.Void TriggerEnterEvent/CollisionEvent::.ctor(System.Object,System.IntPtr)
+IL_0135: callvirt System.Void TriggerEnterEvent::add_OnTriggerEntered(TriggerEnterEvent/CollisionEvent)
+IL_013a: ret
+IL_013b: ldarg.0
+IL_013c: ldfld System.Boolean ScuttlerControl::startRunning
+IL_0141: brfalse.s IL_0155
+IL_0143: ldarg.0
+IL_0144: ldarg.0
+IL_0145: ldarg.0
+IL_0146: callvirt System.Collections.IEnumerator ScuttlerControl::Run()
+IL_014b: call UnityEngine.Coroutine UnityEngine.MonoBehaviour::StartCoroutine(System.Collections.IEnumerator)
+IL_0150: stfld UnityEngine.Coroutine ScuttlerControl::runRoutine
+IL_0155: ret
+METHOD System.Void ScuttlerControl::Update()
+IL_0000: ldarg.0
+IL_0001: ldfld System.Boolean ScuttlerControl::alive
+IL_0006: brtrue.s IL_0009
+IL_0008: ret
+IL_0009: ldarg.0
+IL_000a: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_000f: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_0014: call UnityEngine.Vector2 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector3)
+IL_0019: ldarg.0
+IL_001a: ldfld UnityEngine.Vector2 ScuttlerControl::rayOrigin
+IL_001f: call UnityEngine.Vector2 UnityEngine.Vector2::op_Addition(UnityEngine.Vector2,UnityEngine.Vector2)
+IL_0024: ldarg.0
+IL_0025: ldfld UnityEngine.Rigidbody2D ScuttlerControl::body
+IL_002a: callvirt UnityEngine.Vector2 UnityEngine.Rigidbody2D::get_velocity()
+IL_002f: ldfld System.Single UnityEngine.Vector2::x
+IL_0034: call System.Single UnityEngine.Mathf::Sign(System.Single)
+IL_0039: ldc.r4 0
+IL_003e: newobj System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_0043: ldarg.0
+IL_0044: ldfld System.Single ScuttlerControl::rayLength
+IL_0049: ldc.i4 256
+IL_004e: call UnityEngine.RaycastHit2D UnityEngine.Physics2D::Raycast(UnityEngine.Vector2,UnityEngine.Vector2,System.Single,System.Int32)
+IL_0053: stloc.0
+IL_0054: ldloca.s V_0
+IL_0056: call UnityEngine.Collider2D UnityEngine.RaycastHit2D::get_collider()
+IL_005b: ldnull
+IL_005c: call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+IL_0061: brfalse.s IL_00c4
+IL_0063: ldarg.0
+IL_0064: ldfld UnityEngine.Coroutine ScuttlerControl::bounceRoutine
+IL_0069: brtrue.s IL_00c4
+IL_006b: ldarg.0
+IL_006c: ldfld UnityEngine.Coroutine ScuttlerControl::runRoutine
+IL_0071: brfalse.s IL_00c4
+IL_0073: ldarg.0
+IL_0074: ldarg.0
+IL_0075: ldfld UnityEngine.Coroutine ScuttlerControl::runRoutine
+IL_007a: call System.Void UnityEngine.MonoBehaviour::StopCoroutine(UnityEngine.Coroutine)
+IL_007f: ldarg.0
+IL_0080: ldarg.0
+IL_0081: ldarg.0
+IL_0082: ldfld UnityEngine.Rigidbody2D ScuttlerControl::body
+IL_0087: callvirt UnityEngine.Vector2 UnityEngine.Rigidbody2D::get_velocity()
+IL_008c: ldfld System.Single UnityEngine.Vector2::x
+IL_0091: ldc.r4 0
+IL_0096: bgt.s IL_00aa
+IL_0098: ldarg.0
+IL_0099: ldc.r4 50
+IL_009e: ldc.r4 70
+IL_00a3: callvirt System.Collections.IEnumerator ScuttlerControl::Bounce(System.Single,System.Single)
+IL_00a8: br.s IL_00ba
+IL_00aa: ldarg.0
+IL_00ab: ldc.r4 110
+IL_00b0: ldc.r4 130
+IL_00b5: callvirt System.Collections.IEnumerator ScuttlerControl::Bounce(System.Single,System.Single)
+IL_00ba: call UnityEngine.Coroutine UnityEngine.MonoBehaviour::StartCoroutine(System.Collections.IEnumerator)
+IL_00bf: stfld UnityEngine.Coroutine ScuttlerControl::bounceRoutine
+IL_00c4: ret
+METHOD System.Collections.IEnumerator ScuttlerControl::Land()
+IL_0000: ldc.i4.0
+IL_0001: newobj System.Void ScuttlerControl/<Land>d__40::.ctor(System.Int32)
+IL_0006: dup
+IL_0007: ldarg.0
+IL_0008: stfld ScuttlerControl ScuttlerControl/<Land>d__40::<>4__this
+IL_000d: ret
+METHOD System.Collections.IEnumerator ScuttlerControl::Run()
+IL_0000: ldc.i4.0
+IL_0001: newobj System.Void ScuttlerControl/<Run>d__41::.ctor(System.Int32)
+IL_0006: dup
+IL_0007: ldarg.0
+IL_0008: stfld ScuttlerControl ScuttlerControl/<Run>d__41::<>4__this
+IL_000d: ret
+METHOD System.Collections.IEnumerator ScuttlerControl::Bounce(System.Single,System.Single)
+IL_0000: ldc.i4.0
+IL_0001: newobj System.Void ScuttlerControl/<Bounce>d__42::.ctor(System.Int32)
+IL_0006: dup
+IL_0007: ldarg.0
+IL_0008: stfld ScuttlerControl ScuttlerControl/<Bounce>d__42::<>4__this
+IL_000d: dup
+IL_000e: ldarg.1
+IL_000f: stfld System.Single ScuttlerControl/<Bounce>d__42::angleMin
+IL_0014: dup
+IL_0015: ldarg.2
+IL_0016: stfld System.Single ScuttlerControl/<Bounce>d__42::angleMax
+IL_001b: ret
+METHOD System.Collections.IEnumerator ScuttlerControl::Heal()
+IL_0000: ldc.i4.0
+IL_0001: newobj System.Void ScuttlerControl/<Heal>d__43::.ctor(System.Int32)
+IL_0006: dup
+IL_0007: ldarg.0
+IL_0008: stfld ScuttlerControl ScuttlerControl/<Heal>d__43::<>4__this
+IL_000d: ret
+METHOD System.Void ScuttlerControl::Hit(HitInstance)
+IL_0000: call System.Single UnityEngine.Time::get_time()
+IL_0005: ldarg.0
+IL_0006: ldfld System.Single ScuttlerControl::activateTime
+IL_000b: bge.un.s IL_000e
+IL_000d: ret
+IL_000e: ldarg.0
+IL_000f: ldfld System.Boolean ScuttlerControl::alive
+IL_0014: brfalse IL_04c9
+IL_0019: ldarg.0
+IL_001a: ldc.i4.0
+IL_001b: stfld System.Boolean ScuttlerControl::alive
+IL_0020: ldarg.0
+IL_0021: ldfld UnityEngine.Coroutine ScuttlerControl::runRoutine
+IL_0026: brfalse.s IL_0034
+IL_0028: ldarg.0
+IL_0029: ldarg.0
+IL_002a: ldfld UnityEngine.Coroutine ScuttlerControl::runRoutine
+IL_002f: call System.Void UnityEngine.MonoBehaviour::StopCoroutine(UnityEngine.Coroutine)
+IL_0034: ldarg.0
+IL_0035: ldfld UnityEngine.Coroutine ScuttlerControl::bounceRoutine
+IL_003a: brfalse.s IL_0048
+IL_003c: ldarg.0
+IL_003d: ldarg.0
+IL_003e: ldfld UnityEngine.Coroutine ScuttlerControl::bounceRoutine
+IL_0043: call System.Void UnityEngine.MonoBehaviour::StopCoroutine(UnityEngine.Coroutine)
+IL_0048: ldarg.0
+IL_0049: ldfld UnityEngine.GameObject ScuttlerControl::corpsePrefab
+IL_004e: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_0053: brfalse.s IL_0077
+IL_0055: ldarg.0
+IL_0056: ldfld UnityEngine.GameObject ScuttlerControl::corpsePrefab
+IL_005b: ldarg.0
+IL_005c: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0061: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_0066: ldarg.0
+IL_0067: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_006c: callvirt UnityEngine.Quaternion UnityEngine.Transform::get_rotation()
+IL_0071: call !!0 UnityEngine.Object::Instantiate<UnityEngine.GameObject>(!!0,UnityEngine.Vector3,UnityEngine.Quaternion)
+IL_0076: pop
+IL_0077: ldarg.0
+IL_0078: ldfld UnityEngine.GameObject ScuttlerControl::splatEffectChild
+IL_007d: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_0082: brfalse.s IL_0090
+IL_0084: ldarg.0
+IL_0085: ldfld UnityEngine.GameObject ScuttlerControl::splatEffectChild
+IL_008a: ldc.i4.1
+IL_008b: callvirt System.Void UnityEngine.GameObject::SetActive(System.Boolean)
+IL_0090: call GameManager GameManager::get_instance()
+IL_0095: ldfld PlayerData GameManager::playerData
+IL_009a: stloc.0
+IL_009b: ldloc.0
+IL_009c: ldstr "hasJournal"
+IL_00a1: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_00a6: brfalse IL_0149
+IL_00ab: ldloc.0
+IL_00ac: ldarg.0
+IL_00ad: ldfld System.String ScuttlerControl::killedPDBool
+IL_00b2: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_00b7: brtrue.s IL_00df
+IL_00b9: ldloc.0
+IL_00ba: ldarg.0
+IL_00bb: ldfld System.String ScuttlerControl::killedPDBool
+IL_00c0: ldc.i4.1
+IL_00c1: callvirt System.Void PlayerData::SetBool(System.String,System.Boolean)
+IL_00c6: ldarg.0
+IL_00c7: ldfld UnityEngine.GameObject ScuttlerControl::journalUpdateMsgPrefab
+IL_00cc: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_00d1: brfalse.s IL_00df
+IL_00d3: ldarg.0
+IL_00d4: ldfld UnityEngine.GameObject ScuttlerControl::journalUpdateMsgPrefab
+IL_00d9: call !!0 UnityEngine.Object::Instantiate<UnityEngine.GameObject>(!!0)
+IL_00de: pop
+IL_00df: ldloc.0
+IL_00e0: ldarg.0
+IL_00e1: ldfld System.String ScuttlerControl::killsPDBool
+IL_00e6: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_00eb: stloc.2
+IL_00ec: ldloc.2
+IL_00ed: ldc.i4.0
+IL_00ee: ble.s IL_013c
+IL_00f0: ldloc.2
+IL_00f1: ldc.i4.1
+IL_00f2: sub
+IL_00f3: stloc.2
+IL_00f4: ldloc.0
+IL_00f5: ldarg.0
+IL_00f6: ldfld System.String ScuttlerControl::killsPDBool
+IL_00fb: ldloc.2
+IL_00fc: callvirt System.Void PlayerData::SetInt(System.String,System.Int32)
+IL_0101: ldloc.2
+IL_0102: ldc.i4.0
+IL_0103: bgt.s IL_013c
+IL_0105: ldarg.0
+IL_0106: ldfld UnityEngine.GameObject ScuttlerControl::journalUpdateMsgPrefab
+IL_010b: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_0110: brfalse.s IL_013c
+IL_0112: ldarg.0
+IL_0113: ldfld UnityEngine.GameObject ScuttlerControl::journalUpdateMsgPrefab
+IL_0118: call !!0 UnityEngine.Object::Instantiate<UnityEngine.GameObject>(!!0)
+IL_011d: ldstr "Journal Msg"
+IL_0122: call PlayMakerFSM FSMUtility::LocateFSM(UnityEngine.GameObject,System.String)
+IL_0127: stloc.3
+IL_0128: ldloc.3
+IL_0129: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_012e: brfalse.s IL_013c
+IL_0130: ldloc.3
+IL_0131: ldstr "Full"
+IL_0136: ldc.i4.1
+IL_0137: call System.Void FSMUtility::SetBool(PlayMakerFSM,System.String,System.Boolean)
+IL_013c: ldloc.0
+IL_013d: ldarg.0
+IL_013e: ldfld System.String ScuttlerControl::newDataPDBool
+IL_0143: ldc.i4.1
+IL_0144: callvirt System.Void PlayerData::SetBool(System.String,System.Boolean)
+IL_0149: ldc.i4.0
+IL_014a: stloc.1
+IL_014b: ldarg.0
+IL_014c: ldfld System.Boolean ScuttlerControl::healthScuttler
+IL_0151: brtrue.s IL_0160
+IL_0153: ldarg.0
+IL_0154: call UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+IL_0159: ldc.i4.0
+IL_015a: callvirt System.Void UnityEngine.GameObject::SetActive(System.Boolean)
+IL_015f: ret
+IL_0160: ldarg.1
+IL_0161: ldfld AttackTypes HitInstance::AttackType
+IL_0166: brtrue IL_02e8
+IL_016b: ldc.i4.1
+IL_016c: stloc.1
+IL_016d: ldarg.0
+IL_016e: ldfld UnityEngine.GameObject ScuttlerControl::strikeNailPrefab
+IL_0173: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_0178: brfalse.s IL_0191
+IL_017a: ldarg.0
+IL_017b: ldfld UnityEngine.GameObject ScuttlerControl::strikeNailPrefab
+IL_0180: ldarg.0
+IL_0181: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0186: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_018b: call UnityEngine.GameObject ObjectPoolExtensions::Spawn(UnityEngine.GameObject,UnityEngine.Vector3)
+IL_0190: pop
+IL_0191: ldarg.0
+IL_0192: ldfld UnityEngine.GameObject ScuttlerControl::slashImpactPrefab
+IL_0197: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_019c: brfalse IL_035a
+IL_01a1: ldarg.0
+IL_01a2: ldfld UnityEngine.GameObject ScuttlerControl::slashImpactPrefab
+IL_01a7: ldarg.0
+IL_01a8: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_01ad: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_01b2: call UnityEngine.GameObject ObjectPoolExtensions::Spawn(UnityEngine.GameObject,UnityEngine.Vector3)
+IL_01b7: stloc.s V_6
+IL_01b9: ldarg.1
+IL_01ba: ldfld System.Single HitInstance::Direction
+IL_01bf: stloc.s V_7
+IL_01c1: ldloc.s V_7
+IL_01c3: ldc.r4 45
+IL_01c8: bge.un.s IL_020a
+IL_01ca: ldloc.s V_6
+IL_01cc: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_01d1: ldc.r4 340
+IL_01d6: ldc.r4 380
+IL_01db: call System.Single UnityEngine.Random::Range(System.Single,System.Single)
+IL_01e0: call System.Void Extensions::SetRotation2D(UnityEngine.Transform,System.Single)
+IL_01e5: ldloc.s V_6
+IL_01e7: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_01ec: ldc.r4 0.9
+IL_01f1: ldc.r4 0.9
+IL_01f6: ldc.r4 1
+IL_01fb: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL_0200: callvirt System.Void UnityEngine.Transform::set_localScale(UnityEngine.Vector3)
+IL_0205: br IL_035a
+IL_020a: ldloc.s V_7
+IL_020c: ldc.r4 135
+IL_0211: bge.un.s IL_0253
+IL_0213: ldloc.s V_6
+IL_0215: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_021a: ldc.r4 70
+IL_021f: ldc.r4 110
+IL_0224: call System.Single UnityEngine.Random::Range(System.Single,System.Single)
+IL_0229: call System.Void Extensions::SetRotation2D(UnityEngine.Transform,System.Single)
+IL_022e: ldloc.s V_6
+IL_0230: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_0235: ldc.r4 0.9
+IL_023a: ldc.r4 0.9
+IL_023f: ldc.r4 1
+IL_0244: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL_0249: callvirt System.Void UnityEngine.Transform::set_localScale(UnityEngine.Vector3)
+IL_024e: br IL_035a
+IL_0253: ldloc.s V_7
+IL_0255: ldc.r4 225
+IL_025a: bge.un.s IL_029c
+IL_025c: ldloc.s V_6
+IL_025e: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_0263: ldc.r4 340
+IL_0268: ldc.r4 380
+IL_026d: call System.Single UnityEngine.Random::Range(System.Single,System.Single)
+IL_0272: call System.Void Extensions::SetRotation2D(UnityEngine.Transform,System.Single)
+IL_0277: ldloc.s V_6
+IL_0279: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_027e: ldc.r4 -0.9
+IL_0283: ldc.r4 0.9
+IL_0288: ldc.r4 1
+IL_028d: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL_0292: callvirt System.Void UnityEngine.Transform::set_localScale(UnityEngine.Vector3)
+IL_0297: br IL_035a
+IL_029c: ldloc.s V_7
+IL_029e: ldc.r4 360
+IL_02a3: bge.un IL_035a
+IL_02a8: ldloc.s V_6
+IL_02aa: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_02af: ldc.r4 250
+IL_02b4: ldc.r4 290
+IL_02b9: call System.Single UnityEngine.Random::Range(System.Single,System.Single)
+IL_02be: call System.Void Extensions::SetRotation2D(UnityEngine.Transform,System.Single)
+IL_02c3: ldloc.s V_6
+IL_02c5: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_02ca: ldc.r4 0.9
+IL_02cf: ldc.r4 0.9
+IL_02d4: ldc.r4 1
+IL_02d9: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL_02de: callvirt System.Void UnityEngine.Transform::set_localScale(UnityEngine.Vector3)
+IL_02e3: br IL_035a
+IL_02e8: ldarg.1
+IL_02e9: ldfld AttackTypes HitInstance::AttackType
+IL_02ee: ldc.i4.2
+IL_02ef: beq.s IL_02fa
+IL_02f1: ldarg.1
+IL_02f2: ldfld AttackTypes HitInstance::AttackType
+IL_02f7: ldc.i4.7
+IL_02f8: bne.un.s IL_034f
+IL_02fa: ldc.i4.1
+IL_02fb: stloc.1
+IL_02fc: ldarg.0
+IL_02fd: ldfld UnityEngine.GameObject ScuttlerControl::fireballHitPrefab
+IL_0302: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_0307: brfalse.s IL_035a
+IL_0309: ldarg.0
+IL_030a: ldfld UnityEngine.GameObject ScuttlerControl::fireballHitPrefab
+IL_030f: ldarg.0
+IL_0310: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0315: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_031a: call UnityEngine.GameObject ObjectPoolExtensions::Spawn(UnityEngine.GameObject,UnityEngine.Vector3)
+IL_031f: dup
+IL_0320: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_0325: ldc.r4 0.5
+IL_032a: ldc.r4 0.5
+IL_032f: ldc.r4 1
+IL_0334: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL_0339: callvirt System.Void UnityEngine.Transform::set_localScale(UnityEngine.Vector3)
+IL_033e: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_0343: ldc.r4 0.0031
+IL_0348: call System.Void Extensions::SetPositionZ(UnityEngine.Transform,System.Single)
+IL_034d: br.s IL_035a
+IL_034f: ldarg.1
+IL_0350: ldfld AttackTypes HitInstance::AttackType
+IL_0355: ldc.i4.1
+IL_0356: bne.un.s IL_035a
+IL_0358: ldc.i4.1
+IL_0359: stloc.1
+IL_035a: ldarg.0
+IL_035b: ldflda AudioEvent ScuttlerControl::deathSound1
+IL_0360: ldarg.0
+IL_0361: ldfld UnityEngine.AudioSource ScuttlerControl::audioSourcePrefab
+IL_0366: ldarg.0
+IL_0367: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_036c: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_0371: call System.Void AudioEvent::SpawnAndPlayOneShot(UnityEngine.AudioSource,UnityEngine.Vector3)
+IL_0376: ldarg.0
+IL_0377: ldflda AudioEvent ScuttlerControl::deathSound2
+IL_037c: ldarg.0
+IL_037d: ldfld UnityEngine.AudioSource ScuttlerControl::audioSourcePrefab
+IL_0382: ldarg.0
+IL_0383: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0388: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_038d: call System.Void AudioEvent::SpawnAndPlayOneShot(UnityEngine.AudioSource,UnityEngine.Vector3)
+IL_0392: call !!0 UnityEngine.Object::FindObjectOfType<GameCameras>()
+IL_0397: stloc.s V_4
+IL_0399: ldloc.s V_4
+IL_039b: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_03a0: brfalse.s IL_03b3
+IL_03a2: ldloc.s V_4
+IL_03a4: ldfld PlayMakerFSM GameCameras::cameraShakeFSM
+IL_03a9: ldstr "EnemyKillShake"
+IL_03ae: callvirt System.Void PlayMakerFSM::SendEvent(System.String)
+IL_03b3: ldsfld GlobalPrefabDefaults GlobalPrefabDefaults::Instance
+IL_03b8: ldarg.0
+IL_03b9: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_03be: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_03c3: ldc.i4.s 12
+IL_03c5: ldc.i4.s 18
+IL_03c7: ldc.r4 4
+IL_03cc: ldc.r4 22
+IL_03d1: ldc.r4 30
+IL_03d6: ldc.r4 150
+IL_03db: ldarg.0
+IL_03dc: ldfld UnityEngine.Color ScuttlerControl::bloodColor
+IL_03e1: newobj System.Void System.Nullable`1<UnityEngine.Color>::.ctor(!0)
+IL_03e6: callvirt System.Void GlobalPrefabDefaults::SpawnBlood(UnityEngine.Vector3,System.Int16,System.Int16,System.Single,System.Single,System.Single,System.Single,System.Nullable`1<UnityEngine.Color>)
+IL_03eb: ldarg.0
+IL_03ec: call !!0 UnityEngine.Component::GetComponent<UnityEngine.Renderer>()
+IL_03f1: stloc.s V_5
+IL_03f3: ldloc.s V_5
+IL_03f5: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_03fa: brfalse.s IL_0404
+IL_03fc: ldloc.s V_5
+IL_03fe: ldc.i4.0
+IL_03ff: callvirt System.Void UnityEngine.Renderer::set_enabled(System.Boolean)
+IL_0404: ldloc.1
+IL_0405: brfalse IL_04bd
+IL_040a: ldarg.0
+IL_040b: ldfld UnityEngine.GameObject ScuttlerControl::pool
+IL_0410: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_0415: brfalse IL_04af
+IL_041a: ldarg.0
+IL_041b: ldfld UnityEngine.GameObject ScuttlerControl::pool
+IL_0420: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_0425: ldc.r4 -0.2
+IL_042a: call System.Void Extensions::SetPositionZ(UnityEngine.Transform,System.Single)
+IL_042f: ldloca.s V_8
+IL_0431: initobj FlingUtils/ChildrenConfig
+IL_0437: ldloca.s V_8
+IL_0439: ldarg.0
+IL_043a: ldfld UnityEngine.GameObject ScuttlerControl::pool
+IL_043f: stfld UnityEngine.GameObject FlingUtils/ChildrenConfig::Parent
+IL_0444: ldloca.s V_8
+IL_0446: ldc.i4.8
+IL_0447: stfld System.Int32 FlingUtils/ChildrenConfig::AmountMin
+IL_044c: ldloca.s V_8
+IL_044e: ldc.i4.s 10
+IL_0450: stfld System.Int32 FlingUtils/ChildrenConfig::AmountMax
+IL_0455: ldloca.s V_8
+IL_0457: ldc.r4 15
+IL_045c: stfld System.Single FlingUtils/ChildrenConfig::SpeedMin
+IL_0461: ldloca.s V_8
+IL_0463: ldc.r4 20
+IL_0468: stfld System.Single FlingUtils/ChildrenConfig::SpeedMax
+IL_046d: ldloca.s V_8
+IL_046f: ldc.r4 30
+IL_0474: stfld System.Single FlingUtils/ChildrenConfig::AngleMin
+IL_0479: ldloca.s V_8
+IL_047b: ldc.r4 150
+IL_0480: stfld System.Single FlingUtils/ChildrenConfig::AngleMax
+IL_0485: ldloca.s V_8
+IL_0487: ldc.r4 0
+IL_048c: stfld System.Single FlingUtils/ChildrenConfig::OriginVariationX
+IL_0491: ldloca.s V_8
+IL_0493: ldc.r4 0
+IL_0498: stfld System.Single FlingUtils/ChildrenConfig::OriginVariationY
+IL_049d: ldloc.s V_8
+IL_049f: ldarg.0
+IL_04a0: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_04a5: call UnityEngine.Vector3 UnityEngine.Vector3::get_zero()
+IL_04aa: call System.Void FlingUtils::FlingChildren(FlingUtils/ChildrenConfig,UnityEngine.Transform,UnityEngine.Vector3)
+IL_04af: ldarg.0
+IL_04b0: ldarg.0
+IL_04b1: callvirt System.Collections.IEnumerator ScuttlerControl::Heal()
+IL_04b6: call UnityEngine.Coroutine UnityEngine.MonoBehaviour::StartCoroutine(System.Collections.IEnumerator)
+IL_04bb: pop
+IL_04bc: ret
+IL_04bd: ldarg.0
+IL_04be: call UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+IL_04c3: ldc.i4.0
+IL_04c4: callvirt System.Void UnityEngine.GameObject::SetActive(System.Boolean)
+IL_04c9: ret
+METHOD System.Void ScuttlerControl::.ctor()
+IL_0000: ldarg.0
+IL_0001: ldstr "killedOrangeScuttler"
+IL_0006: stfld System.String ScuttlerControl::killedPDBool
+IL_000b: ldarg.0
+IL_000c: ldstr "killsOrangeScuttler"
+IL_0011: stfld System.String ScuttlerControl::killsPDBool
+IL_0016: ldarg.0
+IL_0017: ldstr "newDataOrangeScuttler"
+IL_001c: stfld System.String ScuttlerControl::newDataPDBool
+IL_0021: ldarg.0
+IL_0022: ldstr "Run"
+IL_0027: stfld System.String ScuttlerControl::runAnim
+IL_002c: ldarg.0
+IL_002d: ldstr "Land"
+IL_0032: stfld System.String ScuttlerControl::landAnim
+IL_0037: ldarg.0
+IL_0038: ldc.r4 0.3
+IL_003d: stfld System.Single ScuttlerControl::acceleration
+IL_0042: ldarg.0
+IL_0043: ldc.i4.1
+IL_0044: stfld System.Boolean ScuttlerControl::alive
+IL_0049: ldarg.0
+IL_004a: ldc.r4 0.25
+IL_004f: stfld System.Single ScuttlerControl::activateDelay
+IL_0054: ldarg.0
+IL_0055: call System.Void UnityEngine.MonoBehaviour::.ctor()
+IL_005a: ret
+METHOD System.Void ScuttlerControl::<Start>b__38_1(CollisionEnterEvent/Direction,UnityEngine.Collision2D)
+IL_0000: ldarg.0
+IL_0001: ldfld System.Boolean ScuttlerControl::landed
+IL_0006: brtrue.s IL_0020
+IL_0008: ldarg.1
+IL_0009: ldc.i4.3
+IL_000a: bne.un.s IL_0020
+IL_000c: ldarg.0
+IL_000d: ldc.i4.1
+IL_000e: stfld System.Boolean ScuttlerControl::landed
+IL_0013: ldarg.0
+IL_0014: ldarg.0
+IL_0015: callvirt System.Collections.IEnumerator ScuttlerControl::Land()
+IL_001a: call UnityEngine.Coroutine UnityEngine.MonoBehaviour::StartCoroutine(System.Collections.IEnumerator)
+IL_001f: pop
+IL_0020: ret
+METHOD System.Void ScuttlerControl::<Start>b__38_0(UnityEngine.Collider2D,UnityEngine.GameObject)
+IL_0000: ldarg.0
+IL_0001: ldfld System.Boolean ScuttlerControl::landed
+IL_0006: brtrue.s IL_002e
+IL_0008: ldarg.1
+IL_0009: callvirt System.String UnityEngine.Component::get_tag()
+IL_000e: ldstr "Player"
+IL_0013: call System.Boolean System.String::op_Equality(System.String,System.String)
+IL_0018: brfalse.s IL_002e
+IL_001a: ldarg.0
+IL_001b: ldc.i4.1
+IL_001c: stfld System.Boolean ScuttlerControl::landed
+IL_0021: ldarg.0
+IL_0022: ldarg.0
+IL_0023: callvirt System.Collections.IEnumerator ScuttlerControl::Land()
+IL_0028: call UnityEngine.Coroutine UnityEngine.MonoBehaviour::StartCoroutine(System.Collections.IEnumerator)
+IL_002d: pop
+IL_002e: ret

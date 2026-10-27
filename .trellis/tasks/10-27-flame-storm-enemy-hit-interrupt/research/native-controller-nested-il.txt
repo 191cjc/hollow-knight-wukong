@@ -1,0 +1,421 @@
+Source: .tools/hollow-knight-api-v77/Assembly-CSharp.dll; read-only Python PE/ECMA-335 decoding for nested iterator bodies.
+No shared inspector source or binary was changed. Member signatures are abbreviated.
+METHOD <Walk>d__17::MoveNext RVA=0x0002ce9c bytes=452
+IL_0000: ldarg.0
+IL_0001: ldfld <Walk>d__17::<>1__state
+IL_0006: stloc.0
+IL_0007: ldarg.0
+IL_0008: ldfld <Walk>d__17::<>4__this
+IL_000d: stloc.1
+IL_000e: ldloc.0
+IL_000f: switch IL_0026,IL_015f,IL_01a1,IL_01b8
+IL_0024: ldc.i4.0
+IL_0025: ret
+IL_0026: ldarg.0
+IL_0027: ldc.i4.-1
+IL_0028: stfld <Walk>d__17::<>1__state
+IL_002d: ldloc.1
+IL_002e: ldfld Climber::anim
+IL_0033: ldstr 'Walk'
+IL_0038: callvirt tk2dSpriteAnimator::Play
+IL_003d: ldloc.1
+IL_003e: ldfld Climber::body
+IL_0043: ldloc.1
+IL_0044: ldloc.1
+IL_0045: ldfld Climber::currentDirection
+IL_004a: callvirt Climber::GetVelocity
+IL_004f: callvirt UnityEngine.Rigidbody2D::set_velocity
+IL_0054: ldloc.1
+IL_0055: callvirt UnityEngine.Component::get_transform
+IL_005a: callvirt UnityEngine.Transform::get_position
+IL_005f: call UnityEngine.Vector2::op_Implicit
+IL_0064: stloc.2
+IL_0065: ldc.i4.0
+IL_0066: stloc.3
+IL_0067: ldloc.2
+IL_0068: ldfld UnityEngine.Vector2::x
+IL_006d: ldloc.1
+IL_006e: ldflda Climber::previousPos
+IL_0073: ldfld UnityEngine.Vector2::x
+IL_0078: sub
+IL_0079: call UnityEngine.Mathf::Abs
+IL_007e: ldloc.1
+IL_007f: ldflda Climber::constrain
+IL_0084: ldfld UnityEngine.Vector2::x
+IL_0089: ble.un.s IL_009f
+IL_008b: ldloca.s 2
+IL_008d: ldloc.1
+IL_008e: ldflda Climber::previousPos
+IL_0093: ldfld UnityEngine.Vector2::x
+IL_0098: stfld UnityEngine.Vector2::x
+IL_009d: ldc.i4.1
+IL_009e: stloc.3
+IL_009f: ldloc.2
+IL_00a0: ldfld UnityEngine.Vector2::y
+IL_00a5: ldloc.1
+IL_00a6: ldflda Climber::previousPos
+IL_00ab: ldfld UnityEngine.Vector2::y
+IL_00b0: sub
+IL_00b1: call UnityEngine.Mathf::Abs
+IL_00b6: ldloc.1
+IL_00b7: ldflda Climber::constrain
+IL_00bc: ldfld UnityEngine.Vector2::y
+IL_00c1: ble.un.s IL_00d7
+IL_00c3: ldloca.s 2
+IL_00c5: ldloc.1
+IL_00c6: ldflda Climber::previousPos
+IL_00cb: ldfld UnityEngine.Vector2::y
+IL_00d0: stfld UnityEngine.Vector2::y
+IL_00d5: ldc.i4.1
+IL_00d6: stloc.3
+IL_00d7: ldloc.3
+IL_00d8: brfalse.s IL_00ed
+IL_00da: ldloc.1
+IL_00db: callvirt UnityEngine.Component::get_transform
+IL_00e0: ldloc.2
+IL_00e1: call UnityEngine.Vector2::op_Implicit
+IL_00e6: callvirt UnityEngine.Transform::set_position
+IL_00eb: br.s IL_0103
+IL_00ed: ldloc.1
+IL_00ee: ldloc.1
+IL_00ef: callvirt UnityEngine.Component::get_transform
+IL_00f4: callvirt UnityEngine.Transform::get_position
+IL_00f9: call UnityEngine.Vector2::op_Implicit
+IL_00fe: stfld Climber::previousPos
+IL_0103: ldloc.1
+IL_0104: ldfld Climber::previousTurnPos
+IL_0109: call UnityEngine.Vector2::op_Implicit
+IL_010e: ldloc.1
+IL_010f: callvirt UnityEngine.Component::get_transform
+IL_0114: callvirt UnityEngine.Transform::get_position
+IL_0119: call UnityEngine.Vector3::Distance
+IL_011e: ldloc.1
+IL_011f: ldfld Climber::minTurnDistance
+IL_0124: blt.un IL_01a8
+IL_0129: ldloc.1
+IL_012a: callvirt Climber::CheckGround
+IL_012f: brtrue.s IL_0168
+IL_0131: ldloc.1
+IL_0132: ldloc.1
+IL_0133: ldloc.1
+IL_0134: ldloc.1
+IL_0135: ldfld Climber::clockwise
+IL_013a: ldc.i4.0
+IL_013b: callvirt Climber::Turn
+IL_0140: callvirt UnityEngine.MonoBehaviour::StartCoroutine
+IL_0145: stfld Climber::turnRoutine
+IL_014a: ldarg.0
+IL_014b: ldloc.1
+IL_014c: ldfld Climber::turnRoutine
+IL_0151: stfld <Walk>d__17::<>2__current
+IL_0156: ldarg.0
+IL_0157: ldc.i4.1
+IL_0158: stfld <Walk>d__17::<>1__state
+IL_015d: ldc.i4.1
+IL_015e: ret
+IL_015f: ldarg.0
+IL_0160: ldc.i4.-1
+IL_0161: stfld <Walk>d__17::<>1__state
+IL_0166: br.s IL_01a8
+IL_0168: ldloc.1
+IL_0169: callvirt Climber::CheckWall
+IL_016e: brfalse.s IL_01a8
+IL_0170: ldloc.1
+IL_0171: ldloc.1
+IL_0172: ldloc.1
+IL_0173: ldloc.1
+IL_0174: ldfld Climber::clockwise
+IL_0179: ldc.i4.0
+IL_017a: ceq
+IL_017c: ldc.i4.1
+IL_017d: callvirt Climber::Turn
+IL_0182: callvirt UnityEngine.MonoBehaviour::StartCoroutine
+IL_0187: stfld Climber::turnRoutine
+IL_018c: ldarg.0
+IL_018d: ldloc.1
+IL_018e: ldfld Climber::turnRoutine
+IL_0193: stfld <Walk>d__17::<>2__current
+IL_0198: ldarg.0
+IL_0199: ldc.i4.2
+IL_019a: stfld <Walk>d__17::<>1__state
+IL_019f: ldc.i4.1
+IL_01a0: ret
+IL_01a1: ldarg.0
+IL_01a2: ldc.i4.-1
+IL_01a3: stfld <Walk>d__17::<>1__state
+IL_01a8: ldarg.0
+IL_01a9: ldnull
+IL_01aa: stfld <Walk>d__17::<>2__current
+IL_01af: ldarg.0
+IL_01b0: ldc.i4.3
+IL_01b1: stfld <Walk>d__17::<>1__state
+IL_01b6: ldc.i4.1
+IL_01b7: ret
+IL_01b8: ldarg.0
+IL_01b9: ldc.i4.-1
+IL_01ba: stfld <Walk>d__17::<>1__state
+IL_01bf: br IL_0054
+METHOD <DoStun>d__23::MoveNext RVA=0x0002d26c bytes=105
+IL_0000: ldarg.0
+IL_0001: ldfld <DoStun>d__23::<>1__state
+IL_0006: stloc.0
+IL_0007: ldarg.0
+IL_0008: ldfld <DoStun>d__23::<>4__this
+IL_000d: stloc.1
+IL_000e: ldloc.0
+IL_000f: brfalse.s IL_0017
+IL_0011: ldloc.0
+IL_0012: ldc.i4.1
+IL_0013: beq.s IL_0053
+IL_0015: ldc.i4.0
+IL_0016: ret
+IL_0017: ldarg.0
+IL_0018: ldc.i4.-1
+IL_0019: stfld <DoStun>d__23::<>1__state
+IL_001e: ldloc.1
+IL_001f: ldfld Climber::body
+IL_0024: call UnityEngine.Vector2::get_zero
+IL_0029: callvirt UnityEngine.Rigidbody2D::set_velocity
+IL_002e: ldarg.0
+IL_002f: ldloc.1
+IL_0030: ldloc.1
+IL_0031: ldfld Climber::anim
+IL_0036: ldstr 'Stun'
+IL_003b: call Extensions::PlayAnimWait
+IL_0040: callvirt UnityEngine.MonoBehaviour::StartCoroutine
+IL_0045: stfld <DoStun>d__23::<>2__current
+IL_004a: ldarg.0
+IL_004b: ldc.i4.1
+IL_004c: stfld <DoStun>d__23::<>1__state
+IL_0051: ldc.i4.1
+IL_0052: ret
+IL_0053: ldarg.0
+IL_0054: ldc.i4.-1
+IL_0055: stfld <DoStun>d__23::<>1__state
+IL_005a: ldloc.1
+IL_005b: ldloc.1
+IL_005c: callvirt Climber::Walk
+IL_0061: callvirt UnityEngine.MonoBehaviour::StartCoroutine
+IL_0066: pop
+IL_0067: ldc.i4.0
+IL_0068: ret
+METHOD <Walk>d__11::MoveNext RVA=0x0002ee58 bytes=332
+IL_0000: ldarg.0
+IL_0001: ldfld <Walk>d__11::<>1__state
+IL_0006: stloc.0
+IL_0007: ldarg.0
+IL_0008: ldfld <Walk>d__11::<>4__this
+IL_000d: stloc.1
+IL_000e: ldloc.0
+IL_000f: switch IL_0026,IL_00fc,IL_0129,IL_0140
+IL_0024: ldc.i4.0
+IL_0025: ret
+IL_0026: ldarg.0
+IL_0027: ldc.i4.-1
+IL_0028: stfld <Walk>d__11::<>1__state
+IL_002d: ldloc.1
+IL_002e: ldfld Crawler::anim
+IL_0033: ldstr 'Walk'
+IL_0038: callvirt tk2dSpriteAnimator::Play
+IL_003d: ldloc.1
+IL_003e: ldfld Crawler::body
+IL_0043: ldloc.1
+IL_0044: ldfld Crawler::velocity
+IL_0049: callvirt UnityEngine.Rigidbody2D::set_velocity
+IL_004e: ldarg.0
+IL_004f: ldc.i4.0
+IL_0050: stfld <Walk>d__11::<hit>5__2
+IL_0055: br IL_0103
+IL_005a: ldloc.1
+IL_005b: ldloc.1
+IL_005c: ldfld Crawler::wallCheck
+IL_0061: callvirt UnityEngine.Transform::get_localPosition
+IL_0066: call UnityEngine.Vector2::op_Implicit
+IL_006b: ldloc.1
+IL_006c: callvirt UnityEngine.Component::get_transform
+IL_0071: callvirt UnityEngine.Transform::get_localScale
+IL_0076: ldfld UnityEngine.Vector3::x
+IL_007b: ldc.r4 0.0
+IL_0080: bgt.s IL_0089
+IL_0082: call UnityEngine.Vector2::get_right
+IL_0087: br.s IL_008e
+IL_0089: call UnityEngine.Vector2::get_left
+IL_008e: ldc.r4 1.0
+IL_0093: callvirt Crawler::CheckRayLocal
+IL_0098: brfalse.s IL_00a3
+IL_009a: ldarg.0
+IL_009b: ldc.i4.1
+IL_009c: stfld <Walk>d__11::<hit>5__2
+IL_00a1: br.s IL_010e
+IL_00a3: ldloc.1
+IL_00a4: ldloc.1
+IL_00a5: ldfld Crawler::groundCheck
+IL_00aa: callvirt UnityEngine.Transform::get_localPosition
+IL_00af: call UnityEngine.Vector2::op_Implicit
+IL_00b4: ldloc.1
+IL_00b5: callvirt UnityEngine.Component::get_transform
+IL_00ba: callvirt UnityEngine.Transform::get_localScale
+IL_00bf: ldfld UnityEngine.Vector3::y
+IL_00c4: ldc.r4 0.0
+IL_00c9: bgt.s IL_00d2
+IL_00cb: call UnityEngine.Vector2::get_up
+IL_00d0: br.s IL_00d7
+IL_00d2: call UnityEngine.Vector2::get_down
+IL_00d7: ldc.r4 1.0
+IL_00dc: callvirt Crawler::CheckRayLocal
+IL_00e1: brtrue.s IL_00ec
+IL_00e3: ldarg.0
+IL_00e4: ldc.i4.1
+IL_00e5: stfld <Walk>d__11::<hit>5__2
+IL_00ea: br.s IL_010e
+IL_00ec: ldarg.0
+IL_00ed: ldnull
+IL_00ee: stfld <Walk>d__11::<>2__current
+IL_00f3: ldarg.0
+IL_00f4: ldc.i4.1
+IL_00f5: stfld <Walk>d__11::<>1__state
+IL_00fa: ldc.i4.1
+IL_00fb: ret
+IL_00fc: ldarg.0
+IL_00fd: ldc.i4.-1
+IL_00fe: stfld <Walk>d__11::<>1__state
+IL_0103: ldarg.0
+IL_0104: ldfld <Walk>d__11::<hit>5__2
+IL_0109: brfalse IL_005a
+IL_010e: ldarg.0
+IL_010f: ldloc.1
+IL_0110: ldloc.1
+IL_0111: callvirt Crawler::Turn
+IL_0116: callvirt UnityEngine.MonoBehaviour::StartCoroutine
+IL_011b: stfld <Walk>d__11::<>2__current
+IL_0120: ldarg.0
+IL_0121: ldc.i4.2
+IL_0122: stfld <Walk>d__11::<>1__state
+IL_0127: ldc.i4.1
+IL_0128: ret
+IL_0129: ldarg.0
+IL_012a: ldc.i4.-1
+IL_012b: stfld <Walk>d__11::<>1__state
+IL_0130: ldarg.0
+IL_0131: ldnull
+IL_0132: stfld <Walk>d__11::<>2__current
+IL_0137: ldarg.0
+IL_0138: ldc.i4.3
+IL_0139: stfld <Walk>d__11::<>1__state
+IL_013e: ldc.i4.1
+IL_013f: ret
+IL_0140: ldarg.0
+IL_0141: ldc.i4.-1
+IL_0142: stfld <Walk>d__11::<>1__state
+IL_0147: br IL_002d
+METHOD <Turn>d__12::MoveNext RVA=0x0002efc8 bytes=165
+IL_0000: ldarg.0
+IL_0001: ldfld <Turn>d__12::<>1__state
+IL_0006: stloc.0
+IL_0007: ldarg.0
+IL_0008: ldfld <Turn>d__12::<>4__this
+IL_000d: stloc.1
+IL_000e: ldloc.0
+IL_000f: brfalse.s IL_0017
+IL_0011: ldloc.0
+IL_0012: ldc.i4.1
+IL_0013: beq.s IL_0053
+IL_0015: ldc.i4.0
+IL_0016: ret
+IL_0017: ldarg.0
+IL_0018: ldc.i4.-1
+IL_0019: stfld <Turn>d__12::<>1__state
+IL_001e: ldloc.1
+IL_001f: ldfld Crawler::body
+IL_0024: call UnityEngine.Vector2::get_zero
+IL_0029: callvirt UnityEngine.Rigidbody2D::set_velocity
+IL_002e: ldarg.0
+IL_002f: ldloc.1
+IL_0030: ldloc.1
+IL_0031: ldfld Crawler::anim
+IL_0036: ldstr 'Turn'
+IL_003b: call Extensions::PlayAnimWait
+IL_0040: callvirt UnityEngine.MonoBehaviour::StartCoroutine
+IL_0045: stfld <Turn>d__12::<>2__current
+IL_004a: ldarg.0
+IL_004b: ldc.i4.1
+IL_004c: stfld <Turn>d__12::<>1__state
+IL_0051: ldc.i4.1
+IL_0052: ret
+IL_0053: ldarg.0
+IL_0054: ldc.i4.-1
+IL_0055: stfld <Turn>d__12::<>1__state
+IL_005a: ldloc.1
+IL_005b: callvirt UnityEngine.Component::get_transform
+IL_0060: ldloc.1
+IL_0061: callvirt UnityEngine.Component::get_transform
+IL_0066: callvirt UnityEngine.Transform::get_localScale
+IL_006b: ldfld UnityEngine.Vector3::x
+IL_0070: ldc.r4 -1.0
+IL_0075: mul
+IL_0076: call Extensions::SetScaleX
+IL_007b: ldloc.1
+IL_007c: ldflda Crawler::velocity
+IL_0081: ldflda UnityEngine.Vector2::x
+IL_0086: dup
+IL_0087: ldind.r4
+IL_0088: ldc.r4 -1.0
+IL_008d: mul
+IL_008e: stind.r4
+IL_008f: ldloc.1
+IL_0090: ldflda Crawler::velocity
+IL_0095: ldflda UnityEngine.Vector2::y
+IL_009a: dup
+IL_009b: ldind.r4
+IL_009c: ldc.r4 -1.0
+IL_00a1: mul
+IL_00a2: stind.r4
+IL_00a3: ldc.i4.0
+IL_00a4: ret
+METHOD <PlayAnimWait>d__5::MoveNext RVA=0x0008300c bytes=126
+IL_0000: ldarg.0
+IL_0001: ldfld <PlayAnimWait>d__5::<>1__state
+IL_0006: stloc.0
+IL_0007: ldloc.0
+IL_0008: switch IL_001b,IL_005a,IL_0075
+IL_0019: ldc.i4.0
+IL_001a: ret
+IL_001b: ldarg.0
+IL_001c: ldc.i4.-1
+IL_001d: stfld <PlayAnimWait>d__5::<>1__state
+IL_0022: ldarg.0
+IL_0023: ldfld <PlayAnimWait>d__5::self
+IL_0028: ldarg.0
+IL_0029: ldfld <PlayAnimWait>d__5::anim
+IL_002e: callvirt tk2dSpriteAnimator::GetClipByName
+IL_0033: stloc.1
+IL_0034: ldarg.0
+IL_0035: ldfld <PlayAnimWait>d__5::self
+IL_003a: ldloc.1
+IL_003b: callvirt tk2dSpriteAnimator::Play
+IL_0040: ldarg.0
+IL_0041: ldloc.1
+IL_0042: callvirt tk2dSpriteAnimationClip::get_Duration
+IL_0047: newobj UnityEngine.WaitForSeconds::.ctor
+IL_004c: stfld <PlayAnimWait>d__5::<>2__current
+IL_0051: ldarg.0
+IL_0052: ldc.i4.1
+IL_0053: stfld <PlayAnimWait>d__5::<>1__state
+IL_0058: ldc.i4.1
+IL_0059: ret
+IL_005a: ldarg.0
+IL_005b: ldc.i4.-1
+IL_005c: stfld <PlayAnimWait>d__5::<>1__state
+IL_0061: ldarg.0
+IL_0062: newobj UnityEngine.WaitForEndOfFrame::.ctor
+IL_0067: stfld <PlayAnimWait>d__5::<>2__current
+IL_006c: ldarg.0
+IL_006d: ldc.i4.2
+IL_006e: stfld <PlayAnimWait>d__5::<>1__state
+IL_0073: ldc.i4.1
+IL_0074: ret
+IL_0075: ldarg.0
+IL_0076: ldc.i4.-1
+IL_0077: stfld <PlayAnimWait>d__5::<>1__state
+IL_007c: ldc.i4.0
+IL_007d: ret

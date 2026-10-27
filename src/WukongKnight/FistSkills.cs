@@ -50,10 +50,8 @@ namespace WukongKnight
         private Summon? afterimage;
         private Summon? ape;
         private double nextApe;
-        private int lastSummonFrame = -1;
         private readonly HeroController hero;
         private readonly NativeV77 native;
-        private readonly NativeSpellV77 forward;
         private readonly NativeSpellV77 down;
         private readonly NativeDreamV77 dream;
         private readonly CharacterAssets assets;
@@ -83,9 +81,9 @@ namespace WukongKnight
         private bool observing;
         private bool disposed;
         private long token;
-        private string lastForward = "";
         private string lastDown = "";
-        public int SoulCost => forward.SoulCost;
+        // The shared live Spell Control MP Cost, also read by the neutral-spell Flame Storm.
+        private int SoulCost => down.SoulCost;
         private bool Holding => action == FistAction.Earthbreaker ? down.HoldsCast : dream.Holding;
         public bool Active => !disposed && action != FistAction.None;
         public bool FacingRight => facing;
@@ -112,11 +110,10 @@ namespace WukongKnight
             if (units <= 0) throw new InvalidOperationException("Invalid fist body calibration");
             source = new GameObject("WukongKnight.FistDamage");
             material = new Material(Shader.Find("Sprites/Default") ?? throw new InvalidOperationException("Sprite shader missing"));
-            NativeSpellV77? f = null; NativeSpellV77? d = null;
-            try { f = new NativeSpellV77(hero, NativeSpellSlot.Forward); d = new NativeSpellV77(hero, NativeSpellSlot.Down); forward = f; down = d; }
-            catch { d?.Dispose(); f?.Dispose(); UnityEngine.Object.Destroy(material); UnityEngine.Object.Destroy(source); throw; }
+            try { down = new NativeSpellV77(hero, NativeSpellSlot.Down); }
+            catch { UnityEngine.Object.Destroy(material); UnityEngine.Object.Destroy(source); throw; }
         }
-        public bool BlocksNativeSource(GameObject candidate) => forward.BlocksSource(candidate) || down.BlocksSource(candidate);
+        public bool BlocksNativeSource(GameObject candidate) => down.BlocksSource(candidate);
         public void Observe(bool input = false)
         {
             if (disposed || observing) return;
@@ -141,39 +138,25 @@ namespace WukongKnight
                         lastDown = down.State;
                     }
                 }
-                string state = forward.State;
-                if (state != lastForward)
-                {
-                    lastForward = state;
-                    if (forward.HoldsState(state))
-                    {
-                        Vector3 origin = Origin; bool right = hero.cState.facingRight;
-                        bool accepted = false;
-                        try
-                        {
-                            if (!Active && lastSummonFrame != Time.frameCount)
-                            {
-                                lastSummonFrame = Time.frameCount;
-                                accepted = FistRules.TryBeginSummon(FistAction.Afterimage, forward.SoulCost,
-                                    () => PlayerData.instance.GetInt("MPCharge"), () => Alive && !disposed && forward.HoldsCast, hero.TakeMP);
-                            }
-                        }
-                        finally { forward.FinishCast(); lastForward = forward.State; }
-                        if (accepted && Alive && !disposed) BeginAfterimage(origin, right);
-                    }
-                }
                 if (input && Time.timeScale > 0 && lastInputFrame != Time.frameCount)
                 {
                     lastInputFrame = Time.frameCount;
-                    if (!Active && !native.DownHeld(hero) && native.DreamPressed(hero) && EligibleDream())
+                    if (!Active && native.DownHeld(hero) && native.DreamPressed(hero) && dream.CanBegin(native, true))
+                    {
+                        // Detached summon: never Begin/Finish native Dream or own the player.
+                        Vector3 origin = Origin; bool right = hero.cState.facingRight;
+                        if (FistRules.TryBeginSummon(FistAction.Afterimage, SoulCost, () => PlayerData.instance.GetInt("MPCharge"),
+                            () => Alive && !disposed && !Active && dream.CanBegin(native, true), hero.TakeMP)) BeginAfterimage(origin, right);
+                    }
+                    else if (!Active && !native.DownHeld(hero) && native.DreamPressed(hero) && EligibleDream())
                     {
                         FistAction chosen = native.UpHeld(hero) ? FistAction.FireApe : FistAction.Godslayer;
                         if (chosen == FistAction.FireApe)
                         {
-                            if (ape == null && Time.time >= nextApe && FistRules.TryBeginSummon(chosen, forward.SoulCost,
+                            if (ape == null && Time.time >= nextApe && FistRules.TryBeginSummon(chosen, SoulCost,
                                 () => PlayerData.instance.GetInt("MPCharge"), () => Alive && !disposed && !Active && ape == null && EligibleDream(), hero.TakeMP)) BeginApe();
                         }
-                        else if (Time.time >= nextDream && FistRules.TryBeginDream(chosen, forward.SoulCost,
+                        else if (Time.time >= nextDream && FistRules.TryBeginDream(chosen, SoulCost,
                             () => PlayerData.instance.GetInt("MPCharge"), dream.Begin,
                             () => Alive && dream.Holding, hero.TakeMP, dream.Finish)) Begin(chosen);
                     }
@@ -470,7 +453,7 @@ namespace WukongKnight
             try { Stop(); } finally
             {
                 disposed=true; ClearActors();
-                try { down.Dispose(); } finally { try { forward.Dispose(); } finally { UnityEngine.Object.Destroy(material); UnityEngine.Object.Destroy(source); } }
+                try { down.Dispose(); } finally { UnityEngine.Object.Destroy(material); UnityEngine.Object.Destroy(source); }
             }
         }
     }

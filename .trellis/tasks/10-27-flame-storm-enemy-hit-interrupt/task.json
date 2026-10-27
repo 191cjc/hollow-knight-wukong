@@ -1,0 +1,32 @@
+{
+  "id": "flame-storm-enemy-hit-interrupt",
+  "name": "flame-storm-enemy-hit-interrupt",
+  "title": "烈焰风暴命中打断与默认行为恢复",
+  "description": "烈焰风暴每次有效非致命命中后取消兼容敌人的当前攻击，并返回其原生行走/飞行/待机；未知或受保护目标保留原生伤害。",
+  "status": "in_progress",
+  "dev_type": "backend",
+  "scope": "native-combat",
+  "package": null,
+  "priority": "P2",
+  "creator": "chenjiachun",
+  "assignee": "chenjiachun",
+  "createdAt": "2026-10-27",
+  "completedAt": null,
+  "branch": "feat/flame-storm-enemy-interrupt",
+  "base_branch": "main",
+  "worktree_path": null,
+  "commit": null,
+  "pr_url": null,
+  "subtasks": [],
+  "children": [],
+  "parent": null,
+  "relatedFiles": [
+    "src/WukongKnight/FlameStorm.cs",
+    "src/WukongKnight/WukongRuntime.cs",
+    "src/WukongKnight/NativeV77.cs",
+    "tests/WukongKnight.Core.Tests/Program.cs",
+    ".trellis/spec/backend/native-combat.md"
+  ],
+  "notes": "2026-10-27: user approved revised implementation plan with 开始吧 and confirmed actual game resources cannot currently be shared. Scoped damage-attribution draft and linked tests implemented; independent review passed 81 Core checks, pinned-reference Release rebuild (0 warnings/errors), compiled ordering/cleanup and whitespace. No native enemy cancellation/default-return profile or gameplay interruption exists; result is unused. Direct-HP bypass and same-reference pooling guards remain unresolved before any consumer. Native FSM/actions/cleanup evidence and client acceptance block completion. Native-combat spec documents unreleased draft limits. Keep in_progress and uncommitted; no feature version/package, deployment or archive. See research/development-checkpoint.md and research/check-draft.md. Follow-up authorized: swap neutral quick spell to Flame Storm and down-Dream to independent Afterimage; planning/context prepared in same task; stopped before product edits for user-requested session restart, without completing or releasing the enemy-interruption draft. Restart handoff: research/session-handoff.md; implement agent saved research/input-swap-implementation.md and confirmed no input-swap product/test/docs edits or build/tests. Current key bindings remain unchanged.",
+  "meta": {}
+}

@@ -1,0 +1,1023 @@
+TYPE BigCentipede base=UnityEngine.MonoBehaviour
+FIELD UnityEngine.Rigidbody2D BigCentipede::body
+FIELD UnityEngine.MeshRenderer BigCentipede::meshRenderer
+FIELD UnityEngine.AudioSource BigCentipede::audioSource
+FIELD BigCentipedeSection[] BigCentipede::sections
+FIELD UnityEngine.ParticleSystem BigCentipede::entryDust
+FIELD UnityEngine.ParticleSystem BigCentipede::exitDust
+FIELD UnityEngine.Vector2 BigCentipede::entryPoint
+FIELD UnityEngine.Vector2 BigCentipede::exitPoint
+FIELD System.Single BigCentipede::burrowTime
+FIELD System.Single BigCentipede::moveSpeed
+FIELD UnityEngine.Vector2 BigCentipede::direction
+FIELD System.Boolean BigCentipede::fadingAudio
+FIELD System.Boolean BigCentipede::isBurrowing
+FIELD System.Single BigCentipede::burrowTimer
+FIELD UnityEngine.Transform BigCentipede::entry
+FIELD UnityEngine.Transform BigCentipede::exit
+PROP UnityEngine.Vector2 BigCentipede::EntryPoint()
+PROP UnityEngine.Vector2 BigCentipede::ExitPoint()
+PROP UnityEngine.Vector2 BigCentipede::Direction()
+METHOD UnityEngine.Vector2 BigCentipede::get_EntryPoint()
+IL_0000: ldarg.0
+IL_0001: ldfld UnityEngine.Vector2 BigCentipede::entryPoint
+IL_0006: ret
+METHOD UnityEngine.Vector2 BigCentipede::get_ExitPoint()
+IL_0000: ldarg.0
+IL_0001: ldfld UnityEngine.Vector2 BigCentipede::exitPoint
+IL_0006: ret
+METHOD UnityEngine.Vector2 BigCentipede::get_Direction()
+IL_0000: ldarg.0
+IL_0001: ldfld UnityEngine.Vector2 BigCentipede::direction
+IL_0006: ret
+METHOD System.Void BigCentipede::Awake()
+IL_0000: ldarg.0
+IL_0001: ldarg.0
+IL_0002: call !!0 UnityEngine.Component::GetComponent<UnityEngine.Rigidbody2D>()
+IL_0007: stfld UnityEngine.Rigidbody2D BigCentipede::body
+IL_000c: ldarg.0
+IL_000d: ldarg.0
+IL_000e: call !!0 UnityEngine.Component::GetComponent<UnityEngine.MeshRenderer>()
+IL_0013: stfld UnityEngine.MeshRenderer BigCentipede::meshRenderer
+IL_0018: ldarg.0
+IL_0019: ldarg.0
+IL_001a: call !!0 UnityEngine.Component::GetComponent<UnityEngine.AudioSource>()
+IL_001f: stfld UnityEngine.AudioSource BigCentipede::audioSource
+IL_0024: ldarg.0
+IL_0025: ldarg.0
+IL_0026: call !!0[] UnityEngine.Component::GetComponentsInChildren<BigCentipedeSection>()
+IL_002b: stfld BigCentipedeSection[] BigCentipede::sections
+IL_0030: ldarg.0
+IL_0031: ldfld UnityEngine.AudioSource BigCentipede::audioSource
+IL_0036: call System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)
+IL_003b: brfalse.s IL_0057
+IL_003d: ldarg.0
+IL_003e: ldfld UnityEngine.AudioSource BigCentipede::audioSource
+IL_0043: ldc.r4 0.8
+IL_0048: ldc.r4 1.15
+IL_004d: call System.Single UnityEngine.Random::Range(System.Single,System.Single)
+IL_0052: callvirt System.Void UnityEngine.AudioSource::set_pitch(System.Single)
+IL_0057: ret
+METHOD System.Void BigCentipede::Start()
+IL_0000: ldarg.0
+IL_0001: ldarg.0
+IL_0002: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0007: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_right()
+IL_000c: call UnityEngine.Vector2 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector3)
+IL_0011: stloc.0
+IL_0012: ldloca.s V_0
+IL_0014: call UnityEngine.Vector2 UnityEngine.Vector2::get_normalized()
+IL_0019: stfld UnityEngine.Vector2 BigCentipede::direction
+IL_001e: ldarg.0
+IL_001f: ldfld UnityEngine.ParticleSystem BigCentipede::entryDust
+IL_0024: callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0029: ldnull
+IL_002a: callvirt System.Void UnityEngine.Transform::set_parent(UnityEngine.Transform)
+IL_002f: ldarg.0
+IL_0030: ldfld UnityEngine.Transform BigCentipede::entry
+IL_0035: ldnull
+IL_0036: call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+IL_003b: brfalse.s IL_007f
+IL_003d: ldarg.0
+IL_003e: ldarg.0
+IL_003f: ldfld UnityEngine.Transform BigCentipede::entry
+IL_0044: callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0049: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_004e: call UnityEngine.Vector2 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector3)
+IL_0053: stfld UnityEngine.Vector2 BigCentipede::entryPoint
+IL_0058: ldarg.0
+IL_0059: ldfld UnityEngine.ParticleSystem BigCentipede::entryDust
+IL_005e: callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0063: ldarg.0
+IL_0064: ldfld UnityEngine.Transform BigCentipede::entry
+IL_0069: callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_006e: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_0073: call UnityEngine.Vector2 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector3)
+IL_0078: call System.Void Extensions::SetPosition2D(UnityEngine.Transform,UnityEngine.Vector2)
+IL_007d: br.s IL_00aa
+IL_007f: ldarg.0
+IL_0080: ldarg.0
+IL_0081: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0086: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_008b: call UnityEngine.Vector2 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector3)
+IL_0090: ldarg.0
+IL_0091: ldfld UnityEngine.Vector2 BigCentipede::direction
+IL_0096: ldc.r4 12
+IL_009b: call UnityEngine.Vector2 UnityEngine.Vector2::op_Multiply(UnityEngine.Vector2,System.Single)
+IL_00a0: call UnityEngine.Vector2 UnityEngine.Vector2::op_Subtraction(UnityEngine.Vector2,UnityEngine.Vector2)
+IL_00a5: stfld UnityEngine.Vector2 BigCentipede::entryPoint
+IL_00aa: ldarg.0
+IL_00ab: ldfld UnityEngine.ParticleSystem BigCentipede::exitDust
+IL_00b0: callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_00b5: ldnull
+IL_00b6: callvirt System.Void UnityEngine.Transform::set_parent(UnityEngine.Transform)
+IL_00bb: ldarg.0
+IL_00bc: ldfld UnityEngine.Transform BigCentipede::exit
+IL_00c1: ldnull
+IL_00c2: call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+IL_00c7: brfalse.s IL_010b
+IL_00c9: ldarg.0
+IL_00ca: ldarg.0
+IL_00cb: ldfld UnityEngine.Transform BigCentipede::exit
+IL_00d0: callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_00d5: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_00da: call UnityEngine.Vector2 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector3)
+IL_00df: stfld UnityEngine.Vector2 BigCentipede::exitPoint
+IL_00e4: ldarg.0
+IL_00e5: ldfld UnityEngine.ParticleSystem BigCentipede::exitDust
+IL_00ea: callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_00ef: ldarg.0
+IL_00f0: ldfld UnityEngine.Transform BigCentipede::exit
+IL_00f5: callvirt UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_00fa: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_00ff: call UnityEngine.Vector2 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector3)
+IL_0104: call System.Void Extensions::SetPosition2D(UnityEngine.Transform,UnityEngine.Vector2)
+IL_0109: br.s IL_0136
+IL_010b: ldarg.0
+IL_010c: ldarg.0
+IL_010d: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0112: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_0117: call UnityEngine.Vector2 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector3)
+IL_011c: ldarg.0
+IL_011d: ldfld UnityEngine.Vector2 BigCentipede::direction
+IL_0122: ldc.r4 6
+IL_0127: call UnityEngine.Vector2 UnityEngine.Vector2::op_Multiply(UnityEngine.Vector2,System.Single)
+IL_012c: call UnityEngine.Vector2 UnityEngine.Vector2::op_Addition(UnityEngine.Vector2,UnityEngine.Vector2)
+IL_0131: stfld UnityEngine.Vector2 BigCentipede::exitPoint
+IL_0136: ldarg.0
+IL_0137: ldc.i4.0
+IL_0138: callvirt System.Void BigCentipede::UnBurrow(System.Boolean)
+IL_013d: ret
+METHOD System.Void BigCentipede::UnBurrow(System.Boolean)
+IL_0000: ldarg.0
+IL_0001: ldfld UnityEngine.ParticleSystem BigCentipede::entryDust
+IL_0006: callvirt System.Void UnityEngine.ParticleSystem::Play()
+IL_000b: ldarg.0
+IL_000c: ldc.i4.0
+IL_000d: stfld System.Boolean BigCentipede::isBurrowing
+IL_0012: ldarg.1
+IL_0013: brfalse.s IL_003b
+IL_0015: ldarg.0
+IL_0016: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_001b: ldarg.0
+IL_001c: ldfld UnityEngine.Vector2 BigCentipede::entryPoint
+IL_0021: ldarg.0
+IL_0022: ldfld UnityEngine.Vector2 BigCentipede::direction
+IL_0027: ldc.r4 2.6
+IL_002c: call UnityEngine.Vector2 UnityEngine.Vector2::op_Multiply(UnityEngine.Vector2,System.Single)
+IL_0031: call UnityEngine.Vector2 UnityEngine.Vector2::op_Subtraction(UnityEngine.Vector2,UnityEngine.Vector2)
+IL_0036: call System.Void Extensions::SetPosition2D(UnityEngine.Transform,UnityEngine.Vector2)
+IL_003b: ldarg.0
+IL_003c: ldfld UnityEngine.ParticleSystem BigCentipede::exitDust
+IL_0041: callvirt System.Void UnityEngine.ParticleSystem::Stop()
+IL_0046: ldarg.0
+IL_0047: ldfld UnityEngine.MeshRenderer BigCentipede::meshRenderer
+IL_004c: ldc.i4.1
+IL_004d: callvirt System.Void UnityEngine.Renderer::set_enabled(System.Boolean)
+IL_0052: ldarg.0
+IL_0053: ldfld UnityEngine.AudioSource BigCentipede::audioSource
+IL_0058: ldc.r4 0
+IL_005d: callvirt System.Void UnityEngine.AudioSource::set_volume(System.Single)
+IL_0062: ldarg.0
+IL_0063: ldc.i4.1
+IL_0064: stfld System.Boolean BigCentipede::fadingAudio
+IL_0069: ret
+METHOD System.Void BigCentipede::Burrow()
+IL_0000: ldarg.0
+IL_0001: ldfld UnityEngine.ParticleSystem BigCentipede::exitDust
+IL_0006: callvirt System.Void UnityEngine.ParticleSystem::Play()
+IL_000b: ldarg.0
+IL_000c: ldc.i4.1
+IL_000d: stfld System.Boolean BigCentipede::isBurrowing
+IL_0012: ldarg.0
+IL_0013: ldc.r4 0
+IL_0018: stfld System.Single BigCentipede::burrowTimer
+IL_001d: ldarg.0
+IL_001e: ldfld UnityEngine.MeshRenderer BigCentipede::meshRenderer
+IL_0023: ldc.i4.0
+IL_0024: callvirt System.Void UnityEngine.Renderer::set_enabled(System.Boolean)
+IL_0029: ret
+METHOD System.Void BigCentipede::FixedUpdate()
+IL_0000: ldarg.0
+IL_0001: ldfld UnityEngine.Rigidbody2D BigCentipede::body
+IL_0006: ldarg.0
+IL_0007: ldfld UnityEngine.Rigidbody2D BigCentipede::body
+IL_000c: callvirt UnityEngine.Vector2 UnityEngine.Rigidbody2D::get_position()
+IL_0011: ldarg.0
+IL_0012: ldfld UnityEngine.Vector2 BigCentipede::direction
+IL_0017: ldarg.0
+IL_0018: ldfld System.Single BigCentipede::moveSpeed
+IL_001d: call UnityEngine.Vector2 UnityEngine.Vector2::op_Multiply(UnityEngine.Vector2,System.Single)
+IL_0022: call System.Single UnityEngine.Time::get_fixedDeltaTime()
+IL_0027: call UnityEngine.Vector2 UnityEngine.Vector2::op_Multiply(UnityEngine.Vector2,System.Single)
+IL_002c: call UnityEngine.Vector2 UnityEngine.Vector2::op_Addition(UnityEngine.Vector2,UnityEngine.Vector2)
+IL_0031: callvirt System.Void UnityEngine.Rigidbody2D::MovePosition(UnityEngine.Vector2)
+IL_0036: ret
+METHOD System.Void BigCentipede::Update()
+IL_0000: ldarg.0
+IL_0001: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0006: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_position()
+IL_000b: call UnityEngine.Vector2 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector3)
+IL_0010: stloc.0
+IL_0011: ldarg.0
+IL_0012: ldfld System.Boolean BigCentipede::isBurrowing
+IL_0017: brtrue.s IL_0040
+IL_0019: ldloc.0
+IL_001a: ldarg.0
+IL_001b: ldfld UnityEngine.Vector2 BigCentipede::direction
+IL_0020: call System.Single UnityEngine.Vector2::Dot(UnityEngine.Vector2,UnityEngine.Vector2)
+IL_0025: ldarg.0
+IL_0026: ldfld UnityEngine.Vector2 BigCentipede::exitPoint
+IL_002b: ldarg.0
+IL_002c: ldfld UnityEngine.Vector2 BigCentipede::direction
+IL_0031: call System.Single UnityEngine.Vector2::Dot(UnityEngine.Vector2,UnityEngine.Vector2)
+IL_0036: ble.un.s IL_0067
+IL_0038: ldarg.0
+IL_0039: callvirt System.Void BigCentipede::Burrow()
+IL_003e: br.s IL_0067
+IL_0040: ldarg.0
+IL_0041: ldarg.0
+IL_0042: ldfld System.Single BigCentipede::burrowTimer
+IL_0047: call System.Single UnityEngine.Time::get_deltaTime()
+IL_004c: add
+IL_004d: stfld System.Single BigCentipede::burrowTimer
+IL_0052: ldarg.0
+IL_0053: ldfld System.Single BigCentipede::burrowTimer
+IL_0058: ldarg.0
+IL_0059: ldfld System.Single BigCentipede::burrowTime
+IL_005e: ble.un.s IL_0067
+IL_0060: ldarg.0
+IL_0061: ldc.i4.1
+IL_0062: callvirt System.Void BigCentipede::UnBurrow(System.Boolean)
+IL_0067: ldarg.0
+IL_0068: ldfld System.Boolean BigCentipede::fadingAudio
+IL_006d: brfalse.s IL_00b5
+IL_006f: ldarg.0
+IL_0070: ldfld UnityEngine.AudioSource BigCentipede::audioSource
+IL_0075: dup
+IL_0076: callvirt System.Single UnityEngine.AudioSource::get_volume()
+IL_007b: call System.Single UnityEngine.Time::get_deltaTime()
+IL_0080: ldc.r4 1.5
+IL_0085: mul
+IL_0086: add
+IL_0087: callvirt System.Void UnityEngine.AudioSource::set_volume(System.Single)
+IL_008c: ldarg.0
+IL_008d: ldfld UnityEngine.AudioSource BigCentipede::audioSource
+IL_0092: callvirt System.Single UnityEngine.AudioSource::get_volume()
+IL_0097: ldc.r4 1
+IL_009c: ble.un.s IL_00b5
+IL_009e: ldarg.0
+IL_009f: ldfld UnityEngine.AudioSource BigCentipede::audioSource
+IL_00a4: ldc.r4 1
+IL_00a9: callvirt System.Void UnityEngine.AudioSource::set_volume(System.Single)
+IL_00ae: ldarg.0
+IL_00af: ldc.i4.0
+IL_00b0: stfld System.Boolean BigCentipede::fadingAudio
+IL_00b5: ret
+METHOD System.Void BigCentipede::.ctor()
+IL_0000: ldarg.0
+IL_0001: call System.Void UnityEngine.MonoBehaviour::.ctor()
+IL_0006: ret
+TYPE BrokenVesselGlob base=UnityEngine.MonoBehaviour
+FIELD UnityEngine.ParticleSystem BrokenVesselGlob::gasParticle
+FIELD UnityEngine.Rigidbody2D BrokenVesselGlob::rb
+FIELD System.Single BrokenVesselGlob::timer
+FIELD UnityEngine.Vector2 BrokenVesselGlob::force
+FIELD System.Single BrokenVesselGlob::stretchFactor
+FIELD System.Single BrokenVesselGlob::stretchMinX
+FIELD System.Single BrokenVesselGlob::stretchMaxY
+FIELD System.Single BrokenVesselGlob::scaleModifier
+FIELD System.Single BrokenVesselGlob::scaleModifierMin
+FIELD System.Single BrokenVesselGlob::scaleModifierMax
+METHOD System.Void BrokenVesselGlob::OnEnable()
+IL_0000: ldarg.0
+IL_0001: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0006: ldc.r4 2
+IL_000b: ldc.r4 2
+IL_0010: ldc.r4 2
+IL_0015: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL_001a: callvirt System.Void UnityEngine.Transform::set_localScale(UnityEngine.Vector3)
+IL_001f: ldarg.0
+IL_0020: ldfld UnityEngine.ParticleSystem BrokenVesselGlob::gasParticle
+IL_0025: callvirt System.Void UnityEngine.ParticleSystem::Play()
+IL_002a: ldarg.0
+IL_002b: ldfld UnityEngine.Rigidbody2D BrokenVesselGlob::rb
+IL_0030: ldarg.0
+IL_0031: ldfld UnityEngine.Rigidbody2D BrokenVesselGlob::rb
+IL_0036: callvirt UnityEngine.Vector2 UnityEngine.Rigidbody2D::get_velocity()
+IL_003b: ldfld System.Single UnityEngine.Vector2::x
+IL_0040: ldc.r4 -17.5
+IL_0045: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single)
+IL_004a: call UnityEngine.Vector2 UnityEngine.Vector2::op_Implicit(UnityEngine.Vector3)
+IL_004f: callvirt System.Void UnityEngine.Rigidbody2D::set_velocity(UnityEngine.Vector2)
+IL_0054: ldarg.0
+IL_0055: ldc.r4 5
+IL_005a: stfld System.Single BrokenVesselGlob::timer
+IL_005f: ret
+METHOD System.Void BrokenVesselGlob::Update()
+IL_0000: ldarg.0
+IL_0001: callvirt System.Void BrokenVesselGlob::FaceAngle()
+IL_0006: ldarg.0
+IL_0007: callvirt System.Void BrokenVesselGlob::ProjectileSquash()
+IL_000c: ldarg.0
+IL_000d: ldfld System.Single BrokenVesselGlob::timer
+IL_0012: ldc.r4 0
+IL_0017: blt.un.s IL_002c
+IL_0019: ldarg.0
+IL_001a: ldarg.0
+IL_001b: ldfld System.Single BrokenVesselGlob::timer
+IL_0020: call System.Single UnityEngine.Time::get_deltaTime()
+IL_0025: sub
+IL_0026: stfld System.Single BrokenVesselGlob::timer
+IL_002b: ret
+IL_002c: ldarg.0
+IL_002d: call UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+IL_0032: call System.Void ObjectPoolExtensions::Recycle(UnityEngine.GameObject)
+IL_0037: ret
+METHOD System.Void BrokenVesselGlob::FixedUpdate()
+IL_0000: ldarg.0
+IL_0001: ldfld UnityEngine.Rigidbody2D BrokenVesselGlob::rb
+IL_0006: ldarg.0
+IL_0007: ldfld UnityEngine.Vector2 BrokenVesselGlob::force
+IL_000c: callvirt System.Void UnityEngine.Rigidbody2D::AddForce(UnityEngine.Vector2)
+IL_0011: ret
+METHOD System.Void BrokenVesselGlob::FaceAngle()
+IL_0000: ldarg.0
+IL_0001: ldfld UnityEngine.Rigidbody2D BrokenVesselGlob::rb
+IL_0006: callvirt UnityEngine.Vector2 UnityEngine.Rigidbody2D::get_velocity()
+IL_000b: stloc.0
+IL_000c: ldloc.0
+IL_000d: ldfld System.Single UnityEngine.Vector2::y
+IL_0012: ldloc.0
+IL_0013: ldfld System.Single UnityEngine.Vector2::x
+IL_0018: call System.Single UnityEngine.Mathf::Atan2(System.Single,System.Single)
+IL_001d: ldc.r4 57.295776
+IL_0022: mul
+IL_0023: stloc.1
+IL_0024: ldarg.0
+IL_0025: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_002a: ldc.r4 0
+IL_002f: ldc.r4 0
+IL_0034: ldloc.1
+IL_0035: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL_003a: callvirt System.Void UnityEngine.Transform::set_localEulerAngles(UnityEngine.Vector3)
+IL_003f: ret
+METHOD System.Void BrokenVesselGlob::ProjectileSquash()
+IL_0000: ldc.r4 1
+IL_0005: ldarg.0
+IL_0006: ldfld UnityEngine.Rigidbody2D BrokenVesselGlob::rb
+IL_000b: callvirt UnityEngine.Vector2 UnityEngine.Rigidbody2D::get_velocity()
+IL_0010: stloc.2
+IL_0011: ldloca.s V_2
+IL_0013: call System.Single UnityEngine.Vector2::get_magnitude()
+IL_0018: ldarg.0
+IL_0019: ldfld System.Single BrokenVesselGlob::stretchFactor
+IL_001e: mul
+IL_001f: ldc.r4 0.01
+IL_0024: mul
+IL_0025: sub
+IL_0026: stloc.0
+IL_0027: ldc.r4 1
+IL_002c: ldarg.0
+IL_002d: ldfld UnityEngine.Rigidbody2D BrokenVesselGlob::rb
+IL_0032: callvirt UnityEngine.Vector2 UnityEngine.Rigidbody2D::get_velocity()
+IL_0037: stloc.2
+IL_0038: ldloca.s V_2
+IL_003a: call System.Single UnityEngine.Vector2::get_magnitude()
+IL_003f: ldarg.0
+IL_0040: ldfld System.Single BrokenVesselGlob::stretchFactor
+IL_0045: mul
+IL_0046: ldc.r4 0.01
+IL_004b: mul
+IL_004c: add
+IL_004d: stloc.1
+IL_004e: ldloc.1
+IL_004f: ldarg.0
+IL_0050: ldfld System.Single BrokenVesselGlob::stretchMinX
+IL_0055: bge.un.s IL_005e
+IL_0057: ldarg.0
+IL_0058: ldfld System.Single BrokenVesselGlob::stretchMinX
+IL_005d: stloc.1
+IL_005e: ldloc.0
+IL_005f: ldarg.0
+IL_0060: ldfld System.Single BrokenVesselGlob::stretchMaxY
+IL_0065: ble.un.s IL_006e
+IL_0067: ldarg.0
+IL_0068: ldfld System.Single BrokenVesselGlob::stretchMaxY
+IL_006d: stloc.0
+IL_006e: ldloc.0
+IL_006f: ldarg.0
+IL_0070: ldfld System.Single BrokenVesselGlob::scaleModifier
+IL_0075: mul
+IL_0076: stloc.0
+IL_0077: ldloc.1
+IL_0078: ldarg.0
+IL_0079: ldfld System.Single BrokenVesselGlob::scaleModifier
+IL_007e: mul
+IL_007f: stloc.1
+IL_0080: ldarg.0
+IL_0081: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0086: ldloc.1
+IL_0087: ldloc.0
+IL_0088: ldarg.0
+IL_0089: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_008e: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_localScale()
+IL_0093: ldfld System.Single UnityEngine.Vector3::z
+IL_0098: newobj System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL_009d: callvirt System.Void UnityEngine.Transform::set_localScale(UnityEngine.Vector3)
+IL_00a2: ret
+METHOD System.Void BrokenVesselGlob::.ctor()
+IL_0000: ldarg.0
+IL_0001: ldc.r4 0
+IL_0006: ldc.r4 25
+IL_000b: newobj System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)
+IL_0010: stfld UnityEngine.Vector2 BrokenVesselGlob::force
+IL_0015: ldarg.0
+IL_0016: ldc.r4 2
+IL_001b: stfld System.Single BrokenVesselGlob::stretchFactor
+IL_0020: ldarg.0
+IL_0021: ldc.r4 1
+IL_0026: stfld System.Single BrokenVesselGlob::stretchMinX
+IL_002b: ldarg.0
+IL_002c: ldc.r4 2
+IL_0031: stfld System.Single BrokenVesselGlob::stretchMaxY
+IL_0036: ldarg.0
+IL_0037: ldc.r4 2
+IL_003c: stfld System.Single BrokenVesselGlob::scaleModifier
+IL_0041: ldarg.0
+IL_0042: ldc.r4 2
+IL_0047: stfld System.Single BrokenVesselGlob::scaleModifierMin
+IL_004c: ldarg.0
+IL_004d: ldc.r4 2
+IL_0052: stfld System.Single BrokenVesselGlob::scaleModifierMax
+IL_0057: ldarg.0
+IL_0058: call System.Void UnityEngine.MonoBehaviour::.ctor()
+IL_005d: ret
+TYPE CorpseDeathStun base=Corpse
+METHOD System.Void CorpseDeathStun::Start()
+IL_0000: ldarg.0
+IL_0001: ldarg.0
+IL_0002: callvirt System.Collections.IEnumerator CorpseDeathStun::DeathStun()
+IL_0007: call UnityEngine.Coroutine UnityEngine.MonoBehaviour::StartCoroutine(System.Collections.IEnumerator)
+IL_000c: pop
+IL_000d: ret
+METHOD System.Collections.IEnumerator CorpseDeathStun::DeathStun()
+IL_0000: ldc.i4.0
+IL_0001: newobj System.Void CorpseDeathStun/<DeathStun>d__1::.ctor(System.Int32)
+IL_0006: dup
+IL_0007: ldarg.0
+IL_0008: stfld CorpseDeathStun CorpseDeathStun/<DeathStun>d__1::<>4__this
+IL_000d: ret
+METHOD System.Collections.IEnumerator CorpseDeathStun::Jitter(System.Single)
+IL_0000: ldc.i4.0
+IL_0001: newobj System.Void CorpseDeathStun/<Jitter>d__2::.ctor(System.Int32)
+IL_0006: dup
+IL_0007: ldarg.0
+IL_0008: stfld CorpseDeathStun CorpseDeathStun/<Jitter>d__2::<>4__this
+IL_000d: dup
+IL_000e: ldarg.1
+IL_000f: stfld System.Single CorpseDeathStun/<Jitter>d__2::duration
+IL_0014: ret
+METHOD System.Void CorpseDeathStun::.ctor()
+IL_0000: ldarg.0
+IL_0001: call System.Void Corpse::.ctor()
+IL_0006: ret
+METHOD System.Void CorpseDeathStun::<>n__0()
+IL_0000: ldarg.0
+IL_0001: call System.Void Corpse::Start()
+IL_0006: ret
+TYPE CorpseDeathStunChunker base=CorpseChunker
+FIELD UnityEngine.ParticleSystem CorpseDeathStunChunker::stunSteam
+METHOD System.Void CorpseDeathStunChunker::Start()
+IL_0000: ldarg.0
+IL_0001: ldarg.0
+IL_0002: callvirt System.Collections.IEnumerator CorpseDeathStunChunker::DeathStun()
+IL_0007: call UnityEngine.Coroutine UnityEngine.MonoBehaviour::StartCoroutine(System.Collections.IEnumerator)
+IL_000c: pop
+IL_000d: ret
+METHOD System.Collections.IEnumerator CorpseDeathStunChunker::DeathStun()
+IL_0000: ldc.i4.0
+IL_0001: newobj System.Void CorpseDeathStunChunker/<DeathStun>d__2::.ctor(System.Int32)
+IL_0006: dup
+IL_0007: ldarg.0
+IL_0008: stfld CorpseDeathStunChunker CorpseDeathStunChunker/<DeathStun>d__2::<>4__this
+IL_000d: ret
+METHOD System.Collections.IEnumerator CorpseDeathStunChunker::Jitter(System.Single)
+IL_0000: ldc.i4.0
+IL_0001: newobj System.Void CorpseDeathStunChunker/<Jitter>d__3::.ctor(System.Int32)
+IL_0006: dup
+IL_0007: ldarg.0
+IL_0008: stfld CorpseDeathStunChunker CorpseDeathStunChunker/<Jitter>d__3::<>4__this
+IL_000d: dup
+IL_000e: ldarg.1
+IL_000f: stfld System.Single CorpseDeathStunChunker/<Jitter>d__3::duration
+IL_0014: ret
+METHOD System.Void CorpseDeathStunChunker::.ctor()
+IL_0000: ldarg.0
+IL_0001: call System.Void CorpseChunker::.ctor()
+IL_0006: ret
+METHOD System.Void CorpseDeathStunChunker::<>n__0()
+IL_0000: ldarg.0
+IL_0001: call System.Void Corpse::Start()
+IL_0006: ret
+TYPE FakeBat base=UnityEngine.MonoBehaviour
+FIELD UnityEngine.Rigidbody2D FakeBat::body
+FIELD UnityEngine.MeshRenderer FakeBat::meshRenderer
+FIELD tk2dSpriteAnimator FakeBat::spriteAnimator
+FIELD FakeBat/States FakeBat::state
+FIELD System.Single FakeBat::turnCooldown
+FIELD UnityEngine.Transform FakeBat::grimm
+FIELD System.Single FakeBat::Z
+FIELD System.Collections.Generic.List`1<FakeBat> FakeBat::fakeBats
+METHOD System.Void FakeBat::Awake()
+IL_0000: ldarg.0
+IL_0001: ldarg.0
+IL_0002: call !!0 UnityEngine.Component::GetComponent<UnityEngine.Rigidbody2D>()
+IL_0007: stfld UnityEngine.Rigidbody2D FakeBat::body
+IL_000c: ldarg.0
+IL_000d: ldarg.0
+IL_000e: call !!0 UnityEngine.Component::GetComponent<UnityEngine.MeshRenderer>()
+IL_0013: stfld UnityEngine.MeshRenderer FakeBat::meshRenderer
+IL_0018: ldarg.0
+IL_0019: ldarg.0
+IL_001a: call !!0 UnityEngine.Component::GetComponent<tk2dSpriteAnimator>()
+IL_001f: stfld tk2dSpriteAnimator FakeBat::spriteAnimator
+IL_0024: ldarg.0
+IL_0025: ldc.i4.0
+IL_0026: stfld FakeBat/States FakeBat::state
+IL_002b: ret
+METHOD System.Void FakeBat::Init()
+IL_0000: newobj System.Void System.Collections.Generic.List`1<FakeBat>::.ctor()
+IL_0005: stsfld System.Collections.Generic.List`1<FakeBat> FakeBat::fakeBats
+IL_000a: ret
+METHOD System.Void FakeBat::OnEnable()
+IL_0000: ldsfld System.Collections.Generic.List`1<FakeBat> FakeBat::fakeBats
+IL_0005: ldarg.0
+IL_0006: callvirt System.Void System.Collections.Generic.List`1<FakeBat>::Add(!0)
+IL_000b: ret
+METHOD System.Void FakeBat::OnDisable()
+IL_0000: ldsfld System.Collections.Generic.List`1<FakeBat> FakeBat::fakeBats
+IL_0005: ldarg.0
+IL_0006: callvirt System.Boolean System.Collections.Generic.List`1<FakeBat>::Remove(!0)
+IL_000b: pop
+IL_000c: ret
+METHOD System.Void FakeBat::Start()
+IL_0000: ldc.r4 0.7
+IL_0005: ldc.r4 0.9
+IL_000a: call System.Single UnityEngine.Random::Range(System.Single,System.Single)
+IL_000f: stloc.0
+IL_0010: ldarg.0
+IL_0011: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0016: ldloc.0
+IL_0017: call System.Void Extensions::SetScaleX(UnityEngine.Transform,System.Single)
+IL_001c: ldarg.0
+IL_001d: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0022: ldloc.0
+IL_0023: call System.Void Extensions::SetScaleY(UnityEngine.Transform,System.Single)
+IL_0028: ldarg.0
+IL_0029: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_002e: ldc.r4 0
+IL_0033: call System.Void Extensions::SetPositionZ(UnityEngine.Transform,System.Single)
+IL_0038: ret
+METHOD System.Void FakeBat::Update()
+IL_0000: ldarg.0
+IL_0001: ldarg.0
+IL_0002: ldfld System.Single FakeBat::turnCooldown
+IL_0007: call System.Single UnityEngine.Time::get_deltaTime()
+IL_000c: sub
+IL_000d: stfld System.Single FakeBat::turnCooldown
+IL_0012: ret
+METHOD System.Void FakeBat::NotifyAllBossAwake()
+IL_0000: ldsfld System.Collections.Generic.List`1<FakeBat> FakeBat::fakeBats
+IL_0005: callvirt System.Collections.Generic.List`1/Enumerator<!0> System.Collections.Generic.List`1<FakeBat>::GetEnumerator()
+IL_000a: stloc.0
+IL_000b: br.s IL_0024
+IL_000d: ldloca.s V_0
+IL_000f: call !0 System.Collections.Generic.List`1/Enumerator<FakeBat>::get_Current()
+IL_0014: stloc.1
+IL_0015: ldloc.1
+IL_0016: ldnull
+IL_0017: call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+IL_001c: brtrue.s IL_0024
+IL_001e: ldloc.1
+IL_001f: callvirt System.Void FakeBat::NotifyBossAwake()
+IL_0024: ldloca.s V_0
+IL_0026: call System.Boolean System.Collections.Generic.List`1/Enumerator<FakeBat>::MoveNext()
+IL_002b: brtrue.s IL_000d
+IL_002d: leave.s IL_003d
+IL_002f: ldloca.s V_0
+IL_0031: constrained. System.Collections.Generic.List`1/Enumerator<FakeBat>
+IL_0037: callvirt System.Void System.IDisposable::Dispose()
+IL_003c: endfinally
+IL_003d: ret
+METHOD System.Void FakeBat::NotifyBossAwake()
+IL_0000: ldarg.0
+IL_0001: ldc.i4.1
+IL_0002: stfld FakeBat/States FakeBat::state
+IL_0007: ret
+METHOD System.Void FakeBat::SendAllOut()
+IL_0000: ldsfld System.Collections.Generic.List`1<FakeBat> FakeBat::fakeBats
+IL_0005: callvirt System.Collections.Generic.List`1/Enumerator<!0> System.Collections.Generic.List`1<FakeBat>::GetEnumerator()
+IL_000a: stloc.0
+IL_000b: br.s IL_0024
+IL_000d: ldloca.s V_0
+IL_000f: call !0 System.Collections.Generic.List`1/Enumerator<FakeBat>::get_Current()
+IL_0014: stloc.1
+IL_0015: ldloc.1
+IL_0016: ldnull
+IL_0017: call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+IL_001c: brtrue.s IL_0024
+IL_001e: ldloc.1
+IL_001f: callvirt System.Void FakeBat::SendOut()
+IL_0024: ldloca.s V_0
+IL_0026: call System.Boolean System.Collections.Generic.List`1/Enumerator<FakeBat>::MoveNext()
+IL_002b: brtrue.s IL_000d
+IL_002d: leave.s IL_003d
+IL_002f: ldloca.s V_0
+IL_0031: constrained. System.Collections.Generic.List`1/Enumerator<FakeBat>
+IL_0037: callvirt System.Void System.IDisposable::Dispose()
+IL_003c: endfinally
+IL_003d: ret
+METHOD System.Void FakeBat::SendOut()
+IL_0000: ldarg.0
+IL_0001: ldfld FakeBat/States FakeBat::state
+IL_0006: ldc.i4.1
+IL_0007: beq.s IL_000a
+IL_0009: ret
+IL_000a: ldarg.0
+IL_000b: ldstr "SendOutRoutine"
+IL_0010: call UnityEngine.Coroutine UnityEngine.MonoBehaviour::StartCoroutine(System.String)
+IL_0015: pop
+IL_0016: ldarg.0
+IL_0017: ldstr "BringInRoutine"
+IL_001c: call System.Void UnityEngine.MonoBehaviour::StopCoroutine(System.String)
+IL_0021: ret
+METHOD System.Collections.IEnumerator FakeBat::SendOutRoutine()
+IL_0000: ldc.i4.0
+IL_0001: newobj System.Void FakeBat/<SendOutRoutine>d__19::.ctor(System.Int32)
+IL_0006: dup
+IL_0007: ldarg.0
+IL_0008: stfld FakeBat FakeBat/<SendOutRoutine>d__19::<>4__this
+IL_000d: ret
+METHOD System.Void FakeBat::BringAllIn()
+IL_0000: ldsfld System.Collections.Generic.List`1<FakeBat> FakeBat::fakeBats
+IL_0005: callvirt System.Collections.Generic.List`1/Enumerator<!0> System.Collections.Generic.List`1<FakeBat>::GetEnumerator()
+IL_000a: stloc.0
+IL_000b: br.s IL_0024
+IL_000d: ldloca.s V_0
+IL_000f: call !0 System.Collections.Generic.List`1/Enumerator<FakeBat>::get_Current()
+IL_0014: stloc.1
+IL_0015: ldloc.1
+IL_0016: ldnull
+IL_0017: call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+IL_001c: brtrue.s IL_0024
+IL_001e: ldloc.1
+IL_001f: callvirt System.Void FakeBat::BringIn()
+IL_0024: ldloca.s V_0
+IL_0026: call System.Boolean System.Collections.Generic.List`1/Enumerator<FakeBat>::MoveNext()
+IL_002b: brtrue.s IL_000d
+IL_002d: leave.s IL_003d
+IL_002f: ldloca.s V_0
+IL_0031: constrained. System.Collections.Generic.List`1/Enumerator<FakeBat>
+IL_0037: callvirt System.Void System.IDisposable::Dispose()
+IL_003c: endfinally
+IL_003d: ret
+METHOD System.Void FakeBat::BringIn()
+IL_0000: ldarg.0
+IL_0001: ldstr "BringInRoutine"
+IL_0006: call UnityEngine.Coroutine UnityEngine.MonoBehaviour::StartCoroutine(System.String)
+IL_000b: pop
+IL_000c: ldarg.0
+IL_000d: ldstr "SendOutRoutine"
+IL_0012: call System.Void UnityEngine.MonoBehaviour::StopCoroutine(System.String)
+IL_0017: ret
+METHOD System.Collections.IEnumerator FakeBat::BringInRoutine()
+IL_0000: ldc.i4.0
+IL_0001: newobj System.Void FakeBat/<BringInRoutine>d__22::.ctor(System.Int32)
+IL_0006: dup
+IL_0007: ldarg.0
+IL_0008: stfld FakeBat FakeBat/<BringInRoutine>d__22::<>4__this
+IL_000d: ret
+METHOD System.Void FakeBat::FaceDirection(System.Int32,System.Boolean)
+IL_0000: ldarg.0
+IL_0001: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0006: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_localScale()
+IL_000b: ldfld System.Single UnityEngine.Vector3::x
+IL_0010: call System.Single UnityEngine.Mathf::Abs(System.Single)
+IL_0015: ldarg.1
+IL_0016: conv.r4
+IL_0017: mul
+IL_0018: stloc.0
+IL_0019: ldarg.0
+IL_001a: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_001f: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_localScale()
+IL_0024: ldfld System.Single UnityEngine.Vector3::x
+IL_0029: ldloc.0
+IL_002a: call System.Boolean UnityEngine.Mathf::Approximately(System.Single,System.Single)
+IL_002f: brtrue.s IL_0077
+IL_0031: ldarg.2
+IL_0032: brtrue.s IL_0041
+IL_0034: ldarg.0
+IL_0035: ldfld System.Single FakeBat::turnCooldown
+IL_003a: ldc.r4 0
+IL_003f: bgt.un.s IL_0077
+IL_0041: ldarg.2
+IL_0042: brtrue.s IL_006b
+IL_0044: ldarg.0
+IL_0045: ldfld tk2dSpriteAnimator FakeBat::spriteAnimator
+IL_004a: ldstr "Bat TurnToFly"
+IL_004f: callvirt System.Void tk2dSpriteAnimator::Play(System.String)
+IL_0054: ldarg.0
+IL_0055: ldfld tk2dSpriteAnimator FakeBat::spriteAnimator
+IL_005a: ldc.i4.0
+IL_005b: callvirt System.Void tk2dSpriteAnimator::PlayFromFrame(System.Int32)
+IL_0060: ldarg.0
+IL_0061: ldc.r4 0.5
+IL_0066: stfld System.Single FakeBat::turnCooldown
+IL_006b: ldarg.0
+IL_006c: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0071: ldloc.0
+IL_0072: call System.Void Extensions::SetScaleX(UnityEngine.Transform,System.Single)
+IL_0077: ret
+METHOD System.Void FakeBat::Accelerate(UnityEngine.Vector2,UnityEngine.Vector2)
+IL_0000: ldarg.1
+IL_0001: call System.Single UnityEngine.Time::get_fixedDeltaTime()
+IL_0006: call UnityEngine.Vector2 UnityEngine.Vector2::op_Division(UnityEngine.Vector2,System.Single)
+IL_000b: stloc.0
+IL_000c: ldarg.0
+IL_000d: ldfld UnityEngine.Rigidbody2D FakeBat::body
+IL_0012: callvirt UnityEngine.Vector2 UnityEngine.Rigidbody2D::get_velocity()
+IL_0017: stloc.1
+IL_0018: ldloc.1
+IL_0019: ldloc.0
+IL_001a: call System.Single UnityEngine.Time::get_deltaTime()
+IL_001f: call UnityEngine.Vector2 UnityEngine.Vector2::op_Multiply(UnityEngine.Vector2,System.Single)
+IL_0024: call UnityEngine.Vector2 UnityEngine.Vector2::op_Addition(UnityEngine.Vector2,UnityEngine.Vector2)
+IL_0029: stloc.1
+IL_002a: ldloca.s V_1
+IL_002c: ldloc.1
+IL_002d: ldfld System.Single UnityEngine.Vector2::x
+IL_0032: ldarg.2
+IL_0033: ldfld System.Single UnityEngine.Vector2::x
+IL_0038: neg
+IL_0039: ldarg.2
+IL_003a: ldfld System.Single UnityEngine.Vector2::x
+IL_003f: call System.Single UnityEngine.Mathf::Clamp(System.Single,System.Single,System.Single)
+IL_0044: stfld System.Single UnityEngine.Vector2::x
+IL_0049: ldloca.s V_1
+IL_004b: ldloc.1
+IL_004c: ldfld System.Single UnityEngine.Vector2::y
+IL_0051: ldarg.2
+IL_0052: ldfld System.Single UnityEngine.Vector2::y
+IL_0057: neg
+IL_0058: ldarg.2
+IL_0059: ldfld System.Single UnityEngine.Vector2::y
+IL_005e: call System.Single UnityEngine.Mathf::Clamp(System.Single,System.Single,System.Single)
+IL_0063: stfld System.Single UnityEngine.Vector2::y
+IL_0068: ldarg.0
+IL_0069: ldfld UnityEngine.Rigidbody2D FakeBat::body
+IL_006e: ldloc.1
+IL_006f: callvirt System.Void UnityEngine.Rigidbody2D::set_velocity(UnityEngine.Vector2)
+IL_0074: ret
+METHOD System.Void FakeBat::.ctor()
+IL_0000: ldarg.0
+IL_0001: call System.Void UnityEngine.MonoBehaviour::.ctor()
+IL_0006: ret
+TYPE PlayHitEffects base=HutongGames.PlayMaker.FsmStateAction
+FIELD HutongGames.PlayMaker.FsmOwnerDefault PlayHitEffects::target
+FIELD HutongGames.PlayMaker.FsmFloat PlayHitEffects::attackDirection
+FIELD System.Collections.Generic.List`1<IHitEffectReciever> PlayHitEffects::hitEffectRecievers
+METHOD System.Void PlayHitEffects::Awake()
+IL_0000: ldarg.0
+IL_0001: call System.Void HutongGames.PlayMaker.FsmStateAction::Awake()
+IL_0006: ldarg.0
+IL_0007: newobj System.Void System.Collections.Generic.List`1<IHitEffectReciever>::.ctor()
+IL_000c: stfld System.Collections.Generic.List`1<IHitEffectReciever> PlayHitEffects::hitEffectRecievers
+IL_0011: ret
+METHOD System.Void PlayHitEffects::Reset()
+IL_0000: ldarg.0
+IL_0001: newobj System.Void HutongGames.PlayMaker.FsmOwnerDefault::.ctor()
+IL_0006: stfld HutongGames.PlayMaker.FsmOwnerDefault PlayHitEffects::target
+IL_000b: ldarg.0
+IL_000c: newobj System.Void HutongGames.PlayMaker.FsmFloat::.ctor()
+IL_0011: stfld HutongGames.PlayMaker.FsmFloat PlayHitEffects::attackDirection
+IL_0016: ret
+METHOD System.Void PlayHitEffects::OnEnter()
+IL_0000: ldarg.0
+IL_0001: ldfld HutongGames.PlayMaker.FsmOwnerDefault PlayHitEffects::target
+IL_0006: callvirt HutongGames.PlayMaker.OwnerDefaultOption HutongGames.PlayMaker.FsmOwnerDefault::get_OwnerOption()
+IL_000b: brfalse.s IL_001f
+IL_000d: ldarg.0
+IL_000e: ldfld HutongGames.PlayMaker.FsmOwnerDefault PlayHitEffects::target
+IL_0013: callvirt HutongGames.PlayMaker.FsmGameObject HutongGames.PlayMaker.FsmOwnerDefault::get_GameObject()
+IL_0018: callvirt UnityEngine.GameObject HutongGames.PlayMaker.FsmGameObject::get_Value()
+IL_001d: br.s IL_0025
+IL_001f: ldarg.0
+IL_0020: call UnityEngine.GameObject HutongGames.PlayMaker.FsmStateAction::get_Owner()
+IL_0025: stloc.0
+IL_0026: ldloc.0
+IL_0027: ldnull
+IL_0028: call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+IL_002d: brfalse.s IL_0083
+IL_002f: ldarg.0
+IL_0030: ldfld System.Collections.Generic.List`1<IHitEffectReciever> PlayHitEffects::hitEffectRecievers
+IL_0035: callvirt System.Void System.Collections.Generic.List`1<IHitEffectReciever>::Clear()
+IL_003a: ldloc.0
+IL_003b: ldarg.0
+IL_003c: ldfld System.Collections.Generic.List`1<IHitEffectReciever> PlayHitEffects::hitEffectRecievers
+IL_0041: callvirt System.Void UnityEngine.GameObject::GetComponents<IHitEffectReciever>(System.Collections.Generic.List`1<!!0>)
+IL_0046: ldc.i4.0
+IL_0047: stloc.1
+IL_0048: br.s IL_006a
+IL_004a: ldarg.0
+IL_004b: ldfld System.Collections.Generic.List`1<IHitEffectReciever> PlayHitEffects::hitEffectRecievers
+IL_0050: ldloc.1
+IL_0051: callvirt !0 System.Collections.Generic.List`1<IHitEffectReciever>::get_Item(System.Int32)
+IL_0056: ldarg.0
+IL_0057: ldfld HutongGames.PlayMaker.FsmFloat PlayHitEffects::attackDirection
+IL_005c: callvirt System.Single HutongGames.PlayMaker.FsmFloat::get_Value()
+IL_0061: callvirt System.Void IHitEffectReciever::RecieveHitEffect(System.Single)
+IL_0066: ldloc.1
+IL_0067: ldc.i4.1
+IL_0068: add
+IL_0069: stloc.1
+IL_006a: ldloc.1
+IL_006b: ldarg.0
+IL_006c: ldfld System.Collections.Generic.List`1<IHitEffectReciever> PlayHitEffects::hitEffectRecievers
+IL_0071: callvirt System.Int32 System.Collections.Generic.List`1<IHitEffectReciever>::get_Count()
+IL_0076: blt.s IL_004a
+IL_0078: ldarg.0
+IL_0079: ldfld System.Collections.Generic.List`1<IHitEffectReciever> PlayHitEffects::hitEffectRecievers
+IL_007e: callvirt System.Void System.Collections.Generic.List`1<IHitEffectReciever>::Clear()
+IL_0083: ldarg.0
+IL_0084: call System.Void HutongGames.PlayMaker.FsmStateAction::Finish()
+IL_0089: ret
+METHOD System.Void PlayHitEffects::.ctor()
+IL_0000: ldarg.0
+IL_0001: call System.Void HutongGames.PlayMaker.FsmStateAction::.ctor()
+IL_0006: ret
+TYPE HiveKnightStinger base=UnityEngine.MonoBehaviour
+FIELD System.Single HiveKnightStinger::direction
+FIELD System.Single HiveKnightStinger::speed
+FIELD System.Single HiveKnightStinger::time
+FIELD System.Single HiveKnightStinger::timer
+FIELD System.Boolean HiveKnightStinger::initialised
+FIELD UnityEngine.Rigidbody2D HiveKnightStinger::rb
+FIELD UnityEngine.Vector3 HiveKnightStinger::startPos
+METHOD System.Void HiveKnightStinger::OnEnable()
+IL_0000: ldarg.0
+IL_0001: ldfld System.Boolean HiveKnightStinger::initialised
+IL_0006: brtrue.s IL_0022
+IL_0008: ldarg.0
+IL_0009: ldarg.0
+IL_000a: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_000f: callvirt UnityEngine.Vector3 UnityEngine.Transform::get_localPosition()
+IL_0014: stfld UnityEngine.Vector3 HiveKnightStinger::startPos
+IL_0019: ldarg.0
+IL_001a: ldc.i4.1
+IL_001b: stfld System.Boolean HiveKnightStinger::initialised
+IL_0020: br.s IL_0033
+IL_0022: ldarg.0
+IL_0023: call UnityEngine.Transform UnityEngine.Component::get_transform()
+IL_0028: ldarg.0
+IL_0029: ldfld UnityEngine.Vector3 HiveKnightStinger::startPos
+IL_002e: callvirt System.Void UnityEngine.Transform::set_localPosition(UnityEngine.Vector3)
+IL_0033: ldarg.0
+IL_0034: ldfld UnityEngine.Rigidbody2D HiveKnightStinger::rb
+IL_0039: ldnull
+IL_003a: call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+IL_003f: brfalse.s IL_004d
+IL_0041: ldarg.0
+IL_0042: ldarg.0
+IL_0043: call !!0 UnityEngine.Component::GetComponent<UnityEngine.Rigidbody2D>()
+IL_0048: stfld UnityEngine.Rigidbody2D HiveKnightStinger::rb
+IL_004d: ldarg.0
+IL_004e: ldarg.0
+IL_004f: ldfld System.Single HiveKnightStinger::time
+IL_0054: stfld System.Single HiveKnightStinger::timer
+IL_0059: ret
+METHOD System.Void HiveKnightStinger::Update()
+IL_0000: ldarg.0
+IL_0001: ldfld System.Single HiveKnightStinger::speed
+IL_0006: ldarg.0
+IL_0007: ldfld System.Single HiveKnightStinger::direction
+IL_000c: ldc.r4 0.017453292
+IL_0011: mul
+IL_0012: call System.Single UnityEngine.Mathf::Cos(System.Single)
+IL_0017: mul
+IL_0018: stloc.0
+IL_0019: ldarg.0
+IL_001a: ldfld System.Single HiveKnightStinger::speed
+IL_001f: ldarg.0
+IL_0020: ldfld System.Single HiveKnightStinger::direction
+IL_0025: ldc.r4 0.017453292
+IL_002a: mul
+IL_002b: call System.Single UnityEngine.Mathf::Sin(System.Single)
+IL_0030: mul
+IL_0031: stloc.1
+IL_0032: ldloca.s V_2
+IL_0034: ldloc.0
+IL_0035: stfld System.Single UnityEngine.Vector2::x
+IL_003a: ldloca.s V_2
+IL_003c: ldloc.1
+IL_003d: stfld System.Single UnityEngine.Vector2::y
+IL_0042: ldarg.0
+IL_0043: ldfld UnityEngine.Rigidbody2D HiveKnightStinger::rb
+IL_0048: ldloc.2
+IL_0049: callvirt System.Void UnityEngine.Rigidbody2D::set_velocity(UnityEngine.Vector2)
+IL_004e: ldarg.0
+IL_004f: ldfld System.Single HiveKnightStinger::timer
+IL_0054: ldc.r4 0
+IL_0059: ble.un.s IL_006e
+IL_005b: ldarg.0
+IL_005c: ldarg.0
+IL_005d: ldfld System.Single HiveKnightStinger::timer
+IL_0062: call System.Single UnityEngine.Time::get_deltaTime()
+IL_0067: sub
+IL_0068: stfld System.Single HiveKnightStinger::timer
+IL_006d: ret
+IL_006e: ldarg.0
+IL_006f: call UnityEngine.GameObject UnityEngine.Component::get_gameObject()
+IL_0074: ldc.i4.0
+IL_0075: callvirt System.Void UnityEngine.GameObject::SetActive(System.Boolean)
+IL_007a: ret
+METHOD System.Void HiveKnightStinger::.ctor()
+IL_0000: ldarg.0
+IL_0001: ldc.r4 20
+IL_0006: stfld System.Single HiveKnightStinger::speed
+IL_000b: ldarg.0
+IL_000c: ldc.r4 2
+IL_0011: stfld System.Single HiveKnightStinger::time
+IL_0016: ldarg.0
+IL_0017: call System.Void UnityEngine.MonoBehaviour::.ctor()
+IL_001c: ret
+TYPE BeginRecoil base=HutongGames.PlayMaker.FsmStateAction
+FIELD HutongGames.PlayMaker.FsmOwnerDefault BeginRecoil::target
+FIELD HutongGames.PlayMaker.FsmFloat BeginRecoil::attackDirection
+FIELD HutongGames.PlayMaker.FsmInt BeginRecoil::attackType
+FIELD HutongGames.PlayMaker.FsmFloat BeginRecoil::attackMagnitude
+METHOD System.Void BeginRecoil::Reset()
+IL_0000: ldarg.0
+IL_0001: newobj System.Void HutongGames.PlayMaker.FsmOwnerDefault::.ctor()
+IL_0006: stfld HutongGames.PlayMaker.FsmOwnerDefault BeginRecoil::target
+IL_000b: ldarg.0
+IL_000c: newobj System.Void HutongGames.PlayMaker.FsmFloat::.ctor()
+IL_0011: stfld HutongGames.PlayMaker.FsmFloat BeginRecoil::attackDirection
+IL_0016: ldarg.0
+IL_0017: newobj System.Void HutongGames.PlayMaker.FsmInt::.ctor()
+IL_001c: stfld HutongGames.PlayMaker.FsmInt BeginRecoil::attackType
+IL_0021: ldarg.0
+IL_0022: newobj System.Void HutongGames.PlayMaker.FsmFloat::.ctor()
+IL_0027: stfld HutongGames.PlayMaker.FsmFloat BeginRecoil::attackMagnitude
+IL_002c: ret
+METHOD System.Void BeginRecoil::OnEnter()
+IL_0000: ldarg.0
+IL_0001: ldfld HutongGames.PlayMaker.FsmOwnerDefault BeginRecoil::target
+IL_0006: callvirt HutongGames.PlayMaker.OwnerDefaultOption HutongGames.PlayMaker.FsmOwnerDefault::get_OwnerOption()
+IL_000b: brfalse.s IL_001f
+IL_000d: ldarg.0
+IL_000e: ldfld HutongGames.PlayMaker.FsmOwnerDefault BeginRecoil::target
+IL_0013: callvirt HutongGames.PlayMaker.FsmGameObject HutongGames.PlayMaker.FsmOwnerDefault::get_GameObject()
+IL_0018: callvirt UnityEngine.GameObject HutongGames.PlayMaker.FsmGameObject::get_Value()
+IL_001d: br.s IL_0025
+IL_001f: ldarg.0
+IL_0020: call UnityEngine.GameObject HutongGames.PlayMaker.FsmStateAction::get_Owner()
+IL_0025: stloc.0
+IL_0026: ldloc.0
+IL_0027: ldnull
+IL_0028: call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+IL_002d: brfalse.s IL_0060
+IL_002f: ldloc.0
+IL_0030: callvirt !!0 UnityEngine.GameObject::GetComponent<Recoil>()
+IL_0035: stloc.1
+IL_0036: ldloc.1
+IL_0037: ldnull
+IL_0038: call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+IL_003d: brfalse.s IL_0060
+IL_003f: ldloc.1
+IL_0040: ldarg.0
+IL_0041: ldfld HutongGames.PlayMaker.FsmFloat BeginRecoil::attackDirection
+IL_0046: callvirt System.Single HutongGames.PlayMaker.FsmFloat::get_Value()
+IL_004b: call System.Int32 DirectionUtils::GetCardinalDirection(System.Single)
+IL_0050: ldarg.0
+IL_0051: ldfld HutongGames.PlayMaker.FsmFloat BeginRecoil::attackMagnitude
+IL_0056: callvirt System.Single HutongGames.PlayMaker.FsmFloat::get_Value()
+IL_005b: callvirt System.Void Recoil::RecoilByDirection(System.Int32,System.Single)
+IL_0060: ldarg.0
+IL_0061: call System.Void HutongGames.PlayMaker.FsmStateAction::Finish()
+IL_0066: ret
+METHOD System.Void BeginRecoil::.ctor()
+IL_0000: ldarg.0
+IL_0001: call System.Void HutongGames.PlayMaker.FsmStateAction::.ctor()
+IL_0006: ret
+TYPE Extensions base=System.Object
+METHOD System.Collections.IEnumerator Extensions::PlayAnimWait(tk2dSpriteAnimator,System.String)
+IL_0000: ldc.i4.0
+IL_0001: newobj System.Void Extensions/<PlayAnimWait>d__5::.ctor(System.Int32)
+IL_0006: dup
+IL_0007: ldarg.0
+IL_0008: stfld tk2dSpriteAnimator Extensions/<PlayAnimWait>d__5::self
+IL_000d: dup
+IL_000e: ldarg.1
+IL_000f: stfld System.String Extensions/<PlayAnimWait>d__5::anim
+IL_0014: ret

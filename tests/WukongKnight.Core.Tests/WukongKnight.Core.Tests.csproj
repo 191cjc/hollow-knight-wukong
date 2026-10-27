@@ -11,6 +11,7 @@
     <Compile Include="../../src/WukongKnight/Core/DeferredContactCleanup.cs" Link="DeferredContactCleanup.cs" />
     <Compile Include="../../src/WukongKnight/Core/DashHitLedger.cs" Link="DashHitLedger.cs" />
     <Compile Include="../../src/WukongKnight/Core/SpellHitLedger.cs" Link="SpellHitLedger.cs" />
+    <Compile Include="../../src/WukongKnight/Core/ScopedEnemyDamage.cs" Link="ScopedEnemyDamage.cs" />
     <Compile Include="../../src/WukongKnight/Core/SkillTargetPolicy.cs" Link="SkillTargetPolicy.cs" />
     <Compile Include="../../src/WukongKnight/Core/FireDemonTimeline.cs" Link="FireDemonTimeline.cs" />
     <Compile Include="../../src/WukongKnight/Core/BloodthirstyBuff.cs" Link="BloodthirstyBuff.cs" />

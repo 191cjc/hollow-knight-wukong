@@ -21,6 +21,7 @@ internal static class Program
         cases = cases.Concat(new Action[] { EarthbreakerProtectionEndsWithHeroAction, FireApeKeepsOriginalDeadline, HeroRecoveryRetainsOtherActionClocks }).ToArray();
         cases = cases.Concat(new Action[] { DetachedSummonsKeepIndependentClocks, AfterimageTrailBirthsRetainPositionsAcrossSlowFrames, DetachedCancellationRejectsStaleWork, SummonsSpendSoulWithoutTakingControl, SummonPaymentCanRevokeSpawn, DetachedContactsKeepCapsWhenFacingChanges }).ToArray();
         cases = cases.Concat(new Action[] { ControlledCastRejectsInsufficientAndRevokedSoul, ControlledCastPaymentAndExceptionReleaseOwner }).ToArray();
+        cases = cases.Concat(new Action[] { EnemyDamageRequiresExactIdentity, EnemyDamageRequiresActualSurvivingLoss, EnemyDamageRejectsNestedAttribution, EnemyDamageRejectsRevokedAndReusedResults, EnemyDamageAllowsRepeatedAcceptedHits }).ToArray();
         foreach (Action test in cases)
         {
             try { test(); Console.WriteLine("PASS " + test.Method.Name); }
@@ -28,6 +29,85 @@ internal static class Program
         }
         Console.WriteLine(cases.Length + " combo-core checks passed (actual linked production source).");
         return 0;
+    }
+
+    private static void EnemyDamageRequiresExactIdentity()
+    {
+        object source = new object(), target = new object(), other = new object();
+        var attempt = new ScopedEnemyDamage<object, object>(source, target, 7, 100);
+        Check(!attempt.Begin(other, target, 7, 100, 1, 1), "An unrelated spell source entered Storm attribution");
+        Check(!attempt.Begin(source, other, 7, 100, 1, 2), "A sibling responder entered another target's dispatch");
+        Check(!attempt.Begin(source, target, 8, 100, 1, 3), "A new cast borrowed the old attempt");
+        Check(attempt.Begin(source, target, 7, 100, 1, 4), "Exact dispatched hit was not observable");
+        Check(attempt.Complete(source, target, 7, 90, 4, true), "Wrong identities consumed the later exact dispatch");
+        foreach (bool wrongSource in new[] { false, true })
+        {
+            attempt = new ScopedEnemyDamage<object, object>(source, target, 7, 100);
+            attempt.Begin(source, target, 7, 100, 1, 5);
+            Check(!attempt.Complete(wrongSource ? other : source, wrongSource ? target : other, 7, 90, 5, true), "Completion reused a replaced source/responder");
+        }
+    }
+
+    private static void EnemyDamageRequiresActualSurvivingLoss()
+    {
+        object source = new object(), target = new object();
+        foreach (int after in new[] { 100, 105, 0, -10 })
+        {
+            var attempt = new ScopedEnemyDamage<object, object>(source, target, 1, 100);
+            Check(attempt.Begin(source, target, 1, 100, 1, 1), "Valid native observation rejected");
+            Check(!attempt.Complete(source, target, 1, after, 1, true), "No-damage/healing/fatal hit triggered interruption");
+        }
+        var changed = new ScopedEnemyDamage<object, object>(source, target, 1, 100);
+        Check(!changed.Begin(source, target, 1, 90, 1, 2), "Pre-dispatch TAKE DAMAGE HP loss was attributed to the later hit");
+        Check(!changed.Complete(source, target, 1, 80, 2, true), "Rejected observation later accepted HP loss");
+        var dead = new ScopedEnemyDamage<object, object>(source, target, 1, 0);
+        Check(!dead.Begin(source, target, 1, 0, 1, 3), "Already dead responder entered observation");
+    }
+
+    private static void EnemyDamageRejectsNestedAttribution()
+    {
+        object source = new object(), target = new object();
+        var outer = new ScopedEnemyDamage<object, object>(source, target, 1, 100);
+        Check(outer.Begin(source, target, 1, 100, 1, 20), "Outer native hit did not start");
+        Check(!outer.Begin(source, target, 1, 100, 2, 21), "Reentrant matching source replaced the outer observation");
+        Check(!outer.Complete(source, target, 1, 80, 21, true), "Nested damage contaminated the enclosing HP delta");
+        var inner = new ScopedEnemyDamage<object, object>(source, target, 1, 100);
+        Check(!inner.Begin(source, target, 1, 100, 2, 22), "Storm hit inside an unrelated damage callback was attributed");
+        Check(!inner.Complete(source, target, 1, 90, 22, true), "Rejected nested observation became eligible");
+        var afterHook = new ScopedEnemyDamage<object, object>(source, target, 1, 100);
+        afterHook.Begin(source, target, 1, 100, 1, 30);
+        Check(!afterHook.Complete(source, target, 1, 90, 31, true), "Later healing hook nested hit escaped sequence guard");
+    }
+
+    private static void EnemyDamageRejectsRevokedAndReusedResults()
+    {
+        object source = new object(), target = new object();
+        foreach (bool newCast in new[] { false, true })
+        {
+            var attempt = new ScopedEnemyDamage<object, object>(source, target, 4, 100);
+            attempt.Begin(source, target, 4, 100, 1, 1);
+            Check(!attempt.Complete(source, target, newCast ? 5 : 4, 90, 1, newCast), "Recast/cancelled/detached owner accepted an old result");
+            Check(!attempt.Complete(source, target, 4, 90, 1, true), "Revoked result became valid after reacquisition");
+        }
+        var missing = new ScopedEnemyDamage<object, object>(source, target, 4, 100);
+        Check(!missing.Complete(source, target, 4, 90, 1, true), "Unobserved HP change counted as a hit");
+        Check(!missing.Begin(source, target, 4, 100, 1, 2), "Completed result reopened an old dispatch");
+    }
+
+    private static void EnemyDamageAllowsRepeatedAcceptedHits()
+    {
+        object source = new object(), target = new object();
+        var ledger = new SpellHitLedger(FlameStormRules.HitCap);
+        long token = ledger.Begin();
+        for (int index = 0; index < FlameStormRules.HitCap; index++)
+        {
+            Check(ledger.TryAirHit(token, 42, index * .11), "Existing Storm cap/contact spacing changed");
+            var attempt = new ScopedEnemyDamage<object, object>(source, target, token, 100 - index * 10);
+            Check(attempt.Begin(source, target, token, 100 - index * 10, 1, index + 1), "A later effective hit inherited a consumed result");
+            Check(attempt.Complete(source, target, token, 90 - index * 10, index + 1, ledger.Owns(token)), "Repeated effective hit was not accepted");
+            Check(!attempt.Complete(source, target, token, 90 - index * 10, index + 1, true), "One hit triggered interruption twice");
+        }
+        Check(!ledger.TryAirHit(token, 42, 1), "Observation allowed a sixth Storm contact");
     }
 
     private static void ControlledCastRejectsInsufficientAndRevokedSoul()

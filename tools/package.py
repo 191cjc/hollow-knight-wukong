@@ -38,7 +38,7 @@ Native mesh disable/alpha no longer hides the Wukong death animation. Native
 Knight shell/debris visuals are suppressed with restoration; death/save/Geo/shade,
 dream returns and respawn processing continue through the original iterator.
 Air/up/down attacks retain native mechanics, including down-slash bouncing.
-Neutral quick spell summons one independent Afterimage Combo (残影连打) attacker,
+Down + Dream Nail summons one independent Afterimage Combo (残影连打) attacker,
 consuming native MP Cost once. The player remains free to move/jump/attack/cast.
 The clone performs the original71-tick route/hits and leaves four10-second afterimages.
 Afterimages mimic Earthbreaker and Godslayer at reduced damage, without dream effects.
@@ -91,7 +91,7 @@ There is no forced dive or ground-contact requirement. All custom skills reject 
 and weapon children as enemy hurtboxes. No inherited Quake start/landing shake is added.
 Hero damage guards remain active throughout preparation, air and finisher; they release
 on completion/cancel/detach without changing save invincibility.
-Down + Dream Nail casts Flame Storm, using the original 16-tick spinning body and flames.
+Neutral quick spell casts Flame Storm, using the original 16-tick spinning body and flames.
 Original local contact mask; per-target cap five, 100ms contact interval, native evasion.
 Damage per contact is 7/11 by down-spell tier, or 11/17 with Shaman Stone.
 Hold spell/focus to perform Jiyuan Fire Eye (汲元火眼) using native focus charge/Soul timing.
@@ -126,6 +126,9 @@ in the source project for the full pending client checklist.
 Processed character graphics derive from archived 4399 ZMXY4 Wukong assets.
 Sources and processing rules are recorded in the source project. No game/API/engine DLLs
 or raw source archives are included. This local development package is not a public release.
+Diagnostic build: a read-only enemy FSM recorder writes plain text into the
+fsm-dump folder beside this DLL (enemy state machines, scene FSM indexes, state and
+hit traces). It never changes enemies. Send that folder; delete it any time.
 """
 
 

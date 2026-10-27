@@ -4,42 +4,45 @@ using WukongKnight.Core;
 
 namespace WukongKnight
 {
-    /// <summary>Original spinning body/flames and nearby contact mask on down + Dream Nail.</summary>
+    /// <summary>Original spinning body/flames and nearby contact mask on the neutral quick spell.</summary>
     internal sealed class FlameStorm : IDisposable
     {
         private readonly HeroController hero;
         private readonly NativeV77 native;
-        private readonly NativeDreamV77 dream;
-        private readonly Func<int> soulCost;
+        private readonly NativeSpellV77 forward;
         private readonly Collider2D body;
         private readonly Rigidbody2D motion;
         private readonly float unitsPerPixel;
         private readonly float feet;
         private readonly GameObject source;
         private readonly SpellHitLedger hits = new SpellHitLedger(FlameStormRules.HitCap);
+        private ScopedEnemyDamage<GameObject, HealthManager>? enemyDamage;
         private double started;
-        private int lastInputFrame = -1;
+        private string lastForward = "";
         private float lastPhysics = float.NegativeInfinity;
         private bool facing;
         private bool observing;
         private bool disposed;
         private int damage;
         private FlameStormClock Clock => new FlameStormClock(Time.time - started);
-        public bool Active => !disposed && hits.Active && dream.Holding;
+        public bool Active => !disposed && hits.Active && forward.HoldsCast;
         public double Tick => Clock.Tick;
         public bool FacingRight => facing;
 
-        public FlameStorm(HeroController hero, NativeV77 native, CharacterAssets assets, NativeDreamV77 dream, Func<int> soulCost)
+        public FlameStorm(HeroController hero, NativeV77 native, CharacterAssets assets)
         {
-            this.hero = hero; this.native = native; this.dream = dream; this.soulCost = soulCost;
+            this.hero = hero; this.native = native;
             body = hero.GetComponent<Collider2D>() ?? throw new InvalidOperationException("Hero collider missing");
             motion = hero.GetComponent<Rigidbody2D>() ?? throw new InvalidOperationException("Hero rigidbody missing");
             unitsPerPixel = body.bounds.size.y / assets.NominalBodyHeight;
             feet = assets.FeetOffsetPixels;
             if (unitsPerPixel <= 0) throw new InvalidOperationException("Hero body has no height");
+            // Exclusive owner of the held Fireball Antic; no other skill finishes this cast.
+            forward = new NativeSpellV77(hero, NativeSpellSlot.Forward);
             source = new GameObject("WukongKnight.FlameStormDamage");
         }
-        public void Observe(bool input = false)
+        public bool BlocksNativeSource(GameObject candidate) => forward.BlocksSource(candidate);
+        public void Observe()
         {
             if (disposed || observing) return;
             observing = true;
@@ -48,21 +51,31 @@ namespace WukongKnight
                 HeroControllerStates s = hero.cState;
                 if (!hero.gameObject.activeInHierarchy || s.dead || s.hazardDeath || s.hazardRespawning || s.transitioning || s.recoiling || s.recoilFrozen)
                 {
-                    Stop(); return;
+                    Stop();
+                    // A cast held while unable to begin is released, never paid or started later.
+                    if (!hits.Active && forward.HoldsCast) forward.FinishCast();
+                    lastForward = forward.State; return;
                 }
                 if (Time.timeScale <= 0) return;
-                if (hits.Active && !dream.Holding) { Stop(); return; }
-                if (input && lastInputFrame != Time.frameCount)
+                if (hits.Active && !forward.HoldsCast) { Stop(); return; }
+                string state = forward.State;
+                if (state != lastForward)
                 {
-                    lastInputFrame = Time.frameCount;
-                    if (!hits.Active && native.DownHeld(hero) && native.DreamPressed(hero) && dream.CanBegin(native, true) &&
-                        FistRules.TryBeginControlled(true, soulCost(), () => PlayerData.instance.GetInt("MPCharge"), dream.Begin,
-                            () => !disposed && hero.gameObject.activeInHierarchy && !s.dead && !s.hazardDeath && !s.hazardRespawning && !s.transitioning && dream.Holding,
-                            hero.TakeMP, dream.Finish))
+                    lastForward = state;
+                    // Native Spell Control already checked input, unlock and MP before the held antic.
+                    if (forward.HoldsState(state) && !hits.Active)
                     {
-                        hits.Begin(); hero.CancelParryInvuln(); started = Time.time; facing = s.facingRight;
-                        lastPhysics = float.NegativeInfinity;
-                        damage = FlameStormRules.Damage(PlayerData.instance.GetInt("quakeLevel"), PlayerData.instance.GetBool("equippedCharm_19"));
+                        if (FistRules.TryBeginControlled(true, forward.SoulCost, () => PlayerData.instance.GetInt("MPCharge"), () => forward.HoldsCast,
+                            () => !disposed && hero.gameObject.activeInHierarchy && !s.dead && !s.hazardDeath && !s.hazardRespawning && !s.transitioning && forward.HoldsCast,
+                            hero.TakeMP, () => forward.FinishCast()))
+                        {
+                            hits.Begin(); hero.CancelParryInvuln(); started = Time.time; facing = s.facingRight;
+                            lastPhysics = float.NegativeInfinity;
+                            damage = FlameStormRules.Damage(PlayerData.instance.GetInt("quakeLevel"), PlayerData.instance.GetBool("equippedCharm_19"));
+                        }
+                        // Pre-acquisition Soul/cost rejection never calls cancel; release the held antic.
+                        else forward.FinishCast();
+                        lastForward = forward.State;
                     }
                 }
                 if (!Active) return;
@@ -91,18 +104,52 @@ namespace WukongKnight
                 Component? target = native.SkillTarget(collider, hero, mask);
                 if (target == null || target is HealthManager health && native.Evading(health)) continue;
                 if (hits.TryAirHit(token, target.GetInstanceID(), Time.time))
-                    native.FireDemonHit(source, target.gameObject, damage, target.transform.position.x >= origin.x ? 0 : 180,
-                        true, () => Owns(token));
+                {
+                    // TAKE DAMAGE is sent before HealthManager.Hit. Bind its exact responder
+                    // and starting HP now so an earlier FSM-side HP mutation cannot be counted.
+                    var attempt = target is HealthManager responder
+                        ? new ScopedEnemyDamage<GameObject, HealthManager>(source, responder, token, responder.hp) : null;
+                    enemyDamage = attempt;
+                    try
+                    {
+                        native.FireDemonHit(source, target.gameObject, damage, target.transform.position.x >= origin.x ? 0 : 180,
+                            true, () => Owns(token));
+                    }
+                    finally
+                    {
+                        if (ReferenceEquals(enemyDamage, attempt)) enemyDamage = null;
+                    }
+                }
             }
+        }
+        internal ScopedEnemyDamage<GameObject, HealthManager>? BeginEnemyHit(GameObject actualSource, HealthManager target, int depth, long sequence)
+        {
+            ScopedEnemyDamage<GameObject, HealthManager>? attempt = enemyDamage;
+            return attempt != null && Owns(attempt.Token) && ReferenceEquals(enemyDamage, attempt) && target != null &&
+                attempt.Begin(actualSource, target, hits.Token, target.hp, depth, sequence) ? attempt : null;
+        }
+        internal bool CompleteEnemyHit(ScopedEnemyDamage<GameObject, HealthManager> attempt, GameObject actualSource,
+            HealthManager target, int observedHealth, long sequence)
+        {
+            // Caller observes the skill before reading the final global hit sequence. Keep
+            // this check free of native control events that could start another damage callback.
+            bool owned = ReferenceEquals(enemyDamage, attempt) && Active && hits.Owns(attempt.Token);
+            return attempt.Complete(actualSource, target, hits.Token, observedHealth, sequence,
+                owned && source != null && target != null && target.enabled && !target.GetIsDead() &&
+                target.gameObject.activeInHierarchy && target.hp == observedHealth);
         }
         private bool Owns(long token) { Observe(); return Active && hits.Owns(token); }
         private void Stop(bool completed = false)
         {
-            if (!hits.Active) return; // Never finish another skill's shared Dream owner.
+            if (!hits.Active) return; // Only release a Fireball Antic this Storm accepted.
+            enemyDamage = null;
             hits.Stop(hits.Token);
-            dream.Finish();
-            // Preserve successful Storm recovery formerly provided by Quake Finish.
             HeroControllerStates s = hero.cState;
+            if (hero.gameObject.activeInHierarchy && !s.dead && !s.hazardDeath && !s.hazardRespawning && !s.transitioning)
+                hero.AffectedByGravity(true);
+            forward.FinishCast();
+            lastForward = forward.State;
+            // Preserve successful Storm recovery formerly provided by Quake Finish.
             if (completed && !disposed && hero.gameObject.activeInHierarchy && !s.dead && !s.hazardDeath &&
                 !s.hazardRespawning && !s.transitioning && !s.recoiling && !s.recoilFrozen) hero.QuakeInvuln();
         }
@@ -110,7 +157,7 @@ namespace WukongKnight
         {
             if (disposed) return;
             try { Stop(); }
-            finally { disposed = true; UnityEngine.Object.Destroy(source); }
+            finally { disposed = true; try { forward.Dispose(); } finally { UnityEngine.Object.Destroy(source); } }
         }
     }
 }

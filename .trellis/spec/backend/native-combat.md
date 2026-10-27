@@ -539,3 +539,101 @@ after successful Dream recovery, preserving its old down-spell finish semantics.
 Masks, source clocks, damage factors, ghost mimicry and all artwork are unchanged.
 Native recoil/events do not universally force enemy hurt states; that feature is
 not implemented. Client input/combat/recovery acceptance remains pending.
+
+
+## 0.7.6 Afterimage / Storm input swap
+
+Supersedes the v074 neutral gate and shared Storm/Godslayer Dream ownership above.
+Neutral quick spell is Flame Storm; down + Dream Nail is the detached Afterimage.
+
+NativeSpellV77.Forward holds Fireball Antic tk2d completion (original ANIM END)
+after native CanCast/MP/direction/fireballLevel and Wallside? routing; FinishCast
+enters Spell End, skipping projectile/spending states. Has Fireball? is no longer
+patched. FlameStorm constructs/disposes the only Forward adapter and exposes its
+BlocksNativeSource. Observe each newly held antic once through TryBeginControlled
+(acquire = already held), charge live MP Cost once, then begin the unchanged
+ledger/clock/quakeLevel damage. Active requires the held antic. Stop invalidates
+attribution and ledger first, restores gravity, enters Spell End, then grants
+QuakeInvuln only on successful completion with live nonrecoiling hero. A held
+antic observed during recoil/death/hazard/transition is released unpaid.
+
+FistSkills keeps only the Down adapter and reads the shared live MP Cost through
+it. Down + Dream uses dream.CanBegin(native, true), captures origin/facing, then
+TryBeginSummon rechecks Alive/!Active/CanBegin after TakeMP. It never calls
+Dream Begin/Finish; Godslayer is the sole NativeDreamV77 owner. Runtime still
+creates the Dream adapter and disposes it after FistSkills and FlameStorm.
+Afterimage damage stays fireballLevel/Shaman; Storm damage stays quakeLevel/Shaman.
+Client keyboard/controller, wall-side, recovery and summon checks remain pending.
+
+
+## Unreleased Storm damage attribution draft
+
+### 1. Scope / Trigger
+
+The 2026-10-27 branch draft observes one synchronous Flame Storm dispatch. It
+implements no enemy interruption, native cancellation profile or supported-enemy
+list. A successful policy result is deliberately discarded by HealthHit; it is
+not yet safe input for enemy control. Task research/check-draft.md records gaps.
+
+### 2. Signatures
+
+Core ScopedEnemyDamage<TSource,TTarget> requires reference types and exposes:
+
+```csharp
+ScopedEnemyDamage(TSource source, TTarget target, long token, int initialHealth)
+bool Begin(TSource actualSource, TTarget actualTarget, long token,
+    int health, int depth, long hitSequence)
+bool Complete(TSource actualSource, TTarget actualTarget, long token,
+    int health, long hitSequence, bool stillOwned)
+```
+
+FlameStorm.BeginEnemyHit returns the active matching attempt or null.
+CompleteEnemyHit returns bool only; neither method mutates an enemy FSM.
+
+### 3. Contracts
+
+Bind exact source/resolved HealthManager/cast token/HP before the existing
+FireDemonHit dispatch, including its TAKE DAMAGE event. Only the first exact
+matching Begin can be observed. It requires a positive token/initial HP,
+unchanged initial HP and outer Hit depth1. Complete is single-use and requires
+unchanged Hit sequence, exact identities/token, current ownership and surviving
+HP loss. Finally clears the temporary attempt; Stop clears before Dream recovery.
+Preserve original damage dispatch and Fire Eye observer order. Observe Storm
+before reading the final Hit sequence because native recovery can reenter hooks.
+
+### 4. Validation & Error Matrix
+
+| Condition | Result / limitation |
+| --- | --- |
+| Wrong source/target/token at Begin | false; does not consume exact observation |
+| First exact Begin with wrong HP/depth or nonpositive stored token | false; cannot retry that attempt |
+| Nested Hit, revoked ownership, reused completion, no/fatal loss | false |
+| Null constructor identity | ArgumentNullException |
+| ApplyExtraDamage/direct HP writes during dispatch | Hit sequence cannot isolate them; unresolved |
+| Same-reference disable/re-enable/pooling | Final liveness cannot prove target lifetime; unresolved |
+
+### 5. Good / Base / Bad Cases
+
+Good: a fresh attempt for each of five budgeted nonfatal contacts passes policy
+checks independently. Base: evaded/no-loss or lethal damage yields no candidate.
+Bad: matching references/current liveness are treated as proof of uninterrupted
+target lifetime, or all HP loss is attributed to Hit despite known bypasses.
+
+### 6. Tests Required
+
+Linked-production Core checks cover exact identity/token, pre-dispatch HP,
+positive surviving loss, nested Hit sequence, revocation, reuse and five contacts.
+Pinned-reference compilation and compiled hook/finally ordering are also checked.
+Before any consumer, resolve direct-HP attribution and target-lifetime guards,
+then validate one real native cancellation/cleanup/default-return path and client
+attack-resource shutdown, death/phase exclusions and subsequent AI. Current Core
+checks/build do not establish any of those native acceptance results.
+
+### 7. Wrong vs Correct
+
+Wrong: consume Complete=true by searching for Walk/Idle or broadcasting END to an
+unknown FSM. This can retain attack hitboxes/controllers or break phase logic.
+Correct: keep the draft result unused until attribution/lifetime guards and an
+exact native profile's original transitions/actions/resource cleanup are proven.
+A future profile must preserve normal damage/recoil on unsupported layouts;
+compilation or an empty adapter must never be reported as working interruption.

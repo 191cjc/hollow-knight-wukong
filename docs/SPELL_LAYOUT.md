@@ -5,9 +5,9 @@ The 0.4.4 workspace was committed before these changes as
 
 | Input | Replacement | Native progression |
 | --- | --- | --- |
-| Neutral quick spell | Afterimage Combo (残影连打) | Native forward spell unlock/tier (`fireballLevel`), current MP Cost once |
+| Neutral quick spell | Flame Storm (烈焰风暴) | Native forward spell unlock; quakeLevel damage tier; current MP Cost once |
 | Dream Nail | Godslayer Strike (灭神一击) | Hold/release or automatic maximum; full charge preserves native Dream impact |
-| Down + Dream Nail | Flame Storm (烈焰风暴) | Native Dream Nail unlock; quakeLevel damage tier; current native MP Cost once |
+| Down + Dream Nail | Afterimage Combo (残影连打) | Native Dream Nail unlock; fireballLevel damage tier; current native MP Cost once |
 | Up + Dream Nail | Fire Ape Assault (火猿出击) | Native Dream Nail unlock; current native MP Cost once |
 | Up + spell | Fire Demon Slash | Howling Wraiths / Abyss Shriek (`screamLevel`) |
 | Down + spell | Earthbreaker Fist (辟地拳) | Desolate Dive / Descending Dark unlock; unchanged nail-based damage |
@@ -156,3 +156,18 @@ at moderate effort, but bosses need explicit supported FSM/state/phase rules and
 cleanup of attack hitboxes/projectiles. Some enemies lack a dedicated hurt pose.
 Universal reliable support is substantially harder; a supported-enemy adapter
 with native fallback is recommended over unconditional FSM state mutation.
+
+
+## 0.7.6 Afterimage / Storm input swap
+
+Neutral quick spell now starts Flame Storm. Native CanCast, MP, fireballLevel and
+Wallside? checks run unchanged; Storm holds the Fireball Antic completion (ANIM END),
+charges live MP Cost once, and finishes through Spell End. The projectile and
+native spending states are skipped. Storm alone owns this Forward adapter. Its
+16-tick action, mask, caps, quakeLevel/Shaman damage and successful-only
+QuakeInvuln are unchanged; rejection/cancellation grants no timer.
+
+Down + Dream Nail (including air) summons the detached Afterimage Combo. It reads
+the same live MP Cost, pays once after the existing down-Dream eligibility, and
+never begins/finishes native Dream or owns the player. Godslayer is the only
+remaining Dream-controlled action.

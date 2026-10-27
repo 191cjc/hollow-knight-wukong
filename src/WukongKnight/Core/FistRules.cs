@@ -69,7 +69,7 @@ namespace WukongKnight.Core
             if (action != FistAction.Godslayer && !RequiresSoul(action)) return false;
             return TryBeginControlled(RequiresSoul(action), cost, soul, acquire, holds, spend, cancel);
         }
-        // Shared by paid Dream Storm and the already-held down-spell Earthbreaker.
+        // Shared by the already-held neutral-spell Storm and down-spell Earthbreaker.
         public static bool TryBeginControlled(bool paid, int cost, Func<int> soul, Func<bool> acquire,
             Func<bool> holds, Action<int> spend, Action cancel)
         {

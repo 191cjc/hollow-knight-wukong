@@ -1,0 +1,345 @@
+TYPE HitTaker base=System.Object
+FIELD System.Int32 HitTaker::DefaultRecursionDepth
+METHOD System.Void HitTaker::Hit(UnityEngine.GameObject,HitInstance,System.Int32)
+IL_0000: ldarg.0
+IL_0001: ldnull
+IL_0002: call System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
+IL_0007: brfalse.s IL_003d
+IL_0009: ldarg.0
+IL_000a: callvirt UnityEngine.Transform UnityEngine.GameObject::get_transform()
+IL_000f: stloc.0
+IL_0010: ldc.i4.0
+IL_0011: stloc.1
+IL_0012: br.s IL_0039
+IL_0014: ldloc.0
+IL_0015: callvirt !!0 UnityEngine.Component::GetComponent<IHitResponder>()
+IL_001a: stloc.2
+IL_001b: ldloc.2
+IL_001c: brfalse.s IL_0025
+IL_001e: ldloc.2
+IL_001f: ldarg.1
+IL_0020: callvirt System.Void IHitResponder::Hit(HitInstance)
+IL_0025: ldloc.0
+IL_0026: callvirt UnityEngine.Transform UnityEngine.Transform::get_parent()
+IL_002b: stloc.0
+IL_002c: ldloc.0
+IL_002d: ldnull
+IL_002e: call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+IL_0033: brtrue.s IL_003d
+IL_0035: ldloc.1
+IL_0036: ldc.i4.1
+IL_0037: add
+IL_0038: stloc.1
+IL_0039: ldloc.1
+IL_003a: ldarg.2
+IL_003b: blt.s IL_0014
+IL_003d: ret
+TYPE HealthManager base=UnityEngine.MonoBehaviour
+FIELD UnityEngine.BoxCollider2D HealthManager::boxCollider
+FIELD Recoil HealthManager::recoil
+FIELD IHitEffectReciever HealthManager::hitEffectReceiver
+FIELD EnemyDeathEffects HealthManager::enemyDeathEffects
+FIELD tk2dSpriteAnimator HealthManager::animator
+FIELD tk2dSprite HealthManager::sprite
+FIELD DamageHero HealthManager::damageHero
+FIELD UnityEngine.AudioSource HealthManager::audioPlayerPrefab
+FIELD AudioEvent HealthManager::regularInvincibleAudio
+FIELD UnityEngine.GameObject HealthManager::blockHitPrefab
+FIELD UnityEngine.GameObject HealthManager::strikeNailPrefab
+FIELD UnityEngine.GameObject HealthManager::slashImpactPrefab
+FIELD UnityEngine.GameObject HealthManager::fireballHitPrefab
+FIELD UnityEngine.GameObject HealthManager::sharpShadowImpactPrefab
+FIELD UnityEngine.GameObject HealthManager::corpseSplatPrefab
+FIELD AudioEvent HealthManager::enemyDeathSwordAudio
+FIELD AudioEvent HealthManager::enemyDamageAudio
+FIELD UnityEngine.GameObject HealthManager::smallGeoPrefab
+FIELD UnityEngine.GameObject HealthManager::mediumGeoPrefab
+FIELD UnityEngine.GameObject HealthManager::largeGeoPrefab
+FIELD System.Int32 HealthManager::hp
+FIELD System.Int32 HealthManager::enemyType
+FIELD UnityEngine.Vector3 HealthManager::effectOrigin
+FIELD System.Boolean HealthManager::ignoreKillAll
+FIELD HealthManager/HPScaleGG HealthManager::hpScale
+FIELD UnityEngine.GameObject HealthManager::battleScene
+FIELD UnityEngine.GameObject HealthManager::sendHitTo
+FIELD UnityEngine.GameObject HealthManager::sendKilledToObject
+FIELD System.String HealthManager::sendKilledToName
+FIELD System.Int32 HealthManager::smallGeoDrops
+FIELD System.Int32 HealthManager::mediumGeoDrops
+FIELD System.Int32 HealthManager::largeGeoDrops
+FIELD System.Boolean HealthManager::megaFlingGeo
+FIELD System.Boolean HealthManager::hasAlternateHitAnimation
+FIELD System.String HealthManager::alternateHitAnimation
+FIELD System.Boolean HealthManager::invincible
+FIELD System.Int32 HealthManager::invincibleFromDirection
+FIELD System.Boolean HealthManager::preventInvincibleEffect
+FIELD System.Boolean HealthManager::hasAlternateInvincibleSound
+FIELD UnityEngine.AudioClip HealthManager::alternateInvincibleSound
+FIELD UnityEngine.Audio.AudioMixerSnapshot HealthManager::deathAudioSnapshot
+FIELD System.Boolean HealthManager::hasSpecialDeath
+FIELD System.Boolean HealthManager::deathReset
+FIELD System.Boolean HealthManager::damageOverride
+FIELD System.Boolean HealthManager::ignoreAcid
+FIELD System.Boolean HealthManager::showGodfinderIcon
+FIELD System.Single HealthManager::showGodFinderDelay
+FIELD BossScene HealthManager::unlockBossScene
+FIELD HealthManager/DeathEvent HealthManager::OnDeath
+FIELD System.Boolean HealthManager::ignoreHazards
+FIELD System.Boolean HealthManager::ignoreWater
+FIELD System.Single HealthManager::invulnerableTime
+FIELD System.Boolean HealthManager::semiPersistent
+FIELD System.Boolean HealthManager::isDead
+FIELD UnityEngine.GameObject HealthManager::sendKilledTo
+FIELD System.Single HealthManager::evasionByHitRemaining
+FIELD System.Int32 HealthManager::directionOfLastAttack
+FIELD PlayMakerFSM HealthManager::stunControlFSM
+FIELD System.Boolean HealthManager::notifiedBattleScene
+FIELD System.String HealthManager::CheckPersistenceKey
+PROP System.Boolean HealthManager::IsInvincible()
+PROP System.Int32 HealthManager::InvincibleFromDirection()
+METHOD System.Boolean HealthManager::get_IsInvincible()
+IL_0000: ldarg.0
+IL_0001: ldfld System.Boolean HealthManager::invincible
+IL_0006: ret
+TYPE tk2dSpriteAnimator base=UnityEngine.MonoBehaviour
+FIELD tk2dSpriteAnimation tk2dSpriteAnimator::library
+FIELD System.Int32 tk2dSpriteAnimator::defaultClipId
+FIELD System.Boolean tk2dSpriteAnimator::playAutomatically
+FIELD tk2dSpriteAnimator/State tk2dSpriteAnimator::globalState
+FIELD tk2dSpriteAnimationClip tk2dSpriteAnimator::currentClip
+FIELD System.Single tk2dSpriteAnimator::clipTime
+FIELD System.Single tk2dSpriteAnimator::clipFps
+FIELD System.Int32 tk2dSpriteAnimator::previousFrame
+FIELD System.Action`2<tk2dSpriteAnimator,tk2dSpriteAnimationClip> tk2dSpriteAnimator::AnimationCompleted
+FIELD System.Action`3<tk2dSpriteAnimator,tk2dSpriteAnimationClip,System.Int32> tk2dSpriteAnimator::AnimationEventTriggered
+FIELD tk2dSpriteAnimator/State tk2dSpriteAnimator::state
+FIELD tk2dBaseSprite tk2dSpriteAnimator::_sprite
+PROP System.Boolean tk2dSpriteAnimator::g_Paused()
+PROP System.Boolean tk2dSpriteAnimator::Paused()
+PROP tk2dSpriteAnimation tk2dSpriteAnimator::Library()
+PROP System.Int32 tk2dSpriteAnimator::DefaultClipId()
+PROP tk2dSpriteAnimationClip tk2dSpriteAnimator::DefaultClip()
+PROP tk2dBaseSprite tk2dSpriteAnimator::Sprite()
+PROP System.Boolean tk2dSpriteAnimator::Playing()
+PROP tk2dSpriteAnimationClip tk2dSpriteAnimator::CurrentClip()
+PROP System.Single tk2dSpriteAnimator::ClipTimeSeconds()
+PROP System.Single tk2dSpriteAnimator::ClipFps()
+PROP System.Single tk2dSpriteAnimator::DefaultFps()
+PROP System.Int32 tk2dSpriteAnimator::CurrentFrame()
+METHOD System.Void tk2dSpriteAnimator::Play()
+IL_0000: ldarg.0
+IL_0001: ldfld tk2dSpriteAnimationClip tk2dSpriteAnimator::currentClip
+IL_0006: brtrue.s IL_0014
+IL_0008: ldarg.0
+IL_0009: ldarg.0
+IL_000a: callvirt tk2dSpriteAnimationClip tk2dSpriteAnimator::get_DefaultClip()
+IL_000f: stfld tk2dSpriteAnimationClip tk2dSpriteAnimator::currentClip
+IL_0014: ldarg.0
+IL_0015: ldarg.0
+IL_0016: ldfld tk2dSpriteAnimationClip tk2dSpriteAnimator::currentClip
+IL_001b: callvirt System.Void tk2dSpriteAnimator::Play(tk2dSpriteAnimationClip)
+IL_0020: ret
+METHOD System.Void tk2dSpriteAnimator::Play(System.String)
+IL_0000: ldarg.0
+IL_0001: ldarg.0
+IL_0002: ldarg.1
+IL_0003: callvirt tk2dSpriteAnimationClip tk2dSpriteAnimator::GetClipByNameVerbose(System.String)
+IL_0008: callvirt System.Void tk2dSpriteAnimator::Play(tk2dSpriteAnimationClip)
+IL_000d: ret
+METHOD System.Void tk2dSpriteAnimator::Play(tk2dSpriteAnimationClip)
+IL_0000: ldarg.0
+IL_0001: ldarg.1
+IL_0002: ldc.r4 0
+IL_0007: call System.Single tk2dSpriteAnimator::get_DefaultFps()
+IL_000c: callvirt System.Void tk2dSpriteAnimator::Play(tk2dSpriteAnimationClip,System.Single,System.Single)
+IL_0011: ret
+METHOD System.Void tk2dSpriteAnimator::PlayFromFrame(System.Int32)
+IL_0000: ldarg.0
+IL_0001: ldfld tk2dSpriteAnimationClip tk2dSpriteAnimator::currentClip
+IL_0006: brtrue.s IL_0014
+IL_0008: ldarg.0
+IL_0009: ldarg.0
+IL_000a: callvirt tk2dSpriteAnimationClip tk2dSpriteAnimator::get_DefaultClip()
+IL_000f: stfld tk2dSpriteAnimationClip tk2dSpriteAnimator::currentClip
+IL_0014: ldarg.0
+IL_0015: ldarg.0
+IL_0016: ldfld tk2dSpriteAnimationClip tk2dSpriteAnimator::currentClip
+IL_001b: ldarg.1
+IL_001c: callvirt System.Void tk2dSpriteAnimator::PlayFromFrame(tk2dSpriteAnimationClip,System.Int32)
+IL_0021: ret
+METHOD System.Void tk2dSpriteAnimator::PlayFromFrame(System.String,System.Int32)
+IL_0000: ldarg.0
+IL_0001: ldarg.0
+IL_0002: ldarg.1
+IL_0003: callvirt tk2dSpriteAnimationClip tk2dSpriteAnimator::GetClipByNameVerbose(System.String)
+IL_0008: ldarg.2
+IL_0009: callvirt System.Void tk2dSpriteAnimator::PlayFromFrame(tk2dSpriteAnimationClip,System.Int32)
+IL_000e: ret
+METHOD System.Void tk2dSpriteAnimator::PlayFromFrame(tk2dSpriteAnimationClip,System.Int32)
+IL_0000: ldarg.0
+IL_0001: ldarg.1
+IL_0002: ldarg.2
+IL_0003: conv.r4
+IL_0004: ldc.r4 0.001
+IL_0009: add
+IL_000a: ldarg.1
+IL_000b: ldfld System.Single tk2dSpriteAnimationClip::fps
+IL_0010: div
+IL_0011: callvirt System.Void tk2dSpriteAnimator::PlayFrom(tk2dSpriteAnimationClip,System.Single)
+IL_0016: ret
+METHOD System.Void tk2dSpriteAnimator::Play(tk2dSpriteAnimationClip,System.Single,System.Single)
+IL_0000: ldarg.1
+IL_0001: brfalse IL_0162
+IL_0006: ldarg.3
+IL_0007: ldc.r4 0
+IL_000c: bgt.s IL_0016
+IL_000e: ldarg.1
+IL_000f: ldfld System.Single tk2dSpriteAnimationClip::fps
+IL_0014: br.s IL_0017
+IL_0016: ldarg.3
+IL_0017: stloc.0
+IL_0018: ldarg.2
+IL_0019: ldc.r4 0
+IL_001e: bne.un.s IL_0029
+IL_0020: ldarg.0
+IL_0021: ldarg.1
+IL_0022: callvirt System.Boolean tk2dSpriteAnimator::IsPlaying(tk2dSpriteAnimationClip)
+IL_0027: br.s IL_002a
+IL_0029: ldc.i4.0
+IL_002a: brfalse.s IL_0034
+IL_002c: ldarg.0
+IL_002d: ldloc.0
+IL_002e: stfld System.Single tk2dSpriteAnimator::clipFps
+IL_0033: ret
+IL_0034: ldarg.0
+IL_0035: ldarg.0
+IL_0036: ldfld tk2dSpriteAnimator/State tk2dSpriteAnimator::state
+IL_003b: ldc.i4.1
+IL_003c: or
+IL_003d: stfld tk2dSpriteAnimator/State tk2dSpriteAnimator::state
+IL_0042: ldarg.0
+IL_0043: ldarg.1
+IL_0044: stfld tk2dSpriteAnimationClip tk2dSpriteAnimator::currentClip
+IL_0049: ldarg.0
+IL_004a: ldloc.0
+IL_004b: stfld System.Single tk2dSpriteAnimator::clipFps
+IL_0050: ldarg.0
+IL_0051: ldfld tk2dSpriteAnimationClip tk2dSpriteAnimator::currentClip
+IL_0056: ldfld tk2dSpriteAnimationClip/WrapMode tk2dSpriteAnimationClip::wrapMode
+IL_005b: ldc.i4.6
+IL_005c: beq.s IL_006b
+IL_005e: ldarg.0
+IL_005f: ldfld tk2dSpriteAnimationClip tk2dSpriteAnimator::currentClip
+IL_0064: ldfld tk2dSpriteAnimationFrame[] tk2dSpriteAnimationClip::frames
+IL_0069: brtrue.s IL_008c
+IL_006b: ldarg.0
+IL_006c: ldarg.0
+IL_006d: ldfld tk2dSpriteAnimationClip tk2dSpriteAnimator::currentClip
+IL_0072: ldc.r4 0
+IL_0077: callvirt System.Void tk2dSpriteAnimator::WarpClipToLocalTime(tk2dSpriteAnimationClip,System.Single)
+IL_007c: ldarg.0
+IL_007d: ldarg.0
+IL_007e: ldfld tk2dSpriteAnimator/State tk2dSpriteAnimator::state
+IL_0083: ldc.i4.s -2
+IL_0085: and
+IL_0086: stfld tk2dSpriteAnimator/State tk2dSpriteAnimator::state
+IL_008b: ret
+IL_008c: ldarg.0
+IL_008d: ldfld tk2dSpriteAnimationClip tk2dSpriteAnimator::currentClip
+IL_0092: ldfld tk2dSpriteAnimationClip/WrapMode tk2dSpriteAnimationClip::wrapMode
+IL_0097: ldc.i4.4
+IL_0098: beq.s IL_00a8
+IL_009a: ldarg.0
+IL_009b: ldfld tk2dSpriteAnimationClip tk2dSpriteAnimator::currentClip
+IL_00a0: ldfld tk2dSpriteAnimationClip/WrapMode tk2dSpriteAnimationClip::wrapMode
+IL_00a5: ldc.i4.5
+IL_00a6: bne.un.s IL_00f2
+IL_00a8: ldc.i4.0
+IL_00a9: ldarg.0
+IL_00aa: ldfld tk2dSpriteAnimationClip tk2dSpriteAnimator::currentClip
+IL_00af: ldfld tk2dSpriteAnimationFrame[] tk2dSpriteAnimationClip::frames
+IL_00b4: ldlen
+IL_00b5: conv.i4
+IL_00b6: call System.Int32 UnityEngine.Random::Range(System.Int32,System.Int32)
+IL_00bb: stloc.1
+IL_00bc: ldarg.0
+IL_00bd: ldarg.0
+IL_00be: ldfld tk2dSpriteAnimationClip tk2dSpriteAnimator::currentClip
+IL_00c3: ldloc.1
+IL_00c4: conv.r4
+IL_00c5: callvirt System.Void tk2dSpriteAnimator::WarpClipToLocalTime(tk2dSpriteAnimationClip,System.Single)
+IL_00ca: ldarg.0
+IL_00cb: ldfld tk2dSpriteAnimationClip tk2dSpriteAnimator::currentClip
+IL_00d0: ldfld tk2dSpriteAnimationClip/WrapMode tk2dSpriteAnimationClip::wrapMode
+IL_00d5: ldc.i4.4
+IL_00d6: bne.un IL_0181
+IL_00db: ldarg.0
+IL_00dc: ldc.i4.m1
+IL_00dd: stfld System.Int32 tk2dSpriteAnimator::previousFrame
+IL_00e2: ldarg.0
+IL_00e3: ldarg.0
+IL_00e4: ldfld tk2dSpriteAnimator/State tk2dSpriteAnimator::state
+IL_00e9: ldc.i4.s -2
+IL_00eb: and
+IL_00ec: stfld tk2dSpriteAnimator/State tk2dSpriteAnimator::state
+IL_00f1: ret
+IL_00f2: ldarg.2
+IL_00f3: ldarg.0
+IL_00f4: ldfld System.Single tk2dSpriteAnimator::clipFps
+IL_00f9: mul
+IL_00fa: stloc.2
+IL_00fb: ldarg.0
+IL_00fc: ldfld tk2dSpriteAnimationClip tk2dSpriteAnimator::currentClip
+IL_0101: ldfld tk2dSpriteAnimationClip/WrapMode tk2dSpriteAnimationClip::wrapMode
+IL_0106: ldc.i4.2
+IL_0107: bne.un.s IL_014d
+IL_0109: ldloc.2
+IL_010a: ldarg.0
+IL_010b: ldfld System.Single tk2dSpriteAnimator::clipFps
+IL_0110: ldarg.0
+IL_0111: ldfld tk2dSpriteAnimationClip tk2dSpriteAnimator::currentClip
+IL_0116: ldfld tk2dSpriteAnimationFrame[] tk2dSpriteAnimationClip::frames
+IL_011b: ldlen
+IL_011c: conv.i4
+IL_011d: conv.r4
+IL_011e: mul
+IL_011f: blt.un.s IL_014d
+IL_0121: ldarg.0
+IL_0122: ldarg.0
+IL_0123: ldfld tk2dSpriteAnimationClip tk2dSpriteAnimator::currentClip
+IL_0128: ldarg.0
+IL_0129: ldfld tk2dSpriteAnimationClip tk2dSpriteAnimator::currentClip
+IL_012e: ldfld tk2dSpriteAnimationFrame[] tk2dSpriteAnimationClip::frames
+IL_0133: ldlen
+IL_0134: conv.i4
+IL_0135: ldc.i4.1
+IL_0136: sub
+IL_0137: conv.r4
+IL_0138: callvirt System.Void tk2dSpriteAnimator::WarpClipToLocalTime(tk2dSpriteAnimationClip,System.Single)
+IL_013d: ldarg.0
+IL_013e: ldarg.0
+IL_013f: ldfld tk2dSpriteAnimator/State tk2dSpriteAnimator::state
+IL_0144: ldc.i4.s -2
+IL_0146: and
+IL_0147: stfld tk2dSpriteAnimator/State tk2dSpriteAnimator::state
+IL_014c: ret
+IL_014d: ldarg.0
+IL_014e: ldarg.0
+IL_014f: ldfld tk2dSpriteAnimationClip tk2dSpriteAnimator::currentClip
+IL_0154: ldloc.2
+IL_0155: callvirt System.Void tk2dSpriteAnimator::WarpClipToLocalTime(tk2dSpriteAnimationClip,System.Single)
+IL_015a: ldarg.0
+IL_015b: ldloc.2
+IL_015c: stfld System.Single tk2dSpriteAnimator::clipTime
+IL_0161: ret
+IL_0162: ldstr "Calling clip.Play() with a null clip"
+IL_0167: call System.Void UnityEngine.Debug::LogError(System.Object)
+IL_016c: ldarg.0
+IL_016d: callvirt System.Void tk2dSpriteAnimator::OnAnimationCompleted()
+IL_0172: ldarg.0
+IL_0173: ldarg.0
+IL_0174: ldfld tk2dSpriteAnimator/State tk2dSpriteAnimator::state
+IL_0179: ldc.i4.s -2
+IL_017b: and
+IL_017c: stfld tk2dSpriteAnimator/State tk2dSpriteAnimator::state
+IL_0181: ret

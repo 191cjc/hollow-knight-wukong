@@ -64,22 +64,13 @@ namespace WukongKnight
             foreach (object state in states) byName.Add((string)Property(state.GetType(), "Name").GetValue(state, null), state);
             string[] required = slot == NativeSpellSlot.Up ? new[] { "Scream Antic1", "Scream Antic2", "Spell End" } :
                 slot == NativeSpellSlot.Down ? new[] { "Quake Antic", "Quake Finish", "Spell End" } :
-                slot == NativeSpellSlot.Forward ? new[] { "Has Fireball?", "Inactive" } :
+                slot == NativeSpellSlot.Forward ? new[] { "Fireball Antic", "Spell End" } :
                 new[] { "Focus Heal", "Focus Heal 2", "Focus Get Finish", "Focus Get Finish 2", "Focus Cancel", "Focus Cancel 2" };
             foreach (string name in required)
                 if (!byName.ContainsKey(name)) throw new InvalidOperationException("Unsupported Spell Control state: " + name);
-            if (slot == NativeSpellSlot.Forward)
-            {
-                heldStates.Add("Has Fireball?");
-                object gate = FindAction(byName["Has Fireball?"], "HutongGames.PlayMaker.Actions.IntCompare");
-                FieldInfo cast = gate.GetType().GetField("greaterThan") ?? throw new MissingFieldException("Fireball unlock.greaterThan");
-                object original = cast.GetValue(gate) ?? throw new InvalidOperationException("Fireball unlock CAST missing");
-                if (EventName(original) != "CAST") throw new InvalidOperationException("Another Mod changed Fireball unlock");
-                heldEvent = Activator.CreateInstance(original.GetType(), new object[] { "WUKONG SPELL HELD" });
-                events.Add(Tuple.Create(gate, cast, original));
-            }
-            else if (slot != NativeSpellSlot.Focus)
-                foreach (string name in slot == NativeSpellSlot.Up ? new[] { "Scream Antic1", "Scream Antic2" } : new[] { "Quake Antic" })
+            if (slot != NativeSpellSlot.Focus)
+                foreach (string name in slot == NativeSpellSlot.Up ? new[] { "Scream Antic1", "Scream Antic2" } :
+                    slot == NativeSpellSlot.Forward ? new[] { "Fireball Antic" } : new[] { "Quake Antic" })
                 {
                     heldStates.Add(name);
                     object antic = FindAction(byName[name], "HutongGames.PlayMaker.Actions.Tk2dPlayAnimationWithEvents");
@@ -148,8 +139,8 @@ namespace WukongKnight
         public void FinishCast(bool quakeRecovery = true)
         {
             if (!HoldsCast || !CanRecover) return;
-            // Forward never took control: Spell End would incorrectly clear velocity.
-            setState.Invoke(spell, new object[] { slot == NativeSpellSlot.Forward ? "Inactive" : slot == NativeSpellSlot.Down && quakeRecovery ? "Quake Finish" : "Spell End" });
+            // Held Fireball Antic already took control; Spell End skips projectile/spending states.
+            setState.Invoke(spell, new object[] { slot == NativeSpellSlot.Down && quakeRecovery ? "Quake Finish" : "Spell End" });
         }
 
         private bool CanRecover => hero != null && hero.gameObject.activeInHierarchy &&

@@ -13,14 +13,14 @@ charms, Soul, clashes and pogo remain authoritative. The independent arc layer
 follows actual native charm reach (Longnail1.15x, Mark of Pride1.25x, both1.4x);
 body and staff stay at their existing offline1.5x appearance.
 
-- **Neutral quick spell:** summons one independent Afterimage Combo (残影连打)
-  attacker that leaves four ten-second ghosts. The hero acts freely; ghosts mimic
-  Earthbreaker/Godslayer with reduced damage.
+- **Neutral quick spell:** Flame Storm (烈焰风暴), the original spinning action/flames,
+  with nearby source-mask contacts and at most five hits per target.
 - **Dream Nail:** damaging Godslayer Strike (灭神一击). Hold to charge, release to
   punch; a fully charged wave retains native Dream Nail effects (1.267s charge,
   or0.633s with Dream Wielder).
-- **Down + Dream Nail:** Flame Storm (烈焰风暴), the original spinning action/flames,
-  with nearby source-mask contacts and at most five hits per target.
+- **Down + Dream Nail:** summons one independent Afterimage Combo (残影连打)
+  attacker that leaves four ten-second ghosts. The hero acts freely; ghosts mimic
+  Earthbreaker/Godslayer with reduced damage.
 - **Up + Dream Nail:** moving-awakening Fire Ape Assault (火猿出击), with original
   back/front effects following the free hero. Normal incoming damage/recoil applies.
 - **Up + spell:** Fire Demon Slash, with original moving flashes, relative masks,
@@ -32,8 +32,9 @@ body and staff stay at their existing offline1.5x appearance.
 - **Dash:** Flame Dash retains native travel/cooldown/collision, adds path damage and blocks incoming HP damage throughout each actual dash; Dashmaster downward dashes use downward flames with the body upright.
 
 Fire Demon uses the up-spell unlock/tier. Earthbreaker uses the down-spell unlock
-while retaining its nail-based damage. Dream-key Storm requires Dream Nail and
-retains quakeLevel fixed spell damage and Shaman Stone scaling.
+while retaining its nail-based damage. Neutral-spell Storm requires the native
+forward spell unlock and retains quakeLevel fixed spell damage and Shaman Stone scaling.
+Down-Dream Afterimage requires Dream Nail and retains its fireballLevel damage tier.
 Native up/down spell damage is replaced; each cast charges the current native
 Soul cost once (including Spell Twister). See [spell controls](docs/SPELL_LAYOUT.md),
 [Fire Demon](docs/FIRE_DEMON_SLASH.md) and [client checks](docs/CLIENT_ACCEPTANCE.md).
@@ -174,3 +175,9 @@ All v074 artwork is reused byte-for-byte. Client timing/combat acceptance is pen
 is Flame Storm. Costs, damage, source masks, artwork and Earthbreaker immunity/
 confirmed-landing recovery remain unchanged. Storm retains native recovery at a
 successful source end, with no full-action HP guard or forced enemy hurt states.
+
+
+0.7.6 also swaps the Afterimage Combo and Flame Storm inputs: the neutral quick
+spell casts Storm, down + Dream Nail summons Afterimage. Each still charges the
+live native spell Soul cost once; damage, tiers, artwork, Storm recovery and the
+free-player summon behavior are unchanged. Client checks are pending.

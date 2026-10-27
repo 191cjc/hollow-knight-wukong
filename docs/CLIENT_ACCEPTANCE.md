@@ -286,3 +286,17 @@ Automated checks and frame preview do not establish these client results.
 - Alternating Storm/Godslayer must not leave control locked or cancel a new owner;
   neutral/up Dream, independent summons and all earlier skills remain usable.
 - No forced enemy hurt-state transitions are implemented in this update.
+
+
+## 0.7.6 Afterimage / Storm input swap (pending)
+
+- Neutral quick spell: Storm on ground, in air and from wall slide; original
+  16 ticks, flames/local hits, one MP cost, no native fireball or projectile.
+  Locked Vengeful Spirit or insufficient Soul casts nothing.
+- Successful Storm restores control/gravity via Spell End plus one QuakeInvuln;
+  hits/death/hazards/scenes during Storm grant no timer and leave no lock.
+- Down + Dream Nail (ground and air): Afterimage actor/ghosts, one MP cost, free
+  player movement; no native Dream animation, impact or control change. Locked
+  Dream Nail or insufficient Soul summons nothing.
+- Neutral Godslayer, up-Dream Ape, up/down spells and focus are unchanged; one
+  press never triggers both swapped skills. Test keyboard and controller.
