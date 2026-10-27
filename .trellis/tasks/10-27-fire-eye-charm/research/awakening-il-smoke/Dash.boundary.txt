@@ -1,0 +1,32 @@
+System.Void HeroController::Dash()
+IL_0000: ldarg.0
+IL_0001: ldc.i4.0
+IL_0002: callvirt System.Void HeroController::AffectedByGravity(System.Boolean)
+IL_0007: ldarg.0
+IL_0008: callvirt System.Void HeroController::ResetHardLandingTimer()
+IL_000d: ldarg.0
+IL_000e: ldfld System.Single HeroController::dash_timer
+IL_0013: ldarg.0
+IL_0014: ldfld System.Single HeroController::DASH_TIME
+IL_0019: ble.un.s IL_0025
+IL_001e: ldarg.0
+IL_001f: callvirt System.Void HeroController::FinishedDashing()
+IL_0024: ret
+IL_0025: ldarg.0
+IL_0026: ldarg.0
+IL_0027: callvirt UnityEngine.Vector2 HeroController::OrigDashVector()
+IL_002c: stloc.0
+IL_002d: ldloc.0
+IL_002e: call UnityEngine.Vector2 Modding.ModHooks::DashVelocityChange(UnityEngine.Vector2)
+IL_0033: stloc.0
+IL_0034: ldarg.0
+IL_0035: ldfld UnityEngine.Rigidbody2D HeroController::rb2d
+IL_003a: ldloc.0
+IL_003b: callvirt System.Void UnityEngine.Rigidbody2D::set_velocity(UnityEngine.Vector2)
+IL_0040: ldarg.0
+IL_0041: ldarg.0
+IL_0042: ldfld System.Single HeroController::dash_timer
+IL_0047: call System.Single UnityEngine.Time::get_deltaTime()
+IL_004c: add
+IL_004d: stfld System.Single HeroController::dash_timer
+IL_0052: ret

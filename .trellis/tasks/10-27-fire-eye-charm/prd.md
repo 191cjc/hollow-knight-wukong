@@ -111,7 +111,10 @@ The automated/artwork acceptance items above are complete. The full gate passed
 native landing matcher's MonoMod ILLabel handling, the affected no-incremental
 pinned Release and package checks passed again with zero warnings/errors. The
 main audit verified all19 package files, ZIP CRC/bytes, Release/staged DLL equality,
-embedded icon bytes and360 preserved inputs. See
+embedded icon bytes and360 preserved inputs. Real MonoMod ILContext checks
+reached all three production matcher boundaries and confirmed wrapped ILLabel
+targets. Full delegate generation requires unavailable client PlayMaker.dll; it
+remains outside the completed offline checks, with no fabricated engine types. See
 `research/awakening-final-validation.json`, `research/awakening-check.md` and
 `research/awakening-implementation.md` for exact evidence and final signoff.
 AC2..AC6 remain pending actual-client behavior; source implementation and compile

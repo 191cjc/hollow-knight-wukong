@@ -1,0 +1,202 @@
+System.Void HeroController::LookForQueueInput()
+IL_0000: ldarg.0
+IL_0001: ldfld System.Boolean HeroController::acceptingInput
+IL_0006: brfalse IL_02c4
+IL_000b: ldarg.0
+IL_000c: ldfld GameManager HeroController::gm
+IL_0011: ldfld System.Boolean GameManager::isPaused
+IL_0016: brtrue IL_02c4
+IL_001b: ldarg.0
+IL_001c: ldfld System.Boolean HeroController::isGameplayScene
+IL_0021: brfalse IL_02c4
+IL_0026: ldarg.0
+IL_0027: ldfld InputHandler HeroController::inputHandler
+IL_002c: ldfld HeroActions InputHandler::inputActions
+IL_0031: ldfld InControl.PlayerAction HeroActions::jump
+IL_0036: callvirt System.Boolean InControl.OneAxisInputControl::get_WasPressed()
+IL_003b: brfalse IL_00d2
+IL_0040: ldarg.0
+IL_0041: callvirt System.Boolean HeroController::CanWallJump()
+IL_0046: brfalse.s IL_0056
+IL_004b: ldarg.0
+IL_004c: callvirt System.Void HeroController::DoWallJump()
+IL_0051: br.s IL_00d2
+IL_0056: ldarg.0
+IL_0057: callvirt System.Boolean HeroController::CanJump()
+IL_005c: brfalse.s IL_006c
+IL_0061: ldarg.0
+IL_0062: callvirt System.Void HeroController::HeroJump()
+IL_0067: br.s IL_00d2
+IL_006c: ldarg.0
+IL_006d: callvirt System.Boolean HeroController::CanDoubleJump()
+IL_0072: brfalse.s IL_0082
+IL_0077: ldarg.0
+IL_0078: callvirt System.Void HeroController::DoDoubleJump()
+IL_007d: br.s IL_00d2
+IL_0082: ldarg.0
+IL_0083: callvirt System.Boolean HeroController::CanInfiniteAirJump()
+IL_0088: brfalse.s IL_00b6
+IL_008d: ldarg.0
+IL_008e: callvirt System.Void HeroController::CancelJump()
+IL_0093: ldarg.0
+IL_0094: ldfld HeroAudioController HeroController::audioCtrl
+IL_0099: ldc.i4.2
+IL_009a: callvirt System.Void HeroAudioController::PlaySound(GlobalEnums.HeroSounds)
+IL_009f: ldarg.0
+IL_00a0: callvirt System.Void HeroController::ResetLook()
+IL_00a5: ldarg.0
+IL_00a6: ldfld HeroControllerStates HeroController::cState
+IL_00ab: ldc.i4.1
+IL_00ac: stfld System.Boolean HeroControllerStates::jumping
+IL_00b1: br.s IL_00d2
+IL_00b6: ldarg.0
+IL_00b7: ldc.i4.0
+IL_00b8: stfld System.Int32 HeroController::jumpQueueSteps
+IL_00bd: ldarg.0
+IL_00be: ldc.i4.1
+IL_00bf: stfld System.Boolean HeroController::jumpQueuing
+IL_00c4: ldarg.0
+IL_00c5: ldc.i4.0
+IL_00c6: stfld System.Int32 HeroController::doubleJumpQueueSteps
+IL_00cb: ldarg.0
+IL_00cc: ldc.i4.1
+IL_00cd: stfld System.Boolean HeroController::doubleJumpQueuing
+IL_00d2: ldarg.0
+IL_00d3: ldfld InputHandler HeroController::inputHandler
+IL_00d8: ldfld HeroActions InputHandler::inputActions
+IL_00dd: ldfld InControl.PlayerAction HeroActions::dash
+IL_00e2: callvirt System.Boolean InControl.OneAxisInputControl::get_WasPressed()
+IL_00e7: brfalse.s IL_0125
+IL_00ec: call System.Boolean Modding.ModHooks::OnDashPressed()
+IL_00f1: brtrue.s IL_0125
+IL_00f6: ldarg.0
+IL_00f7: callvirt System.Boolean HeroController::CanDash()
+IL_00fc: ldarg.0
+IL_00fd: ldc.i4 0
+IL_0102: call T MonoMod.Cil.RuntimeILReferenceBag/InnerBag`1<System.Func`3<System.Boolean,HeroController,System.Boolean>>::Get(System.Int32)
+IL_0107: brfalse.s IL_0117
+IL_010c: ldarg.0
+IL_010d: callvirt System.Void HeroController::HeroDash()
+IL_0112: br.s IL_0125
+IL_0117: ldarg.0
+IL_0118: ldc.i4.0
+IL_0119: stfld System.Int32 HeroController::dashQueueSteps
+IL_011e: ldarg.0
+IL_011f: ldc.i4.1
+IL_0120: stfld System.Boolean HeroController::dashQueuing
+IL_0125: ldarg.0
+IL_0126: ldfld InputHandler HeroController::inputHandler
+IL_012b: ldfld HeroActions InputHandler::inputActions
+IL_0130: ldfld InControl.PlayerAction HeroActions::attack
+IL_0135: callvirt System.Boolean InControl.OneAxisInputControl::get_WasPressed()
+IL_013a: brfalse.s IL_0163
+IL_013f: ldarg.0
+IL_0140: callvirt System.Boolean HeroController::CanAttack()
+IL_0145: brfalse.s IL_0155
+IL_014a: ldarg.0
+IL_014b: callvirt System.Void HeroController::DoAttack()
+IL_0150: br.s IL_0163
+IL_0155: ldarg.0
+IL_0156: ldc.i4.0
+IL_0157: stfld System.Int32 HeroController::attackQueueSteps
+IL_015c: ldarg.0
+IL_015d: ldc.i4.1
+IL_015e: stfld System.Boolean HeroController::attackQueuing
+IL_0163: ldarg.0
+IL_0164: ldfld InputHandler HeroController::inputHandler
+IL_0169: ldfld HeroActions InputHandler::inputActions
+IL_016e: ldfld InControl.PlayerAction HeroActions::jump
+IL_0173: callvirt System.Boolean InControl.OneAxisInputControl::get_IsPressed()
+IL_0178: brfalse IL_0221
+IL_017d: ldarg.0
+IL_017e: ldfld System.Int32 HeroController::jumpQueueSteps
+IL_0183: ldarg.0
+IL_0184: ldfld System.Int32 HeroController::JUMP_QUEUE_STEPS
+IL_0189: bgt.s IL_01af
+IL_018e: ldarg.0
+IL_018f: callvirt System.Boolean HeroController::CanJump()
+IL_0194: brfalse.s IL_01af
+IL_0199: ldarg.0
+IL_019a: ldfld System.Boolean HeroController::jumpQueuing
+IL_019f: brfalse.s IL_01af
+IL_01a4: ldarg.0
+IL_01a5: callvirt System.Void HeroController::HeroJump()
+IL_01aa: br.s IL_01f7
+IL_01af: ldarg.0
+IL_01b0: ldfld System.Int32 HeroController::doubleJumpQueueSteps
+IL_01b5: ldarg.0
+IL_01b6: ldfld System.Int32 HeroController::DOUBLE_JUMP_QUEUE_STEPS
+IL_01bb: bgt.s IL_01f7
+IL_01c0: ldarg.0
+IL_01c1: callvirt System.Boolean HeroController::CanDoubleJump()
+IL_01c6: brfalse.s IL_01f7
+IL_01cb: ldarg.0
+IL_01cc: ldfld System.Boolean HeroController::doubleJumpQueuing
+IL_01d1: brfalse.s IL_01f7
+IL_01d6: ldarg.0
+IL_01d7: ldfld HeroControllerStates HeroController::cState
+IL_01dc: ldfld System.Boolean HeroControllerStates::onGround
+IL_01e1: brfalse.s IL_01f1
+IL_01e6: ldarg.0
+IL_01e7: callvirt System.Void HeroController::HeroJump()
+IL_01ec: br.s IL_01f7
+IL_01f1: ldarg.0
+IL_01f2: callvirt System.Void HeroController::DoDoubleJump()
+IL_01f7: ldarg.0
+IL_01f8: callvirt System.Boolean HeroController::CanSwim()
+IL_01fd: brfalse.s IL_0221
+IL_0202: ldarg.0
+IL_0203: ldfld GlobalEnums.ActorStates HeroController::hero_state
+IL_0208: ldc.i4.3
+IL_0209: beq.s IL_0215
+IL_020e: ldarg.0
+IL_020f: ldc.i4.3
+IL_0210: callvirt System.Void HeroController::SetState(GlobalEnums.ActorStates)
+IL_0215: ldarg.0
+IL_0216: ldfld HeroControllerStates HeroController::cState
+IL_021b: ldc.i4.1
+IL_021c: stfld System.Boolean HeroControllerStates::swimming
+IL_0221: ldarg.0
+IL_0222: ldfld InputHandler HeroController::inputHandler
+IL_0227: ldfld HeroActions InputHandler::inputActions
+IL_022c: ldfld InControl.PlayerAction HeroActions::dash
+IL_0231: callvirt System.Boolean InControl.OneAxisInputControl::get_IsPressed()
+IL_0236: brfalse.s IL_027d
+IL_023b: ldarg.0
+IL_023c: ldfld System.Int32 HeroController::dashQueueSteps
+IL_0241: ldarg.0
+IL_0242: ldfld System.Int32 HeroController::DASH_QUEUE_STEPS
+IL_0247: bgt.s IL_027d
+IL_024c: ldarg.0
+IL_024d: callvirt System.Boolean HeroController::CanDash()
+IL_0252: brfalse.s IL_027d
+IL_0257: ldarg.0
+IL_0258: ldfld System.Boolean HeroController::dashQueuing
+IL_025d: brfalse.s IL_027d
+IL_0262: call System.Boolean Modding.ModHooks::OnDashPressed()
+IL_0267: brtrue.s IL_027d
+IL_026c: ldarg.0
+IL_026d: callvirt System.Boolean HeroController::CanDash()
+IL_0272: brfalse.s IL_027d
+IL_0277: ldarg.0
+IL_0278: callvirt System.Void HeroController::HeroDash()
+IL_027d: ldarg.0
+IL_027e: ldfld InputHandler HeroController::inputHandler
+IL_0283: ldfld HeroActions InputHandler::inputActions
+IL_0288: ldfld InControl.PlayerAction HeroActions::attack
+IL_028d: callvirt System.Boolean InControl.OneAxisInputControl::get_IsPressed()
+IL_0292: brfalse.s IL_02c4
+IL_0297: ldarg.0
+IL_0298: ldfld System.Int32 HeroController::attackQueueSteps
+IL_029d: ldarg.0
+IL_029e: ldfld System.Int32 HeroController::ATTACK_QUEUE_STEPS
+IL_02a3: bgt.s IL_02c4
+IL_02a8: ldarg.0
+IL_02a9: callvirt System.Boolean HeroController::CanAttack()
+IL_02ae: brfalse.s IL_02c4
+IL_02b3: ldarg.0
+IL_02b4: ldfld System.Boolean HeroController::attackQueuing
+IL_02b9: brfalse.s IL_02c4
+IL_02be: ldarg.0
+IL_02bf: callvirt System.Void HeroController::DoAttack()
+IL_02c4: ret

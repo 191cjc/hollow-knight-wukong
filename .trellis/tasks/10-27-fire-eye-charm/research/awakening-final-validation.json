@@ -1,10 +1,10 @@
 {
-  "status": "package_passed_pending_native_il_context_smoke",
-  "verified_at_utc": "2026-10-27T09:59:40.028466+00:00",
+  "status": "passed_automated_checks_client_acceptance_pending",
+  "verified_at_utc": "2026-10-27T10:13:36.510120+00:00",
   "baseline": "Hollow Knight 1.5.78.11833 / Modding API v77 / net472",
   "version": "0.7.8-dev",
   "validation": {
-    "full_gate": "bash scripts/build.sh",
+    "full_gate": "bash scripts/build.sh --no-incremental",
     "exit_code": 0,
     "python_tests": 70,
     "production_linked_core_checks": 91,
@@ -17,6 +17,32 @@
       "warnings": 0,
       "errors": 0,
       "log": "research/awakening-build.log"
+    },
+    "native_il_context": {
+      "dependencies": "actual pinned MonoMod/Cecil and final built WukongKnight DLL",
+      "production_matchers": "All three executed through the actual ILContext.Invoke to the first EmitDelegate boundary.",
+      "wrapped_branch_operand": "ILLabel confirmed; corrected landing matcher accepts its Target.",
+      "full_delegate_generation": "not completed in this audit environment",
+      "limitation": "Bare ILContext has no inline reference bag; the real RuntimeILReferenceBag additionally requires client PlayMaker.dll, unavailable in the pinned reference bundle.",
+      "fabricated_engine_or_playmaker_types": false,
+      "actual_client_execution": false,
+      "evidence": [
+        "research/awakening-check.md",
+        "research/awakening-il-smoke/README.md",
+        "research/awakening-il-smoke/boundary.log",
+        "research/awakening-il-smoke/emission.log"
+      ],
+      "wrapped_branch_operands": {
+        "LookForQueueInput": 41,
+        "Dash": 1,
+        "OnCollisionEnter2D": 25
+      }
+    },
+    "diff_check": "git -c core.whitespace=cr-at-eol diff --check",
+    "trellis_jsonl": {
+      "implement_entries": 8,
+      "check_entries": 8,
+      "validated": true
     }
   },
   "package": {
@@ -159,5 +185,13 @@
     "sha256": "8d397a5d5e9138e4f6a3030fd1cf1db4e358bfe6d920d0d17cac427f745573d5",
     "actual_mono_cecil_byte_equality_passed": true
   },
-  "source_native_dash_sha256": "476a9cf9eae55d1d7afaf290fbc167014dd0294e0c4873b4e3a89b3ca9781502"
+  "source_native_dash_sha256": "476a9cf9eae55d1d7afaf290fbc167014dd0294e0c4873b4e3a89b3ca9781502",
+  "independent_review": "research/awakening-check.md",
+  "implementation_report": "research/awakening-implementation.md",
+  "publication_authorization": "User explicitly requested commit and upload of every workspace change; follow existing .gitignore and push current branch to origin.",
+  "independent_review_signoff": {
+    "complete": true,
+    "remaining_confirmed_source_defects": 0,
+    "runtime_tested": false
+  }
 }

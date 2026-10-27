@@ -834,8 +834,13 @@ cancel/no-refresh, passive versus accepted active landing, rejected/stale landin
 wall/pogo nonreset, equipment toggles and stale callbacks. Compile against real
 pinned references with warnings-as-errors and review the compiled hook seams.
 Run the production manipulators against native method definitions through the
-actual pinned MonoMod ILContext.Invoke, covering all three seams and wrapped
-branch targets without initializing Unity or replacing native classes with stubs.
+actual pinned MonoMod ILContext.Invoke to verify all three matchers and wrapped
+branch targets. Distinguish matcher completion from full delegate generation: a
+bare ILContext has no inline-reference bag, while the real reference bag also
+requires the complete client dependencies (including PlayMaker.dll) when it
+loads captured HeroController types. Record the reached boundary and missing
+dependency if the audit environment cannot emit the delegates. Never fabricate
+Unity/PlayMaker classes or label this offline check as actual-client acceptance.
 Actual client checks cover normal/Sharp speeds, jump held/released, low ceilings,
 wall corners, HeroWalkable platforms (including contact before dash completion),
 pogo/walls, downward/lateral regressions, damage/immunity boundary, scene/death/

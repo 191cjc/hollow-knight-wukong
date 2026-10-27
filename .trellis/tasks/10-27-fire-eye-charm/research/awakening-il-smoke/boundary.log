@@ -1,0 +1,10 @@
+Product SHA256 11c2e94339e4721ab0f5d12ddab4dc306260d52ca1a23944505685234c03cf54
+Real references: /home/ubuntu/hollow-knight-wukong/.tools/native-hook-review/bin/Release/net472/MonoMod.Utils.dll ; /home/ubuntu/hollow-knight-wukong/.tools/native-hook-review/bin/Release/net472/Mono.Cecil.dll
+Mode: production matcher boundary using real NopILReferenceBag
+PASS PatchInput production layout/matcher via real ILContext.Invoke: 41 labeled branches, 198->199 instructions; native calls preserved HeroController::CanDash=3, HeroController::HeroDash=2
+LIMIT: first EmitDelegate reached; complete injection was NOT verified: NotSupportedException: Inline references not supported in this context
+PASS PatchDash production layout/matcher via real ILContext.Invoke: 1 labeled branches, 30->31 instructions; native calls preserved HeroController::OrigDashVector=1, Modding.ModHooks::DashVelocityChange=1, UnityEngine.Rigidbody2D::set_velocity=1
+LIMIT: first EmitDelegate reached; complete injection was NOT verified: NotSupportedException: Inline references not supported in this context
+PASS PatchLanding production layout/matcher via real ILContext.Invoke: 25 labeled branches, 165->166 instructions; native calls preserved HeroController::FindCollisionDirection=1, HeroController::DoHardLanding=1, HeroController::BackOnGround=1, HeroController::SetState=1
+LIMIT: first EmitDelegate reached; complete injection was NOT verified: NotSupportedException: Inline references not supported in this context
+All three actual compiled patcher layout validators accepted genuine pinned method bodies with real MonoMod ILLabel operands. No Unity/game callback was invoked. Matcher evidence does not imply full hook installation or gameplay acceptance.

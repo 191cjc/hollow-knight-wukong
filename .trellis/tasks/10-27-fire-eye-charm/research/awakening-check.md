@@ -47,12 +47,25 @@ fake engine types, commits or pushes were used.
    This ordering was reviewed directly and compiled against the real references;
    Unity callback execution remains in the client matrix.
 
+3. **Landing matcher did not recognize MonoMod's wrapped branch targets.**
+   Real pinned MonoMod `ILContext.Invoke` converts native `Instruction` branch
+   operands into `ILLabel` before invoking manipulators. The raw-only bottom
+   branch matcher therefore rejected the supported native method despite a
+   successful compile. It now resolves `ILLabel.Target` as well as a raw
+   `Instruction`. The final compiled `PatchLanding` was executed through real
+   `ILContext.Invoke` on the genuine native method and passed every layout
+   condition up to its first `EmitDelegate`; this covers the corrected branch.
+
 ## Findings (not fixed)
 
 No remaining confirmed source defect or unresolved product decision was found
 in the reviewed increment. Actual-client acceptance remains outstanding; this is
-a validation limit, not a claim of gameplay success. The main session owns final
-spec/task/status evidence and the final package/public-image audit.
+a validation limit, not a claim of gameplay success. Complete delegate emission
+also remains unverified: the genuine Mono runtime and RuntimeILReferenceBag
+attempt needs PlayMaker.dll to load HeroController's real field types, and that
+assembly is absent from the pinned compile-reference bundle. No game types were
+replaced or stubbed. The main session owns final spec/task/status evidence and
+the final package/public-image audit.
 
 ## Review coverage
 
@@ -101,8 +114,31 @@ spec/task/status evidence and the final package/public-image audit.
   and TreatWarningsAsErrors passed, **0 warnings / 0 errors**.
 - Focused tests: **91 production-linked Core checks passed**, including the
   new active-contact/stale-token landing regression and existing Fire Eye tests.
-- Full gate: the implement agent owns the single final `bash scripts/build.sh`
-  run after these fixes; its final result will be recorded below before signoff.
+- Full gate: the implement agent's final `bash scripts/build.sh --no-incremental`
+  passed **70 Python tests, 91 Core checks**, Release and the 19-file package.
+  After the later one-line ILLabel matcher correction, it repeated the affected
+  real-reference Release/package checks, again with **0 warnings / 0 errors**.
+  No Python/Core source changed after that full gate. Main independently
+  verified ZIP CRC/closure, package/Release DLL equality and embedded icon bytes.
+- Real MonoMod boundary smoke: final production DLL SHA256
+  `11c2e94339e4721ab0f5d12ddab4dc306260d52ca1a23944505685234c03cf54`
+  was loaded using reflection; the actual three private production manipulators
+  were invoked by the actual pinned `ILContext.Invoke`, on genuine native Cecil
+  method bodies. All three layout validators passed up to first EmitDelegate.
+  Input/dash/landing exposed **41/1/25** wrapped branch operands. Native
+  CanDash(3), HeroDash(2), vector/modifier/velocity and all three accepted landing
+  calls remained present, and Invoke resolved labels back on return.
+  Default genuine NopILReferenceBag rejects inline references as designed;
+  genuine RuntimeILReferenceBag gets further but fails at first delegate
+  emission with missing real `PlayMaker, Version=1.6.0.0` through
+  HeroController.normalSlashFsm. These are explicitly matcher passes, **not**
+  complete injection, hook installation or game execution. Source, exact output,
+  partial IL and original exception stacks are in `awakening-il-smoke/`.
+  The earlier net10/CoreCLR attempt was unsuitable for the Unity reference
+  metadata; no product/game/Unity binary was changed for the audit.
+- Final documentation review: native-combat0.7.8, CURRENT_STATUS, FLAME_DASH and
+  awakening-implementation agree on the accepted landing seams, extra guard,
+  preserved native31/34 identity and the final build/package hashes.
 - Runtime: no actual Hollow Knight client or Windows install was accessible.
   Serialized charm UI/FSM wiring, controller input, moving/thin/steep terrain,
   jump-held/released motion, normal/shadow dash and disable/re-enable remain
