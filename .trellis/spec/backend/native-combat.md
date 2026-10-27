@@ -637,3 +637,84 @@ Correct: keep the draft result unused until attribution/lifetime guards and an
 exact native profile's original transitions/actions/resource cleanup are proven.
 A future profile must preserve normal damage/recoil on unsupported layouts;
 compilation or an empty adapter must never be reported as working interruption.
+
+
+## 0.7.7 Fire Eye Sigil (supersedes earlier five-second/Deep Focus rules)
+
+### 1. Scope / Trigger
+
+Repurpose native Deep Focus (charm34), preserving its collectible and saved
+ownership/equipment. Default Fire Eye is3seconds; equipped Sigil costs2notches
+and grants6seconds. Other skills and the unused Storm attribution draft retain
+their contracts. Legacy Bloodthirsty class names remain internal.
+
+### 2. Signatures
+
+- `BloodthirstyBuff.Activate(double now, bool sigilEquipped = false)` snapshots
+  the3/6 rule; `Active(now)` is half-open and `VisualTick(now)` remains30Hz.
+- `FireEyeCharmV77(hero, logError, fail)` validates the attached Spell Control;
+  `Activate()` installs owned hooks; `Equipped` reads true PlayerData equipment;
+  `Dispose()` removes hooks and restores still-owned cache/icon mutations.
+- Native `PlayerData.CalculateNotchesUsed()` and
+  `GameManager.instance.RefreshOvercharm()` run after cost activation/removal.
+
+### 3. Contracts
+
+Successful ordinary focus completion alone activates the selected duration.
+Refresh replaces expiry, invalidates old tokens and preserves the shared1second
+heal deadline. Actual attack HP loss still grants at most1HP; full health spends
+no proc. No completion/expiry heal. Death/hazards/scenes/detach clear the buff.
+
+Return2 only for `charmCost_34`. Never rewrite gotCharm_34, equippedCharm_34,
+equippedCharms or persistent charmCost_34 to implement this replacement. Native
+recalculation owns used slots and overcharm status, including already-equipped
+saves. `CHARM_NAME_34`/`CHARM_DESC_34` on UI provide Chinese/English text.
+
+Remove Deep Focus's native charge/heal tradeoff by identifying exact attached
+Spell Control GetPlayerDataBool/PlayerDataBoolTest actions whose boolName is
+`equippedCharm_34`. Real pinned ILHook replaces only their GameManager boolean
+read with a delegate receiving the action identity. Call the original/API query
+once, then return false only for owned actions. End filtering before synchronous
+Finish/Event calls; UI/equip/duration reads keep true equipment. Refresh and
+conditionally restore owned cached FsmBool outputs. StartMPDrain receives an
+already-selected interval: no guessed multiplier or duplicate FocusCost calls.
+
+Decode embedded `WukongKnight.FireEyeSigil.png` before activation. GetSprite(34)
+uses index34, not33. Native GetSprite is the only compiled spriteList reader;
+hook it without changing the array. Derive sprite pixels-per-unit from native
+charm bounds, refresh SpriteRenderers caching the old sprite, and restore only
+references to owned sprites before destroying owned textures/sprites. Character
+artwork, transforms and colliders do not change.
+
+### 4. Validation & Error Matrix
+
+| Condition | Result |
+| --- | --- |
+| Unsupported/missing owning query or changed native call layout | Fail attachment; restore native character/charm coherently |
+| Missing/invalid embedded icon or invalid native bounds | Fail/restore through runtime failure handling |
+| Nonfinite activation time | Ignore; do not replace current buff |
+| At expiry / stale callback token / no actual HP loss | No heal |
+| Equipment change during active buff | Keep current expiry; next activation snapshots new equipment |
+| Dispose/partial activation failure | Remove hooks; conditionally restore owned bool/icons; recalculate native slots/overcharm |
+
+### 5. Good / Base / Bad Cases
+
+Base: uncollected charm remains uncollected and grants no duration bonus. Good:
+already-equipped charm34 uses2slots and6seconds without retaining old overcharm.
+Bad: global false equipment overrides, broad OnEnter suppression spanning native
+events, manual saved-slot arithmetic, or interval division inside StartMPDrain.
+
+### 6. Tests Required
+
+Production-linked Core assertions cover3/6 expiry and visual boundaries, refresh
+in both equipment directions, old tokens, preserved global cooldown, invalid
+time and cleanup. Build against pinned actual v77/Unity/MonoMod/Cecil references
+with warnings-as-errors; never substitute fake engine classes. Actual client
+checks remain required for serialized action discovery, normal/Quick Focus/Unn,
+Soul/cancellation, collection/UI/localization/cost/overcharm and disable/re-enable.
+
+### 7. Wrong vs Correct
+
+Wrong: override all equippedCharm_34 queries or subtract2from saved used slots.
+Correct: filter the exact owning action's returned boolean only, preserve actual
+equipment, and invoke native notch/overcharm recalculation around the cost hook.

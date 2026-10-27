@@ -9,6 +9,7 @@ namespace WukongKnight
     {
         private readonly HeroController hero;
         private readonly NativeSpellV77 focus;
+        private readonly FireEyeCharmV77 charm;
         private readonly BloodthirstyBuff buff = new BloodthirstyBuff();
         private readonly FireEyeCastClock castClock = new FireEyeCastClock();
         private bool completed;
@@ -23,8 +24,8 @@ namespace WukongKnight
         public double AuraTick => buff.VisualTick(Time.time);
         public bool BuffActive => !disposed && buff.Active(Time.time);
 
-        public BloodthirstyFireEye(HeroController hero)
-        { this.hero = hero; focus = new NativeSpellV77(hero, NativeSpellSlot.Focus); }
+        public BloodthirstyFireEye(HeroController hero, FireEyeCharmV77 charm)
+        { this.hero = hero; this.charm = charm; focus = new NativeSpellV77(hero, NativeSpellSlot.Focus); }
 
         public void Observe()
         {
@@ -57,7 +58,8 @@ namespace WukongKnight
             if (!completed && hero.gameObject.activeInHierarchy && !hero.cState.dead && !hero.cState.hazardDeath && !hero.cState.transitioning)
             {
                 completed = true; pendingFinish = true; slug = focus.State == "Focus Heal 2";
-                buff.Activate(Time.time);
+                // Snapshot real native equipment at completion, outside the scoped focus query.
+                buff.Activate(Time.time, charm.Equipped);
             }
             return true; // A native completion never directly heals, including Deep Focus.
         }

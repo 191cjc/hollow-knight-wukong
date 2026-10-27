@@ -4,7 +4,7 @@
     <LangVersion>latest</LangVersion>
     <AssemblyName>WukongKnight</AssemblyName>
     <RootNamespace>WukongKnight</RootNamespace>
-    <Version>0.7.6</Version>
+    <Version>0.7.7</Version>
     <Nullable>enable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
     <Deterministic>true</Deterministic>
@@ -18,6 +18,7 @@
     <Reference Include="Assembly-CSharp"><HintPath>$(HollowKnightApiDir)/Assembly-CSharp.dll</HintPath><Private>false</Private></Reference>
     <Reference Include="MMHOOK_Assembly-CSharp"><HintPath>$(HollowKnightApiDir)/MMHOOK_Assembly-CSharp.dll</HintPath><Private>false</Private></Reference>
     <Reference Include="MonoMod.RuntimeDetour"><HintPath>$(HollowKnightApiDir)/MonoMod.RuntimeDetour.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Mono.Cecil"><HintPath>$(HollowKnightApiDir)/Mono.Cecil.dll</HintPath><Private>false</Private></Reference>
     <Reference Include="MonoMod.Utils"><HintPath>$(HollowKnightApiDir)/MonoMod.Utils.dll</HintPath><Private>false</Private></Reference>
     <Reference Include="Newtonsoft.Json"><HintPath>$(HollowKnightApiDir)/Newtonsoft.Json.dll</HintPath><Private>false</Private></Reference>
     <Reference Include="UnityEngine"><HintPath>$(UnityReferenceDir)/UnityEngine.dll</HintPath><Private>false</Private></Reference>
@@ -26,5 +27,6 @@
     <Reference Include="UnityEngine.ImageConversionModule"><HintPath>$(UnityReferenceDir)/UnityEngine.ImageConversionModule.dll</HintPath><Private>false</Private></Reference>
     <Reference Include="UnityEngine.AudioModule"><HintPath>$(UnityReferenceDir)/UnityEngine.AudioModule.dll</HintPath><Private>false</Private></Reference>
     <EmbeddedResource Include="../../data/generated/development-manifest.json" LogicalName="WukongKnight.DevelopmentManifest.json" />
+    <EmbeddedResource Include="../../assets/processed/charms/fire-eye-sigil/icon.png" LogicalName="WukongKnight.FireEyeSigil.png" />
   </ItemGroup>
 </Project>

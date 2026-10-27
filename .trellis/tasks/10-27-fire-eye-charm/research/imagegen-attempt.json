@@ -1,0 +1,30 @@
+{
+  "mode": "approved bundled CLI",
+  "model": "gpt-image-2.5-flare",
+  "quality": "high",
+  "size": "1024x1024",
+  "output_format": "png",
+  "credential_source": "private imagegen environment supplied by user; never copied into workspace",
+  "result": "Generated output/imagegen/fire-eye-sigil-v1.png",
+  "output_created": true,
+  "next_step": "Complete final independent review; native-client acceptance pending",
+  "attempts": [
+    {
+      "model": "gpt-image-2",
+      "status": 404,
+      "error": "model_not_found"
+    },
+    {
+      "model": "gpt-image-2.5-flare",
+      "status": 404,
+      "error": "model_not_found"
+    },
+    {
+      "model": "gpt-image-2.5-flare",
+      "configuration": "separate private imagegen environment supplied by user",
+      "result": "success",
+      "duration_seconds": 49.0
+    }
+  ],
+  "latest_user_model": "gpt-image-2.5-flare"
+}

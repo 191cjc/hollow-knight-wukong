@@ -1,0 +1,19 @@
+{
+  "version": "0.7.7-dev",
+  "package": "artifacts/WukongKnight-0.7.7-dev.zip",
+  "package_sha256": "9acab5d2f65e24b956ff91b2631ef96d4bb95961bae5da16269a57bca7f3b98b",
+  "dll_sha256": "00df7bb966a70ae0c88340a24f2d4fe4ba5e9e4ca68763a3d69fd059a2379d2b",
+  "dll_bytes": 196608,
+  "package_files": 19,
+  "python_tests": 67,
+  "core_checks": 81,
+  "release_warnings": 0,
+  "release_errors": 0,
+  "runtime_tested": false,
+  "installation": "Not performed: Windows Steam path is not mounted in this Linux environment",
+  "public_preview_evidence": "research/public-preview.json",
+  "generated_original": "output/imagegen/fire-eye-sigil-v1.png",
+  "final_icon_sha256": "8d397a5d5e9138e4f6a3030fd1cf1db4e358bfe6d920d0d17cac427f745573d5",
+  "baseline": "187fca8",
+  "branch": "feat/fire-eye-charm"
+}

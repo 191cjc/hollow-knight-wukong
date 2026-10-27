@@ -286,3 +286,32 @@ clips. Runtime places back behind ordinary hero sprite and front ahead, followin
 live root/facing; no appearance scaling or baked player body. Separate v074
 original/full1.5x/packed folders retain all earlier files. Validate body-free
 source draws, every previous1349tick's pixels and lossless packed reconstruction.
+
+
+## 0.7.7 standalone generated charm artwork
+
+1. Scope: Fire Eye Sigil replaces native Deep Focus UI art. Existing character
+   archives, bakes, variants, active-variant selection and runtime pages stay exact.
+2. Command: `.tools/python/bin/python tools/prepare_charm_icon.py SOURCE.png`
+   writes `assets/processed/charms/fire-eye-sigil/{icon,preview}.png` plus
+   `manifest.json`. Source/output must be separate. The saved generated original
+   is the nondeterministic input; processing from that file is reproducible.
+3. Contract: preserve original RGBA bytes; remove only edge-connected near-white
+   matte (threshold245), retain enclosed ivory details, decontaminate neutral
+   outer fringe and fit foreground onto256x256 transparent canvas with16px
+   padding using LANCZOS. A source with native transparency retains foreground
+   alpha. Record original/final SHA256 and crop/processing parameters. Preview
+   dark/light backgrounds at256/96/64px; inspect actual pixels before embedding.
+4. Validation/errors: empty foreground or source inside output -> explicit failure.
+   Missing/invalid icon -> build/runtime failure; no placeholder final package.
+   Verify embedded `WukongKnight.FireEyeSigil.png` equals processed PNG bytes.
+5. Cases: good is a closed dark flame/eye silhouette with ivory/ember detail,
+   clean alpha and readable small sizes; bad is repainting original character
+   effects, retaining a white rectangle, or packing preview/raw generation files.
+6. Required checks: original unchanged, deterministic processing, RGBA dimensions,
+   transparent border and dark/light visual review; pinned Release and package
+   closure/ZIP equality. Client inventory/pickup sizing remains pending.
+7. Wrong: resize a hero renderer to make a UI icon fit. Correct: use a separate
+   charm resource and native charm bounds for Sprite pixels-per-unit. Publish
+   only final image/preview for the authorized public preview; verify retrieved
+   image bytes and disclose temporary host lifetime.

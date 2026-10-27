@@ -1,0 +1,123 @@
+TYPE On.CharmIconList base=System.Object
+METHOD System.Void On.CharmIconList::add_Awake(On.CharmIconList/hook_Awake)
+IL_0000: ldtoken System.Void CharmIconList::Awake()
+IL_0005: call System.Reflection.MethodBase System.Reflection.MethodBase::GetMethodFromHandle(System.RuntimeMethodHandle)
+IL_000a: ldarg.0
+IL_000b: call System.Void MonoMod.RuntimeDetour.HookGen.HookEndpointManager::Add<On.CharmIconList/hook_Awake>(System.Reflection.MethodBase,System.Delegate)
+IL_0010: ret
+METHOD System.Void On.CharmIconList::remove_Awake(On.CharmIconList/hook_Awake)
+IL_0000: ldtoken System.Void CharmIconList::Awake()
+IL_0005: call System.Reflection.MethodBase System.Reflection.MethodBase::GetMethodFromHandle(System.RuntimeMethodHandle)
+IL_000a: ldarg.0
+IL_000b: call System.Void MonoMod.RuntimeDetour.HookGen.HookEndpointManager::Remove<On.CharmIconList/hook_Awake>(System.Reflection.MethodBase,System.Delegate)
+IL_0010: ret
+METHOD System.Void On.CharmIconList::add_Start(On.CharmIconList/hook_Start)
+IL_0000: ldtoken System.Void CharmIconList::Start()
+IL_0005: call System.Reflection.MethodBase System.Reflection.MethodBase::GetMethodFromHandle(System.RuntimeMethodHandle)
+IL_000a: ldarg.0
+IL_000b: call System.Void MonoMod.RuntimeDetour.HookGen.HookEndpointManager::Add<On.CharmIconList/hook_Start>(System.Reflection.MethodBase,System.Delegate)
+IL_0010: ret
+METHOD System.Void On.CharmIconList::remove_Start(On.CharmIconList/hook_Start)
+IL_0000: ldtoken System.Void CharmIconList::Start()
+IL_0005: call System.Reflection.MethodBase System.Reflection.MethodBase::GetMethodFromHandle(System.RuntimeMethodHandle)
+IL_000a: ldarg.0
+IL_000b: call System.Void MonoMod.RuntimeDetour.HookGen.HookEndpointManager::Remove<On.CharmIconList/hook_Start>(System.Reflection.MethodBase,System.Delegate)
+IL_0010: ret
+METHOD System.Void On.CharmIconList::add_GetSprite(On.CharmIconList/hook_GetSprite)
+IL_0000: ldtoken UnityEngine.Sprite CharmIconList::GetSprite(System.Int32)
+IL_0005: call System.Reflection.MethodBase System.Reflection.MethodBase::GetMethodFromHandle(System.RuntimeMethodHandle)
+IL_000a: ldarg.0
+IL_000b: call System.Void MonoMod.RuntimeDetour.HookGen.HookEndpointManager::Add<On.CharmIconList/hook_GetSprite>(System.Reflection.MethodBase,System.Delegate)
+IL_0010: ret
+METHOD System.Void On.CharmIconList::remove_GetSprite(On.CharmIconList/hook_GetSprite)
+IL_0000: ldtoken UnityEngine.Sprite CharmIconList::GetSprite(System.Int32)
+IL_0005: call System.Reflection.MethodBase System.Reflection.MethodBase::GetMethodFromHandle(System.RuntimeMethodHandle)
+IL_000a: ldarg.0
+IL_000b: call System.Void MonoMod.RuntimeDetour.HookGen.HookEndpointManager::Remove<On.CharmIconList/hook_GetSprite>(System.Reflection.MethodBase,System.Delegate)
+IL_0010: ret
+METHOD System.Void On.CharmIconList::add_ctor(On.CharmIconList/hook_ctor)
+IL_0000: ldtoken System.Void CharmIconList::.ctor()
+IL_0005: call System.Reflection.MethodBase System.Reflection.MethodBase::GetMethodFromHandle(System.RuntimeMethodHandle)
+IL_000a: ldarg.0
+IL_000b: call System.Void MonoMod.RuntimeDetour.HookGen.HookEndpointManager::Add<On.CharmIconList/hook_ctor>(System.Reflection.MethodBase,System.Delegate)
+IL_0010: ret
+METHOD System.Void On.CharmIconList::remove_ctor(On.CharmIconList/hook_ctor)
+IL_0000: ldtoken System.Void CharmIconList::.ctor()
+IL_0005: call System.Reflection.MethodBase System.Reflection.MethodBase::GetMethodFromHandle(System.RuntimeMethodHandle)
+IL_000a: ldarg.0
+IL_000b: call System.Void MonoMod.RuntimeDetour.HookGen.HookEndpointManager::Remove<On.CharmIconList/hook_ctor>(System.Reflection.MethodBase,System.Delegate)
+IL_0010: ret
+TYPE On.HutongGames.PlayMaker.Actions.GetPlayerDataBool base=System.Object
+METHOD System.Void On.HutongGames.PlayMaker.Actions.GetPlayerDataBool::add_Reset(On.HutongGames.PlayMaker.Actions.GetPlayerDataBool/hook_Reset)
+IL_0000: ldtoken System.Void HutongGames.PlayMaker.Actions.GetPlayerDataBool::Reset()
+IL_0005: call System.Reflection.MethodBase System.Reflection.MethodBase::GetMethodFromHandle(System.RuntimeMethodHandle)
+IL_000a: ldarg.0
+IL_000b: call System.Void MonoMod.RuntimeDetour.HookGen.HookEndpointManager::Add<On.HutongGames.PlayMaker.Actions.GetPlayerDataBool/hook_Reset>(System.Reflection.MethodBase,System.Delegate)
+IL_0010: ret
+METHOD System.Void On.HutongGames.PlayMaker.Actions.GetPlayerDataBool::remove_Reset(On.HutongGames.PlayMaker.Actions.GetPlayerDataBool/hook_Reset)
+IL_0000: ldtoken System.Void HutongGames.PlayMaker.Actions.GetPlayerDataBool::Reset()
+IL_0005: call System.Reflection.MethodBase System.Reflection.MethodBase::GetMethodFromHandle(System.RuntimeMethodHandle)
+IL_000a: ldarg.0
+IL_000b: call System.Void MonoMod.RuntimeDetour.HookGen.HookEndpointManager::Remove<On.HutongGames.PlayMaker.Actions.GetPlayerDataBool/hook_Reset>(System.Reflection.MethodBase,System.Delegate)
+IL_0010: ret
+METHOD System.Void On.HutongGames.PlayMaker.Actions.GetPlayerDataBool::add_OnEnter(On.HutongGames.PlayMaker.Actions.GetPlayerDataBool/hook_OnEnter)
+IL_0000: ldtoken System.Void HutongGames.PlayMaker.Actions.GetPlayerDataBool::OnEnter()
+IL_0005: call System.Reflection.MethodBase System.Reflection.MethodBase::GetMethodFromHandle(System.RuntimeMethodHandle)
+IL_000a: ldarg.0
+IL_000b: call System.Void MonoMod.RuntimeDetour.HookGen.HookEndpointManager::Add<On.HutongGames.PlayMaker.Actions.GetPlayerDataBool/hook_OnEnter>(System.Reflection.MethodBase,System.Delegate)
+IL_0010: ret
+METHOD System.Void On.HutongGames.PlayMaker.Actions.GetPlayerDataBool::remove_OnEnter(On.HutongGames.PlayMaker.Actions.GetPlayerDataBool/hook_OnEnter)
+IL_0000: ldtoken System.Void HutongGames.PlayMaker.Actions.GetPlayerDataBool::OnEnter()
+IL_0005: call System.Reflection.MethodBase System.Reflection.MethodBase::GetMethodFromHandle(System.RuntimeMethodHandle)
+IL_000a: ldarg.0
+IL_000b: call System.Void MonoMod.RuntimeDetour.HookGen.HookEndpointManager::Remove<On.HutongGames.PlayMaker.Actions.GetPlayerDataBool/hook_OnEnter>(System.Reflection.MethodBase,System.Delegate)
+IL_0010: ret
+METHOD System.Void On.HutongGames.PlayMaker.Actions.GetPlayerDataBool::add_ctor(On.HutongGames.PlayMaker.Actions.GetPlayerDataBool/hook_ctor)
+IL_0000: ldtoken System.Void HutongGames.PlayMaker.Actions.GetPlayerDataBool::.ctor()
+IL_0005: call System.Reflection.MethodBase System.Reflection.MethodBase::GetMethodFromHandle(System.RuntimeMethodHandle)
+IL_000a: ldarg.0
+IL_000b: call System.Void MonoMod.RuntimeDetour.HookGen.HookEndpointManager::Add<On.HutongGames.PlayMaker.Actions.GetPlayerDataBool/hook_ctor>(System.Reflection.MethodBase,System.Delegate)
+IL_0010: ret
+METHOD System.Void On.HutongGames.PlayMaker.Actions.GetPlayerDataBool::remove_ctor(On.HutongGames.PlayMaker.Actions.GetPlayerDataBool/hook_ctor)
+IL_0000: ldtoken System.Void HutongGames.PlayMaker.Actions.GetPlayerDataBool::.ctor()
+IL_0005: call System.Reflection.MethodBase System.Reflection.MethodBase::GetMethodFromHandle(System.RuntimeMethodHandle)
+IL_000a: ldarg.0
+IL_000b: call System.Void MonoMod.RuntimeDetour.HookGen.HookEndpointManager::Remove<On.HutongGames.PlayMaker.Actions.GetPlayerDataBool/hook_ctor>(System.Reflection.MethodBase,System.Delegate)
+IL_0010: ret
+TYPE On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest base=System.Object
+METHOD System.Void On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest::add_Reset(On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest/hook_Reset)
+IL_0000: ldtoken System.Void HutongGames.PlayMaker.Actions.PlayerDataBoolTest::Reset()
+IL_0005: call System.Reflection.MethodBase System.Reflection.MethodBase::GetMethodFromHandle(System.RuntimeMethodHandle)
+IL_000a: ldarg.0
+IL_000b: call System.Void MonoMod.RuntimeDetour.HookGen.HookEndpointManager::Add<On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest/hook_Reset>(System.Reflection.MethodBase,System.Delegate)
+IL_0010: ret
+METHOD System.Void On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest::remove_Reset(On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest/hook_Reset)
+IL_0000: ldtoken System.Void HutongGames.PlayMaker.Actions.PlayerDataBoolTest::Reset()
+IL_0005: call System.Reflection.MethodBase System.Reflection.MethodBase::GetMethodFromHandle(System.RuntimeMethodHandle)
+IL_000a: ldarg.0
+IL_000b: call System.Void MonoMod.RuntimeDetour.HookGen.HookEndpointManager::Remove<On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest/hook_Reset>(System.Reflection.MethodBase,System.Delegate)
+IL_0010: ret
+METHOD System.Void On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest::add_OnEnter(On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest/hook_OnEnter)
+IL_0000: ldtoken System.Void HutongGames.PlayMaker.Actions.PlayerDataBoolTest::OnEnter()
+IL_0005: call System.Reflection.MethodBase System.Reflection.MethodBase::GetMethodFromHandle(System.RuntimeMethodHandle)
+IL_000a: ldarg.0
+IL_000b: call System.Void MonoMod.RuntimeDetour.HookGen.HookEndpointManager::Add<On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest/hook_OnEnter>(System.Reflection.MethodBase,System.Delegate)
+IL_0010: ret
+METHOD System.Void On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest::remove_OnEnter(On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest/hook_OnEnter)
+IL_0000: ldtoken System.Void HutongGames.PlayMaker.Actions.PlayerDataBoolTest::OnEnter()
+IL_0005: call System.Reflection.MethodBase System.Reflection.MethodBase::GetMethodFromHandle(System.RuntimeMethodHandle)
+IL_000a: ldarg.0
+IL_000b: call System.Void MonoMod.RuntimeDetour.HookGen.HookEndpointManager::Remove<On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest/hook_OnEnter>(System.Reflection.MethodBase,System.Delegate)
+IL_0010: ret
+METHOD System.Void On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest::add_ctor(On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest/hook_ctor)
+IL_0000: ldtoken System.Void HutongGames.PlayMaker.Actions.PlayerDataBoolTest::.ctor()
+IL_0005: call System.Reflection.MethodBase System.Reflection.MethodBase::GetMethodFromHandle(System.RuntimeMethodHandle)
+IL_000a: ldarg.0
+IL_000b: call System.Void MonoMod.RuntimeDetour.HookGen.HookEndpointManager::Add<On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest/hook_ctor>(System.Reflection.MethodBase,System.Delegate)
+IL_0010: ret
+METHOD System.Void On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest::remove_ctor(On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest/hook_ctor)
+IL_0000: ldtoken System.Void HutongGames.PlayMaker.Actions.PlayerDataBoolTest::.ctor()
+IL_0005: call System.Reflection.MethodBase System.Reflection.MethodBase::GetMethodFromHandle(System.RuntimeMethodHandle)
+IL_000a: ldarg.0
+IL_000b: call System.Void MonoMod.RuntimeDetour.HookGen.HookEndpointManager::Remove<On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest/hook_ctor>(System.Reflection.MethodBase,System.Delegate)
+IL_0010: ret

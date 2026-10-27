@@ -300,3 +300,29 @@ Automated checks and frame preview do not establish these client results.
   Dream Nail or insufficient Soul summons nothing.
 - Neutral Godslayer, up-Dream Ape, up/down spells and focus are unchanged; one
   press never triggers both swapped skills. Test keyboard and controller.
+
+
+## 0.7.7 Fire Eye Sigil (pending)
+
+This section supersedes earlier five-second and native Deep Focus timing checks.
+Compilation and engine-free tests do not establish actual client acceptance.
+
+- [ ] An uncollected Deep Focus stays uncollected; collect it through its original
+  route. Existing owned/unequipped and already-equipped saves preserve charm34.
+- [ ] Chinese/English name, description and generated icon appear in the existing
+  slot and pickup presentation; inspect small-size readability and transparency.
+- [ ] Two-notch equip/unequip, filled notches and native overcharm decisions agree,
+  including a save previously overcharmed by four-notch Deep Focus.
+- [ ] Unequipped Fire Eye expires at3s; equipped expires at6s. Changing equipment
+  affects subsequent activations. Refresh replaces expiry and preserves the1s
+  shared healing cooldown, with no instant heal or heal on expiry.
+- [ ] Only actual attack HP loss heals1HP; blocked hits, scenery and full health
+  retain existing rules. Check multiple targets and repeated Storm contacts.
+- [ ] Compare ordinary focus, Quick Focus and Shape of Unn with/without Sigil:
+  former Deep Focus slowdown/extra healing is absent, other native modifiers and
+  Soul costs/cancellation remain intact. Dream focus is unaffected.
+- [ ] Pause, death/hazards/scenes, hero replacement, disable/re-enable and partial
+  initialization failure clean up hooks/buff/icons and restore native Deep Focus
+  cost/text/icon/charge behavior without rewriting saved ownership/equipment.
+- [ ] Existing skill inputs, masks, recoil, recovery and enemy FSM recorder work.
+- [ ] Public preview and direct transparent PNG open the final reviewed asset.

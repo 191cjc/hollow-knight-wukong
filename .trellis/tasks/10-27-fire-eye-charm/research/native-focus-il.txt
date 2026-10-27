@@ -1,0 +1,489 @@
+TYPE HeroController base=UnityEngine.MonoBehaviour
+FIELD System.Boolean HeroController::verboseMode
+FIELD GlobalEnums.HeroType HeroController::heroType
+FIELD System.Single HeroController::RUN_SPEED
+FIELD System.Single HeroController::RUN_SPEED_CH
+FIELD System.Single HeroController::RUN_SPEED_CH_COMBO
+FIELD System.Single HeroController::WALK_SPEED
+FIELD System.Single HeroController::UNDERWATER_SPEED
+FIELD System.Single HeroController::JUMP_SPEED
+FIELD System.Single HeroController::JUMP_SPEED_UNDERWATER
+FIELD System.Single HeroController::MIN_JUMP_SPEED
+FIELD System.Int32 HeroController::JUMP_STEPS
+FIELD System.Int32 HeroController::JUMP_STEPS_MIN
+FIELD System.Int32 HeroController::JUMP_TIME
+FIELD System.Int32 HeroController::DOUBLE_JUMP_STEPS
+FIELD System.Int32 HeroController::WJLOCK_STEPS_SHORT
+FIELD System.Int32 HeroController::WJLOCK_STEPS_LONG
+FIELD System.Single HeroController::WJ_KICKOFF_SPEED
+FIELD System.Int32 HeroController::WALL_STICKY_STEPS
+FIELD System.Single HeroController::DASH_SPEED
+FIELD System.Single HeroController::DASH_SPEED_SHARP
+FIELD System.Single HeroController::DASH_TIME
+FIELD System.Int32 HeroController::DASH_QUEUE_STEPS
+FIELD System.Single HeroController::BACK_DASH_SPEED
+FIELD System.Single HeroController::BACK_DASH_TIME
+FIELD System.Single HeroController::SHADOW_DASH_SPEED
+FIELD System.Single HeroController::SHADOW_DASH_TIME
+FIELD System.Single HeroController::SHADOW_DASH_COOLDOWN
+FIELD System.Single HeroController::SUPER_DASH_SPEED
+FIELD System.Single HeroController::DASH_COOLDOWN
+FIELD System.Single HeroController::DASH_COOLDOWN_CH
+FIELD System.Single HeroController::BACKDASH_COOLDOWN
+FIELD System.Single HeroController::WALLSLIDE_SPEED
+FIELD System.Single HeroController::WALLSLIDE_DECEL
+FIELD System.Single HeroController::NAIL_CHARGE_TIME_DEFAULT
+FIELD System.Single HeroController::NAIL_CHARGE_TIME_CHARM
+FIELD System.Single HeroController::CYCLONE_HORIZONTAL_SPEED
+FIELD System.Single HeroController::SWIM_ACCEL
+FIELD System.Single HeroController::SWIM_MAX_SPEED
+FIELD System.Single HeroController::TIME_TO_ENTER_SCENE_BOT
+FIELD System.Single HeroController::TIME_TO_ENTER_SCENE_HOR
+FIELD System.Single HeroController::SPEED_TO_ENTER_SCENE_HOR
+FIELD System.Single HeroController::SPEED_TO_ENTER_SCENE_UP
+FIELD System.Single HeroController::SPEED_TO_ENTER_SCENE_DOWN
+FIELD System.Single HeroController::DEFAULT_GRAVITY
+FIELD System.Single HeroController::UNDERWATER_GRAVITY
+FIELD System.Single HeroController::ATTACK_DURATION
+FIELD System.Single HeroController::ATTACK_DURATION_CH
+FIELD System.Single HeroController::ALT_ATTACK_RESET
+FIELD System.Single HeroController::ATTACK_RECOVERY_TIME
+FIELD System.Single HeroController::ATTACK_COOLDOWN_TIME
+FIELD System.Single HeroController::ATTACK_COOLDOWN_TIME_CH
+FIELD System.Single HeroController::BOUNCE_TIME
+FIELD System.Single HeroController::BOUNCE_SHROOM_TIME
+FIELD System.Single HeroController::BOUNCE_VELOCITY
+FIELD System.Single HeroController::SHROOM_BOUNCE_VELOCITY
+FIELD System.Single HeroController::RECOIL_HOR_TIME
+FIELD System.Single HeroController::RECOIL_HOR_VELOCITY
+FIELD System.Single HeroController::RECOIL_HOR_VELOCITY_LONG
+FIELD System.Single HeroController::RECOIL_HOR_STEPS
+FIELD System.Single HeroController::RECOIL_DOWN_VELOCITY
+FIELD System.Single HeroController::RUN_PUFF_TIME
+FIELD System.Single HeroController::BIG_FALL_TIME
+FIELD System.Single HeroController::HARD_LANDING_TIME
+FIELD System.Single HeroController::DOWN_DASH_TIME
+FIELD System.Single HeroController::MAX_FALL_VELOCITY
+FIELD System.Single HeroController::MAX_FALL_VELOCITY_UNDERWATER
+FIELD System.Single HeroController::RECOIL_DURATION
+FIELD System.Single HeroController::RECOIL_DURATION_STAL
+FIELD System.Single HeroController::RECOIL_VELOCITY
+FIELD System.Single HeroController::DAMAGE_FREEZE_DOWN
+FIELD System.Single HeroController::DAMAGE_FREEZE_WAIT
+FIELD System.Single HeroController::DAMAGE_FREEZE_UP
+FIELD System.Single HeroController::INVUL_TIME
+FIELD System.Single HeroController::INVUL_TIME_STAL
+FIELD System.Single HeroController::INVUL_TIME_PARRY
+FIELD System.Single HeroController::INVUL_TIME_QUAKE
+FIELD System.Single HeroController::INVUL_TIME_CYCLONE
+FIELD System.Single HeroController::CAST_TIME
+FIELD System.Single HeroController::CAST_RECOIL_TIME
+FIELD System.Single HeroController::CAST_RECOIL_VELOCITY
+FIELD System.Single HeroController::WALLSLIDE_CLIP_DELAY
+FIELD System.Int32 HeroController::GRUB_SOUL_MP
+FIELD System.Int32 HeroController::GRUB_SOUL_MP_COMBO
+FIELD System.Int32 HeroController::JUMP_QUEUE_STEPS
+FIELD System.Int32 HeroController::JUMP_RELEASE_QUEUE_STEPS
+FIELD System.Int32 HeroController::DOUBLE_JUMP_QUEUE_STEPS
+FIELD System.Int32 HeroController::ATTACK_QUEUE_STEPS
+FIELD System.Single HeroController::DELAY_BEFORE_ENTER
+FIELD System.Single HeroController::LOOK_DELAY
+FIELD System.Single HeroController::LOOK_ANIM_DELAY
+FIELD System.Single HeroController::DEATH_WAIT
+FIELD System.Single HeroController::HAZARD_DEATH_CHECK_TIME
+FIELD System.Single HeroController::FLOATING_CHECK_TIME
+FIELD System.Single HeroController::NAIL_TERRAIN_CHECK_TIME
+FIELD System.Single HeroController::BUMP_VELOCITY
+FIELD System.Single HeroController::BUMP_VELOCITY_DASH
+FIELD System.Int32 HeroController::LANDING_BUFFER_STEPS
+FIELD System.Int32 HeroController::LEDGE_BUFFER_STEPS
+FIELD System.Int32 HeroController::HEAD_BUMP_STEPS
+FIELD System.Single HeroController::MANTIS_CHARM_SCALE
+FIELD System.Single HeroController::FIND_GROUND_POINT_DISTANCE
+FIELD System.Single HeroController::FIND_GROUND_POINT_DISTANCE_EXT
+FIELD GlobalEnums.ActorStates HeroController::hero_state
+FIELD GlobalEnums.ActorStates HeroController::prev_hero_state
+FIELD GlobalEnums.HeroTransitionState HeroController::transitionState
+FIELD GlobalEnums.DamageMode HeroController::damageMode
+FIELD System.Single HeroController::move_input
+FIELD System.Single HeroController::vertical_input
+FIELD System.Single HeroController::controller_deadzone
+FIELD UnityEngine.Vector2 HeroController::current_velocity
+FIELD System.Boolean HeroController::isGameplayScene
+FIELD System.Boolean HeroController::isEnteringFirstLevel
+FIELD UnityEngine.Vector2 HeroController::slashOffset
+FIELD UnityEngine.Vector2 HeroController::upSlashOffset
+FIELD UnityEngine.Vector2 HeroController::downwardSlashOffset
+FIELD UnityEngine.Vector2 HeroController::spell1Offset
+FIELD System.Int32 HeroController::jump_steps
+FIELD System.Int32 HeroController::jumped_steps
+FIELD System.Int32 HeroController::doubleJump_steps
+FIELD System.Single HeroController::dash_timer
+FIELD System.Single HeroController::back_dash_timer
+FIELD System.Single HeroController::shadow_dash_timer
+FIELD System.Single HeroController::attack_time
+FIELD System.Single HeroController::attack_cooldown
+FIELD UnityEngine.Vector2 HeroController::transition_vel
+FIELD System.Single HeroController::altAttackTime
+FIELD System.Single HeroController::lookDelayTimer
+FIELD System.Single HeroController::bounceTimer
+FIELD System.Single HeroController::recoilHorizontalTimer
+FIELD System.Single HeroController::runPuffTimer
+FIELD System.Single HeroController::<fallTimer>k__BackingField
+FIELD System.Single HeroController::hardLandingTimer
+FIELD System.Single HeroController::dashLandingTimer
+FIELD System.Single HeroController::recoilTimer
+FIELD System.Int32 HeroController::recoilSteps
+FIELD System.Int32 HeroController::landingBufferSteps
+FIELD System.Int32 HeroController::dashQueueSteps
+FIELD System.Boolean HeroController::dashQueuing
+FIELD System.Single HeroController::shadowDashTimer
+FIELD System.Single HeroController::dashCooldownTimer
+FIELD System.Single HeroController::nailChargeTimer
+FIELD System.Int32 HeroController::wallLockSteps
+FIELD System.Single HeroController::wallslideClipTimer
+FIELD System.Single HeroController::hardLandFailSafeTimer
+FIELD System.Single HeroController::hazardDeathTimer
+FIELD System.Single HeroController::floatingBufferTimer
+FIELD System.Single HeroController::attackDuration
+FIELD System.Single HeroController::parryInvulnTimer
+FIELD UnityEngine.GameObject HeroController::slashPrefab
+FIELD UnityEngine.GameObject HeroController::slashAltPrefab
+FIELD UnityEngine.GameObject HeroController::upSlashPrefab
+FIELD UnityEngine.GameObject HeroController::downSlashPrefab
+FIELD UnityEngine.GameObject HeroController::wallSlashPrefab
+FIELD NailSlash HeroController::normalSlash
+FIELD NailSlash HeroController::alternateSlash
+FIELD NailSlash HeroController::upSlash
+FIELD NailSlash HeroController::downSlash
+FIELD NailSlash HeroController::wallSlash
+FIELD PlayMakerFSM HeroController::normalSlashFsm
+FIELD PlayMakerFSM HeroController::alternateSlashFsm
+FIELD PlayMakerFSM HeroController::upSlashFsm
+FIELD PlayMakerFSM HeroController::downSlashFsm
+FIELD PlayMakerFSM HeroController::wallSlashFsm
+FIELD UnityEngine.GameObject HeroController::nailTerrainImpactEffectPrefab
+FIELD UnityEngine.GameObject HeroController::spell1Prefab
+FIELD UnityEngine.GameObject HeroController::takeHitPrefab
+FIELD UnityEngine.GameObject HeroController::takeHitDoublePrefab
+FIELD UnityEngine.GameObject HeroController::softLandingEffectPrefab
+FIELD UnityEngine.GameObject HeroController::hardLandingEffectPrefab
+FIELD UnityEngine.GameObject HeroController::runEffectPrefab
+FIELD UnityEngine.GameObject HeroController::backDashPrefab
+FIELD UnityEngine.GameObject HeroController::jumpEffectPrefab
+FIELD UnityEngine.GameObject HeroController::jumpTrailPrefab
+FIELD UnityEngine.GameObject HeroController::fallEffectPrefab
+FIELD UnityEngine.ParticleSystem HeroController::wallslideDustPrefab
+FIELD UnityEngine.GameObject HeroController::artChargeEffect
+FIELD UnityEngine.GameObject HeroController::artChargedEffect
+FIELD UnityEngine.GameObject HeroController::artChargedFlash
+FIELD tk2dSpriteAnimator HeroController::artChargedEffectAnim
+FIELD UnityEngine.GameObject HeroController::shadowdashBurstPrefab
+FIELD UnityEngine.GameObject HeroController::shadowdashDownBurstPrefab
+FIELD UnityEngine.GameObject HeroController::dashParticlesPrefab
+FIELD UnityEngine.GameObject HeroController::shadowdashParticlesPrefab
+FIELD UnityEngine.GameObject HeroController::shadowRingPrefab
+FIELD UnityEngine.GameObject HeroController::shadowRechargePrefab
+FIELD UnityEngine.GameObject HeroController::dJumpWingsPrefab
+FIELD UnityEngine.GameObject HeroController::dJumpFlashPrefab
+FIELD UnityEngine.ParticleSystem HeroController::dJumpFeathers
+FIELD UnityEngine.GameObject HeroController::wallPuffPrefab
+FIELD UnityEngine.GameObject HeroController::sharpShadowPrefab
+FIELD UnityEngine.GameObject HeroController::grubberFlyBeamPrefabL
+FIELD UnityEngine.GameObject HeroController::grubberFlyBeamPrefabR
+FIELD UnityEngine.GameObject HeroController::grubberFlyBeamPrefabU
+FIELD UnityEngine.GameObject HeroController::grubberFlyBeamPrefabD
+FIELD UnityEngine.GameObject HeroController::grubberFlyBeamPrefabL_fury
+FIELD UnityEngine.GameObject HeroController::grubberFlyBeamPrefabR_fury
+FIELD UnityEngine.GameObject HeroController::grubberFlyBeamPrefabU_fury
+FIELD UnityEngine.GameObject HeroController::grubberFlyBeamPrefabD_fury
+FIELD UnityEngine.GameObject HeroController::carefreeShield
+FIELD UnityEngine.GameObject HeroController::corpsePrefab
+FIELD UnityEngine.GameObject HeroController::spikeDeathPrefab
+FIELD UnityEngine.GameObject HeroController::acidDeathPrefab
+FIELD UnityEngine.GameObject HeroController::lavaDeathPrefab
+FIELD UnityEngine.GameObject HeroController::heroDeathPrefab
+FIELD UnityEngine.GameObject HeroController::cutscenePrefab
+FIELD GameManager HeroController::gm
+FIELD UnityEngine.Rigidbody2D HeroController::rb2d
+FIELD UnityEngine.Collider2D HeroController::col2d
+FIELD UnityEngine.MeshRenderer HeroController::renderer
+FIELD UnityEngine.Transform HeroController::transform
+FIELD HeroAnimationController HeroController::animCtrl
+FIELD HeroControllerStates HeroController::cState
+FIELD PlayerData HeroController::playerData
+FIELD HeroAudioController HeroController::audioCtrl
+FIELD UnityEngine.AudioSource HeroController::audioSource
+FIELD UIManager HeroController::ui
+FIELD InputHandler HeroController::inputHandler
+FIELD GeoCounter HeroController::<geoCounter>k__BackingField
+FIELD PlayMakerFSM HeroController::<proxyFSM>k__BackingField
+FIELD PlayMakerFSM HeroController::damageEffectFSM
+FIELD UnityEngine.ParticleSystem HeroController::dashParticleSystem
+FIELD InvulnerablePulse HeroController::invPulse
+FIELD SpriteFlash HeroController::spriteFlash
+FIELD UnityEngine.AudioSource HeroController::footStepsRunAudioSource
+FIELD UnityEngine.AudioSource HeroController::footStepsWalkAudioSource
+FIELD System.Single HeroController::prevGravityScale
+FIELD UnityEngine.Vector2 HeroController::recoilVector
+FIELD UnityEngine.Vector2 HeroController::lastInputState
+FIELD GlobalEnums.GatePosition HeroController::gatePosition
+FIELD TransitionPoint HeroController::<sceneEntryGate>k__BackingField
+FIELD System.Boolean HeroController::runMsgSent
+FIELD System.Boolean HeroController::hardLanded
+FIELD System.Boolean HeroController::fallRumble
+FIELD System.Boolean HeroController::acceptingInput
+FIELD System.Boolean HeroController::fallTrailGenerated
+FIELD System.Boolean HeroController::drainMP
+FIELD System.Single HeroController::drainMP_timer
+FIELD System.Single HeroController::drainMP_time
+FIELD System.Single HeroController::MP_drained
+FIELD System.Single HeroController::drainMP_seconds
+FIELD System.Single HeroController::focusMP_amount
+FIELD System.Single HeroController::dashBumpCorrection
+FIELD System.Boolean HeroController::controlReqlinquished
+FIELD System.Boolean HeroController::enterWithoutInput
+FIELD System.Boolean HeroController::lookingUpAnim
+FIELD System.Boolean HeroController::lookingDownAnim
+FIELD System.Boolean HeroController::carefreeShieldEquipped
+FIELD System.Int32 HeroController::hitsSinceShielded
+FIELD EndBeta HeroController::endBeta
+FIELD System.Int32 HeroController::jumpQueueSteps
+FIELD System.Boolean HeroController::jumpQueuing
+FIELD System.Int32 HeroController::doubleJumpQueueSteps
+FIELD System.Boolean HeroController::doubleJumpQueuing
+FIELD System.Int32 HeroController::jumpReleaseQueueSteps
+FIELD System.Boolean HeroController::jumpReleaseQueuing
+FIELD System.Int32 HeroController::attackQueueSteps
+FIELD System.Boolean HeroController::attackQueuing
+FIELD System.Boolean HeroController::touchingWallL
+FIELD System.Boolean HeroController::touchingWallR
+FIELD System.Boolean HeroController::wallSlidingL
+FIELD System.Boolean HeroController::wallSlidingR
+FIELD System.Boolean HeroController::airDashed
+FIELD System.Boolean HeroController::dashingDown
+FIELD System.Boolean HeroController::wieldingLantern
+FIELD System.Boolean HeroController::startWithWallslide
+FIELD System.Boolean HeroController::startWithJump
+FIELD System.Boolean HeroController::startWithFullJump
+FIELD System.Boolean HeroController::startWithDash
+FIELD System.Boolean HeroController::startWithAttack
+FIELD System.Boolean HeroController::nailArt_cyclone
+FIELD System.Boolean HeroController::wallSlashing
+FIELD System.Boolean HeroController::doubleJumped
+FIELD System.Boolean HeroController::inAcid
+FIELD System.Boolean HeroController::wallJumpedR
+FIELD System.Boolean HeroController::wallJumpedL
+FIELD System.Boolean HeroController::wallLocked
+FIELD System.Single HeroController::currentWalljumpSpeed
+FIELD System.Single HeroController::walljumpSpeedDecel
+FIELD System.Int32 HeroController::wallUnstickSteps
+FIELD System.Boolean HeroController::recoilLarge
+FIELD System.Single HeroController::conveyorSpeed
+FIELD System.Single HeroController::conveyorSpeedV
+FIELD System.Boolean HeroController::enteringVertically
+FIELD System.Boolean HeroController::playingWallslideClip
+FIELD System.Boolean HeroController::playedMantisClawClip
+FIELD System.Boolean HeroController::exitedSuperDashing
+FIELD System.Boolean HeroController::exitedQuake
+FIELD System.Boolean HeroController::fallCheckFlagged
+FIELD System.Int32 HeroController::ledgeBufferSteps
+FIELD System.Int32 HeroController::headBumpSteps
+FIELD System.Single HeroController::nailChargeTime
+FIELD System.Boolean HeroController::takeNoDamage
+FIELD System.Boolean HeroController::joniBeam
+FIELD System.Boolean HeroController::fadedSceneIn
+FIELD System.Boolean HeroController::stopWalkingOut
+FIELD System.Boolean HeroController::boundsChecking
+FIELD System.Boolean HeroController::blockerFix
+FIELD UnityEngine.Vector2[] HeroController::positionHistory
+FIELD System.Boolean HeroController::tilemapTestActive
+FIELD UnityEngine.Vector2 HeroController::groundRayOriginC
+FIELD UnityEngine.Vector2 HeroController::groundRayOriginL
+FIELD UnityEngine.Vector2 HeroController::groundRayOriginR
+FIELD UnityEngine.Coroutine HeroController::takeDamageCoroutine
+FIELD UnityEngine.Coroutine HeroController::tilemapTestCoroutine
+FIELD UnityEngine.AudioClip HeroController::footstepsRunDust
+FIELD UnityEngine.AudioClip HeroController::footstepsRunGrass
+FIELD UnityEngine.AudioClip HeroController::footstepsRunBone
+FIELD UnityEngine.AudioClip HeroController::footstepsRunSpa
+FIELD UnityEngine.AudioClip HeroController::footstepsRunMetal
+FIELD UnityEngine.AudioClip HeroController::footstepsRunWater
+FIELD UnityEngine.AudioClip HeroController::footstepsWalkDust
+FIELD UnityEngine.AudioClip HeroController::footstepsWalkGrass
+FIELD UnityEngine.AudioClip HeroController::footstepsWalkBone
+FIELD UnityEngine.AudioClip HeroController::footstepsWalkSpa
+FIELD UnityEngine.AudioClip HeroController::footstepsWalkMetal
+FIELD UnityEngine.AudioClip HeroController::nailArtCharge
+FIELD UnityEngine.AudioClip HeroController::nailArtChargeComplete
+FIELD UnityEngine.AudioClip HeroController::blockerImpact
+FIELD UnityEngine.AudioClip HeroController::shadowDashClip
+FIELD UnityEngine.AudioClip HeroController::sharpShadowClip
+FIELD UnityEngine.AudioClip HeroController::doubleJumpClip
+FIELD UnityEngine.AudioClip HeroController::mantisClawClip
+FIELD UnityEngine.GameObject HeroController::slash
+FIELD NailSlash HeroController::slashComponent
+FIELD PlayMakerFSM HeroController::slashFsm
+FIELD UnityEngine.GameObject HeroController::runEffect
+FIELD UnityEngine.GameObject HeroController::backDash
+FIELD UnityEngine.GameObject HeroController::jumpEffect
+FIELD UnityEngine.GameObject HeroController::fallEffect
+FIELD UnityEngine.GameObject HeroController::dashEffect
+FIELD UnityEngine.GameObject HeroController::grubberFlyBeam
+FIELD UnityEngine.GameObject HeroController::hazardCorpe
+FIELD PlayMakerFSM HeroController::vignetteFSM
+FIELD UnityEngine.SpriteRenderer HeroController::heroLight
+FIELD UnityEngine.SpriteRenderer HeroController::vignette
+FIELD PlayMakerFSM HeroController::dashBurst
+FIELD PlayMakerFSM HeroController::superDash
+FIELD PlayMakerFSM HeroController::fsm_thornCounter
+FIELD PlayMakerFSM HeroController::spellControl
+FIELD PlayMakerFSM HeroController::fsm_fallTrail
+FIELD PlayMakerFSM HeroController::fsm_orbitShield
+FIELD VibrationData HeroController::softLandVibration
+FIELD VibrationData HeroController::wallJumpVibration
+FIELD VibrationPlayer HeroController::wallSlideVibrationPlayer
+FIELD VibrationData HeroController::dashVibration
+FIELD VibrationData HeroController::shadowDashVibration
+FIELD VibrationData HeroController::doubleJumpVibration
+FIELD HeroController/HeroInPosition HeroController::heroInPosition
+FIELD System.Boolean HeroController::isHeroInPosition
+FIELD HeroController/TakeDamageEvent HeroController::OnTakenDamage
+FIELD HeroController/HeroDeathEvent HeroController::OnDeath
+FIELD System.Boolean HeroController::jumpReleaseQueueingEnabled
+FIELD HeroController HeroController::_instance
+FIELD System.Single HeroController::PreventCastByDialogueEndDuration
+FIELD System.Single HeroController::preventCastByDialogueEndTimer
+FIELD UnityEngine.Vector2 HeroController::oldPos
+PROP System.Single HeroController::fallTimer()
+PROP GeoCounter HeroController::geoCounter()
+PROP PlayMakerFSM HeroController::proxyFSM()
+PROP TransitionPoint HeroController::sceneEntryGate()
+PROP System.Boolean HeroController::IsDreamReturning()
+PROP HeroController HeroController::instance()
+PROP HeroController HeroController::SilentInstance()
+PROP HeroController HeroController::UnsafeInstance()
+METHOD System.Void HeroController::orig_StartMPDrain(System.Single)
+IL_0000: ldarg.0
+IL_0001: ldc.i4.1
+IL_0002: stfld System.Boolean HeroController::drainMP
+IL_0007: ldarg.0
+IL_0008: ldc.r4 0
+IL_000d: stfld System.Single HeroController::drainMP_timer
+IL_0012: ldarg.0
+IL_0013: ldc.r4 0
+IL_0018: stfld System.Single HeroController::MP_drained
+IL_001d: ldarg.0
+IL_001e: ldarg.1
+IL_001f: stfld System.Single HeroController::drainMP_time
+IL_0024: ldarg.0
+IL_0025: ldarg.0
+IL_0026: ldfld PlayerData HeroController::playerData
+IL_002b: ldstr "focusMP_amount"
+IL_0030: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_0035: conv.r4
+IL_0036: stfld System.Single HeroController::focusMP_amount
+IL_003b: ret
+METHOD System.Void HeroController::orig_CharmUpdate()
+IL_0000: ldarg.0
+IL_0001: ldfld PlayerData HeroController::playerData
+IL_0006: ldstr "equippedCharm_26"
+IL_000b: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_0010: brfalse.s IL_0020
+IL_0012: ldarg.0
+IL_0013: ldarg.0
+IL_0014: ldfld System.Single HeroController::NAIL_CHARGE_TIME_CHARM
+IL_0019: stfld System.Single HeroController::nailChargeTime
+IL_001e: br.s IL_002c
+IL_0020: ldarg.0
+IL_0021: ldarg.0
+IL_0022: ldfld System.Single HeroController::NAIL_CHARGE_TIME_DEFAULT
+IL_0027: stfld System.Single HeroController::nailChargeTime
+IL_002c: ldarg.0
+IL_002d: ldfld PlayerData HeroController::playerData
+IL_0032: ldstr "equippedCharm_23"
+IL_0037: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_003c: brfalse.s IL_007a
+IL_003e: ldarg.0
+IL_003f: ldfld PlayerData HeroController::playerData
+IL_0044: ldstr "brokenCharm_23"
+IL_0049: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_004e: brtrue.s IL_007a
+IL_0050: ldarg.0
+IL_0051: ldfld PlayerData HeroController::playerData
+IL_0056: ldarg.0
+IL_0057: ldfld PlayerData HeroController::playerData
+IL_005c: ldstr "maxHealthBase"
+IL_0061: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_0066: ldc.i4.2
+IL_0067: add
+IL_0068: ldstr "maxHealth"
+IL_006d: callvirt System.Void PlayerData::SetIntSwappedArgs(System.Int32,System.String)
+IL_0072: ldarg.0
+IL_0073: callvirt System.Void HeroController::MaxHealth()
+IL_0078: br.s IL_00a0
+IL_007a: ldarg.0
+IL_007b: ldfld PlayerData HeroController::playerData
+IL_0080: ldarg.0
+IL_0081: ldfld PlayerData HeroController::playerData
+IL_0086: ldstr "maxHealthBase"
+IL_008b: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_0090: ldstr "maxHealth"
+IL_0095: callvirt System.Void PlayerData::SetIntSwappedArgs(System.Int32,System.String)
+IL_009a: ldarg.0
+IL_009b: callvirt System.Void HeroController::MaxHealth()
+IL_00a0: ldarg.0
+IL_00a1: ldfld PlayerData HeroController::playerData
+IL_00a6: ldstr "equippedCharm_27"
+IL_00ab: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_00b0: brfalse.s IL_00fa
+IL_00b2: ldarg.0
+IL_00b3: ldfld PlayerData HeroController::playerData
+IL_00b8: ldarg.0
+IL_00b9: ldfld PlayerData HeroController::playerData
+IL_00be: ldstr "maxHealth"
+IL_00c3: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_00c8: conv.r4
+IL_00c9: ldc.r4 1.4
+IL_00ce: mul
+IL_00cf: conv.i4
+IL_00d0: ldstr "joniHealthBlue"
+IL_00d5: callvirt System.Void PlayerData::SetIntSwappedArgs(System.Int32,System.String)
+IL_00da: ldarg.0
+IL_00db: ldfld PlayerData HeroController::playerData
+IL_00e0: ldc.i4.1
+IL_00e1: ldstr "maxHealth"
+IL_00e6: callvirt System.Void PlayerData::SetIntSwappedArgs(System.Int32,System.String)
+IL_00eb: ldarg.0
+IL_00ec: callvirt System.Void HeroController::MaxHealth()
+IL_00f1: ldarg.0
+IL_00f2: ldc.i4.1
+IL_00f3: stfld System.Boolean HeroController::joniBeam
+IL_00f8: br.s IL_010b
+IL_00fa: ldarg.0
+IL_00fb: ldfld PlayerData HeroController::playerData
+IL_0100: ldc.i4.0
+IL_0101: ldstr "joniHealthBlue"
+IL_0106: callvirt System.Void PlayerData::SetIntSwappedArgs(System.Int32,System.String)
+IL_010b: ldarg.0
+IL_010c: ldfld PlayerData HeroController::playerData
+IL_0111: ldstr "equippedCharm_40"
+IL_0116: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_011b: brfalse.s IL_0139
+IL_011d: ldarg.0
+IL_011e: ldfld PlayerData HeroController::playerData
+IL_0123: ldstr "grimmChildLevel"
+IL_0128: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_012d: ldc.i4.5
+IL_012e: bne.un.s IL_0139
+IL_0130: ldarg.0
+IL_0131: ldc.i4.1
+IL_0132: stfld System.Boolean HeroController::carefreeShieldEquipped
+IL_0137: br.s IL_0140
+IL_0139: ldarg.0
+IL_013a: ldc.i4.0
+IL_013b: stfld System.Boolean HeroController::carefreeShieldEquipped
+IL_0140: ldarg.0
+IL_0141: ldfld PlayerData HeroController::playerData
+IL_0146: callvirt System.Void PlayerData::UpdateBlueHealth()
+IL_014b: ret

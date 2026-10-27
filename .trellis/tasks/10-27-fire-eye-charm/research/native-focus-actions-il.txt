@@ -1,0 +1,104 @@
+TYPE HutongGames.PlayMaker.Actions.GetPlayerDataBool base=HutongGames.PlayMaker.FsmStateAction
+FIELD HutongGames.PlayMaker.FsmString HutongGames.PlayMaker.Actions.GetPlayerDataBool::boolName
+FIELD HutongGames.PlayMaker.FsmBool HutongGames.PlayMaker.Actions.GetPlayerDataBool::storeValue
+METHOD System.Void HutongGames.PlayMaker.Actions.GetPlayerDataBool::Reset()
+IL_0000: ldarg.0
+IL_0001: ldnull
+IL_0002: stfld HutongGames.PlayMaker.FsmString HutongGames.PlayMaker.Actions.GetPlayerDataBool::boolName
+IL_0007: ldarg.0
+IL_0008: ldnull
+IL_0009: stfld HutongGames.PlayMaker.FsmBool HutongGames.PlayMaker.Actions.GetPlayerDataBool::storeValue
+IL_000e: ret
+METHOD System.Void HutongGames.PlayMaker.Actions.GetPlayerDataBool::OnEnter()
+IL_0000: call GameManager GameManager::get_instance()
+IL_0005: stloc.0
+IL_0006: ldloc.0
+IL_0007: ldnull
+IL_0008: call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+IL_000d: brfalse.s IL_001a
+IL_000f: ldstr "GameManager could not be found"
+IL_0014: call System.Void UnityEngine.Debug::Log(System.Object)
+IL_0019: ret
+IL_001a: ldarg.0
+IL_001b: ldfld HutongGames.PlayMaker.FsmBool HutongGames.PlayMaker.Actions.GetPlayerDataBool::storeValue
+IL_0020: ldloc.0
+IL_0021: ldarg.0
+IL_0022: ldfld HutongGames.PlayMaker.FsmString HutongGames.PlayMaker.Actions.GetPlayerDataBool::boolName
+IL_0027: callvirt System.String HutongGames.PlayMaker.FsmString::get_Value()
+IL_002c: callvirt System.Boolean GameManager::GetPlayerDataBool(System.String)
+IL_0031: callvirt System.Void HutongGames.PlayMaker.FsmBool::set_Value(System.Boolean)
+IL_0036: ldarg.0
+IL_0037: call System.Void HutongGames.PlayMaker.FsmStateAction::Finish()
+IL_003c: ret
+METHOD System.Void HutongGames.PlayMaker.Actions.GetPlayerDataBool::.ctor()
+IL_0000: ldarg.0
+IL_0001: call System.Void HutongGames.PlayMaker.FsmStateAction::.ctor()
+IL_0006: ret
+TYPE HutongGames.PlayMaker.Actions.PlayerDataBoolTest base=HutongGames.PlayMaker.FsmStateAction
+FIELD HutongGames.PlayMaker.FsmOwnerDefault HutongGames.PlayMaker.Actions.PlayerDataBoolTest::gameObject
+FIELD HutongGames.PlayMaker.FsmString HutongGames.PlayMaker.Actions.PlayerDataBoolTest::boolName
+FIELD HutongGames.PlayMaker.FsmEvent HutongGames.PlayMaker.Actions.PlayerDataBoolTest::isTrue
+FIELD HutongGames.PlayMaker.FsmEvent HutongGames.PlayMaker.Actions.PlayerDataBoolTest::isFalse
+FIELD System.Boolean HutongGames.PlayMaker.Actions.PlayerDataBoolTest::boolCheck
+METHOD System.Void HutongGames.PlayMaker.Actions.PlayerDataBoolTest::Reset()
+IL_0000: ldarg.0
+IL_0001: ldnull
+IL_0002: stfld HutongGames.PlayMaker.FsmOwnerDefault HutongGames.PlayMaker.Actions.PlayerDataBoolTest::gameObject
+IL_0007: ldarg.0
+IL_0008: ldnull
+IL_0009: stfld HutongGames.PlayMaker.FsmString HutongGames.PlayMaker.Actions.PlayerDataBoolTest::boolName
+IL_000e: ldarg.0
+IL_000f: ldnull
+IL_0010: stfld HutongGames.PlayMaker.FsmEvent HutongGames.PlayMaker.Actions.PlayerDataBoolTest::isTrue
+IL_0015: ldarg.0
+IL_0016: ldnull
+IL_0017: stfld HutongGames.PlayMaker.FsmEvent HutongGames.PlayMaker.Actions.PlayerDataBoolTest::isFalse
+IL_001c: ret
+METHOD System.Void HutongGames.PlayMaker.Actions.PlayerDataBoolTest::OnEnter()
+IL_0000: ldarg.0
+IL_0001: call HutongGames.PlayMaker.Fsm HutongGames.PlayMaker.FsmStateAction::get_Fsm()
+IL_0006: ldarg.0
+IL_0007: ldfld HutongGames.PlayMaker.FsmOwnerDefault HutongGames.PlayMaker.Actions.PlayerDataBoolTest::gameObject
+IL_000c: callvirt UnityEngine.GameObject HutongGames.PlayMaker.Fsm::GetOwnerDefaultTarget(HutongGames.PlayMaker.FsmOwnerDefault)
+IL_0011: stloc.0
+IL_0012: ldloc.0
+IL_0013: ldnull
+IL_0014: call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+IL_0019: brfalse.s IL_001c
+IL_001b: ret
+IL_001c: ldloc.0
+IL_001d: callvirt !!0 UnityEngine.GameObject::GetComponent<GameManager>()
+IL_0022: stloc.1
+IL_0023: ldloc.1
+IL_0024: ldnull
+IL_0025: call System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)
+IL_002a: brfalse.s IL_002d
+IL_002c: ret
+IL_002d: ldarg.0
+IL_002e: ldloc.1
+IL_002f: ldarg.0
+IL_0030: ldfld HutongGames.PlayMaker.FsmString HutongGames.PlayMaker.Actions.PlayerDataBoolTest::boolName
+IL_0035: callvirt System.String HutongGames.PlayMaker.FsmString::get_Value()
+IL_003a: callvirt System.Boolean GameManager::GetPlayerDataBool(System.String)
+IL_003f: stfld System.Boolean HutongGames.PlayMaker.Actions.PlayerDataBoolTest::boolCheck
+IL_0044: ldarg.0
+IL_0045: ldfld System.Boolean HutongGames.PlayMaker.Actions.PlayerDataBoolTest::boolCheck
+IL_004a: brfalse.s IL_005f
+IL_004c: ldarg.0
+IL_004d: call HutongGames.PlayMaker.Fsm HutongGames.PlayMaker.FsmStateAction::get_Fsm()
+IL_0052: ldarg.0
+IL_0053: ldfld HutongGames.PlayMaker.FsmEvent HutongGames.PlayMaker.Actions.PlayerDataBoolTest::isTrue
+IL_0058: callvirt System.Void HutongGames.PlayMaker.Fsm::Event(HutongGames.PlayMaker.FsmEvent)
+IL_005d: br.s IL_0070
+IL_005f: ldarg.0
+IL_0060: call HutongGames.PlayMaker.Fsm HutongGames.PlayMaker.FsmStateAction::get_Fsm()
+IL_0065: ldarg.0
+IL_0066: ldfld HutongGames.PlayMaker.FsmEvent HutongGames.PlayMaker.Actions.PlayerDataBoolTest::isFalse
+IL_006b: callvirt System.Void HutongGames.PlayMaker.Fsm::Event(HutongGames.PlayMaker.FsmEvent)
+IL_0070: ldarg.0
+IL_0071: call System.Void HutongGames.PlayMaker.FsmStateAction::Finish()
+IL_0076: ret
+METHOD System.Void HutongGames.PlayMaker.Actions.PlayerDataBoolTest::.ctor()
+IL_0000: ldarg.0
+IL_0001: call System.Void HutongGames.PlayMaker.FsmStateAction::.ctor()
+IL_0006: ret

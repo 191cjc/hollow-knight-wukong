@@ -1,0 +1,7 @@
+{"file":".trellis/spec/backend/index.md","reason":"Owning Mod and asset contract entry points"}
+{"file":".trellis/spec/guides/index.md","reason":"Evidence-based review and cross-layer integration"}
+{"file":".trellis/tasks/10-27-fire-eye-charm/prd.md","reason":"User-visible acceptance criteria and replacement scope"}
+{"file":".trellis/tasks/10-27-fire-eye-charm/design.md","reason":"Review native state preservation and scoped replacement/rollback"}
+{"file":".trellis/tasks/10-27-fire-eye-charm/implement.md","reason":"Required tests, build/package checks and actual-client matrix"}
+{"file":".trellis/tasks/10-27-fire-eye-charm/research/native-integration.md","reason":"Verify changed native queries/actions against real pinned evidence, no stubs or guessed multipliers"}
+{"file":".trellis/tasks/10-27-fire-eye-charm/research/focused-native-contract.md","reason":"Preserve native focus timing, heal ordering, cooldown/tokens and cleanup"}

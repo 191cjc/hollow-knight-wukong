@@ -1,0 +1,10 @@
+Use case: stylized-concept
+Asset type: one original inventory charm icon for a Hollow Knight character mod, not an inventory screenshot.
+Primary request: create a charm called Fire Eye Sigil, whose gameplay purpose is extending a flame-eye healing buff.
+Subject: a small organic pendant with one clear ember eye cradled by a curled flame silhouette; a compact talisman with an ivory shell-like rim and dark recessed center.
+Style/medium: hand-drawn 2D game art consistent with Hollow Knight charm icons: bold slightly irregular dark contours, simple organic curves, restrained painted shading and tiny ivory highlights. Readable as a single strong silhouette at small inventory-icon size.
+Color palette: charcoal and ivory with restrained warm ember orange/red around the central eye. No large glow outside the silhouette.
+Composition/framing: one centered icon, front view, entire silhouette visible, generous clean margins. No chain extending outside the frame.
+Scene/backdrop: perfectly uniform pure white background, no gradient, texture or cast shadow. The icon's outer contour is dark and closed so the edge-connected white backdrop can be removed offline while preserving enclosed ivory details.
+Constraints: no letters, words, numbers, watermark, UI frame, inventory grid, border, additional charms or scenery. Avoid glossy3D rendering, photorealism, tiny decorative noise and disconnected floating particles.
+Output intent: save the generated original unchanged; prepare a separate transparent raster for the existing native Deep Focus UI slot and visually review at small sizes.

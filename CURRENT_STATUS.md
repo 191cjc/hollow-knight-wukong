@@ -1,4 +1,40 @@
-# Current status: Wukong0.7.6 directional control swap
+# Current status: Wukong0.7.7 Fire Eye Sigil
+
+Updated2026-10-27 (Asia/Shanghai), branch feat/fire-eye-charm, based on187fca8.
+Fire Eye lasts3seconds, or6seconds when Fire Eye Sigil is equipped at successful
+completion. The two-notch charm replaces Deep Focus (ID34), retaining its native
+collectible, owned/equipped save identity and inventory slot. Former Deep Focus
+healing/charge tradeoff is removed through exact owning native focus-action reads.
+Other charm modifiers, source visuals, healing triggers/global cooldown and cleanup
+remain intact. Native methods recalculate used notches and overcharm on restoration.
+
+The user-selected gpt-image-2.5-flare generated a flame/eye charm. Its original is
+preserved; deterministic offline processing produces the separate transparent PNG.
+The final PNG is embedded in the DLL and its extracted bytes match exactly.
+Public preview: https://litter.catbox.moe/3b20ya.png
+Transparent PNG: https://litter.catbox.moe/jqwude.png
+Temporary links expire approximately2026-10-30T08:34UTC (72hours).
+
+Full scripts/build.sh passed:67Python tests,81production-linked Core checks,
+Release0warnings/0errors, source/atlas validation and19file ZIP byte equality.
+Current character resources remain59clips/1559ticks/16runtime pages; no active
+variant selection or prior source/character-art files were changed. Earlier stale
+baseline cache was preserved by hash before regenerating validation fixtures.
+Package: artifacts/WukongKnight-0.7.7-dev.zip
+ZIP SHA256: 9acab5d2f65e24b956ff91b2631ef96d4bb95961bae5da16269a57bca7f3b98b
+DLL SHA256: 00df7bb966a70ae0c88340a24f2d4fe4ba5e9e4ca68763a3d69fd059a2379d2b (196608bytes).
+
+Actual client acceptance remains pending (runtime_tested=false). No0.7.7install
+was performed because this Linux environment has no mounted Windows Steam path.
+Native serialized action discovery, collection/UI/text/icons/notches/overcharm,
+Quick Focus/Shape of Unn, Soul/cancel and disable/re-enable still need client checks.
+Other skill routes, enemy recorder and unfinished Storm attribution remain intact.
+Task: .trellis/tasks/10-27-fire-eye-charm; see research/final-validation.json and
+docs/CLIENT_ACCEPTANCE.md. The user authorized the local implementation commit; no remote push is authorized.
+
+---
+
+# Previous status: Wukong0.7.6 directional control swap
 
 Updated2026-10-26 (Asia/Shanghai). Installed0.7.6-dev in the authorized WukongKnight
 directory at 2026-10-26T22:13:22.043917+08:00, with the game stopped. Down spell is

@@ -515,8 +515,8 @@ internal static class Program
         Check(buff.VisualTick(10) == 0, "Inactive aura clock was running.");
         buff.Activate(10);
         Check(buff.VisualTick(10) == 0 && buff.VisualTick(11) == 30, "Aura is not on scaled source clock.");
-        Check(buff.Active(14.99) && buff.VisualTick(14.99) > 149, "Aura ended before the buff.");
-        Check(!buff.Active(15) && buff.VisualTick(15) == 0, "Expired aura retained playback.");
+        Check(buff.Active(12.99) && buff.VisualTick(12.99) > 89, "Aura ended before the buff.");
+        Check(!buff.Active(13) && buff.VisualTick(13) == 0, "Expired aura retained playback.");
         buff.Activate(15);
         Check(buff.VisualTick(15) == 0, "Refreshed aura did not restart.");
         buff.Clear();
@@ -552,21 +552,30 @@ internal static class Program
 
     private static void BloodEyeExpiryDoesNotHeal()
     {
-        var buff = new BloodthirstyBuff(); buff.Activate(20); long token = buff.Token;
-        Check(buff.Active(20) && buff.Active(24.9999) && !buff.Active(25), "Five-second half-open duration changed.");
-        Check(buff.TryHeal(token, 24.9999, 100, 90, 1, 9), "Hit just before expiry failed.");
-        Check(!buff.TryHeal(token, 25, 100, 90, 2, 9) && !buff.TryHeal(token, 26, 100, 90, 2, 9), "Expiry retained healing.");
+        foreach (bool equipped in new[] { false, true })
+        {
+            var buff = new BloodthirstyBuff(); buff.Activate(20, equipped); long token = buff.Token;
+            double end = equipped ? 26 : 23;
+            Check(buff.Active(20) && buff.Active(end - .0001) && !buff.Active(end), "Three/six-second half-open duration changed.");
+            Check(buff.TryHeal(token, end - .0001, 100, 90, 1, 9), "Hit just before expiry failed.");
+            Check(!buff.TryHeal(token, end, 100, 90, 2, 9) && !buff.TryHeal(token, end + 1, 100, 90, 2, 9), "Expiry retained healing.");
+            Check(buff.VisualTick(end - .0001) > (equipped ? 179 : 89) && buff.VisualTick(end) == 0, "Aura ignored selected duration.");
+        }
     }
 
     private static void BloodEyeRefreshPreservesCooldown()
     {
-        var buff = new BloodthirstyBuff(); buff.Activate(0); long old = buff.Token;
-        Check(buff.TryHeal(old, .2, 50, 40, 1, 9), "Initial hit failed.");
-        buff.Activate(.5); long fresh = buff.Token;
-        Check(!buff.TryHeal(old, 1.2, 50, 40, 2, 9), "Old cast callback survived refresh.");
-        Check(!buff.TryHeal(fresh, .5, 50, 40, 2, 9), "Refresh bypassed cooldown.");
-        Check(buff.TryHeal(fresh, 1.2, 50, 40, 2, 9), "Refresh lost the original cooldown deadline.");
-        Check(buff.Active(5.4999) && !buff.Active(5.5), "Refresh stacked duration instead of replacing expiry.");
+        foreach (bool initiallyEquipped in new[] { false, true })
+        {
+            var buff = new BloodthirstyBuff(); buff.Activate(0, initiallyEquipped); long old = buff.Token;
+            Check(buff.TryHeal(old, .2, 50, 40, 1, 9), "Initial hit failed.");
+            buff.Activate(.5, !initiallyEquipped); long fresh = buff.Token;
+            Check(!buff.TryHeal(old, 1.2, 50, 40, 2, 9), "Old cast callback survived refresh.");
+            Check(!buff.TryHeal(fresh, .5, 50, 40, 2, 9), "Refresh bypassed cooldown.");
+            Check(buff.TryHeal(fresh, 1.2, 50, 40, 2, 9), "Refresh lost the original cooldown deadline.");
+            double end = initiallyEquipped ? 3.5 : 6.5;
+            Check(buff.Active(end - .0001) && !buff.Active(end), "Refresh stacked duration or retained the previous equipment choice.");
+        }
     }
 
     private static void BloodEyeClearRejectsOldCallbacks()

@@ -9,7 +9,7 @@ from pathlib import Path
 
 from validate_character import CHARACTER, ROOT, sha256, validate_character
 
-VERSION = "0.7.6-dev"
+VERSION = "0.7.7-dev"
 _VARIANT = json.loads((ROOT / "data/character/active-variant.json").read_text(encoding="utf-8"))
 ACTIVE_CHARACTER = ROOT / _VARIANT.get("runtime_directory", _VARIANT["output_directory"])
 README = f"""Wukong Knight {VERSION}
@@ -102,7 +102,11 @@ holds only the opening body pose, without casting flames. Shorter native charges
 use the source tail without slowing it. Completion/interruption removes the cast
 immediately. Native focus timing,
 Soul costs and buff activation remain authoritative.
-Completion activates a five-second buff with NO immediate healing. Real player attack
+Completion activates a three-second buff with NO immediate healing.
+Fire Eye Sigil (火眼之印) replaces native Deep Focus, preserving charm34 acquisition
+and saved ownership/equipment. It costs2notches and grants6seconds total when
+equipped at completion. The former Deep Focus healing/charge tradeoff is removed;
+other focus charms retain their native timing. Its generated icon is embedded in the DLL. Real player attack
 HP damage heals one HP, globally at most once per second; whiffs/blocked hits do not.
 The original independent red flame ef animation loops while the buff is active,
 following the hero root/facing. Original registration and offline1.5x art are retained.

@@ -11,3 +11,6 @@ artifacts/
 *.suo
 assets/processed/*
 !assets/processed/README.md
+!assets/processed/charms/
+assets/processed/charms/*
+!assets/processed/charms/fire-eye-sigil/

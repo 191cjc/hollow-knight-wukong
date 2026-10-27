@@ -22,6 +22,7 @@ namespace WukongKnight
         private FireDemonSlash? fireDemon;
         private FlameStorm? flameStorm;
         private BloodthirstyFireEye? bloodEye;
+        private FireEyeCharmV77? fireEyeCharm;
         private FistSkills? fist;
         private NativeDreamV77? dream;
         private NailSlash? slash;
@@ -194,7 +195,8 @@ namespace WukongKnight
                 presenter = new WukongPresenter(self, assets, native);
                 flameDash = new FlameDash(self, native);
                 fireDemon = new FireDemonSlash(self, native, assets);
-                bloodEye = new BloodthirstyFireEye(self);
+                fireEyeCharm = new FireEyeCharmV77(self, logError, Fail);
+                bloodEye = new BloodthirstyFireEye(self, fireEyeCharm);
                 dream = new NativeDreamV77(self);
                 fist = new FistSkills(self, native, assets, dream);
                 flameStorm = new FlameStorm(self, native, assets);
@@ -202,6 +204,7 @@ namespace WukongKnight
                 lifetime.UpdateView = LateUpdate;
                 lifetime.AdvancePhysics = FixedUpdate;
                 lifetime.DetachOwner = Detach;
+                fireEyeCharm.Activate();
             }
             catch (Exception error) { Fail(error); }
         }
@@ -560,6 +563,8 @@ namespace WukongKnight
             if (oldDream != null) Cleanup(oldDream.Dispose);
             BloodthirstyFireEye? oldEye = bloodEye; bloodEye = null;
             if (oldEye != null) Cleanup(oldEye.Dispose);
+            FireEyeCharmV77? oldCharm = fireEyeCharm; fireEyeCharm = null;
+            if (oldCharm != null) Cleanup(oldCharm.Dispose);
             if (lifetime != null)
             {
                 lifetime.DetachOwner = null; lifetime.UpdateView = null; lifetime.AdvancePhysics = null;

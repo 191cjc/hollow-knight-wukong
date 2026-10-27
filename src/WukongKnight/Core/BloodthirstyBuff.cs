@@ -2,7 +2,7 @@ using System;
 
 namespace WukongKnight.Core
 {
-    /// <summary>Five scaled seconds, one real-damage heal per second across all attacks.</summary>
+    /// <summary>Three scaled seconds, or six with Fire Eye Sigil; one real-damage heal per second.</summary>
     internal sealed class BloodthirstyBuff
     {
         private double expires = double.NegativeInfinity;
@@ -11,10 +11,10 @@ namespace WukongKnight.Core
         public long Token { get; private set; }
         public bool Active(double now) => Finite(now) && now >= started && now < expires;
         public double VisualTick(double now) => Active(now) ? (now - started) * 30 : 0;
-        public void Activate(double now)
+        public void Activate(double now, bool sigilEquipped = false)
         {
             if (!Finite(now)) return;
-            Token++; started = now; expires = now + 5;
+            Token++; started = now; expires = now + (sigilEquipped ? 6 : 3);
             // Refresh cannot bypass a proc cooldown from the preceding buff.
         }
         public void Clear() { Token++; started = double.PositiveInfinity; expires = nextHeal = double.NegativeInfinity; }

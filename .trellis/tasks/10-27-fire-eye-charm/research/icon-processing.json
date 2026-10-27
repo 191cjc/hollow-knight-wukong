@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "source": "output/imagegen/fire-eye-sigil-v1.png",
+  "source_sha256": "5829378d76d713280e4a407b00215129a4cdc65062907d8acbc549dd5983b184",
+  "processing": {
+    "extraction": "edge_connected_white",
+    "edge_connected_white_threshold": 245,
+    "crop": [
+      239,
+      107,
+      779,
+      906
+    ],
+    "canvas": [
+      256,
+      256
+    ],
+    "padding": 16,
+    "resample": "LANCZOS"
+  },
+  "files": {
+    "icon.png": "8d397a5d5e9138e4f6a3030fd1cf1db4e358bfe6d920d0d17cac427f745573d5",
+    "preview.png": "b77d419f7dd60e2861c590bc764a4a1ef018897ee0855d8394c09cccbb1e4c0f"
+  }
+}

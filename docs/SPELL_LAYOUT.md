@@ -1,4 +1,4 @@
-# Spell controls (0.7.6-dev)
+# Spell controls (0.7.7-dev)
 
 The 0.4.4 workspace was committed before these changes as
 `a07b2ac4981caca2b84af7a4f9ae1dc270a3d42d`. No remote push was made.
@@ -36,33 +36,44 @@ After native StartMPDrain selects its rate, capture scaledTime plus remaining
 drain time once. Play the source during the final0.7seconds; native charges
 shorter than that select its tail at original speed. No charm timing table or
 discrete Soul-progress frame stepping is used.
-Native Quick/Deep Focus timing, Soul cost, cancellation and completion stay
-authoritative. Early completion/cancellation stops the visual without extending
+Native Quick Focus and other charm timing, Soul cost, cancellation and completion
+stay authoritative. Fire Eye Sigil replaces Deep Focus, including its former
+healing/slow-charge tradeoff. Early completion/cancellation stops the visual without extending
 focus. An interrupted charge grants no new buff. Original `effect4` remains
 preserved.
 Completion suppresses the native focus `AddHealth` call and activates a buff;
-**there is no immediate heal**, including with Deep Focus. One completed charge
+**there is no immediate heal**, including with Fire Eye Sigil. One completed charge
 ends that focus cycle. Other healing continues through its native path.
 
-For five scaled gameplay seconds after completion, actual enemy HP loss from
+For three scaled gameplay seconds after completion (six with Fire Eye Sigil), actual enemy HP loss from
 player nail, nail beam, spell or dash hits can heal one ordinary HP. All enemies,
 attacks and multi-hit phases share a cooldown of at least one second. Whiffs,
 blocked/evaded attacks, scenery and attacks on already-dead enemies do not heal.
 Full health consumes no healing opportunity. A refresh replaces the expiry with
-five seconds from the new completion; it cannot stack or reset the cooldown.
+three or six seconds from the new completion, using equipment at that completion;
+it cannot stack or reset the cooldown. Equipment changes affect the next activation.
 Death, hazard transition, scene transition and detach clear the effect.
 
 The original independent buff visual is now included: skill1101040 -> buff810001
 -> resources17 ->810001/1.swf symbol `ef`. Five original lossless images form a
 10-frame loop. Its source registration follows the hero root and current facing,
 with enlargement baked offline. It appears on successful charge completion,
-loops throughout the five-second buff and disappears with expiry or cleanup.
+loops throughout the selected three/six-second buff and disappears with expiry or cleanup.
 Source decompilation, timeline and hashes are in `reference/flash/fire-eye/`.
 
-The active interval is `[completion, completion + 5)`. Pause freezes the scaled
+The active interval is `[completion, completion + 3)` or `[completion, completion + 6)`. Pause freezes the scaled
 clock. There is no automatic activation/expiry heal or source-game attack bonus.
 Focus spell state changes are deferred out of the native `AddHealth` action to
 avoid reentering PlayMaker's executing action list. Dream focus is excluded.
+
+## Fire Eye Sigil / 火眼之印
+
+Native Deep Focus (charm34) becomes this two-notch charm. Its existing collectible,
+owned flag and equipped save identity remain authoritative; entering a save does
+not grant it. The new name, description and generated flame-eye icon occupy its
+existing UI slot. Successful focus snapshots whether it is equipped. Native notch
+and overcharm recalculation handles already-equipped saves and restoration on
+disable. Removing the Mod restores Deep Focus without a save migration.
 
 ## Flame Storm
 

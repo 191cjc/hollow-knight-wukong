@@ -1,0 +1,7 @@
+{"file":".trellis/spec/backend/index.md","reason":"Owning Mod/runtime and asset contracts; no web backend assumptions"}
+{"file":".trellis/spec/guides/index.md","reason":"Shared reuse and cross-layer/schema thinking before edits"}
+{"file":".trellis/tasks/10-27-fire-eye-charm/prd.md","reason":"Latest user scope: repurpose native Deep Focus, preserve acquisition,3/6seconds,2notches and generated icon"}
+{"file":".trellis/tasks/10-27-fire-eye-charm/design.md","reason":"Exact ownership, duration snapshot, icon embedding, save compatibility and rollback"}
+{"file":".trellis/tasks/10-27-fire-eye-charm/implement.md","reason":"Ordered implementation and acceptance gates"}
+{"file":".trellis/tasks/10-27-fire-eye-charm/research/native-integration.md","reason":"Pinned native query/notch/icon evidence and key focus integration limits"}
+{"file":".trellis/tasks/10-27-fire-eye-charm/research/focused-native-contract.md","reason":"Focused source timing/healing/native ownership contracts within injection limits"}

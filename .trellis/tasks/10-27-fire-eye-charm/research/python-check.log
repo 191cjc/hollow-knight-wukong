@@ -1,0 +1,21 @@
+..................................................E................
+======================================================================
+ERROR: test_every_previous_clip_retains_original_pixels (test_fist_assets.FistAssetTests.test_every_previous_clip_retains_original_pixels)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/hollow-knight-wukong/tests/test_fist_assets.py", line 69, in test_every_previous_clip_retains_original_pixels
+    old=json.loads((old_folder/'character.json').read_text())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1029, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/ubuntu/hollow-knight-wukong/assets/processed/wukong-fist-v071-original/character.json'
+
+----------------------------------------------------------------------
+Ran 67 tests in 221.798s
+
+FAILED (errors=1)
+{"related_pngs": 19, "related_jsons": 16, "clips": 59, "frames": 1559, "atlases": 16, "originals_unchanged": true}

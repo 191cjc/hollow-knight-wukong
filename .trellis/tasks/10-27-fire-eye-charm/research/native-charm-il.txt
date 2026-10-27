@@ -1,0 +1,2439 @@
+TYPE HeroController base=UnityEngine.MonoBehaviour
+FIELD System.Boolean HeroController::verboseMode
+FIELD GlobalEnums.HeroType HeroController::heroType
+FIELD System.Single HeroController::RUN_SPEED
+FIELD System.Single HeroController::RUN_SPEED_CH
+FIELD System.Single HeroController::RUN_SPEED_CH_COMBO
+FIELD System.Single HeroController::WALK_SPEED
+FIELD System.Single HeroController::UNDERWATER_SPEED
+FIELD System.Single HeroController::JUMP_SPEED
+FIELD System.Single HeroController::JUMP_SPEED_UNDERWATER
+FIELD System.Single HeroController::MIN_JUMP_SPEED
+FIELD System.Int32 HeroController::JUMP_STEPS
+FIELD System.Int32 HeroController::JUMP_STEPS_MIN
+FIELD System.Int32 HeroController::JUMP_TIME
+FIELD System.Int32 HeroController::DOUBLE_JUMP_STEPS
+FIELD System.Int32 HeroController::WJLOCK_STEPS_SHORT
+FIELD System.Int32 HeroController::WJLOCK_STEPS_LONG
+FIELD System.Single HeroController::WJ_KICKOFF_SPEED
+FIELD System.Int32 HeroController::WALL_STICKY_STEPS
+FIELD System.Single HeroController::DASH_SPEED
+FIELD System.Single HeroController::DASH_SPEED_SHARP
+FIELD System.Single HeroController::DASH_TIME
+FIELD System.Int32 HeroController::DASH_QUEUE_STEPS
+FIELD System.Single HeroController::BACK_DASH_SPEED
+FIELD System.Single HeroController::BACK_DASH_TIME
+FIELD System.Single HeroController::SHADOW_DASH_SPEED
+FIELD System.Single HeroController::SHADOW_DASH_TIME
+FIELD System.Single HeroController::SHADOW_DASH_COOLDOWN
+FIELD System.Single HeroController::SUPER_DASH_SPEED
+FIELD System.Single HeroController::DASH_COOLDOWN
+FIELD System.Single HeroController::DASH_COOLDOWN_CH
+FIELD System.Single HeroController::BACKDASH_COOLDOWN
+FIELD System.Single HeroController::WALLSLIDE_SPEED
+FIELD System.Single HeroController::WALLSLIDE_DECEL
+FIELD System.Single HeroController::NAIL_CHARGE_TIME_DEFAULT
+FIELD System.Single HeroController::NAIL_CHARGE_TIME_CHARM
+FIELD System.Single HeroController::CYCLONE_HORIZONTAL_SPEED
+FIELD System.Single HeroController::SWIM_ACCEL
+FIELD System.Single HeroController::SWIM_MAX_SPEED
+FIELD System.Single HeroController::TIME_TO_ENTER_SCENE_BOT
+FIELD System.Single HeroController::TIME_TO_ENTER_SCENE_HOR
+FIELD System.Single HeroController::SPEED_TO_ENTER_SCENE_HOR
+FIELD System.Single HeroController::SPEED_TO_ENTER_SCENE_UP
+FIELD System.Single HeroController::SPEED_TO_ENTER_SCENE_DOWN
+FIELD System.Single HeroController::DEFAULT_GRAVITY
+FIELD System.Single HeroController::UNDERWATER_GRAVITY
+FIELD System.Single HeroController::ATTACK_DURATION
+FIELD System.Single HeroController::ATTACK_DURATION_CH
+FIELD System.Single HeroController::ALT_ATTACK_RESET
+FIELD System.Single HeroController::ATTACK_RECOVERY_TIME
+FIELD System.Single HeroController::ATTACK_COOLDOWN_TIME
+FIELD System.Single HeroController::ATTACK_COOLDOWN_TIME_CH
+FIELD System.Single HeroController::BOUNCE_TIME
+FIELD System.Single HeroController::BOUNCE_SHROOM_TIME
+FIELD System.Single HeroController::BOUNCE_VELOCITY
+FIELD System.Single HeroController::SHROOM_BOUNCE_VELOCITY
+FIELD System.Single HeroController::RECOIL_HOR_TIME
+FIELD System.Single HeroController::RECOIL_HOR_VELOCITY
+FIELD System.Single HeroController::RECOIL_HOR_VELOCITY_LONG
+FIELD System.Single HeroController::RECOIL_HOR_STEPS
+FIELD System.Single HeroController::RECOIL_DOWN_VELOCITY
+FIELD System.Single HeroController::RUN_PUFF_TIME
+FIELD System.Single HeroController::BIG_FALL_TIME
+FIELD System.Single HeroController::HARD_LANDING_TIME
+FIELD System.Single HeroController::DOWN_DASH_TIME
+FIELD System.Single HeroController::MAX_FALL_VELOCITY
+FIELD System.Single HeroController::MAX_FALL_VELOCITY_UNDERWATER
+FIELD System.Single HeroController::RECOIL_DURATION
+FIELD System.Single HeroController::RECOIL_DURATION_STAL
+FIELD System.Single HeroController::RECOIL_VELOCITY
+FIELD System.Single HeroController::DAMAGE_FREEZE_DOWN
+FIELD System.Single HeroController::DAMAGE_FREEZE_WAIT
+FIELD System.Single HeroController::DAMAGE_FREEZE_UP
+FIELD System.Single HeroController::INVUL_TIME
+FIELD System.Single HeroController::INVUL_TIME_STAL
+FIELD System.Single HeroController::INVUL_TIME_PARRY
+FIELD System.Single HeroController::INVUL_TIME_QUAKE
+FIELD System.Single HeroController::INVUL_TIME_CYCLONE
+FIELD System.Single HeroController::CAST_TIME
+FIELD System.Single HeroController::CAST_RECOIL_TIME
+FIELD System.Single HeroController::CAST_RECOIL_VELOCITY
+FIELD System.Single HeroController::WALLSLIDE_CLIP_DELAY
+FIELD System.Int32 HeroController::GRUB_SOUL_MP
+FIELD System.Int32 HeroController::GRUB_SOUL_MP_COMBO
+FIELD System.Int32 HeroController::JUMP_QUEUE_STEPS
+FIELD System.Int32 HeroController::JUMP_RELEASE_QUEUE_STEPS
+FIELD System.Int32 HeroController::DOUBLE_JUMP_QUEUE_STEPS
+FIELD System.Int32 HeroController::ATTACK_QUEUE_STEPS
+FIELD System.Single HeroController::DELAY_BEFORE_ENTER
+FIELD System.Single HeroController::LOOK_DELAY
+FIELD System.Single HeroController::LOOK_ANIM_DELAY
+FIELD System.Single HeroController::DEATH_WAIT
+FIELD System.Single HeroController::HAZARD_DEATH_CHECK_TIME
+FIELD System.Single HeroController::FLOATING_CHECK_TIME
+FIELD System.Single HeroController::NAIL_TERRAIN_CHECK_TIME
+FIELD System.Single HeroController::BUMP_VELOCITY
+FIELD System.Single HeroController::BUMP_VELOCITY_DASH
+FIELD System.Int32 HeroController::LANDING_BUFFER_STEPS
+FIELD System.Int32 HeroController::LEDGE_BUFFER_STEPS
+FIELD System.Int32 HeroController::HEAD_BUMP_STEPS
+FIELD System.Single HeroController::MANTIS_CHARM_SCALE
+FIELD System.Single HeroController::FIND_GROUND_POINT_DISTANCE
+FIELD System.Single HeroController::FIND_GROUND_POINT_DISTANCE_EXT
+FIELD GlobalEnums.ActorStates HeroController::hero_state
+FIELD GlobalEnums.ActorStates HeroController::prev_hero_state
+FIELD GlobalEnums.HeroTransitionState HeroController::transitionState
+FIELD GlobalEnums.DamageMode HeroController::damageMode
+FIELD System.Single HeroController::move_input
+FIELD System.Single HeroController::vertical_input
+FIELD System.Single HeroController::controller_deadzone
+FIELD UnityEngine.Vector2 HeroController::current_velocity
+FIELD System.Boolean HeroController::isGameplayScene
+FIELD System.Boolean HeroController::isEnteringFirstLevel
+FIELD UnityEngine.Vector2 HeroController::slashOffset
+FIELD UnityEngine.Vector2 HeroController::upSlashOffset
+FIELD UnityEngine.Vector2 HeroController::downwardSlashOffset
+FIELD UnityEngine.Vector2 HeroController::spell1Offset
+FIELD System.Int32 HeroController::jump_steps
+FIELD System.Int32 HeroController::jumped_steps
+FIELD System.Int32 HeroController::doubleJump_steps
+FIELD System.Single HeroController::dash_timer
+FIELD System.Single HeroController::back_dash_timer
+FIELD System.Single HeroController::shadow_dash_timer
+FIELD System.Single HeroController::attack_time
+FIELD System.Single HeroController::attack_cooldown
+FIELD UnityEngine.Vector2 HeroController::transition_vel
+FIELD System.Single HeroController::altAttackTime
+FIELD System.Single HeroController::lookDelayTimer
+FIELD System.Single HeroController::bounceTimer
+FIELD System.Single HeroController::recoilHorizontalTimer
+FIELD System.Single HeroController::runPuffTimer
+FIELD System.Single HeroController::<fallTimer>k__BackingField
+FIELD System.Single HeroController::hardLandingTimer
+FIELD System.Single HeroController::dashLandingTimer
+FIELD System.Single HeroController::recoilTimer
+FIELD System.Int32 HeroController::recoilSteps
+FIELD System.Int32 HeroController::landingBufferSteps
+FIELD System.Int32 HeroController::dashQueueSteps
+FIELD System.Boolean HeroController::dashQueuing
+FIELD System.Single HeroController::shadowDashTimer
+FIELD System.Single HeroController::dashCooldownTimer
+FIELD System.Single HeroController::nailChargeTimer
+FIELD System.Int32 HeroController::wallLockSteps
+FIELD System.Single HeroController::wallslideClipTimer
+FIELD System.Single HeroController::hardLandFailSafeTimer
+FIELD System.Single HeroController::hazardDeathTimer
+FIELD System.Single HeroController::floatingBufferTimer
+FIELD System.Single HeroController::attackDuration
+FIELD System.Single HeroController::parryInvulnTimer
+FIELD UnityEngine.GameObject HeroController::slashPrefab
+FIELD UnityEngine.GameObject HeroController::slashAltPrefab
+FIELD UnityEngine.GameObject HeroController::upSlashPrefab
+FIELD UnityEngine.GameObject HeroController::downSlashPrefab
+FIELD UnityEngine.GameObject HeroController::wallSlashPrefab
+FIELD NailSlash HeroController::normalSlash
+FIELD NailSlash HeroController::alternateSlash
+FIELD NailSlash HeroController::upSlash
+FIELD NailSlash HeroController::downSlash
+FIELD NailSlash HeroController::wallSlash
+FIELD PlayMakerFSM HeroController::normalSlashFsm
+FIELD PlayMakerFSM HeroController::alternateSlashFsm
+FIELD PlayMakerFSM HeroController::upSlashFsm
+FIELD PlayMakerFSM HeroController::downSlashFsm
+FIELD PlayMakerFSM HeroController::wallSlashFsm
+FIELD UnityEngine.GameObject HeroController::nailTerrainImpactEffectPrefab
+FIELD UnityEngine.GameObject HeroController::spell1Prefab
+FIELD UnityEngine.GameObject HeroController::takeHitPrefab
+FIELD UnityEngine.GameObject HeroController::takeHitDoublePrefab
+FIELD UnityEngine.GameObject HeroController::softLandingEffectPrefab
+FIELD UnityEngine.GameObject HeroController::hardLandingEffectPrefab
+FIELD UnityEngine.GameObject HeroController::runEffectPrefab
+FIELD UnityEngine.GameObject HeroController::backDashPrefab
+FIELD UnityEngine.GameObject HeroController::jumpEffectPrefab
+FIELD UnityEngine.GameObject HeroController::jumpTrailPrefab
+FIELD UnityEngine.GameObject HeroController::fallEffectPrefab
+FIELD UnityEngine.ParticleSystem HeroController::wallslideDustPrefab
+FIELD UnityEngine.GameObject HeroController::artChargeEffect
+FIELD UnityEngine.GameObject HeroController::artChargedEffect
+FIELD UnityEngine.GameObject HeroController::artChargedFlash
+FIELD tk2dSpriteAnimator HeroController::artChargedEffectAnim
+FIELD UnityEngine.GameObject HeroController::shadowdashBurstPrefab
+FIELD UnityEngine.GameObject HeroController::shadowdashDownBurstPrefab
+FIELD UnityEngine.GameObject HeroController::dashParticlesPrefab
+FIELD UnityEngine.GameObject HeroController::shadowdashParticlesPrefab
+FIELD UnityEngine.GameObject HeroController::shadowRingPrefab
+FIELD UnityEngine.GameObject HeroController::shadowRechargePrefab
+FIELD UnityEngine.GameObject HeroController::dJumpWingsPrefab
+FIELD UnityEngine.GameObject HeroController::dJumpFlashPrefab
+FIELD UnityEngine.ParticleSystem HeroController::dJumpFeathers
+FIELD UnityEngine.GameObject HeroController::wallPuffPrefab
+FIELD UnityEngine.GameObject HeroController::sharpShadowPrefab
+FIELD UnityEngine.GameObject HeroController::grubberFlyBeamPrefabL
+FIELD UnityEngine.GameObject HeroController::grubberFlyBeamPrefabR
+FIELD UnityEngine.GameObject HeroController::grubberFlyBeamPrefabU
+FIELD UnityEngine.GameObject HeroController::grubberFlyBeamPrefabD
+FIELD UnityEngine.GameObject HeroController::grubberFlyBeamPrefabL_fury
+FIELD UnityEngine.GameObject HeroController::grubberFlyBeamPrefabR_fury
+FIELD UnityEngine.GameObject HeroController::grubberFlyBeamPrefabU_fury
+FIELD UnityEngine.GameObject HeroController::grubberFlyBeamPrefabD_fury
+FIELD UnityEngine.GameObject HeroController::carefreeShield
+FIELD UnityEngine.GameObject HeroController::corpsePrefab
+FIELD UnityEngine.GameObject HeroController::spikeDeathPrefab
+FIELD UnityEngine.GameObject HeroController::acidDeathPrefab
+FIELD UnityEngine.GameObject HeroController::lavaDeathPrefab
+FIELD UnityEngine.GameObject HeroController::heroDeathPrefab
+FIELD UnityEngine.GameObject HeroController::cutscenePrefab
+FIELD GameManager HeroController::gm
+FIELD UnityEngine.Rigidbody2D HeroController::rb2d
+FIELD UnityEngine.Collider2D HeroController::col2d
+FIELD UnityEngine.MeshRenderer HeroController::renderer
+FIELD UnityEngine.Transform HeroController::transform
+FIELD HeroAnimationController HeroController::animCtrl
+FIELD HeroControllerStates HeroController::cState
+FIELD PlayerData HeroController::playerData
+FIELD HeroAudioController HeroController::audioCtrl
+FIELD UnityEngine.AudioSource HeroController::audioSource
+FIELD UIManager HeroController::ui
+FIELD InputHandler HeroController::inputHandler
+FIELD GeoCounter HeroController::<geoCounter>k__BackingField
+FIELD PlayMakerFSM HeroController::<proxyFSM>k__BackingField
+FIELD PlayMakerFSM HeroController::damageEffectFSM
+FIELD UnityEngine.ParticleSystem HeroController::dashParticleSystem
+FIELD InvulnerablePulse HeroController::invPulse
+FIELD SpriteFlash HeroController::spriteFlash
+FIELD UnityEngine.AudioSource HeroController::footStepsRunAudioSource
+FIELD UnityEngine.AudioSource HeroController::footStepsWalkAudioSource
+FIELD System.Single HeroController::prevGravityScale
+FIELD UnityEngine.Vector2 HeroController::recoilVector
+FIELD UnityEngine.Vector2 HeroController::lastInputState
+FIELD GlobalEnums.GatePosition HeroController::gatePosition
+FIELD TransitionPoint HeroController::<sceneEntryGate>k__BackingField
+FIELD System.Boolean HeroController::runMsgSent
+FIELD System.Boolean HeroController::hardLanded
+FIELD System.Boolean HeroController::fallRumble
+FIELD System.Boolean HeroController::acceptingInput
+FIELD System.Boolean HeroController::fallTrailGenerated
+FIELD System.Boolean HeroController::drainMP
+FIELD System.Single HeroController::drainMP_timer
+FIELD System.Single HeroController::drainMP_time
+FIELD System.Single HeroController::MP_drained
+FIELD System.Single HeroController::drainMP_seconds
+FIELD System.Single HeroController::focusMP_amount
+FIELD System.Single HeroController::dashBumpCorrection
+FIELD System.Boolean HeroController::controlReqlinquished
+FIELD System.Boolean HeroController::enterWithoutInput
+FIELD System.Boolean HeroController::lookingUpAnim
+FIELD System.Boolean HeroController::lookingDownAnim
+FIELD System.Boolean HeroController::carefreeShieldEquipped
+FIELD System.Int32 HeroController::hitsSinceShielded
+FIELD EndBeta HeroController::endBeta
+FIELD System.Int32 HeroController::jumpQueueSteps
+FIELD System.Boolean HeroController::jumpQueuing
+FIELD System.Int32 HeroController::doubleJumpQueueSteps
+FIELD System.Boolean HeroController::doubleJumpQueuing
+FIELD System.Int32 HeroController::jumpReleaseQueueSteps
+FIELD System.Boolean HeroController::jumpReleaseQueuing
+FIELD System.Int32 HeroController::attackQueueSteps
+FIELD System.Boolean HeroController::attackQueuing
+FIELD System.Boolean HeroController::touchingWallL
+FIELD System.Boolean HeroController::touchingWallR
+FIELD System.Boolean HeroController::wallSlidingL
+FIELD System.Boolean HeroController::wallSlidingR
+FIELD System.Boolean HeroController::airDashed
+FIELD System.Boolean HeroController::dashingDown
+FIELD System.Boolean HeroController::wieldingLantern
+FIELD System.Boolean HeroController::startWithWallslide
+FIELD System.Boolean HeroController::startWithJump
+FIELD System.Boolean HeroController::startWithFullJump
+FIELD System.Boolean HeroController::startWithDash
+FIELD System.Boolean HeroController::startWithAttack
+FIELD System.Boolean HeroController::nailArt_cyclone
+FIELD System.Boolean HeroController::wallSlashing
+FIELD System.Boolean HeroController::doubleJumped
+FIELD System.Boolean HeroController::inAcid
+FIELD System.Boolean HeroController::wallJumpedR
+FIELD System.Boolean HeroController::wallJumpedL
+FIELD System.Boolean HeroController::wallLocked
+FIELD System.Single HeroController::currentWalljumpSpeed
+FIELD System.Single HeroController::walljumpSpeedDecel
+FIELD System.Int32 HeroController::wallUnstickSteps
+FIELD System.Boolean HeroController::recoilLarge
+FIELD System.Single HeroController::conveyorSpeed
+FIELD System.Single HeroController::conveyorSpeedV
+FIELD System.Boolean HeroController::enteringVertically
+FIELD System.Boolean HeroController::playingWallslideClip
+FIELD System.Boolean HeroController::playedMantisClawClip
+FIELD System.Boolean HeroController::exitedSuperDashing
+FIELD System.Boolean HeroController::exitedQuake
+FIELD System.Boolean HeroController::fallCheckFlagged
+FIELD System.Int32 HeroController::ledgeBufferSteps
+FIELD System.Int32 HeroController::headBumpSteps
+FIELD System.Single HeroController::nailChargeTime
+FIELD System.Boolean HeroController::takeNoDamage
+FIELD System.Boolean HeroController::joniBeam
+FIELD System.Boolean HeroController::fadedSceneIn
+FIELD System.Boolean HeroController::stopWalkingOut
+FIELD System.Boolean HeroController::boundsChecking
+FIELD System.Boolean HeroController::blockerFix
+FIELD UnityEngine.Vector2[] HeroController::positionHistory
+FIELD System.Boolean HeroController::tilemapTestActive
+FIELD UnityEngine.Vector2 HeroController::groundRayOriginC
+FIELD UnityEngine.Vector2 HeroController::groundRayOriginL
+FIELD UnityEngine.Vector2 HeroController::groundRayOriginR
+FIELD UnityEngine.Coroutine HeroController::takeDamageCoroutine
+FIELD UnityEngine.Coroutine HeroController::tilemapTestCoroutine
+FIELD UnityEngine.AudioClip HeroController::footstepsRunDust
+FIELD UnityEngine.AudioClip HeroController::footstepsRunGrass
+FIELD UnityEngine.AudioClip HeroController::footstepsRunBone
+FIELD UnityEngine.AudioClip HeroController::footstepsRunSpa
+FIELD UnityEngine.AudioClip HeroController::footstepsRunMetal
+FIELD UnityEngine.AudioClip HeroController::footstepsRunWater
+FIELD UnityEngine.AudioClip HeroController::footstepsWalkDust
+FIELD UnityEngine.AudioClip HeroController::footstepsWalkGrass
+FIELD UnityEngine.AudioClip HeroController::footstepsWalkBone
+FIELD UnityEngine.AudioClip HeroController::footstepsWalkSpa
+FIELD UnityEngine.AudioClip HeroController::footstepsWalkMetal
+FIELD UnityEngine.AudioClip HeroController::nailArtCharge
+FIELD UnityEngine.AudioClip HeroController::nailArtChargeComplete
+FIELD UnityEngine.AudioClip HeroController::blockerImpact
+FIELD UnityEngine.AudioClip HeroController::shadowDashClip
+FIELD UnityEngine.AudioClip HeroController::sharpShadowClip
+FIELD UnityEngine.AudioClip HeroController::doubleJumpClip
+FIELD UnityEngine.AudioClip HeroController::mantisClawClip
+FIELD UnityEngine.GameObject HeroController::slash
+FIELD NailSlash HeroController::slashComponent
+FIELD PlayMakerFSM HeroController::slashFsm
+FIELD UnityEngine.GameObject HeroController::runEffect
+FIELD UnityEngine.GameObject HeroController::backDash
+FIELD UnityEngine.GameObject HeroController::jumpEffect
+FIELD UnityEngine.GameObject HeroController::fallEffect
+FIELD UnityEngine.GameObject HeroController::dashEffect
+FIELD UnityEngine.GameObject HeroController::grubberFlyBeam
+FIELD UnityEngine.GameObject HeroController::hazardCorpe
+FIELD PlayMakerFSM HeroController::vignetteFSM
+FIELD UnityEngine.SpriteRenderer HeroController::heroLight
+FIELD UnityEngine.SpriteRenderer HeroController::vignette
+FIELD PlayMakerFSM HeroController::dashBurst
+FIELD PlayMakerFSM HeroController::superDash
+FIELD PlayMakerFSM HeroController::fsm_thornCounter
+FIELD PlayMakerFSM HeroController::spellControl
+FIELD PlayMakerFSM HeroController::fsm_fallTrail
+FIELD PlayMakerFSM HeroController::fsm_orbitShield
+FIELD VibrationData HeroController::softLandVibration
+FIELD VibrationData HeroController::wallJumpVibration
+FIELD VibrationPlayer HeroController::wallSlideVibrationPlayer
+FIELD VibrationData HeroController::dashVibration
+FIELD VibrationData HeroController::shadowDashVibration
+FIELD VibrationData HeroController::doubleJumpVibration
+FIELD HeroController/HeroInPosition HeroController::heroInPosition
+FIELD System.Boolean HeroController::isHeroInPosition
+FIELD HeroController/TakeDamageEvent HeroController::OnTakenDamage
+FIELD HeroController/HeroDeathEvent HeroController::OnDeath
+FIELD System.Boolean HeroController::jumpReleaseQueueingEnabled
+FIELD HeroController HeroController::_instance
+FIELD System.Single HeroController::PreventCastByDialogueEndDuration
+FIELD System.Single HeroController::preventCastByDialogueEndTimer
+FIELD UnityEngine.Vector2 HeroController::oldPos
+PROP System.Single HeroController::fallTimer()
+PROP GeoCounter HeroController::geoCounter()
+PROP PlayMakerFSM HeroController::proxyFSM()
+PROP TransitionPoint HeroController::sceneEntryGate()
+PROP System.Boolean HeroController::IsDreamReturning()
+PROP HeroController HeroController::instance()
+PROP HeroController HeroController::SilentInstance()
+PROP HeroController HeroController::UnsafeInstance()
+METHOD System.Void HeroController::StartMPDrain(System.Single)
+IL_0000: ldarg.0
+IL_0001: ldarg.1
+IL_0002: callvirt System.Void HeroController::orig_StartMPDrain(System.Single)
+IL_0007: ldarg.0
+IL_0008: ldarg.0
+IL_0009: ldfld System.Single HeroController::focusMP_amount
+IL_000e: call System.Single Modding.ModHooks::OnFocusCost()
+IL_0013: mul
+IL_0014: stfld System.Single HeroController::focusMP_amount
+IL_0019: ret
+METHOD System.Void HeroController::CharmUpdate()
+IL_0000: ldarg.0
+IL_0001: callvirt System.Void HeroController::orig_CharmUpdate()
+IL_0006: ldarg.0
+IL_0007: ldfld PlayerData HeroController::playerData
+IL_000c: ldarg.0
+IL_000d: call System.Void Modding.ModHooks::OnCharmUpdate(PlayerData,HeroController)
+IL_0012: ldarg.0
+IL_0013: ldfld PlayerData HeroController::playerData
+IL_0018: callvirt System.Void PlayerData::UpdateBlueHealth()
+IL_001d: ret
+TYPE PlayerData base=System.Object
+FIELD System.String PlayerData::version
+FIELD System.Boolean PlayerData::awardAllAchievements
+FIELD System.Int32 PlayerData::profileID
+FIELD System.Single PlayerData::playTime
+FIELD System.Single PlayerData::completionPercent
+FIELD System.Boolean PlayerData::openingCreditsPlayed
+FIELD System.Int32 PlayerData::permadeathMode
+FIELD System.Int32 PlayerData::health
+FIELD System.Int32 PlayerData::maxHealth
+FIELD System.Int32 PlayerData::maxHealthBase
+FIELD System.Int32 PlayerData::healthBlue
+FIELD System.Int32 PlayerData::joniHealthBlue
+FIELD System.Boolean PlayerData::damagedBlue
+FIELD System.Int32 PlayerData::heartPieces
+FIELD System.Boolean PlayerData::heartPieceCollected
+FIELD System.Int32 PlayerData::maxHealthCap
+FIELD System.Boolean PlayerData::heartPieceMax
+FIELD System.Int32 PlayerData::prevHealth
+FIELD System.Int32 PlayerData::blockerHits
+FIELD System.Boolean PlayerData::firstGeo
+FIELD System.Int32 PlayerData::geo
+FIELD System.Int32 PlayerData::maxMP
+FIELD System.Int32 PlayerData::MPCharge
+FIELD System.Int32 PlayerData::MPReserve
+FIELD System.Int32 PlayerData::MPReserveMax
+FIELD System.Boolean PlayerData::soulLimited
+FIELD System.Int32 PlayerData::vesselFragments
+FIELD System.Boolean PlayerData::vesselFragmentCollected
+FIELD System.Int32 PlayerData::MPReserveCap
+FIELD System.Boolean PlayerData::vesselFragmentMax
+FIELD System.Int32 PlayerData::focusMP_amount
+FIELD System.Boolean PlayerData::atBench
+FIELD System.String PlayerData::respawnScene
+FIELD GlobalEnums.MapZone PlayerData::mapZone
+FIELD System.String PlayerData::respawnMarkerName
+FIELD System.Int32 PlayerData::respawnType
+FIELD System.Boolean PlayerData::respawnFacingRight
+FIELD UnityEngine.Vector3 PlayerData::hazardRespawnLocation
+FIELD System.Boolean PlayerData::hazardRespawnFacingRight
+FIELD System.String PlayerData::shadeScene
+FIELD System.String PlayerData::shadeMapZone
+FIELD System.Single PlayerData::shadePositionX
+FIELD System.Single PlayerData::shadePositionY
+FIELD System.Int32 PlayerData::shadeHealth
+FIELD System.Int32 PlayerData::shadeMP
+FIELD System.Int32 PlayerData::shadeFireballLevel
+FIELD System.Int32 PlayerData::shadeQuakeLevel
+FIELD System.Int32 PlayerData::shadeScreamLevel
+FIELD System.Int32 PlayerData::shadeSpecialType
+FIELD UnityEngine.Vector3 PlayerData::shadeMapPos
+FIELD UnityEngine.Vector3 PlayerData::dreamgateMapPos
+FIELD System.Int32 PlayerData::geoPool
+FIELD System.Int32 PlayerData::nailDamage
+FIELD System.Int32 PlayerData::nailRange
+FIELD System.Int32 PlayerData::beamDamage
+FIELD System.Boolean PlayerData::canDash
+FIELD System.Boolean PlayerData::canBackDash
+FIELD System.Boolean PlayerData::canWallJump
+FIELD System.Boolean PlayerData::canSuperDash
+FIELD System.Boolean PlayerData::canShadowDash
+FIELD System.Boolean PlayerData::hasSpell
+FIELD System.Int32 PlayerData::fireballLevel
+FIELD System.Int32 PlayerData::quakeLevel
+FIELD System.Int32 PlayerData::screamLevel
+FIELD System.Boolean PlayerData::hasNailArt
+FIELD System.Boolean PlayerData::hasCyclone
+FIELD System.Boolean PlayerData::hasDashSlash
+FIELD System.Boolean PlayerData::hasUpwardSlash
+FIELD System.Boolean PlayerData::hasAllNailArts
+FIELD System.Boolean PlayerData::hasDreamNail
+FIELD System.Boolean PlayerData::hasDreamGate
+FIELD System.Boolean PlayerData::dreamNailUpgraded
+FIELD System.Int32 PlayerData::dreamOrbs
+FIELD System.Int32 PlayerData::dreamOrbsSpent
+FIELD System.String PlayerData::dreamGateScene
+FIELD System.Single PlayerData::dreamGateX
+FIELD System.Single PlayerData::dreamGateY
+FIELD System.Boolean PlayerData::hasDash
+FIELD System.Boolean PlayerData::hasWalljump
+FIELD System.Boolean PlayerData::hasSuperDash
+FIELD System.Boolean PlayerData::hasShadowDash
+FIELD System.Boolean PlayerData::hasAcidArmour
+FIELD System.Boolean PlayerData::hasDoubleJump
+FIELD System.Boolean PlayerData::hasLantern
+FIELD System.Boolean PlayerData::hasTramPass
+FIELD System.Boolean PlayerData::hasQuill
+FIELD System.Boolean PlayerData::hasCityKey
+FIELD System.Boolean PlayerData::hasSlykey
+FIELD System.Boolean PlayerData::gaveSlykey
+FIELD System.Boolean PlayerData::hasWhiteKey
+FIELD System.Boolean PlayerData::usedWhiteKey
+FIELD System.Boolean PlayerData::hasMenderKey
+FIELD System.Boolean PlayerData::hasWaterwaysKey
+FIELD System.Boolean PlayerData::hasSpaKey
+FIELD System.Boolean PlayerData::hasLoveKey
+FIELD System.Boolean PlayerData::hasKingsBrand
+FIELD System.Boolean PlayerData::hasXunFlower
+FIELD System.Int32 PlayerData::ghostCoins
+FIELD System.Int32 PlayerData::ore
+FIELD System.Boolean PlayerData::foundGhostCoin
+FIELD System.Int32 PlayerData::trinket1
+FIELD System.Boolean PlayerData::foundTrinket1
+FIELD System.Int32 PlayerData::trinket2
+FIELD System.Boolean PlayerData::foundTrinket2
+FIELD System.Int32 PlayerData::trinket3
+FIELD System.Boolean PlayerData::foundTrinket3
+FIELD System.Int32 PlayerData::trinket4
+FIELD System.Boolean PlayerData::foundTrinket4
+FIELD System.Boolean PlayerData::noTrinket1
+FIELD System.Boolean PlayerData::noTrinket2
+FIELD System.Boolean PlayerData::noTrinket3
+FIELD System.Boolean PlayerData::noTrinket4
+FIELD System.Int32 PlayerData::soldTrinket1
+FIELD System.Int32 PlayerData::soldTrinket2
+FIELD System.Int32 PlayerData::soldTrinket3
+FIELD System.Int32 PlayerData::soldTrinket4
+FIELD System.Int32 PlayerData::simpleKeys
+FIELD System.Int32 PlayerData::rancidEggs
+FIELD System.Boolean PlayerData::notchShroomOgres
+FIELD System.Boolean PlayerData::notchFogCanyon
+FIELD System.Boolean PlayerData::gotLurkerKey
+FIELD System.Single PlayerData::gMap_doorX
+FIELD System.Single PlayerData::gMap_doorY
+FIELD System.String PlayerData::gMap_doorScene
+FIELD System.String PlayerData::gMap_doorMapZone
+FIELD System.Single PlayerData::gMap_doorOriginOffsetX
+FIELD System.Single PlayerData::gMap_doorOriginOffsetY
+FIELD System.Single PlayerData::gMap_doorSceneWidth
+FIELD System.Single PlayerData::gMap_doorSceneHeight
+FIELD System.Int32 PlayerData::guardiansDefeated
+FIELD System.Boolean PlayerData::lurienDefeated
+FIELD System.Boolean PlayerData::hegemolDefeated
+FIELD System.Boolean PlayerData::monomonDefeated
+FIELD System.Boolean PlayerData::maskBrokenLurien
+FIELD System.Boolean PlayerData::maskBrokenHegemol
+FIELD System.Boolean PlayerData::maskBrokenMonomon
+FIELD System.Int32 PlayerData::maskToBreak
+FIELD System.Int32 PlayerData::elderbug
+FIELD System.Boolean PlayerData::metElderbug
+FIELD System.Boolean PlayerData::elderbugReintro
+FIELD System.Int32 PlayerData::elderbugHistory
+FIELD System.Boolean PlayerData::elderbugHistory1
+FIELD System.Boolean PlayerData::elderbugHistory2
+FIELD System.Boolean PlayerData::elderbugHistory3
+FIELD System.Boolean PlayerData::elderbugSpeechSly
+FIELD System.Boolean PlayerData::elderbugSpeechStation
+FIELD System.Boolean PlayerData::elderbugSpeechEggTemple
+FIELD System.Boolean PlayerData::elderbugSpeechMapShop
+FIELD System.Boolean PlayerData::elderbugSpeechBretta
+FIELD System.Boolean PlayerData::elderbugSpeechJiji
+FIELD System.Boolean PlayerData::elderbugSpeechMinesLift
+FIELD System.Boolean PlayerData::elderbugSpeechKingsPass
+FIELD System.Boolean PlayerData::elderbugSpeechInfectedCrossroads
+FIELD System.Boolean PlayerData::elderbugSpeechFinalBossDoor
+FIELD System.Boolean PlayerData::elderbugRequestedFlower
+FIELD System.Boolean PlayerData::elderbugGaveFlower
+FIELD System.Boolean PlayerData::elderbugFirstCall
+FIELD System.Boolean PlayerData::metQuirrel
+FIELD System.Int32 PlayerData::quirrelEggTemple
+FIELD System.Int32 PlayerData::quirrelSlugShrine
+FIELD System.Int32 PlayerData::quirrelRuins
+FIELD System.Int32 PlayerData::quirrelMines
+FIELD System.Boolean PlayerData::quirrelLeftStation
+FIELD System.Boolean PlayerData::quirrelLeftEggTemple
+FIELD System.Boolean PlayerData::quirrelCityEncountered
+FIELD System.Boolean PlayerData::quirrelCityLeft
+FIELD System.Boolean PlayerData::quirrelMinesEncountered
+FIELD System.Boolean PlayerData::quirrelMinesLeft
+FIELD System.Boolean PlayerData::quirrelMantisEncountered
+FIELD System.Boolean PlayerData::enteredMantisLordArea
+FIELD System.Boolean PlayerData::visitedDeepnestSpa
+FIELD System.Boolean PlayerData::quirrelSpaReady
+FIELD System.Boolean PlayerData::quirrelSpaEncountered
+FIELD System.Boolean PlayerData::quirrelArchiveEncountered
+FIELD System.Boolean PlayerData::quirrelEpilogueCompleted
+FIELD System.Boolean PlayerData::metRelicDealer
+FIELD System.Boolean PlayerData::metRelicDealerShop
+FIELD System.Boolean PlayerData::marmOutside
+FIELD System.Boolean PlayerData::marmOutsideConvo
+FIELD System.Boolean PlayerData::marmConvo1
+FIELD System.Boolean PlayerData::marmConvo2
+FIELD System.Boolean PlayerData::marmConvo3
+FIELD System.Boolean PlayerData::marmConvoNailsmith
+FIELD System.Int32 PlayerData::cornifer
+FIELD System.Boolean PlayerData::metCornifer
+FIELD System.Boolean PlayerData::corniferIntroduced
+FIELD System.Boolean PlayerData::corniferAtHome
+FIELD System.Boolean PlayerData::corn_crossroadsEncountered
+FIELD System.Boolean PlayerData::corn_crossroadsLeft
+FIELD System.Boolean PlayerData::corn_greenpathEncountered
+FIELD System.Boolean PlayerData::corn_greenpathLeft
+FIELD System.Boolean PlayerData::corn_fogCanyonEncountered
+FIELD System.Boolean PlayerData::corn_fogCanyonLeft
+FIELD System.Boolean PlayerData::corn_fungalWastesEncountered
+FIELD System.Boolean PlayerData::corn_fungalWastesLeft
+FIELD System.Boolean PlayerData::corn_cityEncountered
+FIELD System.Boolean PlayerData::corn_cityLeft
+FIELD System.Boolean PlayerData::corn_waterwaysEncountered
+FIELD System.Boolean PlayerData::corn_waterwaysLeft
+FIELD System.Boolean PlayerData::corn_minesEncountered
+FIELD System.Boolean PlayerData::corn_minesLeft
+FIELD System.Boolean PlayerData::corn_cliffsEncountered
+FIELD System.Boolean PlayerData::corn_cliffsLeft
+FIELD System.Boolean PlayerData::corn_deepnestEncountered
+FIELD System.Boolean PlayerData::corn_deepnestLeft
+FIELD System.Boolean PlayerData::corn_deepnestMet1
+FIELD System.Boolean PlayerData::corn_deepnestMet2
+FIELD System.Boolean PlayerData::corn_outskirtsEncountered
+FIELD System.Boolean PlayerData::corn_outskirtsLeft
+FIELD System.Boolean PlayerData::corn_royalGardensEncountered
+FIELD System.Boolean PlayerData::corn_royalGardensLeft
+FIELD System.Boolean PlayerData::corn_abyssEncountered
+FIELD System.Boolean PlayerData::corn_abyssLeft
+FIELD System.Boolean PlayerData::metIselda
+FIELD System.Boolean PlayerData::iseldaCorniferHomeConvo
+FIELD System.Boolean PlayerData::iseldaConvo1
+FIELD System.Boolean PlayerData::brettaRescued
+FIELD System.Int32 PlayerData::brettaPosition
+FIELD System.Int32 PlayerData::brettaState
+FIELD System.Boolean PlayerData::brettaSeenBench
+FIELD System.Boolean PlayerData::brettaSeenBed
+FIELD System.Boolean PlayerData::brettaSeenBenchDiary
+FIELD System.Boolean PlayerData::brettaSeenBedDiary
+FIELD System.Boolean PlayerData::brettaLeftTown
+FIELD System.Boolean PlayerData::slyRescued
+FIELD System.Boolean PlayerData::slyBeta
+FIELD System.Boolean PlayerData::metSlyShop
+FIELD System.Boolean PlayerData::gotSlyCharm
+FIELD System.Boolean PlayerData::slyShellFrag1
+FIELD System.Boolean PlayerData::slyShellFrag2
+FIELD System.Boolean PlayerData::slyShellFrag3
+FIELD System.Boolean PlayerData::slyShellFrag4
+FIELD System.Boolean PlayerData::slyVesselFrag1
+FIELD System.Boolean PlayerData::slyVesselFrag2
+FIELD System.Boolean PlayerData::slyVesselFrag3
+FIELD System.Boolean PlayerData::slyVesselFrag4
+FIELD System.Boolean PlayerData::slyNotch1
+FIELD System.Boolean PlayerData::slyNotch2
+FIELD System.Boolean PlayerData::slySimpleKey
+FIELD System.Boolean PlayerData::slyRancidEgg
+FIELD System.Boolean PlayerData::slyConvoNailArt
+FIELD System.Boolean PlayerData::slyConvoMapper
+FIELD System.Boolean PlayerData::slyConvoNailHoned
+FIELD System.Boolean PlayerData::jijiDoorUnlocked
+FIELD System.Boolean PlayerData::jijiMet
+FIELD System.Boolean PlayerData::jijiShadeOffered
+FIELD System.Boolean PlayerData::jijiShadeCharmConvo
+FIELD System.Boolean PlayerData::metJinn
+FIELD System.Boolean PlayerData::jinnConvo1
+FIELD System.Boolean PlayerData::jinnConvo2
+FIELD System.Boolean PlayerData::jinnConvo3
+FIELD System.Boolean PlayerData::jinnConvoKingBrand
+FIELD System.Boolean PlayerData::jinnConvoShadeCharm
+FIELD System.Int32 PlayerData::jinnEggsSold
+FIELD System.Int32 PlayerData::zote
+FIELD System.Boolean PlayerData::zoteRescuedBuzzer
+FIELD System.Boolean PlayerData::zoteDead
+FIELD System.Int32 PlayerData::zoteDeathPos
+FIELD System.Boolean PlayerData::zoteSpokenCity
+FIELD System.Boolean PlayerData::zoteLeftCity
+FIELD System.Boolean PlayerData::zoteTrappedDeepnest
+FIELD System.Boolean PlayerData::zoteRescuedDeepnest
+FIELD System.Boolean PlayerData::zoteDefeated
+FIELD System.Boolean PlayerData::zoteSpokenColosseum
+FIELD System.Int32 PlayerData::zotePrecept
+FIELD System.Int32 PlayerData::zoteTownConvo
+FIELD System.Int32 PlayerData::shaman
+FIELD System.Boolean PlayerData::shamanScreamConvo
+FIELD System.Boolean PlayerData::shamanQuakeConvo
+FIELD System.Boolean PlayerData::shamanFireball2Convo
+FIELD System.Boolean PlayerData::shamanScream2Convo
+FIELD System.Boolean PlayerData::shamanQuake2Convo
+FIELD System.Boolean PlayerData::metMiner
+FIELD System.Int32 PlayerData::miner
+FIELD System.Int32 PlayerData::minerEarly
+FIELD System.Int32 PlayerData::hornetGreenpath
+FIELD System.Int32 PlayerData::hornetFung
+FIELD System.Boolean PlayerData::hornet_f19
+FIELD System.Boolean PlayerData::hornetFountainEncounter
+FIELD System.Boolean PlayerData::hornetCityBridge_ready
+FIELD System.Boolean PlayerData::hornetCityBridge_completed
+FIELD System.Boolean PlayerData::hornetAbyssEncounter
+FIELD System.Boolean PlayerData::hornetDenEncounter
+FIELD System.Boolean PlayerData::metMoth
+FIELD System.Boolean PlayerData::ignoredMoth
+FIELD System.Boolean PlayerData::gladeDoorOpened
+FIELD System.Boolean PlayerData::mothDeparted
+FIELD System.Boolean PlayerData::completedRGDreamPlant
+FIELD System.Boolean PlayerData::dreamReward1
+FIELD System.Boolean PlayerData::dreamReward2
+FIELD System.Boolean PlayerData::dreamReward3
+FIELD System.Boolean PlayerData::dreamReward4
+FIELD System.Boolean PlayerData::dreamReward5
+FIELD System.Boolean PlayerData::dreamReward5b
+FIELD System.Boolean PlayerData::dreamReward6
+FIELD System.Boolean PlayerData::dreamReward7
+FIELD System.Boolean PlayerData::dreamReward8
+FIELD System.Boolean PlayerData::dreamReward9
+FIELD System.Boolean PlayerData::dreamMothConvo1
+FIELD System.Boolean PlayerData::bankerAccountPurchased
+FIELD System.Boolean PlayerData::metBanker
+FIELD System.Int32 PlayerData::bankerBalance
+FIELD System.Boolean PlayerData::bankerDeclined
+FIELD System.Boolean PlayerData::bankerTheftCheck
+FIELD System.Int32 PlayerData::bankerTheft
+FIELD System.Boolean PlayerData::bankerSpaMet
+FIELD System.Boolean PlayerData::metGiraffe
+FIELD System.Boolean PlayerData::metCharmSlug
+FIELD System.Boolean PlayerData::salubraNotch1
+FIELD System.Boolean PlayerData::salubraNotch2
+FIELD System.Boolean PlayerData::salubraNotch3
+FIELD System.Boolean PlayerData::salubraNotch4
+FIELD System.Boolean PlayerData::salubraBlessing
+FIELD System.Boolean PlayerData::salubraConvoCombo
+FIELD System.Boolean PlayerData::salubraConvoOvercharm
+FIELD System.Boolean PlayerData::salubraConvoTruth
+FIELD System.Boolean PlayerData::cultistTransformed
+FIELD System.Boolean PlayerData::metNailsmith
+FIELD System.Int32 PlayerData::nailSmithUpgrades
+FIELD System.Boolean PlayerData::honedNail
+FIELD System.Boolean PlayerData::nailsmithCliff
+FIELD System.Boolean PlayerData::nailsmithKilled
+FIELD System.Boolean PlayerData::nailsmithSpared
+FIELD System.Boolean PlayerData::nailsmithKillSpeech
+FIELD System.Boolean PlayerData::nailsmithSheo
+FIELD System.Boolean PlayerData::nailsmithConvoArt
+FIELD System.Boolean PlayerData::metNailmasterMato
+FIELD System.Boolean PlayerData::metNailmasterSheo
+FIELD System.Boolean PlayerData::metNailmasterOro
+FIELD System.Boolean PlayerData::matoConvoSheo
+FIELD System.Boolean PlayerData::matoConvoOro
+FIELD System.Boolean PlayerData::matoConvoSly
+FIELD System.Boolean PlayerData::sheoConvoMato
+FIELD System.Boolean PlayerData::sheoConvoOro
+FIELD System.Boolean PlayerData::sheoConvoSly
+FIELD System.Boolean PlayerData::sheoConvoNailsmith
+FIELD System.Boolean PlayerData::oroConvoSheo
+FIELD System.Boolean PlayerData::oroConvoMato
+FIELD System.Boolean PlayerData::oroConvoSly
+FIELD System.Boolean PlayerData::hunterRoared
+FIELD System.Boolean PlayerData::metHunter
+FIELD System.Boolean PlayerData::hunterRewardOffered
+FIELD System.Boolean PlayerData::huntersMarkOffered
+FIELD System.Boolean PlayerData::hasHuntersMark
+FIELD System.Boolean PlayerData::metLegEater
+FIELD System.Boolean PlayerData::paidLegEater
+FIELD System.Boolean PlayerData::refusedLegEater
+FIELD System.Boolean PlayerData::legEaterConvo1
+FIELD System.Boolean PlayerData::legEaterConvo2
+FIELD System.Boolean PlayerData::legEaterConvo3
+FIELD System.Boolean PlayerData::legEaterBrokenConvo
+FIELD System.Boolean PlayerData::legEaterDungConvo
+FIELD System.Boolean PlayerData::legEaterInfectedCrossroadConvo
+FIELD System.Boolean PlayerData::legEaterBoughtConvo
+FIELD System.Boolean PlayerData::legEaterGoldConvo
+FIELD System.Boolean PlayerData::legEaterLeft
+FIELD System.Boolean PlayerData::tukMet
+FIELD System.Int32 PlayerData::tukEggPrice
+FIELD System.Boolean PlayerData::tukDungEgg
+FIELD System.Boolean PlayerData::metEmilitia
+FIELD System.Boolean PlayerData::emilitiaKingsBrandConvo
+FIELD System.Boolean PlayerData::metCloth
+FIELD System.Boolean PlayerData::clothEnteredTramRoom
+FIELD System.Boolean PlayerData::savedCloth
+FIELD System.Boolean PlayerData::clothEncounteredQueensGarden
+FIELD System.Boolean PlayerData::clothKilled
+FIELD System.Boolean PlayerData::clothInTown
+FIELD System.Boolean PlayerData::clothLeftTown
+FIELD System.Boolean PlayerData::clothGhostSpoken
+FIELD System.Boolean PlayerData::bigCatHitTail
+FIELD System.Boolean PlayerData::bigCatHitTailConvo
+FIELD System.Boolean PlayerData::bigCatMeet
+FIELD System.Boolean PlayerData::bigCatTalk1
+FIELD System.Boolean PlayerData::bigCatTalk2
+FIELD System.Boolean PlayerData::bigCatTalk3
+FIELD System.Boolean PlayerData::bigCatKingsBrandConvo
+FIELD System.Boolean PlayerData::bigCatShadeConvo
+FIELD System.Boolean PlayerData::tisoEncounteredTown
+FIELD System.Boolean PlayerData::tisoEncounteredBench
+FIELD System.Boolean PlayerData::tisoEncounteredLake
+FIELD System.Boolean PlayerData::tisoEncounteredColosseum
+FIELD System.Boolean PlayerData::tisoDead
+FIELD System.Boolean PlayerData::tisoShieldConvo
+FIELD System.Int32 PlayerData::mossCultist
+FIELD System.Boolean PlayerData::maskmakerMet
+FIELD System.Boolean PlayerData::maskmakerConvo1
+FIELD System.Boolean PlayerData::maskmakerConvo2
+FIELD System.Boolean PlayerData::maskmakerUnmasked1
+FIELD System.Boolean PlayerData::maskmakerUnmasked2
+FIELD System.Boolean PlayerData::maskmakerShadowDash
+FIELD System.Boolean PlayerData::maskmakerKingsBrand
+FIELD System.Boolean PlayerData::dungDefenderConvo1
+FIELD System.Boolean PlayerData::dungDefenderConvo2
+FIELD System.Boolean PlayerData::dungDefenderConvo3
+FIELD System.Boolean PlayerData::dungDefenderCharmConvo
+FIELD System.Boolean PlayerData::dungDefenderIsmaConvo
+FIELD System.Boolean PlayerData::dungDefenderAwoken
+FIELD System.Boolean PlayerData::dungDefenderLeft
+FIELD System.Boolean PlayerData::dungDefenderAwakeConvo
+FIELD System.Boolean PlayerData::midwifeMet
+FIELD System.Boolean PlayerData::midwifeConvo1
+FIELD System.Boolean PlayerData::midwifeConvo2
+FIELD System.Boolean PlayerData::metQueen
+FIELD System.Boolean PlayerData::queenTalk1
+FIELD System.Boolean PlayerData::queenTalk2
+FIELD System.Boolean PlayerData::queenDung1
+FIELD System.Boolean PlayerData::queenDung2
+FIELD System.Boolean PlayerData::queenHornet
+FIELD System.Boolean PlayerData::queenTalkExtra
+FIELD System.Boolean PlayerData::gotQueenFragment
+FIELD System.Boolean PlayerData::queenConvo_grimm1
+FIELD System.Boolean PlayerData::queenConvo_grimm2
+FIELD System.Boolean PlayerData::gotKingFragment
+FIELD System.Boolean PlayerData::metXun
+FIELD System.Boolean PlayerData::xunFailedConvo1
+FIELD System.Boolean PlayerData::xunFailedConvo2
+FIELD System.Boolean PlayerData::xunFlowerBroken
+FIELD System.Int32 PlayerData::xunFlowerBrokeTimes
+FIELD System.Boolean PlayerData::xunFlowerGiven
+FIELD System.Boolean PlayerData::xunRewardGiven
+FIELD System.Int32 PlayerData::menderState
+FIELD System.Boolean PlayerData::menderSignBroken
+FIELD System.Boolean PlayerData::allBelieverTabletsDestroyed
+FIELD System.Int32 PlayerData::mrMushroomState
+FIELD System.Boolean PlayerData::openedMapperShop
+FIELD System.Boolean PlayerData::openedSlyShop
+FIELD System.Boolean PlayerData::metStag
+FIELD System.Boolean PlayerData::travelling
+FIELD System.Int32 PlayerData::stagPosition
+FIELD System.Int32 PlayerData::stationsOpened
+FIELD System.Boolean PlayerData::stagConvoTram
+FIELD System.Boolean PlayerData::stagConvoTiso
+FIELD System.Boolean PlayerData::stagRemember1
+FIELD System.Boolean PlayerData::stagRemember2
+FIELD System.Boolean PlayerData::stagRemember3
+FIELD System.Boolean PlayerData::stagEggInspected
+FIELD System.Boolean PlayerData::stagHopeConvo
+FIELD System.String PlayerData::nextScene
+FIELD System.Boolean PlayerData::littleFoolMet
+FIELD System.Boolean PlayerData::ranAway
+FIELD System.Boolean PlayerData::seenColosseumTitle
+FIELD System.Boolean PlayerData::colosseumBronzeOpened
+FIELD System.Boolean PlayerData::colosseumBronzeCompleted
+FIELD System.Boolean PlayerData::colosseumSilverOpened
+FIELD System.Boolean PlayerData::colosseumSilverCompleted
+FIELD System.Boolean PlayerData::colosseumGoldOpened
+FIELD System.Boolean PlayerData::colosseumGoldCompleted
+FIELD System.Boolean PlayerData::openedTown
+FIELD System.Boolean PlayerData::openedTownBuilding
+FIELD System.Boolean PlayerData::openedCrossroads
+FIELD System.Boolean PlayerData::openedGreenpath
+FIELD System.Boolean PlayerData::openedRuins1
+FIELD System.Boolean PlayerData::openedRuins2
+FIELD System.Boolean PlayerData::openedFungalWastes
+FIELD System.Boolean PlayerData::openedRoyalGardens
+FIELD System.Boolean PlayerData::openedRestingGrounds
+FIELD System.Boolean PlayerData::openedDeepnest
+FIELD System.Boolean PlayerData::openedStagNest
+FIELD System.Boolean PlayerData::openedHiddenStation
+FIELD System.String PlayerData::dreamReturnScene
+FIELD System.Int32 PlayerData::charmSlots
+FIELD System.Int32 PlayerData::charmSlotsFilled
+FIELD System.Boolean PlayerData::hasCharm
+FIELD System.Collections.Generic.List`1<System.Int32> PlayerData::equippedCharms
+FIELD System.Boolean PlayerData::charmBenchMsg
+FIELD System.Int32 PlayerData::charmsOwned
+FIELD System.Boolean PlayerData::canOvercharm
+FIELD System.Boolean PlayerData::overcharmed
+FIELD System.Boolean PlayerData::gotCharm_1
+FIELD System.Boolean PlayerData::equippedCharm_1
+FIELD System.Int32 PlayerData::charmCost_1
+FIELD System.Boolean PlayerData::newCharm_1
+FIELD System.Boolean PlayerData::gotCharm_2
+FIELD System.Boolean PlayerData::equippedCharm_2
+FIELD System.Int32 PlayerData::charmCost_2
+FIELD System.Boolean PlayerData::newCharm_2
+FIELD System.Boolean PlayerData::gotCharm_3
+FIELD System.Boolean PlayerData::equippedCharm_3
+FIELD System.Int32 PlayerData::charmCost_3
+FIELD System.Boolean PlayerData::newCharm_3
+FIELD System.Boolean PlayerData::gotCharm_4
+FIELD System.Boolean PlayerData::equippedCharm_4
+FIELD System.Int32 PlayerData::charmCost_4
+FIELD System.Boolean PlayerData::newCharm_4
+FIELD System.Boolean PlayerData::gotCharm_5
+FIELD System.Boolean PlayerData::equippedCharm_5
+FIELD System.Int32 PlayerData::charmCost_5
+FIELD System.Boolean PlayerData::newCharm_5
+FIELD System.Boolean PlayerData::gotCharm_6
+FIELD System.Boolean PlayerData::equippedCharm_6
+FIELD System.Int32 PlayerData::charmCost_6
+FIELD System.Boolean PlayerData::newCharm_6
+FIELD System.Boolean PlayerData::gotCharm_7
+FIELD System.Boolean PlayerData::equippedCharm_7
+FIELD System.Int32 PlayerData::charmCost_7
+FIELD System.Boolean PlayerData::newCharm_7
+FIELD System.Boolean PlayerData::gotCharm_8
+FIELD System.Boolean PlayerData::equippedCharm_8
+FIELD System.Int32 PlayerData::charmCost_8
+FIELD System.Boolean PlayerData::newCharm_8
+FIELD System.Boolean PlayerData::gotCharm_9
+FIELD System.Boolean PlayerData::equippedCharm_9
+FIELD System.Int32 PlayerData::charmCost_9
+FIELD System.Boolean PlayerData::newCharm_9
+FIELD System.Boolean PlayerData::gotCharm_10
+FIELD System.Boolean PlayerData::equippedCharm_10
+FIELD System.Int32 PlayerData::charmCost_10
+FIELD System.Boolean PlayerData::newCharm_10
+FIELD System.Boolean PlayerData::gotCharm_11
+FIELD System.Boolean PlayerData::equippedCharm_11
+FIELD System.Int32 PlayerData::charmCost_11
+FIELD System.Boolean PlayerData::newCharm_11
+FIELD System.Boolean PlayerData::gotCharm_12
+FIELD System.Boolean PlayerData::equippedCharm_12
+FIELD System.Int32 PlayerData::charmCost_12
+FIELD System.Boolean PlayerData::newCharm_12
+FIELD System.Boolean PlayerData::gotCharm_13
+FIELD System.Boolean PlayerData::equippedCharm_13
+FIELD System.Int32 PlayerData::charmCost_13
+FIELD System.Boolean PlayerData::newCharm_13
+FIELD System.Boolean PlayerData::gotCharm_14
+FIELD System.Boolean PlayerData::equippedCharm_14
+FIELD System.Int32 PlayerData::charmCost_14
+FIELD System.Boolean PlayerData::newCharm_14
+FIELD System.Boolean PlayerData::gotCharm_15
+FIELD System.Boolean PlayerData::equippedCharm_15
+FIELD System.Int32 PlayerData::charmCost_15
+FIELD System.Boolean PlayerData::newCharm_15
+FIELD System.Boolean PlayerData::gotCharm_16
+FIELD System.Boolean PlayerData::equippedCharm_16
+FIELD System.Int32 PlayerData::charmCost_16
+FIELD System.Boolean PlayerData::newCharm_16
+FIELD System.Boolean PlayerData::gotCharm_17
+FIELD System.Boolean PlayerData::equippedCharm_17
+FIELD System.Int32 PlayerData::charmCost_17
+FIELD System.Boolean PlayerData::newCharm_17
+FIELD System.Boolean PlayerData::gotCharm_18
+FIELD System.Boolean PlayerData::equippedCharm_18
+FIELD System.Int32 PlayerData::charmCost_18
+FIELD System.Boolean PlayerData::newCharm_18
+FIELD System.Boolean PlayerData::gotCharm_19
+FIELD System.Boolean PlayerData::equippedCharm_19
+FIELD System.Int32 PlayerData::charmCost_19
+FIELD System.Boolean PlayerData::newCharm_19
+FIELD System.Boolean PlayerData::gotCharm_20
+FIELD System.Boolean PlayerData::equippedCharm_20
+FIELD System.Int32 PlayerData::charmCost_20
+FIELD System.Boolean PlayerData::newCharm_20
+FIELD System.Boolean PlayerData::gotCharm_21
+FIELD System.Boolean PlayerData::equippedCharm_21
+FIELD System.Int32 PlayerData::charmCost_21
+FIELD System.Boolean PlayerData::newCharm_21
+FIELD System.Boolean PlayerData::gotCharm_22
+FIELD System.Boolean PlayerData::equippedCharm_22
+FIELD System.Int32 PlayerData::charmCost_22
+FIELD System.Boolean PlayerData::newCharm_22
+FIELD System.Boolean PlayerData::gotCharm_23
+FIELD System.Boolean PlayerData::equippedCharm_23
+FIELD System.Boolean PlayerData::brokenCharm_23
+FIELD System.Int32 PlayerData::charmCost_23
+FIELD System.Boolean PlayerData::newCharm_23
+FIELD System.Boolean PlayerData::gotCharm_24
+FIELD System.Boolean PlayerData::equippedCharm_24
+FIELD System.Boolean PlayerData::brokenCharm_24
+FIELD System.Int32 PlayerData::charmCost_24
+FIELD System.Boolean PlayerData::newCharm_24
+FIELD System.Boolean PlayerData::gotCharm_25
+FIELD System.Boolean PlayerData::equippedCharm_25
+FIELD System.Boolean PlayerData::brokenCharm_25
+FIELD System.Int32 PlayerData::charmCost_25
+FIELD System.Boolean PlayerData::newCharm_25
+FIELD System.Boolean PlayerData::gotCharm_26
+FIELD System.Boolean PlayerData::equippedCharm_26
+FIELD System.Int32 PlayerData::charmCost_26
+FIELD System.Boolean PlayerData::newCharm_26
+FIELD System.Boolean PlayerData::gotCharm_27
+FIELD System.Boolean PlayerData::equippedCharm_27
+FIELD System.Int32 PlayerData::charmCost_27
+FIELD System.Boolean PlayerData::newCharm_27
+FIELD System.Boolean PlayerData::gotCharm_28
+FIELD System.Boolean PlayerData::equippedCharm_28
+FIELD System.Int32 PlayerData::charmCost_28
+FIELD System.Boolean PlayerData::newCharm_28
+FIELD System.Boolean PlayerData::gotCharm_29
+FIELD System.Boolean PlayerData::equippedCharm_29
+FIELD System.Int32 PlayerData::charmCost_29
+FIELD System.Boolean PlayerData::newCharm_29
+FIELD System.Boolean PlayerData::gotCharm_30
+FIELD System.Boolean PlayerData::equippedCharm_30
+FIELD System.Int32 PlayerData::charmCost_30
+FIELD System.Boolean PlayerData::newCharm_30
+FIELD System.Boolean PlayerData::gotCharm_31
+FIELD System.Boolean PlayerData::equippedCharm_31
+FIELD System.Int32 PlayerData::charmCost_31
+FIELD System.Boolean PlayerData::newCharm_31
+FIELD System.Boolean PlayerData::gotCharm_32
+FIELD System.Boolean PlayerData::equippedCharm_32
+FIELD System.Int32 PlayerData::charmCost_32
+FIELD System.Boolean PlayerData::newCharm_32
+FIELD System.Boolean PlayerData::gotCharm_33
+FIELD System.Boolean PlayerData::equippedCharm_33
+FIELD System.Int32 PlayerData::charmCost_33
+FIELD System.Boolean PlayerData::newCharm_33
+FIELD System.Boolean PlayerData::gotCharm_34
+FIELD System.Boolean PlayerData::equippedCharm_34
+FIELD System.Int32 PlayerData::charmCost_34
+FIELD System.Boolean PlayerData::newCharm_34
+FIELD System.Boolean PlayerData::gotCharm_35
+FIELD System.Boolean PlayerData::equippedCharm_35
+FIELD System.Int32 PlayerData::charmCost_35
+FIELD System.Boolean PlayerData::newCharm_35
+FIELD System.Boolean PlayerData::gotCharm_36
+FIELD System.Boolean PlayerData::equippedCharm_36
+FIELD System.Int32 PlayerData::charmCost_36
+FIELD System.Boolean PlayerData::newCharm_36
+FIELD System.Boolean PlayerData::gotCharm_37
+FIELD System.Boolean PlayerData::equippedCharm_37
+FIELD System.Int32 PlayerData::charmCost_37
+FIELD System.Boolean PlayerData::newCharm_37
+FIELD System.Boolean PlayerData::gotCharm_38
+FIELD System.Boolean PlayerData::equippedCharm_38
+FIELD System.Int32 PlayerData::charmCost_38
+FIELD System.Boolean PlayerData::newCharm_38
+FIELD System.Boolean PlayerData::gotCharm_39
+FIELD System.Boolean PlayerData::equippedCharm_39
+FIELD System.Int32 PlayerData::charmCost_39
+FIELD System.Boolean PlayerData::newCharm_39
+FIELD System.Boolean PlayerData::gotCharm_40
+FIELD System.Boolean PlayerData::equippedCharm_40
+FIELD System.Int32 PlayerData::charmCost_40
+FIELD System.Boolean PlayerData::newCharm_40
+FIELD System.Boolean PlayerData::fragileHealth_unbreakable
+FIELD System.Boolean PlayerData::fragileGreed_unbreakable
+FIELD System.Boolean PlayerData::fragileStrength_unbreakable
+FIELD System.Int32 PlayerData::royalCharmState
+FIELD System.Boolean PlayerData::hasJournal
+FIELD System.Int32 PlayerData::lastJournalItem
+FIELD System.Boolean PlayerData::killedDummy
+FIELD System.Int32 PlayerData::killsDummy
+FIELD System.Boolean PlayerData::newDataDummy
+FIELD System.Boolean PlayerData::seenJournalMsg
+FIELD System.Boolean PlayerData::seenHunterMsg
+FIELD System.Boolean PlayerData::fillJournal
+FIELD System.Int32 PlayerData::journalEntriesCompleted
+FIELD System.Int32 PlayerData::journalNotesCompleted
+FIELD System.Int32 PlayerData::journalEntriesTotal
+FIELD System.Boolean PlayerData::killedCrawler
+FIELD System.Int32 PlayerData::killsCrawler
+FIELD System.Boolean PlayerData::newDataCrawler
+FIELD System.Boolean PlayerData::killedBuzzer
+FIELD System.Int32 PlayerData::killsBuzzer
+FIELD System.Boolean PlayerData::newDataBuzzer
+FIELD System.Boolean PlayerData::killedBouncer
+FIELD System.Int32 PlayerData::killsBouncer
+FIELD System.Boolean PlayerData::newDataBouncer
+FIELD System.Boolean PlayerData::killedClimber
+FIELD System.Int32 PlayerData::killsClimber
+FIELD System.Boolean PlayerData::newDataClimber
+FIELD System.Boolean PlayerData::killedHopper
+FIELD System.Int32 PlayerData::killsHopper
+FIELD System.Boolean PlayerData::newDataHopper
+FIELD System.Boolean PlayerData::killedWorm
+FIELD System.Int32 PlayerData::killsWorm
+FIELD System.Boolean PlayerData::newDataWorm
+FIELD System.Boolean PlayerData::killedSpitter
+FIELD System.Int32 PlayerData::killsSpitter
+FIELD System.Boolean PlayerData::newDataSpitter
+FIELD System.Boolean PlayerData::killedHatcher
+FIELD System.Int32 PlayerData::killsHatcher
+FIELD System.Boolean PlayerData::newDataHatcher
+FIELD System.Boolean PlayerData::killedHatchling
+FIELD System.Int32 PlayerData::killsHatchling
+FIELD System.Boolean PlayerData::newDataHatchling
+FIELD System.Boolean PlayerData::killedZombieRunner
+FIELD System.Int32 PlayerData::killsZombieRunner
+FIELD System.Boolean PlayerData::newDataZombieRunner
+FIELD System.Boolean PlayerData::killedZombieHornhead
+FIELD System.Int32 PlayerData::killsZombieHornhead
+FIELD System.Boolean PlayerData::newDataZombieHornhead
+FIELD System.Boolean PlayerData::killedZombieLeaper
+FIELD System.Int32 PlayerData::killsZombieLeaper
+FIELD System.Boolean PlayerData::newDataZombieLeaper
+FIELD System.Boolean PlayerData::killedZombieBarger
+FIELD System.Int32 PlayerData::killsZombieBarger
+FIELD System.Boolean PlayerData::newDataZombieBarger
+FIELD System.Boolean PlayerData::killedZombieShield
+FIELD System.Int32 PlayerData::killsZombieShield
+FIELD System.Boolean PlayerData::newDataZombieShield
+FIELD System.Boolean PlayerData::killedZombieGuard
+FIELD System.Int32 PlayerData::killsZombieGuard
+FIELD System.Boolean PlayerData::newDataZombieGuard
+FIELD System.Boolean PlayerData::killedBigBuzzer
+FIELD System.Int32 PlayerData::killsBigBuzzer
+FIELD System.Boolean PlayerData::newDataBigBuzzer
+FIELD System.Boolean PlayerData::killedBigFly
+FIELD System.Int32 PlayerData::killsBigFly
+FIELD System.Boolean PlayerData::newDataBigFly
+FIELD System.Boolean PlayerData::killedMawlek
+FIELD System.Int32 PlayerData::killsMawlek
+FIELD System.Boolean PlayerData::newDataMawlek
+FIELD System.Boolean PlayerData::killedFalseKnight
+FIELD System.Int32 PlayerData::killsFalseKnight
+FIELD System.Boolean PlayerData::newDataFalseKnight
+FIELD System.Boolean PlayerData::killedRoller
+FIELD System.Int32 PlayerData::killsRoller
+FIELD System.Boolean PlayerData::newDataRoller
+FIELD System.Boolean PlayerData::killedBlocker
+FIELD System.Int32 PlayerData::killsBlocker
+FIELD System.Boolean PlayerData::newDataBlocker
+FIELD System.Boolean PlayerData::killedPrayerSlug
+FIELD System.Int32 PlayerData::killsPrayerSlug
+FIELD System.Boolean PlayerData::newDataPrayerSlug
+FIELD System.Boolean PlayerData::killedMenderBug
+FIELD System.Int32 PlayerData::killsMenderBug
+FIELD System.Boolean PlayerData::newDataMenderBug
+FIELD System.Boolean PlayerData::killedMossmanRunner
+FIELD System.Int32 PlayerData::killsMossmanRunner
+FIELD System.Boolean PlayerData::newDataMossmanRunner
+FIELD System.Boolean PlayerData::killedMossmanShaker
+FIELD System.Int32 PlayerData::killsMossmanShaker
+FIELD System.Boolean PlayerData::newDataMossmanShaker
+FIELD System.Boolean PlayerData::killedMosquito
+FIELD System.Int32 PlayerData::killsMosquito
+FIELD System.Boolean PlayerData::newDataMosquito
+FIELD System.Boolean PlayerData::killedBlobFlyer
+FIELD System.Int32 PlayerData::killsBlobFlyer
+FIELD System.Boolean PlayerData::newDataBlobFlyer
+FIELD System.Boolean PlayerData::killedFungifiedZombie
+FIELD System.Int32 PlayerData::killsFungifiedZombie
+FIELD System.Boolean PlayerData::newDataFungifiedZombie
+FIELD System.Boolean PlayerData::killedPlantShooter
+FIELD System.Int32 PlayerData::killsPlantShooter
+FIELD System.Boolean PlayerData::newDataPlantShooter
+FIELD System.Boolean PlayerData::killedMossCharger
+FIELD System.Int32 PlayerData::killsMossCharger
+FIELD System.Boolean PlayerData::newDataMossCharger
+FIELD System.Boolean PlayerData::killedMegaMossCharger
+FIELD System.Int32 PlayerData::killsMegaMossCharger
+FIELD System.Boolean PlayerData::newDataMegaMossCharger
+FIELD System.Boolean PlayerData::killedSnapperTrap
+FIELD System.Int32 PlayerData::killsSnapperTrap
+FIELD System.Boolean PlayerData::newDataSnapperTrap
+FIELD System.Boolean PlayerData::killedMossKnight
+FIELD System.Int32 PlayerData::killsMossKnight
+FIELD System.Boolean PlayerData::newDataMossKnight
+FIELD System.Boolean PlayerData::killedGrassHopper
+FIELD System.Int32 PlayerData::killsGrassHopper
+FIELD System.Boolean PlayerData::newDataGrassHopper
+FIELD System.Boolean PlayerData::killedAcidFlyer
+FIELD System.Int32 PlayerData::killsAcidFlyer
+FIELD System.Boolean PlayerData::newDataAcidFlyer
+FIELD System.Boolean PlayerData::killedAcidWalker
+FIELD System.Int32 PlayerData::killsAcidWalker
+FIELD System.Boolean PlayerData::newDataAcidWalker
+FIELD System.Boolean PlayerData::killedMossFlyer
+FIELD System.Int32 PlayerData::killsMossFlyer
+FIELD System.Boolean PlayerData::newDataMossFlyer
+FIELD System.Boolean PlayerData::killedMossKnightFat
+FIELD System.Int32 PlayerData::killsMossKnightFat
+FIELD System.Boolean PlayerData::newDataMossKnightFat
+FIELD System.Boolean PlayerData::killedMossWalker
+FIELD System.Int32 PlayerData::killsMossWalker
+FIELD System.Boolean PlayerData::newDataMossWalker
+FIELD System.Boolean PlayerData::killedInfectedKnight
+FIELD System.Int32 PlayerData::killsInfectedKnight
+FIELD System.Boolean PlayerData::newDataInfectedKnight
+FIELD System.Boolean PlayerData::killedLazyFlyer
+FIELD System.Int32 PlayerData::killsLazyFlyer
+FIELD System.Boolean PlayerData::newDataLazyFlyer
+FIELD System.Boolean PlayerData::killedZapBug
+FIELD System.Int32 PlayerData::killsZapBug
+FIELD System.Boolean PlayerData::newDataZapBug
+FIELD System.Boolean PlayerData::killedJellyfish
+FIELD System.Int32 PlayerData::killsJellyfish
+FIELD System.Boolean PlayerData::newDataJellyfish
+FIELD System.Boolean PlayerData::killedJellyCrawler
+FIELD System.Int32 PlayerData::killsJellyCrawler
+FIELD System.Boolean PlayerData::newDataJellyCrawler
+FIELD System.Boolean PlayerData::killedMegaJellyfish
+FIELD System.Int32 PlayerData::killsMegaJellyfish
+FIELD System.Boolean PlayerData::newDataMegaJellyfish
+FIELD System.Boolean PlayerData::killedFungoonBaby
+FIELD System.Int32 PlayerData::killsFungoonBaby
+FIELD System.Boolean PlayerData::newDataFungoonBaby
+FIELD System.Boolean PlayerData::killedMushroomTurret
+FIELD System.Int32 PlayerData::killsMushroomTurret
+FIELD System.Boolean PlayerData::newDataMushroomTurret
+FIELD System.Boolean PlayerData::killedMantis
+FIELD System.Int32 PlayerData::killsMantis
+FIELD System.Boolean PlayerData::newDataMantis
+FIELD System.Boolean PlayerData::killedMushroomRoller
+FIELD System.Int32 PlayerData::killsMushroomRoller
+FIELD System.Boolean PlayerData::newDataMushroomRoller
+FIELD System.Boolean PlayerData::killedMushroomBrawler
+FIELD System.Int32 PlayerData::killsMushroomBrawler
+FIELD System.Boolean PlayerData::newDataMushroomBrawler
+FIELD System.Boolean PlayerData::killedMushroomBaby
+FIELD System.Int32 PlayerData::killsMushroomBaby
+FIELD System.Boolean PlayerData::newDataMushroomBaby
+FIELD System.Boolean PlayerData::killedMantisFlyerChild
+FIELD System.Int32 PlayerData::killsMantisFlyerChild
+FIELD System.Boolean PlayerData::newDataMantisFlyerChild
+FIELD System.Boolean PlayerData::killedFungusFlyer
+FIELD System.Int32 PlayerData::killsFungusFlyer
+FIELD System.Boolean PlayerData::newDataFungusFlyer
+FIELD System.Boolean PlayerData::killedFungCrawler
+FIELD System.Int32 PlayerData::killsFungCrawler
+FIELD System.Boolean PlayerData::newDataFungCrawler
+FIELD System.Boolean PlayerData::killedMantisLord
+FIELD System.Int32 PlayerData::killsMantisLord
+FIELD System.Boolean PlayerData::newDataMantisLord
+FIELD System.Boolean PlayerData::killedBlackKnight
+FIELD System.Int32 PlayerData::killsBlackKnight
+FIELD System.Boolean PlayerData::newDataBlackKnight
+FIELD System.Boolean PlayerData::killedElectricMage
+FIELD System.Int32 PlayerData::killsElectricMage
+FIELD System.Boolean PlayerData::newDataElectricMage
+FIELD System.Boolean PlayerData::killedMage
+FIELD System.Int32 PlayerData::killsMage
+FIELD System.Boolean PlayerData::newDataMage
+FIELD System.Boolean PlayerData::killedMageKnight
+FIELD System.Int32 PlayerData::killsMageKnight
+FIELD System.Boolean PlayerData::newDataMageKnight
+FIELD System.Boolean PlayerData::killedRoyalDandy
+FIELD System.Int32 PlayerData::killsRoyalDandy
+FIELD System.Boolean PlayerData::newDataRoyalDandy
+FIELD System.Boolean PlayerData::killedRoyalCoward
+FIELD System.Int32 PlayerData::killsRoyalCoward
+FIELD System.Boolean PlayerData::newDataRoyalCoward
+FIELD System.Boolean PlayerData::killedRoyalPlumper
+FIELD System.Int32 PlayerData::killsRoyalPlumper
+FIELD System.Boolean PlayerData::newDataRoyalPlumper
+FIELD System.Boolean PlayerData::killedFlyingSentrySword
+FIELD System.Int32 PlayerData::killsFlyingSentrySword
+FIELD System.Boolean PlayerData::newDataFlyingSentrySword
+FIELD System.Boolean PlayerData::killedFlyingSentryJavelin
+FIELD System.Int32 PlayerData::killsFlyingSentryJavelin
+FIELD System.Boolean PlayerData::newDataFlyingSentryJavelin
+FIELD System.Boolean PlayerData::killedSentry
+FIELD System.Int32 PlayerData::killsSentry
+FIELD System.Boolean PlayerData::newDataSentry
+FIELD System.Boolean PlayerData::killedSentryFat
+FIELD System.Int32 PlayerData::killsSentryFat
+FIELD System.Boolean PlayerData::newDataSentryFat
+FIELD System.Boolean PlayerData::killedMageBlob
+FIELD System.Int32 PlayerData::killsMageBlob
+FIELD System.Boolean PlayerData::newDataMageBlob
+FIELD System.Boolean PlayerData::killedGreatShieldZombie
+FIELD System.Int32 PlayerData::killsGreatShieldZombie
+FIELD System.Boolean PlayerData::newDataGreatShieldZombie
+FIELD System.Boolean PlayerData::killedJarCollector
+FIELD System.Int32 PlayerData::killsJarCollector
+FIELD System.Boolean PlayerData::newDataJarCollector
+FIELD System.Boolean PlayerData::killedMageBalloon
+FIELD System.Int32 PlayerData::killsMageBalloon
+FIELD System.Boolean PlayerData::newDataMageBalloon
+FIELD System.Boolean PlayerData::killedMageLord
+FIELD System.Int32 PlayerData::killsMageLord
+FIELD System.Boolean PlayerData::newDataMageLord
+FIELD System.Boolean PlayerData::killedGorgeousHusk
+FIELD System.Int32 PlayerData::killsGorgeousHusk
+FIELD System.Boolean PlayerData::newDataGorgeousHusk
+FIELD System.Boolean PlayerData::killedFlipHopper
+FIELD System.Int32 PlayerData::killsFlipHopper
+FIELD System.Boolean PlayerData::newDataFlipHopper
+FIELD System.Boolean PlayerData::killedFlukeman
+FIELD System.Int32 PlayerData::killsFlukeman
+FIELD System.Boolean PlayerData::newDataFlukeman
+FIELD System.Boolean PlayerData::killedInflater
+FIELD System.Int32 PlayerData::killsInflater
+FIELD System.Boolean PlayerData::newDataInflater
+FIELD System.Boolean PlayerData::killedFlukefly
+FIELD System.Int32 PlayerData::killsFlukefly
+FIELD System.Boolean PlayerData::newDataFlukefly
+FIELD System.Boolean PlayerData::killedFlukeMother
+FIELD System.Int32 PlayerData::killsFlukeMother
+FIELD System.Boolean PlayerData::newDataFlukeMother
+FIELD System.Boolean PlayerData::killedDungDefender
+FIELD System.Int32 PlayerData::killsDungDefender
+FIELD System.Boolean PlayerData::newDataDungDefender
+FIELD System.Boolean PlayerData::killedCrystalCrawler
+FIELD System.Int32 PlayerData::killsCrystalCrawler
+FIELD System.Boolean PlayerData::newDataCrystalCrawler
+FIELD System.Boolean PlayerData::killedCrystalFlyer
+FIELD System.Int32 PlayerData::killsCrystalFlyer
+FIELD System.Boolean PlayerData::newDataCrystalFlyer
+FIELD System.Boolean PlayerData::killedLaserBug
+FIELD System.Int32 PlayerData::killsLaserBug
+FIELD System.Boolean PlayerData::newDataLaserBug
+FIELD System.Boolean PlayerData::killedBeamMiner
+FIELD System.Int32 PlayerData::killsBeamMiner
+FIELD System.Boolean PlayerData::newDataBeamMiner
+FIELD System.Boolean PlayerData::killedZombieMiner
+FIELD System.Int32 PlayerData::killsZombieMiner
+FIELD System.Boolean PlayerData::newDataZombieMiner
+FIELD System.Boolean PlayerData::killedMegaBeamMiner
+FIELD System.Int32 PlayerData::killsMegaBeamMiner
+FIELD System.Boolean PlayerData::newDataMegaBeamMiner
+FIELD System.Boolean PlayerData::killedMinesCrawler
+FIELD System.Int32 PlayerData::killsMinesCrawler
+FIELD System.Boolean PlayerData::newDataMinesCrawler
+FIELD System.Boolean PlayerData::killedAngryBuzzer
+FIELD System.Int32 PlayerData::killsAngryBuzzer
+FIELD System.Boolean PlayerData::newDataAngryBuzzer
+FIELD System.Boolean PlayerData::killedBurstingBouncer
+FIELD System.Int32 PlayerData::killsBurstingBouncer
+FIELD System.Boolean PlayerData::newDataBurstingBouncer
+FIELD System.Boolean PlayerData::killedBurstingZombie
+FIELD System.Int32 PlayerData::killsBurstingZombie
+FIELD System.Boolean PlayerData::newDataBurstingZombie
+FIELD System.Boolean PlayerData::killedSpittingZombie
+FIELD System.Int32 PlayerData::killsSpittingZombie
+FIELD System.Boolean PlayerData::newDataSpittingZombie
+FIELD System.Boolean PlayerData::killedBabyCentipede
+FIELD System.Int32 PlayerData::killsBabyCentipede
+FIELD System.Boolean PlayerData::newDataBabyCentipede
+FIELD System.Boolean PlayerData::killedBigCentipede
+FIELD System.Int32 PlayerData::killsBigCentipede
+FIELD System.Boolean PlayerData::newDataBigCentipede
+FIELD System.Boolean PlayerData::killedCentipedeHatcher
+FIELD System.Int32 PlayerData::killsCentipedeHatcher
+FIELD System.Boolean PlayerData::newDataCentipedeHatcher
+FIELD System.Boolean PlayerData::killedLesserMawlek
+FIELD System.Int32 PlayerData::killsLesserMawlek
+FIELD System.Boolean PlayerData::newDataLesserMawlek
+FIELD System.Boolean PlayerData::killedSlashSpider
+FIELD System.Int32 PlayerData::killsSlashSpider
+FIELD System.Boolean PlayerData::newDataSlashSpider
+FIELD System.Boolean PlayerData::killedSpiderCorpse
+FIELD System.Int32 PlayerData::killsSpiderCorpse
+FIELD System.Boolean PlayerData::newDataSpiderCorpse
+FIELD System.Boolean PlayerData::killedShootSpider
+FIELD System.Int32 PlayerData::killsShootSpider
+FIELD System.Boolean PlayerData::newDataShootSpider
+FIELD System.Boolean PlayerData::killedMiniSpider
+FIELD System.Int32 PlayerData::killsMiniSpider
+FIELD System.Boolean PlayerData::newDataMiniSpider
+FIELD System.Boolean PlayerData::killedSpiderFlyer
+FIELD System.Int32 PlayerData::killsSpiderFlyer
+FIELD System.Boolean PlayerData::newDataSpiderFlyer
+FIELD System.Boolean PlayerData::killedMimicSpider
+FIELD System.Int32 PlayerData::killsMimicSpider
+FIELD System.Boolean PlayerData::newDataMimicSpider
+FIELD System.Boolean PlayerData::killedBeeHatchling
+FIELD System.Int32 PlayerData::killsBeeHatchling
+FIELD System.Boolean PlayerData::newDataBeeHatchling
+FIELD System.Boolean PlayerData::killedBeeStinger
+FIELD System.Int32 PlayerData::killsBeeStinger
+FIELD System.Boolean PlayerData::newDataBeeStinger
+FIELD System.Boolean PlayerData::killedBigBee
+FIELD System.Int32 PlayerData::killsBigBee
+FIELD System.Boolean PlayerData::newDataBigBee
+FIELD System.Boolean PlayerData::killedHiveKnight
+FIELD System.Int32 PlayerData::killsHiveKnight
+FIELD System.Boolean PlayerData::newDataHiveKnight
+FIELD System.Boolean PlayerData::killedBlowFly
+FIELD System.Int32 PlayerData::killsBlowFly
+FIELD System.Boolean PlayerData::newDataBlowFly
+FIELD System.Boolean PlayerData::killedCeilingDropper
+FIELD System.Int32 PlayerData::killsCeilingDropper
+FIELD System.Boolean PlayerData::newDataCeilingDropper
+FIELD System.Boolean PlayerData::killedGiantHopper
+FIELD System.Int32 PlayerData::killsGiantHopper
+FIELD System.Boolean PlayerData::newDataGiantHopper
+FIELD System.Boolean PlayerData::killedGrubMimic
+FIELD System.Int32 PlayerData::killsGrubMimic
+FIELD System.Boolean PlayerData::newDataGrubMimic
+FIELD System.Boolean PlayerData::killedMawlekTurret
+FIELD System.Int32 PlayerData::killsMawlekTurret
+FIELD System.Boolean PlayerData::newDataMawlekTurret
+FIELD System.Boolean PlayerData::killedOrangeScuttler
+FIELD System.Int32 PlayerData::killsOrangeScuttler
+FIELD System.Boolean PlayerData::newDataOrangeScuttler
+FIELD System.Boolean PlayerData::killedHealthScuttler
+FIELD System.Int32 PlayerData::killsHealthScuttler
+FIELD System.Boolean PlayerData::newDataHealthScuttler
+FIELD System.Boolean PlayerData::killedPigeon
+FIELD System.Int32 PlayerData::killsPigeon
+FIELD System.Boolean PlayerData::newDataPigeon
+FIELD System.Boolean PlayerData::killedZombieHive
+FIELD System.Int32 PlayerData::killsZombieHive
+FIELD System.Boolean PlayerData::newDataZombieHive
+FIELD System.Boolean PlayerData::killedDreamGuard
+FIELD System.Int32 PlayerData::killsDreamGuard
+FIELD System.Boolean PlayerData::newDataDreamGuard
+FIELD System.Boolean PlayerData::killedHornet
+FIELD System.Int32 PlayerData::killsHornet
+FIELD System.Boolean PlayerData::newDataHornet
+FIELD System.Boolean PlayerData::killedAbyssCrawler
+FIELD System.Int32 PlayerData::killsAbyssCrawler
+FIELD System.Boolean PlayerData::newDataAbyssCrawler
+FIELD System.Boolean PlayerData::killedSuperSpitter
+FIELD System.Int32 PlayerData::killsSuperSpitter
+FIELD System.Boolean PlayerData::newDataSuperSpitter
+FIELD System.Boolean PlayerData::killedSibling
+FIELD System.Int32 PlayerData::killsSibling
+FIELD System.Boolean PlayerData::newDataSibling
+FIELD System.Boolean PlayerData::killedPalaceFly
+FIELD System.Int32 PlayerData::killsPalaceFly
+FIELD System.Boolean PlayerData::newDataPalaceFly
+FIELD System.Boolean PlayerData::killedEggSac
+FIELD System.Int32 PlayerData::killsEggSac
+FIELD System.Boolean PlayerData::newDataEggSac
+FIELD System.Boolean PlayerData::killedMummy
+FIELD System.Int32 PlayerData::killsMummy
+FIELD System.Boolean PlayerData::newDataMummy
+FIELD System.Boolean PlayerData::killedOrangeBalloon
+FIELD System.Int32 PlayerData::killsOrangeBalloon
+FIELD System.Boolean PlayerData::newDataOrangeBalloon
+FIELD System.Boolean PlayerData::killedAbyssTendril
+FIELD System.Int32 PlayerData::killsAbyssTendril
+FIELD System.Boolean PlayerData::newDataAbyssTendril
+FIELD System.Boolean PlayerData::killedHeavyMantis
+FIELD System.Int32 PlayerData::killsHeavyMantis
+FIELD System.Boolean PlayerData::newDataHeavyMantis
+FIELD System.Boolean PlayerData::killedTraitorLord
+FIELD System.Int32 PlayerData::killsTraitorLord
+FIELD System.Boolean PlayerData::newDataTraitorLord
+FIELD System.Boolean PlayerData::killedMantisHeavyFlyer
+FIELD System.Int32 PlayerData::killsMantisHeavyFlyer
+FIELD System.Boolean PlayerData::newDataMantisHeavyFlyer
+FIELD System.Boolean PlayerData::killedGardenZombie
+FIELD System.Int32 PlayerData::killsGardenZombie
+FIELD System.Boolean PlayerData::newDataGardenZombie
+FIELD System.Boolean PlayerData::killedRoyalGuard
+FIELD System.Int32 PlayerData::killsRoyalGuard
+FIELD System.Boolean PlayerData::newDataRoyalGuard
+FIELD System.Boolean PlayerData::killedWhiteRoyal
+FIELD System.Int32 PlayerData::killsWhiteRoyal
+FIELD System.Boolean PlayerData::newDataWhiteRoyal
+FIELD System.Boolean PlayerData::openedPalaceGrounds
+FIELD System.Boolean PlayerData::killedOblobble
+FIELD System.Int32 PlayerData::killsOblobble
+FIELD System.Boolean PlayerData::newDataOblobble
+FIELD System.Boolean PlayerData::killedZote
+FIELD System.Int32 PlayerData::killsZote
+FIELD System.Boolean PlayerData::newDataZote
+FIELD System.Boolean PlayerData::killedBlobble
+FIELD System.Int32 PlayerData::killsBlobble
+FIELD System.Boolean PlayerData::newDataBlobble
+FIELD System.Boolean PlayerData::killedColMosquito
+FIELD System.Int32 PlayerData::killsColMosquito
+FIELD System.Boolean PlayerData::newDataColMosquito
+FIELD System.Boolean PlayerData::killedColRoller
+FIELD System.Int32 PlayerData::killsColRoller
+FIELD System.Boolean PlayerData::newDataColRoller
+FIELD System.Boolean PlayerData::killedColFlyingSentry
+FIELD System.Int32 PlayerData::killsColFlyingSentry
+FIELD System.Boolean PlayerData::newDataColFlyingSentry
+FIELD System.Boolean PlayerData::killedColMiner
+FIELD System.Int32 PlayerData::killsColMiner
+FIELD System.Boolean PlayerData::newDataColMiner
+FIELD System.Boolean PlayerData::killedColShield
+FIELD System.Int32 PlayerData::killsColShield
+FIELD System.Boolean PlayerData::newDataColShield
+FIELD System.Boolean PlayerData::killedColWorm
+FIELD System.Int32 PlayerData::killsColWorm
+FIELD System.Boolean PlayerData::newDataColWorm
+FIELD System.Boolean PlayerData::killedColHopper
+FIELD System.Int32 PlayerData::killsColHopper
+FIELD System.Boolean PlayerData::newDataColHopper
+FIELD System.Boolean PlayerData::killedLobsterLancer
+FIELD System.Int32 PlayerData::killsLobsterLancer
+FIELD System.Boolean PlayerData::newDataLobsterLancer
+FIELD System.Boolean PlayerData::killedGhostAladar
+FIELD System.Int32 PlayerData::killsGhostAladar
+FIELD System.Boolean PlayerData::newDataGhostAladar
+FIELD System.Boolean PlayerData::killedGhostXero
+FIELD System.Int32 PlayerData::killsGhostXero
+FIELD System.Boolean PlayerData::newDataGhostXero
+FIELD System.Boolean PlayerData::killedGhostHu
+FIELD System.Int32 PlayerData::killsGhostHu
+FIELD System.Boolean PlayerData::newDataGhostHu
+FIELD System.Boolean PlayerData::killedGhostMarmu
+FIELD System.Int32 PlayerData::killsGhostMarmu
+FIELD System.Boolean PlayerData::newDataGhostMarmu
+FIELD System.Boolean PlayerData::killedGhostNoEyes
+FIELD System.Int32 PlayerData::killsGhostNoEyes
+FIELD System.Boolean PlayerData::newDataGhostNoEyes
+FIELD System.Boolean PlayerData::killedGhostMarkoth
+FIELD System.Int32 PlayerData::killsGhostMarkoth
+FIELD System.Boolean PlayerData::newDataGhostMarkoth
+FIELD System.Boolean PlayerData::killedGhostGalien
+FIELD System.Int32 PlayerData::killsGhostGalien
+FIELD System.Boolean PlayerData::newDataGhostGalien
+FIELD System.Boolean PlayerData::killedWhiteDefender
+FIELD System.Int32 PlayerData::killsWhiteDefender
+FIELD System.Boolean PlayerData::newDataWhiteDefender
+FIELD System.Boolean PlayerData::killedGreyPrince
+FIELD System.Int32 PlayerData::killsGreyPrince
+FIELD System.Boolean PlayerData::newDataGreyPrince
+FIELD System.Boolean PlayerData::killedZotelingBalloon
+FIELD System.Int32 PlayerData::killsZotelingBalloon
+FIELD System.Boolean PlayerData::newDataZotelingBalloon
+FIELD System.Boolean PlayerData::killedZotelingHopper
+FIELD System.Int32 PlayerData::killsZotelingHopper
+FIELD System.Boolean PlayerData::newDataZotelingHopper
+FIELD System.Boolean PlayerData::killedZotelingBuzzer
+FIELD System.Int32 PlayerData::killsZotelingBuzzer
+FIELD System.Boolean PlayerData::newDataZotelingBuzzer
+FIELD System.Boolean PlayerData::killedHollowKnight
+FIELD System.Int32 PlayerData::killsHollowKnight
+FIELD System.Boolean PlayerData::newDataHollowKnight
+FIELD System.Boolean PlayerData::killedFinalBoss
+FIELD System.Int32 PlayerData::killsFinalBoss
+FIELD System.Boolean PlayerData::newDataFinalBoss
+FIELD System.Boolean PlayerData::killedHunterMark
+FIELD System.Int32 PlayerData::killsHunterMark
+FIELD System.Boolean PlayerData::newDataHunterMark
+FIELD System.Boolean PlayerData::killedFlameBearerSmall
+FIELD System.Int32 PlayerData::killsFlameBearerSmall
+FIELD System.Boolean PlayerData::newDataFlameBearerSmall
+FIELD System.Boolean PlayerData::killedFlameBearerMed
+FIELD System.Int32 PlayerData::killsFlameBearerMed
+FIELD System.Boolean PlayerData::newDataFlameBearerMed
+FIELD System.Boolean PlayerData::killedFlameBearerLarge
+FIELD System.Int32 PlayerData::killsFlameBearerLarge
+FIELD System.Boolean PlayerData::newDataFlameBearerLarge
+FIELD System.Boolean PlayerData::killedGrimm
+FIELD System.Int32 PlayerData::killsGrimm
+FIELD System.Boolean PlayerData::newDataGrimm
+FIELD System.Boolean PlayerData::killedNightmareGrimm
+FIELD System.Int32 PlayerData::killsNightmareGrimm
+FIELD System.Boolean PlayerData::newDataNightmareGrimm
+FIELD System.Boolean PlayerData::killedBindingSeal
+FIELD System.Int32 PlayerData::killsBindingSeal
+FIELD System.Boolean PlayerData::newDataBindingSeal
+FIELD System.Boolean PlayerData::killedFatFluke
+FIELD System.Int32 PlayerData::killsFatFluke
+FIELD System.Boolean PlayerData::newDataFatFluke
+FIELD System.Boolean PlayerData::killedPaleLurker
+FIELD System.Int32 PlayerData::killsPaleLurker
+FIELD System.Boolean PlayerData::newDataPaleLurker
+FIELD System.Boolean PlayerData::killedNailBros
+FIELD System.Int32 PlayerData::killsNailBros
+FIELD System.Boolean PlayerData::newDataNailBros
+FIELD System.Boolean PlayerData::killedPaintmaster
+FIELD System.Int32 PlayerData::killsPaintmaster
+FIELD System.Boolean PlayerData::newDataPaintmaster
+FIELD System.Boolean PlayerData::killedNailsage
+FIELD System.Int32 PlayerData::killsNailsage
+FIELD System.Boolean PlayerData::newDataNailsage
+FIELD System.Boolean PlayerData::killedHollowKnightPrime
+FIELD System.Int32 PlayerData::killsHollowKnightPrime
+FIELD System.Boolean PlayerData::newDataHollowKnightPrime
+FIELD System.Boolean PlayerData::killedGodseekerMask
+FIELD System.Int32 PlayerData::killsGodseekerMask
+FIELD System.Boolean PlayerData::newDataGodseekerMask
+FIELD System.Boolean PlayerData::killedVoidIdol_1
+FIELD System.Int32 PlayerData::killsVoidIdol_1
+FIELD System.Boolean PlayerData::newDataVoidIdol_1
+FIELD System.Boolean PlayerData::killedVoidIdol_2
+FIELD System.Int32 PlayerData::killsVoidIdol_2
+FIELD System.Boolean PlayerData::newDataVoidIdol_2
+FIELD System.Boolean PlayerData::killedVoidIdol_3
+FIELD System.Int32 PlayerData::killsVoidIdol_3
+FIELD System.Boolean PlayerData::newDataVoidIdol_3
+FIELD System.Int32 PlayerData::grubsCollected
+FIELD System.Int32 PlayerData::grubRewards
+FIELD System.Boolean PlayerData::finalGrubRewardCollected
+FIELD System.Boolean PlayerData::fatGrubKing
+FIELD System.Boolean PlayerData::falseKnightDefeated
+FIELD System.Boolean PlayerData::falseKnightDreamDefeated
+FIELD System.Boolean PlayerData::falseKnightOrbsCollected
+FIELD System.Boolean PlayerData::mawlekDefeated
+FIELD System.Boolean PlayerData::giantBuzzerDefeated
+FIELD System.Boolean PlayerData::giantFlyDefeated
+FIELD System.Boolean PlayerData::blocker1Defeated
+FIELD System.Boolean PlayerData::blocker2Defeated
+FIELD System.Boolean PlayerData::hornet1Defeated
+FIELD System.Boolean PlayerData::collectorDefeated
+FIELD System.Boolean PlayerData::hornetOutskirtsDefeated
+FIELD System.Boolean PlayerData::mageLordDreamDefeated
+FIELD System.Boolean PlayerData::mageLordOrbsCollected
+FIELD System.Boolean PlayerData::infectedKnightDreamDefeated
+FIELD System.Boolean PlayerData::infectedKnightOrbsCollected
+FIELD System.Boolean PlayerData::whiteDefenderDefeated
+FIELD System.Boolean PlayerData::whiteDefenderOrbsCollected
+FIELD System.Int32 PlayerData::whiteDefenderDefeats
+FIELD System.Int32 PlayerData::greyPrinceDefeats
+FIELD System.Boolean PlayerData::greyPrinceDefeated
+FIELD System.Boolean PlayerData::greyPrinceOrbsCollected
+FIELD System.Int32 PlayerData::aladarSlugDefeated
+FIELD System.Int32 PlayerData::xeroDefeated
+FIELD System.Int32 PlayerData::elderHuDefeated
+FIELD System.Int32 PlayerData::mumCaterpillarDefeated
+FIELD System.Int32 PlayerData::noEyesDefeated
+FIELD System.Int32 PlayerData::markothDefeated
+FIELD System.Int32 PlayerData::galienDefeated
+FIELD System.Boolean PlayerData::XERO_encountered
+FIELD System.Boolean PlayerData::ALADAR_encountered
+FIELD System.Boolean PlayerData::HU_encountered
+FIELD System.Boolean PlayerData::MUMCAT_encountered
+FIELD System.Boolean PlayerData::NOEYES_encountered
+FIELD System.Boolean PlayerData::MARKOTH_encountered
+FIELD System.Boolean PlayerData::GALIEN_encountered
+FIELD System.Boolean PlayerData::xeroPinned
+FIELD System.Boolean PlayerData::aladarPinned
+FIELD System.Boolean PlayerData::huPinned
+FIELD System.Boolean PlayerData::mumCaterpillarPinned
+FIELD System.Boolean PlayerData::noEyesPinned
+FIELD System.Boolean PlayerData::markothPinned
+FIELD System.Boolean PlayerData::galienPinned
+FIELD System.Int32 PlayerData::currentInvPane
+FIELD System.Boolean PlayerData::showGeoUI
+FIELD System.Boolean PlayerData::showHealthUI
+FIELD System.Boolean PlayerData::promptFocus
+FIELD System.Boolean PlayerData::seenFocusTablet
+FIELD System.Boolean PlayerData::seenDreamNailPrompt
+FIELD System.Boolean PlayerData::isFirstGame
+FIELD System.Boolean PlayerData::enteredTutorialFirstTime
+FIELD System.Boolean PlayerData::isInvincible
+FIELD System.Boolean PlayerData::infiniteAirJump
+FIELD System.Boolean PlayerData::invinciTest
+FIELD System.Int32 PlayerData::currentArea
+FIELD System.Boolean PlayerData::visitedDirtmouth
+FIELD System.Boolean PlayerData::visitedCrossroads
+FIELD System.Boolean PlayerData::visitedGreenpath
+FIELD System.Boolean PlayerData::visitedFungus
+FIELD System.Boolean PlayerData::visitedHive
+FIELD System.Boolean PlayerData::visitedCrossroadsInfected
+FIELD System.Boolean PlayerData::visitedRuins
+FIELD System.Boolean PlayerData::visitedMines
+FIELD System.Boolean PlayerData::visitedRoyalGardens
+FIELD System.Boolean PlayerData::visitedFogCanyon
+FIELD System.Boolean PlayerData::visitedDeepnest
+FIELD System.Boolean PlayerData::visitedRestingGrounds
+FIELD System.Boolean PlayerData::visitedWaterways
+FIELD System.Boolean PlayerData::visitedAbyss
+FIELD System.Boolean PlayerData::visitedOutskirts
+FIELD System.Boolean PlayerData::visitedWhitePalace
+FIELD System.Boolean PlayerData::visitedCliffs
+FIELD System.Boolean PlayerData::visitedAbyssLower
+FIELD System.Boolean PlayerData::visitedGodhome
+FIELD System.Boolean PlayerData::visitedMines10
+FIELD System.Collections.Generic.List`1<System.String> PlayerData::scenesVisited
+FIELD System.Collections.Generic.List`1<System.String> PlayerData::scenesMapped
+FIELD System.Collections.Generic.List`1<System.String> PlayerData::scenesEncounteredBench
+FIELD System.Collections.Generic.List`1<System.String> PlayerData::scenesGrubRescued
+FIELD System.Collections.Generic.List`1<System.String> PlayerData::scenesFlameCollected
+FIELD System.Collections.Generic.List`1<System.String> PlayerData::scenesEncounteredCocoon
+FIELD System.Collections.Generic.List`1<System.String> PlayerData::scenesEncounteredDreamPlant
+FIELD System.Collections.Generic.List`1<System.String> PlayerData::scenesEncounteredDreamPlantC
+FIELD System.Boolean PlayerData::hasMap
+FIELD System.Boolean PlayerData::mapAllRooms
+FIELD System.Boolean PlayerData::atMapPrompt
+FIELD System.Boolean PlayerData::mapDirtmouth
+FIELD System.Boolean PlayerData::mapCrossroads
+FIELD System.Boolean PlayerData::mapGreenpath
+FIELD System.Boolean PlayerData::mapFogCanyon
+FIELD System.Boolean PlayerData::mapRoyalGardens
+FIELD System.Boolean PlayerData::mapFungalWastes
+FIELD System.Boolean PlayerData::mapCity
+FIELD System.Boolean PlayerData::mapWaterways
+FIELD System.Boolean PlayerData::mapMines
+FIELD System.Boolean PlayerData::mapDeepnest
+FIELD System.Boolean PlayerData::mapCliffs
+FIELD System.Boolean PlayerData::mapOutskirts
+FIELD System.Boolean PlayerData::mapRestingGrounds
+FIELD System.Boolean PlayerData::mapAbyss
+FIELD System.Collections.Generic.Dictionary`2<System.String,PlayerData/MapBools> PlayerData::mapZoneBools
+FIELD System.Boolean PlayerData::hasPin
+FIELD System.Boolean PlayerData::hasPinBench
+FIELD System.Boolean PlayerData::hasPinCocoon
+FIELD System.Boolean PlayerData::hasPinDreamPlant
+FIELD System.Boolean PlayerData::hasPinGuardian
+FIELD System.Boolean PlayerData::hasPinBlackEgg
+FIELD System.Boolean PlayerData::hasPinShop
+FIELD System.Boolean PlayerData::hasPinSpa
+FIELD System.Boolean PlayerData::hasPinStag
+FIELD System.Boolean PlayerData::hasPinTram
+FIELD System.Boolean PlayerData::hasPinGhost
+FIELD System.Boolean PlayerData::hasPinGrub
+FIELD System.Boolean PlayerData::hasMarker
+FIELD System.Boolean PlayerData::hasMarker_r
+FIELD System.Boolean PlayerData::hasMarker_b
+FIELD System.Boolean PlayerData::hasMarker_y
+FIELD System.Boolean PlayerData::hasMarker_w
+FIELD System.Int32 PlayerData::spareMarkers_r
+FIELD System.Int32 PlayerData::spareMarkers_b
+FIELD System.Int32 PlayerData::spareMarkers_y
+FIELD System.Int32 PlayerData::spareMarkers_w
+FIELD System.Collections.Generic.List`1<UnityEngine.Vector3> PlayerData::placedMarkers_r
+FIELD System.Collections.Generic.List`1<UnityEngine.Vector3> PlayerData::placedMarkers_b
+FIELD System.Collections.Generic.List`1<UnityEngine.Vector3> PlayerData::placedMarkers_y
+FIELD System.Collections.Generic.List`1<UnityEngine.Vector3> PlayerData::placedMarkers_w
+FIELD System.Int32 PlayerData::environmentType
+FIELD System.Int32 PlayerData::environmentTypeDefault
+FIELD System.Int32 PlayerData::previousDarkness
+FIELD System.Boolean PlayerData::openedTramLower
+FIELD System.Boolean PlayerData::openedTramRestingGrounds
+FIELD System.Int32 PlayerData::tramLowerPosition
+FIELD System.Int32 PlayerData::tramRestingGroundsPosition
+FIELD System.Boolean PlayerData::mineLiftOpened
+FIELD System.Boolean PlayerData::menderDoorOpened
+FIELD System.Boolean PlayerData::vesselFragStagNest
+FIELD System.Boolean PlayerData::shamanPillar
+FIELD System.Boolean PlayerData::crossroadsMawlekWall
+FIELD System.Boolean PlayerData::eggTempleVisited
+FIELD System.Boolean PlayerData::crossroadsInfected
+FIELD System.Boolean PlayerData::falseKnightFirstPlop
+FIELD System.Boolean PlayerData::falseKnightWallRepaired
+FIELD System.Boolean PlayerData::falseKnightWallBroken
+FIELD System.Boolean PlayerData::falseKnightGhostDeparted
+FIELD System.Boolean PlayerData::spaBugsEncountered
+FIELD System.Boolean PlayerData::hornheadVinePlat
+FIELD System.Boolean PlayerData::infectedKnightEncountered
+FIELD System.Boolean PlayerData::megaMossChargerEncountered
+FIELD System.Boolean PlayerData::megaMossChargerDefeated
+FIELD System.Boolean PlayerData::dreamerScene1
+FIELD System.Boolean PlayerData::slugEncounterComplete
+FIELD System.Boolean PlayerData::defeatedDoubleBlockers
+FIELD System.Boolean PlayerData::oneWayArchive
+FIELD System.Boolean PlayerData::defeatedMegaJelly
+FIELD System.Boolean PlayerData::summonedMonomon
+FIELD System.Boolean PlayerData::sawWoundedQuirrel
+FIELD System.Boolean PlayerData::encounteredMegaJelly
+FIELD System.Boolean PlayerData::defeatedMantisLords
+FIELD System.Boolean PlayerData::encounteredGatekeeper
+FIELD System.Boolean PlayerData::deepnestWall
+FIELD System.Boolean PlayerData::queensStationNonDisplay
+FIELD System.Boolean PlayerData::cityBridge1
+FIELD System.Boolean PlayerData::cityBridge2
+FIELD System.Boolean PlayerData::cityLift1
+FIELD System.Boolean PlayerData::cityLift1_isUp
+FIELD System.Boolean PlayerData::liftArrival
+FIELD System.Boolean PlayerData::openedMageDoor
+FIELD System.Boolean PlayerData::openedMageDoor_v2
+FIELD System.Boolean PlayerData::brokenMageWindow
+FIELD System.Boolean PlayerData::brokenMageWindowGlass
+FIELD System.Boolean PlayerData::mageLordEncountered
+FIELD System.Boolean PlayerData::mageLordEncountered_2
+FIELD System.Boolean PlayerData::mageLordDefeated
+FIELD System.Boolean PlayerData::ruins1_5_tripleDoor
+FIELD System.Boolean PlayerData::openedCityGate
+FIELD System.Boolean PlayerData::cityGateClosed
+FIELD System.Boolean PlayerData::bathHouseOpened
+FIELD System.Boolean PlayerData::bathHouseWall
+FIELD System.Boolean PlayerData::cityLift2
+FIELD System.Boolean PlayerData::cityLift2_isUp
+FIELD System.Boolean PlayerData::city2_sewerDoor
+FIELD System.Boolean PlayerData::openedLoveDoor
+FIELD System.Boolean PlayerData::watcherChandelier
+FIELD System.Boolean PlayerData::completedQuakeArea
+FIELD System.Boolean PlayerData::kingsStationNonDisplay
+FIELD System.Boolean PlayerData::tollBenchCity
+FIELD System.Boolean PlayerData::waterwaysGate
+FIELD System.Boolean PlayerData::defeatedDungDefender
+FIELD System.Boolean PlayerData::dungDefenderEncounterReady
+FIELD System.Boolean PlayerData::flukeMotherEncountered
+FIELD System.Boolean PlayerData::flukeMotherDefeated
+FIELD System.Boolean PlayerData::openedWaterwaysManhole
+FIELD System.Boolean PlayerData::waterwaysAcidDrained
+FIELD System.Boolean PlayerData::dungDefenderWallBroken
+FIELD System.Boolean PlayerData::dungDefenderSleeping
+FIELD System.Boolean PlayerData::defeatedMegaBeamMiner
+FIELD System.Boolean PlayerData::defeatedMegaBeamMiner2
+FIELD System.Boolean PlayerData::brokeMinersWall
+FIELD System.Boolean PlayerData::encounteredMimicSpider
+FIELD System.Boolean PlayerData::steppedBeyondBridge
+FIELD System.Boolean PlayerData::deepnestBridgeCollapsed
+FIELD System.Boolean PlayerData::spiderCapture
+FIELD System.Boolean PlayerData::deepnest26b_switch
+FIELD System.Boolean PlayerData::openedRestingGrounds02
+FIELD System.Boolean PlayerData::restingGroundsCryptWall
+FIELD System.Boolean PlayerData::dreamNailConvo
+FIELD System.Int32 PlayerData::gladeGhostsKilled
+FIELD System.Boolean PlayerData::openedGardensStagStation
+FIELD System.Boolean PlayerData::extendedGramophone
+FIELD System.Boolean PlayerData::tollBenchQueensGardens
+FIELD System.Boolean PlayerData::blizzardEnded
+FIELD System.Boolean PlayerData::encounteredHornet
+FIELD System.Boolean PlayerData::savedByHornet
+FIELD System.Boolean PlayerData::outskirtsWall
+FIELD System.Boolean PlayerData::abyssGateOpened
+FIELD System.Boolean PlayerData::abyssLighthouse
+FIELD System.Boolean PlayerData::blueVineDoor
+FIELD System.Boolean PlayerData::gotShadeCharm
+FIELD System.Boolean PlayerData::tollBenchAbyss
+FIELD System.Int32 PlayerData::fountainGeo
+FIELD System.Boolean PlayerData::fountainVesselSummoned
+FIELD System.Boolean PlayerData::openedBlackEggPath
+FIELD System.Boolean PlayerData::enteredDreamWorld
+FIELD System.Boolean PlayerData::duskKnightDefeated
+FIELD System.Boolean PlayerData::whitePalaceOrb_1
+FIELD System.Boolean PlayerData::whitePalaceOrb_2
+FIELD System.Boolean PlayerData::whitePalaceOrb_3
+FIELD System.Boolean PlayerData::whitePalace05_lever
+FIELD System.Boolean PlayerData::whitePalaceMidWarp
+FIELD System.Boolean PlayerData::whitePalaceSecretRoomVisited
+FIELD System.Boolean PlayerData::tramOpenedDeepnest
+FIELD System.Boolean PlayerData::tramOpenedCrossroads
+FIELD System.Boolean PlayerData::openedBlackEggDoor
+FIELD System.Boolean PlayerData::unchainedHollowKnight
+FIELD System.Int32 PlayerData::flamesCollected
+FIELD System.Int32 PlayerData::flamesRequired
+FIELD System.Boolean PlayerData::nightmareLanternAppeared
+FIELD System.Boolean PlayerData::nightmareLanternLit
+FIELD System.Boolean PlayerData::troupeInTown
+FIELD System.Boolean PlayerData::divineInTown
+FIELD System.Int32 PlayerData::grimmChildLevel
+FIELD System.Boolean PlayerData::elderbugConvoGrimm
+FIELD System.Boolean PlayerData::slyConvoGrimm
+FIELD System.Boolean PlayerData::iseldaConvoGrimm
+FIELD System.Boolean PlayerData::midwifeWeaverlingConvo
+FIELD System.Boolean PlayerData::metGrimm
+FIELD System.Boolean PlayerData::foughtGrimm
+FIELD System.Boolean PlayerData::metBrum
+FIELD System.Boolean PlayerData::defeatedNightmareGrimm
+FIELD System.Boolean PlayerData::grimmchildAwoken
+FIELD System.Boolean PlayerData::gotBrummsFlame
+FIELD System.Boolean PlayerData::brummBrokeBrazier
+FIELD System.Boolean PlayerData::destroyedNightmareLantern
+FIELD System.Boolean PlayerData::gotGrimmNotch
+FIELD System.Boolean PlayerData::nymmInTown
+FIELD System.Boolean PlayerData::nymmSpoken
+FIELD System.Boolean PlayerData::nymmCharmConvo
+FIELD System.Boolean PlayerData::nymmFinalConvo
+FIELD System.Boolean PlayerData::elderbugNymmConvo
+FIELD System.Boolean PlayerData::slyNymmConvo
+FIELD System.Boolean PlayerData::iseldaNymmConvo
+FIELD System.Boolean PlayerData::nymmMissedEggOpen
+FIELD System.Boolean PlayerData::elderbugTroupeLeftConvo
+FIELD System.Boolean PlayerData::elderbugBrettaLeft
+FIELD System.Boolean PlayerData::jijiGrimmConvo
+FIELD System.Boolean PlayerData::metDivine
+FIELD System.Boolean PlayerData::divineFinalConvo
+FIELD System.Boolean PlayerData::gaveFragileHeart
+FIELD System.Boolean PlayerData::gaveFragileGreed
+FIELD System.Boolean PlayerData::gaveFragileStrength
+FIELD System.Int32 PlayerData::divineEatenConvos
+FIELD System.Boolean PlayerData::pooedFragileHeart
+FIELD System.Boolean PlayerData::pooedFragileGreed
+FIELD System.Boolean PlayerData::pooedFragileStrength
+FIELD System.Single PlayerData::completionPercentage
+FIELD System.Boolean PlayerData::disablePause
+FIELD System.Boolean PlayerData::backerCredits
+FIELD System.Boolean PlayerData::unlockedCompletionRate
+FIELD System.Int32 PlayerData::mapKeyPref
+FIELD System.Collections.Generic.List`1<System.String> PlayerData::playerStory
+FIELD System.String PlayerData::playerStoryOutput
+FIELD System.Boolean PlayerData::betaEnd
+FIELD System.Boolean PlayerData::newDatTraitorLord
+FIELD System.String PlayerData::bossReturnEntryGate
+FIELD BossSequenceDoor/Completion PlayerData::bossDoorStateTier1
+FIELD BossSequenceDoor/Completion PlayerData::bossDoorStateTier2
+FIELD BossSequenceDoor/Completion PlayerData::bossDoorStateTier3
+FIELD BossSequenceDoor/Completion PlayerData::bossDoorStateTier4
+FIELD BossSequenceDoor/Completion PlayerData::bossDoorStateTier5
+FIELD System.Int32 PlayerData::bossStatueTargetLevel
+FIELD System.String PlayerData::currentBossStatueCompletionKey
+FIELD BossStatue/Completion PlayerData::statueStateGruzMother
+FIELD BossStatue/Completion PlayerData::statueStateVengefly
+FIELD BossStatue/Completion PlayerData::statueStateBroodingMawlek
+FIELD BossStatue/Completion PlayerData::statueStateFalseKnight
+FIELD BossStatue/Completion PlayerData::statueStateFailedChampion
+FIELD BossStatue/Completion PlayerData::statueStateHornet1
+FIELD BossStatue/Completion PlayerData::statueStateHornet2
+FIELD BossStatue/Completion PlayerData::statueStateMegaMossCharger
+FIELD BossStatue/Completion PlayerData::statueStateMantisLords
+FIELD BossStatue/Completion PlayerData::statueStateOblobbles
+FIELD BossStatue/Completion PlayerData::statueStateGreyPrince
+FIELD BossStatue/Completion PlayerData::statueStateBrokenVessel
+FIELD BossStatue/Completion PlayerData::statueStateLostKin
+FIELD BossStatue/Completion PlayerData::statueStateNosk
+FIELD BossStatue/Completion PlayerData::statueStateFlukemarm
+FIELD BossStatue/Completion PlayerData::statueStateCollector
+FIELD BossStatue/Completion PlayerData::statueStateWatcherKnights
+FIELD BossStatue/Completion PlayerData::statueStateSoulMaster
+FIELD BossStatue/Completion PlayerData::statueStateSoulTyrant
+FIELD BossStatue/Completion PlayerData::statueStateGodTamer
+FIELD BossStatue/Completion PlayerData::statueStateCrystalGuardian1
+FIELD BossStatue/Completion PlayerData::statueStateCrystalGuardian2
+FIELD BossStatue/Completion PlayerData::statueStateUumuu
+FIELD BossStatue/Completion PlayerData::statueStateDungDefender
+FIELD BossStatue/Completion PlayerData::statueStateWhiteDefender
+FIELD BossStatue/Completion PlayerData::statueStateHiveKnight
+FIELD BossStatue/Completion PlayerData::statueStateTraitorLord
+FIELD BossStatue/Completion PlayerData::statueStateGrimm
+FIELD BossStatue/Completion PlayerData::statueStateNightmareGrimm
+FIELD BossStatue/Completion PlayerData::statueStateHollowKnight
+FIELD BossStatue/Completion PlayerData::statueStateElderHu
+FIELD BossStatue/Completion PlayerData::statueStateGalien
+FIELD BossStatue/Completion PlayerData::statueStateMarkoth
+FIELD BossStatue/Completion PlayerData::statueStateMarmu
+FIELD BossStatue/Completion PlayerData::statueStateNoEyes
+FIELD BossStatue/Completion PlayerData::statueStateXero
+FIELD BossStatue/Completion PlayerData::statueStateGorb
+FIELD BossStatue/Completion PlayerData::statueStateRadiance
+FIELD BossStatue/Completion PlayerData::statueStateSly
+FIELD BossStatue/Completion PlayerData::statueStateNailmasters
+FIELD BossStatue/Completion PlayerData::statueStateMageKnight
+FIELD BossStatue/Completion PlayerData::statueStatePaintmaster
+FIELD BossStatue/Completion PlayerData::statueStateZote
+FIELD BossStatue/Completion PlayerData::statueStateNoskHornet
+FIELD BossStatue/Completion PlayerData::statueStateMantisLordsExtra
+FIELD System.Boolean PlayerData::godseekerUnlocked
+FIELD BossSequenceController/BossSequenceData PlayerData::currentBossSequence
+FIELD System.Boolean PlayerData::bossRushMode
+FIELD System.Boolean PlayerData::bossDoorCageUnlocked
+FIELD System.Boolean PlayerData::blueRoomDoorUnlocked
+FIELD System.Boolean PlayerData::blueRoomActivated
+FIELD System.Boolean PlayerData::finalBossDoorUnlocked
+FIELD System.Boolean PlayerData::hasGodfinder
+FIELD System.Boolean PlayerData::unlockedNewBossStatue
+FIELD System.Boolean PlayerData::scaredFlukeHermitEncountered
+FIELD System.Boolean PlayerData::scaredFlukeHermitReturned
+FIELD System.Boolean PlayerData::enteredGGAtrium
+FIELD System.Boolean PlayerData::extraFlowerAppear
+FIELD System.Boolean PlayerData::givenGodseekerFlower
+FIELD System.Boolean PlayerData::givenOroFlower
+FIELD System.Boolean PlayerData::givenWhiteLadyFlower
+FIELD System.Boolean PlayerData::givenEmilitiaFlower
+FIELD System.Collections.Generic.List`1<System.String> PlayerData::unlockedBossScenes
+FIELD System.Boolean PlayerData::queuedGodfinderIcon
+FIELD System.Boolean PlayerData::godseekerSpokenAwake
+FIELD System.Boolean PlayerData::nailsmithCorpseAppeared
+FIELD System.Int32 PlayerData::godseekerWaterwaysSeenState
+FIELD System.Boolean PlayerData::godseekerWaterwaysSpoken1
+FIELD System.Boolean PlayerData::godseekerWaterwaysSpoken2
+FIELD System.Boolean PlayerData::godseekerWaterwaysSpoken3
+FIELD System.Int32 PlayerData::bossDoorEntranceTextSeen
+FIELD System.Boolean PlayerData::seenDoor4Finale
+FIELD System.Boolean PlayerData::zoteStatueWallBroken
+FIELD System.Boolean PlayerData::seenGGWastes
+FIELD System.Boolean PlayerData::ordealAchieved
+FIELD PlayerData PlayerData::_instance
+FIELD PlayerData PlayerData::<instance>k__BackingField
+PROP System.Int32 PlayerData::CurrentMaxHealth()
+PROP PlayerData PlayerData::instance()
+METHOD System.Void PlayerData::EquipCharm(System.Int32)
+IL_0000: ldarg.0
+IL_0001: ldstr "equippedCharms"
+IL_0006: callvirt !!0 PlayerData::GetVariable<System.Collections.Generic.List`1<System.Int32>>(System.String)
+IL_000b: ldarg.1
+IL_000c: callvirt System.Void System.Collections.Generic.List`1<System.Int32>::Add(!0)
+IL_0011: ret
+METHOD System.Void PlayerData::CalculateNotchesUsed()
+IL_0000: ldc.i4.0
+IL_0001: stloc.0
+IL_0002: ldarg.0
+IL_0003: ldstr "equippedCharm_1"
+IL_0008: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_000d: brfalse.s IL_001d
+IL_000f: ldloc.0
+IL_0010: ldarg.0
+IL_0011: ldstr "charmCost_1"
+IL_0016: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_001b: add
+IL_001c: stloc.0
+IL_001d: ldarg.0
+IL_001e: ldstr "equippedCharm_2"
+IL_0023: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_0028: brfalse.s IL_0038
+IL_002a: ldloc.0
+IL_002b: ldarg.0
+IL_002c: ldstr "charmCost_2"
+IL_0031: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_0036: add
+IL_0037: stloc.0
+IL_0038: ldarg.0
+IL_0039: ldstr "equippedCharm_3"
+IL_003e: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_0043: brfalse.s IL_0053
+IL_0045: ldloc.0
+IL_0046: ldarg.0
+IL_0047: ldstr "charmCost_3"
+IL_004c: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_0051: add
+IL_0052: stloc.0
+IL_0053: ldarg.0
+IL_0054: ldstr "equippedCharm_4"
+IL_0059: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_005e: brfalse.s IL_006e
+IL_0060: ldloc.0
+IL_0061: ldarg.0
+IL_0062: ldstr "charmCost_4"
+IL_0067: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_006c: add
+IL_006d: stloc.0
+IL_006e: ldarg.0
+IL_006f: ldstr "equippedCharm_5"
+IL_0074: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_0079: brfalse.s IL_0089
+IL_007b: ldloc.0
+IL_007c: ldarg.0
+IL_007d: ldstr "charmCost_5"
+IL_0082: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_0087: add
+IL_0088: stloc.0
+IL_0089: ldarg.0
+IL_008a: ldstr "equippedCharm_6"
+IL_008f: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_0094: brfalse.s IL_00a4
+IL_0096: ldloc.0
+IL_0097: ldarg.0
+IL_0098: ldstr "charmCost_6"
+IL_009d: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_00a2: add
+IL_00a3: stloc.0
+IL_00a4: ldarg.0
+IL_00a5: ldstr "equippedCharm_7"
+IL_00aa: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_00af: brfalse.s IL_00bf
+IL_00b1: ldloc.0
+IL_00b2: ldarg.0
+IL_00b3: ldstr "charmCost_7"
+IL_00b8: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_00bd: add
+IL_00be: stloc.0
+IL_00bf: ldarg.0
+IL_00c0: ldstr "equippedCharm_8"
+IL_00c5: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_00ca: brfalse.s IL_00da
+IL_00cc: ldloc.0
+IL_00cd: ldarg.0
+IL_00ce: ldstr "charmCost_8"
+IL_00d3: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_00d8: add
+IL_00d9: stloc.0
+IL_00da: ldarg.0
+IL_00db: ldstr "equippedCharm_9"
+IL_00e0: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_00e5: brfalse.s IL_00f5
+IL_00e7: ldloc.0
+IL_00e8: ldarg.0
+IL_00e9: ldstr "charmCost_9"
+IL_00ee: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_00f3: add
+IL_00f4: stloc.0
+IL_00f5: ldarg.0
+IL_00f6: ldstr "equippedCharm_10"
+IL_00fb: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_0100: brfalse.s IL_0110
+IL_0102: ldloc.0
+IL_0103: ldarg.0
+IL_0104: ldstr "charmCost_10"
+IL_0109: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_010e: add
+IL_010f: stloc.0
+IL_0110: ldarg.0
+IL_0111: ldstr "equippedCharm_11"
+IL_0116: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_011b: brfalse.s IL_012b
+IL_011d: ldloc.0
+IL_011e: ldarg.0
+IL_011f: ldstr "charmCost_11"
+IL_0124: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_0129: add
+IL_012a: stloc.0
+IL_012b: ldarg.0
+IL_012c: ldstr "equippedCharm_12"
+IL_0131: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_0136: brfalse.s IL_0146
+IL_0138: ldloc.0
+IL_0139: ldarg.0
+IL_013a: ldstr "charmCost_12"
+IL_013f: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_0144: add
+IL_0145: stloc.0
+IL_0146: ldarg.0
+IL_0147: ldstr "equippedCharm_13"
+IL_014c: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_0151: brfalse.s IL_0161
+IL_0153: ldloc.0
+IL_0154: ldarg.0
+IL_0155: ldstr "charmCost_13"
+IL_015a: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_015f: add
+IL_0160: stloc.0
+IL_0161: ldarg.0
+IL_0162: ldstr "equippedCharm_14"
+IL_0167: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_016c: brfalse.s IL_017c
+IL_016e: ldloc.0
+IL_016f: ldarg.0
+IL_0170: ldstr "charmCost_14"
+IL_0175: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_017a: add
+IL_017b: stloc.0
+IL_017c: ldarg.0
+IL_017d: ldstr "equippedCharm_15"
+IL_0182: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_0187: brfalse.s IL_0197
+IL_0189: ldloc.0
+IL_018a: ldarg.0
+IL_018b: ldstr "charmCost_15"
+IL_0190: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_0195: add
+IL_0196: stloc.0
+IL_0197: ldarg.0
+IL_0198: ldstr "equippedCharm_16"
+IL_019d: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_01a2: brfalse.s IL_01b2
+IL_01a4: ldloc.0
+IL_01a5: ldarg.0
+IL_01a6: ldstr "charmCost_16"
+IL_01ab: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_01b0: add
+IL_01b1: stloc.0
+IL_01b2: ldarg.0
+IL_01b3: ldstr "equippedCharm_17"
+IL_01b8: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_01bd: brfalse.s IL_01cd
+IL_01bf: ldloc.0
+IL_01c0: ldarg.0
+IL_01c1: ldstr "charmCost_17"
+IL_01c6: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_01cb: add
+IL_01cc: stloc.0
+IL_01cd: ldarg.0
+IL_01ce: ldstr "equippedCharm_18"
+IL_01d3: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_01d8: brfalse.s IL_01e8
+IL_01da: ldloc.0
+IL_01db: ldarg.0
+IL_01dc: ldstr "charmCost_18"
+IL_01e1: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_01e6: add
+IL_01e7: stloc.0
+IL_01e8: ldarg.0
+IL_01e9: ldstr "equippedCharm_19"
+IL_01ee: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_01f3: brfalse.s IL_0203
+IL_01f5: ldloc.0
+IL_01f6: ldarg.0
+IL_01f7: ldstr "charmCost_19"
+IL_01fc: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_0201: add
+IL_0202: stloc.0
+IL_0203: ldarg.0
+IL_0204: ldstr "equippedCharm_20"
+IL_0209: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_020e: brfalse.s IL_021e
+IL_0210: ldloc.0
+IL_0211: ldarg.0
+IL_0212: ldstr "charmCost_20"
+IL_0217: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_021c: add
+IL_021d: stloc.0
+IL_021e: ldarg.0
+IL_021f: ldstr "equippedCharm_21"
+IL_0224: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_0229: brfalse.s IL_0239
+IL_022b: ldloc.0
+IL_022c: ldarg.0
+IL_022d: ldstr "charmCost_21"
+IL_0232: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_0237: add
+IL_0238: stloc.0
+IL_0239: ldarg.0
+IL_023a: ldstr "equippedCharm_22"
+IL_023f: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_0244: brfalse.s IL_0254
+IL_0246: ldloc.0
+IL_0247: ldarg.0
+IL_0248: ldstr "charmCost_22"
+IL_024d: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_0252: add
+IL_0253: stloc.0
+IL_0254: ldarg.0
+IL_0255: ldstr "equippedCharm_23"
+IL_025a: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_025f: brfalse.s IL_026f
+IL_0261: ldloc.0
+IL_0262: ldarg.0
+IL_0263: ldstr "charmCost_23"
+IL_0268: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_026d: add
+IL_026e: stloc.0
+IL_026f: ldarg.0
+IL_0270: ldstr "equippedCharm_24"
+IL_0275: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_027a: brfalse.s IL_028a
+IL_027c: ldloc.0
+IL_027d: ldarg.0
+IL_027e: ldstr "charmCost_24"
+IL_0283: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_0288: add
+IL_0289: stloc.0
+IL_028a: ldarg.0
+IL_028b: ldstr "equippedCharm_25"
+IL_0290: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_0295: brfalse.s IL_02a5
+IL_0297: ldloc.0
+IL_0298: ldarg.0
+IL_0299: ldstr "charmCost_25"
+IL_029e: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_02a3: add
+IL_02a4: stloc.0
+IL_02a5: ldarg.0
+IL_02a6: ldstr "equippedCharm_26"
+IL_02ab: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_02b0: brfalse.s IL_02c0
+IL_02b2: ldloc.0
+IL_02b3: ldarg.0
+IL_02b4: ldstr "charmCost_26"
+IL_02b9: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_02be: add
+IL_02bf: stloc.0
+IL_02c0: ldarg.0
+IL_02c1: ldstr "equippedCharm_27"
+IL_02c6: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_02cb: brfalse.s IL_02db
+IL_02cd: ldloc.0
+IL_02ce: ldarg.0
+IL_02cf: ldstr "charmCost_27"
+IL_02d4: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_02d9: add
+IL_02da: stloc.0
+IL_02db: ldarg.0
+IL_02dc: ldstr "equippedCharm_28"
+IL_02e1: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_02e6: brfalse.s IL_02f6
+IL_02e8: ldloc.0
+IL_02e9: ldarg.0
+IL_02ea: ldstr "charmCost_28"
+IL_02ef: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_02f4: add
+IL_02f5: stloc.0
+IL_02f6: ldarg.0
+IL_02f7: ldstr "equippedCharm_29"
+IL_02fc: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_0301: brfalse.s IL_0311
+IL_0303: ldloc.0
+IL_0304: ldarg.0
+IL_0305: ldstr "charmCost_29"
+IL_030a: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_030f: add
+IL_0310: stloc.0
+IL_0311: ldarg.0
+IL_0312: ldstr "equippedCharm_30"
+IL_0317: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_031c: brfalse.s IL_032c
+IL_031e: ldloc.0
+IL_031f: ldarg.0
+IL_0320: ldstr "charmCost_30"
+IL_0325: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_032a: add
+IL_032b: stloc.0
+IL_032c: ldarg.0
+IL_032d: ldstr "equippedCharm_31"
+IL_0332: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_0337: brfalse.s IL_0347
+IL_0339: ldloc.0
+IL_033a: ldarg.0
+IL_033b: ldstr "charmCost_31"
+IL_0340: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_0345: add
+IL_0346: stloc.0
+IL_0347: ldarg.0
+IL_0348: ldstr "equippedCharm_32"
+IL_034d: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_0352: brfalse.s IL_0362
+IL_0354: ldloc.0
+IL_0355: ldarg.0
+IL_0356: ldstr "charmCost_32"
+IL_035b: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_0360: add
+IL_0361: stloc.0
+IL_0362: ldarg.0
+IL_0363: ldstr "equippedCharm_33"
+IL_0368: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_036d: brfalse.s IL_037d
+IL_036f: ldloc.0
+IL_0370: ldarg.0
+IL_0371: ldstr "charmCost_33"
+IL_0376: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_037b: add
+IL_037c: stloc.0
+IL_037d: ldarg.0
+IL_037e: ldstr "equippedCharm_34"
+IL_0383: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_0388: brfalse.s IL_0398
+IL_038a: ldloc.0
+IL_038b: ldarg.0
+IL_038c: ldstr "charmCost_34"
+IL_0391: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_0396: add
+IL_0397: stloc.0
+IL_0398: ldarg.0
+IL_0399: ldstr "equippedCharm_35"
+IL_039e: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_03a3: brfalse.s IL_03b3
+IL_03a5: ldloc.0
+IL_03a6: ldarg.0
+IL_03a7: ldstr "charmCost_35"
+IL_03ac: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_03b1: add
+IL_03b2: stloc.0
+IL_03b3: ldarg.0
+IL_03b4: ldstr "equippedCharm_36"
+IL_03b9: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_03be: brfalse.s IL_03ce
+IL_03c0: ldloc.0
+IL_03c1: ldarg.0
+IL_03c2: ldstr "charmCost_36"
+IL_03c7: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_03cc: add
+IL_03cd: stloc.0
+IL_03ce: ldarg.0
+IL_03cf: ldstr "equippedCharm_37"
+IL_03d4: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_03d9: brfalse.s IL_03e9
+IL_03db: ldloc.0
+IL_03dc: ldarg.0
+IL_03dd: ldstr "charmCost_37"
+IL_03e2: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_03e7: add
+IL_03e8: stloc.0
+IL_03e9: ldarg.0
+IL_03ea: ldstr "equippedCharm_38"
+IL_03ef: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_03f4: brfalse.s IL_0404
+IL_03f6: ldloc.0
+IL_03f7: ldarg.0
+IL_03f8: ldstr "charmCost_38"
+IL_03fd: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_0402: add
+IL_0403: stloc.0
+IL_0404: ldarg.0
+IL_0405: ldstr "equippedCharm_39"
+IL_040a: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_040f: brfalse.s IL_041f
+IL_0411: ldloc.0
+IL_0412: ldarg.0
+IL_0413: ldstr "charmCost_39"
+IL_0418: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_041d: add
+IL_041e: stloc.0
+IL_041f: ldarg.0
+IL_0420: ldstr "equippedCharm_40"
+IL_0425: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_042a: brfalse.s IL_043a
+IL_042c: ldloc.0
+IL_042d: ldarg.0
+IL_042e: ldstr "charmCost_40"
+IL_0433: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_0438: add
+IL_0439: stloc.0
+IL_043a: ldarg.0
+IL_043b: ldloc.0
+IL_043c: ldstr "charmSlotsFilled"
+IL_0441: callvirt System.Void PlayerData::SetIntSwappedArgs(System.Int32,System.String)
+IL_0446: ret
+TYPE CharmIconList base=UnityEngine.MonoBehaviour
+FIELD CharmIconList CharmIconList::Instance
+FIELD UnityEngine.Sprite[] CharmIconList::spriteList
+FIELD UnityEngine.Sprite CharmIconList::unbreakableHeart
+FIELD UnityEngine.Sprite CharmIconList::unbreakableGreed
+FIELD UnityEngine.Sprite CharmIconList::unbreakableStrength
+FIELD UnityEngine.Sprite CharmIconList::grimmchildLevel1
+FIELD UnityEngine.Sprite CharmIconList::grimmchildLevel2
+FIELD UnityEngine.Sprite CharmIconList::grimmchildLevel3
+FIELD UnityEngine.Sprite CharmIconList::grimmchildLevel4
+FIELD UnityEngine.Sprite CharmIconList::nymmCharm
+FIELD PlayerData CharmIconList::playerData
+METHOD System.Void CharmIconList::Awake()
+IL_0000: ldarg.0
+IL_0001: stsfld CharmIconList CharmIconList::Instance
+IL_0006: ret
+METHOD UnityEngine.Sprite CharmIconList::GetSprite(System.Int32)
+IL_0000: ldarg.0
+IL_0001: call PlayerData PlayerData::get_instance()
+IL_0006: stfld PlayerData CharmIconList::playerData
+IL_000b: ldarg.1
+IL_000c: ldc.i4.s 23
+IL_000e: bne.un.s IL_002c
+IL_0010: ldarg.0
+IL_0011: ldfld PlayerData CharmIconList::playerData
+IL_0016: ldstr "fragileHealth_unbreakable"
+IL_001b: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_0020: brfalse IL_00f8
+IL_0025: ldarg.0
+IL_0026: ldfld UnityEngine.Sprite CharmIconList::unbreakableHeart
+IL_002b: ret
+IL_002c: ldarg.1
+IL_002d: ldc.i4.s 24
+IL_002f: bne.un.s IL_004d
+IL_0031: ldarg.0
+IL_0032: ldfld PlayerData CharmIconList::playerData
+IL_0037: ldstr "fragileGreed_unbreakable"
+IL_003c: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_0041: brfalse IL_00f8
+IL_0046: ldarg.0
+IL_0047: ldfld UnityEngine.Sprite CharmIconList::unbreakableGreed
+IL_004c: ret
+IL_004d: ldarg.1
+IL_004e: ldc.i4.s 25
+IL_0050: bne.un.s IL_006e
+IL_0052: ldarg.0
+IL_0053: ldfld PlayerData CharmIconList::playerData
+IL_0058: ldstr "fragileStrength_unbreakable"
+IL_005d: callvirt System.Boolean PlayerData::GetBool(System.String)
+IL_0062: brfalse IL_00f8
+IL_0067: ldarg.0
+IL_0068: ldfld UnityEngine.Sprite CharmIconList::unbreakableStrength
+IL_006d: ret
+IL_006e: ldarg.1
+IL_006f: ldc.i4.s 40
+IL_0071: bne.un IL_00f8
+IL_0076: ldarg.0
+IL_0077: ldfld PlayerData CharmIconList::playerData
+IL_007c: ldstr "grimmChildLevel"
+IL_0081: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_0086: ldc.i4.1
+IL_0087: bne.un.s IL_0090
+IL_0089: ldarg.0
+IL_008a: ldfld UnityEngine.Sprite CharmIconList::grimmchildLevel1
+IL_008f: ret
+IL_0090: ldarg.0
+IL_0091: ldfld PlayerData CharmIconList::playerData
+IL_0096: ldstr "grimmChildLevel"
+IL_009b: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_00a0: ldc.i4.2
+IL_00a1: bne.un.s IL_00aa
+IL_00a3: ldarg.0
+IL_00a4: ldfld UnityEngine.Sprite CharmIconList::grimmchildLevel2
+IL_00a9: ret
+IL_00aa: ldarg.0
+IL_00ab: ldfld PlayerData CharmIconList::playerData
+IL_00b0: ldstr "grimmChildLevel"
+IL_00b5: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_00ba: ldc.i4.3
+IL_00bb: bne.un.s IL_00c4
+IL_00bd: ldarg.0
+IL_00be: ldfld UnityEngine.Sprite CharmIconList::grimmchildLevel3
+IL_00c3: ret
+IL_00c4: ldarg.0
+IL_00c5: ldfld PlayerData CharmIconList::playerData
+IL_00ca: ldstr "grimmChildLevel"
+IL_00cf: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_00d4: ldc.i4.4
+IL_00d5: bne.un.s IL_00de
+IL_00d7: ldarg.0
+IL_00d8: ldfld UnityEngine.Sprite CharmIconList::grimmchildLevel4
+IL_00dd: ret
+IL_00de: ldarg.0
+IL_00df: ldfld PlayerData CharmIconList::playerData
+IL_00e4: ldstr "grimmChildLevel"
+IL_00e9: callvirt System.Int32 PlayerData::GetInt(System.String)
+IL_00ee: ldc.i4.5
+IL_00ef: bne.un.s IL_00f8
+IL_00f1: ldarg.0
+IL_00f2: ldfld UnityEngine.Sprite CharmIconList::nymmCharm
+IL_00f7: ret
+IL_00f8: ldarg.0
+IL_00f9: ldfld UnityEngine.Sprite[] CharmIconList::spriteList
+IL_00fe: ldarg.1
+IL_00ff: ldelem.ref
+IL_0100: ret

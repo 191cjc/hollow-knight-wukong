@@ -1,0 +1,17 @@
+{
+  "validation": "passed",
+  "audio_full_decode": true,
+  "source_files": 28,
+  "animation_bundles": 8,
+  "png_files": 19,
+  "mp3_files": 14,
+  "skill_records": 97,
+  "buff_records": 222,
+  "role_ids": [
+    "2001",
+    "2006",
+    "2011"
+  ],
+  "catalogue_scope": "archived_source_files",
+  "runtime_tested": false
+}
