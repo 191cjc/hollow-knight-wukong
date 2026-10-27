@@ -85,3 +85,14 @@ The batch prepare-all-assets.bat also produces flameDashDown:12ticks of effect2
 with only flames rotated clockwise90 around fixed source(0,-44.5). Existing body
 poses and all979previous ticks remain identical;45clips/991ticks/32atlas pages.
 Fire Eye end alignment changes runtime sampling only; its source pixels stay exact.
+
+
+## 0.7.8 upward dash variant
+
+The active wukong-fist-v078 profile adds flameDashUp (12ticks) to the preserved
+v074 clips, for60clips/1571ticks/16packed pages. Only the original Flame Dash
+flame Draws turn counterclockwise90degrees about source(0,-44.5); the body stays
+upright. Originals and full1.5x/packed copies live in separate v078 directories.
+The complete asset batch follows active-variant.json. All59previous clips and
+1559ticks keep their registered pixels at original and enlarged sizes; packed
+crops reconstruct the enlarged full canvas exactly. Earlier v074 files remain.

@@ -68,7 +68,7 @@ def preview(icon):
     font_path = Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")
     font = ImageFont.truetype(str(font_path), 28) if font_path.is_file() else ImageFont.load_default()
     small = ImageFont.truetype(str(font_path), 18) if font_path.is_file() else font
-    draw.text((40, 28), "FIRE EYE SIGIL", font=font, fill="#f2e9d5")
+    draw.text((40, 28), "JIYUAN FIRE EYE: AWAKENING", font=font, fill="#f2e9d5")
     draw.text((40, 70), "2 notches  /  Fire Eye: 3s > 6s", font=small, fill="#c7b9a4")
     for index, color in enumerate(("#171b23", "#eee9df")):
         left = index*480

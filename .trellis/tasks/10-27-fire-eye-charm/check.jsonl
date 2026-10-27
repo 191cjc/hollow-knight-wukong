@@ -5,3 +5,4 @@
 {"file":".trellis/tasks/10-27-fire-eye-charm/implement.md","reason":"Required tests, build/package checks and actual-client matrix"}
 {"file":".trellis/tasks/10-27-fire-eye-charm/research/native-integration.md","reason":"Verify changed native queries/actions against real pinned evidence, no stubs or guessed multipliers"}
 {"file":".trellis/tasks/10-27-fire-eye-charm/research/focused-native-contract.md","reason":"Preserve native focus timing, heal ordering, cooldown/tokens and cleanup"}
+{"file":".trellis/tasks/10-27-fire-eye-charm/research/upward-dash-native.md","reason":"Pinned v77 up-dash admission/vector/lifecycle/landing evidence, exact hook signatures, preserved charm31 bonuses and offline art seams"}

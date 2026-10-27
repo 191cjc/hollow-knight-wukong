@@ -4,7 +4,7 @@
     <LangVersion>latest</LangVersion>
     <AssemblyName>WukongKnight</AssemblyName>
     <RootNamespace>WukongKnight</RootNamespace>
-    <Version>0.7.7</Version>
+    <Version>0.7.8</Version>
     <Nullable>enable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
     <Deterministic>true</Deterministic>

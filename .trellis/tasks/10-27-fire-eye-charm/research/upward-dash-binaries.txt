@@ -1,0 +1,18 @@
+# Upward dash inspected binary identities
+
+Date: 2026-10-27
+Baseline contract: Hollow Knight 1.5.78.11833 / Modding API v77
+
+Inspection: local compiled Mono.Cecil tools, without loading Unity game types.
+
+.tools/hollow-knight-api-v77/Assembly-CSharp.dll
+bytes=4041216
+sha256=0890edcd1b60ae22ea9c4a2d7c16056795b321f0efbb078d447e06730c0e784b
+
+.tools/hollow-knight-api-v77/MMHOOK_Assembly-CSharp.dll
+bytes=9070080
+sha256=5a7bed2338d3af4f2cba73e331bdf5d0a4f9c791aeb825f0bf9e5691e321e0bb
+
+.tools/hollow-knight-api-v77/Mono.Cecil.dll
+bytes=357376
+sha256=96fa99d63cd84b76eb37505afc603d404e12fd5cb27e8caa1581aad97b74ae69

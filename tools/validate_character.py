@@ -16,7 +16,7 @@ CHARACTER = ROOT / "assets/processed/wukong"
 SOURCE = ROOT / "assets/zmxy4/animations/2001/manV535"
 REQUIRED_CLIPS = ("idle", "walk", "runNormal", "jumpNormal", "jumpTwo", "jumpDown",
                   "jumpAttack", "hurtStand", "dead", "attack1", "attack2", "attack3", "attack4")
-OPTIONAL_CLIPS = ("runAttack", "effect1", "effect2", "effect3", "effect4", "effect5", "ride", "runNormal1", "flameDash", "flameDashDown", "flameStorm", "fireEyeAura", "fireEyeCast",
+OPTIONAL_CLIPS = ("runAttack", "effect1", "effect2", "effect3", "effect4", "effect5", "ride", "runNormal1", "flameDash", "flameDashDown", "flameDashUp", "flameStorm", "fireEyeAura", "fireEyeCast",
                   "fireDemonAir", "fireDemonAirEffect", "fireDemonDive", "fireDemonLand", "fireDemonImpact",
                   "nailAttack1", "nailAttack2", "nailAttack3", "nailAttack4", "nailAir", "nailUp", "nailDown",
                   "nailArc1", "nailArc2", "nailArc3", "nailArc4", "nailArcAir", "nailArcUp", "nailArcDown",

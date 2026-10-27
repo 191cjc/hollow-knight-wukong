@@ -1,0 +1,163 @@
+{
+  "status": "package_passed_pending_native_il_context_smoke",
+  "verified_at_utc": "2026-10-27T09:59:40.028466+00:00",
+  "baseline": "Hollow Knight 1.5.78.11833 / Modding API v77 / net472",
+  "version": "0.7.8-dev",
+  "validation": {
+    "full_gate": "bash scripts/build.sh",
+    "exit_code": 0,
+    "python_tests": 70,
+    "production_linked_core_checks": 91,
+    "release_warnings": 0,
+    "release_errors": 0,
+    "build_log": "research/awakening-build.log",
+    "post_full_gate_fix": "Recognize actual MonoMod ILLabel.Target as well as Instruction in landing branch matcher.",
+    "affected_no_incremental_release_and_package": {
+      "exit_code": 0,
+      "warnings": 0,
+      "errors": 0,
+      "log": "research/awakening-build.log"
+    }
+  },
+  "package": {
+    "file": "artifacts/WukongKnight-0.7.8-dev.zip",
+    "bytes": 54293975,
+    "sha256": "8d83d0e8ec79c253549677a53b99bcd9114a2c491a07d6cfb81c67a7a63ffd6a",
+    "closure_files": 19,
+    "production_closure_validation": true,
+    "zip_crc_verified": true,
+    "zip_members_and_bytes_equal_stage": true,
+    "release_dll_equal_stage": true,
+    "dll_sha256": "11c2e94339e4721ab0f5d12ddab4dc306260d52ca1a23944505685234c03cf54",
+    "files": [
+      {
+        "path": "README.txt",
+        "bytes": 9958,
+        "sha256": "41f5d2753b4107a5e840928ab3bd784eaa755988d254238b9ed0cf38697ea432"
+      },
+      {
+        "path": "WukongKnight.dll",
+        "bytes": 211968,
+        "sha256": "11c2e94339e4721ab0f5d12ddab4dc306260d52ca1a23944505685234c03cf54"
+      },
+      {
+        "path": "character/atlas-000.png",
+        "bytes": 2405102,
+        "sha256": "cd612e7d651cd39049c99094566fab9d5dbe10905f554461cded7ba8e9ac7794"
+      },
+      {
+        "path": "character/atlas-001.png",
+        "bytes": 2701992,
+        "sha256": "c02867328b9ef3f2f6f19851a57686b2938599718f00ac26aab2fa64f34d17fe"
+      },
+      {
+        "path": "character/atlas-002.png",
+        "bytes": 2902606,
+        "sha256": "36696f00334942f9fd3c93fd6a224c63f1cf36d48b937af9a2d5810683950147"
+      },
+      {
+        "path": "character/atlas-003.png",
+        "bytes": 2669224,
+        "sha256": "c85590204dd0cf1621a95ed47ec5e9dfc40add74bfee01a84bf69b77f68de4c3"
+      },
+      {
+        "path": "character/atlas-004.png",
+        "bytes": 2832741,
+        "sha256": "ea7ba845c21a5e4c007a6fd61a799c2d81974f13a89d7da02b95c37e1a5b0198"
+      },
+      {
+        "path": "character/atlas-005.png",
+        "bytes": 2881021,
+        "sha256": "ae4deb2a82baa240e64b86b8377ac22f1480d243ffc210186eb8f27a396b1d67"
+      },
+      {
+        "path": "character/atlas-006.png",
+        "bytes": 4194243,
+        "sha256": "322115985110eec14fd890cf2a36c85b8d49a6cbae778a6e319510e1d72b0d6c"
+      },
+      {
+        "path": "character/atlas-007.png",
+        "bytes": 3758814,
+        "sha256": "3e8c4344552e24149dbc0041710e7bf923e0d27794ecb902969dbf13c6617c5f"
+      },
+      {
+        "path": "character/atlas-008.png",
+        "bytes": 3769228,
+        "sha256": "dece199a81e991fb61224f2cc909469c50092ee275ad343ed20f0771c20ca358"
+      },
+      {
+        "path": "character/atlas-009.png",
+        "bytes": 3697929,
+        "sha256": "0de9bbf4abeab075c1b5ccf135f477ca940e920a418bf83cd55dfdfd7d1fe676"
+      },
+      {
+        "path": "character/atlas-010.png",
+        "bytes": 4204526,
+        "sha256": "ec8cb55a931af1f45c9b7e28e657704708d944018183f6cc86d5a7a32d94599f"
+      },
+      {
+        "path": "character/atlas-011.png",
+        "bytes": 3780058,
+        "sha256": "f09b5a245d469e368f0368f1c8d77b56664184c1b8f0791cc507aac72d2d0a0d"
+      },
+      {
+        "path": "character/atlas-012.png",
+        "bytes": 3502639,
+        "sha256": "062e2db0f4fdc514fec92f71f9c7dad023d0e56bde117c7993c6292b916686d0"
+      },
+      {
+        "path": "character/atlas-013.png",
+        "bytes": 4190421,
+        "sha256": "db57df506b678a7f66d278bb54bf17b95fe4920a5e3245bc7a62c4877e84ba03"
+      },
+      {
+        "path": "character/atlas-014.png",
+        "bytes": 4393537,
+        "sha256": "ef1f582b5031d6a67d4459f898ad5c9b853da56bafaf66a84a30ff7b8c72e135"
+      },
+      {
+        "path": "character/atlas-015.png",
+        "bytes": 2449146,
+        "sha256": "d43cfe13d93b191bcd6e7fff44e01eae13607d62e9e6c43e746ec8cafcbbfed0"
+      },
+      {
+        "path": "character/character.json",
+        "bytes": 352105,
+        "sha256": "206b6493e3f18816005d5a850d03607dcfb1cd94f26778f8da6e6f62b3918a4a"
+      }
+    ]
+  },
+  "assets": {
+    "clips": 60,
+    "ticks": 1571,
+    "runtime_atlas_pages": 16,
+    "all_previous_1559_registered_ticks_identical_at_both_sizes": true,
+    "packed_reconstruction_lossless": true,
+    "visual_review": "research/upward-dash-visual-review.png",
+    "preservation": {
+      "checkpoint": "23852f3",
+      "files_checked": 360,
+      "all_bytes_unchanged": true,
+      "missing": [],
+      "changed": []
+    }
+  },
+  "public_preview": {
+    "record": "research/awakening-public-preview.json",
+    "local_image_hashes_still_equal_verified_uploads": true,
+    "retention_hours": 72,
+    "preview_url": "https://litter.catbox.moe/3gm8ze.png",
+    "transparent_png_url": "https://litter.catbox.moe/4dfkjd.png"
+  },
+  "runtime_tested": false,
+  "windows_installation_applied": false,
+  "client_acceptance": "Pending actual Hollow Knight client; authorized Windows installation is unavailable in this Linux filesystem.",
+  "task_status": "in_progress",
+  "embedded_icon": {
+    "resource": "WukongKnight.FireEyeSigil.png",
+    "bytes": 55887,
+    "sha256": "8d397a5d5e9138e4f6a3030fd1cf1db4e358bfe6d920d0d17cac427f745573d5",
+    "actual_mono_cecil_byte_equality_passed": true
+  },
+  "source_native_dash_sha256": "476a9cf9eae55d1d7afaf290fbc167014dd0294e0c4873b4e3a89b3ca9781502"
+}

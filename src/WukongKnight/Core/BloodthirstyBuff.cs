@@ -2,7 +2,7 @@ using System;
 
 namespace WukongKnight.Core
 {
-    /// <summary>Three scaled seconds, or six with Fire Eye Sigil; one real-damage heal per second.</summary>
+    /// <summary>Three scaled seconds, or six with its awakening charm; one real-damage heal per second.</summary>
     internal sealed class BloodthirstyBuff
     {
         private double expires = double.NegativeInfinity;

@@ -1,47 +1,118 @@
-# Jiyuan Fire Eye duration and replacement charm
+# Jiyuan Fire Eye and Flame Dash awakening charms
 
 ## Goal
 
-Make Jiyuan Fire Eye a three-second buff by default, with a two-notch charm extending it to six seconds, and provide an original icon matching Hollow Knight's charm artwork.
+Provide two awakening charms in existing native inventory slots: a two-notch
+Jiyuan Fire Eye duration upgrade and a Dashmaster upgrade enabling one upward
+Flame Dash before landing. Preserve native acquisition and save identity, and
+deliver the generated Fire Eye icon through a public link.
 
-## Background
+## Background and decisions
 
-- The user approved creating this task and planning on 2026-10-27.
-- The latest user request replaces the existing native charm that increases focus healing (Deep Focus), preserving its native acquisition route and save identity. This supersedes both adding a new charm and automatically granting it on save entry.
-- Current production behavior is a five-second buff in `src/WukongKnight/Core/BloodthirstyBuff.cs`; native focus completion activates it in `src/WukongKnight/BloodthirstyFireEye.cs`.
-- The current Mod already replaces native focus healing, including Deep Focus's immediate heal, with damage-triggered healing. Native charge/drain timing is currently retained. The pinned DLL confirms Deep Focus uses native charm34; notch accounting reads `charmCost_34` through `PlayerData.GetInt`.
-- Planning is based on clean checkpoint `187fca8`, which includes the Afterimage/Storm input swap and read-only enemy FSM recorder. Preserve those features and the existing unfinished Storm attribution work.
+- The user approved this task and implementation on 2026-10-27. Checkpoint
+  `23852f3` implements the original3/6-second Fire Eye and charm34 replacement;
+  the user explicitly authorized that local commit. This increment follows the
+  same user's request to rename it and repurpose Dashmaster.
+- Deep Focus is native charm34. It now costs two notches, keeps its collectible
+  and got/equipped flags, and replaces its former focus-healing/slowdown effects.
+  The earlier automatic-unlock proposal was superseded by native acquisition.
+- Dashmaster is native charm31. Its downward dash, cooldown and Sharp Shadow
+  interaction remain on native paths. `CanDash` shares native `airDashed` across
+  directions; walls/pogo can reset or bypass that native allowance. Evidence is
+  in `research/upward-dash*.txt` and the focused research report.
+- The user explicitly authorized committing all workspace changes and pushing
+  the current branch to the configured Git remote after verification. Existing
+  .gitignore rules remain in effect; no further confirmation is needed.
+- The user explicitly confirmed that up dash shares the existing native aerial
+  allowance, plus a stricter up-only once-before-landing guard. This preserves
+  the requested relationship with downward dash without granting an extra charge.
+- Preserve checkpoint187fca8's Afterimage/Storm bindings, recorder and unfinished
+  Storm attribution work. There is no new charm ID, pickup, key binding or icon
+  generation for Dashmaster.
 
 ## Requirements
 
-1. Without the replacement charm equipped, successful ordinary focus grants three scaled gameplay seconds of Jiyuan Fire Eye.
-2. Repurpose Deep Focus in its existing inventory position and acquisition route. Do not add another charm ID, introduce custom acquisition, or auto-grant an uncollected charm. Existing ownership/equipment persist through the native save.
-3. The replacement costs two charm notches. When equipped at successful buff activation, it grants six seconds total. Preserve the buff's real-damage healing trigger, one-HP amount, shared one-second cooldown, refresh semantics, and cleanup rules.
-4. Replace the charm's displayed name, description and icon to explain the Fire Eye duration effect. Proposed name: 火眼之印 / Fire Eye Sigil. Remove Deep Focus's former healing/charge tradeoff as part of replacing its effect; preserve other charms' native modifiers.
-5. Produce a new raster charm icon consistent with Hollow Knight's hand-drawn charm UI style, using a flame/eye motif. Keep generated originals and final processed resources in separate locations. Preserve existing character archives/bakes/variants.
-6. Disabling the Mod or failing initialization restores the native charm presentation, cost and behavior, while preserving native ownership/equipment data. Keep package contents explicit and reproducible.
-7. Publish the finished charm image through a publicly reachable preview URL and provide the transparent PNG. The user explicitly requested public preview on 2026-10-27; publishing this image is authorized.
+1. Successful focus activates three scaled gameplay seconds of Jiyuan Fire Eye,
+   or six when charm34 is equipped at activation. Preserve real-HP-loss-only
+   one-HP healing, the shared one-second cooldown, refresh, and cleanup rules.
+2. Charm34 displays **汲元火眼·觉醒 / Jiyuan Fire Eye: Awakening**. Keep its
+   existing two-notch cost, native acquisition/save identity and generated icon.
+   Other focus modifiers retain their native effects.
+3. Charm31 displays **烈焰闪·觉醒 / Flame Dash: Awakening** and describes its
+   existing benefits plus upward dash. Preserve its original cost, ownership,
+   equipment, collectible, downward dash, cooldown and Sharp Shadow interaction.
+4. While airborne with charm31 equipped, holding up and pressing the normal dash
+   key with no horizontal/down input requests a vertical upward dash. Native
+   unlock, ability/cooldown/control and aerial-dash checks must approve it. It
+   consumes native dash allowance; it does not grant another horizontal/down dash.
+5. At most one successful upward dash is allowed before a real landing, including
+   native HeroWalkable platforms as well as ordinary terrain. Rejected attempts
+   do not consume it. Pogo, bounce, wall contact/slide and wall jumps do
+   not restore the additional up allowance. Native movement in other directions
+   keeps its existing reset behavior. Death/scene/detach clean up the old owner.
+6. Reuse native dash speed, duration, collision, control and dash callbacks; change
+   only the owned direction. Never fake down input or set `dashingDown` to obtain
+   upward behavior. Avoid an extra upward launch after native completion and do
+   not erase newer recoil/jump/transition motion. Existing FlameDash hit ledger,
+   full-active-dash HP guards and Sharp Shadow deduplication apply upward too.
+7. Upward presentation uses the same source12-tick flames rotated offline in the
+   opposite direction to downward flames; body/root/aura stay upright. Generate
+   a separate profile and original/full1.5x/packed variants, preserve every earlier
+   file and clip, and keep pixel enlargement offline.
+8. Teardown/failure restores owned native hooks, UI changes and visual suppression.
+   Do not write save flags, persistent invincibility, colliders or global inputs.
+9. Update the Fire Eye preview title and publicly publish the final preview and
+   transparent PNG. Verify HTTP retrieval and matching local bytes; disclose a
+   temporary host's availability. Publication is already explicitly authorized.
 
-## Acceptance Criteria
+## Acceptance criteria
 
-- [x] AC1: Three-second and six-second buff boundaries are exact half-open scaled-time intervals. Refresh replaces expiry, never stacks time or resets the global healing cooldown.
-- [ ] AC2: The native Deep Focus collectible remains the acquisition route; an uncollected charm remains uncollected, and previously owned/equipped saves keep that identity.
-- [ ] AC3: Charm UI, equip accounting and overcharm decisions consistently use two notches; the new name/description/icon appear in the existing slot.
-- [ ] AC4: Equipping the replacement selects six seconds and unequipping selects three seconds for subsequent activations. Other focus/charm timing, Soul costs and all existing attack/skill mechanics retain their established contracts except the explicitly replaced Deep Focus effect.
-- [ ] AC5: Initialization failure, hero replacement, scene transitions and Mod disable restore only owned mutations. Native save flags are not rewritten to fake ownership or equipment.
-- [x] AC6: Generated icon is visually reviewed at inventory size and has clean transparency; package/resource validation includes the final asset. Applicable core tests, Python package checks and pinned-reference Release build pass; actual client acceptance is recorded separately.
-- [x] AC7: A public preview URL opens the finished image, with a direct transparent PNG link; verify HTTP success and rendered content, and explain if the link is temporary.
+- [x] AC1:3/6-second half-open expiry, activation snapshot, cooldown and refresh
+  behavior pass production-linked checks at checkpoint23852f3.
+- [ ] AC2: Both exact Chinese names appear in native inventory slots34/31 with
+  accurate Chinese/English descriptions;34 costs2,31 retains its native cost.
+- [ ] AC3: Existing acquired/equipped saves retain identity; uncollected charms
+  still use their original pickups. Native equip/overcharm/focus behavior is
+  verified in-client, including other focus modifiers.
+- [ ] AC4: Equipped31 plus airborne up-only dash moves upward at the selected
+  native dash speed and duration; unequipped/locked/grounded/insufficient native
+  allowance/repeated-up requests do not bypass native eligibility.
+- [ ] AC5: Real landing restores one upward use; pogo/walls do not. Rejected
+  attempts, cancellation, scenes, death and replacement cannot leak ownership,
+  immunity or old velocity writes into a newer action.
+- [ ] AC6: Horizontal/downward dash and normal/shadow dash damage, cooldown,
+  immunity, walls/ceilings and Sharp Shadow interaction retain their contracts.
+- [x] AC7: The new upward clip has upright body and flame-only rotation; every
+  earlier clip retains registered pixels at both sizes and packed reconstruction.
+  Core, Python, real pinned-reference Release and package validation pass.
+- [x] AC8: Renamed Fire Eye image is visually reviewed and publicly reachable,
+  with a direct transparent PNG link matching the embedded resource bytes.
 
-## Out of Scope
+## Out of scope
 
-- New charm IDs or SFCore dependency, merchants, new pickups, automatic acquisition, extra charm effects, changes to Fire Eye source casting/aura artwork, or enemy-interruption implementation.
+New charm IDs/SFCore, merchants or auto-grants; Dashmaster icon redesign; enemy
+interruption; new input bindings; additional air dashes, costs, damage or collider
+changes; reworking existing skills or regenerating archived/older artwork.
 
-## Validation and Remaining Prerequisites
+## Verification limits
 
-- The user explicitly approved the imagegen CLI/API fallback. Credentials are read in memory from local Codex configuration without logging secrets. The user most recently specified gpt-image-2.5-flare. After configuring a separate private service environment, generation succeeded through the bundled CLI; no secret is stored in task artifacts.
-- Exact focus-action, notch-counting and icon evidence is recorded in `research/native-integration.md`. Real native Spell Control wiring and inventory presentation require client checks; compile/policy tests cannot establish them.
-- The user approved the final plan with “开始”; the task is in progress on feat/fire-eye-charm.
+The original icon was generated with the user-selected `gpt-image-2.5-flare` using
+locally configured private credentials; no credentials belong in artifacts. See
+`research/final-validation.json` and `research/check.md` for checkpoint23852f3's
+passing build/package/image checks. Native serialized FSM, inventory and gameplay
+acceptance remain pending actual-client execution. The Windows install is
+authorized but unavailable from the current Linux filesystem; do not claim an
+installation or gameplay test from compilation.
 
-## Implementation verification
+## Current increment verification
 
-AC1/AC6/AC7 are verified by automated checks, visual review and public HTTP/byte checks. AC2–AC5 are implemented and independently reviewed; their actual native-client matrix remains pending. See research/final-validation.json and research/check.md. No client gameplay, installation or save/UI acceptance is inferred from compilation.
+The automated/artwork acceptance items above are complete. The full gate passed
+70 Python tests and91 linked production Core checks. After review corrected the
+native landing matcher's MonoMod ILLabel handling, the affected no-incremental
+pinned Release and package checks passed again with zero warnings/errors. The
+main audit verified all19 package files, ZIP CRC/bytes, Release/staged DLL equality,
+embedded icon bytes and360 preserved inputs. See
+`research/awakening-final-validation.json`, `research/awakening-check.md` and
+`research/awakening-implementation.md` for exact evidence and final signoff.
+AC2..AC6 remain pending actual-client behavior; source implementation and compile
+validation alone do not complete those items. This task therefore remains active.

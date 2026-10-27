@@ -1,0 +1,30 @@
+{
+  "host": "Litterbox",
+  "retention_hours": 72,
+  "verified_at": "2026-10-27T09:22:09.997302+00:00",
+  "expires_approximately": "2026-10-30T09:22:09.997302+00:00",
+  "files": [
+    {
+      "file": "assets/processed/charms/fire-eye-sigil/preview.png",
+      "url": "https://litter.catbox.moe/3gm8ze.png",
+      "http_status": 200,
+      "content_type": "image/png",
+      "bytes": 90350,
+      "sha256": "2e651cf925fe057db370370b8b461669ce3ef0960dcca0a926ea088dd0935d20",
+      "retrieved_bytes_equal_local": true,
+      "verified_at": "2026-10-27T09:28:29.617381+00:00",
+      "expires_approximately": "2026-10-30T09:28:29.617381+00:00"
+    },
+    {
+      "file": "assets/processed/charms/fire-eye-sigil/icon.png",
+      "url": "https://litter.catbox.moe/4dfkjd.png",
+      "http_status": 200,
+      "content_type": "image/png",
+      "bytes": 55887,
+      "sha256": "8d397a5d5e9138e4f6a3030fd1cf1db4e358bfe6d920d0d17cac427f745573d5",
+      "retrieved_bytes_equal_local": true
+    }
+  ],
+  "preview_visually_reviewed": true,
+  "icon_unchanged_from_checkpoint": "23852f3"
+}

@@ -203,3 +203,11 @@ TakeMP. Native Dream is never begun or finished for it, and the player stays fre
 Recast still replaces the old actor and its ghosts. Fist skills keep only the Down
 spell adapter; Flame Storm owns the neutral-spell Forward adapter, held at Fireball
 Antic and released through Spell End. Godslayer is the sole Dream owner.
+
+
+## 0.7.8 active artwork selection
+
+The new v078 profile/variants add only upward Flame Dash artwork. All v074 fist,
+Ape and other skill pixels, source clocks, masks and damage remain identical.
+The active package now contains60clips/1571ticks/16compact pages; original v074
+folders and prior full1.5x/packed outputs are preserved.

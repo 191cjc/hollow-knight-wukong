@@ -326,3 +326,43 @@ Compilation and engine-free tests do not establish actual client acceptance.
   cost/text/icon/charge behavior without rewriting saved ownership/equipment.
 - [ ] Existing skill inputs, masks, recoil, recovery and enemy FSM recorder work.
 - [ ] Public preview and direct transparent PNG open the final reviewed asset.
+
+
+## 0.7.8 awakening charms and upward dash (pending)
+
+This supersedes the previous Fire Eye Sigil display name. No real client has
+been run for this increment; source/build checks do not fulfill this matrix.
+
+- [ ] Native slots34/31 show 汲元火眼·觉醒 / Jiyuan Fire Eye: Awakening and
+  烈焰闪·觉醒 / Flame Dash: Awakening, with accurate Chinese/English descriptions.
+  Both retain original acquisition/save IDs;34costs2,31retains native2/icon.
+- [ ] Fire Eye remains3s base/6s equipped with no Deep Focus slowdown/extra heal;
+  repeat all0.7.7focus/equipment/notch/overcharm/cleanup checks above.
+- [ ] Airborne equipped31 plus Up-only and dash starts upward, in both facings,
+  keyboard and controller. No charm/locked dash/native cooldown/native shared
+  air charge rejection cannot grant an upward start or consume the extra guard.
+- [ ] Grounded Up remains native horizontal; Up+Left/Right stays native horizontal;
+  Up+Down retains down priority. Releasing/changing keys after an accepted upward
+  start cannot steer it. Direct scene/script HeroDash never becomes upward.
+- [ ] Upward/lateral/downward share the native air allowance. After an upward dash,
+  pogo/bounce, wall contact/slide, wall jump, ResetAirMoves, damage and airborne
+  charm toggles cannot permit a second up dash. Horizontal/downward retain their
+  ordinary native reset behavior. Check ordinary, hard and down-dash landings on
+  both layer8 terrain and HeroWalkable platforms outside that layer, including
+  contact while the dash is still active. Native SteepSlope/state rejection
+  must not grant a landing; old contact must not refresh a later airborne dash.
+- [ ] Repeated forbidden Up-only dash produces no sideways dash, including queued
+  input across landing. First upward dash still accepts native cooldown buffering.
+- [ ] Compare normal and shadow dash duration/speed, Sharp Shadow1.5x damage and
+  source deduplication, Dashmaster cooldown and Sprintmaster combination. All
+  directions have one hit per responder and protection only while actually active.
+- [ ] Hold/release Jump across normal completion; check no extra owned upward tail.
+  A later jump/double jump/wall jump/pogo/recoil/transition motion must survive.
+  Test low ceilings, corners, thin platforms, floor contact and moving terrain.
+- [ ] Up flames turn upward at the native clock while the body stays upright;
+  horizontal/downward art and every earlier skill remain visually identical.
+- [ ] Pause/slow frames, damage/cancellation/death/hazards/scenes/hero replacement,
+  Mod disable/re-enable and partial initialization failure leave no old direction,
+  saved invincibility, altered collider, stale velocity or native UI/hook changes.
+- [ ] Renamed preview https://litter.catbox.moe/3gm8ze.png and transparent PNG
+  https://litter.catbox.moe/4dfkjd.png match the embedded image (72-hour host).

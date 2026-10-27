@@ -11,6 +11,7 @@ namespace WukongKnight
     {
         private readonly HeroController hero;
         private readonly NativeV77 native;
+        private readonly NativeDashV77 direction;
         private readonly Collider2D body;
         private readonly GameObject source;
         private readonly DashHitLedger hits = new DashHitLedger();
@@ -23,11 +24,12 @@ namespace WukongKnight
         private float lastPhysics = float.NegativeInfinity;
         public bool Active => hits.Active && !disposed;
         public bool Downward => Active && native.DashingDown(hero);
+        public bool Upward => Active && direction.Upward;
         public double Progress => native.DashProgress(hero);
 
-        public FlameDash(HeroController hero, NativeV77 native)
+        public FlameDash(HeroController hero, NativeV77 native, NativeDashV77 direction)
         {
-            this.hero = hero; this.native = native;
+            this.hero = hero; this.native = native; this.direction = direction;
             body = hero.GetComponent<Collider2D>() ?? throw new InvalidOperationException("Native dash collider missing.");
             source = new GameObject("WukongKnight.FlameDash");
             source.transform.SetParent(hero.transform, false);
@@ -38,9 +40,11 @@ namespace WukongKnight
             Stop();
             if (disposed || !hero.cState.dashing) return;
             hits.Begin();
+            long token = hits.Token;
             lastPhysics = float.NegativeInfinity;
             previousCenter = body.bounds.center;
-            restoreSharpShadow = native.SuspendSharpShadow(hero);
+            native.SuspendSharpShadow(hero, ref restoreSharpShadow);
+            if (!Owns(token)) return; // SetActive can synchronously detach or replace this dash.
             foreach (Renderer renderer in native.DashRenderers(hero))
             {
                 if (nativeVisuals.ContainsKey(renderer)) continue;
@@ -108,18 +112,22 @@ namespace WukongKnight
         {
             if (!hits.Active) return;
             hits.Stop(hits.Token);
-            if (hero != null) native.RestoreSharpShadow(hero, restoreSharpShadow);
+            bool sharpShadow = restoreSharpShadow;
             restoreSharpShadow = false;
-            foreach (KeyValuePair<Renderer, bool> visual in nativeVisuals)
-                if (visual.Key != null) forceOff.SetValue(visual.Key, visual.Value, null);
+            var visuals = new Dictionary<Renderer, bool>(nativeVisuals);
             nativeVisuals.Clear();
+            foreach (KeyValuePair<Renderer, bool> visual in visuals)
+                if (visual.Key != null) forceOff.SetValue(visual.Key, visual.Value, null);
+            // Restore flags/state before SetActive callbacks can begin another dash.
+            if (hero != null) native.RestoreSharpShadow(hero, sharpShadow);
         }
 
         public void Dispose()
         {
             if (disposed) return;
-            Stop(); disposed = true;
-            if (source != null) UnityEngine.Object.Destroy(source);
+            disposed = true;
+            try { Stop(); }
+            finally { if (source != null) UnityEngine.Object.Destroy(source); }
         }
     }
 }

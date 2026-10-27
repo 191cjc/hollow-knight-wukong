@@ -1,7 +1,7 @@
 # Wukong Knight
 
 Wukong character Mod for Hollow Knight, based on archived 4399 ZMXY4 artwork.
-Development version **0.7.7-dev** includes staff visuals, the grounded four-stage
+Development version **0.7.8-dev** includes staff visuals, the grounded four-stage
 combo, Flame Dash, Fire Demon Slash, Flame Storm, Jiyuan Fire Eye (汲元火眼),
 Afterimage Combo, Earthbreaker and the Dream-key skills.
 All originals and earlier bakes/variants are preserved. Active artwork is baked
@@ -29,10 +29,11 @@ body and staff stay at their existing offline1.5x appearance.
 - **Hold spell/focus:** Jiyuan Fire Eye (汲元火眼). Native focus timing/Soul drain
   shows original winding flames/eye flashes at30 FPS in the final0.7s of the actual native charge (short charges use the source tail), then activates three seconds of healing on real
   player attack damage: one HP, globally at most once per second. Original red flame aura; no instant heal.
-- **Fire Eye Sigil / 火眼之印:** replaces Deep Focus in its existing slot and acquisition
+- **Jiyuan Fire Eye: Awakening / 汲元火眼·觉醒:** replaces Deep Focus in its existing slot and acquisition
   route. Costs two notches and extends subsequent Fire Eye activations to six seconds.
   Native ownership/equipment persist; the former Deep Focus healing/charge tradeoff is removed.
-- **Dash:** Flame Dash retains native travel/cooldown/collision, adds path damage and blocks incoming HP damage throughout each actual dash; Dashmaster downward dashes use downward flames with the body upright.
+  [Public preview](https://litter.catbox.moe/3gm8ze.png) / [transparent PNG](https://litter.catbox.moe/4dfkjd.png), available until approximately2026-10-30 17:28 (Asia/Shanghai).
+- **Dash:** Flame Dash adds path damage and blocks incoming HP damage throughout each actual dash. Native Dashmaster becomes **Flame Dash: Awakening / 烈焰闪·觉醒** (two notches), retaining its original benefits and icon. In midair, hold only Up and press dash to rise once before landing; this shares the native aerial dash allowance. Directional flames turn offline while the body stays upright. See [Flame Dash](docs/FLAME_DASH.md).
 
 Fire Demon uses the up-spell unlock/tier. Earthbreaker uses the down-spell unlock
 while retaining its nail-based damage. Neutral-spell Storm requires the native
@@ -73,13 +74,13 @@ bash scripts/build.sh
 | 输出 | 用途 |
 |---|---|
 | `artifacts/mod/WukongKnight/` | 安装整个目录，必须保留 `character/` |
-| `artifacts/WukongKnight-0.7.7-dev.zip` | DLL、说明、角色清单与引用的加工图集 |
+| `artifacts/WukongKnight-0.7.8-dev.zip` | DLL、说明、角色清单与引用的加工图集 |
 | `assets/processed/wukong/previews/` | 动画 GIF、关键姿势联系表，不进入开发包 |
 | `artifacts/validation.json` | 归档输入、解包、PNG、音频与配置检查 |
 | `artifacts/character-validation.json` | 加工图集、帧范围、时序与连击窗口检查 |
 | `artifacts/build-report.json` | 包内文件散列及实现/编译/自动检查/实机状态 |
 
-Current package: `0.7.7-dev`; older packages are retained for rollback.
+Current package: `0.7.8-dev`; older packages are retained for rollback.
 
 ## 安装与验收
 
@@ -91,9 +92,9 @@ Current package: `0.7.7-dev`; older packages are retained for rollback.
 
 Run `scripts\prepare-all-assets.bat` on Windows to generate the complete set:
 19 PNGs and 16 matching JSONs in `assets/processed/source-variants/all-1p5/`,
-and the selected57-clip/1349-tick fist variant. Full enlarged canvases live in
-`assets/processed/variants/wukong-fist-v071-1p5/`; the separate
-`wukong-fist-v071-1p5-packed/` runtime folder uses12compact atlas pages.
+and the selected60-clip/1571-tick awakening variant. Full enlarged canvases live in
+`assets/processed/variants/wukong-fist-v078-1p5/`; the separate
+`wukong-fist-v078-1p5-packed/` runtime folder uses16compact atlas pages.
 Originals and earlier bakes remain
 in separate folders. See [asset variants](docs/ASSET_VARIANTS.md) and
 [Flame Dash](docs/FLAME_DASH.md) for source evidence and implementation rules.

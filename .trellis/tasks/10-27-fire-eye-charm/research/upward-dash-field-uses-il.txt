@@ -1,0 +1,65 @@
+METHOD System.Void HeroAnimationController::UpdateAnimation()
+IL_02ce: ldfld System.Boolean HeroController::dashingDown
+METHOD System.Void CheatManager::OnGUI()
+IL_061e: ldstr "canDash"
+METHOD System.Void HeroController::Move(System.Single)
+IL_00bb: ldstr "equippedCharm_31"
+METHOD System.Void HeroController::ResetAirMoves()
+IL_0009: stfld System.Boolean HeroController::airDashed
+METHOD System.Void HeroController::Bounce()
+IL_002b: stfld System.Boolean HeroController::airDashed
+METHOD System.Void HeroController::BounceHigh()
+IL_001e: stfld System.Boolean HeroController::airDashed
+METHOD System.Void HeroController::ShroomBounce()
+IL_0009: stfld System.Boolean HeroController::airDashed
+METHOD System.Void HeroController::EnterSceneDreamGate()
+IL_000e: stfld System.Boolean HeroController::airDashed
+METHOD System.Void HeroController::RegainControl()
+IL_0086: stfld System.Boolean HeroController::airDashed
+METHOD System.Void HeroController::LookForInput()
+IL_00cd: stfld System.Boolean HeroController::airDashed
+IL_0153: stfld System.Boolean HeroController::airDashed
+METHOD System.Void HeroController::DoWallJump()
+IL_008f: stfld System.Boolean HeroController::airDashed
+METHOD System.Void HeroController::HeroDash()
+IL_0017: stfld System.Boolean HeroController::airDashed
+IL_00f4: ldstr "equippedCharm_31"
+IL_0164: stfld System.Boolean HeroController::dashingDown
+IL_01b5: stfld System.Boolean HeroController::dashingDown
+IL_01c0: ldstr "equippedCharm_31"
+IL_027a: ldfld System.Boolean HeroController::dashingDown
+METHOD System.Void HeroController::BackOnGround()
+IL_00d8: stfld System.Boolean HeroController::airDashed
+METHOD System.Void HeroController::FinishedDashing()
+IL_00ba: ldfld System.Boolean HeroController::dashingDown
+METHOD System.Void HeroController::ExitAcid()
+IL_0026: stfld System.Boolean HeroController::airDashed
+METHOD System.Boolean HeroController::CanDash()
+IL_008a: ldfld System.Boolean HeroController::airDashed
+IL_00b1: ldstr "canDash"
+METHOD System.Void HeroController::OnCollisionEnter2D(UnityEngine.Collision2D)
+IL_019d: ldfld System.Boolean HeroController::dashingDown
+METHOD System.Void HeroController::orig_Update()
+IL_06d5: ldfld System.Boolean HeroController::airDashed
+IL_06de: stfld System.Boolean HeroController::airDashed
+METHOD UnityEngine.Vector2 HeroController::OrigDashVector()
+IL_0030: ldfld System.Boolean HeroController::dashingDown
+METHOD System.Void HeroController::orig_Dash()
+IL_0052: ldfld System.Boolean HeroController::dashingDown
+METHOD System.Boolean HeroController/<EnterScene>d__469::MoveNext()
+IL_00a7: stfld System.Boolean HeroController::airDashed
+METHOD System.Boolean HeroController/<Respawn>d__473::MoveNext()
+IL_00a7: stfld System.Boolean HeroController::airDashed
+METHOD System.Boolean HeroController/<HazardRespawn>d__474::MoveNext()
+IL_007a: stfld System.Boolean HeroController::airDashed
+METHOD System.Void PlayerData::GetAllPowerups()
+IL_0002: ldstr "canDash"
+METHOD System.Void PlayerData::CalculateNotchesUsed()
+IL_032d: ldstr "equippedCharm_31"
+IL_033b: ldstr "charmCost_31"
+METHOD System.Void PlayerData::SetupNewPlayerData()
+IL_01c8: stfld System.Boolean PlayerData::canDash
+IL_10a1: stfld System.Boolean PlayerData::equippedCharm_31
+IL_10a8: stfld System.Int32 PlayerData::charmCost_31
+METHOD System.Void PlayerData::AddGGPlayerDataOverrides()
+IL_0078: stfld System.Boolean PlayerData::canDash

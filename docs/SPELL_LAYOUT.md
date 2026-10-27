@@ -1,4 +1,4 @@
-# Spell controls (0.7.7-dev)
+# Spell controls (0.7.8-dev)
 
 The 0.4.4 workspace was committed before these changes as
 `a07b2ac4981caca2b84af7a4f9ae1dc270a3d42d`. No remote push was made.
@@ -12,7 +12,7 @@ The 0.4.4 workspace was committed before these changes as
 | Up + spell | Fire Demon Slash | Howling Wraiths / Abyss Shriek (`screamLevel`) |
 | Down + spell | Earthbreaker Fist (辟地拳) | Desolate Dive / Descending Dark unlock; unchanged nail-based damage |
 | Hold spell/focus | Jiyuan Fire Eye (汲元火眼) | Native focus eligibility, charge, cancellation and Soul drain |
-| Dash | Flame Dash | Native dash movement, cooldown, unlock and collision |
+| Dash | Flame Dash | Native clock/cooldown/unlock/collision; equipped charm31 adds airborne up-only dash, shared air allowance and once before landing |
 
 Directional/air nail attacks and pogo retain native behavior.
 See FIST_SKILLS.md for the new four-action source, charge, balance and lifecycle contract.
@@ -37,15 +37,15 @@ drain time once. Play the source during the final0.7seconds; native charges
 shorter than that select its tail at original speed. No charm timing table or
 discrete Soul-progress frame stepping is used.
 Native Quick Focus and other charm timing, Soul cost, cancellation and completion
-stay authoritative. Fire Eye Sigil replaces Deep Focus, including its former
+stay authoritative. Jiyuan Fire Eye: Awakening replaces Deep Focus, including its former
 healing/slow-charge tradeoff. Early completion/cancellation stops the visual without extending
 focus. An interrupted charge grants no new buff. Original `effect4` remains
 preserved.
 Completion suppresses the native focus `AddHealth` call and activates a buff;
-**there is no immediate heal**, including with Fire Eye Sigil. One completed charge
+**there is no immediate heal**, including with Jiyuan Fire Eye: Awakening. One completed charge
 ends that focus cycle. Other healing continues through its native path.
 
-For three scaled gameplay seconds after completion (six with Fire Eye Sigil), actual enemy HP loss from
+For three scaled gameplay seconds after completion (six with Jiyuan Fire Eye: Awakening), actual enemy HP loss from
 player nail, nail beam, spell or dash hits can heal one ordinary HP. All enemies,
 attacks and multi-hit phases share a cooldown of at least one second. Whiffs,
 blocked/evaded attacks, scenery and attacks on already-dead enemies do not heal.
@@ -66,7 +66,7 @@ clock. There is no automatic activation/expiry heal or source-game attack bonus.
 Focus spell state changes are deferred out of the native `AddHealth` action to
 avoid reentering PlayMaker's executing action list. Dream focus is excluded.
 
-## Fire Eye Sigil / 火眼之印
+## Jiyuan Fire Eye: Awakening / 汲元火眼·觉醒
 
 Native Deep Focus (charm34) becomes this two-notch charm. Its existing collectible,
 owned flag and equipped save identity remain authoritative; entering a save does
@@ -106,10 +106,10 @@ ceil(x1.5). Maximums assume full contact and are not guaranteed enemy HP loss.
 
 ## Artwork and verification
 
-`data/character/wukong-fist-v074.json` produces the separate
-`assets/processed/wukong-fist-v074-original` bake. The active offline1.5x copy is
-`assets/processed/variants/wukong-fist-v074-1p5`; its -packed runtime copy contains
-59clips/1559ticks/16pages, including the body-free moving-awakening Ape layers.
+`data/character/wukong-fist-v078.json` produces the separate
+`assets/processed/wukong-fist-v078-original` bake. The active offline1.5x copy is
+`assets/processed/variants/wukong-fist-v078-1p5`; its -packed runtime copy contains
+60clips/1571ticks/16pages, including the body-free moving-awakening Ape layers.
 All earlier original/variant folders, clip pixels and archived inputs are preserved.
 Run `scripts/prepare-all-assets.bat` to repeat preparation.
 

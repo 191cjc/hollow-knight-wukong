@@ -1,4 +1,44 @@
-# Fire Eye Sigil implementation plan
+# Awakening charms implementation plan
+
+## Current increment (after23852f3)
+
+The user's latest request authorizes the two renames and Dashmaster upward dash
+within this active task. Preserve completed work; do not ask again to create a
+task or regenerate the selected icon. The user explicitly confirmed the native
+shared aerial allowance and extra upward-once-until-landing guard.
+
+1. Finish focused pinned-DLL research; curate its report into both JSONL manifests.
+   Read the updated PRD/design and owning native-combat/character-assets contracts.
+2. Dispatch one trellis-implement agent with ownership of product source, tests,
+   tooling/new asset variants and product metadata/docs. It is not alone: main
+   owns task/spec artifacts and public publishing; never revert other edits.
+3. Implement exact34/31UI names/descriptions, preserving all save identities and
+   native31cost/icon/effects. Add the owned native upward adapter and meaningful
+   production-linked allowance/lifecycle tests; compile against real v77 DLLs.
+4. Add offline up flames in new v078 variants, preserving body/root and all old
+   pixels. Update clip schemas, active variant and asset batch. Update the Fire
+   Eye preview title in its offline preparation script and regenerate preview
+   from the preserved original (icon bytes must stay identical).
+5. Run targeted checks, then the declared full build/package gate for0.7.8-dev.
+   Avoid unrelated generated audio/inventory/index churn from prepare_assets.py.
+6. Dispatch independent trellis-check; fix verified findings and update owning
+   specs. Re-run only affected checks after fixes, with final full closure as needed.
+7. Main verifies new art visually, publishes the renamed preview/transparent PNG,
+   checks HTTP and byte equality, and records package hashes and client limitations.
+8. Install only if the authorized Windows destination is accessible with the game
+   closed; back up and verify complete package if so. Report no installation if
+   inaccessible. The user subsequently explicitly authorized committing all
+   workspace changes and uploading to the configured Git remote on2026-10-27.
+   Include every pending non-ignored change; push the current feature branch
+   after validation. No additional commit or push confirmation is required.
+
+Required additional checks: no-up/ground/diagonal/native-rejected attempts;
+upward once, pogo/wall no refresh, landing refresh, stale token/new action,
+normal/shadow native speeds, completion/cancel/ceiling momentum, charm removal,
+hero replacement/scene/death/disable, all old art pixels/full packed reconstruction,
+exact embedded icon/package file closure. Native gameplay remains pending client.
+
+## Completed foundation plan
 
 Status: in progress. The user approved the final plan with “开始”; implementation is authorized.
 

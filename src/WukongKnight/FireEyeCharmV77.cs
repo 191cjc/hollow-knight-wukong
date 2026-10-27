@@ -145,7 +145,7 @@ namespace WukongKnight
         {
             if (!active || sheet != "UI") return original;
             bool chinese = Language.Language.CurrentLanguage().ToString().StartsWith("ZH", StringComparison.OrdinalIgnoreCase);
-            if (key == "CHARM_NAME_34") return chinese ? "火眼之印" : "Fire Eye Sigil";
+            if (key == "CHARM_NAME_34") return chinese ? "汲元火眼·觉醒" : "Jiyuan Fire Eye: Awakening";
             if (key == "CHARM_DESC_34") return chinese
                 ? "凝结着不熄余烬的印记。<br><br>将汲元火眼的持续时间从3秒延长至6秒。"
                 : "A sigil holding an undying ember.<br><br>Extends Jiyuan Fire Eye from 3 seconds to 6 seconds.";

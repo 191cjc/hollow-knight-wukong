@@ -112,7 +112,7 @@ namespace WukongKnight
             string desired;
             if (dying) desired = "dead";
             else if (state.hazardDeath || state.recoiling || state.recoilFrozen || state.hazardRespawning) desired = "hurtStand";
-            else if (flameDash != null && flameDash.Active && state.dashing) desired = flameDash.Downward ? "flameDashDown" : "flameDash";
+            else if (flameDash != null && flameDash.Active && state.dashing) desired = flameDash.Upward ? "flameDashUp" : flameDash.Downward ? "flameDashDown" : "flameDash";
             else if (fireDemon != null && fireDemon.Active) desired = fireDemon.Clip;
             else if (flameStorm != null && flameStorm.Active) desired = "flameStorm";
             else if (fist != null && fist.Active) desired = fist.Clip;
@@ -135,7 +135,7 @@ namespace WukongKnight
             if (state.attacking && desired.StartsWith("nail", StringComparison.Ordinal) && (combo == null || !combo.Active))
                 ticks = Math.Min(assets.Clips[desired].Ticks - 0.0001, native.AttackProgress(hero) * assets.Clips[desired].Ticks);
             if (dying) ticks = deathClock.Tick(now);
-            bool dashing = desired == "flameDash" || desired == "flameDashDown";
+            bool dashing = desired == "flameDash" || desired == "flameDashDown" || desired == "flameDashUp";
             if (dashing && flameDash != null)
                 ticks = Math.Min(assets.Clips[desired].Ticks - 0.0001, flameDash.Progress * assets.Clips[desired].Ticks);
             if (fireDemon != null && fireDemon.Active && desired == fireDemon.Clip) ticks = fireDemon.Tick;

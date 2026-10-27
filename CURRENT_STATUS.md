@@ -1,4 +1,55 @@
-# Current status: Wukong0.7.7 Fire Eye Sigil
+# Current status: Wukong0.7.8 awakening charms
+
+Updated2026-10-27 (Asia/Shanghai), branch feat/fire-eye-charm, after checkpoint23852f3.
+
+| Native charm | Current behavior |
+| --- | --- |
+| Deep Focus /34 | 汲元火眼·觉醒 / Jiyuan Fire Eye: Awakening;2notches;3second base buff or6seconds when equipped at activation; generated icon and native acquisition/save identity retained |
+| Dashmaster /31 | 烈焰闪·觉醒 / Flame Dash: Awakening; native2notches/icon/acquisition; airborne Up-only plus normal dash enables upward Flame Dash |
+
+Upward dash uses native eligibility, normal/Sharp Shadow speed, duration and the
+shared aerial allowance. A separate unsaved guard permits one successful upward
+use before an accepted physical landing. Pogo, walls, wall jump, generic air-move
+resets, damage and charm toggles do not replenish it. Native accepted bottom
+landings cover ordinary, hard and down-dash landing on layer8 terrain and
+HeroWalkable platforms, preserving native SteepSlope/state rejection. Normal
+completion removes only exact owned positive-Y momentum before native end
+callbacks; newer jump/bounce/recoil motion retains ownership. Existing damage,
+active-dash protection, charm bonuses and horizontal/downward behavior remain.
+
+The separate v078 original/full1.5x/packed variant adds12upward ticks:
+60clips/1571ticks/16runtime pages. Only flames rotate offline; body/root/aura
+stay upright. Production-sampler checks preserve all1559earlier ticks at both
+sizes and reconstruct the new packed pixels exactly. Prior variants and the
+0.7.7rollback package are retained. Character canvas/root/calibration and combat
+masks remain unchanged.
+
+Fire Eye icon pixels remain unchanged. The renamed preview is publicly verified:
+Preview: https://litter.catbox.moe/3gm8ze.png
+Transparent PNG: https://litter.catbox.moe/4dfkjd.png
+Temporary72hour links expire approximately2026-10-30 17:28 (Asia/Shanghai).
+Icon SHA256: 8d397a5d5e9138e4f6a3030fd1cf1db4e358bfe6d920d0d17cac427f745573d5.
+
+Validation: scripts/build.sh --no-incremental passed70Python tests and91actual
+production-linked Core checks. The final affected pinned-reference Release and
+package checks were repeated after the MonoMod ILLabel matcher correction:
+0warnings/0errors,19file package closure and ZIP CRC/byte equality passed.
+Package: artifacts/WukongKnight-0.7.8-dev.zip
+ZIP SHA256: 8d83d0e8ec79c253549677a53b99bcd9114a2c491a07d6cfb81c67a7a63ffd6a.
+DLL SHA256: 11c2e94339e4721ab0f5d12ddab4dc306260d52ca1a23944505685234c03cf54 (211968bytes).
+Evidence: .trellis/tasks/10-27-fire-eye-charm/research/awakening-build.log and
+awakening-implementation.md; final independent audit is recorded by the main session.
+
+Actual client acceptance remains pending (runtime_tested=false). No0.7.8install
+was performed because this Linux environment has no mounted Windows Steam path.
+Native UI/equipment, keyboard/controller input, shared allowance/landings, ceilings,
+Sharp Shadow interactions, focus charms and disable/re-enable need client checks.
+See docs/CLIENT_ACCEPTANCE.md. The user explicitly authorized committing all
+workspace contents and pushing the current branch to origin after validation.
+
+---
+
+# Previous status: Wukong0.7.7 Fire Eye Sigil
 
 Updated2026-10-27 (Asia/Shanghai), branch feat/fire-eye-charm, based on187fca8.
 Fire Eye lasts3seconds, or6seconds when Fire Eye Sigil is equipped at successful

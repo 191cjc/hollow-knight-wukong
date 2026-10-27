@@ -12,8 +12,8 @@ Read the project-specific contracts below before changing their layers. The olde
 
 | Guide | Applies to | Status |
 |-------|------------|--------|
-| [Character Assets](./character-assets.md) | Legacy animation baking, manifest, Unity sprites, generated charm icons and packaging | Code-backed |
-| [Native Combat](./native-combat.md) | Hero hooks, combo clock, hit ownership, rendering and lifecycle | Code-backed, including original Wukong nail arcs with native charm range and mesh restoration, source travel, original Wukong death/dash immunity and native-end-aligned30Hz Fire Eye casting clock/overlay/aura and downward dash art and up/down/focus adapters, charm34 Fire Eye Sigil with3/6second activation snapshots and2notch native accounting, neutral-spell Storm / down-Dream Afterimage routes; unreleased Storm attribution draft has no enemy interruption support; client acceptance pending |
+| [Character Assets](./character-assets.md) | Legacy animation baking, manifests, Unity sprites, separate upward-flame variants, generated charm icons and packaging | Code-backed |
+| [Native Combat](./native-combat.md) | Hero hooks, combo clock, hit ownership, rendering and lifecycle | Code-backed, including original Wukong nail arcs with native charm range and mesh restoration, source travel, original Wukong death/dash immunity and native-end-aligned30Hz Fire Eye casting clock/overlay/aura and downward dash art and up/down/focus adapters, charm34 Jiyuan Fire Eye: Awakening with3/6second snapshots and2notch native accounting, charm31 Flame Dash: Awakening with shared native aerial allowance and landing-only upward restriction, neutral-spell Storm / down-Dream Afterimage routes; unreleased Storm attribution draft has no enemy interruption support; client acceptance pending |
 
 Before implementation, read the applicable contract and `.trellis/spec/guides/index.md`. During quality review, verify the cross-layer schema and ownership rules and run the relevant tests/build; actual client checks remain separate.
 

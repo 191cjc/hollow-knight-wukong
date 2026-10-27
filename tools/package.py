@@ -9,7 +9,7 @@ from pathlib import Path
 
 from validate_character import CHARACTER, ROOT, sha256, validate_character
 
-VERSION = "0.7.7-dev"
+VERSION = "0.7.8-dev"
 _VARIANT = json.loads((ROOT / "data/character/active-variant.json").read_text(encoding="utf-8"))
 ACTIVE_CHARACTER = ROOT / _VARIANT.get("runtime_directory", _VARIANT["output_directory"])
 README = f"""Wukong Knight {VERSION}
@@ -24,11 +24,16 @@ Only the independent Wukong arc layer follows the selected native slash scale.
 Longnail/Mark of Pride/both give native 1.15x/1.25x/1.4x; body remains offline1.5x.
 Arc and body share the same original animation tick and character-center attachment.
 The native dash key now plays Wukong's original Flame Dash pose/flame artwork.
-Dashmaster downward dashes rotate only the flames downward, keeping the body upright.
-Movement, cooldown, unlocks and wall collision retain native dash behavior.
+Dashmaster becomes Flame Dash: Awakening (烈焰闪·觉醒), retaining its original2notches,
+icon, collectible, dash cooldown/downward dash and charm bonuses. In midair hold
+only Up and press dash to rise. It shares native aerial dash allowance and permits
+one upward use before a real landing; pogo/wall contact/charm toggles do not refill it.
+Native normal/Sharp Shadow speed, clock, cooldown, unlocks and collision remain.
+Only directional flames rotate offline; the body stays upright. Normal completion
+removes only proven owned upward momentum, before native dash-end callbacks.
 Each responder along the actual dash path can take one nail-level dash hit.
-All incoming HP damage is blocked for the actual active Flame Dash, horizontally
-or downward, and protection releases immediately on end/cancel. No saved invincibility
+All incoming HP damage is blocked for the actual active Flame Dash, horizontally,
+upward or downward, and protection releases immediately on end/cancel. No saved invincibility
 flag is changed. The old Sharp Shadow damage source is temporarily suspended to
 prevent duplicate damage. No extra MP cost is added.
 Real death uses original Wukong dead:65 source ticks at30 FPS, falling/prone body
@@ -103,7 +108,7 @@ use the source tail without slowing it. Completion/interruption removes the cast
 immediately. Native focus timing,
 Soul costs and buff activation remain authoritative.
 Completion activates a three-second buff with NO immediate healing.
-Fire Eye Sigil (火眼之印) replaces native Deep Focus, preserving charm34 acquisition
+Jiyuan Fire Eye: Awakening (汲元火眼·觉醒) replaces native Deep Focus, preserving charm34 acquisition
 and saved ownership/equipment. It costs2notches and grants6seconds total when
 equipped at completion. The former Deep Focus healing/charge tradeoff is removed;
 other focus charms retain their native timing. Its generated icon is embedded in the DLL. Real player attack
@@ -215,7 +220,7 @@ def main():
         "dll": dll.relative_to(ROOT).as_posix(), "dll_bytes": dll.stat().st_size,
         "dll_sha256": sha256(dll),
         "implemented": {"character_replacement": True, "grounded_four_stage_combo": True,
-                        "active_skills": True, "flame_dash": True, "fire_demon_slash": True, "flame_storm": True, "bloodthirsty_fire_eye": True, "afterimage_combo": True, "godslayer_strike": True, "earthbreaker_fist": True, "fire_ape_assault": True, "other_active_skills": False},
+                        "active_skills": True, "flame_dash": True, "upward_flame_dash": True, "awakening_charms": True, "fire_demon_slash": True, "flame_storm": True, "bloodthirsty_fire_eye": True, "afterimage_combo": True, "godslayer_strike": True, "earthbreaker_fist": True, "fire_ape_assault": True, "other_active_skills": False},
         "built": args.checks_passed,
         "automatically_verified": {"source_inventory": args.checks_passed,
                                    "character_manifest_and_atlases": True,

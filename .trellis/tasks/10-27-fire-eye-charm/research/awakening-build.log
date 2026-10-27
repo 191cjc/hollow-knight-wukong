@@ -1,0 +1,417 @@
+{
+  "validation": "passed",
+  "audio_full_decode": true,
+  "source_files": 28,
+  "animation_bundles": 8,
+  "png_files": 19,
+  "mp3_files": 14,
+  "skill_records": 97,
+  "buff_records": 222,
+  "role_ids": [
+    "2001",
+    "2006",
+    "2011"
+  ],
+  "catalogue_scope": "archived_source_files",
+  "runtime_tested": false
+}
+{"clips": 13, "ticks": 329, "canvas": [231, 226], "root": [119, 174], "unique_cells": 52, "atlas_pages": 1}
+{"related_pngs": 19, "related_jsons": 16, "clips": 60, "frames": 1571, "atlases": 16, "originals_unchanged": true}
+{
+  "schema_version": 1,
+  "status": "passed",
+  "verified_at_utc": "2026-10-27T09:52:26.530918+00:00",
+  "manifest_sha256": "2980630a09bfdaf4d21b421d3658b2cc6bb03235531f665be807011830ff30a3",
+  "source_hashes_verified": true,
+  "atlas_hashes_and_dimensions_verified": true,
+  "frame_bounds_and_ticks_verified": true,
+  "combat_windows_verified": true,
+  "counts": {
+    "clips": 13,
+    "frames": 329,
+    "atlases": 1
+  },
+  "runtime_tested": false
+}
+......................................................................
+----------------------------------------------------------------------
+Ran 70 tests in 313.246s
+
+OK
+{"related_pngs": 19, "related_jsons": 16, "clips": 60, "frames": 1571, "atlases": 16, "originals_unchanged": true}
+PASS SinglePressDoesNotAutoChain
+PASS FourPressesFollowFourStages
+PASS BufferIsBoundedAndEarlyPressIsRejected
+PASS GraceHasAnInclusiveDeadline
+PASS CancellationInvalidatesOwnership
+PASS DualWindowsDeduplicateActualTargets
+PASS QuickSlashScalesEveryStageWindow
+PASS PhysicsClockSurvivesSlowRendering
+PASS CompletionDoesNotRetainStageFourInput
+PASS ContactCleanupWaitsForNativeEnumeration
+PASS DashHitsEachResponderOnce
+PASS DashCancellationRejectsOldCallbacks
+PASS NewDashClearsTargetsWithoutAcceptingStaleHits
+PASS UpDashRequiresAirborneUpOnlyCharmInput
+PASS UpDashNeverOverridesNativeRejection
+PASS UpDashConsumesOnlySuccessfulInputStarts
+PASS UpDashStartupObservationWaitsForNativeCommit
+PASS UpDashNeedsPhysicalLandingToReplenish
+PASS UpDashNativeContactLandingSurvivesActiveCompletion
+PASS UpDashCancellationRetainsLandingGuard
+PASS UpDashStaleCallbacksCannotOwnNewMotion
+PASS UpDashFinishClearsOnlyItsExactPositiveOutput
+PASS UpDashNewNativeMotionWinsEvenAtSameVelocity
+PASS FireDemonContactCooldownAndTargetIndependence
+PASS FireDemonContactCapAndFinisher
+PASS FireDemonLagDoesNotCatchUpDamage
+PASS FireDemonCancellationAndRecast
+PASS FireDemonFixedSpellBalance
+PASS FireDemonFinisherRevealsWithoutEndingProtection
+PASS FireDemonOldFinisherCannotRevealNewCast
+PASS EnemySensorsCannotConsumeSkillHits
+PASS BossWeaponCannotRouteDamageToParent
+PASS SkillContactsRetainNativeInteractions
+PASS FireDemonFinishesWithoutLanding
+PASS FireDemonLagDoesNotExtendEffects
+PASS FireDemonOriginalRegionsMirrorAroundSourceRoot
+PASS FireDemonSourceFinisherRetainsCastProtection
+PASS BloodEyeOnlyHealsRealDamage
+PASS BloodEyeCooldownIsGlobal
+PASS BloodEyeExpiryDoesNotHeal
+PASS BloodEyeRefreshPreservesCooldown
+PASS BloodEyeClearRejectsOldCallbacks
+PASS BloodEyeFullHealthDoesNotConsumeProc
+PASS BloodEyeRejectsInvalidTime
+PASS StormUsesSourceClock
+PASS StormContactsAreBounded
+PASS StormUsesFixedSpellDamage
+PASS StormUsesOriginalLocalMask
+PASS FireDemonSourceTravelIsBounded
+PASS FireDemonTravelDoesNotDependOnSampling
+PASS BloodEyeVisualClockFollowsLifetime
+PASS FireEyeWaitsForEndWindow
+PASS FireEyeDeadlineUsesNativeRates
+PASS FireEyeRepeatedObserversDoNotStretchSourceFrames
+PASS FireEyeVisualPauseUsesScaledTime
+PASS FireEyeCancelledAndRecastClockIsFresh
+PASS DeathSourceClockDoesNotRestartOrLoop
+PASS DeathPauseUsesScaledTime
+PASS DeathCleanupAllowsFreshRespawn
+PASS FistChargeReleaseThreshold
+PASS FistChargeReleaseIsLatched
+PASS FistContactsOwnSubskills
+PASS FistSourceMasksStayLocal
+PASS FistTravelIsBounded
+PASS FistBalanceHasBoundedCloneDamage
+PASS FistChargeForcesSourceRelease
+PASS FistChargeAutoReleaseIsLatched
+PASS FistDirectionalSoulGate
+PASS FistSoulAcquisitionCanBeRevoked
+PASS FistSoulSpendingCanRevokeControl
+PASS CopiedGodslayerGhostExpiresAtReleaseEnd
+PASS CopiedEarthbreakerGhostExpiresAtLandingEnd
+PASS IdleGhostExpiryDefersForCopy
+PASS EarthbreakerDescentIsFasterAndSamplingIndependent
+PASS FistPushUsesNativeSlamAndAwayDirection
+PASS EarthbreakerProtectionEndsWithHeroAction
+PASS FireApeKeepsOriginalDeadline
+PASS HeroRecoveryRetainsOtherActionClocks
+PASS DetachedSummonsKeepIndependentClocks
+PASS AfterimageTrailBirthsRetainPositionsAcrossSlowFrames
+PASS DetachedCancellationRejectsStaleWork
+PASS SummonsSpendSoulWithoutTakingControl
+PASS SummonPaymentCanRevokeSpawn
+PASS DetachedContactsKeepCapsWhenFacingChanges
+PASS ControlledCastRejectsInsufficientAndRevokedSoul
+PASS ControlledCastPaymentAndExceptionReleaseOwner
+PASS EnemyDamageRequiresExactIdentity
+PASS EnemyDamageRequiresActualSurvivingLoss
+PASS EnemyDamageRejectsNestedAttribution
+PASS EnemyDamageRejectsRevokedAndReusedResults
+PASS EnemyDamageAllowsRepeatedAcceptedHits
+91 combo-core checks passed (actual linked production source).
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  WukongKnight -> /home/ubuntu/hollow-knight-wukong/src/WukongKnight/bin/Release/net472/WukongKnight.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:02.29
+{
+  "schema_version": 2,
+  "version": "0.7.8-dev",
+  "package": "artifacts/WukongKnight-0.7.8-dev.zip",
+  "sha256": "3094055d1c2ea5072ab4aa646f45677c0f7353125c5be20fae6a31b652d67a22",
+  "dll": "src/WukongKnight/bin/Release/net472/WukongKnight.dll",
+  "dll_bytes": 211968,
+  "dll_sha256": "7c285369533dde04ee8e7ad9b9d51419202ac532ce4362cb268aa33e8977cd2f",
+  "implemented": {
+    "character_replacement": true,
+    "grounded_four_stage_combo": true,
+    "active_skills": true,
+    "flame_dash": true,
+    "upward_flame_dash": true,
+    "awakening_charms": true,
+    "fire_demon_slash": true,
+    "flame_storm": true,
+    "bloodthirsty_fire_eye": true,
+    "afterimage_combo": true,
+    "godslayer_strike": true,
+    "earthbreaker_fist": true,
+    "fire_ape_assault": true,
+    "other_active_skills": false
+  },
+  "built": true,
+  "automatically_verified": {
+    "source_inventory": true,
+    "character_manifest_and_atlases": true,
+    "python_tests": true,
+    "combo_core_tests": true,
+    "release_build": true,
+    "package_closure_and_zip_bytes": true
+  },
+  "runtime_tested": false,
+  "client_acceptance": "pending",
+  "files": [
+    {
+      "path": "README.txt",
+      "bytes": 9958,
+      "sha256": "41f5d2753b4107a5e840928ab3bd784eaa755988d254238b9ed0cf38697ea432"
+    },
+    {
+      "path": "WukongKnight.dll",
+      "bytes": 211968,
+      "sha256": "7c285369533dde04ee8e7ad9b9d51419202ac532ce4362cb268aa33e8977cd2f"
+    },
+    {
+      "path": "character/atlas-000.png",
+      "bytes": 2405102,
+      "sha256": "cd612e7d651cd39049c99094566fab9d5dbe10905f554461cded7ba8e9ac7794"
+    },
+    {
+      "path": "character/atlas-001.png",
+      "bytes": 2701992,
+      "sha256": "c02867328b9ef3f2f6f19851a57686b2938599718f00ac26aab2fa64f34d17fe"
+    },
+    {
+      "path": "character/atlas-002.png",
+      "bytes": 2902606,
+      "sha256": "36696f00334942f9fd3c93fd6a224c63f1cf36d48b937af9a2d5810683950147"
+    },
+    {
+      "path": "character/atlas-003.png",
+      "bytes": 2669224,
+      "sha256": "c85590204dd0cf1621a95ed47ec5e9dfc40add74bfee01a84bf69b77f68de4c3"
+    },
+    {
+      "path": "character/atlas-004.png",
+      "bytes": 2832741,
+      "sha256": "ea7ba845c21a5e4c007a6fd61a799c2d81974f13a89d7da02b95c37e1a5b0198"
+    },
+    {
+      "path": "character/atlas-005.png",
+      "bytes": 2881021,
+      "sha256": "ae4deb2a82baa240e64b86b8377ac22f1480d243ffc210186eb8f27a396b1d67"
+    },
+    {
+      "path": "character/atlas-006.png",
+      "bytes": 4194243,
+      "sha256": "322115985110eec14fd890cf2a36c85b8d49a6cbae778a6e319510e1d72b0d6c"
+    },
+    {
+      "path": "character/atlas-007.png",
+      "bytes": 3758814,
+      "sha256": "3e8c4344552e24149dbc0041710e7bf923e0d27794ecb902969dbf13c6617c5f"
+    },
+    {
+      "path": "character/atlas-008.png",
+      "bytes": 3769228,
+      "sha256": "dece199a81e991fb61224f2cc909469c50092ee275ad343ed20f0771c20ca358"
+    },
+    {
+      "path": "character/atlas-009.png",
+      "bytes": 3697929,
+      "sha256": "0de9bbf4abeab075c1b5ccf135f477ca940e920a418bf83cd55dfdfd7d1fe676"
+    },
+    {
+      "path": "character/atlas-010.png",
+      "bytes": 4204526,
+      "sha256": "ec8cb55a931af1f45c9b7e28e657704708d944018183f6cc86d5a7a32d94599f"
+    },
+    {
+      "path": "character/atlas-011.png",
+      "bytes": 3780058,
+      "sha256": "f09b5a245d469e368f0368f1c8d77b56664184c1b8f0791cc507aac72d2d0a0d"
+    },
+    {
+      "path": "character/atlas-012.png",
+      "bytes": 3502639,
+      "sha256": "062e2db0f4fdc514fec92f71f9c7dad023d0e56bde117c7993c6292b916686d0"
+    },
+    {
+      "path": "character/atlas-013.png",
+      "bytes": 4190421,
+      "sha256": "db57df506b678a7f66d278bb54bf17b95fe4920a5e3245bc7a62c4877e84ba03"
+    },
+    {
+      "path": "character/atlas-014.png",
+      "bytes": 4393537,
+      "sha256": "ef1f582b5031d6a67d4459f898ad5c9b853da56bafaf66a84a30ff7b8c72e135"
+    },
+    {
+      "path": "character/atlas-015.png",
+      "bytes": 2449146,
+      "sha256": "d43cfe13d93b191bcd6e7fff44e01eae13607d62e9e6c43e746ec8cafcbbfed0"
+    },
+    {
+      "path": "character/character.json",
+      "bytes": 352105,
+      "sha256": "206b6493e3f18816005d5a850d03607dcfb1cd94f26778f8da6e6f62b3918a4a"
+    }
+  ]
+}
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  WukongKnight -> /home/ubuntu/hollow-knight-wukong/src/WukongKnight/bin/Release/net472/WukongKnight.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:02.69
+{
+  "schema_version": 2,
+  "version": "0.7.8-dev",
+  "package": "artifacts/WukongKnight-0.7.8-dev.zip",
+  "sha256": "8d83d0e8ec79c253549677a53b99bcd9114a2c491a07d6cfb81c67a7a63ffd6a",
+  "dll": "src/WukongKnight/bin/Release/net472/WukongKnight.dll",
+  "dll_bytes": 211968,
+  "dll_sha256": "11c2e94339e4721ab0f5d12ddab4dc306260d52ca1a23944505685234c03cf54",
+  "implemented": {
+    "character_replacement": true,
+    "grounded_four_stage_combo": true,
+    "active_skills": true,
+    "flame_dash": true,
+    "upward_flame_dash": true,
+    "awakening_charms": true,
+    "fire_demon_slash": true,
+    "flame_storm": true,
+    "bloodthirsty_fire_eye": true,
+    "afterimage_combo": true,
+    "godslayer_strike": true,
+    "earthbreaker_fist": true,
+    "fire_ape_assault": true,
+    "other_active_skills": false
+  },
+  "built": true,
+  "automatically_verified": {
+    "source_inventory": true,
+    "character_manifest_and_atlases": true,
+    "python_tests": true,
+    "combo_core_tests": true,
+    "release_build": true,
+    "package_closure_and_zip_bytes": true
+  },
+  "runtime_tested": false,
+  "client_acceptance": "pending",
+  "files": [
+    {
+      "path": "README.txt",
+      "bytes": 9958,
+      "sha256": "41f5d2753b4107a5e840928ab3bd784eaa755988d254238b9ed0cf38697ea432"
+    },
+    {
+      "path": "WukongKnight.dll",
+      "bytes": 211968,
+      "sha256": "11c2e94339e4721ab0f5d12ddab4dc306260d52ca1a23944505685234c03cf54"
+    },
+    {
+      "path": "character/atlas-000.png",
+      "bytes": 2405102,
+      "sha256": "cd612e7d651cd39049c99094566fab9d5dbe10905f554461cded7ba8e9ac7794"
+    },
+    {
+      "path": "character/atlas-001.png",
+      "bytes": 2701992,
+      "sha256": "c02867328b9ef3f2f6f19851a57686b2938599718f00ac26aab2fa64f34d17fe"
+    },
+    {
+      "path": "character/atlas-002.png",
+      "bytes": 2902606,
+      "sha256": "36696f00334942f9fd3c93fd6a224c63f1cf36d48b937af9a2d5810683950147"
+    },
+    {
+      "path": "character/atlas-003.png",
+      "bytes": 2669224,
+      "sha256": "c85590204dd0cf1621a95ed47ec5e9dfc40add74bfee01a84bf69b77f68de4c3"
+    },
+    {
+      "path": "character/atlas-004.png",
+      "bytes": 2832741,
+      "sha256": "ea7ba845c21a5e4c007a6fd61a799c2d81974f13a89d7da02b95c37e1a5b0198"
+    },
+    {
+      "path": "character/atlas-005.png",
+      "bytes": 2881021,
+      "sha256": "ae4deb2a82baa240e64b86b8377ac22f1480d243ffc210186eb8f27a396b1d67"
+    },
+    {
+      "path": "character/atlas-006.png",
+      "bytes": 4194243,
+      "sha256": "322115985110eec14fd890cf2a36c85b8d49a6cbae778a6e319510e1d72b0d6c"
+    },
+    {
+      "path": "character/atlas-007.png",
+      "bytes": 3758814,
+      "sha256": "3e8c4344552e24149dbc0041710e7bf923e0d27794ecb902969dbf13c6617c5f"
+    },
+    {
+      "path": "character/atlas-008.png",
+      "bytes": 3769228,
+      "sha256": "dece199a81e991fb61224f2cc909469c50092ee275ad343ed20f0771c20ca358"
+    },
+    {
+      "path": "character/atlas-009.png",
+      "bytes": 3697929,
+      "sha256": "0de9bbf4abeab075c1b5ccf135f477ca940e920a418bf83cd55dfdfd7d1fe676"
+    },
+    {
+      "path": "character/atlas-010.png",
+      "bytes": 4204526,
+      "sha256": "ec8cb55a931af1f45c9b7e28e657704708d944018183f6cc86d5a7a32d94599f"
+    },
+    {
+      "path": "character/atlas-011.png",
+      "bytes": 3780058,
+      "sha256": "f09b5a245d469e368f0368f1c8d77b56664184c1b8f0791cc507aac72d2d0a0d"
+    },
+    {
+      "path": "character/atlas-012.png",
+      "bytes": 3502639,
+      "sha256": "062e2db0f4fdc514fec92f71f9c7dad023d0e56bde117c7993c6292b916686d0"
+    },
+    {
+      "path": "character/atlas-013.png",
+      "bytes": 4190421,
+      "sha256": "db57df506b678a7f66d278bb54bf17b95fe4920a5e3245bc7a62c4877e84ba03"
+    },
+    {
+      "path": "character/atlas-014.png",
+      "bytes": 4393537,
+      "sha256": "ef1f582b5031d6a67d4459f898ad5c9b853da56bafaf66a84a30ff7b8c72e135"
+    },
+    {
+      "path": "character/atlas-015.png",
+      "bytes": 2449146,
+      "sha256": "d43cfe13d93b191bcd6e7fff44e01eae13607d62e9e6c43e746ec8cafcbbfed0"
+    },
+    {
+      "path": "character/character.json",
+      "bytes": 352105,
+      "sha256": "206b6493e3f18816005d5a850d03607dcfb1cd94f26778f8da6e6f62b3918a4a"
+    }
+  ]
+}

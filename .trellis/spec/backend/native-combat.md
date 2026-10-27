@@ -26,7 +26,7 @@ Use this when changing character presentation, ground combo timing, native hook 
 - Each combo hit window still restarts the selected native NailSlash transaction. v06 supersedes the earlier native-art preference: Presenter suppresses only the five actual hero mesh draw submissions; enabled writes, charm logic, polygons, contacts and CancelAttack remain native.
 - Cancel/detach closes owned hit windows, clears queued input and restores only the same hero's owned timing/geometry/rendering. Cover jump/dash/turn/damage/death/scene/control loss, disable, hero replacement and failed initialization. Old callbacks cannot reset a newer native action.
 - Compilation with newer pinned Unity compile references is not an exact runtime compatibility proof. Only the actual baseline client can establish native FSM, charm, collision and rendering acceptance.
-- Flame Dash calls native HeroDash once and owns only its presentation and added damage. Use the unchanged hero collider bounds for sweeps; deduplicate actual responders per dash token and preserve native evasion. Suspend the separate Sharp Shadow source while owned to avoid double damage. Keep movement, unlocks, cooldown, collision and invulnerability native.
+- Flame Dash calls native HeroDash once and owns only its presentation and added damage. Use the unchanged hero collider bounds for sweeps; deduplicate actual responders per dash token and preserve native evasion. Suspend the separate Sharp Shadow source while owned to avoid double damage. Keep movement, unlocks, cooldown and collision native except for the explicitly owned upward direction/landing guard in0.7.8; active-dash HP protection follows0.6.3.
 - A dash sweep captures its token before sampling. Recheck it before every target and after the native TAKE DAMAGE event: synchronous FSMs may cancel/unload/replace the dash. Old sweeps must not hit for a newer dash or overwrite its previous center. Restore owned renderer suppression on every exit. See `docs/FLAME_DASH.md`.
 - Fire Demon Slash must replace native up-spell Scream damage sources rather than stack with them. Original AS3 uses independent air/finisher effect regions, per-target caps (11/1) and a 100 game-ms air contact cooldown, not nine guaranteed animation pulses. Finisher creation follows completion of the air effect in the original code. Treat movement/input/Soul integration separately from damage ownership. See `docs/FIRE_DEMON_RESEARCH.md` and the preserved `reference/flash/fire-demon/` evidence. Do not silently use XML decimal growth: this archived SWF declares skillAdd as int and truncates the fractional source values. Original source damage units need an explicit Hollow Knight stat mapping.
 
@@ -718,3 +718,132 @@ Soul/cancellation, collection/UI/localization/cost/overcharm and disable/re-enab
 Wrong: override all equippedCharm_34 queries or subtract2from saved used slots.
 Correct: filter the exact owning action's returned boolean only, preserve actual
 equipment, and invoke native notch/overcharm recalculation around the cost hook.
+
+## 0.7.8 awakening charms and upward Flame Dash
+
+### 1. Scope / Trigger
+
+Charm34 is now 汲元火眼·觉醒 / Jiyuan Fire Eye: Awakening. This supersedes
+only the Fire Eye Sigil display name; its existing native34identity, two-notch
+cost, generated icon and3/6-second focus snapshot rules remain authoritative.
+Charm31 is 烈焰闪·觉醒 / Flame Dash: Awakening, retaining native cost2, icon,
+acquisition/equipment, cooldown, down dash, Sprintmaster and Sharp Shadow bonuses.
+The added direction is an admitted player up-only airborne dash, with at most
+one upward use until real landing. It shares native aerial dash allowance.
+
+### 2. Signatures
+
+`NativeDashV77` owns the hero-specific native direction/input hook lifecycle:
+`PrepareStart()->long`, `CompleteStart(token)`, `IsCurrentStart(token)`,
+`Observe()`, `Clear()` and `Upward`. `Core/UpwardDashPolicy` owns
+`RequestsUp(equipped,airborne,up,down,left,right)`, `Allows(nativeAllowed,request)`,
+`Prepare/Complete`, `Observe(nativeDashing,ownsFlame)`, tokened velocity/finish
+and `Landed(nativeGrounded,touchingGround)` /
+`ConfirmLanding(token,nativeAccepted)` transitions.
+Pinned native `LookForQueueInput` has two player admission callsites targeting
+`HeroDash`. `Dash` calls `OrigDashVector():Vector2`, then
+`ModHooks.DashVelocityChange(Vector2):Vector2`, then writes the rigidbody velocity.
+There is no generated On/IL endpoint for OrigDashVector. `CanDash`,
+`FinishedDashing`, `CancelDash` and `BackOnGround` have their actual pinned
+signatures; do not infer them from newer API documentation. `CheckTouchingGround`
+raycasts terrain layer8only. Native bottom collision additionally accepts
+HeroWalkable-tagged platforms on other layers. A third local ILHook targets
+`OnCollisionEnter2D(Collision2D)`: validate the unique side local/bottom3 branch
+and its three accepted native actions, `DoHardLanding()`, `BackOnGround()` and
+down-dash `SetState(ActorStates.dash_landing=6)`. Preserve both physical landing
+paths; `BackOnGround` alone is not a contact guarantee.
+
+### 3. Contracts
+
+- Only actual admitted player input/queue callsites may request the new direction.
+  Direct scripted HeroDash remains native. Match live up with no down/left/right,
+  airborne state and actual equippedCharm_31; grounded/diagonal input keeps its
+  native behavior. Selection stays latched through the accepted dash.
+- Call original CanDash once and never turn false into true. Native HeroDash
+  consumes shared airDashed. Layer an unsaved upward-used flag on top; native
+  rejection does not consume it. Repeated upward intent is rejected while used,
+  rather than unexpectedly starting a lateral dash.
+- Pogo, bounce, wall slide, wall jump and ResetAirMoves can reset/bypass native
+  airDashed. They must not replenish the extra upward allowance. Confirm actual
+  ground contact and valid native grounded state before replenishing it. Passive
+  terrain-ray observation requires onGround and !Active. For accepted bottom
+  collision (layer8OR HeroWalkable), capture a local policy token before each of
+  the three native actions and confirm after it returns, only for the same live
+  owner/token with onGround, hard_landing or dash_landing. Retain native layer,
+  tag, SteepSlope and state rejection gates. A real landing may replenish used
+  while Active without dropping the current dash direction/token; never retain
+  collision/contact proof for a later airborne action.
+  Unequip/re-equip does not reset it. End/cancel releases direction ownership;
+  death/scene/detach clears the old adapter's local lifecycle.
+- Redirect only the unique live OrigDashVector result for the attached, owned
+  upward dash to (0,abs(native.x)), before the existing ModHooks chain. Native
+  normal/Sharp Shadow speed selection and later vector hooks stay active. Never
+  spoof input, set dashingDown, alter native cooldown/timers/unlocks, or call the
+  old unpatched orig_Dash implementation.
+- Native finish/cancel restores gravity but does not zero positive Y. Record
+  the final vector actually assigned after ModHooks; at normal FinishedDashing,
+  remove positive upward momentum only when still owned and unchanged, before
+  synchronous native DashEnd events can create a newer action. Recoil, bounce,
+  jump, transition and another mod's changed motion must retain ownership.
+  Do not broadly suppress JumpReleased or zero velocity after native events.
+- Terrain/collider behavior remains native. Ceiling contact may physically stop
+  motion while dash timer/ownership continues until native completion. Preserve
+  existing FlameDash sweep masks, once-per-target ledger, stale-token checks,
+  Sharp Shadow suppression and actual-active-dash HP guards in every direction.
+- `SuspendSharpShadow(hero,ref wasActive)` records restoration ownership before
+  SetActive(false), which may synchronously detach the Mod. Recheck the dash
+  token after this native call. Stop first closes its hit ledger, moves/clears
+  its saved restoration state and restores renderer flags, then restores Sharp
+  Shadow so callbacks cannot overwrite a newer dash. Dispose sets disposed
+  before Stop and destroys its source in finally; callbacks cannot restart it.
+- Validate IL layouts before enabling hooks. The pinned MonoMod
+  ILContext.Invoke converts branch operands to ILLabel before a manipulator
+  runs; resolve ILLabel.Target as well as raw Instruction when inspecting
+  branch targets. A compile pass alone cannot prove this matcher executes.
+  Retain handles before Apply so partial installation can be cleaned up.
+  Unsubscribe every native/localization
+  hook and restore owned presentation on failure/disable/hero replacement.
+
+### 4. Validation & Error Matrix
+
+| Condition | Required behavior |
+| --- | --- |
+| Missing/changed callsites or vector seam | Fail attachment coherently and restore native hero; no partial upward UI/effect. |
+| Native CanDash rejects or up allowance already used | No new upward action or consumption; native false is never bypassed. |
+| Wall/pogo/reset-air-moves without ground contact | Preserve used upward allowance. |
+| Bottom contact rejected by native gates / stale token after landing action | No allowance refresh. |
+| Accepted bottom landing while upward dash remains active | Refresh allowance without changing active direction/token. |
+| Sharp Shadow SetActive detaches/restarts synchronously | Restore only prior owned state; disposed owners cannot restart. |
+| FinishedDashing with changed/newer motion or stale token | No upward cleanup write; preserve the newer action. |
+| Death/hazard/transition/scene/detach | Release old owned direction, damage/HP protection and hooks. |
+| Compile/Core passes without client | Keep runtime_tested=false and client terrain/UI/control checks pending. |
+
+### 5. Good / Base / Bad Cases
+
+Base: no charm31 retains ordinary native dash. Good: equipped up-only airborne
+input consumes the normal air charge and its separate upward opportunity; a real
+landing replenishes the latter. Bad: clearing airDashed on demand, treating pogo
+or BackOnGround timeout as a landing, redirecting scripted scene movement, or
+zeroing new recoil after a synchronous DashEnd callback.
+
+### 6. Tests Required
+
+Link the actual production Core allowance/token policy into existing tests.
+Assert rejected starts, startup observation, successful consumption,
+cancel/no-refresh, passive versus accepted active landing, rejected/stale landing,
+wall/pogo nonreset, equipment toggles and stale callbacks. Compile against real
+pinned references with warnings-as-errors and review the compiled hook seams.
+Run the production manipulators against native method definitions through the
+actual pinned MonoMod ILContext.Invoke, covering all three seams and wrapped
+branch targets without initializing Unity or replacing native classes with stubs.
+Actual client checks cover normal/Sharp speeds, jump held/released, low ceilings,
+wall corners, HeroWalkable platforms (including contact before dash completion),
+pogo/walls, downward/lateral regressions, damage/immunity boundary, scene/death/
+disable and both native UI slots/acquisition/equipment.
+
+### 7. Wrong vs Correct
+
+Wrong: fake down input and set dashingDown to reuse downward dash, or reset
+native airDashed to provide an independent upward charge.
+Correct: retain native admission/shared charge and inject the owned upward vector
+before existing mod hooks, with an additional landing-only upward restriction.

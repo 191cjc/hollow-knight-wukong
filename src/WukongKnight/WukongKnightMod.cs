@@ -10,7 +10,7 @@ namespace WukongKnight
         private WukongRuntime? runtime;
         private EnemyFsmDump? fsmDump;
         public WukongKnightMod() : base("Wukong Knight") { }
-        public override string GetVersion() => "0.7.7-dev+fsmdump";
+        public override string GetVersion() => "0.7.8-dev+fsmdump";
 
         public override void Initialize()
         {
@@ -23,7 +23,7 @@ namespace WukongKnight
                 catch (Exception error) { fsmDump?.Dispose(); fsmDump = null; LogError("Enemy FSM dump unavailable (diagnostic only). " + error); }
                 assets = CharacterAssets.Load(Path.Combine(directory, "character"));
                 runtime = new WukongRuntime(assets, message => LogError(message));
-                Log("Wukong artwork resized offline to 1.5x; Flame Dash replaces normal dash visuals and damages each target once; native dash movement/cooldown and hero colliders retained. Client acceptance pending.");
+                Log("Wukong artwork resized offline to 1.5x; Flame Dash replaces normal dash visuals and damages each target once; native dash clock/cooldown and hero colliders retained, with charm31 enabling one upward dash before landing. Client acceptance pending.");
             }
             catch (Exception error)
             {

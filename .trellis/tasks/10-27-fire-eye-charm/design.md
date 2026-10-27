@@ -1,4 +1,58 @@
-# Fire Eye Sigil design
+# Awakening charms design
+
+## Current increment: names and upward dash
+
+Checkpoint23852f3 is the rollback point for this increment. Rename charm34's
+Chinese/English UI to 汲元火眼·觉醒 / Jiyuan Fire Eye: Awakening, preserving the
+existing resource identifier and file paths for compatibility. Rename native31
+to 烈焰闪·觉醒 / Flame Dash: Awakening, retain native cost/icon/acquisition and
+describe native cooldown/down dash plus the new upward capability.
+
+The behavior gap lives in native HeroDash/CanDash and the Dash vector assignment,
+not in the presenter. Implement a disposable pinned-v77 adapter attached to one
+hero. It must gate up-only airborne intent using real input/equipment and native
+CanDash, snapshot direction only when native HeroDash succeeds, and retain that
+direction for the actual native dash lifetime. A production-linked pure Core
+policy may own the additional once-before-landing guard; native airDashed still
+owns shared aerial eligibility. Reset the extra guard only on confirmed landing,
+not on generic ResetAirMoves, wall contact or bounce. Terrain ray confirmation
+must also preserve native bottom-contact landings on HeroWalkable-tag platforms
+outside layer8; BackOnGround alone also has timeout callers. Detach destroys the
+old owner. No mutation of native input or dashingDown is allowed.
+
+The pinned Dash method calls OrigDashVector, then ModHooks.DashVelocityChange,
+then writes rb2d.velocity. Inject only at the unique OrigDashVector result for
+the owned upward dash, producing (0,abs(native horizontal component)) before
+the existing ModHooks call. Normal/shadow speeds, duration/cooldown and other
+modifiers remain native. Validate the seam before activation and retain disposal
+handles before applying IL hooks. A mismatch must restore coherent native behavior.
+
+Native dash completion does not zero positive Y. Use narrow completion/cancel
+ownership checks to remove only still-owned upward dash momentum; retain native
+recoil/jump/bounce/death/transition control and never write stale motion after a
+synchronous native event. Do not suppress native JumpReleased globally. Preserve
+existing FlameDash sweeps, per-target ledger, VFX restoration and active HP guards.
+Expose the actual owned upward direction through FlameDash/presenter, rather than
+re-reading held input to select visuals after the dash begins.
+
+Generate flameDashUp from the same12source ticks as flameDashDown using the
+opposite offline90-degree flame-only transform about(0,-44.5). Add an opt-in
+profile key and new v078 original/full1.5x/packed folders. Preserve all v074
+1559ticks byte-for-byte at both scales, body orientation, source root and packing
+registration. Wire optional/required clips, active variant and complete asset
+batch consistently. No runtime appearance scale or collider edits.
+
+Expected product changes: the native adapter/Core policy; Runtime/FlameDash/
+NativeV77/presenter lifecycle seams; FireEyeCharmV77 localization; bake/validate
+tooling, new profile/active variant and regression tests;0.7.8metadata/docs.
+Main session owns task/spec updates, final public upload and integration evidence.
+Implementation sub-agent owns product code, tests, asset generation and product
+docs. Preserve previous generated assets and the generated icon original. Update
+the offline preview title without regenerating the icon; publish only PNG/preview.
+
+These current-increment contracts supersede the earlier Fire Eye Sigil display
+name and the earlier statement that active-variant selection stays unchanged.
+The remainder records the approved and implemented3/6-second foundation.
 
 ## Behavior and ownership
 

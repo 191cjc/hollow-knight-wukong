@@ -8,6 +8,7 @@ internal static class Program
     private static int Main()
     {
         Action[] cases = { SinglePressDoesNotAutoChain, FourPressesFollowFourStages, BufferIsBoundedAndEarlyPressIsRejected, GraceHasAnInclusiveDeadline, CancellationInvalidatesOwnership, DualWindowsDeduplicateActualTargets, QuickSlashScalesEveryStageWindow, PhysicsClockSurvivesSlowRendering, CompletionDoesNotRetainStageFourInput, ContactCleanupWaitsForNativeEnumeration, DashHitsEachResponderOnce, DashCancellationRejectsOldCallbacks, NewDashClearsTargetsWithoutAcceptingStaleHits };
+        cases = cases.Concat(new Action[] { UpDashRequiresAirborneUpOnlyCharmInput, UpDashNeverOverridesNativeRejection, UpDashConsumesOnlySuccessfulInputStarts, UpDashStartupObservationWaitsForNativeCommit, UpDashNeedsPhysicalLandingToReplenish, UpDashNativeContactLandingSurvivesActiveCompletion, UpDashCancellationRetainsLandingGuard, UpDashStaleCallbacksCannotOwnNewMotion, UpDashFinishClearsOnlyItsExactPositiveOutput, UpDashNewNativeMotionWinsEvenAtSameVelocity }).ToArray();
         cases = cases.Concat(new Action[] { FireDemonContactCooldownAndTargetIndependence, FireDemonContactCapAndFinisher, FireDemonLagDoesNotCatchUpDamage, FireDemonCancellationAndRecast, FireDemonFixedSpellBalance, FireDemonFinisherRevealsWithoutEndingProtection, FireDemonOldFinisherCannotRevealNewCast }).ToArray();
         cases = cases.Concat(new Action[] { EnemySensorsCannotConsumeSkillHits, BossWeaponCannotRouteDamageToParent, SkillContactsRetainNativeInteractions }).ToArray();
         cases = cases.Concat(new Action[] { FireDemonFinishesWithoutLanding, FireDemonLagDoesNotExtendEffects, FireDemonOriginalRegionsMirrorAroundSourceRoot, FireDemonSourceFinisherRetainsCastProtection }).ToArray();
@@ -29,6 +30,132 @@ internal static class Program
         }
         Console.WriteLine(cases.Length + " combo-core checks passed (actual linked production source).");
         return 0;
+    }
+
+    private static void UpDashRequiresAirborneUpOnlyCharmInput()
+    {
+        Check(UpwardDashPolicy.RequestsUp(true, true, true, false, false, false), "Equipped air up-only input was rejected");
+        Check(!UpwardDashPolicy.RequestsUp(false, true, true, false, false, false), "Unequipped charm enabled upward dash");
+        Check(!UpwardDashPolicy.RequestsUp(true, false, true, false, false, false), "Grounded up changed ordinary dash");
+        Check(!UpwardDashPolicy.RequestsUp(true, true, false, false, false, false), "No direction requested upward dash");
+        foreach (int conflicting in new[] { 0, 1, 2 })
+            Check(!UpwardDashPolicy.RequestsUp(true, true, true, conflicting == 0, conflicting == 1, conflicting == 2),
+                "Down or horizontal input was redirected upward");
+    }
+
+    private static void UpDashNeverOverridesNativeRejection()
+    {
+        var dash = new UpwardDashPolicy();
+        Check(!dash.Allows(false, true) && !dash.Allows(false, false), "Native unlock/cooldown/air charge rejection was bypassed");
+        Check(dash.Allows(true, true), "Fresh native-approved upward request failed");
+        dash.Complete(dash.Prepare(true), true);
+        Check(!dash.Allows(true, true), "Wall/pogo native air allowance permitted a second upward dash");
+        Check(dash.Allows(true, false), "Upward-only guard changed native horizontal/downward eligibility");
+    }
+
+    private static void UpDashConsumesOnlySuccessfulInputStarts()
+    {
+        var dash = new UpwardDashPolicy();
+        Check(!dash.Complete(dash.Prepare(true), false) && !dash.UsedUntilLanding, "Rejected start consumed upward use");
+        Check(!dash.Complete(dash.Prepare(false), true) && !dash.UsedUntilLanding, "Scripted/horizontal native start acquired upward direction");
+        long token = dash.Prepare(true);
+        Check(dash.Complete(token, true) && dash.Owns(token) && dash.UsedUntilLanding, "Successful real up start was not latched");
+        Check(!dash.Complete(token, true) && dash.Owns(token), "Repeated completion consumed/restarted the transaction");
+    }
+
+    private static void UpDashStartupObservationWaitsForNativeCommit()
+    {
+        var dash = new UpwardDashPolicy();
+        long token = dash.Prepare(true);
+        dash.Observe(false, false); dash.Observe(false, false);
+        Check(!dash.UsedUntilLanding && dash.Complete(token, true), "Passive pre-flag native callback canceled or consumed startup");
+        dash.Observe(true, true);
+        Check(dash.Owns(token), "Live native dash expired during passive observation");
+        dash.Observe(false, true);
+        Check(!dash.Active && dash.UsedUntilLanding, "Native cancellation retained direction or granted another upward use");
+        dash.Clear(); token = dash.Prepare(true); dash.Stop(token);
+        Check(!dash.Complete(token, true), "An explicit native CancelDash during startup still committed upward direction");
+    }
+
+    private static void UpDashNeedsPhysicalLandingToReplenish()
+    {
+        var dash = new UpwardDashPolicy();
+        long token = dash.Prepare(true); dash.Complete(token, true);
+        dash.Landed(true, true);
+        Check(dash.UsedUntilLanding, "Stale grounded state reset an active upward launch");
+        dash.Stop(token);
+        // Native wall/pogo/reset only changes the common air charge; no confirmed floor.
+        dash.Landed(false, false); dash.Landed(false, true); dash.Landed(true, false);
+        Check(!dash.Allows(true, true), "Wall/pogo or failsafe BackOnGround replenished upward use");
+        dash.Landed(true, true);
+        Check(dash.Allows(true, true), "Real grounded terrain contact did not replenish upward use");
+        Check(!dash.Allows(false, true), "Landing guard bypassed the still-rejecting native CanDash result");
+    }
+
+    private static void UpDashCancellationRetainsLandingGuard()
+    {
+        var dash = new UpwardDashPolicy();
+        long token = dash.Prepare(true); dash.Complete(token, true); dash.Stop(token);
+        Check(!dash.Active && dash.UsedUntilLanding, "Cancellation/damage replenished the landing-only allowance");
+        dash.Complete(dash.Prepare(false), true); // Unequip/horizontal/re-equip never clears it.
+        Check(!dash.Allows(true, true), "A native non-up start or charm toggle replenished upward use");
+        dash.Clear();
+        Check(!dash.Active && !dash.UsedUntilLanding && !dash.Owns(token), "Dead/scene/detach owner survived cleanup");
+    }
+
+    private static void UpDashNativeContactLandingSurvivesActiveCompletion()
+    {
+        var dash = new UpwardDashPolicy();
+        long first = dash.Prepare(true); dash.Complete(first, true);
+        dash.ConfirmLanding(first, false);
+        Check(dash.UsedUntilLanding, "A native-rejected contact replenished upward use");
+        // A real native bottom landing may finish before the dash clock. It is
+        // stronger evidence than the passive terrain-only ray and needs no replay.
+        dash.ConfirmLanding(first, true);
+        Check(!dash.UsedUntilLanding && dash.Owns(first), "Native contact lost its active dash or failed to replenish use");
+        dash.Stop(first);
+        Check(dash.Allows(true, true), "Ending the active dash lost an already-confirmed landing");
+        long next = dash.Prepare(true); dash.Complete(next, true);
+        dash.ConfirmLanding(first, true);
+        Check(dash.UsedUntilLanding && dash.Owns(next), "Old contact callback replenished a newer airborne dash");
+        dash.Stop(next); dash.Landed(false, false);
+        Check(!dash.Allows(true, true), "A remembered contact replenished use after takeoff");
+    }
+
+    private static void UpDashStaleCallbacksCannotOwnNewMotion()
+    {
+        var dash = new UpwardDashPolicy();
+        long old = dash.Prepare(true), current = dash.Prepare(true);
+        Check(!dash.Complete(old, true) && !dash.UsedUntilLanding, "Old native completion consumed a replacement's use");
+        Check(dash.Complete(current, true), "Replacement did not acquire its own token");
+        dash.RecordVelocity(current, 0, 30); dash.RecordVelocity(old, 0, 20); dash.Stop(old);
+        Check(!dash.Finish(old, true, 0, 30) && dash.Owns(current), "Stale finish canceled a newer up dash");
+        Check(dash.Finish(current, true, 0, 30), "Old vector callback replaced the current native output");
+    }
+
+    private static void UpDashFinishClearsOnlyItsExactPositiveOutput()
+    {
+        foreach (int scenario in Enumerable.Range(0, 8))
+        {
+            var dash = new UpwardDashPolicy();
+            long token = dash.Prepare(true); dash.Complete(token, true);
+            if (scenario != 1) dash.RecordVelocity(token, 0, scenario == 5 ? -20 : scenario == 6 ? float.NaN : 20);
+            bool clear = dash.Finish(token, scenario != 2, scenario == 3 ? 2 : 0, scenario == 4 ? 16 : scenario == 7 ? 0 : 20);
+            Check(clear == (scenario == 0), "Finish erased newer/collision/invalid/unrecorded motion, or retained its own upward tail");
+            Check(!dash.Active && dash.UsedUntilLanding, "Finish retained direction or replenished an aerial allowance");
+            Check(!dash.Finish(token, true, 0, 20), "Duplicate native finish wrote old momentum again");
+        }
+    }
+
+    private static void UpDashNewNativeMotionWinsEvenAtSameVelocity()
+    {
+        foreach (string action in new[] { "jump", "double jump", "wall jump", "bounce", "recoil" })
+        {
+            var dash = new UpwardDashPolicy();
+            long token = dash.Prepare(true); dash.Complete(token, true); dash.RecordVelocity(token, 0, 20);
+            dash.RevokeMotion(); dash.RecordVelocity(token, 0, 20);
+            Check(!dash.Finish(token, true, 0, 20), action + " motion was mistaken for old dash momentum");
+        }
     }
 
     private static void EnemyDamageRequiresExactIdentity()

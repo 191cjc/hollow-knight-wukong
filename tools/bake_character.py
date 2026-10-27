@@ -147,6 +147,17 @@ def flame_dash_down_samples(sampler, source, center):
              for d in frame] for frame in frames]
 
 
+def flame_dash_up_samples(sampler, source, center):
+    """Turn only source flames counterclockwise; retain upright body and source clock."""
+    if len(center) != 2 or any(not math.isfinite(v) for v in center):
+        raise ValueError("Invalid upward dash center")
+    cx, cy = center
+    turn = Affine(a=0, b=-1, c=1, d=0, tx=cx-cy, ty=cy+cx)
+    frames = flame_dash_samples(sampler, source)
+    return [[replace(d, matrix=turn.then_local(d.matrix)) if d.slot_path == ("flame_dash_fx",) else d
+             for d in frame] for frame in frames]
+
+
 def flame_storm_samples(sampler, source):
     return flame_overlay_samples(sampler, source, "effect3", 0, 16, "flame_storm_fx")
 
@@ -220,6 +231,10 @@ def bake_character(project_root=PROJECT_ROOT, output=None, force=False, previews
             samples["flameDashDown"] = flame_dash_down_samples(sampler, project_root / profile["flame_dash_effect_source"],
                                                             profile["flame_dash_down_center_pixels"])
             animations["flameDashDown"] = {"duration": 12, "loop": 0}
+        if profile.get("flame_dash_up_center_pixels"):
+            samples["flameDashUp"] = flame_dash_up_samples(sampler, project_root / profile["flame_dash_effect_source"],
+                                                        profile["flame_dash_up_center_pixels"])
+            animations["flameDashUp"] = {"duration": 12, "loop": 0}
     if profile.get("flame_storm_effect_source"):
         samples["flameStorm"] = flame_storm_samples(sampler, project_root / profile["flame_storm_effect_source"])
         animations["flameStorm"] = {"duration": 16, "loop": 0}

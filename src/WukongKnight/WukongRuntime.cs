@@ -19,6 +19,7 @@ namespace WukongKnight
         private WukongLifetime? lifetime;
         private ComboTimeline? combo;
         private FlameDash? flameDash;
+        private NativeDashV77? upwardDash;
         private FireDemonSlash? fireDemon;
         private FlameStorm? flameStorm;
         private BloodthirstyFireEye? bloodEye;
@@ -80,6 +81,7 @@ namespace WukongKnight
                 // Damage can arrive before our Update/FixedUpdate. Observe the real
                 // native spell state here too, including exact start/end boundaries.
                 flameDash?.Observe();
+                upwardDash?.Observe();
                 fireDemon?.Observe();
                 fist?.Observe();
                 return (flameDash != null && flameDash.Active) || (fireDemon != null && fireDemon.Active) || (fist != null && fist.ProtectsHP);
@@ -115,7 +117,7 @@ namespace WukongKnight
             {
                 try
                 {
-                    Cancel(); flameDash?.Stop();
+                    Cancel(); flameDash?.Stop(); upwardDash?.Clear();
                     fist?.CancelAll();
                     presenter?.BeginDeath(Time.time);
                 }
@@ -127,11 +129,23 @@ namespace WukongKnight
 
         private void HeroDash(On.HeroController.orig_HeroDash orig, HeroController self)
         {
-            if (self == hero) Cancel();
-            orig(self);
-            if (self == hero && !failed)
+            NativeDashV77? direction = self == hero ? upwardDash : null;
+            FlameDash? dash = self == hero ? flameDash : null;
+            long attempt = 0;
+            if (self == hero && !disposed && !failed)
             {
-                try { flameDash?.Begin(); }
+                try { attempt = direction?.PrepareStart() ?? 0; dash?.Stop(); Cancel(); }
+                catch (Exception error) { Fail(error); }
+            }
+            orig(self);
+            if (self == hero && !disposed && !failed && direction != null &&
+                ReferenceEquals(direction, upwardDash) && ReferenceEquals(dash, flameDash) && direction.IsCurrentStart(attempt))
+            {
+                try
+                {
+                    direction.CompleteStart(attempt);
+                    if (direction.IsCurrentStart(attempt) && ReferenceEquals(dash, flameDash)) dash?.Begin();
+                }
                 catch (Exception error) { Fail(error); }
             }
         }
@@ -162,7 +176,7 @@ namespace WukongKnight
             orig(self);
             if (hero == self && !failed)
             {
-                try { if (ShouldCancel()) Cancel(); flameDash?.Observe(); ObserveSpells(self); }
+                try { if (ShouldCancel()) Cancel(); upwardDash?.Observe(); flameDash?.Observe(); ObserveSpells(self); }
                 catch (Exception error) { Fail(error); }
             }
         }
@@ -193,7 +207,8 @@ namespace WukongKnight
                 hero = self;
                 combo = new ComboTimeline(assets.Stages, assets.FrameRate, assets.GraceSeconds);
                 presenter = new WukongPresenter(self, assets, native);
-                flameDash = new FlameDash(self, native);
+                upwardDash = new NativeDashV77(self, native, () => flameDash != null && flameDash.Active, logError, Fail);
+                flameDash = new FlameDash(self, native, upwardDash);
                 fireDemon = new FireDemonSlash(self, native, assets);
                 fireEyeCharm = new FireEyeCharmV77(self, logError, Fail);
                 bloodEye = new BloodthirstyFireEye(self, fireEyeCharm);
@@ -204,6 +219,7 @@ namespace WukongKnight
                 lifetime.UpdateView = LateUpdate;
                 lifetime.AdvancePhysics = FixedUpdate;
                 lifetime.DetachOwner = Detach;
+                upwardDash.Activate();
                 fireEyeCharm.Activate();
             }
             catch (Exception error) { Fail(error); }
@@ -214,7 +230,7 @@ namespace WukongKnight
         {
             if (!disposed && !failed && flameDash != null)
             {
-                try { flameDash.FixedUpdate(); fireDemon?.FixedUpdate(); flameStorm?.FixedUpdate(); fist?.FixedUpdate(); bloodEye?.Observe(); }
+                try { upwardDash?.Observe(); flameDash.FixedUpdate(); fireDemon?.FixedUpdate(); flameStorm?.FixedUpdate(); fist?.FixedUpdate(); bloodEye?.Observe(); }
                 catch (Exception error) { Fail(error); }
             }
             if (disposed || failed || hero == null || combo == null || !combo.Active || Time.fixedTime == lastPhysics) return;
@@ -555,6 +571,8 @@ namespace WukongKnight
             if (oldFist != null) Cleanup(oldFist.Dispose);
             FlameDash? oldDash = flameDash; flameDash = null;
             if (oldDash != null) Cleanup(oldDash.Dispose);
+            NativeDashV77? oldUpward = upwardDash; upwardDash = null;
+            if (oldUpward != null) Cleanup(oldUpward.Dispose);
             FireDemonSlash? oldSpell = fireDemon; fireDemon = null;
             if (oldSpell != null) Cleanup(oldSpell.Dispose);
             FlameStorm? oldStorm = flameStorm; flameStorm = null;

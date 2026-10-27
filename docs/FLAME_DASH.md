@@ -1,9 +1,55 @@
 # Flame Dash / 烈焰闪
 
-Version0.6.3-dev replaces the normal dash presentation and adds along-path damage.
-The original dash key, ability unlock, movement, cooldown, gravity, wall collision
-and native invulnerability rules still come from `HeroController.HeroDash`.
-There is no added MP cost, armor, invulnerability or manual soul gain.
+Version0.7.8-dev retains the native dash transaction and adds an optional upward
+direction through Dashmaster. The original dash key, ability unlock, selected
+normal/Sharp Shadow speed, duration, cooldown, gravity and terrain collision come
+from `HeroController`. Along-path damage and active-dash HP protection apply to
+all three directions. No MP cost or manual Soul gain is added.
+
+## Flame Dash: Awakening / 烈焰闪·觉醒
+
+Native Dashmaster (charm31) keeps its collectible, ownership/equipment, original
+two-notch cost and icon. Native downward dash, shorter cooldown, Sprintmaster
+run-speed combination and Sharp Shadow damage/speed interactions remain active.
+While airborne with this charm equipped, hold Up without Down/Left/Right and
+press the original dash key to move vertically upward. Grounded or diagonal
+input retains ordinary native direction selection; Up+Down keeps native down
+priority. The normal native CanDash result must approve the start.
+
+All directions share native aerial dash allowance: an upward dash does not grant
+a second lateral/downward dash. An additional unsaved guard allows one successful
+upward dash until a real landing. Native bottom contact on layer8 terrain or a
+HeroWalkable platform replenishes it only after native BackOnGround, hard landing
+or downward-dash landing accepts that contact; native SteepSlope/state rejection
+stays intact. This may restore use before the active dash clock ends without
+changing its direction. Passive grounded state also requires the native
+CheckTouchingGround ray. Pogo, bounce, walls, wall jump, ResetAirMoves, damage or
+charm toggles do not replenish this extra guard. Rejected starts do not consume it.
+A blocked repeated up-only chord is rejected and its forbidden queue is cleared,
+so it cannot later turn into a queued sideways dash on landing. First-use native
+cooldown/eligibility queues keep their original behavior.
+
+Only the actual two native key/queue HeroDash callsites mark player input; their
+original CanDash and OnDashPressed calls stay in place. Direct scripted HeroDash
+calls retain native direction. Startup latches a token before native callbacks
+and commits upward ownership only after the same hero/adapter and live dash
+survive. Direction remains latched when keys or equipment change mid-dash.
+The exact OrigDashVector result is redirected before the existing ModHooks vector
+chain, preserving the live native speed and other subscribers. No down input or
+dashingDown spoofing, airDashed reset, save flag, collider or constraint edits.
+
+At the native normal FinishedDashing boundary, before native CancelDash/DashEnd
+events, remove positive Y only if the same token still owns the exact last
+post-ModHooks output. Changed/collision-limited motion, a new jump/bounce/recoil,
+cancellation, death or transition wins; cleanup never writes after native
+synchronous end callbacks. Ceilings retain native physical collision and may
+leave the dash timer/protection running until its native end. JumpReleased stays
+native; no fixed upward displacement is promised from compilation.
+
+The flameDashUp clip uses the same12source ticks and native dash progress, with
+flames alone rotated offline counterclockwise about(0,-44.5); body/root/aura stay
+upright. New v078 original/full1.5x/packed folders preserve all previous1559ticks
+at both sizes and lossless packed registration:60clips/1571ticks/16runtime pages.
 
 ## Artwork and source evidence
 
@@ -55,12 +101,12 @@ Native non-health responders remain eligible. Filter before ledger/FSM writes.
 See docs/FIRE_DEMON_SLASH.md for the separate source-presentation restoration.
 
 
-## Active dash immunity (0.6.3)
+## Active dash immunity (since0.6.3; direction extended in0.7.8)
 
 Runtime SkillProtects observes actual FlameDash ownership at both incoming
 HeroController.TakeDamage and TakeHealth entry points. Either active Flame Dash
 or protected Fire Demon rejects the incoming HP-damage call. Observe first so
-an ended/cancelled/stale dash cannot retain protection. Both horizontal and
+an ended/cancelled/stale dash cannot retain protection. Horizontal, awakened upward and
 Dashmaster downward dashes are covered; no saved isInvincible flag/timer writes,
 movement/cooldown/collision changes or extra damage transaction. Existing
 sharp-shadow source suppression and native recovery remain intact. Death/scene/

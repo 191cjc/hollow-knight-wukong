@@ -32,6 +32,8 @@ namespace WukongKnight
         private readonly FieldInfo dashDown = Field(typeof(HeroController), "dashingDown", typeof(bool));
         private readonly FieldInfo dashTimer = Field(typeof(HeroController), "dash_timer", typeof(float));
         private readonly FieldInfo dashDuration = Field(typeof(HeroController), "DASH_TIME", typeof(float));
+        private readonly FieldInfo dashQueuing = Field(typeof(HeroController), "dashQueuing", typeof(bool));
+        private readonly FieldInfo heroState = Field(typeof(HeroController), "hero_state", typeof(GlobalEnums.ActorStates));
         private readonly FieldInfo sharpShadow = Field(typeof(HeroController), "sharpShadowPrefab", typeof(GameObject));
         private readonly MethodInfo takeDamageEvent = typeof(FSMUtility).GetMethod("SendEventToGameObject", BindingFlags.Public | BindingFlags.Static,
             null, new[] { typeof(GameObject), typeof(string), typeof(bool) }, null) ?? throw new MissingMethodException("FSMUtility.SendEventToGameObject(GameObject,string,bool)");
@@ -45,6 +47,8 @@ namespace WukongKnight
         private FieldInfo? dashAction;
         private FieldInfo? upAction;
         private FieldInfo? downAction;
+        private FieldInfo? leftAction;
+        private FieldInfo? rightAction;
         private FieldInfo? dreamAction;
         private PropertyInfo? isPressed;
         private float savedDuration;
@@ -63,6 +67,8 @@ namespace WukongKnight
         public bool DreamHeld(HeroController hero) => Held(hero, "dreamNail", ref dreamAction);
         public bool DownHeld(HeroController hero) => Held(hero, "down", ref downAction);
         public bool UpHeld(HeroController hero) => Held(hero, "up", ref upAction);
+        public bool LeftHeld(HeroController hero) => Held(hero, "left", ref leftAction);
+        public bool RightHeld(HeroController hero) => Held(hero, "right", ref rightAction);
         private bool Held(HeroController hero, string name, ref FieldInfo? actionField)
         {
             object? handler = input.GetValue(hero); if (handler == null) return false;
@@ -97,6 +103,7 @@ namespace WukongKnight
         public void Reset(HeroController hero) => reset.Invoke(hero, null);
         public void ResetInput(HeroController hero) => resetInput.Invoke(hero, null);
         public void ClearQueue(HeroController hero) { queue.SetValue(hero, false); queueSteps.SetValue(hero, 0); }
+        public void ClearDashQueue(HeroController hero) => dashQueuing.SetValue(hero, false);
 
         public double AttackProgress(HeroController hero)
         {
@@ -132,12 +139,21 @@ namespace WukongKnight
             return durationValue <= 0 ? 0 : Math.Min(1, Math.Max(0, (float)dashTimer.GetValue(hero) / durationValue));
         }
 
-        public bool SuspendSharpShadow(HeroController hero)
+        public bool DashExpired(HeroController hero)
+            => (float)dashTimer.GetValue(hero) > (float)dashDuration.GetValue(hero);
+
+        public bool LandingAccepted(HeroController hero)
+        {
+            GlobalEnums.ActorStates state = (GlobalEnums.ActorStates)heroState.GetValue(hero);
+            return hero.cState.onGround || state == GlobalEnums.ActorStates.hard_landing || state == GlobalEnums.ActorStates.dash_landing;
+        }
+
+        public void SuspendSharpShadow(HeroController hero, ref bool wasActive)
         {
             GameObject? effect = sharpShadow.GetValue(hero) as GameObject;
-            bool active = effect != null && effect.activeSelf;
-            if (active) effect!.SetActive(false); // The flame owns this dash's damage, avoiding a second source.
-            return active;
+            // Save ownership before SetActive can synchronously detach the Mod.
+            wasActive = effect != null && effect.activeSelf;
+            if (wasActive) effect!.SetActive(false); // The flame owns this dash's damage, avoiding a second source.
         }
 
         public void RestoreSharpShadow(HeroController hero, bool wasActive)

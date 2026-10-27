@@ -1,8 +1,8 @@
 {
   "id": "fire-eye-charm",
   "name": "fire-eye-charm",
-  "title": "汲元火眼持续时间与深度聚集替换",
-  "description": "Set Fire Eye to 3 seconds and repurpose native Deep Focus as a two-notch charm extending it to 6 seconds, preserving acquisition/save identity and providing a generated matching icon.",
+  "title": "汲元火眼与烈焰闪觉醒护符",
+  "description": "Repurpose native Deep Focus as the two-notch Jiyuan Fire Eye: Awakening (3/6-second buff) and Dashmaster as Flame Dash: Awakening with one upward dash before landing; preserve native acquisition and publish the generated Fire Eye icon.",
   "status": "in_progress",
   "dev_type": "backend",
   "scope": null,

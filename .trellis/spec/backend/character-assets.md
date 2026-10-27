@@ -315,3 +315,80 @@ source draws, every previous1349tick's pixels and lossless packed reconstruction
    charm resource and native charm bounds for Sprite pixels-per-unit. Publish
    only final image/preview for the authorized public preview; verify retrieved
    image bytes and disclose temporary host lifetime.
+
+## 0.7.8 upward dash and awakening preview
+
+### 1. Scope / Trigger
+
+The new upward Flame Dash needs flame-only directional artwork. Preserve all
+previous archived/baked assets; select a separate v078 original/full1.5x/packed
+variant through active-variant.json. Charm34 keeps the generated icon from0.7.7;
+its new display name is Jiyuan Fire Eye: Awakening / 汲元火眼·觉醒. Charm31
+retains the native Dashmaster icon.
+
+### 2. Signatures
+
+`flame_dash_up_samples(sampler,source,center)` returns12source-tick Draw lists.
+The bake profile opts into `flame_dash_up_center_pixels:[0,-44.5]` for the new
+nonlooping `flameDashUp` clip. Keep it in Python OPTIONAL_CLIPS and the C# runtime
+required clips together. The complete batch remains
+`scripts/prepare-all-assets.bat` / `tools/prepare_all_assets.py`.
+`tools/prepare_charm_icon.py SOURCE.png` updates the preview title while retaining
+its existing transparent icon processing/resource identity.
+
+### 3. Contracts
+
+Sample original effect2ticks4..15 exactly as for horizontal/downward Flame Dash.
+Rotate only flame_dash_fx counterclockwise90in source Y-down coordinates around
+(cx,cy)=(0,-44.5): Affine(a=0,b=-1,c=1,d=0,tx=cx-cy,ty=cy+cx).
+Keep source body draws upright and unchanged, as well as ordering,30Hz12tick
+clock, source root, nominal body calibration and offline1.5x enlargement. Runtime
+selects this clip only from owned upward direction, never from current held input.
+Do not rotate view/root/aura or enlarge body/colliders at runtime.
+
+`data/character/wukong-fist-v078.json` selects new
+`wukong-fist-v078-original` / `variants/wukong-fist-v078-1p5` / `-packed` folders:
+60clips/1571ticks/16packed pages. Original canvas709x566and root(261,392)
+remain unchanged. They preserve all59earlier clips/1559ticks in registered
+pixel space at original and enlarged sizes. Packed atlases must reconstruct the
+full new frames losslessly, including source_x/source_y. Older manifests/PNGs
+stay byte-identical; never overwrite v074 to add a clip. Generated previews and
+raw image input stay outside runtime package closure.
+
+The Fire Eye generated original and final icon bytes stay unchanged when its
+preview title changes. Continue embedding WukongKnight.FireEyeSigil.png; the
+stable resource/path name is independent of UI localization. Publish only the
+final preview/PNG under the user's existing authorization. Verify HTTP success,
+PNG type and exact retrieved bytes; record expiry if the host is temporary.
+
+### 4. Validation & Error Matrix
+
+| Condition | Required behavior |
+| --- | --- |
+| Invalid/nonfinite up center or unsupported source | Explicit bake failure, no silent body rotation/fallback. |
+| Missing flameDashUp in active runtime manifest | Initialization fails before hiding native hero. |
+| Old frame/input changed or packed reconstruction differs | Reject the asset/package verification. |
+| Preview-title update changes final icon/original bytes | Reject and restore the original processing result. |
+| Public upload returns URL without matching retrieval | Do not claim verified public image delivery. |
+
+### 5. Good / Base / Bad Cases
+
+Base: older profiles retain their existing clips. Good: v078adds12upward flame
+frames while every earlier body/effect drawing stays exact. Bad: rotating the
+whole composite, rebaking earlier variants, adding a runtime appearance scale or
+regenerating the approved charm image merely to change its displayed name.
+
+### 6. Tests Required
+
+Compare every new Draw to independent expected flame-only affine rotation and
+unchanged body; compare rendered original/enlarged pixels, all1559earlier ticks
+and lossless packed reconstruction. Inspect contact sheet/both facings, upright
+body and clear vertical flames. Check deterministic charm preparation, original
+and final icon hashes, embedded-resource byte equality, public download and
+final build/ZIP closure. Actual client animation/collision/UI remains pending.
+
+### 7. Wrong vs Correct
+
+Wrong: rotate the presenter90degrees or modify existing v074atlases in place.
+Correct: create a separate offline upward-flame clip/variant, preserve upright
+body/root and select its frames using the owned native dash direction.
