@@ -4,10 +4,12 @@ import json
 from bake_character import bake_character
 from resize_character import resize_character
 from resize_related_assets import prepare_related_assets
+from prepare_flame_dash_charm import prepare as prepare_flame_dash_charm
 from validate_character import ROOT
 
 
 def main():
+    prepare_flame_dash_charm()
     related = prepare_related_assets(1.5)
     profile = json.loads((ROOT / "data/character/active-variant.json").read_text(encoding="utf-8"))
     original = ROOT / profile["source_directory"]

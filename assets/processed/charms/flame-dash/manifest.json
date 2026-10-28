@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "skill_id": 1101020,
+  "resource_id": 189,
+  "charm_id": 31,
+  "source": "assets/zmxy4/raw/assets/icon/skill/1101020.png",
+  "source_sha256": "cefb1cb68b96da7d0da75416454e788e99eff1a70b5dec879f350a0ef2d17853",
+  "processing": "exact archived PNG copy; native charm bounds control UI size",
+  "dimensions": [
+    65,
+    65
+  ],
+  "files": {
+    "icon.png": "cefb1cb68b96da7d0da75416454e788e99eff1a70b5dec879f350a0ef2d17853",
+    "preview.png": "86a397731d37cde16df3afaa02c76d88a557bc9aa0cea6e3ce987e1ef2a2f414"
+  }
+}

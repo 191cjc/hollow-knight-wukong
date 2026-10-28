@@ -1,4 +1,4 @@
-# Fist skills (0.7.6-dev)
+# Fist skills (0.7.9-dev)
 
 Original fist checkpoint: e44de07. The0.7.4/0.7.5 changes start from committed
 0.7.3 checkpoint bf81c06 and are recorded together in the subsequent workspace
@@ -8,7 +8,7 @@ checkpoint. GitHub uploads use the verified SSH remote.
 | --- | --- | --- |
 | Neutral quick spell | Flame Storm (烈焰风暴) | Native forward spell unlock; fixed quakeLevel damage; current MP Cost once, including Spell Twister |
 | Dream Nail | Godslayer Strike (灭神一击) | Requires native Dream Nail unlock; hold then release, no Soul cost |
-| Down + spell | Earthbreaker Fist (辟地拳) | Native quake unlock; ground launch or airborne slam; current native MP Cost once |
+| Down + spell | Earthbreaker Fist (辟地拳) | Native quake unlock; stationary preparation, then native-speed slam without ground rise; current native MP Cost once |
 | Down + Dream Nail | Afterimage Combo (残影连打) | Native Dream Nail unlock; fireballLevel damage tier; current native MP Cost once |
 | Up + Dream Nail | Moving-awakening Fire Ape (火猿出击·动觉醒) | Follows live hero position/direction; current native MP Cost once |
 
@@ -16,7 +16,7 @@ Existing staff attacks, up/down spells, focus, dash and death remain integrated.
 Directional Dream Gate shortcuts now use the requested fist actions. Menus, locked
 Dream Nail, death, transitions and conflicting native control prevent new casts.
 Earthbreaker blocks incoming HP damage throughout its owned player action,
-including launch, fall and landing tail. Copies/waves do not extend this window.
+including preparation, fall and landing tail. Copies/waves do not extend this window.
 Afterimage and moving-awakening Fire Ape are independent summons, never owned
 player actions. The player keeps native movement, attacks, animation and gravity.
 Fire Ape follows the current hero root/facing, with its back layer behind the body
@@ -93,10 +93,12 @@ conversation/scene FSMs take over. Cancellation stops body hits immediately;
 ordinary recovery leaves independent projectiles alive until their short expiry.
 Death/hazard/scene/detach destroy all actors and physical dream triggers.
 
-Ground Earthbreaker rises for16 source ticks, then falls to actual terrain;
-air casts use an eight-tick antic then fall. Descent is33original pixels/tick
-(1.5x the earlier22); rise/antic and landing tail keep their source timing. Hero
-and ghost use the same movement rule, with blocked distance consumed normally. The unchanged hero body is swept
+Both grounded and airborne Earthbreaker prepare in place for eight source ticks,
+then fall using the actual native Spell Control Quake1/2 Down SetVelocity2d.y
+value: currently -50 world units/second for both tiers. There is no upward ground
+launch, including for copied ghosts. World travel is integrated from elapsed
+seconds, independently of sprite size/pixel calibration. Hero and ghost use the
+same movement rule, with blocked distance consumed normally. The unchanged hero body is swept
 at every movement step; falling pose holds source frame18 until contact and
 landing resumes frame19. Timeout bounds a bottomless fall. Ape uses original
 105-tick back/front effects as source skill5Awake1 moving awakening. The hero
@@ -108,7 +110,7 @@ Godslayer now follows the archived source automatic maximum-charge release.
 Ghost idle images use original effect4 held poses at zero-based ticks11/25/40/53;
 the last two previously froze stretched birth transitions at39/51. No compensating
 nonuniform scale is used. They use source body/effects for mimicked attacks. Ghost Earthbreaker uses a terrain-swept box matching the unchanged native body bounds,
-with its own launch/fall/landing clock and no additional physical collider.
+with its own preparation/fall/landing clock and no additional physical collider.
 Native scenery collision and full gameplay behavior still need client acceptance.
 
 ## Preserved artwork and compact runtime atlases

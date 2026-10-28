@@ -392,3 +392,21 @@ final build/ZIP closure. Actual client animation/collision/UI remains pending.
 Wrong: rotate the presenter90degrees or modify existing v074atlases in place.
 Correct: create a separate offline upward-flame clip/variant, preserve upright
 body/root and select its frames using the owned native dash direction.
+
+
+## 0.7.10 archived Flame Dash charm icon
+
+This supersedes the0.7.8 note retaining Dashmaster artwork. Run
+`tools/prepare_flame_dash_charm.py` (also called by prepare_all_assets) to copy the
+archived original65x65 PNG `assets/zmxy4/raw/assets/icon/skill/1101020.png` into
+`assets/processed/charms/flame-dash/icon.png` without changing any image bytes.
+Validate skills.csv1101020 -> resource189 -> resources.xml1101020.png. Keep source
+and processed folders separate; manifest records original/output SHA256 and a
+dark/light preview. No AI generation or character-atlas edits are involved.
+
+Embed only the icon as `WukongKnight.FlameDashCharm.png`, alongside the unchanged
+FireEyeSigil PNG and DevelopmentManifest JSON. Preview/provenance stay outside
+the runtime19-file package. Verify all three embedded resource byte sequences
+against build inputs, and all character runtime files against the prior package.
+The original and final PNG SHA256 is
+`cefb1cb68b96da7d0da75416454e788e99eff1a70b5dec879f350a0ef2d17853`.

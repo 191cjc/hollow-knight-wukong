@@ -27,6 +27,8 @@ namespace WukongKnight
         private readonly object? heldEvent;
         private readonly object soulCost;
         private readonly PropertyInfo soulCostValue;
+        private readonly object[]? quakeFallSpeeds;
+        private readonly PropertyInfo? quakeFallSpeedValue;
         private readonly FieldInfo? draining;
         private readonly FieldInfo? drainInterval;
         private readonly FieldInfo? drainAmount;
@@ -63,11 +65,27 @@ namespace WukongKnight
             var byName = new Dictionary<string, object>();
             foreach (object state in states) byName.Add((string)Property(state.GetType(), "Name").GetValue(state, null), state);
             string[] required = slot == NativeSpellSlot.Up ? new[] { "Scream Antic1", "Scream Antic2", "Spell End" } :
-                slot == NativeSpellSlot.Down ? new[] { "Quake Antic", "Quake Finish", "Spell End" } :
+                slot == NativeSpellSlot.Down ? new[] { "Quake Antic", "Quake1 Down", "Quake2 Down", "Quake Finish", "Spell End" } :
                 slot == NativeSpellSlot.Forward ? new[] { "Fireball Antic", "Spell End" } :
                 new[] { "Focus Heal", "Focus Heal 2", "Focus Get Finish", "Focus Get Finish 2", "Focus Cancel", "Focus Cancel 2" };
             foreach (string name in required)
                 if (!byName.ContainsKey(name)) throw new InvalidOperationException("Unsupported Spell Control state: " + name);
+            if (slot == NativeSpellSlot.Down)
+            {
+                var speeds = new List<object>();
+                foreach (string name in new[] { "Quake1 Down", "Quake2 Down" })
+                {
+                    object velocity = FindAction(byName[name], "HutongGames.PlayMaker.Actions.SetVelocity2d");
+                    FieldInfo y = velocity.GetType().GetField("y") ?? throw new MissingFieldException(name + " velocity.y");
+                    object speed = y.GetValue(velocity) ?? throw new InvalidOperationException(name + " fall speed missing");
+                    if (speed.GetType().FullName != "HutongGames.PlayMaker.FsmFloat")
+                        throw new InvalidOperationException(name + " fall speed type changed");
+                    speeds.Add(speed);
+                }
+                quakeFallSpeeds = speeds.ToArray();
+                quakeFallSpeedValue = Property(quakeFallSpeeds[0].GetType(), "Value");
+                QuakeFallSpeed(1); QuakeFallSpeed(2);
+            }
             if (slot != NativeSpellSlot.Focus)
                 foreach (string name in slot == NativeSpellSlot.Up ? new[] { "Scream Antic1", "Scream Antic2" } :
                     slot == NativeSpellSlot.Forward ? new[] { "Fireball Antic" } : new[] { "Quake Antic" })
@@ -156,6 +174,15 @@ namespace WukongKnight
                 if (cost <= 0 || cost > 99) throw new InvalidOperationException("Unsupported native spell MP Cost");
                 return cost;
             }
+        }
+        public float QuakeFallSpeed(int level)
+        {
+            if (quakeFallSpeeds == null || quakeFallSpeedValue == null)
+                throw new InvalidOperationException("Quake speed requires the native down-spell adapter");
+            float speed = (float)quakeFallSpeedValue.GetValue(quakeFallSpeeds[level >= 2 ? 1 : 0], null);
+            if (float.IsNaN(speed) || float.IsInfinity(speed) || speed >= 0)
+                throw new InvalidOperationException("Unsupported native Quake fall speed");
+            return speed;
         }
         public bool SpendSoul()
         {

@@ -1,7 +1,7 @@
 # Wukong Knight
 
 Wukong character Mod for Hollow Knight, based on archived 4399 ZMXY4 artwork.
-Development version **0.7.8-dev** includes staff visuals, the grounded four-stage
+Development version **0.7.10-dev** includes staff visuals, the grounded four-stage
 combo, Flame Dash, Fire Demon Slash, Flame Storm, Jiyuan Fire Eye (汲元火眼),
 Afterimage Combo, Earthbreaker and the Dream-key skills.
 All originals and earlier bakes/variants are preserved. Active artwork is baked
@@ -33,7 +33,7 @@ body and staff stay at their existing offline1.5x appearance.
   route. Costs two notches and extends subsequent Fire Eye activations to six seconds.
   Native ownership/equipment persist; the former Deep Focus healing/charge tradeoff is removed.
   [Public preview](https://litter.catbox.moe/3gm8ze.png) / [transparent PNG](https://litter.catbox.moe/4dfkjd.png), available until approximately2026-10-30 17:28 (Asia/Shanghai).
-- **Dash:** Flame Dash adds path damage and blocks incoming HP damage throughout each actual dash. Native Dashmaster becomes **Flame Dash: Awakening / 烈焰闪·觉醒** (two notches), retaining its original benefits and icon. In midair, hold only Up and press dash to rise once before landing; this shares the native aerial dash allowance. Directional flames turn offline while the body stays upright. See [Flame Dash](docs/FLAME_DASH.md).
+- **Dash:** Flame Dash adds path damage and blocks incoming HP damage throughout each actual dash. Native Dashmaster becomes **Flame Dash: Awakening / 烈焰闪·觉醒** (two notches), retaining its original benefits and using the archived original ZMXY4 Flame Dash icon. In midair, hold only Up and press dash to rise once before landing; this shares the native aerial dash allowance. Directional flames turn offline while the body stays upright. See [Flame Dash](docs/FLAME_DASH.md).
 
 Fire Demon uses the up-spell unlock/tier. Earthbreaker uses the down-spell unlock
 while retaining its nail-based damage. Neutral-spell Storm requires the native
@@ -49,7 +49,7 @@ Dream spend the native spell Soul cost once (33; Spell Twister24); insufficient
 Soul prevents casting. Neutral Godslayer remains free and automatically fires at
 source maximum charge (1.967s, Dream Wielder0.983s). Last two ghosts use original
 held punch/kick poses, preserving proportions. Copies are consumed at action end;
-Earthbreaker descent is1.5x faster. Fist hits use native down-slam horizontal recoil
+Earthbreaker uses native Quake descent speed, with no upward ground launch. Fist hits use native down-slam horizontal recoil
 strength2, respecting enemy recoil rules and preserving other spell values.
 See [fist skills](docs/FIST_SKILLS.md) for source, balance and pending client checks.
 
@@ -74,13 +74,13 @@ bash scripts/build.sh
 | 输出 | 用途 |
 |---|---|
 | `artifacts/mod/WukongKnight/` | 安装整个目录，必须保留 `character/` |
-| `artifacts/WukongKnight-0.7.8-dev.zip` | DLL、说明、角色清单与引用的加工图集 |
+| `artifacts/WukongKnight-0.7.10-dev.zip` | DLL、说明、角色清单与引用的加工图集 |
 | `assets/processed/wukong/previews/` | 动画 GIF、关键姿势联系表，不进入开发包 |
 | `artifacts/validation.json` | 归档输入、解包、PNG、音频与配置检查 |
 | `artifacts/character-validation.json` | 加工图集、帧范围、时序与连击窗口检查 |
 | `artifacts/build-report.json` | 包内文件散列及实现/编译/自动检查/实机状态 |
 
-Current package: `0.7.8-dev`; older packages are retained for rollback.
+Current package: `0.7.10-dev`; older packages are retained for rollback.
 
 ## 安装与验收
 

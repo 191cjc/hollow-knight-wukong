@@ -1,6 +1,6 @@
 # Flame Dash / 烈焰闪
 
-Version0.7.8-dev retains the native dash transaction and adds an optional upward
+Version0.7.10-dev retains the native dash transaction and adds an optional upward
 direction through Dashmaster. The original dash key, ability unlock, selected
 normal/Sharp Shadow speed, duration, cooldown, gravity and terrain collision come
 from `HeroController`. Along-path damage and active-dash HP protection apply to
@@ -9,7 +9,8 @@ all three directions. No MP cost or manual Soul gain is added.
 ## Flame Dash: Awakening / 烈焰闪·觉醒
 
 Native Dashmaster (charm31) keeps its collectible, ownership/equipment, original
-two-notch cost and icon. Native downward dash, shorter cooldown, Sprintmaster
+two-notch cost. Its icon is the archived original ZMXY4 Flame Dash skill image
+(1101020.png), embedded separately and fitted to native Dashmaster icon bounds. Native downward dash, shorter cooldown, Sprintmaster
 run-speed combination and Sharp Shadow damage/speed interactions remain active.
 While airborne with this charm equipped, hold Up without Down/Left/Right and
 press the original dash key to move vertically upward. Grounded or diagonal

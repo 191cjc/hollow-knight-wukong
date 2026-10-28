@@ -90,14 +90,12 @@ namespace WukongKnight.Core
         public const double CloneSeconds = 10;
         // Original Q Slam Hit L/R uses horizontal spell recoil at magnitude2.
         public const float KnockbackMagnitude = 2f;
-        public const double EarthbreakerFallPixelsPerTick = 33;
-        public static double EarthbreakerAnticTicks(bool fromGround) => fromGround ? 16 : 8;
-        public static double EarthbreakerStep(double previousTick, double tick, bool fromGround)
+        public const double EarthbreakerAnticTicks = 8;
+        // Native Quake speed is in world units/second, independent of artwork calibration.
+        public static double EarthbreakerStep(double previousTick, double tick, double nativeFallSpeed)
         {
-            double antic = EarthbreakerAnticTicks(fromGround);
-            double rise = fromGround ? Math.Max(0, Math.Min(tick, antic) - Math.Min(previousTick, antic)) * 17.8 : 0;
-            double fall = Math.Max(0, tick - Math.Max(previousTick, antic)) * EarthbreakerFallPixelsPerTick;
-            return rise - fall;
+            double fallingTicks = Math.Max(0, tick - Math.Max(previousTick, EarthbreakerAnticTicks));
+            return fallingTicks * nativeFallSpeed / 30;
         }
         public static bool GhostFinished(FistAction action, bool released, double actionSeconds, double landingSeconds, double age)
         {

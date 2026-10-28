@@ -18,7 +18,7 @@ internal static class Program
         cases = cases.Concat(new Action[] { DeathSourceClockDoesNotRestartOrLoop, DeathPauseUsesScaledTime, DeathCleanupAllowsFreshRespawn }).ToArray();
         cases = cases.Concat(new Action[] { FistChargeReleaseThreshold, FistChargeReleaseIsLatched, FistContactsOwnSubskills, FistSourceMasksStayLocal, FistTravelIsBounded, FistBalanceHasBoundedCloneDamage }).ToArray();
         cases = cases.Concat(new Action[] { FistChargeForcesSourceRelease, FistChargeAutoReleaseIsLatched, FistDirectionalSoulGate, FistSoulAcquisitionCanBeRevoked, FistSoulSpendingCanRevokeControl }).ToArray();
-        cases = cases.Concat(new Action[] { CopiedGodslayerGhostExpiresAtReleaseEnd, CopiedEarthbreakerGhostExpiresAtLandingEnd, IdleGhostExpiryDefersForCopy, EarthbreakerDescentIsFasterAndSamplingIndependent, FistPushUsesNativeSlamAndAwayDirection }).ToArray();
+        cases = cases.Concat(new Action[] { CopiedGodslayerGhostExpiresAtReleaseEnd, CopiedEarthbreakerGhostExpiresAtLandingEnd, IdleGhostExpiryDefersForCopy, EarthbreakerUsesNativeWorldSpeed, EarthbreakerHasNoGroundRise, EarthbreakerTravelIsSamplingIndependent, FistPushUsesNativeSlamAndAwayDirection }).ToArray();
         cases = cases.Concat(new Action[] { EarthbreakerProtectionEndsWithHeroAction, FireApeKeepsOriginalDeadline, HeroRecoveryRetainsOtherActionClocks }).ToArray();
         cases = cases.Concat(new Action[] { DetachedSummonsKeepIndependentClocks, AfterimageTrailBirthsRetainPositionsAcrossSlowFrames, DetachedCancellationRejectsStaleWork, SummonsSpendSoulWithoutTakingControl, SummonPaymentCanRevokeSpawn, DetachedContactsKeepCapsWhenFacingChanges }).ToArray();
         cases = cases.Concat(new Action[] { ControlledCastRejectsInsufficientAndRevokedSoul, ControlledCastPaymentAndExceptionReleaseOwner }).ToArray();
@@ -399,19 +399,32 @@ internal static class Program
         Check(!FistRules.GhostFinished(FistAction.Earthbreaker, false, 1, -1, 11), "Idle expiry destroyed an active copy");
         Check(FistRules.GhostFinished(FistAction.Earthbreaker, false, 1.5, .5, 11.5), "Finished copy survived after idle expiry");
     }
-    private static void EarthbreakerDescentIsFasterAndSamplingIndependent()
+    private static void EarthbreakerUsesNativeWorldSpeed()
     {
-        Check(Math.Abs(FistRules.EarthbreakerStep(0,16,true)-16*17.8)<1e-8, "Ground launch changed while accelerating descent");
-        Check(FistRules.EarthbreakerStep(0,8,false)==0, "Air antic unexpectedly moved");
-        foreach (bool ground in new[] {false,true})
+        // Both installed native Quake tiers use -50 world units/s; live action values win.
+        foreach (double speed in new[] { -50.0, -64.0 })
         {
-            double antic=FistRules.EarthbreakerAnticTicks(ground);
-            double fall=FistRules.EarthbreakerStep(antic,antic+10,ground);
-            Check(fall==-330 && fall==-22*10*1.5, "Descent did not become1.5x faster");
+            Check(Math.Abs(FistRules.EarthbreakerStep(8,38,speed)-speed)<1e-8, "One second of descent differs from native world speed");
+            Check(Math.Abs(FistRules.EarthbreakerStep(8,8.6,speed)-speed*.02)<1e-8, "Fixed-step travel differs from native velocity integration");
+        }
+    }
+    private static void EarthbreakerHasNoGroundRise()
+    {
+        Check(FistRules.EarthbreakerAnticTicks==8, "Ground cast retained the extended rising antic");
+        Check(FistRules.EarthbreakerStep(0,8,-50)==0, "Preparation moved the caster");
+        for (int tick=0;tick<40;tick++)
+            Check(FistRules.EarthbreakerStep(tick,tick+1,-50)<=0, "Earthbreaker reintroduced upward travel");
+        Check(FistRules.EarthbreakerStep(7,9,-50)<0, "Cast did not descend immediately after preparation");
+    }
+    private static void EarthbreakerTravelIsSamplingIndependent()
+    {
+        foreach (double speed in new[] { -50.0, -64.0 })
+        {
             double sum=0;
-            for (int t=0;t<40;t++)sum+=FistRules.EarthbreakerStep(t,t+1,ground);
-            Check(Math.Abs(sum-FistRules.EarthbreakerStep(0,40,ground))<1e-7, "Slow sampling changed total swept travel");
-            Check(FistRules.EarthbreakerStep(20,20,ground)==0, "Paused/repeated observation moved the body");
+            for (int t=0;t<40;t++)sum+=FistRules.EarthbreakerStep(t,t+1,speed);
+            Check(Math.Abs(sum-FistRules.EarthbreakerStep(0,40,speed))<1e-7, "Slow sampling changed total swept travel");
+            Check(FistRules.EarthbreakerStep(20,20,speed)==0, "Paused/repeated observation moved the body");
+            Check(FistRules.EarthbreakerStep(20,19,speed)==0, "Reversed observation moved the body");
         }
     }
     private static void FistPushUsesNativeSlamAndAwayDirection()

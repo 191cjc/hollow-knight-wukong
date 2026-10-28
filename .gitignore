@@ -14,3 +14,4 @@ assets/processed/*
 !assets/processed/charms/
 assets/processed/charms/*
 !assets/processed/charms/fire-eye-sigil/
+!assets/processed/charms/flame-dash/

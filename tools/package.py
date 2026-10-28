@@ -9,7 +9,7 @@ from pathlib import Path
 
 from validate_character import CHARACTER, ROOT, sha256, validate_character
 
-VERSION = "0.7.8-dev"
+VERSION = "0.7.10-dev"
 _VARIANT = json.loads((ROOT / "data/character/active-variant.json").read_text(encoding="utf-8"))
 ACTIVE_CHARACTER = ROOT / _VARIANT.get("runtime_directory", _VARIANT["output_directory"])
 README = f"""Wukong Knight {VERSION}
@@ -25,7 +25,8 @@ Longnail/Mark of Pride/both give native 1.15x/1.25x/1.4x; body remains offline1.
 Arc and body share the same original animation tick and character-center attachment.
 The native dash key now plays Wukong's original Flame Dash pose/flame artwork.
 Dashmaster becomes Flame Dash: Awakening (烈焰闪·觉醒), retaining its original2notches,
-icon, collectible, dash cooldown/downward dash and charm bonuses. In midair hold
+collectible, dash cooldown/downward dash and charm bonuses. Its embedded icon is
+the archived original ZMXY4 Flame Dash skill image, fitted to native charm size. In midair hold
 only Up and press dash to rise. It shares native aerial dash allowance and permits
 one upward use before a real landing; pogo/wall contact/charm toggles do not refill it.
 Native normal/Sharp Shadow speed, clock, cooldown, unlocks and collision remain.
@@ -51,8 +52,8 @@ Dream Nail is Godslayer Strike (灭神一击): hold to charge, release to punch.
 Full charge is source frame39 (1.267s; Dream Wielder 0.633s), releasing a traveling wave.
 Only the player's full wave carries the actual native Dream Nail trigger, retaining
 thoughts/Soul/dream scenery interactions. Partial punches and clones only damage.
-Down + spell casts Earthbreaker Fist (辟地拳); upward launch on ground, then
-terrain-limited slam, or direct slam in air. Up + Dream Nail casts Fire Ape Assault
+Down + spell casts Earthbreaker Fist (辟地拳); prepare in place for eight source
+ticks, then slam at native Quake speed, with no upward ground launch. Up + Dream Nail casts Fire Ape Assault
 (火猿出击), with original independent back/front fire-ape artwork and local masks.
 Fist attacks retain nail-upgrade damage; Dream-key skills require Dream Nail unlock
 and have recovery/cooldowns. Godslayer/Earthbreaker ignore Strength and latch direction
@@ -63,11 +64,11 @@ remains free. Maximum-held Godslayer automatically releases at source frame60
 (1.967s, or0.983s with Dream Wielder); earlier full damage begins at frame39.
 The last two persistent ghosts use held source punch/kick poses, preserving shape.
 After copying Godslayer/Earthbreaker once, each ghost disappears at action end;
-unused ghosts retain their10-second lifetime. Earthbreaker falls1.5x faster.
+unused ghosts retain their10-second lifetime. Earthbreaker reads native Quake descent speed (-50 world units/second for both tiers).
 Fist hits now use original Quake-slam horizontal recoil strength2, with body hits
 pushing away from the cast root and waves along travel. Native enemy resistance
 still applies; damage and Soul costs remain unchanged.
-Earthbreaker blocks incoming HP damage for its owned launch/fall/landing action.
+Earthbreaker blocks incoming HP damage for its owned preparation/fall/landing action.
 Successful Fire Demon/Earthbreaker recovery also calls native QuakeInvuln once:
 the original down-spell0.4s protection against ordinary enemy damage. Native expiry
 and hazard rules apply. Canceled casts/unlanded timeouts/copies grant no recovery timer.

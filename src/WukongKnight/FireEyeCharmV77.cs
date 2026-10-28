@@ -11,12 +11,14 @@ using UnityEngine;
 
 namespace WukongKnight
 {
-    /// <summary>Replaces Deep Focus in its native slot, without changing saved ownership/equipment.</summary>
+    /// <summary>Owns awakening charm artwork and Deep Focus adaptation in their native slots.</summary>
     internal sealed class FireEyeCharmV77 : IDisposable
     {
         private const int CharmId = 34;
+        private const int DashCharmId = 31;
         private const string Equipment = "equippedCharm_34";
         private const string Resource = "WukongKnight.FireEyeSigil.png";
+        private const string DashResource = "WukongKnight.FlameDashCharm.png";
         private readonly HashSet<object> queries = new HashSet<object>();
         private readonly List<MethodInfo> queryMethods = new List<MethodInfo>();
         private readonly List<Tuple<object, PropertyInfo>> cachedEquipment = new List<Tuple<object, PropertyInfo>>();
@@ -27,6 +29,7 @@ namespace WukongKnight
         private readonly Action<string> logError;
         private readonly Action<Exception> fail;
         private Texture2D? texture;
+        private Texture2D? dashTexture;
         private bool active;
         private bool disposed;
         public bool Equipped => active && !disposed && PlayerData.instance.GetBool(Equipment);
@@ -66,19 +69,30 @@ namespace WukongKnight
             if (queries.Count == 0) throw new InvalidOperationException("Native Deep Focus checks not found in Spell Control");
             try
             {
-                using (Stream stream = typeof(FireEyeCharmV77).Assembly.GetManifestResourceStream(Resource)
-                    ?? throw new InvalidOperationException("Fire Eye Sigil embedded icon missing"))
-                using (var bytes = new MemoryStream())
-                {
-                    stream.CopyTo(bytes);
-                    texture = new Texture2D(2, 2, TextureFormat.RGBA32, false) { name = "Wukong Fire Eye Sigil" };
-                    if (!ImageConversion.LoadImage(texture, bytes.ToArray(), false))
-                        throw new InvalidOperationException("Fire Eye Sigil icon cannot be decoded");
-                    texture.filterMode = FilterMode.Bilinear;
-                    texture.wrapMode = TextureWrapMode.Clamp;
-                }
+                texture = LoadIcon(Resource, "Wukong Fire Eye Sigil");
+                dashTexture = LoadIcon(DashResource, "Wukong Flame Dash Awakening");
             }
             catch { Dispose(); throw; }
+        }
+
+        private static Texture2D LoadIcon(string resource, string name)
+        {
+            using (Stream stream = typeof(FireEyeCharmV77).Assembly.GetManifestResourceStream(resource)
+                ?? throw new InvalidOperationException("Awakening charm embedded icon missing: " + resource))
+            using (var bytes = new MemoryStream())
+            {
+                stream.CopyTo(bytes);
+                var image = new Texture2D(2, 2, TextureFormat.RGBA32, false) { name = name };
+                try
+                {
+                    if (!ImageConversion.LoadImage(image, bytes.ToArray(), false))
+                        throw new InvalidOperationException("Awakening charm icon cannot be decoded: " + resource);
+                    image.filterMode = FilterMode.Bilinear;
+                    image.wrapMode = TextureWrapMode.Clamp;
+                    return image;
+                }
+                catch { UnityEngine.Object.Destroy(image); throw; }
+            }
         }
 
         // Called only after every other hero adapter has initialized successfully.
@@ -155,20 +169,21 @@ namespace WukongKnight
         private Sprite GetSprite(On.CharmIconList.orig_GetSprite orig, CharmIconList self, int id)
         {
             Sprite original = orig(self, id);
-            try { return active && id == CharmId && original != null ? IconFor(original) : original!; }
+            try { return active && (id == CharmId || id == DashCharmId) && original != null ? IconFor(original, id) : original!; }
             catch (Exception error) { fail(error); return original; }
         }
 
-        private Sprite IconFor(Sprite original)
+        private Sprite IconFor(Sprite original, int id)
         {
             if (icons.TryGetValue(original, out Sprite owned)) return owned;
-            if (texture == null) throw new InvalidOperationException("Fire Eye Sigil texture unavailable");
+            Texture2D? image = id == DashCharmId ? dashTexture : texture;
+            if (image == null) throw new InvalidOperationException("Awakening charm texture unavailable: " + id);
             // Fit the original native icon bounds; never scale the UI or hero transforms.
             float size = Math.Max(original.bounds.size.x, original.bounds.size.y);
-            if (size <= 0) throw new InvalidOperationException("Native Deep Focus icon bounds invalid");
-            owned = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(.5f, .5f),
-                Math.Max(texture.width, texture.height) / size, 0, SpriteMeshType.FullRect);
-            owned.name = "Wukong Fire Eye Sigil";
+            if (size <= 0) throw new InvalidOperationException("Native charm icon bounds invalid: " + id);
+            owned = Sprite.Create(image, new Rect(0, 0, image.width, image.height), new Vector2(.5f, .5f),
+                Math.Max(image.width, image.height) / size, 0, SpriteMeshType.FullRect);
+            owned.name = image.name;
             icons.Add(original, owned);
             return owned;
         }
@@ -185,13 +200,16 @@ namespace WukongKnight
             if (list == null) return;
             // GetSprite is the only pinned native reader of spriteList. Existing renderers
             // can cache the old sprite across disable/re-enable, so refresh their references.
-            Sprite original = list.spriteList[CharmId];
-            if (original == null) throw new InvalidOperationException("Native Deep Focus icon missing");
-            Sprite owned = IconFor(original);
-            foreach (SpriteRenderer renderer in Resources.FindObjectsOfTypeAll<SpriteRenderer>())
+            foreach (int id in new[] { CharmId, DashCharmId })
             {
-                if (renderer.sprite != original) continue;
-                renderer.sprite = owned;
+                Sprite original = list.spriteList[id];
+                if (original == null) throw new InvalidOperationException("Native charm icon missing: " + id);
+                Sprite owned = IconFor(original, id);
+                foreach (SpriteRenderer renderer in Resources.FindObjectsOfTypeAll<SpriteRenderer>())
+                {
+                    if (renderer.sprite != original) continue;
+                    renderer.sprite = owned;
+                }
             }
         }
 
@@ -226,6 +244,8 @@ namespace WukongKnight
             icons.Clear();
             if (texture != null) UnityEngine.Object.Destroy(texture);
             texture = null;
+            if (dashTexture != null) UnityEngine.Object.Destroy(dashTexture);
+            dashTexture = null;
         }
 
         private void Cleanup(Action action)

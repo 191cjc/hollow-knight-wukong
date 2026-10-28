@@ -10,7 +10,7 @@ namespace WukongKnight
         private WukongRuntime? runtime;
         private EnemyFsmDump? fsmDump;
         public WukongKnightMod() : base("Wukong Knight") { }
-        public override string GetVersion() => "0.7.8-dev+fsmdump";
+        public override string GetVersion() => "0.7.10-dev+fsmdump";
 
         public override void Initialize()
         {

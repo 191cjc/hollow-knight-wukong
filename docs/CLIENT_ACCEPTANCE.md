@@ -366,3 +366,32 @@ been run for this increment; source/build checks do not fulfill this matrix.
   saved invincibility, altered collider, stale velocity or native UI/hook changes.
 - [ ] Renamed preview https://litter.catbox.moe/3gm8ze.png and transparent PNG
   https://litter.catbox.moe/4dfkjd.png match the embedded image (72-hour host).
+
+
+## 0.7.9 Earthbreaker native descent and hitbox inspection (pending)
+
+- Down + spell on flat ground: remain in place for the eight-tick preparation,
+  then play the landing attack without an upward hop. Repeat on slopes/platforms.
+- In air: after preparation, descent uses the actual native Quake1/2 Down speed
+  (-50 world units/second in the installed game), for player and copied ghosts.
+  Check both spell tiers and slow/paused frames; there is no artwork-scale factor.
+- Retain Soul cost, falling/landing hit caps, terrain sweep, full-action protection,
+  successful-landing native QuakeInvuln and canceled/unlanded timeout behavior.
+- Optional DebugMod1.4.10.2 provides native collider visualization. Local test
+  setup binds F5 to Show Hitboxes (0 off / 1 combat / 2 all); F1 toggles Debug UI.
+  It draws actual Collider2D components, not Wukong's query-only skill regions.
+  Invulnerability, noclip and other debug cheats must remain off for combat checks.
+- Build and offline native-parameter checks do not establish client acceptance.
+
+
+## 0.7.10 Flame Dash charm icon and DebugMod disabled (pending)
+
+- After entering a save, native charm31 must show the archived ZMXY4 Flame Dash
+  icon (1101020.png) in inventory/selection/equipped/pickup consumers. Verify its
+  native size and both collected/locked states; acquisition and two-notch cost
+  still use the original charm31 identity.
+- Charm34 retains its prior generated icon and Fire Eye effect. Disable/re-enable,
+  hero replacement and initialization failure must restore only owned icon
+  references before destroying both replacement sprites/textures.
+- Local DebugMod is moved to Mods/Disabled/DebugMod and ShowHitBoxes is0. Restart
+  with no debug overlay. Existing F5 binding is retained for later reactivation.

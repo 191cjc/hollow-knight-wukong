@@ -1,4 +1,28 @@
-# Current status: Wukong0.7.8 awakening charms
+# Current status: Wukong0.7.10 Flame Dash charm icon
+
+Updated2026-10-28 (Asia/Shanghai). Charm31 now uses the archived original ZMXY4
+Flame Dash icon, embedded as WukongKnight.FlameDashCharm.png and fitted to its
+native inventory bounds. Charm34's generated icon and all character artwork
+remain unchanged. Both owned icon replacements restore cached native consumers
+on cleanup. The0.7.9 Earthbreaker changes are retained.
+
+Local DebugMod has been moved to Mods/Disabled/DebugMod and ShowHitBoxes is0.
+Package0.7.10-dev; validation/installation evidence lives in the local build
+report. Native inventory/pickup rendering still needs client acceptance.
+
+## Previous baseline: Wukong0.7.9 Earthbreaker descent
+
+Client follow-up requests native Quake descent speed and removal of the grounded
+upward launch. Player/copies now share an eight-tick stationary preparation and
+read the actual selected Quake1/2 Down SetVelocity2d.y value (-50 world units/s).
+Travel uses world units directly; body/masks/artwork/damage/Soul/immunity and
+successful-landing recovery keep their existing contracts. Package0.7.9-dev.
+
+The local build report records validation and installation evidence. These new
+movement behaviors still require client acceptance. DebugMod can display native
+colliders; custom overlap-only skill regions are not physical collider objects.
+
+## Previous baseline: Wukong0.7.8 awakening charms
 
 Updated2026-10-27 (Asia/Shanghai), branch feat/fire-eye-charm, after checkpoint23852f3.
 

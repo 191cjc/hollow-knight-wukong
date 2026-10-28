@@ -4,7 +4,7 @@
     <LangVersion>latest</LangVersion>
     <AssemblyName>WukongKnight</AssemblyName>
     <RootNamespace>WukongKnight</RootNamespace>
-    <Version>0.7.8</Version>
+    <Version>0.7.10</Version>
     <Nullable>enable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
     <Deterministic>true</Deterministic>
@@ -28,5 +28,6 @@
     <Reference Include="UnityEngine.AudioModule"><HintPath>$(UnityReferenceDir)/UnityEngine.AudioModule.dll</HintPath><Private>false</Private></Reference>
     <EmbeddedResource Include="../../data/generated/development-manifest.json" LogicalName="WukongKnight.DevelopmentManifest.json" />
     <EmbeddedResource Include="../../assets/processed/charms/fire-eye-sigil/icon.png" LogicalName="WukongKnight.FireEyeSigil.png" />
+    <EmbeddedResource Include="../../assets/processed/charms/flame-dash/icon.png" LogicalName="WukongKnight.FlameDashCharm.png" />
   </ItemGroup>
 </Project>

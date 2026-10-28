@@ -15,7 +15,6 @@ namespace WukongKnight
             public double Born;
             public int Index;
             public bool Released;
-            public bool FromGround;
             public double LandedAt = -1;
             public double LastTravel;
             public FistAction Action;
@@ -76,7 +75,6 @@ namespace WukongKnight
         private int lastInputFrame = -1;
         private int nail;
         private bool facing;
-        private bool fromGround;
         private bool waveSpawned;
         private bool observing;
         private bool disposed;
@@ -94,7 +92,7 @@ namespace WukongKnight
             (charge.Released ? "godslayerRelease" : "godslayerCharge") : "earthbreaker";
         public double Tick => action == FistAction.Godslayer ? charge.Released ? (Elapsed - charge.ReleasedAt) * 30 : charge.ChargeTick(Elapsed, Wielder) :
             action == FistAction.Earthbreaker ? landedAt >= 0 ? 18 + (Time.time - landedAt) * 30 :
-                Elapsed * 30 < (fromGround ? 16 : 8) ? Math.Min(7, Elapsed * 30) : Math.Min(17, 8 + (Elapsed * 30 - (fromGround ? 16 : 8))) : Elapsed * 30;
+                Elapsed * 30 < FistRules.EarthbreakerAnticTicks ? Math.Min(7, Elapsed * 30) : Math.Min(17, 8 + (Elapsed * 30 - FistRules.EarthbreakerAnticTicks)) : Elapsed * 30;
         private Vector3 Origin
         {
             get { Bounds b = body.bounds; return new Vector3(b.center.x, b.min.y + feet * units, hero.transform.position.z); }
@@ -175,7 +173,7 @@ namespace WukongKnight
         private void Begin(FistAction chosen)
         {
             action = chosen; token++; started = Time.time; facing = hero.cState.facingRight;
-            lastTravel = 0; landedAt = -1; fromGround = hero.cState.onGround; waveSpawned = false;
+            lastTravel = 0; landedAt = -1; waveSpawned = false;
             charge.Reset(); hits.Clear();
             nail = Math.Max(1, PlayerData.instance.GetInt("nailDamage"));
             foreach (Ghost g in ghosts)
@@ -183,7 +181,6 @@ namespace WukongKnight
                 if (g.Action != FistAction.None || chosen != FistAction.Godslayer && chosen != FistAction.Earthbreaker) continue;
                 g.Action = chosen; g.Facing = facing; g.Released = false; g.Started = Time.time; g.Hits.Clear();
                 g.LandedAt=-1; g.LastTravel=0;
-                if (chosen == FistAction.Earthbreaker) g.FromGround=MoveGhost(g,new Vector2(0,-.02f));
             }
         }
         public void FixedUpdate()
@@ -210,12 +207,12 @@ namespace WukongKnight
                     if (landedAt < 0)
                     {
                         double old = lastTravel; lastTravel = tick;
-                        double step = FistRules.EarthbreakerStep(old, tick, fromGround);
-                        bool grounded = Move(new Vector2(0, (float)step * units));
-                        if (grounded && tick > FistRules.EarthbreakerAnticTicks(fromGround)) landedAt = Time.time;
+                        double step = FistRules.EarthbreakerStep(old, tick, down.QuakeFallSpeed(PlayerData.instance.GetInt("quakeLevel")));
+                        bool grounded = Move(new Vector2(0, (float)step));
+                        if (grounded && tick > FistRules.EarthbreakerAnticTicks) landedAt = Time.time;
                     }
                     bool land = landedAt >= 0;
-                    if (land || tick >= (fromGround ? 16 : 8))
+                    if (land || tick >= FistRules.EarthbreakerAnticTicks)
                         Query(Origin, facing, FistRules.Region(land ? "effect1_2" : "effect1_1", 0, facing), hits, land ? 1 : 0, 1, 0,
                             FistRules.DreamDamage(current, nail, false, land, false), () => Owns(owned));
                 }
@@ -232,16 +229,16 @@ namespace WukongKnight
                 if (g.Action == FistAction.Earthbreaker)
                 {
                     double t = (Time.time-g.Started)*30;
-                    double riseEnd=FistRules.EarthbreakerAnticTicks(g.FromGround);
+                    double fallStart=FistRules.EarthbreakerAnticTicks;
                     if (g.LandedAt < 0)
                     {
                         double old=g.LastTravel;g.LastTravel=t;
-                        double step=FistRules.EarthbreakerStep(old,t,g.FromGround);
-                        bool ground=MoveGhost(g,new Vector2(0,(float)step*units));
-                        if (ground && t>riseEnd) g.LandedAt=Time.time;
+                        double step=FistRules.EarthbreakerStep(old,t,down.QuakeFallSpeed(PlayerData.instance.GetInt("quakeLevel")));
+                        bool ground=MoveGhost(g,new Vector2(0,(float)step));
+                        if (ground && t>fallStart) g.LandedAt=Time.time;
                     }
                     bool land=g.LandedAt>=0;
-                    if (land || t>=riseEnd)
+                    if (land || t>=fallStart)
                         Query(g.Position, g.Facing, FistRules.Region(land ? "effect1_2" : "effect1_1", 0, g.Facing), g.Hits, land ? 1 : 0, 1, 0,
                             FistRules.DreamDamage(FistAction.Earthbreaker,nail,false,land,true), () => !disposed && Alive && ghosts.Contains(g));
                     if (disposed || !Alive || !ghosts.Contains(g)) return;
@@ -405,8 +402,8 @@ namespace WukongKnight
                 double t=g.Action == FistAction.Godslayer && !g.Released ? charge.ChargeTick(Elapsed,Wielder) : (Time.time-g.Started)*30;
                 if (g.Action == FistAction.Earthbreaker)
                 {
-                    double elapsed=(Time.time-g.Started)*30, riseEnd=g.FromGround ? 16 : 8;
-                    t=g.LandedAt>=0 ? 18+(Time.time-g.LandedAt)*30 : elapsed<riseEnd ? Math.Min(7,elapsed) : Math.Min(17,8+elapsed-riseEnd);
+                    double elapsed=(Time.time-g.Started)*30, fallStart=FistRules.EarthbreakerAnticTicks;
+                    t=g.LandedAt>=0 ? 18+(Time.time-g.LandedAt)*30 : elapsed<fallStart ? Math.Min(7,elapsed) : Math.Min(17,8+elapsed-fallStart);
                 }
                 Render(g.View,g.Position,g.Facing,clip,t,new Color(1,.55f,.18f,.65f));
             }

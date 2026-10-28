@@ -852,3 +852,43 @@ Wrong: fake down input and set dashingDown to reuse downward dash, or reset
 native airDashed to provide an independent upward charge.
 Correct: retain native admission/shared charge and inject the owned upward vector
 before existing mod hooks, with an additional landing-only upward restriction.
+
+
+## 0.7.9 Earthbreaker native-speed descent (supersedes 0.7.2 rise/travel)
+
+`NativeSpellV77.QuakeFallSpeed(int level)` reads the actual `SetVelocity2d.y`
+FsmFloat from Spell Control `Quake1 Down` / `Quake2 Down`. Validate both original
+states/actions/wrapper types and finite negative values before applying the held
+antic patch; read the selected live value during movement. Missing/ambiguous or
+nonnegative native parameters fail coherently rather than substituting a speed.
+Installed resources.assets Spell Control20204 has -50 world units/s in both tiers.
+
+`FistRules.EarthbreakerAnticTicks=8` is shared by ground/air player and copies.
+`EarthbreakerStep(previousTick,tick,nativeFallSpeed)` returns **world displacement**:
+`max(0,tick-max(previousTick,8))*nativeFallSpeed/30`. There is no upward displacement
+or grounded launch branch. Do not multiply this result by artwork `units`; mask
+and source-root pixel calibration still use their existing units. Ground contact
+after preparation immediately begins the existing landing tail. Keep actual body
+terrain sweeps, hit masks/caps, Soul transaction, full-action protection and
+confirmed-player-landing-only QuakeInvuln unchanged. No new physical colliders.
+
+Regression checks cover native -50 and changed live speeds, zero preparation
+travel, no rising phase, a 20ms fall step, sampling across the phase boundary,
+pause/repeat/backward observations. Verify real PlayMaker field/property shapes
+and compiled speed-to-movement wiring; in-client terrain acceptance stays pending.
+DebugMod draws native Collider2D components only: overlap-query skill rectangles
+are not additional colliders and must not be advertised as visible hitboxes.
+
+
+## 0.7.10 awakening icon consumers
+
+FireEyeCharmV77 retains its existing Deep Focus scope and owns only the artwork
+for native charm34 and31. GetSprite calls the original once, then selects the
+corresponding embedded PNG only for those two IDs while active. Native Sprite
+bounds determine replacement pixels-per-unit; no transform/UI or spriteList
+mutation. Refresh both slots' already-cached SpriteRenderers on activation and
+CharmIconList.Awake. Dispose restores still-owned renderer references before
+destroying replacement sprites and both textures. Failed icon loading also
+destroys any allocated texture and unwinds the complete attachment coherently.
+NativeDashV77 still owns charm31 text/movement. No new cost/equipment/acquisition
+hook or save change. Verify native inventory/pickup sizing in the actual client.

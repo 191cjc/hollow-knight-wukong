@@ -150,3 +150,10 @@ Dream is detached Afterimage. Storm alone owns Forward, held at Fireball Antic
 ANIM END, pays live MP Cost once, finishes via Spell End, successful-only
 QuakeInvuln. Afterimage uses CanBegin(native,true), never Dream Begin/Finish;
 Godslayer is the sole Dream owner. Keep the Storm enemy-damage attribution draft.
+
+
+v079 supersedes the v072 Earthbreaker ground-rise and33px/tick travel notes.
+Ground/air hero and copied ghosts prepare in place for8ticks, then use the actual
+native Quake1/2 Down SetVelocity2d.y world speed through NativeSpellV77. Never
+apply artwork pixel calibration to that displacement or reintroduce ground rise.
+Preserve terrain sweeps, damage/Soul, action immunity and successful-only recovery.
