@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "title": "Flame Dash: Awakening / 烈焰闪·觉醒",
+  "generation": {
+    "mode": "user-authorized bundled CLI",
+    "model": "gpt-image-2.5-flare",
+    "operation": "image edit with style reference",
+    "size": [
+      1024,
+      1024
+    ],
+    "quality": "high"
+  },
+  "style_reference": "assets/processed/charms/fire-eye-sigil/icon.png",
+  "processing": {
+    "extraction": "edge_connected_white",
+    "crop": [
+      143,
+      151,
+      881,
+      873
+    ],
+    "canvas": [
+      256,
+      256
+    ],
+    "padding": 16,
+    "resample": "LANCZOS"
+  },
+  "existing_inputs_unchanged": true,
+  "runtime_integration": "preview asset only",
+  "files": {
+    "original.png": "83542966df3c2c5e32120753f1a28e299be9b3ddd6ae889e6d57cc8ddad6fc6c",
+    "prompt.txt": "8f282b252bf9fa098f77c6a12f819ead44bf431e97be2cc327a5efbac42d8db9",
+    "prepare.py": "effb1a0105454d17d09118099e3714436b9a94b3638b361901f7c94a496d6d6a",
+    "icon.png": "872de72cc71a155d20ddc019a2a22225362fcc8c55aebb1ebe35d20dbe733f56",
+    "icon-1024.png": "c50388842fece7e0caa9bd57fb000e0b61544191feb3eccc4008373814a70885",
+    "icon-48.png": "373189a5ddf1e9199d74d71180619ce1c1edb9788653ee6cb10b316163523a3a",
+    "icon-64.png": "1ea5db755096716837f54b890e8355e643c6ba8f5c30e884afd6962bceeb7438",
+    "preview.png": "1c7eb63f6af6ebfad9246ffb26fd59d3e7a94222536c999e85cdebf8923d66b4"
+  }
+}

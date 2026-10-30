@@ -1,0 +1,11 @@
+Use case: stylized-concept
+Asset type: one original inventory charm icon for Flame Dash: Awakening in a Hollow Knight Wukong mod.
+Primary request: design a compact collectible charm that belongs beside Hollow Knight's other charms, replacing a square action-skill thumbnail with an organic talisman silhouette.
+Input image 1 is a STYLE REFERENCE ONLY: the project's Fire Eye: Awakening icon supplies contour weight, ivory shell, charcoal recesses, restrained painted shading, and overall visual finish. Generate an entirely new charm silhouette and subject. Do not copy its eye symbol or vertical composition. The output must contain only the new Flame Dash charm.
+Subject: a bright orange-red ember shaped into a forward-swept flame, cradled by a dark charcoal shell with an ivory rim. Two broad curved shell tips sweep backward to suggest a sudden fiery dash. The charm should look like one coherent small physical trinket, not a flame effect or a character portrait.
+Style/medium: hand-drawn 2D game inventory art, bold slightly irregular dark outlines, a few large organic curves, restrained soft painted shading, small ivory highlights. Maintain a strong readable silhouette at 48 and 64 pixels.
+Color palette: ivory, near-black charcoal, ember red, warm orange and a small golden flame highlight. Keep the warm colors enclosed within the charm.
+Composition/framing: one centered isolated icon; compact roughly square footprint; gentle forward lean; entire silhouette visible with approximately 12 percent clear padding on all sides.
+Scene/backdrop: perfectly uniform pure white background, no gradient, cast shadow or texture. The charm has a closed dark outer contour so only edge-connected background pixels can be removed offline while retaining all enclosed ivory details.
+Constraints: no eye, face, person, monkey head, lettering, numbers, watermark, UI frame, square badge, inventory screenshot, scenery, chain, scattered sparks, external glow, or decorative microdetails. No glossy 3D rendering. Do not draw a checkerboard background.
+Output intent: preserve the generated original unchanged, then produce a separate transparent 256-by-256 PNG and small-size previews. Existing archived and processed icons must remain intact.
